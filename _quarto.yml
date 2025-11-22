@@ -1,21 +1,19 @@
 project:
   type: website
+  output-dir: _site
 
 website:
-  title: "a- Monetary Economics EC3014"
+  title: "Monetary Economics"
   navbar:
     left:
-      - href: index.qmd
-        text: Home
-      - about.qmd
+      - text: "Home"
+        href: index.qmd
+      - text: "Lectures"
+        href: lectures.qmd
+      - text: "Labs"
+        href: labs.qmd
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
-    css: styles.css
+    theme: cosmo
     toc: true
-
-
-
