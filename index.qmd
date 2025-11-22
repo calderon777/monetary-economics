@@ -1,0 +1,12 @@
+---
+title: "Monetary Economics"
+format: html
+---
+
+Welcome to **Monetary Economics**.
+
+This site will contain:
+
+- Lecture notes
+- Lab materials (R / data work)
+- Extra readings and links

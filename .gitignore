@@ -1,4 +1,20 @@
-
+# Python
 .venv/
-__pycache__
+__pycache__/
+
+# OS
 .DS_Store
+
+# Quarto output
+/_site/
+*.html
+.quarto/
+
+# R-related (if you use R)
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# VS Code
+.vscode/
