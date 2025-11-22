@@ -1,0 +1,12 @@
+# Quarto output
+/_site/
+*.html
+
+# R-related (if you use R)
+.Rproj.user/
+.Rhistory
+.RData
+.Ruserdata
+
+# VS Code
+.vscode/
