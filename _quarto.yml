@@ -7,7 +7,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: ec3014_week1_quiz.qmd
+      - href: week1_quiz.qmd
         text: "Week 1 Quiz"
 
 format:
