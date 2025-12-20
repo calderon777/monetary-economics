@@ -11,7 +11,7 @@ This site will contain:
 
 ## Quizzes
 
-- [EC3014 – End of Week 1 Quiz](ec3014_week1_quiz.qmd)
+- [End of Week 1 Quiz](week1_quiz.qmd)
 
 ## Lab materials (R / data work)
 

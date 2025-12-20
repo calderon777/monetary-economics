@@ -1,0 +1,129 @@
+---
+title: "EC3014 – End of Week 1 Quiz"
+format: html
+execute:
+  echo: false
+---
+
+:::callout-note
+- This quiz is for **self-assessment**.
+- Your answers are **not automatically collected**.
+- Select the best answer for each question.
+:::
+
+<!-- MCQ styling (template-compatible) -->
+<style>
+.mcq-key{display:none!important;}
+.mcq-we-q label{display:block; margin:0.15rem 0; cursor:pointer;}
+.mcq-we-q label.is-correct{font-weight:700;}
+.mcq-we-q label.is-incorrect{opacity:0.85;}
+</style>
+
+<!-- FEEDBACK SCRIPT: sets .is-correct / .is-incorrect on the clicked label -->
+<script>
+(function () {
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+  document.addEventListener("change", function (e) {
+    const input = e.target.closest('.mcq-we-q input[type="radio"]');
+    if (!input) return;
+
+    // find the corresponding label (works for both nested and for= cases)
+    const label = input.closest('label') || document.querySelector(`label[for="${input.id}"]`);
+    if (!label) return;
+
+    const q = label.closest(".mcq-we-q") || input.closest(".mcq-we-q");
+    if (!q) return;
+
+    const keyEl = q.querySelector(".mcq-key");
+    if (!keyEl) return;
+
+    const key = norm(keyEl.getAttribute("data-correct"));
+    const choice = norm(label.textContent);
+
+    // reset previous feedback in this question
+    q.querySelectorAll("label").forEach(l => l.classList.remove("is-correct","is-incorrect"));
+
+    // add feedback to the chosen option
+    label.classList.add(choice === key ? "is-correct" : "is-incorrect");
+  });
+})();
+</script>
+
+<div class="mcq-we">
+
+## Question 1
+<div class="mcq-we-q">
+**According to some accounts, an early form of accounting that recorded “national” wealth was represented by:**
+
+<form>
+<label><input type="radio" name="q1"> Cattle</label><br>
+<label><input type="radio" name="q1"> Paper currency</label><br>
+<label><input type="radio" name="q1"> Tally sticks</label><br>
+<label><input type="radio" name="q1"> Jewellery</label><br>
+</form>
+
+<span class="mcq-key" data-correct="Tally sticks"></span>
+
+
+</div>
+## Question 2
+<div class="mcq-we-q">
+**In an economy with 6 goods, the number of possible exchange ratios would be:**
+
+<form>
+<label><input type="radio" name="q2"> 6</label><br>
+<label><input type="radio" name="q2"> 12</label><br>
+<label><input type="radio" name="q2"> 15</label><br>
+<label><input type="radio" name="q2"> 30</label><br>
+</form>
+
+<span class="mcq-key" data-correct="15"></span>
+
+
+</div>
+## Question 3
+<div class="mcq-we-q">
+**A currency based on fiat money differs from one based on commodity money by the fact that:**
+
+<form>
+<label><input type="radio" name="q3"> The former uses paper while the latter uses metallic coins</label><br>
+<label><input type="radio" name="q3"> The bearer of commodity money has a claim to an equivalent value of the commodity itself, while the bearer of fiat money has no such claim</label><br>
+<label><input type="radio" name="q3"> The former is issued by a central bank while the latter is not</label><br>
+<label><input type="radio" name="q3"> The former circulates as a medium of exchange only because it is universally accepted as playing this role while the latter does not require such acceptance</label><br>
+</form>
+
+<span class="mcq-key" data-correct="The bearer of commodity money has a claim to an equivalent value of the commodity itself, while the bearer of fiat money has no such claim"></span>
+
+
+</div>
+## Question 4
+<div class="mcq-we-q">
+**Which of the following properties is an *objective* criterion for something to serve as a medium of exchange?**
+
+<form>
+<label><input type="radio" name="q4"> Marketability</label><br>
+<label><input type="radio" name="q4"> Backing by a Central Bank</label><br>
+<label><input type="radio" name="q4"> Predictability of exchange value</label><br>
+<label><input type="radio" name="q4"> Durability</label><br>
+</form>
+
+<span class="mcq-key" data-correct="Durability"></span>
+
+
+</div>
+## Question 5
+<div class="mcq-we-q">
+**Which of the following statements reflects the debate between Keynesian and Classical economists?**
+
+<form>
+<label><input type="radio" name="q5"> The use of money as a store of value can lead to profound implications for macroeconomic stability</label><br>
+<label><input type="radio" name="q5"> Every trader is willing to accept money as a means of payment precisely because every other trader is willing to accept money as a means of payment</label><br>
+<label><input type="radio" name="q5"> The use of a common unit of account for all items traded in an economy makes it easier to keep track of the exchange ratios between these items</label><br>
+<label><input type="radio" name="q5"> The use of money as a medium of exchange automatically makes it a store of value</label><br>
+</form>
+
+<span class="mcq-key" data-correct="The use of money as a store of value can lead to profound implications for macroeconomic stability"></span>
+
+</div>
+
+</div>
