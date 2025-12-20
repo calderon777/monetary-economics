@@ -7,6 +7,12 @@ Welcome to **Monetary Economics**.
 
 This site will contain:
 
-- Lecture notes
-- Lab materials (R / data work)
-- Extra readings and links
+## Lecture notes
+
+## Quizzes
+
+- [EC3014 – End of Week 1 Quiz](ec3014_week1_quiz.qmd)
+
+## Lab materials (R / data work)
+
+## Extra readings and links
