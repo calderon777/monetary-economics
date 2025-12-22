@@ -11,6 +11,11 @@ execute:
 - Select the best answer for each question.
 :::
 
+```{r}
+#| echo: false
+library(webexercises)
+```
+
 <!-- FEEDBACK SCRIPT: sets .is-correct / .is-incorrect on the clicked label -->
 <script>
 (function () {
