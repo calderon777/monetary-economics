@@ -1,6 +1,6 @@
 project:
   type: website
-
+  output-dir: docs
 website:
   title: "Monetary Economics EC3014"
   navbar:
@@ -12,5 +12,11 @@ website:
 
 format:
   html:
-    toc: true
-    theme: cosmo
+    theme: litera
+    number-sections: false
+    code-copy: true
+    code-overflow: wrap
+    css:
+      - styles.css
+      - icons.css     # the new emoji polish
+    html-math-method: mathjax
