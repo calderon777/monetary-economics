@@ -13,6 +13,8 @@ This site will contain:
 
 - [End of Week 1 Quiz](week1_quiz.qmd)
 
+- [End of Week 1 Quiz test](week1_quiz_leaderboard.qmd)
+
 ## Lab materials (R / data work)
 
 - [Sup test](supervision_2.qmd)

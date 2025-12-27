@@ -11,6 +11,8 @@ execute:
 - Select the best answer for each question.
 :::
 
+<input id="nickname" type="text" placeholder="Enter nickname" required>
+
 ```{r}
 #| echo: false
 library(webexercises)
