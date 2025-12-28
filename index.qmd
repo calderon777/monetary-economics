@@ -9,13 +9,9 @@ This site will contain:
 
 ## Lecture notes
 
-## Quizzes
+## Tutorials
 
-- [End of Week 1 Quiz](week1_quiz.qmd)
-
-- [End of Week 1 Quiz v002](week1_quiz_leaderboard.qmd)
-
-- [End of Week 1 Quiz v003](week1_quiz_leaderboardb.qmd)
+- [Week 1](week1.qmd)
 
 ## Lab materials (R / data work)
 

@@ -35,7 +35,13 @@ function doPost(e) {
     body.total || 0,
     JSON.stringify(body.details || {})
   ]);
-  return ContentService.createTextOutput('ok');
+  
+  // Return CORS headers for browser access
+  return ContentService.createTextOutput('ok')
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'GET,POST')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 
 function doGet() {
@@ -44,12 +50,18 @@ function doGet() {
   const objRows = rows.map(r => ({
     timestamp: r[0], nickname: r[1], quiz: r[2], score: r[3], total: r[4], details: r[5]
   }));
+  
+  // Return CORS headers for browser access
   return ContentService.createTextOutput(JSON.stringify(objRows))
-    .setMimeType(ContentService.MimeType.JSON);
+    .setMimeType(ContentService.MimeType.JSON)
+    .setHeader('Access-Control-Allow-Origin', '*')
+    .setHeader('Access-Control-Allow-Methods', 'GET,POST')
+    .setHeader('Access-Control-Allow-Headers', 'Content-Type');
 }
 ```
 4) Deploy -> New deployment -> type Web app; execute as "Me"; allow Anyone with the link.
 5) Copy the web app URL and paste it into `ENDPOINT` in `week1_quiz_leaderboard.qmd`.
+6) **Important**: After updating the script, you must create a **new deployment** (not just save). Go to Deploy -> Manage deployments -> pencil icon (edit) -> Version: New version -> Deploy. Then use the new URL.
 
 ### Privacy note
 Only nicknames and quiz scores are sent. If you need stricter privacy, avoid collecting names or IDs and keep the sheet access limited.
