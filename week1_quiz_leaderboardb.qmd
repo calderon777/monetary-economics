@@ -32,8 +32,7 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
 .quiz-feedback-line.hidden { display: none; }
 
 /* Leaderboard */
-#leaderboard { margin-top: 0.5rem; }
-#leaderboard table { border-collapse: collapse; width: 100%; }
+#leaderboard { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
 #leaderboard th, #leaderboard td { border-bottom: 1px solid #ddd; padding: 0.5rem 0.4rem; text-align: left; }
 </style>
 
@@ -41,7 +40,7 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
 (function () {
   // 1) Configure your Google Apps Script Web App URL here.
   //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+  const ENDPOINT = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
   const norm = s => (s || "").replace(/\s+/g, " ").trim();
 
@@ -75,9 +74,8 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
     try {
       await fetch(ENDPOINT, {
         method: "POST",
-        mode: "no-cors",        // avoid CORS blocks from Apps Script responses
-        keepalive: true,         // allow send on page unload
-        headers: { "Content-Type": "application/json" },
+        mode: "no-cors",
+        keepalive: true,
         body: JSON.stringify(payload)
       });
     } catch (err) {
@@ -86,61 +84,55 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
   }
 
   async function loadLeaderboard(quizName) {
-  const container = document.getElementById("leaderboard");
-  if (!container) return;
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
 
-  // If not configured, show a friendly message and stop.
-  if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
-    container.textContent = "Leaderboard is not configured yet. Add your Apps Script URL in the page source.";
-    return;
-  }
-
-  try {
-    const res = await fetch(ENDPOINT, { method: "GET", mode: "cors" });
-    const rows = await res.json();
-
-    // Filter for this quiz only (defensive: older rows may not have the fields)
-    const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
-
-    // Keep best score per nickname
-    const best = new Map();
-    filtered.forEach(r => {
-      const nick = String(r.nickname || "").trim();
-      if (!nick) return;
-
-      const score = Number(r.score);
-      const total = Number(r.total);
-      const ts = new Date(r.timestamp || 0).getTime();
-
-      const prev = best.get(nick);
-      if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
-        best.set(nick, { nickname: nick, score, total, ts });
-      }
-    });
-
-    const leaderboard = Array.from(best.values())
-      .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
-      .slice(0, 10);
-
-    if (leaderboard.length === 0) {
-      container.textContent = "No attempts recorded yet.";
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
       return;
     }
 
-    let html = "<table>";
-    html += "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>";
-    html += leaderboard.map((r, i) =>
-      "<tr><td>" + (i + 1) + "</td><td>" + r.nickname + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
-    ).join("");
-    html += "</table>";
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET", mode: "no-cors" });
+      const rows = await res.json();
 
-    container.innerHTML = html;
-  } catch (err) {
-    container.textContent = "Could not load leaderboard.";
-    console.warn("Leaderboard error:", err);
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 10);
+
+      table.innerHTML =
+        "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+        leaderboard.map((r, i) =>
+          "<tr><td>" + (i + 1) + "</td><td>" + r.nickname + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+        ).join("");
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      }
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
   }
-}
-
 
   async function submitQuiz() {
     const nicknameEl = document.getElementById("nickname");
@@ -240,7 +232,7 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
 
 <details>
   <summary><strong>Leaderboard (Top 10)</strong></summary>
-  <div id="leaderboard"></div>
+  <table id="leaderboard"></table>
 </details>
 
 <div class="mcq-we-q">
