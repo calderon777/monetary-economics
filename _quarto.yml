@@ -7,7 +7,7 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - href: week1_quiz.qmd
+      - href: week1_quiz_leaderboard.qmd
         text: "Week 1 Quiz"
 
 format:
@@ -18,5 +18,4 @@ format:
     code-overflow: wrap
     css:
       - styles.css
-      - icons.css     # the new emoji polish
     html-math-method: mathjax
