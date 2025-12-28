@@ -17,6 +17,4 @@ This site will contain:
 
 ## Lab materials (R / data work)
 
-- [Sup test](supervision_2.qmd)
-
 ## Extra readings and links
