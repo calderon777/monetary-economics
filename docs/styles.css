@@ -1,4 +1,15 @@
 /* Cambridge Supervisions: subtle typography polish */
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
+  background-color: #f7f8fa;
+}
+
+main.content {
+  max-width: 900px;
+  margin: auto;
+}
+
 h2, h3 { margin-top: 2rem; }
 main ul, main ol { margin-bottom: 1rem; }
 main p { line-height: 1.5; }
@@ -14,6 +25,16 @@ pre code { font-size: 0.9em; }
   --mcq-incorrect: #b91c1c; /* red-700 */
 }
 
+/* Each question as a card */
+.mcq-we-q {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1.2rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  border-left: 5px solid #0d6efd;
+}
+
 .mcq-we .webex-radiogroup,
 .mcq-we .webex-checkboxgroup { display: block; }
 
@@ -24,6 +45,20 @@ pre code { font-size: 0.9em; }
   gap: .5rem;
   margin: .25rem 0;
   line-height: 1.5;
+}
+
+/* Improve answer affordances */
+.mcq-we .webex-radiogroup label,
+.mcq-we .webex-checkboxgroup label {
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.mcq-we .webex-radiogroup label:hover,
+.mcq-we .webex-checkboxgroup label:hover {
+  background: #eef3ff;
 }
 
 /* Tweak control alignment */
@@ -80,8 +115,17 @@ pre code { font-size: 0.9em; }
 }
 
 /* Optional: hint styling */
-.mcq-we details.hint { margin: .35rem 0 .6rem; }
-.mcq-we details.hint > summary { cursor: pointer; color: #475569; }
+.mcq-we details.hint {
+  margin-top: 0.7rem;
+  padding: 0.55rem 0.7rem;
+  border-radius: 12px;
+  background: rgba(0,0,0,0.03);
+}
+
+.mcq-we details.hint summary {
+  font-weight: 600;
+  cursor: pointer;
+}
 
 /* feedback driven by our script */
 .mcq-we label.is-correct::after {
@@ -98,28 +142,64 @@ pre code { font-size: 0.9em; }
    Quiz Controls & Leaderboard
    =============================== */
 
-/* Quiz submission controls */
+/* Quiz submission controls - proper action bar */
 .quiz-controls {
+  background: #ffffff;
+  padding: 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+  margin-top: 1.5rem;
+}
+
+.quiz-controls p {
+  margin: 1.1rem 0 0.4rem;
   display: flex;
-  gap: 0.75rem;
+  gap: 0.6rem;
   flex-wrap: wrap;
   align-items: center;
-  margin: 1rem 0;
 }
 
-.quiz-controls input[type="text"] {
-  padding: 0.5rem 0.6rem;
-  min-width: 240px;
+#nickname {
+  flex: 1 1 260px;
+  padding: 0.6rem 0.7rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.16);
 }
 
-.quiz-controls button {
-  padding: 0.55rem 0.8rem;
+#quiz-submit {
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  border: none;
+  background: #0d6efd;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
 }
 
-/* Quiz result message */
+#quiz-submit:hover {
+  filter: brightness(0.95);
+}
+
+.quiz-controls button[type="button"]:not(#quiz-submit) {
+  padding: 0.6rem 1.1rem;
+  border-radius: 10px;
+  border: 1px solid rgba(0,0,0,0.16);
+  background: #fff;
+  cursor: pointer;
+}
+
+/* Quiz result message: make it visible and rewarding */
 #quiz-result {
-  margin: 0.5rem 0 1rem 0;
-  font-weight: 600;
+  margin-top: 0.8rem;
+  padding: 0.75rem 0.9rem;
+  border-radius: 12px;
+  background: rgba(13,110,253,0.08);
+  border: 1px solid rgba(13,110,253,0.20);
+  font-weight: 700;
+}
+
+#quiz-result::before {
+  content: "\1F3AF ";
 }
 
 /* Hidden answer key (visible in DOM but not rendered) */
@@ -149,16 +229,28 @@ label.is-incorrect {
   display: none;
 }
 
-/* Leaderboard table */
+/* Leaderboard table - credible and worth competing for */
 #leaderboard {
-  border-collapse: collapse;
   width: 100%;
-  margin-top: 0.5rem;
+  border-collapse: collapse;
+  overflow: hidden;
+  border-radius: 12px;
+  margin-top: 0.6rem;
 }
 
-#leaderboard th,
-#leaderboard td {
-  border-bottom: 1px solid #ddd;
-  padding: 0.5rem 0.4rem;
+#leaderboard th {
   text-align: left;
+  padding: 0.6rem 0.75rem;
+  background: rgba(0,0,0,0.06);
+  font-weight: 700;
 }
+
+#leaderboard td {
+  padding: 0.55rem 0.75rem;
+  border-top: 1px solid rgba(0,0,0,0.06);
+}
+
+/* highlight top rows */
+#leaderboard tr:nth-child(2) td { font-weight: 800; }
+#leaderboard tr:nth-child(3) td,
+#leaderboard tr:nth-child(4) td { font-weight: 700; }
