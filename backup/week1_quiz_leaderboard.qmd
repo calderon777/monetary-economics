@@ -17,6 +17,7 @@ library(webexercises)
 ```
 
 <!-- FEEDBACK SCRIPT: sets .is-correct / .is-incorrect on the clicked label -->
+```{=html}
 <style>
 /* Quiz UI */
 .quiz-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; }
@@ -37,6 +38,7 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
 #leaderboard th, #leaderboard td { border-bottom: 1px solid #ddd; padding: 0.5rem 0.4rem; text-align: left; }
 </style>
 
+```{=html}
 <script>
 (function () {
   // 1) Configure your Google Apps Script Web App URL here.
@@ -121,18 +123,15 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
       .slice(0, 10);
 
     if (leaderboard.length === 0) {
-      container.textContent = "No attempts recorded yet.";
+      container.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
       return;
     }
 
-    let html = "<table>";
-    html += "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>";
-    html += leaderboard.map((r, i) =>
-      "<tr><td>" + (i + 1) + "</td><td>" + r.nickname + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
-    ).join("");
-    html += "</table>";
-
-    container.innerHTML = html;
+    container.innerHTML =
+      "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+      leaderboard.map((r, i) =>
+        "<tr><td>" + (i + 1) + "</td><td>" + r.nickname + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+      ).join("");
   } catch (err) {
     container.textContent = "Could not load leaderboard.";
     console.warn("Leaderboard error:", err);
@@ -222,6 +221,7 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
   });
 })();
 </script>
+```
 
 
 
@@ -238,7 +238,7 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
 
 <details>
   <summary><strong>Leaderboard (Top 10)</strong></summary>
-  <div id="leaderboard"></div>
+  <table id="leaderboard"></table>
 </details>
 
 <div class="mcq-we-q">

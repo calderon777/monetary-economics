@@ -1,23 +1,17 @@
 {
   "about.qmd": {
-    "about.html": "f40f97f9"
+    "about.html": "e63f6adf"
+  },
+  "backup/week1_quiz.qmd": {
+    "week1_quiz.html": "133d5d47"
+  },
+  "backup/week1_quiz_leaderboard.qmd": {
+    "week1_quiz_leaderboard.html": "afeb90a7"
   },
   "index.qmd": {
-    "index.html": "cbb0751a"
+    "index.html": "281ea411"
   },
-  "ec3014_week1_quiz.qmd": {
-    "ec3014_week1_quiz.html": "cb891370"
-  },
-  "week1_quiz.qmd": {
-    "week1_quiz.html": "003fd326"
-  },
-  "supervision_2.qmd": {
-    "supervision_2.html": "261be705"
-  },
-  "week1_quiz_leaderboard.qmd": {
-    "week1_quiz_leaderboard.html": "36e56f5c"
-  },
-  "week1_quiz_leaderboardb.qmd": {
-    "week1_quiz_leaderboardb.html": "0fb18d32"
+  "week1.qmd": {
+    "week1.html": "939103ef"
   }
 }
