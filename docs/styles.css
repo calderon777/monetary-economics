@@ -93,3 +93,72 @@ pre code { font-size: 0.9em; }
 /* optional tint for the whole line */
 .mcq-we label.is-correct  { color: #15803d; }
 .mcq-we label.is-incorrect{ color: #b91c1c; }
+
+/* ===============================
+   Quiz Controls & Leaderboard
+   =============================== */
+
+/* Quiz submission controls */
+.quiz-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.quiz-controls input[type="text"] {
+  padding: 0.5rem 0.6rem;
+  min-width: 240px;
+}
+
+.quiz-controls button {
+  padding: 0.55rem 0.8rem;
+}
+
+/* Quiz result message */
+#quiz-result {
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 600;
+}
+
+/* Hidden answer key (visible in DOM but not rendered) */
+.mcq-key {
+  display: none;
+}
+
+/* Post-submit feedback styling */
+label.is-correct {
+  outline: 2px solid currentColor;
+  border-radius: 6px;
+  padding: 0.15rem 0.25rem;
+}
+
+label.is-incorrect {
+  outline: 2px dashed currentColor;
+  border-radius: 6px;
+  padding: 0.15rem 0.25rem;
+}
+
+.quiz-feedback-line {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.quiz-feedback-line.hidden {
+  display: none;
+}
+
+/* Leaderboard table */
+#leaderboard {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+#leaderboard th,
+#leaderboard td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0.4rem;
+  text-align: left;
+}

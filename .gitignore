@@ -1,6 +1,7 @@
 # Quarto output
 /_site/
 *.html
+/docs/
 
 # R-related (if you use R)
 .Rproj.user/

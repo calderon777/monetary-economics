@@ -16,27 +16,7 @@ execute:
 library(webexercises)
 ```
 
-<!-- FEEDBACK SCRIPT: sets .is-correct / .is-incorrect on the clicked label -->
-```{=html}
-<style>
-/* Quiz UI */
-.quiz-controls { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; margin: 1rem 0; }
-.quiz-controls input[type="text"] { padding: 0.5rem 0.6rem; min-width: 240px; }
-.quiz-controls button { padding: 0.55rem 0.8rem; }
-#quiz-result { margin: 0.5rem 0 1rem 0; font-weight: 600; }
-.mcq-key { display: none; } /* keep answer key hidden in the page source UI */
-
-/* Post-submit feedback */
-label.is-correct { outline: 2px solid currentColor; border-radius: 6px; padding: 0.15rem 0.25rem; }
-label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; padding: 0.15rem 0.25rem; }
-.quiz-feedback-line { margin-top: 0.35rem; font-size: 0.95rem; }
-.quiz-feedback-line.hidden { display: none; }
-
-/* Leaderboard */
-#leaderboard { border-collapse: collapse; width: 100%; margin-top: 0.5rem; }
-#leaderboard th, #leaderboard td { border-bottom: 1px solid #ddd; padding: 0.5rem 0.4rem; text-align: left; }
-</style>
-
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
 ```{=html}
 <script>
 (function () {
@@ -96,7 +76,8 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
     }
 
     try {
-      const res = await fetch(ENDPOINT, { method: "GET", mode: "no-cors" });
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
       const rows = await res.json();
 
       // Filter for this quiz only (defensive: older rows may not have the fields)
@@ -121,14 +102,14 @@ label.is-incorrect { outline: 2px dashed currentColor; border-radius: 6px; paddi
         .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
         .slice(0, 10);
 
-      table.innerHTML =
-        "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
-        leaderboard.map((r, i) =>
-          "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
-        ).join("");
-
       if (leaderboard.length === 0) {
         table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
       }
     } catch (err) {
       table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
