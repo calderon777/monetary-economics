@@ -19,6 +19,7 @@ library(webexercises)
 ```
 
 <!-- FEEDBACK SCRIPT: sets .is-correct / .is-incorrect on the clicked label -->
+```{=html}
 <script>
 (function () {
   const norm = s => (s || "").replace(/\s+/g, " ").trim();
@@ -47,6 +48,7 @@ library(webexercises)
   });
 })();
 </script>
+```
 
 
 <div class="mcq-we">
