@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 :root {
   --bslib-sidebar-main-bg: #f8f8f8;
 }
@@ -11,7 +10,7 @@
 .popover .btn-close {
   filter: var(--bs-btn-close-white-filter);
 }
-=======
+
 /* Cambridge Supervisions: subtle typography polish */
 h2, h3 { margin-top: 2rem; }
 main ul, main ol { margin-bottom: 1rem; }
@@ -51,17 +50,13 @@ pre code { font-size: 0.9em; }
 .mcq-we input[type="checkbox"]:checked + span,
 .mcq-we label:has(input:checked) { font-weight: 500; }
 
-/* --- Feedback text (✓/✗) ---
-   Webexercises may place correctness on different elements depending on version.
-   Cover common cases: the label itself, a wrapper (li/div) around label,
-   or the input getting the class and the label following.
-*/
+/* Feedback text */
 .mcq-we label.webex-correct::after,
 .mcq-we li.webex-correct > label::after,
 .mcq-we div.webex-correct > label::after,
 .mcq-we input.webex-correct + label::after,
 .mcq-we .webex-solution-true > label::after {
-  content: " ✓ Correct";
+  content: " Correct";
   color: var(--mcq-correct);
   font-weight: 600;
   margin-left: .35rem;
@@ -71,7 +66,7 @@ pre code { font-size: 0.9em; }
 .mcq-we div.webex-incorrect > label::after,
 .mcq-we input.webex-incorrect + label::after,
 .mcq-we .webex-solution-false > label::after {
-  content: " ✗ Incorrect";
+  content: " Incorrect";
   color: var(--mcq-incorrect);
   font-weight: 600;
   margin-left: .35rem;
@@ -99,12 +94,80 @@ pre code { font-size: 0.9em; }
 
 /* feedback driven by our script */
 .mcq-we label.is-correct::after {
-  content: " ✓ Correct"; color: #15803d; font-weight: 600; margin-left: .35rem;
+  content: " Correct"; color: #15803d; font-weight: 600; margin-left: .35rem;
 }
 .mcq-we label.is-incorrect::after {
-  content: " ✗ Incorrect"; color: #b91c1c; font-weight: 600; margin-left: .35rem;
+  content: " Incorrect"; color: #b91c1c; font-weight: 600; margin-left: .35rem;
 }
 /* optional tint for the whole line */
 .mcq-we label.is-correct  { color: #15803d; }
 .mcq-we label.is-incorrect{ color: #b91c1c; }
->>>>>>> 87e9101 (mcqs fix)
+
+/* ===============================
+   Quiz Controls & Leaderboard
+   =============================== */
+
+/* Quiz submission controls */
+.quiz-controls {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 1rem 0;
+}
+
+.quiz-controls input[type="text"] {
+  padding: 0.5rem 0.6rem;
+  min-width: 240px;
+}
+
+.quiz-controls button {
+  padding: 0.55rem 0.8rem;
+}
+
+/* Quiz result message */
+#quiz-result {
+  margin: 0.5rem 0 1rem 0;
+  font-weight: 600;
+}
+
+/* Hidden answer key (visible in DOM but not rendered) */
+.mcq-key {
+  display: none;
+}
+
+/* Post-submit feedback styling */
+label.is-correct {
+  outline: 2px solid currentColor;
+  border-radius: 6px;
+  padding: 0.15rem 0.25rem;
+}
+
+label.is-incorrect {
+  outline: 2px dashed currentColor;
+  border-radius: 6px;
+  padding: 0.15rem 0.25rem;
+}
+
+.quiz-feedback-line {
+  margin-top: 0.35rem;
+  font-size: 0.95rem;
+}
+
+.quiz-feedback-line.hidden {
+  display: none;
+}
+
+/* Leaderboard table */
+#leaderboard {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 0.5rem;
+}
+
+#leaderboard th,
+#leaderboard td {
+  border-bottom: 1px solid #ddd;
+  padding: 0.5rem 0.4rem;
+  text-align: left;
+}
