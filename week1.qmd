@@ -100,7 +100,7 @@ library(webexercises)
 
       const leaderboard = Array.from(best.values())
         .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
-        .slice(0, 10);
+        .slice(0, 30);
 
       if (leaderboard.length === 0) {
         table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
@@ -178,8 +178,11 @@ library(webexercises)
     // Refresh leaderboard after a successful submit (or best-effort submit)
     await loadLeaderboard("Week1");
 
-    // Re-enable submit (optional — keep disabled if you want one attempt only)
-    if (submitBtn) submitBtn.disabled = false;
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
   }
 
   // Expose submitQuiz globally for the button onclick
@@ -205,19 +208,10 @@ library(webexercises)
 
 <div class="mcq-we">
 
-
-<div class="quiz-controls">
-  <input id="nickname" type="text" placeholder="Enter nickname (e.g., DataCelebrity42)" autocomplete="off" />
-  <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button>
-  <button type="button" onclick="location.reload()">Reset</button>
-</div>
-
 <div id="quiz-result"></div>
 
-<details>
-  <summary><strong>Leaderboard (Top 10)</strong></summary>
-  <table id="leaderboard"></table>
-</details>
+<h3>Leaderboard (Top 30)</h3>
+<table id="leaderboard"></table>
 
 <div class="mcq-we-q">
 **1) According to some accounts, an early form of accounting that recorded national wealth was represented by:**  
@@ -262,6 +256,12 @@ library(webexercises)
 ))`
 <span class="mcq-key" data-correct="The use of money as a store of value can lead to profound implications for macroeconomic stability"></span>
 <details class="hint"><summary>Hint</summary>Liquidity preference vs neutrality.</details>
+</div>
+
+<div class="quiz-controls">
+  <input id="nickname" type="text" placeholder="Enter your full name" autocomplete="off" />
+  <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button>
+  <button type="button" onclick="location.reload()">Reset</button>
 </div>
 
 </div>
