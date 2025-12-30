@@ -8,7 +8,7 @@ website:
       - href: index.qmd
         text: Home
       - href: week1.qmd
-        text: "Week 1 Quiz"
+        text: "Week 1 Tutorial"
 
 format:
   html:

@@ -1,5 +1,5 @@
 ---
-title: "End of Week 1 Quiz"
+title: "Week 1 Tutorial"
 format: html
 execute:
   echo: false
@@ -281,70 +281,70 @@ library(webexercises)
 **SK1) Which of the following is not one of the three economic roles of money?**  
 `r webexercises::longmcq(c("Medium of exchange", "Unit of account", "Store of value", answer = "Means of production"))`
 <span class="mcq-key" data-correct="Means of production"></span>
-<details class="hint"><summary>Hint</summary>The three roles relate to measurement, exchange, and storage — not production.</details>
+<details class="hint"><summary>Hint</summary>The three roles concern valuation, exchange, and storage — not production activities.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK2) Which role of money refers to its function as a generally accepted means of payment?**  
 `r webexercises::longmcq(c("Unit of account", answer = "Medium of exchange", "Store of value", "Liquidity provider"))`
 <span class="mcq-key" data-correct="Medium of exchange"></span>
-<details class="hint"><summary>Hint</summary>Ask: "Which role allows you to actually buy things?"</details>
+<details class="hint"><summary>Hint</summary>The role that enables buying and selling is the Medium of Exchange.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK3) Which role of money allows prices to be expressed and compared across goods?**  
 `r webexercises::longmcq(c("Store of value", "Medium of exchange", answer = "Unit of account", "Asset"))`
 <span class="mcq-key" data-correct="Unit of account"></span>
-<details class="hint"><summary>Hint</summary>Think of money as a measuring stick.</details>
+<details class="hint"><summary>Hint</summary>Prices can be compared only if money acts as a common measurement unit.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK4) Which of the following best defines liquidity?**  
 `r webexercises::longmcq(c("The legal tender status of an asset", answer = "The ease with which an asset can be exchanged for goods or other assets", "The interest paid by an asset", "The stability of an asset's price over time"))`
 <span class="mcq-key" data-correct="The ease with which an asset can be exchanged for goods or other assets"></span>
-<details class="hint"><summary>Hint</summary>Liquidity is about speed and ease of exchange, not returns.</details>
+<details class="hint"><summary>Hint</summary>Liquidity refers to how easily an asset can be exchanged, not to its return or price stability.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK5) Which monetary aggregate is conventionally defined as "money" in modern economies?**  
 `r webexercises::longmcq(c("M0", answer = "M1", "M2", "M3"))`
 <span class="mcq-key" data-correct="M1"></span>
-<details class="hint"><summary>Hint</summary>The conventional definition includes cash plus demand deposits.</details>
+<details class="hint"><summary>Hint</summary>The conventional definition includes assets that can be used directly for payment.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK6) Which of the following is not one of the four characteristics that underlie liquidity?**  
 `r webexercises::longmcq(c("Marketability", "Predictability of exchange value", "Divisibility", answer = "Scarcity"))`
 <span class="mcq-key" data-correct="Scarcity"></span>
-<details class="hint"><summary>Hint</summary>Scarcity affects value, not ease of exchange.</details>
+<details class="hint"><summary>Hint</summary>Scarcity affects value, not the ease with which an asset can be exchanged.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK7) Which of the following best explains why money is considered "intrinsically worthless" in modern economies?**  
 `r webexercises::longmcq(c("It has no legal status", "It is not backed by gold", answer = "It has no direct consumption or production use", "It is issued by private banks"))`
 <span class="mcq-key" data-correct="It has no direct consumption or production use"></span>
-<details class="hint"><summary>Hint</summary>"Worthless" here means it does not satisfy wants directly.</details>
+<details class="hint"><summary>Hint</summary>"Intrinsically worthless" means money has no direct consumption or production use.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK8) Which of the following objects is an example of a Unit of Account that is not a Medium of Exchange?**  
 `r webexercises::longmcq(c("Euro banknotes", "Bitcoin", answer = "IMF Special Drawing Rights (SDR)", "Gold"))`
 <span class="mcq-key" data-correct="IMF Special Drawing Rights (SDR)"></span>
-<details class="hint"><summary>Hint</summary>Think of an accounting unit used only for denominating values, not for shopping.</details>
+<details class="hint"><summary>Hint</summary>Some units exist only for accounting and pricing, not for everyday transactions.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK9) Why does money's role as a Store of Value logically follow from its role as a Medium of Exchange?**  
 `r webexercises::longmcq(c("Because money is durable", "Because money is scarce", answer = "Because there is typically a time gap between selling and buying", "Because money earns interest"))`
 <span class="mcq-key" data-correct="Because there is typically a time gap between selling and buying"></span>
-<details class="hint"><summary>Hint</summary>Focus on the timing of transactions.</details>
+<details class="hint"><summary>Hint</summary>Because selling and buying are separated in time, money must store value between them.</details>
 </div>
 
 <div class="mcq-we-q">
 **SK10) Which statement best reflects the Classical view of money?**  
 `r webexercises::longmcq(c("Money directly affects real output", answer = "Money is a veil over real economic activity", "Money determines the level of employment", "Money is essential for price formation"))`
 <span class="mcq-key" data-correct="Money is a veil over real economic activity"></span>
-<details class="hint"><summary>Hint</summary>The Classical view treats money as neutral in the long run.</details>
+<details class="hint"><summary>Hint</summary>The Classical view treats money as neutral with respect to real economic outcomes.</details>
 </div>
 
 ## Analysis
@@ -353,70 +353,70 @@ library(webexercises)
 **AN1) Why does barter require a "double coincidence of wants"?**  
 `r webexercises::longmcq(c("Because goods are indivisible", answer = "Because both traders must want what the other offers", "Because prices cannot be defined", "Because barter requires legal contracts"))`
 <span class="mcq-key" data-correct="Because both traders must want what the other offers"></span>
-<details class="hint"><summary>Hint</summary>Both sides must be simultaneously satisfied.</details>
+<details class="hint"><summary>Hint</summary>Trade requires that each party wants what the other offers at the same time.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN2) Why does the use of money reduce search costs relative to barter?**  
 `r webexercises::longmcq(c("Because prices become regulated", "Because money replaces goods", answer = "Because traders only need to find someone who accepts money", "Because money increases production"))`
 <span class="mcq-key" data-correct="Because traders only need to find someone who accepts money"></span>
-<details class="hint"><summary>Hint</summary>Focus on how many partners a trader must search for.</details>
+<details class="hint"><summary>Hint</summary>With money, traders only need to find someone who accepts money, not a specific good.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN3) Why does the existence of a Unit of Account reduce the informational burden in an economy?**  
 `r webexercises::longmcq(c("It eliminates uncertainty", answer = "It reduces the number of relative prices that must be known", "It stabilises inflation", "It ensures fairness in trade"))`
 <span class="mcq-key" data-correct="It reduces the number of relative prices that must be known"></span>
-<details class="hint"><summary>Hint</summary>Think about how many prices must be tracked.</details>
+<details class="hint"><summary>Hint</summary>A Unit of Account reduces the number of prices that must be known and compared.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN4) Why does money's liquidity allow people to accept a lower financial return on it?**  
 `r webexercises::longmcq(c("Because money is scarce", "Because money is safe", answer = "Because liquidity provides convenience and flexibility", "Because money is legally protected"))`
 <span class="mcq-key" data-correct="Because liquidity provides convenience and flexibility"></span>
-<details class="hint"><summary>Hint</summary>Liquidity is itself a form of benefit.</details>
+<details class="hint"><summary>Hint</summary>People accept lower returns because liquidity itself is valuable.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN5) Why does the Classical view regard money as a "veil"?**  
 `r webexercises::longmcq(c("Because money hides inequality", answer = "Because money only affects nominal variables, not real outcomes", "Because money is unstable", "Because money is controlled by governments"))`
 <span class="mcq-key" data-correct="Because money only affects nominal variables, not real outcomes"></span>
-<details class="hint"><summary>Hint</summary>Think "nominal vs real."</details>
+<details class="hint"><summary>Hint</summary>The Classical view separates nominal prices from real economic outcomes.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN6) Why does Keynes argue that money has macroeconomic importance beyond facilitating exchange?**  
 `r webexercises::longmcq(c("Because money determines wages", answer = "Because changes in liquidity preference spill over into goods and asset markets", "Because money controls government budgets", "Because money is scarce"))`
 <span class="mcq-key" data-correct="Because changes in liquidity preference spill over into goods and asset markets"></span>
-<details class="hint"><summary>Hint</summary>Focus on liquidity demand, not just transactions.</details>
+<details class="hint"><summary>Hint</summary>Changes in money demand spill over into spending and investment decisions.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN7) Why is money's role as Medium of Exchange insufficient on its own to guarantee efficient outcomes?**  
 `r webexercises::longmcq(c("Because prices may be regulated", "Because production may be limited", answer = "Because coordination failures and liquidity hoarding can still occur", "Because money may depreciate"))`
 <span class="mcq-key" data-correct="Because coordination failures and liquidity hoarding can still occur"></span>
-<details class="hint"><summary>Hint</summary>Think beyond trade — think about holding behaviour.</details>
+<details class="hint"><summary>Hint</summary>Even with money, hoarding and coordination failures can prevent efficient outcomes.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN8) Why is liquidity described as both a property of assets and a property of the monetary system?**  
 `r webexercises::longmcq(c("Because central banks set liquidity", answer = "Because liquidity depends on both asset characteristics and social acceptance", "Because liquidity is fixed over time", "Because liquidity is measurable in money units"))`
 <span class="mcq-key" data-correct="Because liquidity depends on both asset characteristics and social acceptance"></span>
-<details class="hint"><summary>Hint</summary>Think micro (asset) and macro (acceptance).</details>
+<details class="hint"><summary>Hint</summary>Liquidity depends on asset features and on whether others accept it in exchange.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN9) Why can an increase in the public's desire for liquidity reduce aggregate demand?**  
 `r webexercises::longmcq(c("Because prices fall", answer = "Because people substitute money for consumption and investment", "Because banks reduce lending", "Because wages fall"))`
 <span class="mcq-key" data-correct="Because people substitute money for consumption and investment"></span>
-<details class="hint"><summary>Hint</summary>Holding money means not spending it.</details>
+<details class="hint"><summary>Hint</summary>When people hold more money, they spend less, reducing aggregate demand.</details>
 </div>
 
 <div class="mcq-we-q">
 **AN10) Which of the following best captures the fundamental difference between Keynesian and Classical views of money?**  
 `r webexercises::longmcq(c("Keynes focuses on inflation; Classics focus on growth", "Keynes sees money as neutral; Classics do not", answer = "Keynes emphasises coordination frictions; Classics assume they are negligible", "Keynes focuses on fiscal policy; Classics on monetary policy"))`
 <span class="mcq-key" data-correct="Keynes emphasises coordination frictions; Classics assume they are negligible"></span>
-<details class="hint"><summary>Hint</summary>Ask whether markets always coordinate smoothly.</details>
+<details class="hint"><summary>Hint</summary>The key difference is whether markets are assumed to coordinate automatically.</details>
 </div>
 
 ## Problem Solving
@@ -425,70 +425,70 @@ library(webexercises)
 **PS1) Two traders meet: one has Apples and wants Bananas; the other has Bananas and wants Apples. What exchange friction is absent in this case?**  
 `r webexercises::longmcq(c("Search costs", "Misaligned preferences", answer = "Double coincidence of wants", "Price uncertainty"))`
 <span class="mcq-key" data-correct="Double coincidence of wants"></span>
-<details class="hint"><summary>Hint</summary>Both sides want exactly what the other offers.</details>
+<details class="hint"><summary>Hint</summary>When each trader wants what the other has, no matching friction arises.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS2) Why does introducing money allow a trader to accept a good they do not want to consume?**  
 `r webexercises::longmcq(c("Because money increases utility directly", answer = "Because money can be exchanged later for preferred goods", "Because money is scarce", "Because money stabilises prices"))`
 <span class="mcq-key" data-correct="Because money can be exchanged later for preferred goods"></span>
-<details class="hint"><summary>Hint</summary>Focus on future exchange possibilities.</details>
+<details class="hint"><summary>Hint</summary>People accept money because it can later be exchanged for desired goods.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS3) Three traders each prefer a good they do not own. Why does no bilateral trade take place under barter?**  
 `r webexercises::longmcq(c("Prices are unknown", answer = "Preferences are cyclical and misaligned", "Goods are indivisible", "Endowments are unequal"))`
 <span class="mcq-key" data-correct="Preferences are cyclical and misaligned"></span>
-<details class="hint"><summary>Hint</summary>Think of preference cycles.</details>
+<details class="hint"><summary>Hint</summary>If preferences form a cycle, no pairwise trade satisfies both parties.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS4) Why might a trader refuse to act as a "middleman" by accepting their least-preferred good?**  
 `r webexercises::longmcq(c("Because it reduces total surplus", answer = "Because they risk being unable to trade it away later", "Because it violates rationality", "Because it is illegal"))`
 <span class="mcq-key" data-correct="Because they risk being unable to trade it away later"></span>
-<details class="hint"><summary>Hint</summary>Consider uncertainty and risk.</details>
+<details class="hint"><summary>Hint</summary>Accepting an unwanted good is risky if it cannot be traded away later.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS5) Which institutional arrangement could replicate the role of money in a small economy?**  
 `r webexercises::longmcq(c("A central warehouse", answer = "Multilateral simultaneous exchange", "Government price fixing", "Interest-bearing accounts"))`
 <span class="mcq-key" data-correct="Multilateral simultaneous exchange"></span>
-<details class="hint"><summary>Hint</summary>Think of all traders meeting at once.</details>
+<details class="hint"><summary>Hint</summary>Multilateral exchange can replicate money but only if everyone coordinates simultaneously.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS6) Why does multilateral exchange become impractical as the number of traders increases?**  
 `r webexercises::longmcq(c("Because preferences become unstable", answer = "Because coordinating many participants simultaneously becomes difficult", "Because prices cannot be calculated", "Because goods become scarce"))`
 <span class="mcq-key" data-correct="Because coordinating many participants simultaneously becomes difficult"></span>
-<details class="hint"><summary>Hint</summary>Think about coordination complexity.</details>
+<details class="hint"><summary>Hint</summary>The more participants, the harder it becomes to coordinate simultaneous exchange.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS7) Suppose people suddenly fear future shortages and increase their money holdings. What immediate effect is most likely?**  
 `r webexercises::longmcq(c("Increased consumption", answer = "Reduced spending on goods and assets", "Higher production", "Increased inflation"))`
 <span class="mcq-key" data-correct="Reduced spending on goods and assets"></span>
-<details class="hint"><summary>Hint</summary>Holding money means postponing purchases.</details>
+<details class="hint"><summary>Hint</summary>Holding more money means postponing consumption and investment.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS8) Which scenario best illustrates a coordination failure rather than a technological failure?**  
 `r webexercises::longmcq(c("A factory cannot produce enough output", answer = "Traders fail to exchange even though mutually beneficial trades exist", "A machine breaks down", "A resource becomes depleted"))`
 <span class="mcq-key" data-correct="Traders fail to exchange even though mutually beneficial trades exist"></span>
-<details class="hint"><summary>Hint</summary>Focus on missed opportunities, not physical limits.</details>
+<details class="hint"><summary>Hint</summary>The problem is not production but failure to realise mutually beneficial trades.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS9) Why can increased liquidity preference cause a recession even when productive capacity is unchanged?**  
 `r webexercises::longmcq(c("Because wages fall", "Because firms become less efficient", answer = "Because spending declines, reducing aggregate demand", "Because inflation rises"))`
 <span class="mcq-key" data-correct="Because spending declines, reducing aggregate demand"></span>
-<details class="hint"><summary>Hint</summary>Think macro: spending drives output.</details>
+<details class="hint"><summary>Hint</summary>Lower spending reduces output even if productive capacity is unchanged.</details>
 </div>
 
 <div class="mcq-we-q">
 **PS10) Which policy is most directly aimed at counteracting a surge in liquidity hoarding?**  
 `r webexercises::longmcq(c("Raising interest rates", "Cutting taxes", answer = "Expanding the money supply or lowering interest rates", "Reducing government spending"))`
 <span class="mcq-key" data-correct="Expanding the money supply or lowering interest rates"></span>
-<details class="hint"><summary>Hint</summary>The goal is to reduce the attractiveness of holding money.</details>
+<details class="hint"><summary>Hint</summary>Lower interest rates or higher money supply make holding money less attractive.</details>
 </div>
 
 ## Mathematical Thinking
@@ -497,70 +497,70 @@ library(webexercises)
 **MT1) In an economy with 2 goods, how many bilateral exchange ratios are needed without a unit of account?**  
 `r webexercises::longmcq(c(answer = "1", "2", "3", "4"))`
 <span class="mcq-key" data-correct="1"></span>
-<details class="hint"><summary>Hint</summary>With only two goods, there is only one relative price.</details>
+<details class="hint"><summary>Hint</summary>With two goods, there is only one pairwise price ratio.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT2) In an economy with 3 goods, how many bilateral exchange ratios are required without money?**  
 `r webexercises::longmcq(c("2", answer = "3", "4", "6"))`
 <span class="mcq-key" data-correct="3"></span>
-<details class="hint"><summary>Hint</summary>Use the formula $\frac{1}{2}n(n-1)$.</details>
+<details class="hint"><summary>Hint</summary>The number of ratios equals the number of distinct good pairs.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT3) In an economy with 5 goods, how many bilateral exchange ratios are needed?**  
 `r webexercises::longmcq(c("5", answer = "10", "15", "20"))`
 <span class="mcq-key" data-correct="10"></span>
-<details class="hint"><summary>Hint</summary>Compute $\frac{1}{2} \cdot 5 \cdot 4$.</details>
+<details class="hint"><summary>Hint</summary>Use the combinatorial formula for choosing pairs.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT4) If the price of Apples is $P_A = 0.5$ and the price of Bananas is $P_B = 0.25$, what is the exchange ratio of Bananas per Apple?**  
 `r webexercises::longmcq(c("0.5", "1", answer = "2", "4"))`
 <span class="mcq-key" data-correct="2"></span>
-<details class="hint"><summary>Hint</summary>Divide the price of Apples by the price of Bananas.</details>
+<details class="hint"><summary>Hint</summary>Exchange ratios are obtained by dividing one price by another.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT5) If $P_A = 2$ and $P_B = 4$, what is the exchange ratio of Apples per Banana?**  
 `r webexercises::longmcq(c("0.25", answer = "0.5", "2", "4"))`
 <span class="mcq-key" data-correct="0.5"></span>
-<details class="hint"><summary>Hint</summary>Apples per Banana = $P_B/P_A$.</details>
+<details class="hint"><summary>Hint</summary>"Apples per Banana" is the inverse of "Bananas per Apple."</details>
 </div>
 
 <div class="mcq-we-q">
 **MT6) An economy has 10 goods. Approximately how many exchange ratios are required without a unit of account?**  
 `r webexercises::longmcq(c("10", "25", answer = "45", "100"))`
 <span class="mcq-key" data-correct="45"></span>
-<details class="hint"><summary>Hint</summary>$\frac{1}{2} \cdot 10 \cdot 9 = 45$.</details>
+<details class="hint"><summary>Hint</summary>The number of ratios grows with n², not linearly.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT7) If the number of goods doubles from 50 to 100, by approximately what factor does the number of exchange ratios increase?**  
 `r webexercises::longmcq(c("It doubles", "It triples", answer = "It quadruples", "It increases tenfold"))`
 <span class="mcq-key" data-correct="It quadruples"></span>
-<details class="hint"><summary>Hint</summary>Exchange ratios grow approximately with $n^2$.</details>
+<details class="hint"><summary>Hint</summary>Because ratios grow with n², doubling goods quadruples ratios.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT8) Suppose there are 700 goods. Approximately how many exchange ratios exist without money?**  
 `r webexercises::longmcq(c("70,000", "140,000", answer = "245,000", "490,000"))`
 <span class="mcq-key" data-correct="245,000"></span>
-<details class="hint"><summary>Hint</summary>Approximate $\frac{1}{2} \cdot 700^2$.</details>
+<details class="hint"><summary>Hint</summary>For large n, n(n−1)/2 is approximately n²/2.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT9) If $P_A/P_B = 2$ and $P_B/P_C = 3$, what is $P_A/P_C$?**  
 `r webexercises::longmcq(c("1.5", "2", "5", answer = "6"))`
 <span class="mcq-key" data-correct="6"></span>
-<details class="hint"><summary>Hint</summary>Multiply the ratios.</details>
+<details class="hint"><summary>Hint</summary>To combine relative prices, multiply the ratios.</details>
 </div>
 
 <div class="mcq-we-q">
 **MT10) If an economy introduces a unit of account, how does the informational burden of price knowledge scale with the number of goods $n$?**  
 `r webexercises::longmcq(c(answer = "Proportionally to n", "Proportionally to n log n", "Proportionally to n²", "It does not change"))`
 <span class="mcq-key" data-correct="Proportionally to n"></span>
-<details class="hint"><summary>Hint</summary>Only one price per good is needed.</details>
+<details class="hint"><summary>Hint</summary>With a Unit of Account, only one price per good is required.</details>
 </div>
 
 <div class="quiz-controls">
