@@ -7,11 +7,13 @@ Welcome to **Monetary Economics**.
 
 This site will contain:
 
-## Lecture notes
+## Lecture
+
+- [Lecture Week 1](week1lecture.qmd)
 
 ## Tutorials
 
-- [Week 1](week1.qmd)
+- [Tutorial Week 1](week1.qmd)
 
 ## Lab materials (R / data work)
 

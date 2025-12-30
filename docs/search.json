@@ -1,5 +1,96 @@
 [
   {
+    "objectID": "week1lecture.html#what-is-money",
+    "href": "week1lecture.html#what-is-money",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "What is Money?",
+    "text": "What is Money?\n\nToday’s goal: distinguish medium of exchange, unit of account, and store of value.\nWe will use historical examples to motivate why modern monetary systems look the way they do."
+  },
+  {
+    "objectID": "week1lecture.html#stop-check-poll",
+    "href": "week1lecture.html#stop-check-poll",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "Stop & Check (Poll)",
+    "text": "Stop & Check (Poll)\n\n\nPrompt students: Is “unit of account” just a label, or does it change how economies work?\n\n  MCQ: Fiat money differs from commodity money mainly because…\n   Fiat money uses paper; commodity money uses metal coins\n Commodity money is a claim on a commodity; fiat money is not\n Fiat money is issued by a central bank; commodity money is not\n Fiat money circulates as a medium of exchange; commodity money does not\n  Check\n  \n  Hint: Focus on convertibility/claim: does the bearer have a right to an underlying commodity?"
+  },
+  {
+    "objectID": "week1lecture.html#what-do-these-objects-have-in-common",
+    "href": "week1lecture.html#what-do-these-objects-have-in-common",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "What Do These Objects Have In Common?",
+    "text": "What Do These Objects Have In Common?\n\nTHEY HAVE BEEN USED AS MEDIA OF EXCHANGE"
+  },
+  {
+    "objectID": "week1lecture.html#stop-check-poll-1",
+    "href": "week1lecture.html#stop-check-poll-1",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "Stop & Check (Poll)",
+    "text": "Stop & Check (Poll)\n\n\nPrompt students: Which of the three functions of money do you think is most fundamental — and why?\n\n  MCQ: In an economy with 6 goods, how many distinct bilateral exchange ratios are there?\n   6\n 12\n 15\n 30\n  Check\n  \n  Hint: If prices are relative, count unique pairs: n(n−1)/2."
+  },
+  {
+    "objectID": "week1lecture.html#lydia-present-day-izmir-600-bce",
+    "href": "week1lecture.html#lydia-present-day-izmir-600-bce",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "Lydia (present day Izmir), 600 BCE",
+    "text": "Lydia (present day Izmir), 600 BCE\n\nGreece, 400 BCE\nRome, 10 CE\nRoman Britain, 200 CE\nIndia, 350 CE\nEthiopia, 900 CE\nViking Britain, 900 CE\nChina, 1100 CE\nRussia, 1700 CE\nCOINS AS MEDIA OF EXCHANGE"
+  },
+  {
+    "objectID": "week1lecture.html#paper-tang-dynasty-600-ce",
+    "href": "week1lecture.html#paper-tang-dynasty-600-ce",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "PAPER (TANG DYNASTY, 600 CE)",
+    "text": "PAPER (TANG DYNASTY, 600 CE)\nSTATE MONOPOLY (SONG DYNASTY, 1000 CE) FIAT ISSUANCE (CHIN AND YUEN DYNASTIES, 1115-1368 CE)\n\nCHINA IS WHERE MONEY ACQUIRED THREE MODERN FEATURES\nBUT IT DID NOT LAST (OVER ISSUANCE)\nPAPER AS CURRENCY"
+  },
+  {
+    "objectID": "week1lecture.html#what-is-unusual-about-this-20-note",
+    "href": "week1lecture.html#what-is-unusual-about-this-20-note",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "What Is Unusual About This $20 Note?",
+    "text": "What Is Unusual About This $20 Note?\n\nITS NOT ISSUED BY A CENTRAL BANK"
+  },
+  {
+    "objectID": "week1lecture.html#inches",
+    "href": "week1lecture.html#inches",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "inches",
+    "text": "inches\n\nKg\nOUNCES\n$\nHours\nFeet\nseconds\nYEARS\nMetres\n£\n€uros\nPounds\nminutes\ndays\ndegrees\nradians\nWHAT DO THE ABOVE HAVE IN COMMON?\nALL ARE UNITS OF MEASUREMENT"
+  },
+  {
+    "objectID": "week1lecture.html#mesopotamian-cuneiform",
+    "href": "week1lecture.html#mesopotamian-cuneiform",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "Mesopotamian Cuneiform",
+    "text": "Mesopotamian Cuneiform\nTablet, 3500 BCE\n\nMesopotamian Bulla\n6000 BCE\nCongolese Tally Sticks, 18000 BCE\nAncient Accounting Methods"
+  },
+  {
+    "objectID": "week1lecture.html#modern-accounting",
+    "href": "week1lecture.html#modern-accounting",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "Modern Accounting",
+    "text": "Modern Accounting\n\nWHAT IS THE BIG CHANGE?\nMONEY IS USED AS THE UNIT OF ACCOUNT"
+  },
+  {
+    "objectID": "week1lecture.html#what-do-these-images-have-in-common",
+    "href": "week1lecture.html#what-do-these-images-have-in-common",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "What Do These Images Have In Common?",
+    "text": "What Do These Images Have In Common?\n\nALL ARE FORMS OF ACCUMULATING WEALTH"
+  },
+  {
+    "objectID": "week1lecture.html#what-shall-you-study-in-this-module",
+    "href": "week1lecture.html#what-shall-you-study-in-this-module",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "What Shall You Study In This Module?",
+    "text": "What Shall You Study In This Module?\n\nA FORMAL ANALYSIS OF THE ROLE OF MONEY IN AN ECONOMY\nHOW THE UNIT OF ACCOUNT ROLE LEADS TO THE MACROECONOMIC\nCONCEPT OF THE “PRICE LEVEL” (WHICH IN TURN IS IMPORTANT FOR\nUNDERSTANDING INFLATION).\nHOW AND WHY MONETARISTS AND KEYNES DIFFER IN THEIR ANALYSIS\nOF THE MACROECONOMIC EFFECTS OF MONETARY POLICY.\nHOW MONEY’S ROLE AS A STORE OF VALUE LEADS TO THE POSSIBILITY\nOF RECESSIONS."
+  },
+  {
+    "objectID": "week1lecture.html#what-shall-you-study-in-this-module-1",
+    "href": "week1lecture.html#what-shall-you-study-in-this-module-1",
+    "title": "EC3014 — Introduction: What is Money?",
+    "section": "What Shall You Study In This Module?",
+    "text": "What Shall You Study In This Module?\n\nBUT IN ITS OTHER TWO ROLES, IT LEADS TO A CAUSAL LINK\nBETWEEN MONEY SUPPLY AND INFLATION.\nHOW THIS INTERPLAY BETWEEN THESE TWO ROLES LED A CONSENSUS ON THE CONDUCT OF MONETARY POLICY.\n\nTHE EFFECTS OF 2008/9 AND SUBSEQUENT “SHOCKS” ON THE ABOVE."
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Monetary Economics",
@@ -7,18 +98,18 @@
     "text": "Welcome to Monetary Economics.\nThis site will contain:"
   },
   {
-    "objectID": "index.html#lecture-notes",
-    "href": "index.html#lecture-notes",
+    "objectID": "index.html#lecture",
+    "href": "index.html#lecture",
     "title": "Monetary Economics",
-    "section": "Lecture notes",
-    "text": "Lecture notes"
+    "section": "Lecture",
+    "text": "Lecture\n\nLecture Week 1"
   },
   {
     "objectID": "index.html#tutorials",
     "href": "index.html#tutorials",
     "title": "Monetary Economics",
     "section": "Tutorials",
-    "text": "Tutorials\n\nWeek 1"
+    "text": "Tutorials\n\nTutorial Week 1"
   },
   {
     "objectID": "index.html#lab-materials-r-data-work",
