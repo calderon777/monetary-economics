@@ -7,17 +7,34 @@ format:
     slide-number: true
     chalkboard: true
     preview-links: auto
+execute:
+  echo: false
+  warning: false
+  message: false
 ---
+
+<!--
+This file:
+1) Converts a PPTX to one PNG per slide using LibreOffice (headless).
+2) Renders a Reveal.js deck where each slide is the original PPT slide as a background image.
+3) Lets you insert interactive Quarto slides (polls/quizzes) between image slides.
+
+Prerequisite (Windows):
+- LibreOffice installed (default path used below). If installed elsewhere, update `soffice`.
+-->
 
 ```{r setup}
 #| include: false
 
-# Configuration - CHANGE THIS FOR EACH LECTURE
+# ===== CONFIG (change for each lecture) =====
 ppt_filename <- "week1lecture2.pptx"
 
-# Automated paths (don't change)
+# ===== Paths (do not change unless you move folders) =====
 ppt_path <- file.path("ppt", ppt_filename)
-img_dir <- file.path("ppt", "slides_png")
+img_dir  <- file.path("ppt", "slides_png")
+
+# LibreOffice executable (Windows default)
+soffice  <- "C:/Program Files/LibreOffice/program/soffice.exe"
 ```
 
 ```{r convert-ppt-to-png}
@@ -27,73 +44,100 @@ img_dir <- file.path("ppt", "slides_png")
 # Create output directory for slide images
 dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
 
-# Check if PPT file exists
-if (!file.exists(ppt_path)) {
-  stop(paste("PPT file not found:", ppt_path))
+# Safety checks
+if (!file.exists(soffice)) stop(paste("LibreOffice not found at:", soffice))
+if (!file.exists(ppt_path)) stop(paste("PPT file not found:", ppt_path))
+
+# Optional: clear old PNGs (prevents confusion when re-rendering)
+old_pngs <- list.files(img_dir, pattern = "\\.png$", full.names = TRUE)
+if (length(old_pngs)) file.remove(old_pngs)
+
+# Convert PPTX -> PNG (one image per slide)
+args <- c(
+  "--headless", "--nologo",
+  "--convert-to", "png",
+  "--outdir", normalizePath(img_dir),
+  normalizePath(ppt_path)
+)
+
+# Capture output for debugging if anything fails
+out <- system2(soffice, args = args, stdout = TRUE, stderr = TRUE)
+
+# Verify output
+pngs <- list.files(img_dir, pattern = "\\.png$", full.names = TRUE)
+if (length(pngs) == 0) {
+  stop(paste(
+    "No PNGs were created in:", img_dir, "\n",
+    "LibreOffice output:\n",
+    paste(out, collapse = "\n")
+  ))
 }
-
-# Adjust if LibreOffice installed elsewhere
-soffice <- '"C:/Program Files/LibreOffice/program/soffice.exe"'
-
-# Export slides as PNG images (preserves all formatting)
-cmd <- sprintf('%s --headless --convert-to png --outdir "%s" "%s"', 
-               soffice, img_dir, ppt_path)
-system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
-
-# Wait a moment for file system to catch up
-Sys.sleep(1)
 ```
 
 ```{r render-image-slides}
-#| include: false
+#| echo: false
 #| output: asis
 #| eval: true
 
-# Grab exported PNGs and sort them
+# Collect exported PNGs
 imgs <- list.files(img_dir, pattern = "\\.png$", full.names = TRUE)
 
-if (length(imgs) == 0) {
-  cat("\n## Error\n\nNo slide PNGs found. Check LibreOffice export.\n")
-} else {
-  # Natural sort (slide_2 before slide_10)
-  imgs <- imgs[order(nchar(imgs), imgs)]
-  
-  # Emit one Reveal slide per image as a background (best fidelity)
-  for (i in seq_along(imgs)) {
-    # Use relative path for the rendered site
-    rel <- gsub("\\\\", "/", imgs[i])
-    
-    cat("\n---\n\n")
-    cat(sprintf("## {background-image=\"%s\" background-size=\"contain\" background-position=\"center\"}\n", rel))
-    cat("\n")
-  }
+# Sort by filename (works reliably with LibreOffice naming)
+imgs <- imgs[order(tolower(imgs))]
+
+# Render one Reveal slide per PNG as a slide background (full layout fidelity)
+for (img in imgs) {
+  rel <- gsub("\\\\", "/", img)  # Windows path -> web path
+  cat("\n---\n")
+  cat(sprintf('## {background-image="%s" background-size="contain" background-position="center"}\n', rel))
 }
 ```
 
-<!-- 
-INSTRUCTOR NOTES:
-- Converts each PowerPoint slide to PNG (preserves ALL formatting)
-- Each slide becomes a background image in Reveal.js
-- Perfect fidelity to original presentation
-- To add interactive elements (polls, quizzes), insert slides between the automated ones
-- To update: change ppt_filename in setup chunk
-
-EXAMPLE: Add a poll after slide 3
-After the automated conversion runs, you can manually add:
-
 ---
 
-## Quick Poll
+## Stop & Check (Poll) — Placeholder
 
+Replace the `src=` URL with your Slido or Mentimeter embed URL.
+
+```{=html}
 <iframe
-  src="YOUR-SLIDO-OR-MENTIMETER-URL"
+  src="PASTE-YOUR-POLL-EMBED-URL-HERE"
   width="100%"
   height="520"
   frameborder="0"
   style="border:1px solid #ddd;border-radius:12px;">
 </iframe>
+```
 
 ---
 
-Then the next PNG slide will continue automatically.
--->
+## Quick MCQ (Self-check)
+
+```{=html}
+<div id="mcq1" data-correct="B" style="border:1px solid #ddd;border-radius:12px;padding:14px;">
+  <div style="font-weight:700;margin-bottom:8px;">
+    Which statement best distinguishes fiat money from commodity money?
+  </div>
+
+  <label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq1" value="A"> Fiat money uses paper; commodity money uses metal coins</label>
+  <label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq1" value="B"> Commodity money is a claim on a commodity; fiat money is not</label>
+  <label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq1" value="C"> Fiat money is issued by a central bank; commodity money is not</label>
+
+  <button onclick="checkMcq('mcq1')" style="margin-top:10px;padding:6px 10px;border-radius:10px;border:1px solid #ccc;">
+    Check
+  </button>
+  <div class="out" style="margin-top:8px;font-weight:600;"></div>
+  <div style="margin-top:10px;opacity:0.85;"><strong>Hint:</strong> Focus on convertibility/claim.</div>
+</div>
+
+<script>
+function checkMcq(id){
+  const box=document.getElementById(id);
+  const correct=box.getAttribute("data-correct");
+  const picked=box.querySelector("input[type=radio]:checked");
+  const out=box.querySelector(".out");
+  if(!picked){ out.textContent="Select an option."; return; }
+  out.textContent = (picked.value===correct) ? "Correct." : "Not quite. Try again.";
+}
+</script>
+```
