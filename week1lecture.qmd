@@ -1,222 +1,80 @@
 ---
-title: "EC3014 — Introduction: What is Money?"
-subtitle: "Reveal.js deck generated from existing PowerPoint + interactive checks"
+title: "Week 1 Lecture - Monetary Economics"
+author: "Your Name"
 format:
   revealjs:
-    slide-number: true
-    chalkboard: false
-    incremental: true
-    transition: slide
-    embed-resources: true
     theme: default
-execute:
-  echo: false
-  warning: false
-  message: false
----
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+---x`
 
-::: {.callout-note}
-**Teaching tip:** This deck keeps your original slide headings/content, but adds “Stop & check” interactions.
-Replace the placeholder poll links with your Slido/Mentimeter embeds when ready.
-:::
+```{r setup}
+#| include: false
 
-# Opening
+# Configuration - CHANGE THIS FOR EACH LECTURE
+ppt_filename <- "week1lecture1.pptx"
 
-## What is Money?
-
-- Today’s goal: distinguish **medium of exchange**, **unit of account**, and **store of value**.
-- We will use historical examples to motivate why modern monetary systems look the way they do.
-
----
-
-## Stop & Check (Poll)
-
-```{=html}
-<iframe
-  src="PASTE-YOUR-POLL-EMBED-URL-HERE"
-  width="100%"
-  height="520"
-  frameborder="0"
-  style="border:1px solid #ddd;border-radius:12px;">
-</iframe>
+# Automated paths (don't change)
+ppt_path <- file.path("ppt", ppt_filename)
+md_output <- file.path("ppt", sub("\\.(ppt|pptx)$", ".md", ppt_filename))
+media_dir <- "ppt/media"
 ```
 
-Prompt students: **Is “unit of account” just a label, or does it change how economies work?**
+```{r convert-ppt}
+#| include: false
+#| eval: true
 
-```{=html}
-<div id="mcq_fiat_vs_commodity" data-correct="claim" style="border:1px solid #ddd;border-radius:12px;padding:14px;margin:10px 0;">
-  <div style="font-weight:700;margin-bottom:8px;">MCQ: Fiat money differs from commodity money mainly because…</div>
-  <div><label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_fiat_vs_commodity" value="paper"> Fiat money uses paper; commodity money uses metal coins</label>
-<label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_fiat_vs_commodity" value="claim"> Commodity money is a claim on a commodity; fiat money is not</label>
-<label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_fiat_vs_commodity" value="issued"> Fiat money is issued by a central bank; commodity money is not</label>
-<label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_fiat_vs_commodity" value="medium"> Fiat money circulates as a medium of exchange; commodity money does not</label></div>
-  <button onclick="checkMcq('mcq_fiat_vs_commodity')" style="margin-top:10px;padding:6px 10px;border-radius:10px;border:1px solid #ccc;">Check</button>
-  <div class="mcq-output" style="margin-top:8px;"></div>
-  <div style="margin-top:10px;font-size:0.95em;opacity:0.9;"><strong>Hint:</strong> Focus on convertibility/claim: does the bearer have a right to an underlying commodity?</div>
-</div>
-```
-
-
----
-
-## What Do These Objects Have In Common?
-
-- THEY HAVE BEEN USED AS MEDIA OF EXCHANGE
-
----
-
-## Stop & Check (Poll)
-
-```{=html}
-<iframe
-  src="PASTE-YOUR-POLL-EMBED-URL-HERE"
-  width="100%"
-  height="520"
-  frameborder="0"
-  style="border:1px solid #ddd;border-radius:12px;">
-</iframe>
-```
-
-Prompt students: **Which of the three functions of money do you think is most fundamental — and why?**
-
-```{=html}
-<div id="mcq_exchange_ratios" data-correct="15" style="border:1px solid #ddd;border-radius:12px;padding:14px;margin:10px 0;">
-  <div style="font-weight:700;margin-bottom:8px;">MCQ: In an economy with 6 goods, how many distinct bilateral exchange ratios are there?</div>
-  <div><label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_exchange_ratios" value="6"> 6</label>
-<label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_exchange_ratios" value="12"> 12</label>
-<label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_exchange_ratios" value="15"> 15</label>
-<label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq_exchange_ratios" value="30"> 30</label></div>
-  <button onclick="checkMcq('mcq_exchange_ratios')" style="margin-top:10px;padding:6px 10px;border-radius:10px;border:1px solid #ccc;">Check</button>
-  <div class="mcq-output" style="margin-top:8px;"></div>
-  <div style="margin-top:10px;font-size:0.95em;opacity:0.9;"><strong>Hint:</strong> If prices are relative, count unique pairs: n(n−1)/2.</div>
-</div>
-```
-
-
----
-
-## Lydia (present day Izmir), 600 BCE
-
-- Greece, 400 BCE
-- Rome, 10 CE
-- Roman Britain, 200 CE
-- India, 350 CE
-- Ethiopia, 900 CE
-- Viking Britain, 900 CE
-- China, 1100 CE
-- Russia, 1700 CE
-- COINS AS MEDIA OF EXCHANGE
-
-
----
-
-## PAPER (TANG DYNASTY, 600 CE)
-STATE MONOPOLY (SONG DYNASTY, 1000 CE)
-FIAT ISSUANCE (CHIN AND YUEN DYNASTIES, 1115-1368 CE)
-
-- CHINA IS WHERE MONEY ACQUIRED THREE MODERN FEATURES
-- BUT IT DID NOT LAST (OVER ISSUANCE)
-- PAPER AS CURRENCY
-
-
----
-
-## What Is Unusual About This $20 Note?
-
-- ITS NOT ISSUED BY A CENTRAL BANK
-
-
----
-
-## inches
-
-- Kg
-- OUNCES
-- $
-- Hours
-- Feet
-- seconds
-- YEARS
-- Metres
-- £
-- €uros
-- Pounds
-- minutes
-- days
-- degrees
-- radians
-- WHAT DO THE ABOVE HAVE IN COMMON?
-- ALL ARE UNITS OF MEASUREMENT
-
-
----
-
-## Mesopotamian Cuneiform
-Tablet, 3500 BCE
-
-- Mesopotamian Bulla
-- 6000 BCE
-- Congolese Tally Sticks, 18000 BCE
-- Ancient Accounting Methods
-
-
----
-
-## Modern Accounting
-
-- WHAT IS THE BIG CHANGE?
-- MONEY IS USED AS THE UNIT OF ACCOUNT
-
-
----
-
-## What Do These Images Have In Common?
-
-- ALL ARE FORMS OF ACCUMULATING WEALTH
-
-
----
-
-## What Shall You Study In This Module?
-
-- A FORMAL ANALYSIS OF THE ROLE OF MONEY IN AN ECONOMY
-- HOW THE UNIT OF ACCOUNT ROLE LEADS TO THE MACROECONOMIC
-- CONCEPT OF THE “PRICE LEVEL” (WHICH IN TURN IS IMPORTANT FOR
-- UNDERSTANDING INFLATION).
-- HOW AND WHY MONETARISTS AND KEYNES DIFFER IN THEIR ANALYSIS
-- OF THE MACROECONOMIC EFFECTS OF MONETARY POLICY.
-- HOW MONEY’S ROLE AS A STORE OF VALUE LEADS TO THE POSSIBILITY
-- OF RECESSIONS.
-
-
----
-
-## What Shall You Study In This Module?
-
-- BUT IN ITS OTHER TWO ROLES, IT LEADS TO A CAUSAL LINK
-- BETWEEN MONEY SUPPLY AND INFLATION.
-- HOW THIS INTERPLAY BETWEEN THESE TWO ROLES LED A CONSENSUS ON THE CONDUCT OF MONETARY POLICY.
-- 7.   THE EFFECTS OF 2008/9 AND SUBSEQUENT “SHOCKS” ON THE ABOVE.
-
-
----
-
-
-```{=html}
-<script>
-function checkMcq(containerId){
-  const box = document.getElementById(containerId);
-  const correct = box.getAttribute("data-correct");
-  const picked = box.querySelector("input[type=radio]:checked");
-  const out = box.querySelector(".mcq-output");
-  if(!picked){ out.textContent = "Please select an option."; return; }
-  if(picked.value === correct){
-    out.textContent = "Correct.";
-    out.style.fontWeight = "600";
-  } else {
-    out.textContent = "Not quite. Try again (hint below).";
-    out.style.fontWeight = "600";
-  }
+# Check if PPT file exists
+if (!file.exists(ppt_path)) {
+  stop(paste("PPT file not found:", ppt_path))
 }
-</script>
+
+# Run pandoc conversion
+system(sprintf('pandoc "%s" -o "%s" --extract-media=%s', 
+               ppt_path, md_output, media_dir))
 ```
+
+```{r clean-content}
+#| include: false
+#| eval: true
+
+# Function to clean markdown for Reveal.js
+clean_for_revealjs <- function(md_file) {
+  lines <- readLines(md_file, warn = FALSE)
+  
+  # Replace level 1 headers with level 2 (for slides)
+  lines <- gsub("^# ", "## ", lines)
+  
+  # Ensure proper slide breaks
+  lines <- gsub("^---$", "\n---\n", lines)
+  
+  # Fix image paths (if needed)
+  lines <- gsub("!\\[\\]\\(ppt/media/", "![](media/", lines)
+  
+  # Remove empty lines at the start
+  lines <- lines[cumsum(nchar(trimws(lines)) > 0) > 0]
+  
+  return(lines)
+}
+
+# Run cleaning
+cleaned_lines <- clean_for_revealjs(md_output)
+```
+
+```{r render-slides}
+#| include: false
+#| output: asis
+#| eval: true
+
+# Output the cleaned content directly as slides
+cat(paste(cleaned_lines, collapse = "\n"))
+```
+
+<!-- 
+INSTRUCTOR NOTES:
+- The conversion happens automatically when you render
+- Students only see the slides below
+- To update: change ppt_filename in setup chunk
+- All conversion code is hidden with include: false
+-->
