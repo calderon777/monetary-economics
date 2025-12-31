@@ -13,68 +13,87 @@ format:
 #| include: false
 
 # Configuration - CHANGE THIS FOR EACH LECTURE
-ppt_filename <- "week1lecture1.pptx"
+ppt_filename <- "week1lecture2.pptx"
 
 # Automated paths (don't change)
 ppt_path <- file.path("ppt", ppt_filename)
-md_output <- file.path("ppt", sub("\\.(ppt|pptx)$", ".md", ppt_filename))
-media_dir <- "ppt/media"
+img_dir <- file.path("ppt", "slides_png")
 ```
 
-```{r convert-ppt}
+```{r convert-ppt-to-png}
 #| include: false
 #| eval: true
+
+# Create output directory for slide images
+dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
 
 # Check if PPT file exists
 if (!file.exists(ppt_path)) {
   stop(paste("PPT file not found:", ppt_path))
 }
 
-# Run pandoc conversion
-system(sprintf('pandoc "%s" -o "%s" --extract-media=%s', 
-               ppt_path, md_output, media_dir))
+# Adjust if LibreOffice installed elsewhere
+soffice <- '"C:/Program Files/LibreOffice/program/soffice.exe"'
+
+# Export slides as PNG images (preserves all formatting)
+cmd <- sprintf('%s --headless --convert-to png --outdir "%s" "%s"', 
+               soffice, img_dir, ppt_path)
+system(cmd, ignore.stdout = TRUE, ignore.stderr = TRUE)
+
+# Wait a moment for file system to catch up
+Sys.sleep(1)
 ```
 
-```{r clean-content}
-#| include: false
-#| eval: true
-
-# Function to clean markdown for Reveal.js
-clean_for_revealjs <- function(md_file) {
-  lines <- readLines(md_file, warn = FALSE)
-  
-  # Replace level 1 headers with level 2 (for slides)
-  lines <- gsub("^# ", "## ", lines)
-  
-  # Ensure proper slide breaks
-  lines <- gsub("^---$", "\n---\n", lines)
-  
-  # Fix image paths (if needed)
-  lines <- gsub("!\\[\\]\\(ppt/media/", "![](media/", lines)
-  
-  # Remove empty lines at the start
-  lines <- lines[cumsum(nchar(trimws(lines)) > 0) > 0]
-  
-  return(lines)
-}
-
-# Run cleaning
-cleaned_lines <- clean_for_revealjs(md_output)
-```
-
-```{r render-slides}
+```{r render-image-slides}
 #| include: false
 #| output: asis
 #| eval: true
 
-# Output the cleaned content directly as slides
-cat(paste(cleaned_lines, collapse = "\n"))
+# Grab exported PNGs and sort them
+imgs <- list.files(img_dir, pattern = "\\.png$", full.names = TRUE)
+
+if (length(imgs) == 0) {
+  cat("\n## Error\n\nNo slide PNGs found. Check LibreOffice export.\n")
+} else {
+  # Natural sort (slide_2 before slide_10)
+  imgs <- imgs[order(nchar(imgs), imgs)]
+  
+  # Emit one Reveal slide per image as a background (best fidelity)
+  for (i in seq_along(imgs)) {
+    # Use relative path for the rendered site
+    rel <- gsub("\\\\", "/", imgs[i])
+    
+    cat("\n---\n\n")
+    cat(sprintf("## {background-image=\"%s\" background-size=\"contain\" background-position=\"center\"}\n", rel))
+    cat("\n")
+  }
+}
 ```
 
 <!-- 
 INSTRUCTOR NOTES:
-- The conversion happens automatically when you render
-- Students only see the slides below
+- Converts each PowerPoint slide to PNG (preserves ALL formatting)
+- Each slide becomes a background image in Reveal.js
+- Perfect fidelity to original presentation
+- To add interactive elements (polls, quizzes), insert slides between the automated ones
 - To update: change ppt_filename in setup chunk
-- All conversion code is hidden with include: false
+
+EXAMPLE: Add a poll after slide 3
+After the automated conversion runs, you can manually add:
+
+---
+
+## Quick Poll
+
+<iframe
+  src="YOUR-SLIDO-OR-MENTIMETER-URL"
+  width="100%"
+  height="520"
+  frameborder="0"
+  style="border:1px solid #ddd;border-radius:12px;">
+</iframe>
+
+---
+
+Then the next PNG slide will continue automatically.
 -->
