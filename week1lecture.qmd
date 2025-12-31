@@ -7,7 +7,7 @@ format:
     slide-number: true
     chalkboard: true
     preview-links: auto
----x`
+---
 
 ```{r setup}
 #| include: false
