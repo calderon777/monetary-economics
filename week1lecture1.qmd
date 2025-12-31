@@ -1,0 +1,158 @@
+---
+title: "Monetary Economics - Week 1 Lecture 1"
+author: "By Dr Camilo Calderon"
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+execute:
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+
+# Configuration - CHANGE THIS FOR EACH LECTURE
+ppt_filename <- "week1lecture1.pptx"
+
+# Auto-generate folder name from this .qmd file name
+qmd_name <- knitr::current_input(dir = FALSE)
+qmd_base <- tools::file_path_sans_ext(qmd_name)  # e.g., "week1lecture"
+
+# Paths
+ppt_path <- file.path("ppt", ppt_filename)
+img_dir  <- file.path("ppt", paste0(qmd_base, "_png"))  # e.g., "ppt/week1lecture_png"
+
+# Create output directory
+dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r export-pptx-to-png}
+#| include: false
+#| eval: true
+
+# Windows + PowerPoint only
+if (.Platform$OS.type != "windows") {
+  stop("PowerPoint export requires Windows.")
+}
+
+if (!file.exists(ppt_path)) {
+  stop(paste("PPTX not found:", ppt_path))
+}
+
+# Clear old PNGs to avoid confusion (only in this lecture's folder)
+old <- list.files(img_dir, pattern = r"(\.(png|PNG)$)", full.names = TRUE)
+if (length(old)) {
+  file.remove(old)
+}
+
+# Get absolute paths
+in_abs <- normalizePath(ppt_path, mustWork = TRUE)
+out_abs <- normalizePath(img_dir, mustWork = TRUE)
+
+# Create PowerShell script file
+ps_file <- file.path(tempdir(), "export_pptx.ps1")
+
+ps_code <- sprintf('
+$in = "%s"
+$out = "%s"
+
+New-Item -ItemType Directory -Force -Path $out | Out-Null
+
+$ppt = New-Object -ComObject PowerPoint.Application
+$ppt.Visible = [Microsoft.Office.Core.MsoTriState]::msoTrue
+
+$pres = $ppt.Presentations.Open($in, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoTrue)
+
+# 18 = ppSaveAsPNG format
+$pres.SaveAs($out, 18)
+
+$pres.Close()
+$ppt.Quit()
+
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($pres) | Out-Null
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($ppt) | Out-Null
+[GC]::Collect()
+[GC]::WaitForPendingFinalizers()
+
+Write-Host "Export complete"
+', in_abs, out_abs)
+
+writeLines(ps_code, ps_file)
+
+# Run PowerShell script file
+result <- system2("powershell", 
+                  args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_file),
+                  stdout = TRUE, stderr = TRUE)
+
+# Clean up temp file
+file.remove(ps_file)
+
+# Verify output
+pngs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+
+if (length(pngs) == 0) {
+  stop(paste(
+    "PowerPoint produced no PNGs.\n",
+    "Input:", in_abs, "\n",
+    "Output:", out_abs, "\n",
+    "Error:\n",
+    paste(result, collapse = "\n")
+  ))
+}
+```
+
+```{r render-png-slides}
+#| output: asis
+#| eval: true
+
+# Get all Slide*.PNG files (PowerPoint naming convention)
+imgs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+
+# Sort by slide number
+get_slide_number <- function(x) {
+  as.numeric(gsub(r"(^Slide(\d+)\.(png|PNG)$)", "\\1", basename(x), ignore.case = TRUE))
+}
+imgs <- imgs[order(sapply(imgs, get_slide_number))]
+
+# Render each PNG as a Reveal.js slide background
+for (img in imgs) {
+  rel <- gsub("\\\\", "/", img)
+  cat("\n---\n\n")
+  cat(sprintf('## {background-image="%s" background-size="contain" background-position="center"}\n\n', rel))
+}
+```
+
+<!-- 
+===========================================
+TEMPLATE FOR ALL LECTURES
+===========================================
+
+USAGE:
+1. Copy this file (e.g., week2lecture.qmd, week3lecture.qmd)
+2. Update YAML title and author
+3. Change ppt_filename on line 17
+4. Render (Ctrl+Shift+K or quarto render)
+
+FOLDER STRUCTURE:
+- week1lecture.qmd → ppt/week1lecture_png/Slide1.PNG, Slide2.PNG, ...
+- week2lecture.qmd → ppt/week2lecture_png/Slide1.PNG, Slide2.PNG, ...
+- week3lecture.qmd → ppt/week3lecture_png/Slide1.PNG, Slide3.PNG, ...
+
+Each lecture's PNGs are isolated in their own folder.
+
+ONE-TIME SETUP FOR HIGH-QUALITY PNGS (300 DPI):
+Run once in PowerShell:
+
+New-Item -Path "HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Options" -Force | Out-Null
+New-ItemProperty -Path "HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Options" `
+  -Name "ExportBitmapResolution" -PropertyType DWord -Value 300 -Force | Out-Null
+
+Then close PowerPoint and re-render.
+
+===========================================
+-->
