@@ -9,8 +9,8 @@ This site will contain:
 
 ## Lecture
 
-- [Lecture Week 1](week1lecture.qmd)
-
+- [Week 1 Lecture 1](week1lecture1.qmd)
+- [Week 1 Lecture 2](week1lecture2.qmd)
 ## Tutorials
 
 - [Tutorial Week 1](week1.qmd)
