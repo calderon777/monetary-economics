@@ -1,6 +1,6 @@
 ---
-title: "Week 1 Lecture - Monetary Economics"
-author: "Your Name"
+title: "Monetary Economics - Week 1 Lecture"
+author: "By Dr Camilo Calderon"
 format:
   revealjs:
     theme: default
@@ -13,131 +13,120 @@ execute:
   message: false
 ---
 
-<!--
-This file:
-1) Converts a PPTX to one PNG per slide using LibreOffice (headless).
-2) Renders a Reveal.js deck where each slide is the original PPT slide as a background image.
-3) Lets you insert interactive Quarto slides (polls/quizzes) between image slides.
-
-Prerequisite (Windows):
-- LibreOffice installed (default path used below). If installed elsewhere, update `soffice`.
--->
-
 ```{r setup}
 #| include: false
 
-# ===== CONFIG (change for each lecture) =====
+# Configuration - CHANGE THIS FOR EACH LECTURE
 ppt_filename <- "week1lecture2.pptx"
-
-# ===== Paths (do not change unless you move folders) =====
 ppt_path <- file.path("ppt", ppt_filename)
 img_dir  <- file.path("ppt", "slides_png")
 
-# LibreOffice executable (Windows default)
-soffice  <- "C:/Program Files/LibreOffice/program/soffice.exe"
+# Create output directory
+dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
 ```
 
-```{r convert-ppt-to-png}
+```{r export-pptx-to-png}
 #| include: false
 #| eval: true
 
-# Create output directory for slide images
-dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
+# Windows + PowerPoint only
+if (.Platform$OS.type != "windows") {
+  stop("PowerPoint export requires Windows.")
+}
 
-# Safety checks
-if (!file.exists(soffice)) stop(paste("LibreOffice not found at:", soffice))
-if (!file.exists(ppt_path)) stop(paste("PPT file not found:", ppt_path))
+if (!file.exists(ppt_path)) {
+  stop(paste("PPTX not found:", ppt_path))
+}
 
-# Optional: clear old PNGs (prevents confusion when re-rendering)
-old_pngs <- list.files(img_dir, pattern = "\\.png$", full.names = TRUE)
-if (length(old_pngs)) file.remove(old_pngs)
+# Clear old PNGs to avoid confusion
+old <- list.files(img_dir, pattern = r"(\.(png|PNG)$)", full.names = TRUE)
+if (length(old)) {
+  file.remove(old)
+}
 
-# Convert PPTX -> PNG (one image per slide)
-args <- c(
-  "--headless", "--nologo",
-  "--convert-to", "png",
-  "--outdir", normalizePath(img_dir),
-  normalizePath(ppt_path)
-)
+# Get absolute paths
+in_abs <- normalizePath(ppt_path, mustWork = TRUE)
+out_abs <- normalizePath(img_dir, mustWork = TRUE)
 
-# Capture output for debugging if anything fails
-out <- system2(soffice, args = args, stdout = TRUE, stderr = TRUE)
+# Create PowerShell script file
+ps_file <- file.path(tempdir(), "export_pptx.ps1")
+
+ps_code <- sprintf('
+$in = "%s"
+$out = "%s"
+
+New-Item -ItemType Directory -Force -Path $out | Out-Null
+
+$ppt = New-Object -ComObject PowerPoint.Application
+$ppt.Visible = [Microsoft.Office.Core.MsoTriState]::msoTrue
+
+$pres = $ppt.Presentations.Open($in, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoTrue)
+
+# 18 = ppSaveAsPNG format
+$pres.SaveAs($out, 18)
+
+$pres.Close()
+$ppt.Quit()
+
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($pres) | Out-Null
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($ppt) | Out-Null
+[GC]::Collect()
+[GC]::WaitForPendingFinalizers()
+
+Write-Host "Export complete"
+', in_abs, out_abs)
+
+writeLines(ps_code, ps_file)
+
+# Run PowerShell script file
+result <- system2("powershell", 
+                  args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_file),
+                  stdout = TRUE, stderr = TRUE)
+
+# Clean up temp file
+file.remove(ps_file)
 
 # Verify output
-pngs <- list.files(img_dir, pattern = "\\.png$", full.names = TRUE)
+pngs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+
 if (length(pngs) == 0) {
   stop(paste(
-    "No PNGs were created in:", img_dir, "\n",
-    "LibreOffice output:\n",
-    paste(out, collapse = "\n")
+    "PowerPoint produced no PNGs.\n",
+    "Input:", in_abs, "\n",
+    "Output:", out_abs, "\n",
+    "Error:\n",
+    paste(result, collapse = "\n")
   ))
 }
 ```
 
-```{r render-image-slides}
-#| echo: false
+```{r render-png-slides}
 #| output: asis
 #| eval: true
 
-# Collect exported PNGs
-imgs <- list.files(img_dir, pattern = "\\.png$", full.names = TRUE)
+# Get all Slide*.PNG files (PowerPoint naming convention)
+imgs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
 
-# Sort by filename (works reliably with LibreOffice naming)
-imgs <- imgs[order(tolower(imgs))]
+# Sort by slide number
+get_slide_number <- function(x) {
+  as.numeric(gsub(r"(^Slide(\d+)\.(png|PNG)$)", "\\1", basename(x), ignore.case = TRUE))
+}
+imgs <- imgs[order(sapply(imgs, get_slide_number))]
 
-# Render one Reveal slide per PNG as a slide background (full layout fidelity)
+# Render each PNG as a Reveal.js slide background
 for (img in imgs) {
-  rel <- gsub("\\\\", "/", img)  # Windows path -> web path
-  cat("\n---\n")
-  cat(sprintf('## {background-image="%s" background-size="contain" background-position="center"}\n', rel))
+  rel <- gsub("\\\\", "/", img)
+  cat("\n---\n\n")
+  cat(sprintf('## {background-image="%s" background-size="contain" background-position="center"}\n\n', rel))
 }
 ```
 
----
-
-## Stop & Check (Poll) — Placeholder
-
-Replace the `src=` URL with your Slido or Mentimeter embed URL.
-
-```{=html}
-<iframe
-  src="PASTE-YOUR-POLL-EMBED-URL-HERE"
-  width="100%"
-  height="520"
-  frameborder="0"
-  style="border:1px solid #ddd;border-radius:12px;">
-</iframe>
-```
-
----
-
-## Quick MCQ (Self-check)
-
-```{=html}
-<div id="mcq1" data-correct="B" style="border:1px solid #ddd;border-radius:12px;padding:14px;">
-  <div style="font-weight:700;margin-bottom:8px;">
-    Which statement best distinguishes fiat money from commodity money?
-  </div>
-
-  <label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq1" value="A"> Fiat money uses paper; commodity money uses metal coins</label>
-  <label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq1" value="B"> Commodity money is a claim on a commodity; fiat money is not</label>
-  <label style="display:block;margin:0.25rem 0;"><input type="radio" name="mcq1" value="C"> Fiat money is issued by a central bank; commodity money is not</label>
-
-  <button onclick="checkMcq('mcq1')" style="margin-top:10px;padding:6px 10px;border-radius:10px;border:1px solid #ccc;">
-    Check
-  </button>
-  <div class="out" style="margin-top:8px;font-weight:600;"></div>
-  <div style="margin-top:10px;opacity:0.85;"><strong>Hint:</strong> Focus on convertibility/claim.</div>
-</div>
-
-<script>
-function checkMcq(id){
-  const box=document.getElementById(id);
-  const correct=box.getAttribute("data-correct");
-  const picked=box.querySelector("input[type=radio]:checked");
-  const out=box.querySelector(".out");
-  if(!picked){ out.textContent="Select an option."; return; }
-  out.textContent = (picked.value===correct) ? "Correct." : "Not quite. Try again.";
-}
-</script>
-```
+<!-- 
+INSTRUCTOR NOTES:
+- Converts PPTX → PNG using PowerPoint COM automation
+- Each slide becomes a full-resolution Reveal.js background slide
+- Students see only the slides, not the conversion process
+- To update for a different lecture, change ppt_filename on line 16
+- For 300 DPI quality, run once in PowerShell:
+  New-ItemProperty -Path "HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Options" -Name "ExportBitmapResolution" -PropertyType DWord -Value 300 -Force | Out-Null
+-->
