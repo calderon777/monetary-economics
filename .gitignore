@@ -7,7 +7,6 @@ __pycache__/
 
 # Quarto output
 /_site/
-*.html
 .quarto/
 
 # R-related (if you use R)

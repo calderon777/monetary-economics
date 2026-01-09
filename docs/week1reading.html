@@ -1,0 +1,830 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Dr Camilo Calderon">
+
+<title>Monetary Economics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./week1lecture.html" rel="next">
+<link href="./index.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5fdb1057cce39226931b7d9a85af9cfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week1reading.html">Week 1</a></li><li class="breadcrumb-item"><a href="./week1reading.html">Reading</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Monetary Economics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Monetary Economics</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Week 1</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week1reading.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Reading</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week1lecture.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Lecture</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./week1tutorial.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Tutorial</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-nature-and-economic-role-of-money" id="toc-the-nature-and-economic-role-of-money" class="nav-link active" data-scroll-target="#the-nature-and-economic-role-of-money"><span class="header-section-number">1</span> The Nature and Economic Role of Money</a>
+  <ul class="collapse">
+  <li><a href="#introduction-to-the-economic-role-of-money" id="toc-introduction-to-the-economic-role-of-money" class="nav-link" data-scroll-target="#introduction-to-the-economic-role-of-money"><span class="header-section-number">1.1</span> Introduction to the Economic Role of Money</a></li>
+  <li><a href="#money-as-a-unit-of-account" id="toc-money-as-a-unit-of-account" class="nav-link" data-scroll-target="#money-as-a-unit-of-account"><span class="header-section-number">1.2</span> Money as a Unit of Account</a>
+  <ul class="collapse">
+  <li><a href="#exchange-ratios-relative-prices-and-the-economy-of-measurement" id="toc-exchange-ratios-relative-prices-and-the-economy-of-measurement" class="nav-link" data-scroll-target="#exchange-ratios-relative-prices-and-the-economy-of-measurement"><span class="header-section-number">1.2.1</span> Exchange ratios, relative prices, and the economy of measurement</a></li>
+  <li><a href="#the-unit-of-account-and-inflation" id="toc-the-unit-of-account-and-inflation" class="nav-link" data-scroll-target="#the-unit-of-account-and-inflation"><span class="header-section-number">1.2.2</span> The unit of account and inflation</a></li>
+  <li><a href="#digital-money-and-unit-of-account-challenges" id="toc-digital-money-and-unit-of-account-challenges" class="nav-link" data-scroll-target="#digital-money-and-unit-of-account-challenges"><span class="header-section-number">1.2.3</span> Digital money and unit-of-account challenges</a></li>
+  </ul></li>
+  <li><a href="#money-as-a-medium-of-exchange" id="toc-money-as-a-medium-of-exchange" class="nav-link" data-scroll-target="#money-as-a-medium-of-exchange"><span class="header-section-number">1.3</span> Money as a Medium of Exchange</a>
+  <ul class="collapse">
+  <li><a href="#why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs" id="toc-why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs" class="nav-link" data-scroll-target="#why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs"><span class="header-section-number">1.3.1</span> Why barter scales poorly: double coincidence of wants and search costs</a></li>
+  <li><a href="#trading-posts-market-structure-and-the-economy-of-exchange" id="toc-trading-posts-market-structure-and-the-economy-of-exchange" class="nav-link" data-scroll-target="#trading-posts-market-structure-and-the-economy-of-exchange"><span class="header-section-number">1.3.2</span> Trading posts, market structure, and the economy of exchange</a></li>
+  <li><a href="#microfoundations-money-as-an-equilibrium-response-to-frictions" id="toc-microfoundations-money-as-an-equilibrium-response-to-frictions" class="nav-link" data-scroll-target="#microfoundations-money-as-an-equilibrium-response-to-frictions"><span class="header-section-number">1.3.3</span> Microfoundations: money as an equilibrium response to frictions</a></li>
+  <li><a href="#payment-innovation-money-versus-the-payments-system" id="toc-payment-innovation-money-versus-the-payments-system" class="nav-link" data-scroll-target="#payment-innovation-money-versus-the-payments-system"><span class="header-section-number">1.3.4</span> Payment innovation: money versus the payments system</a></li>
+  </ul></li>
+  <li><a href="#money-as-a-store-of-value" id="toc-money-as-a-store-of-value" class="nav-link" data-scroll-target="#money-as-a-store-of-value"><span class="header-section-number">1.4</span> Money as a Store of Value</a>
+  <ul class="collapse">
+  <li><a href="#opportunity-cost-of-holding-money" id="toc-opportunity-cost-of-holding-money" class="nav-link" data-scroll-target="#opportunity-cost-of-holding-money"><span class="header-section-number">1.4.1</span> Opportunity cost of holding money</a></li>
+  <li><a href="#inflation-and-store-of-value-performance" id="toc-inflation-and-store-of-value-performance" class="nav-link" data-scroll-target="#inflation-and-store-of-value-performance"><span class="header-section-number">1.4.2</span> Inflation and store-of-value performance</a></li>
+  </ul></li>
+  <li><a href="#liquidity-definitions-and-criteria" id="toc-liquidity-definitions-and-criteria" class="nav-link" data-scroll-target="#liquidity-definitions-and-criteria"><span class="header-section-number">1.5</span> Liquidity: Definitions and Criteria</a>
+  <ul class="collapse">
+  <li><a href="#components-of-liquidity" id="toc-components-of-liquidity" class="nav-link" data-scroll-target="#components-of-liquidity"><span class="header-section-number">1.5.1</span> Components of liquidity</a></li>
+  <li><a href="#monetary-aggregates-and-moneyness" id="toc-monetary-aggregates-and-moneyness" class="nav-link" data-scroll-target="#monetary-aggregates-and-moneyness"><span class="header-section-number">1.5.2</span> Monetary aggregates and “moneyness”</a></li>
+  <li><a href="#liquidity-crises-and-central-banks" id="toc-liquidity-crises-and-central-banks" class="nav-link" data-scroll-target="#liquidity-crises-and-central-banks"><span class="header-section-number">1.5.3</span> Liquidity, crises, and central banks</a></li>
+  <li><a href="#cbdcs-and-the-future-composition-of-liquid-assets" id="toc-cbdcs-and-the-future-composition-of-liquid-assets" class="nav-link" data-scroll-target="#cbdcs-and-the-future-composition-of-liquid-assets"><span class="header-section-number">1.5.4</span> CBDCs and the future composition of liquid assets</a></li>
+  </ul></li>
+  <li><a href="#keynesian-versus-classical-views-on-money" id="toc-keynesian-versus-classical-views-on-money" class="nav-link" data-scroll-target="#keynesian-versus-classical-views-on-money"><span class="header-section-number">1.6</span> Keynesian versus Classical Views on Money</a>
+  <ul class="collapse">
+  <li><a href="#the-classical-view-money-as-a-veil-and-long-run-neutrality" id="toc-the-classical-view-money-as-a-veil-and-long-run-neutrality" class="nav-link" data-scroll-target="#the-classical-view-money-as-a-veil-and-long-run-neutrality"><span class="header-section-number">1.6.1</span> The Classical view: money as a “veil” and long-run neutrality</a></li>
+  <li><a href="#the-keynesian-view-liquidity-preference-spillovers-and-real-effects" id="toc-the-keynesian-view-liquidity-preference-spillovers-and-real-effects" class="nav-link" data-scroll-target="#the-keynesian-view-liquidity-preference-spillovers-and-real-effects"><span class="header-section-number">1.6.2</span> The Keynesian view: liquidity preference, spillovers, and real effects</a></li>
+  <li><a href="#modern-synthesis-and-current-debates" id="toc-modern-synthesis-and-current-debates" class="nav-link" data-scroll-target="#modern-synthesis-and-current-debates"><span class="header-section-number">1.6.3</span> Modern synthesis and current debates</a></li>
+  </ul></li>
+  <li><a href="#discussion-questions" id="toc-discussion-questions" class="nav-link" data-scroll-target="#discussion-questions"><span class="header-section-number">1.7</span> Discussion Questions</a></li>
+  </ul></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">2</span> References</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="week1reading.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./week1reading.html">Week 1</a></li><li class="breadcrumb-item"><a href="./week1reading.html">Reading</a></li></ol></nav>
+<div class="quarto-title">
+<h1 class="title">Monetary Economics</h1>
+<p class="subtitle lead">The Nature and Economic Role of Money</p>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Dr Camilo Calderon </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-nature-and-economic-role-of-money" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> The Nature and Economic Role of Money</h1>
+<section id="introduction-to-the-economic-role-of-money" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="introduction-to-the-economic-role-of-money"><span class="header-section-number">1.1</span> Introduction to the Economic Role of Money</h2>
+<p>Money is a core institution of modern economies. A practical working definition is that <strong>money is any asset that is generally accepted as payment</strong> for goods and services in a given economic community. The defining feature here is <em>general acceptability</em>: an agent accepts money in exchange not because they wish to consume it, but because they expect others to accept it in subsequent transactions.</p>
+<p>Money matters because it makes decentralised exchange feasible at scale. In a pure barter economy, trade requires a <strong>double coincidence of wants</strong>: each party must have what the other desires (Jevons, 1875/1876). This requirement is restrictive and generates significant transaction costs. Money relaxes this constraint by allowing exchange to occur in (at least) two steps: sell what you have for money, then use money to purchase what you want.</p>
+<p>Historically, many objects have served monetary roles: commodity monies (e.g., gold and silver), representative monies (claims redeemable into a commodity), and, today, <strong>fiat money</strong> issued by the state and/or central bank. Modern fiat money is not redeemable for a commodity and is intrinsically worthless in consumption terms; its value is sustained by institutional frameworks, legal and tax structures, and credibility. In the contemporary economy, money exists in multiple forms: physical currency, bank deposits transferable through payment systems, and central-bank reserves used for interbank settlement.</p>
+<p>This chapter is organised around the canonical functions of money:</p>
+<ol type="1">
+<li><strong>Unit of account</strong> (the economy’s common measure of value),</li>
+<li><strong>Medium of exchange</strong> (the means of payment in transactions),</li>
+<li><strong>Store of value</strong> (an asset held over time).</li>
+</ol>
+<p>We then analyse <strong>liquidity</strong>—the property that links money to broader asset markets—and conclude with the contrast between <strong>Classical</strong> and <strong>Keynesian</strong> perspectives on money’s macroeconomic importance (Keynes, 1936).</p>
+<hr>
+</section>
+<section id="money-as-a-unit-of-account" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="money-as-a-unit-of-account"><span class="header-section-number">1.2</span> Money as a Unit of Account</h2>
+<p>A <strong>unit of account</strong> is a common measure in which prices and values are expressed. This role is conceptually distinct from the medium-of-exchange role: a society could in principle use an abstract unit of account for pricing and contracting while settling transactions with other assets. In practice, however, the monetary unit (pounds, euros, dollars) typically serves as the unit of account.</p>
+<section id="exchange-ratios-relative-prices-and-the-economy-of-measurement" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="exchange-ratios-relative-prices-and-the-economy-of-measurement"><span class="header-section-number">1.2.1</span> Exchange ratios, relative prices, and the economy of measurement</h3>
+<p>The most fundamental object in valuation is the <strong>relative price</strong> (or exchange ratio): how many units of one good exchange for one unit of another.</p>
+<p>Without a unit of account, describing values requires listing pairwise exchange ratios for all goods. The number of required exchange ratios grows quickly with the number of goods. With <em>n</em> goods, a complete barter price system requires <span class="math inline">\(\frac{n(n-1)}{2}\)</span> exchange ratios. For large <em>n</em>, this is approximately <span class="math inline">\(n^2/2\)</span>, which becomes unmanageable as product variety increases.</p>
+<p>A unit of account dramatically reduces informational complexity. If each good has a money price, only <em>n</em> prices need to be quoted, and any relative price can be computed as a ratio of two money prices. This is the <strong>economy of measurement</strong> created by money as unit of account.</p>
+</section>
+<section id="the-unit-of-account-and-inflation" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="the-unit-of-account-and-inflation"><span class="header-section-number">1.2.2</span> The unit of account and inflation</h3>
+<p>The unit-of-account function is most useful when the unit is relatively stable in purchasing power. If the unit itself changes value unpredictably, it is like trying to measure length with a ruler that keeps changing size. Inflation makes price comparisons harder, disrupts long-term contracting, and increases the resources devoted to repricing and indexation.</p>
+<p>In high-inflation or hyperinflation episodes, domestic money often fails as a unit of account and people may shift to a foreign currency (partial “dollarisation”) or to indexed units. For example, Venezuela experienced extremely high inflation in the late 2010s, and pricing and saving behaviour increasingly moved toward stable foreign currencies (IMF DataMapper, n.d.). The general economic point is that price stability supports the unit-of-account role; instability undermines it.</p>
+</section>
+<section id="digital-money-and-unit-of-account-challenges" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="digital-money-and-unit-of-account-challenges"><span class="header-section-number">1.2.3</span> Digital money and unit-of-account challenges</h3>
+<p>Post‑2010 innovations highlight that being technologically novel is not sufficient to become a unit of account. Many cryptocurrencies are highly volatile, which makes them unattractive as pricing units for everyday goods and services. Even where legal experiments occurred—such as El Salvador’s 2021 Bitcoin legal tender policy—prices and contracts largely remained denominated in dollars, not Bitcoin, consistent with the idea that a unit of account requires stability and broad trust. IMF programme documentation reports that legal changes in 2025 removed key legal-tender features (including the obligation to accept Bitcoin), reflecting limited adoption and significant policy concerns (IMF, 2025).</p>
+<p>By contrast, <strong>stablecoins</strong> seek to inherit stability by pegging to a fiat unit (usually the U.S. dollar). Their “moneyness” therefore depends on the credibility of the peg and on the legal/financial structures backing the promise of convertibility.</p>
+<hr>
+</section>
+</section>
+<section id="money-as-a-medium-of-exchange" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="money-as-a-medium-of-exchange"><span class="header-section-number">1.3</span> Money as a Medium of Exchange</h2>
+<p>A <strong>medium of exchange</strong> is an asset that agents accept in exchange for goods and services with the intention of using it to purchase other goods and services in the future. This function is the most visible and is closely tied to money’s central economic contribution: reducing transaction costs.</p>
+<section id="why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs"><span class="header-section-number">1.3.1</span> Why barter scales poorly: double coincidence of wants and search costs</h3>
+<p>Barter trade is a one-step exchange of one good for another. A monetary transaction typically involves two steps (sell for money, then buy with money), which may appear more complex at first glance. The key point is that barter requires a double coincidence of wants. In a decentralised economy with many goods and heterogeneous preferences, satisfying this condition is rare and costly.</p>
+<p>Jevons (1875/1876) emphasised that the main friction is not conceptual but practical: it is costly to search for a counterparty who both has what you want and wants what you have. Monetary exchange solves this problem by allowing trade with any counterparty who accepts money, which—by definition—is “everyone.”</p>
+</section>
+<section id="trading-posts-market-structure-and-the-economy-of-exchange" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="trading-posts-market-structure-and-the-economy-of-exchange"><span class="header-section-number">1.3.2</span> Trading posts, market structure, and the economy of exchange</h3>
+<p>A useful way to see the role of a medium of exchange is to imagine that, without money, an economy would require a dense network of “trading posts” or market arrangements for each pair of goods. With <em>n</em> goods, <span class="math inline">\(\frac{n(n-1)}{2}\)</span> bilateral trading posts would be needed for direct barter across all pairs, which scales poorly. With money as a medium of exchange, each good needs only a market against money, and any two goods can be traded indirectly through money. This is the <strong>economy of exchange</strong> that money provides.</p>
+</section>
+<section id="microfoundations-money-as-an-equilibrium-response-to-frictions" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="microfoundations-money-as-an-equilibrium-response-to-frictions"><span class="header-section-number">1.3.3</span> Microfoundations: money as an equilibrium response to frictions</h3>
+<p>Modern monetary economics formalised these intuitions in search-theoretic models. In seminal work, Kiyotaki and Wright (1989) show that under trading frictions, certain assets can become accepted as media of exchange because they lower transaction costs and increase the probability of successful trade. Later work (Kiyotaki &amp; Wright, 1993) provides a broader framework for monetary exchange as a solution to decentralised trading problems.</p>
+<p>These models help clarify why <em>acceptability</em> is both cause and consequence of being money: an asset is accepted because others accept it, creating a network effect. But acceptance is not arbitrary; assets with suitable properties (portability, durability, divisibility, and low verification cost) are more likely to emerge as media of exchange.</p>
+</section>
+<section id="payment-innovation-money-versus-the-payments-system" class="level3" data-number="1.3.4">
+<h3 data-number="1.3.4" class="anchored" data-anchor-id="payment-innovation-money-versus-the-payments-system"><span class="header-section-number">1.3.4</span> Payment innovation: money versus the payments system</h3>
+<p>In modern economies, many transactions are executed electronically. Cards, mobile wallets, and real-time transfer systems are <em>payment technologies</em> layered on top of money. Under the hood, settlement typically occurs in central bank money (reserves and cash) and bank deposit money denominated in the national unit of account.</p>
+<p>Cryptocurrencies have been proposed as alternative payment instruments. Empirical work suggests that, in many jurisdictions, their use as everyday payment media has been limited (Umlauft, 2018). Where adoption has been attempted at national scale, the outcomes underline the importance of stability, infrastructure, regulation, and trust.</p>
+<hr>
+</section>
+</section>
+<section id="money-as-a-store-of-value" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="money-as-a-store-of-value"><span class="header-section-number">1.4</span> Money as a Store of Value</h2>
+<p>Money also functions as a <strong>store of value</strong>: it transfers purchasing power through time. This function follows naturally from the medium-of-exchange role because sales and purchases are often separated by time; in that gap, money is held as an asset.</p>
+<p>However, money is not the only store of value. Bonds, equities, property, and other assets store value and often deliver higher returns. Money’s comparative advantage is <em>liquidity</em>—the capacity to be used immediately as a means of payment.</p>
+<section id="opportunity-cost-of-holding-money" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="opportunity-cost-of-holding-money"><span class="header-section-number">1.4.1</span> Opportunity cost of holding money</h3>
+<p>Because money typically yields little or no interest, holding money involves an <strong>opportunity cost</strong>: the foregone return from holding an interest-bearing asset instead. This opportunity cost is a key determinant of money demand.</p>
+<p>Keynes (1936) emphasised that agents demand money not only for transactions but also for liquidity as a store of value under uncertainty. In this framework, the interest rate can be interpreted as a premium required to induce agents to hold less liquid assets instead of money.</p>
+</section>
+<section id="inflation-and-store-of-value-performance" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="inflation-and-store-of-value-performance"><span class="header-section-number">1.4.2</span> Inflation and store-of-value performance</h3>
+<p>Inflation erodes the real value of nominal money balances. Over long horizons, cash is typically a poor store of value unless nominal interest on liquid balances compensates for inflation. When inflation is high and unpredictable, agents shift into alternative stores of value (foreign currency, real assets, indexed claims), weakening money’s store-of-value role and potentially destabilising the monetary system.</p>
+<p>Recent macroeconomic experience renewed attention to these issues. Following the COVID‑19 shock, several advanced economies experienced the highest inflation rates in decades. A large empirical literature examines the roles of supply constraints, fiscal expansion, and monetary conditions; as part of this debate, BIS research has argued that money growth helps explain cross-country variation in the inflation surge, especially when inflation moves into higher regimes (Borio, Hofmann, &amp; Zakrajšek, 2023; Borio, Hofmann, &amp; Zakrajšek, 2024).</p>
+<hr>
+</section>
+</section>
+<section id="liquidity-definitions-and-criteria" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="liquidity-definitions-and-criteria"><span class="header-section-number">1.5</span> Liquidity: Definitions and Criteria</h2>
+<p>Liquidity is a central concept linking money to asset markets and financial stability. A practical definition is:</p>
+<blockquote class="blockquote">
+<p><strong>Liquidity is the ease with which an asset can be exchanged for goods and services (or converted into a generally accepted means of payment) quickly, predictably, and with little loss of value.</strong></p>
+</blockquote>
+<p>Money is the most liquid asset. Other assets are “money-like” to the extent that they can be converted into money rapidly at low cost and low risk.</p>
+<section id="components-of-liquidity" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="components-of-liquidity"><span class="header-section-number">1.5.1</span> Components of liquidity</h3>
+<p>Liquidity is commonly associated with:</p>
+<ul>
+<li><strong>Marketability</strong> (active markets and many potential buyers),</li>
+<li><strong>Predictability of exchange value</strong> (low short-run price volatility),</li>
+<li><strong>Reversibility</strong> (small bid–ask spreads and low transaction costs),</li>
+<li><strong>Divisibility</strong> (capacity to trade in small denominations).</li>
+</ul>
+<p>These criteria help explain why agents are often willing to hold money despite its low return: they obtain liquidity services in exchange for foregoing interest.</p>
+</section>
+<section id="monetary-aggregates-and-moneyness" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="monetary-aggregates-and-moneyness"><span class="header-section-number">1.5.2</span> Monetary aggregates and “moneyness”</h3>
+<p>Because liquidity is a spectrum, monetary authorities define multiple monetary aggregates. Narrow measures (e.g., currency and demand deposits) are most liquid. Broader measures include less liquid but still money-like instruments (e.g., some savings deposits).</p>
+<p>In the U.S., widely used series include M2, available through the Federal Reserve Bank of St.&nbsp;Louis FRED database (Board of Governors of the Federal Reserve System, n.d.). While definitions differ across countries, the central idea is consistent: as aggregates broaden, <strong>liquidity declines</strong> and <strong>return often increases</strong>.</p>
+</section>
+<section id="liquidity-crises-and-central-banks" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="liquidity-crises-and-central-banks"><span class="header-section-number">1.5.3</span> Liquidity, crises, and central banks</h3>
+<p>Liquidity conditions can change abruptly in crises. Even normally liquid markets can become illiquid when risk aversion spikes and balance sheets are constrained, producing a “flight to liquidity.” This is one reason central banks maintain lender-of-last-resort frameworks and market backstops to prevent liquidity shocks from turning into solvency crises and macroeconomic contractions.</p>
+</section>
+<section id="cbdcs-and-the-future-composition-of-liquid-assets" class="level3" data-number="1.5.4">
+<h3 data-number="1.5.4" class="anchored" data-anchor-id="cbdcs-and-the-future-composition-of-liquid-assets"><span class="header-section-number">1.5.4</span> CBDCs and the future composition of liquid assets</h3>
+<p>CBDCs are frequently analysed as potential new forms of sovereign money, designed to be safe and highly liquid. The Atlantic Council’s CBDC Tracker reports that a large share of countries are exploring, piloting, or developing CBDCs (Atlantic Council, n.d.). If introduced at scale, CBDCs could reshape retail payments, alter the composition of liquid assets held by households, and raise new questions for banking-sector funding and financial stability.</p>
+<hr>
+</section>
+</section>
+<section id="keynesian-versus-classical-views-on-money" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="keynesian-versus-classical-views-on-money"><span class="header-section-number">1.6</span> Keynesian versus Classical Views on Money</h2>
+<p>The macroeconomic importance of money is often introduced through a contrast between <strong>Classical</strong> and <strong>Keynesian</strong> approaches.</p>
+<section id="the-classical-view-money-as-a-veil-and-long-run-neutrality" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="the-classical-view-money-as-a-veil-and-long-run-neutrality"><span class="header-section-number">1.6.1</span> The Classical view: money as a “veil” and long-run neutrality</h3>
+<p>In classical monetary thought, money is essential for transactions but largely <strong>neutral</strong> in the long run: changes in the money supply affect nominal variables (such as prices) but not real variables (such as output and employment), once prices fully adjust. This idea underpins the classical dichotomy and long-run neutrality propositions often associated with quantity-theoretic reasoning.</p>
+</section>
+<section id="the-keynesian-view-liquidity-preference-spillovers-and-real-effects" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="the-keynesian-view-liquidity-preference-spillovers-and-real-effects"><span class="header-section-number">1.6.2</span> The Keynesian view: liquidity preference, spillovers, and real effects</h3>
+<p>Keynes argued that money is not only a medium of exchange and unit of account; it is also a store of value held for liquidity under uncertainty (Keynes, 1936). Because agents can choose to hoard money, shifts in liquidity preference can spill over into asset markets and goods markets, affecting interest rates, investment, and aggregate demand. Under price and wage rigidities, these monetary and financial conditions can affect real output and employment in the short and medium run.</p>
+</section>
+<section id="modern-synthesis-and-current-debates" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="modern-synthesis-and-current-debates"><span class="header-section-number">1.6.3</span> Modern synthesis and current debates</h3>
+<p>Contemporary macroeconomics typically combines elements of both traditions: money is often viewed as approximately neutral in the long run, but monetary policy and liquidity conditions are central to short-run fluctuations. Modern frameworks often focus on interest rates and financial conditions rather than money aggregates alone (e.g., Woodford, 2003), but the post‑pandemic inflation episode revived interest in money growth and liquidity alongside standard policy-rate channels (Borio et al., 2023; 2024).</p>
+<hr>
+</section>
+</section>
+<section id="discussion-questions" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="discussion-questions"><span class="header-section-number">1.7</span> Discussion Questions</h2>
+<ol type="1">
+<li>Why does the number of required barter exchange ratios grow so rapidly as the number of goods increases? What informational problem does money solve?</li>
+<li>In what sense is a stable unit of account a public good? How does inflation undermine it?</li>
+<li>Using the idea of opportunity cost, explain why higher nominal interest rates typically reduce desired money holdings.</li>
+<li>Why might a technologically superior payment instrument fail as “money” if it lacks broad acceptability?</li>
+<li>How could CBDCs change the composition of liquid assets held by households and the banking sector?</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="references" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> References</h1>
+<p>Atlantic Council. (n.d.). <em>Central Bank Digital Currency (CBDC) Tracker</em>. Atlantic Council GeoEconomics Center. Retrieved January 9, 2026, from https://www.atlanticcouncil.org/cbdctracker/</p>
+<p>Board of Governors of the Federal Reserve System. (n.d.). <em>M2 (M2SL)</em> [Data series]. Federal Reserve Bank of St.&nbsp;Louis (FRED). Retrieved January 9, 2026, from https://fred.stlouisfed.org/series/M2SL</p>
+<p>Borio, C., Hofmann, B., &amp; Zakrajšek, E. (2023). <em>Does money growth help explain the recent inflation surge?</em> BIS Bulletin No.&nbsp;67. Bank for International Settlements. https://www.bis.org/publ/bisbull67.pdf</p>
+<p>Borio, C., Hofmann, B., &amp; Zakrajšek, E. (2024, January 24). <em>Money growth and the post-pandemic inflation surge: Updating the evidence</em>. VoxEU/CEPR. https://cepr.org/voxeu/columns/money-growth-and-post-pandemic-inflation-surge-updating-evidence</p>
+<p>Friedman, M., &amp; Schwartz, A. J. (1963). <em>A Monetary History of the United States, 1867–1960</em>. Princeton University Press.</p>
+<p>International Monetary Fund. (2025). <em>El Salvador: Request for an Extended Arrangement Under the Extended Fund Facility</em> (Country Report No.&nbsp;25/001). International Monetary Fund.</p>
+<p>International Monetary Fund. (n.d.). <em>Venezuela: Inflation rate, average consumer prices (annual percent change)</em> [Data]. IMF DataMapper. Retrieved January 9, 2026, from https://www.imf.org/external/datamapper/profile/VEN</p>
+<p>Jevons, W. S. (1875/1876). <em>Money and the Mechanism of Exchange</em>. Henry S. King &amp; Co.</p>
+<p>Keynes, J. M. (1936). <em>The General Theory of Employment, Interest and Money</em>. Macmillan.</p>
+<p>Kiyotaki, N., &amp; Wright, R. (1989). On money as a medium of exchange. <em>Journal of Political Economy, 97</em>(4), 927–954. https://doi.org/10.1086/261634</p>
+<p>Kiyotaki, N., &amp; Wright, R. (1993). A search-theoretic approach to monetary economics. <em>American Economic Review, 83</em>(1), 63–77.</p>
+<p>Umlauft, A. (2018). <em>Why do people use Bitcoin?</em> (Working paper / lecture note). (Cited for evidence on limited payment use; replace with your preferred updated source if desired.)</p>
+<p>Woodford, M. (2003). <em>Interest and Prices: Foundations of a Theory of Monetary Policy</em>. Princeton University Press.</p>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./index.html" class="pagination-link" aria-label="Monetary Economics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Monetary Economics</span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./week1lecture.html" class="pagination-link" aria-label="Lecture">
+        <span class="nav-page-text">Lecture</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
