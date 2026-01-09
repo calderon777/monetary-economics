@@ -1,16 +1,24 @@
 project:
   type: website
   output-dir: docs
+
 website:
-  title: "Monetary Economics EC3014"
-  navbar:
-    left:
-      - href: index.qmd
-        text: Home
-      - href: week1lecture1.qmd
-        text: "Week 1 Lecture 1"        
-      - href: week1.qmd
-        text: "Week 1 Tutorial"
+  title: "Monetary Economics"
+  page-navigation: true
+  sidebar:
+    style: floating
+    contents:
+      - index.qmd
+      - section: "Week 1"
+        contents:
+          - text: "Reading"
+            file: week1reading.qmd
+          - text: "Lecture 1"
+            file: week1lecture1.qmd
+          - text: "Lecture 2"
+            file: week1lecture2.qmd
+          - text: "Tutorial"
+            file: week1tutorial.qmd
 
 format:
   html:
