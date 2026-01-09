@@ -13,10 +13,8 @@ website:
         contents:
           - text: "Reading"
             file: week1reading.qmd
-          - text: "Lecture 1"
-            file: week1lecture1.qmd
-          - text: "Lecture 2"
-            file: week1lecture2.qmd
+          - text: "Lecture"
+            file: week1lecture.qmd
           - text: "Tutorial"
             file: week1tutorial.qmd
 

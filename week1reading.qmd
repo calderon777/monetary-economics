@@ -1,6 +1,6 @@
 ---
-title: "The Nature and Economic Role of Money"
-subtitle: "Monetary Economics"
+title: "Monetary Economics"
+subtitle: "The Nature and Economic Role of Money"
 author: "Dr Camilo Calderon"
 format:
   html:
@@ -15,7 +15,9 @@ execute:
   echo: false
 ---
 
-## 1. Introduction to the Economic Role of Money
+# The Nature and Economic Role of Money
+
+## Introduction to the Economic Role of Money
 
 Money is a core institution of modern economies. A practical working definition is that **money is any asset that is generally accepted as payment** for goods and services in a given economic community. The defining feature here is *general acceptability*: an agent accepts money in exchange not because they wish to consume it, but because they expect others to accept it in subsequent transactions.
 
@@ -33,11 +35,11 @@ We then analyse **liquidity**—the property that links money to broader asset m
 
 ---
 
-## 2. Money as a Unit of Account
+## Money as a Unit of Account
 
 A **unit of account** is a common measure in which prices and values are expressed. This role is conceptually distinct from the medium-of-exchange role: a society could in principle use an abstract unit of account for pricing and contracting while settling transactions with other assets. In practice, however, the monetary unit (pounds, euros, dollars) typically serves as the unit of account.
 
-### 2.1 Exchange ratios, relative prices, and the economy of measurement
+### Exchange ratios, relative prices, and the economy of measurement
 
 The most fundamental object in valuation is the **relative price** (or exchange ratio): how many units of one good exchange for one unit of another.
 
@@ -45,13 +47,13 @@ Without a unit of account, describing values requires listing pairwise exchange 
 
 A unit of account dramatically reduces informational complexity. If each good has a money price, only *n* prices need to be quoted, and any relative price can be computed as a ratio of two money prices. This is the **economy of measurement** created by money as unit of account.
 
-### 2.2 The unit of account and inflation
+### The unit of account and inflation
 
 The unit-of-account function is most useful when the unit is relatively stable in purchasing power. If the unit itself changes value unpredictably, it is like trying to measure length with a ruler that keeps changing size. Inflation makes price comparisons harder, disrupts long-term contracting, and increases the resources devoted to repricing and indexation.
 
 In high-inflation or hyperinflation episodes, domestic money often fails as a unit of account and people may shift to a foreign currency (partial “dollarisation”) or to indexed units. For example, Venezuela experienced extremely high inflation in the late 2010s, and pricing and saving behaviour increasingly moved toward stable foreign currencies (IMF DataMapper, n.d.). The general economic point is that price stability supports the unit-of-account role; instability undermines it.
 
-### 2.3 Digital money and unit-of-account challenges
+### Digital money and unit-of-account challenges
 
 Post‑2010 innovations highlight that being technologically novel is not sufficient to become a unit of account. Many cryptocurrencies are highly volatile, which makes them unattractive as pricing units for everyday goods and services. Even where legal experiments occurred—such as El Salvador’s 2021 Bitcoin legal tender policy—prices and contracts largely remained denominated in dollars, not Bitcoin, consistent with the idea that a unit of account requires stability and broad trust. IMF programme documentation reports that legal changes in 2025 removed key legal-tender features (including the obligation to accept Bitcoin), reflecting limited adoption and significant policy concerns (IMF, 2025).
 
@@ -59,27 +61,27 @@ By contrast, **stablecoins** seek to inherit stability by pegging to a fiat unit
 
 ---
 
-## 3. Money as a Medium of Exchange
+## Money as a Medium of Exchange
 
 A **medium of exchange** is an asset that agents accept in exchange for goods and services with the intention of using it to purchase other goods and services in the future. This function is the most visible and is closely tied to money’s central economic contribution: reducing transaction costs.
 
-### 3.1 Why barter scales poorly: double coincidence of wants and search costs
+### Why barter scales poorly: double coincidence of wants and search costs
 
 Barter trade is a one-step exchange of one good for another. A monetary transaction typically involves two steps (sell for money, then buy with money), which may appear more complex at first glance. The key point is that barter requires a double coincidence of wants. In a decentralised economy with many goods and heterogeneous preferences, satisfying this condition is rare and costly.
 
 Jevons (1875/1876) emphasised that the main friction is not conceptual but practical: it is costly to search for a counterparty who both has what you want and wants what you have. Monetary exchange solves this problem by allowing trade with any counterparty who accepts money, which—by definition—is “everyone.”
 
-### 3.2 Trading posts, market structure, and the economy of exchange
+### Trading posts, market structure, and the economy of exchange
 
 A useful way to see the role of a medium of exchange is to imagine that, without money, an economy would require a dense network of “trading posts” or market arrangements for each pair of goods. With *n* goods, $\frac{n(n-1)}{2}$ bilateral trading posts would be needed for direct barter across all pairs, which scales poorly. With money as a medium of exchange, each good needs only a market against money, and any two goods can be traded indirectly through money. This is the **economy of exchange** that money provides.
 
-### 3.3 Microfoundations: money as an equilibrium response to frictions
+### Microfoundations: money as an equilibrium response to frictions
 
 Modern monetary economics formalised these intuitions in search-theoretic models. In seminal work, Kiyotaki and Wright (1989) show that under trading frictions, certain assets can become accepted as media of exchange because they lower transaction costs and increase the probability of successful trade. Later work (Kiyotaki & Wright, 1993) provides a broader framework for monetary exchange as a solution to decentralised trading problems.
 
 These models help clarify why *acceptability* is both cause and consequence of being money: an asset is accepted because others accept it, creating a network effect. But acceptance is not arbitrary; assets with suitable properties (portability, durability, divisibility, and low verification cost) are more likely to emerge as media of exchange.
 
-### 3.4 Payment innovation: money versus the payments system
+### Payment innovation: money versus the payments system
 
 In modern economies, many transactions are executed electronically. Cards, mobile wallets, and real-time transfer systems are *payment technologies* layered on top of money. Under the hood, settlement typically occurs in central bank money (reserves and cash) and bank deposit money denominated in the national unit of account.
 
@@ -87,19 +89,19 @@ Cryptocurrencies have been proposed as alternative payment instruments. Empirica
 
 ---
 
-## 4. Money as a Store of Value
+## Money as a Store of Value
 
 Money also functions as a **store of value**: it transfers purchasing power through time. This function follows naturally from the medium-of-exchange role because sales and purchases are often separated by time; in that gap, money is held as an asset.
 
 However, money is not the only store of value. Bonds, equities, property, and other assets store value and often deliver higher returns. Money’s comparative advantage is *liquidity*—the capacity to be used immediately as a means of payment.
 
-### 4.1 Opportunity cost of holding money
+### Opportunity cost of holding money
 
 Because money typically yields little or no interest, holding money involves an **opportunity cost**: the foregone return from holding an interest-bearing asset instead. This opportunity cost is a key determinant of money demand.
 
 Keynes (1936) emphasised that agents demand money not only for transactions but also for liquidity as a store of value under uncertainty. In this framework, the interest rate can be interpreted as a premium required to induce agents to hold less liquid assets instead of money.
 
-### 4.2 Inflation and store-of-value performance
+### Inflation and store-of-value performance
 
 Inflation erodes the real value of nominal money balances. Over long horizons, cash is typically a poor store of value unless nominal interest on liquid balances compensates for inflation. When inflation is high and unpredictable, agents shift into alternative stores of value (foreign currency, real assets, indexed claims), weakening money’s store-of-value role and potentially destabilising the monetary system.
 
@@ -107,7 +109,7 @@ Recent macroeconomic experience renewed attention to these issues. Following the
 
 ---
 
-## 5. Liquidity: Definitions and Criteria
+## Liquidity: Definitions and Criteria
 
 Liquidity is a central concept linking money to asset markets and financial stability. A practical definition is:
 
@@ -115,7 +117,7 @@ Liquidity is a central concept linking money to asset markets and financial stab
 
 Money is the most liquid asset. Other assets are “money-like” to the extent that they can be converted into money rapidly at low cost and low risk.
 
-### 5.1 Components of liquidity
+### Components of liquidity
 
 Liquidity is commonly associated with:
 
@@ -126,41 +128,41 @@ Liquidity is commonly associated with:
 
 These criteria help explain why agents are often willing to hold money despite its low return: they obtain liquidity services in exchange for foregoing interest.
 
-### 5.2 Monetary aggregates and “moneyness”
+### Monetary aggregates and "moneyness"
 
 Because liquidity is a spectrum, monetary authorities define multiple monetary aggregates. Narrow measures (e.g., currency and demand deposits) are most liquid. Broader measures include less liquid but still money-like instruments (e.g., some savings deposits).
 
 In the U.S., widely used series include M2, available through the Federal Reserve Bank of St. Louis FRED database (Board of Governors of the Federal Reserve System, n.d.). While definitions differ across countries, the central idea is consistent: as aggregates broaden, **liquidity declines** and **return often increases**.
 
-### 5.3 Liquidity, crises, and central banks
+### Liquidity, crises, and central banks
 
 Liquidity conditions can change abruptly in crises. Even normally liquid markets can become illiquid when risk aversion spikes and balance sheets are constrained, producing a “flight to liquidity.” This is one reason central banks maintain lender-of-last-resort frameworks and market backstops to prevent liquidity shocks from turning into solvency crises and macroeconomic contractions.
 
-### 5.4 CBDCs and the future composition of liquid assets
+### CBDCs and the future composition of liquid assets
 
 CBDCs are frequently analysed as potential new forms of sovereign money, designed to be safe and highly liquid. The Atlantic Council’s CBDC Tracker reports that a large share of countries are exploring, piloting, or developing CBDCs (Atlantic Council, n.d.). If introduced at scale, CBDCs could reshape retail payments, alter the composition of liquid assets held by households, and raise new questions for banking-sector funding and financial stability.
 
 ---
 
-## 6. Keynesian versus Classical Views on Money
+## Keynesian versus Classical Views on Money
 
 The macroeconomic importance of money is often introduced through a contrast between **Classical** and **Keynesian** approaches.
 
-### 6.1 The Classical view: money as a “veil” and long-run neutrality
+### The Classical view: money as a "veil" and long-run neutrality
 
 In classical monetary thought, money is essential for transactions but largely **neutral** in the long run: changes in the money supply affect nominal variables (such as prices) but not real variables (such as output and employment), once prices fully adjust. This idea underpins the classical dichotomy and long-run neutrality propositions often associated with quantity-theoretic reasoning.
 
-### 6.2 The Keynesian view: liquidity preference, spillovers, and real effects
+### The Keynesian view: liquidity preference, spillovers, and real effects
 
 Keynes argued that money is not only a medium of exchange and unit of account; it is also a store of value held for liquidity under uncertainty (Keynes, 1936). Because agents can choose to hoard money, shifts in liquidity preference can spill over into asset markets and goods markets, affecting interest rates, investment, and aggregate demand. Under price and wage rigidities, these monetary and financial conditions can affect real output and employment in the short and medium run.
 
-### 6.3 Modern synthesis and current debates
+### Modern synthesis and current debates
 
 Contemporary macroeconomics typically combines elements of both traditions: money is often viewed as approximately neutral in the long run, but monetary policy and liquidity conditions are central to short-run fluctuations. Modern frameworks often focus on interest rates and financial conditions rather than money aggregates alone (e.g., Woodford, 2003), but the post‑pandemic inflation episode revived interest in money growth and liquidity alongside standard policy-rate channels (Borio et al., 2023; 2024).
 
 ---
 
-## 7. Discussion Questions
+## Discussion Questions
 
 1. Why does the number of required barter exchange ratios grow so rapidly as the number of goods increases? What informational problem does money solve?
 2. In what sense is a stable unit of account a public good? How does inflation undermine it?
