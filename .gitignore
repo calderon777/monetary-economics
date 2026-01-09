@@ -1,7 +1,7 @@
 # Quarto output
 /_site/
-*.html
-/docs/
+# Don't ignore docs folder since it's used for GitHub Pages
+# /docs/
 
 # R-related (if you use R)
 .Rproj.user/
