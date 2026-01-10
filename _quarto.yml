@@ -17,7 +17,14 @@ website:
             file: week1lecture.qmd
           - text: "Tutorial"
             file: week1tutorial.qmd
-
+      - section: "Week 2"
+        contents:
+          - text: "Reading"
+            file: week2reading.qmd
+          - text: "Lecture"
+            file: week2lecture.qmd
+          - text: "Tutorial"
+            file: week2tutorial.qmd
 format:
   html:
     theme: litera

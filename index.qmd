@@ -5,7 +5,7 @@ format: html
 
 Welcome to **Monetary Economics**.
 
-Use the weekly sections below to move through the material in the order you need it: reading first, then slides, then the tutorial.
+Use the weekly sections below to move through the material in the order you need it: reading first, then slides, then the tutorial. 
 
 ## Week 1
 
@@ -13,6 +13,8 @@ Use the weekly sections below to move through the material in the order you need
 - **Slides:** [Lecture](week1lecture.qmd)
 - **Tutorial:** [Tutorial](week1tutorial.qmd)
 
-## Lab materials (R / data work)
+## Week 2
+
+- **Reading:** [Reading](week2reading.qmd)
 
 ## Extra readings and links
