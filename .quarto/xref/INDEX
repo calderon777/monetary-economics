@@ -32,5 +32,12 @@
   "week1reading.qmd": {
     "week1reading.html": "084c5f1d",
     "week1reading.tex": "62687f1d"
+  },
+  "week2reading.qmd": {
+    "week2reading.html": "08350fb9"
+  },
+  "week2readingv001.qmd": {
+    "week2readingv001.html": "b85abcd3",
+    "week2readingv001.tex": "113dcc92"
   }
 }
