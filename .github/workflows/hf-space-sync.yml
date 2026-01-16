@@ -1,0 +1,36 @@
+name: Sync HF Space
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push lean Space files to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HF_TOKEN}" ]; then
+            echo "HF_TOKEN secret is not set."
+            exit 1
+          fi
+
+          HF_REPO="camcalderon777/monetary-economics-questions"
+          WORKDIR="$(mktemp -d)"
+
+          cp app.py requirements.txt styles.css shared.py Dockerfile README.hf.md "${WORKDIR}/"
+          mv "${WORKDIR}/README.hf.md" "${WORKDIR}/README.md"
+
+          cd "${WORKDIR}"
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add .
+          git commit -m "Sync from GitHub ${GITHUB_SHA}"
+          git branch -M main
+          git remote add hf "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_REPO}"
+          git push -f hf main
