@@ -1,5 +1,5 @@
 ---
-title: "EC3014 - End of Week 1 Quiz"
+title: "End of Week 1 Quiz"
 format: html
 execute:
   echo: false
@@ -10,14 +10,6 @@ execute:
 - Your answers are **not automatically collected**.
 - Select the best answer for each question.
 :::
-
-<!-- MCQ styling (template-compatible) -->
-<style>
-.mcq-key{display:none!important;}
-.mcq-we-q label{display:block; margin:0.15rem 0; cursor:pointer;}
-.mcq-we-q label.is-correct{font-weight:700;}
-.mcq-we-q label.is-incorrect{opacity:0.85;}
-</style>
 
 <!-- FEEDBACK SCRIPT: sets .is-correct / .is-incorrect on the clicked label -->
 <script>
@@ -49,51 +41,52 @@ execute:
 })();
 </script>
 
+
 <div class="mcq-we">
 
 <div class="mcq-we-q">
 **1) According to some accounts, an early form of accounting that recorded national wealth was represented by:**  
-<label><input type="radio" name="q1"> Cattle</label>
-<label><input type="radio" name="q1"> Paper currency</label>
-<label><input type="radio" name="q1"> Tally sticks</label>
-<label><input type="radio" name="q1"> Jewellery</label>
+`r webexercises::longmcq(c("Cattle", "Paper currency", answer = "Tally sticks", "Jewellery"))`
 <span class="mcq-key" data-correct="Tally sticks"></span>
+<details class="hint"><summary>Hint</summary>Carved marks as receipts.</details>
 </div>
 
 <div class="mcq-we-q">
 **2) In an economy with 6 goods, the number of possible exchange ratios would be:**  
-<label><input type="radio" name="q2"> 6</label>
-<label><input type="radio" name="q2"> 12</label>
-<label><input type="radio" name="q2"> 15</label>
-<label><input type="radio" name="q2"> 30</label>
+`r webexercises::longmcq(c("6", "12", answer = "15", "30"))`
 <span class="mcq-key" data-correct="15"></span>
+<details class="hint"><summary>Hint</summary>It’s n(n-1)/2.</details>
 </div>
 
 <div class="mcq-we-q">
 **3) A currency based on fiat money differs from one based on commodity money by the fact that:**  
-<label><input type="radio" name="q3"> The former uses paper while the latter uses metallic coins</label>
-<label><input type="radio" name="q3"> The bearer of commodity money has a claim to an equivalent value of the commodity itself, while the bearer of fiat money has no such claim</label>
-<label><input type="radio" name="q3"> The former is issued by a central bank while the latter is not</label>
-<label><input type="radio" name="q3"> The former circulates as a medium of exchange only because it is universally accepted as playing this role while the latter does not require such acceptance</label>
+`r webexercises::longmcq(c(
+  "The former uses paper while the latter uses metallic coins",
+  answer = "The bearer of commodity money has a claim to an equivalent value of the commodity itself, while the bearer of fiat money has no such claim",
+  "The former is issued by a central bank while the latter is not",
+  "The former circulates as a medium of exchange only because it is universally accepted as playing this role while the latter does not require such acceptance"
+))`
 <span class="mcq-key" data-correct="The bearer of commodity money has a claim to an equivalent value of the commodity itself, while the bearer of fiat money has no such claim"></span>
+<details class="hint"><summary>Hint</summary>One is redeemable, the other is not.</details>
 </div>
 
 <div class="mcq-we-q">
 **4) Which of the following properties is an objective criterion for something to serve as a medium of exchange?**  
-<label><input type="radio" name="q4"> Marketability</label>
-<label><input type="radio" name="q4"> Backing by a Central Bank</label>
-<label><input type="radio" name="q4"> Predictability of exchange value</label>
-<label><input type="radio" name="q4"> Durability</label>
+`r webexercises::longmcq(c("Marketability", "Backing by a Central Bank", "Predictability of exchange value", answer = "Durability"))`
 <span class="mcq-key" data-correct="Durability"></span>
+<details class="hint"><summary>Hint</summary>Think physical robustness.</details>
 </div>
 
 <div class="mcq-we-q">
 **5) Which of the following statements reflects the debate between Keynesian and Classical economists?**  
-<label><input type="radio" name="q5"> The use of money as a store of value can lead to profound implications for macroeconomic stability</label>
-<label><input type="radio" name="q5"> Every trader is willing to accept money as a means of payment precisely because every other trader is willing to accept money as a means of payment</label>
-<label><input type="radio" name="q5"> The use of a common unit of account for all items traded in an economy makes it easier to keep track of the exchange ratios between these items</label>
-<label><input type="radio" name="q5"> The use of money as a medium of exchange automatically makes it a store of value</label>
+`r webexercises::longmcq(c(
+  answer = "The use of money as a store of value can lead to profound implications for macroeconomic stability",
+  "Every trader is willing to accept money as a means of payment precisely because every other trader is willing to accept money as a means of payment",
+  "The use of a common unit of account for all items traded in an economy makes it easier to keep track of the exchange ratios between these items",
+  "The use of money as a medium of exchange automatically makes it a store of value"
+))`
 <span class="mcq-key" data-correct="The use of money as a store of value can lead to profound implications for macroeconomic stability"></span>
+<details class="hint"><summary>Hint</summary>Liquidity preference vs neutrality.</details>
 </div>
 
 </div>

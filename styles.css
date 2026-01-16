@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 :root {
   --bslib-sidebar-main-bg: #f8f8f8;
 }
@@ -10,3 +11,100 @@
 .popover .btn-close {
   filter: var(--bs-btn-close-white-filter);
 }
+=======
+/* Cambridge Supervisions: subtle typography polish */
+h2, h3 { margin-top: 2rem; }
+main ul, main ol { margin-bottom: 1rem; }
+main p { line-height: 1.5; }
+pre code { font-size: 0.9em; }
+.callout { margin: 1rem 0; }
+
+/* ===============================
+   MCQ layout + feedback (webexercises)
+   Scope everything to .mcq-we wrapper
+   =============================== */
+.mcq-we {
+  --mcq-correct: #15803d;   /* green-700 */
+  --mcq-incorrect: #b91c1c; /* red-700 */
+}
+
+.mcq-we .webex-radiogroup,
+.mcq-we .webex-checkboxgroup { display: block; }
+
+/* Stack options vertically with nice spacing */
+.mcq-we label {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  margin: .25rem 0;
+  line-height: 1.5;
+}
+
+/* Tweak control alignment */
+.mcq-we input[type="radio"],
+.mcq-we input[type="checkbox"] {
+  margin-top: .15rem;
+}
+
+/* Make the checked option a little bolder for readability */
+.mcq-we input[type="radio"]:checked + span,
+.mcq-we input[type="checkbox"]:checked + span,
+.mcq-we label:has(input:checked) { font-weight: 500; }
+
+/* --- Feedback text (✓/✗) ---
+   Webexercises may place correctness on different elements depending on version.
+   Cover common cases: the label itself, a wrapper (li/div) around label,
+   or the input getting the class and the label following.
+*/
+.mcq-we label.webex-correct::after,
+.mcq-we li.webex-correct > label::after,
+.mcq-we div.webex-correct > label::after,
+.mcq-we input.webex-correct + label::after,
+.mcq-we .webex-solution-true > label::after {
+  content: " ✓ Correct";
+  color: var(--mcq-correct);
+  font-weight: 600;
+  margin-left: .35rem;
+}
+.mcq-we label.webex-incorrect::after,
+.mcq-we li.webex-incorrect > label::after,
+.mcq-we div.webex-incorrect > label::after,
+.mcq-we input.webex-incorrect + label::after,
+.mcq-we .webex-solution-false > label::after {
+  content: " ✗ Incorrect";
+  color: var(--mcq-incorrect);
+  font-weight: 600;
+  margin-left: .35rem;
+}
+
+/* Also tint the whole line when correctness is known */
+.mcq-we label.webex-correct,
+.mcq-we li.webex-correct > label,
+.mcq-we div.webex-correct > label,
+.mcq-we input.webex-correct + label,
+.mcq-we .webex-solution-true > label {
+  color: var(--mcq-correct);
+}
+.mcq-we label.webex-incorrect,
+.mcq-we li.webex-incorrect > label,
+.mcq-we div.webex-incorrect > label,
+.mcq-we input.webex-incorrect + label,
+.mcq-we .webex-solution-false > label {
+  color: var(--mcq-incorrect);
+}
+
+/* Optional: hint styling */
+.mcq-we details.hint { margin: .35rem 0 .6rem; }
+.mcq-we details.hint > summary { cursor: pointer; color: #475569; }
+
+/* feedback driven by our script */
+.mcq-we label.is-correct::after {
+  content: " ✓ Correct"; color: #15803d; font-weight: 600; margin-left: .35rem;
+}
+.mcq-we label.is-incorrect::after {
+  content: " ✗ Incorrect"; color: #b91c1c; font-weight: 600; margin-left: .35rem;
+}
+/* optional tint for the whole line */
+.mcq-we label.is-correct  { color: #15803d; }
+.mcq-we label.is-incorrect{ color: #b91c1c; }
+>>>>>>> 87e9101 (mcqs fix)
