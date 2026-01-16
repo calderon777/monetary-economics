@@ -5,7 +5,7 @@ format: html
 
 ## Interactive Tutorial with AI Feedback
 
-This page contains the tutorial questions for Week 1. To answer these questions and receive AI-powered feedback, please **[access the interactive tutorial here](https://huggingface.co/spaces/REPLACE_ME)** (or run locally: `shiny run app.py` from your terminal).
+This page contains the tutorial questions for Week 1. To answer these questions and receive AI-powered feedback, please **[access the interactive tutorial here](https://huggingface.co/spaces/camcalderon777/monetary-economics-questions)** (or run locally: `shiny run app.py` from your terminal).
 
 ---
 
