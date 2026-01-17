@@ -11,6 +11,7 @@ Use the topic sections below to move through the material in the order you need 
 
 - **Reading:** [Reading](topic1reading.qmd)
 - **Slides:** [Lecture](topic1lecture.qmd)
+- **Questions:** [Interactive Tutorial](topic1questions.qmd)
 - **MCQs:** [MCQs](topic1mcqs.qmd)
 
 ## Topic 2
