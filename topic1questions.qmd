@@ -5,97 +5,24 @@ format: html
 
 ## Interactive Tutorial with AI Feedback
 
-Answer the questions below and receive AI-powered feedback. The app is embedded below:
+Use this page to practise **concept clarity** and **economic reasoning** before your tutorial.
+
+**Learning objectives (before you start):**
+- Identify the core concept in each question and state it explicitly.
+- Apply economic reasoning (not just examples) to justify your answers.
+- Explain the “why”, not just the “what”, for every claim you make.
+
+**How to use the AI tutor:**
+1) Write your own answer first.
+2) Click **Get AI Feedback** and note what you got right or missed.
+3) Revise your answer in your notes; be explicit with definitions and causal reasoning.
+4) Only then, if needed, reveal the indicative answer below.
+
+**Reflection after you reveal an indicative answer:**
+- What did you miss? Where was your reasoning thin?
+- Rewrite one stronger sentence that uses an explicit definition + a clear “because”.
 
 ```{=html}
 <iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
 ```
 
----
-
-## Question Details
-
-### Question 1
-
-**A.** Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?
-
-**B.** If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?
-
-<details>
-<summary><strong>💡 Click to reveal indicative answer</strong></summary>
-
-The Store of Value (SoV) role of money automatically follows from its Medium of Exchange (MoE) role. This is because using money as MoE leads inevitably to a time gap between acquiring money through sale and spending it to buy something else. During this time, money stores the value of what was sold.
-
-However, there is no inevitable link between MoE and Unit of Account (UoA). The need for a UoA can arise even in a non-monetary economy to define prices. While it makes sense for the MoE to also serve as UoA, they are conceptually independent functions.
-
-**Examples of UoA without MoE:**
-- **IMF's Special Drawing Right (SDR)**: A fictitious currency based on a basket of major currencies, used to denominate loans but not freely traded
-- **European Currency Unit (ECU)**: Preceded the Euro, used for harmonizing accounts but not an actual medium of exchange
-
-</details>
-
----
-
-## Question 2
-
-What are the characteristics that underlie liquidity? Can any object acquire these characteristics or are there some physical attributes that must be met?
-
-<details>
-<summary><strong>💡 Click to reveal indicative answer</strong></summary>
-
-Liquidity is characterized by four key attributes:
-
-1. **(i) Marketability** - ease of sale
-2. **(ii) Predictability of exchange value** - more stable than individual goods
-3. **(iii) Reversibility** - minimal loss of value between acquisition and sale
-4. **(iv) Divisibility** - can be used for even the smallest transactions
-
-Whatever serves as the MoE acquires these characteristics by virtue of being universally accepted. However, not any object can become MoE. Physical attributes required include:
-
-1. **(i) Transportability** - easy to carry
-2. **(ii) Durability** - does not physically depreciate
-3. **(iii) Inherent divisibility** - can be broken into small units
-4. **(iv) Universal appeal** - not repulsive to users
-
-These objective criteria limit what can serve as effective money.
-
-</details>
-
----
-
-## Question 3
-
-In the example of three agents and three goods which is discussed in the lectures, can you think of an alternative to the use of a medium of exchange that might have allowed the three traders to acquire their most preferred good?
-
-**Context:** 
-- Harriet: 6 Bananas ≻ 3 Apples ≻ 1 Cabbage
-- Ina: 1 Cabbage ≻ 6 Bananas ≻ 3 Apples
-- Jamal: 3 Apples ≻ 1 Cabbage ≻ 6 Bananas
-
-<details>
-<summary><strong>💡 Click to reveal indicative answer</strong></summary>
-
-**Alternative mechanisms to the use of a medium of exchange:**
-
-**1. Middleman/Clearinghouse approach:**
-In the three-trader example, one trader could accept their least preferred good to facilitate the chain of exchanges. For instance, if Ina accepts Apples from Harriet (her least preferred), she can then trade with Jamal to get Cabbage (her most preferred).
-
-*Problem:* This requires perfect knowledge of who has what and who wants what. Search and informational frictions make this risky.
-
-**2. Multilateral simultaneous trades:**
-All traders meet at once and exchange cooperatively (Ina gives Bananas to Harriet, who gives Apples to Jamal, who gives Cabbage to Ina - all simultaneously).
-
-*Problem:* This becomes extremely difficult with many traders and goods. Coordination costs are prohibitive.
-
-**Conclusion:** The use of a MoE simplifies all these complications and reduces transaction costs significantly.
-
-</details>
-
----
-
-## How to Get Started
-
-1. **Online (recommended):** Click the link at the top to access the interactive tutorial (hosted on Hugging Face Spaces)
-2. **Locally:** Run `shiny run app.py` in your terminal and visit `http://127.0.0.1:8000`
-
-The interactive tutorial will provide AI-powered hints based on your answers to help improve your understanding!
