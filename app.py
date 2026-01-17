@@ -1,6 +1,21 @@
 from shiny import App, ui, render, reactive
 from groq import Groq
 import os
+import pathlib
+
+# Try to load topic1questions.qmd for context
+def load_questions_from_qmd():
+    """Load question text from topic1questions.qmd for better context."""
+    qmd_path = pathlib.Path("topic1questions.qmd")
+    if qmd_path.exists():
+        try:
+            content = qmd_path.read_text(encoding="utf-8")
+            # Extract questions from QMD (basic extraction)
+            # This is optional; you can also keep hardcoded versions
+            return content
+        except Exception as e:
+            print(f"Warning: Could not load topic1questions.qmd: {e}")
+    return None
 
 # Store indicative answers for each question
 INDICATIVE_ANSWERS = {
@@ -50,7 +65,12 @@ def get_question_text(num):
 
 
 def create_feedback_prompt(question_num, student_answer, indicative_answer):
-    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question. Your goal is to help students improve their analysis and evaluation skills by providing hints and guidance, NOT complete answers.
+    qmd_context = load_questions_from_qmd()
+    context_note = ""
+    if qmd_context:
+        context_note = "\n\nNote: This question is from topic1questions.qmd, which is synced to HF Space for reference."
+    
+    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 1. Your goal is to help students improve their analysis and evaluation skills by providing hints and guidance, NOT complete answers.
 
 QUESTION {question_num}:
 {get_question_text(question_num)}
@@ -72,7 +92,7 @@ INSTRUCTIONS:
 5. Keep feedback concise (150-200 words max)
 6. Be encouraging and constructive
 
-Provide your feedback now:"""
+Provide your feedback now:{context_note}"""
 
 
 def get_ai_feedback(question_num, student_answer):
@@ -100,7 +120,7 @@ def get_ai_feedback(question_num, student_answer):
 
 
 app_ui = ui.page_fluid(
-    ui.h1("Week 1 Tutorial Questions - Monetary Economics"),
+    ui.h1("Topic 1 - Monetary Economics Questions"),
     ui.markdown(
         """
 ### How to Use This Tutorial
@@ -110,6 +130,8 @@ app_ui = ui.page_fluid(
 3. Click "Get AI Feedback" to receive hints and guidance
 4. Revise your answer based on the feedback
 5. Repeat until you've fully developed your understanding
+
+**Note:** The full question details are available in [topic1questions.qmd](topic1questions.qmd) or [topic1questions.html](docs/topic1questions.html).
 """
     ),
     ui.navset_tab(

@@ -9,6 +9,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Set up Quarto (for rendering topic1questions)
+        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Render topic1questions.qmd to HTML
+        run: |
+          quarto render topic1questions.qmd --to html
       - name: Push lean Space files to Hugging Face
         env:
           HF_TOKEN: ${{ secrets.HF_TOKEN }}
@@ -22,7 +27,16 @@ jobs:
           HF_REPO="camcalderon777/monetary-economics-questions"
           WORKDIR="$(mktemp -d)"
 
+          # Copy core app files
           cp app.py requirements.txt styles.css shared.py Dockerfile README.hf.md "${WORKDIR}/"
+          
+          # Copy topic1questions content (QMD + rendered HTML)
+          cp topic1questions.qmd "${WORKDIR}/" 2>/dev/null || true
+          if [ -d "docs" ]; then
+            mkdir -p "${WORKDIR}/docs"
+            cp docs/topic1questions.html "${WORKDIR}/docs/" 2>/dev/null || true
+          fi
+          
           mv "${WORKDIR}/README.hf.md" "${WORKDIR}/README.md"
 
           cd "${WORKDIR}"
