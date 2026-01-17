@@ -7,50 +7,50 @@ Welcome to **Monetary Economics**.
 
 Use the topic sections below to move through the material in the order you need it: reading first, then slides, then the MCQs. 
 
-## Topic 1
+## Topic 1 - The Nature and Economic Role of Money
 
 - **Reading:** [Reading](topic1reading.qmd)
 - **Slides:** [Lecture](topic1lecture.qmd)
 - **Questions:** [Open Questions](topic1questions.qmd)
 - **MCQs:** [MCQs](topic1mcqs.qmd)
 
-## Topic 2
+## Topic 2 - Classical Theory of Money
 
 - **Reading:** [Reading](topic2reading.qmd)
 - **Slides:** [Lecture](topic2lecture.qmd)
 - **MCQs:** [MCQs](topic2tutorial.qmd)
 
-## Topic 3
+## Topic 3 - Keynes' Theory of Money
 
 - **Reading:** [Reading](topic3reading.qmd)
 - **Slides:** [Lecture](topic3lecture.qmd)
 - **MCQs:** [MCQs](topic3tutorial.qmd)
 
-## Topic 4
+## Topic 4 - Friedman's Monetarism
 
 - **Reading:** [Reading](topic4reading.qmd)
 - **Slides:** [Lecture](topic4lecture.qmd)
 - **MCQs:** [MCQs](topic4tutorial.qmd)
 
-## Topic 5
+## Topic 5 - The New Classical ApproachTheory of Money
 
 - **Reading:** [Reading](topic5reading.qmd)
 - **Slides:** [Lecture](topic5lecture.qmd)
 - **MCQs:** [MCQs](topic5tutorial.qmd)
 
-## Topic 6
+## Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy
 
 - **Reading:** [Reading](topic6reading.qmd)
 - **Slides:** [Lecture](topic6lecture.qmd)
 - **MCQs:** [MCQs](topic6tutorial.qmd)
 
-## Topic 7
+## Topic 7 - The MOnetary Policy Consensus and the Great Moderation
 
 - **Reading:** [Reading](topic7reading.qmd)
 - **Slides:** [Lecture](topic7lecture.qmd)
 - **MCQs:** [MCQs](topic7tutorial.qmd)
 
-## Topic 8
+## Topic 8 - Monetary Policy in the Post-Crisis
 
 - **Reading:** [Reading](topic8reading.qmd)
 - **Slides:** [Lecture](topic8lecture.qmd)
