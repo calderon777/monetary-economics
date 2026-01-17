@@ -429,7 +429,9 @@ app_ui = ui.page_fluid(
 **Context:**
 - Harriet: 6 Bananas > 3 Apples > 1 Cabbage
 - Ina: 1 Cabbage > 6 Bananas > 3 Apples
-- Jamal: 3 Apples > 1 Cabbage > 6 Bananas"""
+- Jamal: 3 Apples > 1 Cabbage > 6 Bananas
+
+**See also:** [Three agents and three goods example in the reading](https://camcalderon-monetary-economics-ec3014.netlify.app/topic1reading.html#three-agents-example) for the setup and economic motivation."""
                         ),
                         class_="question-text"
                     ),

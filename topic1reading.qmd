@@ -70,7 +70,22 @@ A **medium of exchange** is an asset that agents accept in exchange for goods an
 Barter trade is a one-step exchange of one good for another. A monetary transaction typically involves two steps (sell for money, then buy with money), which may appear more complex at first glance. The key point is that barter requires a double coincidence of wants. In a decentralised economy with many goods and heterogeneous preferences, satisfying this condition is rare and costly.
 
 Jevons (1875/1876) emphasised that the main friction is not conceptual but practical: it is costly to search for a counterparty who both has what you want and wants what you have. Monetary exchange solves this problem by allowing trade with any counterparty who accepts money, which—by definition—is “everyone.”
+### A concrete example: three agents and three goods {#three-agents-example}
 
+To illustrate the problem of the double coincidence of wants, consider three traders and three goods:
+
+- **Harriet** has 6 Bananas; she prefers: Bananas (6) ≻ Apples (3) ≻ Cabbage (1)
+- **Ina** has 1 Cabbage; she prefers: Cabbage (1) ≻ Bananas (6) ≻ Apples (3)
+- **Jamal** has 3 Apples; he prefers: Apples (3) ≻ Cabbage (1) ≻ Bananas (6)
+
+Each trader ends up with their *least preferred* good. Under pure barter, achieving mutual benefit is complicated:
+
+- Harriet wants to trade her Bananas for Apples (Jamal's good), but Jamal wants to trade his Apples for Cabbage (Ina's good), not Bananas.
+- Ina wants to trade her Cabbage for Bananas (Harriet's good), but Harriet wants Apples, not Cabbage.
+
+Without a medium of exchange, all three traders would need to coordinate a multilateral trade: Harriet gives Bananas to Ina, Jamal gives Apples to Harriet, and Ina gives Cabbage to Jamal—all simultaneously. This requires perfect knowledge of each other's preferences and strict temporal coordination.
+
+With a widely accepted *medium of exchange* (money), the problem vanishes: each trader sells their current good for money, then uses money to purchase their preferred good. Transaction costs are dramatically reduced, and agents can trade independently rather than relying on simultaneous trilateral coordination.
 ### Trading posts, market structure, and the economy of exchange
 
 A useful way to see the role of a medium of exchange is to imagine that, without money, an economy would require a dense network of “trading posts” or market arrangements for each pair of goods. With *n* goods, $\frac{n(n-1)}{2}$ bilateral trading posts would be needed for direct barter across all pairs, which scales poorly. With money as a medium of exchange, each good needs only a market against money, and any two goods can be traded indirectly through money. This is the **economy of exchange** that money provides.

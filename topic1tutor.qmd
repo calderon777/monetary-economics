@@ -145,7 +145,35 @@ Explicitly link discussion to exam skills.
 
 ---
 
-## After the Tutorial
+## Tutor Commentary: Common Observations
+
+Use this section to frame feedback and calibrate expectations with students.
+
+### Common Misconceptions Observed
+
+**Question 1 (MoE → SoV → UoA):**
+- Students often conflate "automatic" with "necessary". SoV follows from MoE *in practice* (time gap), but students sometimes suggest all three roles are equally entangled.
+- UoA independence is frequently overlooked; students default to assuming MoE is always UoA.
+
+**Question 2 (Liquidity characteristics):**
+- Students list the four attributes but struggle to connect them causally. They state "marketability matters" without explaining *why* it generates liquidity.
+- Physical attributes are sometimes confused with economic attributes; e.g., "gold is valuable" vs. "gold is transportable and durable, which enables it to be valuable as MoE."
+
+**Question 3 (Three-trader alternatives):**
+- Students often propose clearinghouse as a general solution without acknowledging search costs or information requirements.
+- The conclusion about MoE simplifying coordination is stated but not *derived* from the example's complexity.
+
+### Good Reasoning Patterns to Highlight
+
+- Explicit causal chains: "Because there is a time gap between sale and purchase, money *must store value*."
+- Contrasts between concepts: "Unlike MoE, which requires universal acceptance, UoA only requires shared definition."
+- Links to real examples with reasoning: "SDR shows UoA can exist without MoE because it's used for accounting, not transactions."
+
+### Links to Exam Expectations
+
+- **Exam-style framing:** Questions will test whether you can *defend* a position using economic logic, not just list definitions.
+- **Marking focus:** Marks are awarded for reasoning (causal links, scope limitations) more than for correct labels.
+- **Common traps:** Overgeneralizing from one context (e.g., "all money serves all three roles everywhere") without qualification.
 
 ### Releasing Indicative Answers
 

@@ -167,6 +167,12 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./topic1questions.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Questions</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./topic1mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
@@ -398,9 +404,8 @@ window.Quarto = {
   <li><a href="#money-as-a-medium-of-exchange" id="toc-money-as-a-medium-of-exchange" class="nav-link" data-scroll-target="#money-as-a-medium-of-exchange"><span class="header-section-number">1.3</span> Money as a Medium of Exchange</a>
   <ul class="collapse">
   <li><a href="#why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs" id="toc-why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs" class="nav-link" data-scroll-target="#why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs"><span class="header-section-number">1.3.1</span> Why barter scales poorly: double coincidence of wants and search costs</a></li>
-  <li><a href="#trading-posts-market-structure-and-the-economy-of-exchange" id="toc-trading-posts-market-structure-and-the-economy-of-exchange" class="nav-link" data-scroll-target="#trading-posts-market-structure-and-the-economy-of-exchange"><span class="header-section-number">1.3.2</span> Trading posts, market structure, and the economy of exchange</a></li>
-  <li><a href="#microfoundations-money-as-an-equilibrium-response-to-frictions" id="toc-microfoundations-money-as-an-equilibrium-response-to-frictions" class="nav-link" data-scroll-target="#microfoundations-money-as-an-equilibrium-response-to-frictions"><span class="header-section-number">1.3.3</span> Microfoundations: money as an equilibrium response to frictions</a></li>
-  <li><a href="#payment-innovation-money-versus-the-payments-system" id="toc-payment-innovation-money-versus-the-payments-system" class="nav-link" data-scroll-target="#payment-innovation-money-versus-the-payments-system"><span class="header-section-number">1.3.4</span> Payment innovation: money versus the payments system</a></li>
+  <li><a href="#microfoundations-money-as-an-equilibrium-response-to-frictions" id="toc-microfoundations-money-as-an-equilibrium-response-to-frictions" class="nav-link" data-scroll-target="#microfoundations-money-as-an-equilibrium-response-to-frictions"><span class="header-section-number">1.3.2</span> Microfoundations: money as an equilibrium response to frictions</a></li>
+  <li><a href="#payment-innovation-money-versus-the-payments-system" id="toc-payment-innovation-money-versus-the-payments-system" class="nav-link" data-scroll-target="#payment-innovation-money-versus-the-payments-system"><span class="header-section-number">1.3.3</span> Payment innovation: money versus the payments system</a></li>
   </ul></li>
   <li><a href="#money-as-a-store-of-value" id="toc-money-as-a-store-of-value" class="nav-link" data-scroll-target="#money-as-a-store-of-value"><span class="header-section-number">1.4</span> Money as a Store of Value</a>
   <ul class="collapse">
@@ -498,19 +503,29 @@ window.Quarto = {
 <section id="why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs" class="level3" data-number="1.3.1">
 <h3 data-number="1.3.1" class="anchored" data-anchor-id="why-barter-scales-poorly-double-coincidence-of-wants-and-search-costs"><span class="header-section-number">1.3.1</span> Why barter scales poorly: double coincidence of wants and search costs</h3>
 <p>Barter trade is a one-step exchange of one good for another. A monetary transaction typically involves two steps (sell for money, then buy with money), which may appear more complex at first glance. The key point is that barter requires a double coincidence of wants. In a decentralised economy with many goods and heterogeneous preferences, satisfying this condition is rare and costly.</p>
-<p>Jevons (1875/1876) emphasised that the main friction is not conceptual but practical: it is costly to search for a counterparty who both has what you want and wants what you have. Monetary exchange solves this problem by allowing trade with any counterparty who accepts money, which—by definition—is “everyone.”</p>
-</section>
-<section id="trading-posts-market-structure-and-the-economy-of-exchange" class="level3" data-number="1.3.2">
-<h3 data-number="1.3.2" class="anchored" data-anchor-id="trading-posts-market-structure-and-the-economy-of-exchange"><span class="header-section-number">1.3.2</span> Trading posts, market structure, and the economy of exchange</h3>
+<p>Jevons (1875/1876) emphasised that the main friction is not conceptual but practical: it is costly to search for a counterparty who both has what you want and wants what you have. Monetary exchange solves this problem by allowing trade with any counterparty who accepts money, which—by definition—is “everyone.” ### A concrete example: three agents and three goods {#three-agents-example}</p>
+<p>To illustrate the problem of the double coincidence of wants, consider three traders and three goods:</p>
+<ul>
+<li><strong>Harriet</strong> has 6 Bananas; she prefers: Bananas (6) ≻ Apples (3) ≻ Cabbage (1)</li>
+<li><strong>Ina</strong> has 1 Cabbage; she prefers: Cabbage (1) ≻ Bananas (6) ≻ Apples (3)</li>
+<li><strong>Jamal</strong> has 3 Apples; he prefers: Apples (3) ≻ Cabbage (1) ≻ Bananas (6)</li>
+</ul>
+<p>Each trader ends up with their <em>least preferred</em> good. Under pure barter, achieving mutual benefit is complicated:</p>
+<ul>
+<li>Harriet wants to trade her Bananas for Apples (Jamal’s good), but Jamal wants to trade his Apples for Cabbage (Ina’s good), not Bananas.</li>
+<li>Ina wants to trade her Cabbage for Bananas (Harriet’s good), but Harriet wants Apples, not Cabbage.</li>
+</ul>
+<p>Without a medium of exchange, all three traders would need to coordinate a multilateral trade: Harriet gives Bananas to Ina, Jamal gives Apples to Harriet, and Ina gives Cabbage to Jamal—all simultaneously. This requires perfect knowledge of each other’s preferences and strict temporal coordination.</p>
+<p>With a widely accepted <em>medium of exchange</em> (money), the problem vanishes: each trader sells their current good for money, then uses money to purchase their preferred good. Transaction costs are dramatically reduced, and agents can trade independently rather than relying on simultaneous trilateral coordination. ### Trading posts, market structure, and the economy of exchange</p>
 <p>A useful way to see the role of a medium of exchange is to imagine that, without money, an economy would require a dense network of “trading posts” or market arrangements for each pair of goods. With <em>n</em> goods, <span class="math inline">\(\frac{n(n-1)}{2}\)</span> bilateral trading posts would be needed for direct barter across all pairs, which scales poorly. With money as a medium of exchange, each good needs only a market against money, and any two goods can be traded indirectly through money. This is the <strong>economy of exchange</strong> that money provides.</p>
 </section>
-<section id="microfoundations-money-as-an-equilibrium-response-to-frictions" class="level3" data-number="1.3.3">
-<h3 data-number="1.3.3" class="anchored" data-anchor-id="microfoundations-money-as-an-equilibrium-response-to-frictions"><span class="header-section-number">1.3.3</span> Microfoundations: money as an equilibrium response to frictions</h3>
+<section id="microfoundations-money-as-an-equilibrium-response-to-frictions" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="microfoundations-money-as-an-equilibrium-response-to-frictions"><span class="header-section-number">1.3.2</span> Microfoundations: money as an equilibrium response to frictions</h3>
 <p>Modern monetary economics formalised these intuitions in search-theoretic models. In seminal work, Kiyotaki and Wright (1989) show that under trading frictions, certain assets can become accepted as media of exchange because they lower transaction costs and increase the probability of successful trade. Later work (Kiyotaki &amp; Wright, 1993) provides a broader framework for monetary exchange as a solution to decentralised trading problems.</p>
 <p>These models help clarify why <em>acceptability</em> is both cause and consequence of being money: an asset is accepted because others accept it, creating a network effect. But acceptance is not arbitrary; assets with suitable properties (portability, durability, divisibility, and low verification cost) are more likely to emerge as media of exchange.</p>
 </section>
-<section id="payment-innovation-money-versus-the-payments-system" class="level3" data-number="1.3.4">
-<h3 data-number="1.3.4" class="anchored" data-anchor-id="payment-innovation-money-versus-the-payments-system"><span class="header-section-number">1.3.4</span> Payment innovation: money versus the payments system</h3>
+<section id="payment-innovation-money-versus-the-payments-system" class="level3" data-number="1.3.3">
+<h3 data-number="1.3.3" class="anchored" data-anchor-id="payment-innovation-money-versus-the-payments-system"><span class="header-section-number">1.3.3</span> Payment innovation: money versus the payments system</h3>
 <p>In modern economies, many transactions are executed electronically. Cards, mobile wallets, and real-time transfer systems are <em>payment technologies</em> layered on top of money. Under the hood, settlement typically occurs in central bank money (reserves and cash) and bank deposit money denominated in the national unit of account.</p>
 <p>Cryptocurrencies have been proposed as alternative payment instruments. Empirical work suggests that, in many jurisdictions, their use as everyday payment media has been limited (Umlauft, 2018). Where adoption has been attempted at national scale, the outcomes underline the importance of stability, infrastructure, regulation, and trust.</p>
 <hr>
