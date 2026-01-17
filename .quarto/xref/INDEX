@@ -149,5 +149,11 @@
   },
   "topic8tutorial.qmd": {
     "topic8tutorial.html": "c1d7a114"
+  },
+  "DEPLOYMENT_CHECKLIST.md": {
+    "DEPLOYMENT_CHECKLIST.html": "ae9f2c52"
+  },
+  "HF_SYNC_SETUP.md": {
+    "HF_SYNC_SETUP.html": "df54574b"
   }
 }

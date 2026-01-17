@@ -337,6 +337,69 @@
     "text": "Monetary Economics questions app (Shiny for Python)."
   },
   {
+    "objectID": "HF_SYNC_SETUP.html",
+    "href": "HF_SYNC_SETUP.html",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "This document explains how the GitHub Actions workflow syncs topic1questions content to Hugging Face Space and integrates it with the AI feedback system in app.py.\n\n\n\n\n\n\nAdded Pre-Sync Quarto Render Step:\n- name: Set up Quarto (for rendering topic1questions)\n  uses: quarto-dev/quarto-actions/setup@v2\n- name: Render topic1questions.qmd to HTML\n  run: |\n    quarto render topic1questions.qmd --to html\nWhy? - Ensures fresh HTML: Every time you push to GitHub, the workflow automatically renders topic1questions.qmd → docs/topic1questions.html - No manual render needed: You forget to render locally before pushing? No problem—GitHub does it for you - Syncs both source & rendered: Both topic1questions.qmd (source) and docs/topic1questions.html (rendered) go to HF Space\nFiles Synced to HF Space (Lean): - app.py — Shiny app (AI feedback engine) - shared.py — Helper functions - requirements.txt — Dependencies - Dockerfile — Container config - README.hf.md → README.md — Instructions - topic1questions.qmd — Source file (for reference) - docs/topic1questions.html — Rendered HTML (for viewing/context)\nFiles NOT Synced (Large, stay on GitHub only): - ppt/ folder (all PPTX + PNG) - docs/ images - Anything else not explicitly copied\n\n\n\n\nYou push to main branch on GitHub\nGitHub Actions triggers automatically\nWorkflow renders topic1questions.qmd → docs/topic1questions.html\nWorkflow copies lean files (app, config, topic1 content) to HF Space\nHF Space updates with fresh content\nAI feedback app on HF Space has access to question context\n\n\n\n\n\n\n\n\nLoad Questions from QMD (Optional Context):\ndef load_questions_from_qmd():\n    \"\"\"Load question text from topic1questions.qmd for better context.\"\"\"\n    qmd_path = pathlib.Path(\"topic1questions.qmd\")\n    if qmd_path.exists():\n        try:\n            content = qmd_path.read_text(encoding=\"utf-8\")\n            return content\n        except Exception as e:\n            print(f\"Warning: Could not load topic1questions.qmd: {e}\")\n    return None\nEnhanced Feedback Prompt: - The create_feedback_prompt() now calls load_questions_from_qmd() - If topic1questions.qmd exists (on HF Space), the AI tutor has access to the full source for richer context - Falls back gracefully if file is missing\nUpdated UI: - Title: “Week 1 Tutorial Questions” → “Topic 1 - Monetary Economics Questions” - Added links to topic1questions.qmd and docs/topic1questions.html in the instructions\n\n\n\n\nContext-Aware: AI tutor can reference the original question file for more nuanced guidance\nConsistency: Same questions on GitHub → HF Space → AI feedback system\nDecoupled: Questions are not hardcoded in Python; they live in QMD files and are loaded dynamically\n\n\n\n\n\n\n\n\nA “pre-sync render” means: before uploading to HF Space, render all QMD files to HTML locally (in GitHub Actions).\n- name: Set up Quarto (for rendering topic1questions)\n  uses: quarto-dev/quarto-actions/setup@v2\n- name: Render topic1questions.qmd to HTML\n  run: |\n    quarto render topic1questions.qmd --to html\n\n\n\n\n\n\nWithout Pre-Sync Render\nWith Pre-Sync Render\n\n\n\n\nHF Space gets old/stale HTML\nFresh HTML synced every push\n\n\nManual render step easy to forget\nAutomatic, never forgotten\n\n\ndocs/topic1questions.html might be out of sync\nAlways up-to-date\n\n\n\n\n\n\n\nTime: Adds ~30-60 seconds to workflow (rendering QMD → HTML)\nBenefit: Guaranteed fresh content on HF Space; no manual steps\n\n\n\n\nTo add more topics later (e.g., topic2questions, topic3questions):\n- name: Render all questions to HTML\n  run: |\n    quarto render topic1questions.qmd --to html\n    quarto render topic2questions.qmd --to html\n    quarto render topic3questions.qmd --to html\nThen update the sync section to copy all rendered files:\ncp docs/topic*.html \"${WORKDIR}/docs/\" 2&gt;/dev/null || true\n\n\n\n\n\n┌─────────────────────────────────────────┐\n│ You push to GitHub (main branch)        │\n└────────────────┬────────────────────────┘\n                 │\n                 ▼\n┌─────────────────────────────────────────┐\n│ GitHub Actions Triggered                │\n│ 1. Set up Quarto                        │\n│ 2. Render topic1questions.qmd → HTML    │\n│ 3. Copy lean files                      │\n│ 4. Push to HF Space                     │\n└────────────────┬────────────────────────┘\n                 │\n                 ▼\n┌─────────────────────────────────────────┐\n│ HF Space Updated                        │\n│ - app.py ready to serve                 │\n│ - topic1questions.qmd & HTML available  │\n│ - AI feedback system has context        │\n└─────────────────────────────────────────┘\n\n\n\n\nAfter updating the workflow, test by:\n\nPush a small change to GitHub:\ngit add .\ngit commit -m \"Test HF sync workflow\"\ngit push origin main\nCheck GitHub Actions:\n\nGo to your repo → “Actions” tab\nWatch the “Sync HF Space” workflow run\nShould complete in 1-2 minutes\n\nVerify on HF Space:\n\nOpen your HF Space: https://huggingface.co/spaces/camcalderon777/monetary-economics-questions\nCheck that the app loads\nCheck files in the HF Space repo (should see topic1questions.qmd, docs/topic1questions.html)\n\n\n\n\n\n\n\nAdd topic2questions, topic3questions, etc. following the same pattern\nRender all topicXquestions.qmd files in a loop (don’t repeat yourself)\nConsider adding a CI check: fail the workflow if Quarto render fails (to catch errors early)\nOptional: cache Quarto rendering to speed up workflow\n\n\n\n\n\n\n.github/workflows/hf-space-sync.yml — Updated with pre-sync render + topic1 content sync\napp.py — Updated to load topic1questions.qmd dynamically and enhance feedback prompt\nREADME.md (this file) — Documentation\n\nDone! The setup is now lean, automatic, and scalable."
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#overview",
+    "href": "HF_SYNC_SETUP.html#overview",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "This document explains how the GitHub Actions workflow syncs topic1questions content to Hugging Face Space and integrates it with the AI feedback system in app.py."
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#github-actions-workflow-.githubworkflowshf-space-sync.yml",
+    "href": "HF_SYNC_SETUP.html#github-actions-workflow-.githubworkflowshf-space-sync.yml",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "Added Pre-Sync Quarto Render Step:\n- name: Set up Quarto (for rendering topic1questions)\n  uses: quarto-dev/quarto-actions/setup@v2\n- name: Render topic1questions.qmd to HTML\n  run: |\n    quarto render topic1questions.qmd --to html\nWhy? - Ensures fresh HTML: Every time you push to GitHub, the workflow automatically renders topic1questions.qmd → docs/topic1questions.html - No manual render needed: You forget to render locally before pushing? No problem—GitHub does it for you - Syncs both source & rendered: Both topic1questions.qmd (source) and docs/topic1questions.html (rendered) go to HF Space\nFiles Synced to HF Space (Lean): - app.py — Shiny app (AI feedback engine) - shared.py — Helper functions - requirements.txt — Dependencies - Dockerfile — Container config - README.hf.md → README.md — Instructions - topic1questions.qmd — Source file (for reference) - docs/topic1questions.html — Rendered HTML (for viewing/context)\nFiles NOT Synced (Large, stay on GitHub only): - ppt/ folder (all PPTX + PNG) - docs/ images - Anything else not explicitly copied\n\n\n\n\nYou push to main branch on GitHub\nGitHub Actions triggers automatically\nWorkflow renders topic1questions.qmd → docs/topic1questions.html\nWorkflow copies lean files (app, config, topic1 content) to HF Space\nHF Space updates with fresh content\nAI feedback app on HF Space has access to question context"
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#integration-in-app.py",
+    "href": "HF_SYNC_SETUP.html#integration-in-app.py",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "Load Questions from QMD (Optional Context):\ndef load_questions_from_qmd():\n    \"\"\"Load question text from topic1questions.qmd for better context.\"\"\"\n    qmd_path = pathlib.Path(\"topic1questions.qmd\")\n    if qmd_path.exists():\n        try:\n            content = qmd_path.read_text(encoding=\"utf-8\")\n            return content\n        except Exception as e:\n            print(f\"Warning: Could not load topic1questions.qmd: {e}\")\n    return None\nEnhanced Feedback Prompt: - The create_feedback_prompt() now calls load_questions_from_qmd() - If topic1questions.qmd exists (on HF Space), the AI tutor has access to the full source for richer context - Falls back gracefully if file is missing\nUpdated UI: - Title: “Week 1 Tutorial Questions” → “Topic 1 - Monetary Economics Questions” - Added links to topic1questions.qmd and docs/topic1questions.html in the instructions\n\n\n\n\nContext-Aware: AI tutor can reference the original question file for more nuanced guidance\nConsistency: Same questions on GitHub → HF Space → AI feedback system\nDecoupled: Questions are not hardcoded in Python; they live in QMD files and are loaded dynamically"
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#pre-sync-quarto-render-step-explained",
+    "href": "HF_SYNC_SETUP.html#pre-sync-quarto-render-step-explained",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "A “pre-sync render” means: before uploading to HF Space, render all QMD files to HTML locally (in GitHub Actions).\n- name: Set up Quarto (for rendering topic1questions)\n  uses: quarto-dev/quarto-actions/setup@v2\n- name: Render topic1questions.qmd to HTML\n  run: |\n    quarto render topic1questions.qmd --to html\n\n\n\n\n\n\nWithout Pre-Sync Render\nWith Pre-Sync Render\n\n\n\n\nHF Space gets old/stale HTML\nFresh HTML synced every push\n\n\nManual render step easy to forget\nAutomatic, never forgotten\n\n\ndocs/topic1questions.html might be out of sync\nAlways up-to-date\n\n\n\n\n\n\n\nTime: Adds ~30-60 seconds to workflow (rendering QMD → HTML)\nBenefit: Guaranteed fresh content on HF Space; no manual steps\n\n\n\n\nTo add more topics later (e.g., topic2questions, topic3questions):\n- name: Render all questions to HTML\n  run: |\n    quarto render topic1questions.qmd --to html\n    quarto render topic2questions.qmd --to html\n    quarto render topic3questions.qmd --to html\nThen update the sync section to copy all rendered files:\ncp docs/topic*.html \"${WORKDIR}/docs/\" 2&gt;/dev/null || true"
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#workflow-summary",
+    "href": "HF_SYNC_SETUP.html#workflow-summary",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "┌─────────────────────────────────────────┐\n│ You push to GitHub (main branch)        │\n└────────────────┬────────────────────────┘\n                 │\n                 ▼\n┌─────────────────────────────────────────┐\n│ GitHub Actions Triggered                │\n│ 1. Set up Quarto                        │\n│ 2. Render topic1questions.qmd → HTML    │\n│ 3. Copy lean files                      │\n│ 4. Push to HF Space                     │\n└────────────────┬────────────────────────┘\n                 │\n                 ▼\n┌─────────────────────────────────────────┐\n│ HF Space Updated                        │\n│ - app.py ready to serve                 │\n│ - topic1questions.qmd & HTML available  │\n│ - AI feedback system has context        │\n└─────────────────────────────────────────┘"
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#testing-verification",
+    "href": "HF_SYNC_SETUP.html#testing-verification",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "After updating the workflow, test by:\n\nPush a small change to GitHub:\ngit add .\ngit commit -m \"Test HF sync workflow\"\ngit push origin main\nCheck GitHub Actions:\n\nGo to your repo → “Actions” tab\nWatch the “Sync HF Space” workflow run\nShould complete in 1-2 minutes\n\nVerify on HF Space:\n\nOpen your HF Space: https://huggingface.co/spaces/camcalderon777/monetary-economics-questions\nCheck that the app loads\nCheck files in the HF Space repo (should see topic1questions.qmd, docs/topic1questions.html)"
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#future-improvements",
+    "href": "HF_SYNC_SETUP.html#future-improvements",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": "Add topic2questions, topic3questions, etc. following the same pattern\nRender all topicXquestions.qmd files in a loop (don’t repeat yourself)\nConsider adding a CI check: fail the workflow if Quarto render fails (to catch errors early)\nOptional: cache Quarto rendering to speed up workflow"
+  },
+  {
+    "objectID": "HF_SYNC_SETUP.html#files-modified",
+    "href": "HF_SYNC_SETUP.html#files-modified",
+    "title": "HF Sync & AI Feedback Setup for Topic 1 Questions",
+    "section": "",
+    "text": ".github/workflows/hf-space-sync.yml — Updated with pre-sync render + topic1 content sync\napp.py — Updated to load topic1questions.qmd dynamically and enhance feedback prompt\nREADME.md (this file) — Documentation\n\nDone! The setup is now lean, automatic, and scalable."
+  },
+  {
     "objectID": "archive/topic2readingv001.html",
     "href": "archive/topic2readingv001.html",
     "title": "Classical Theory of Money",
@@ -349,6 +412,76 @@
     "title": "About",
     "section": "",
     "text": "About this site"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html",
+    "href": "DEPLOYMENT_CHECKLIST.html",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "Your project is configured for automatic GitHub → Hugging Face Space deployment with context-aware AI feedback integration.\n\n\n\n\n\n\n\n✅ Quarto Setup Step: Installed on GitHub runner\n✅ Pre-Sync Render Step: Renders topic1questions.qmd → docs/topic1questions.html\n✅ Lean Sync Strategy: Only copies essential app files + topic1 content (excludes large ppt/ folder)\n✅ HF Space Push: Deploys to camcalderon777/monetary-economics-questions\n\nWhat happens on each git push: 1. Workflow triggers on push to main branch 2. Quarto renders topic1questions.qmd to HTML (fresh output every time) 3. App files + topic1 content copied to temp directory 4. Changes synced to HF Space via force push\n\n\n\n\n\n✅ Dynamic Question Loading: load_questions_from_qmd() function reads topic1questions.qmd\n✅ Context-Aware Feedback: create_feedback_prompt() includes question source reference\n✅ Topic 1 Branding: UI updated to “Topic 1 - Monetary Economics Questions”\n✅ Question Documentation: UI links to both .qmd source and rendered .html versions\n\nKey Functions:\nload_questions_from_qmd()       # Loads topic1questions.qmd for enriched context\nget_ai_feedback(q_num, answer)   # Generates AI feedback via Groq API\ncreate_feedback_prompt(...)       # Builds LLM prompt with indicative answers + context\n\n\n\n\n\n✅ topic1questions.qmd - Question source file (synced to HF Space)\n✅ docs/topic1questions.html - Pre-rendered HTML (generated by workflow, synced to HF Space)\n✅ All stub files created (topic2-8 reading/tutorial pages exist)\n\n\n\n\n\n\n✅ HF_SYNC_SETUP.md - Comprehensive setup guide\n✅ DEPLOYMENT_CHECKLIST.md - This file\n\n\n\n\n\n\n\n\n\nCommit your changes:\ngit add .\ngit commit -m \"Deploy: pre-sync Quarto render + context-aware AI feedback\"\ngit push origin main\nMonitor GitHub Actions:\n\nGo to your repo’s Actions tab\nWatch the “Sync HF Space” workflow execute\nExpected runtime: 1-2 minutes (depends on Quarto render time)\n\nVerify on HF Space:\n\nCheck the HF Space repo: camcalderon777/monetary-economics-questions\nConfirm topic1questions.qmd is synced\nConfirm docs/topic1questions.html is present\nTest the app in HF Space UI\n\n\n\n\n\n\n\n\nWhy: One workflow handles all topics; maintains DRY principle\nSteps: 1. Update workflow to render all topic*questions.qmd files: yaml    - name: Render all topic questions      run: |        for i in {1..8}; do          if [ -f \"topic${i}questions.qmd\" ]; then            quarto render topic${i}questions.qmd --to html          fi        done\n\nExpand file copying in workflow:\nfor i in {1..8}; do\n  cp topic${i}questions.qmd \"${WORKDIR}/\" 2&gt;/dev/null || true\n  cp docs/topic${i}questions.html \"${WORKDIR}/docs/\" 2&gt;/dev/null || true\ndone\nCreate separate app instances or extend current app with topic selector\n\n\n\n\n\nPopulate topic2-8reading.qmd with actual course content\nPopulate topic2-8tutorial.qmd with MCQs or assessments\nCurrent stubs prevent “broken link” errors; real content adds educational value\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFile\nGitHub\nHF Space\nPurpose\n\n\n\n\napp.py\n✅\n✅ (synced)\nMain Shiny app with AI feedback\n\n\nrequirements.txt\n✅\n✅ (synced)\nPython dependencies\n\n\nDockerfile\n✅\n✅ (synced)\nContainer config\n\n\ntopic1questions.qmd\n✅\n✅ (synced)\nQuestion source (new)\n\n\ndocs/topic1questions.html\n✅\n✅ (synced)\nPre-rendered HTML (new)\n\n\nppt/ (PPTX + PNGs)\n✅\n❌ (NOT synced)\nLarge files, excluded by design\n\n\ndocs/ (other files)\n✅\n❌ (NOT synced)\nOnly topic1questions.html synced\n\n\n\nWhy exclude ppt/ folder? - Contains 100+ MB of PPTX files and generated PNGs - Not needed for the HF Space app (only needed for GitHub Pages rendering) - “Lean sync” keeps HF Space deployment fast and stable\n\n\n\n\n\n\n\nCause: topic1questions.qmd has syntax errors\nFix: Run quarto render topic1questions.qmd --to html locally, fix errors\nThen: Push fixed file to GitHub\n\n\n\n\n\nCause: topic1questions.qmd not synced to HF Space\nCheck: HF Space repo for file presence\nFix: Manually sync file or re-run workflow with git push --force\n\n\n\n\n\nCause: Secret not configured in GitHub repo settings\nFix: Go to repo Settings → Secrets and Variables → Actions → New repository secret\nAdd: Name: HF_TOKEN, Value: hf_... (from HF user settings)\n\n\n\n\n\n\n\n\n\nHF_TOKEN: Hugging Face API token (write permission to HF Space)\n\n\n\n\n\nApp file: app.py\nSDK: docker\nPrivate: Yes (if needed)\nEnvironment variables: GROQ_API_KEY (set in HF Space settings)\n\n\n\n\n\nPython 3.10+\nQuarto 1.4+ (for rendering .qmd files)\nDependencies in requirements.txt installed\n\n\n\n\n\n\n\n\n\nAspect\nBefore\nAfter\n\n\n\n\nRendering\nManual (easy to forget)\nAutomatic (workflow-based)\n\n\nHF Space Content\nOnly app files\nApp + topic1 questions + HTML\n\n\nAI Context\nHardcoded answers only\nDynamic loading + rich context\n\n\nSync Trigger\nManual push\nAutomatic on main branch push\n\n\nError Detection\nLate (after deployment)\nEarly (in workflow)\n\n\nLarge Files\nAll synced (slow)\nExcluded (lean, fast)\n\n\n\n\n\n\n\n\nHF_SYNC_SETUP.md - Deep dive into workflow architecture and pre-sync render concept\nREADME.hf.md - HF Space configuration and instructions\n.github/workflows/hf-space-sync.yml - Workflow source code\n\n\n\n\n\nYour project is fully configured for automatic, context-aware deployment.\nNext action: Push to main branch and watch the workflow execute. 🚀"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#system-overview",
+    "href": "DEPLOYMENT_CHECKLIST.html#system-overview",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "Your project is configured for automatic GitHub → Hugging Face Space deployment with context-aware AI feedback integration."
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#completed-configuration",
+    "href": "DEPLOYMENT_CHECKLIST.html#completed-configuration",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "✅ Quarto Setup Step: Installed on GitHub runner\n✅ Pre-Sync Render Step: Renders topic1questions.qmd → docs/topic1questions.html\n✅ Lean Sync Strategy: Only copies essential app files + topic1 content (excludes large ppt/ folder)\n✅ HF Space Push: Deploys to camcalderon777/monetary-economics-questions\n\nWhat happens on each git push: 1. Workflow triggers on push to main branch 2. Quarto renders topic1questions.qmd to HTML (fresh output every time) 3. App files + topic1 content copied to temp directory 4. Changes synced to HF Space via force push\n\n\n\n\n\n✅ Dynamic Question Loading: load_questions_from_qmd() function reads topic1questions.qmd\n✅ Context-Aware Feedback: create_feedback_prompt() includes question source reference\n✅ Topic 1 Branding: UI updated to “Topic 1 - Monetary Economics Questions”\n✅ Question Documentation: UI links to both .qmd source and rendered .html versions\n\nKey Functions:\nload_questions_from_qmd()       # Loads topic1questions.qmd for enriched context\nget_ai_feedback(q_num, answer)   # Generates AI feedback via Groq API\ncreate_feedback_prompt(...)       # Builds LLM prompt with indicative answers + context\n\n\n\n\n\n✅ topic1questions.qmd - Question source file (synced to HF Space)\n✅ docs/topic1questions.html - Pre-rendered HTML (generated by workflow, synced to HF Space)\n✅ All stub files created (topic2-8 reading/tutorial pages exist)\n\n\n\n\n\n\n✅ HF_SYNC_SETUP.md - Comprehensive setup guide\n✅ DEPLOYMENT_CHECKLIST.md - This file"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#next-steps",
+    "href": "DEPLOYMENT_CHECKLIST.html#next-steps",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "Commit your changes:\ngit add .\ngit commit -m \"Deploy: pre-sync Quarto render + context-aware AI feedback\"\ngit push origin main\nMonitor GitHub Actions:\n\nGo to your repo’s Actions tab\nWatch the “Sync HF Space” workflow execute\nExpected runtime: 1-2 minutes (depends on Quarto render time)\n\nVerify on HF Space:\n\nCheck the HF Space repo: camcalderon777/monetary-economics-questions\nConfirm topic1questions.qmd is synced\nConfirm docs/topic1questions.html is present\nTest the app in HF Space UI\n\n\n\n\n\n\n\n\nWhy: One workflow handles all topics; maintains DRY principle\nSteps: 1. Update workflow to render all topic*questions.qmd files: yaml    - name: Render all topic questions      run: |        for i in {1..8}; do          if [ -f \"topic${i}questions.qmd\" ]; then            quarto render topic${i}questions.qmd --to html          fi        done\n\nExpand file copying in workflow:\nfor i in {1..8}; do\n  cp topic${i}questions.qmd \"${WORKDIR}/\" 2&gt;/dev/null || true\n  cp docs/topic${i}questions.html \"${WORKDIR}/docs/\" 2&gt;/dev/null || true\ndone\nCreate separate app instances or extend current app with topic selector\n\n\n\n\n\nPopulate topic2-8reading.qmd with actual course content\nPopulate topic2-8tutorial.qmd with MCQs or assessments\nCurrent stubs prevent “broken link” errors; real content adds educational value"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#file-sync-status",
+    "href": "DEPLOYMENT_CHECKLIST.html#file-sync-status",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "File\nGitHub\nHF Space\nPurpose\n\n\n\n\napp.py\n✅\n✅ (synced)\nMain Shiny app with AI feedback\n\n\nrequirements.txt\n✅\n✅ (synced)\nPython dependencies\n\n\nDockerfile\n✅\n✅ (synced)\nContainer config\n\n\ntopic1questions.qmd\n✅\n✅ (synced)\nQuestion source (new)\n\n\ndocs/topic1questions.html\n✅\n✅ (synced)\nPre-rendered HTML (new)\n\n\nppt/ (PPTX + PNGs)\n✅\n❌ (NOT synced)\nLarge files, excluded by design\n\n\ndocs/ (other files)\n✅\n❌ (NOT synced)\nOnly topic1questions.html synced\n\n\n\nWhy exclude ppt/ folder? - Contains 100+ MB of PPTX files and generated PNGs - Not needed for the HF Space app (only needed for GitHub Pages rendering) - “Lean sync” keeps HF Space deployment fast and stable"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#troubleshooting",
+    "href": "DEPLOYMENT_CHECKLIST.html#troubleshooting",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "Cause: topic1questions.qmd has syntax errors\nFix: Run quarto render topic1questions.qmd --to html locally, fix errors\nThen: Push fixed file to GitHub\n\n\n\n\n\nCause: topic1questions.qmd not synced to HF Space\nCheck: HF Space repo for file presence\nFix: Manually sync file or re-run workflow with git push --force\n\n\n\n\n\nCause: Secret not configured in GitHub repo settings\nFix: Go to repo Settings → Secrets and Variables → Actions → New repository secret\nAdd: Name: HF_TOKEN, Value: hf_... (from HF user settings)"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#environment-requirements",
+    "href": "DEPLOYMENT_CHECKLIST.html#environment-requirements",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "HF_TOKEN: Hugging Face API token (write permission to HF Space)\n\n\n\n\n\nApp file: app.py\nSDK: docker\nPrivate: Yes (if needed)\nEnvironment variables: GROQ_API_KEY (set in HF Space settings)\n\n\n\n\n\nPython 3.10+\nQuarto 1.4+ (for rendering .qmd files)\nDependencies in requirements.txt installed"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#whats-new-vs-previous-approach",
+    "href": "DEPLOYMENT_CHECKLIST.html#whats-new-vs-previous-approach",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "Aspect\nBefore\nAfter\n\n\n\n\nRendering\nManual (easy to forget)\nAutomatic (workflow-based)\n\n\nHF Space Content\nOnly app files\nApp + topic1 questions + HTML\n\n\nAI Context\nHardcoded answers only\nDynamic loading + rich context\n\n\nSync Trigger\nManual push\nAutomatic on main branch push\n\n\nError Detection\nLate (after deployment)\nEarly (in workflow)\n\n\nLarge Files\nAll synced (slow)\nExcluded (lean, fast)"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#related-documentation",
+    "href": "DEPLOYMENT_CHECKLIST.html#related-documentation",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "HF_SYNC_SETUP.md - Deep dive into workflow architecture and pre-sync render concept\nREADME.hf.md - HF Space configuration and instructions\n.github/workflows/hf-space-sync.yml - Workflow source code"
+  },
+  {
+    "objectID": "DEPLOYMENT_CHECKLIST.html#all-systems-ready",
+    "href": "DEPLOYMENT_CHECKLIST.html#all-systems-ready",
+    "title": "Deployment Readiness Checklist ✓",
+    "section": "",
+    "text": "Your project is fully configured for automatic, context-aware deployment.\nNext action: Push to main branch and watch the workflow execute. 🚀"
   },
   {
     "objectID": "index.html",
@@ -365,7 +498,7 @@
     "href": "index.html#topic-1",
     "title": "Monetary Economics",
     "section": "Topic 1",
-    "text": "Topic 1\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs",
+    "text": "Topic 1\n\nReading: Reading\nSlides: Lecture\nQuestions: Interactive Tutorial\nMCQs: MCQs",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -455,42 +588,66 @@
     "href": "topic1questions.html",
     "title": "Topic 1 Questions",
     "section": "",
-    "text": "This page contains the questions for Topic 1. To answer these questions and receive AI-powered feedback, please access the interactive tutorial here (or run locally: shiny run app.py from your terminal)."
+    "text": "This page contains the questions for Topic 1. To answer these questions and receive AI-powered feedback, please access the interactive tutorial here (or run locally: shiny run app.py from your terminal).",
+    "crumbs": [
+      "Topic 1",
+      "Questions"
+    ]
   },
   {
     "objectID": "topic1questions.html#interactive-tutorial-with-ai-feedback",
     "href": "topic1questions.html#interactive-tutorial-with-ai-feedback",
     "title": "Topic 1 Questions",
     "section": "",
-    "text": "This page contains the questions for Topic 1. To answer these questions and receive AI-powered feedback, please access the interactive tutorial here (or run locally: shiny run app.py from your terminal)."
+    "text": "This page contains the questions for Topic 1. To answer these questions and receive AI-powered feedback, please access the interactive tutorial here (or run locally: shiny run app.py from your terminal).",
+    "crumbs": [
+      "Topic 1",
+      "Questions"
+    ]
   },
   {
     "objectID": "topic1questions.html#question-1",
     "href": "topic1questions.html#question-1",
     "title": "Topic 1 Questions",
     "section": "Question 1",
-    "text": "Question 1\nA. Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?\nB. If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?\n\nIndicative Answer\nThe Store of Value (SoV) role of money automatically follows from its Medium of Exchange (MoE) role. This is because using money as MoE leads inevitably to a time gap between acquiring money through sale and spending it to buy something else. During this time, money stores the value of what was sold.\nHowever, there is no inevitable link between MoE and Unit of Account (UoA). The need for a UoA can arise even in a non-monetary economy to define prices. While it makes sense for the MoE to also serve as UoA, they are conceptually independent functions.\nExamples of UoA without MoE: - IMF’s Special Drawing Right (SDR): A fictitious currency based on a basket of major currencies, used to denominate loans but not freely traded - European Currency Unit (ECU): Preceded the Euro, used for harmonizing accounts but not an actual medium of exchange"
+    "text": "Question 1\nA. Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?\nB. If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?\n\nIndicative Answer\nThe Store of Value (SoV) role of money automatically follows from its Medium of Exchange (MoE) role. This is because using money as MoE leads inevitably to a time gap between acquiring money through sale and spending it to buy something else. During this time, money stores the value of what was sold.\nHowever, there is no inevitable link between MoE and Unit of Account (UoA). The need for a UoA can arise even in a non-monetary economy to define prices. While it makes sense for the MoE to also serve as UoA, they are conceptually independent functions.\nExamples of UoA without MoE: - IMF’s Special Drawing Right (SDR): A fictitious currency based on a basket of major currencies, used to denominate loans but not freely traded - European Currency Unit (ECU): Preceded the Euro, used for harmonizing accounts but not an actual medium of exchange",
+    "crumbs": [
+      "Topic 1",
+      "Questions"
+    ]
   },
   {
     "objectID": "topic1questions.html#question-2",
     "href": "topic1questions.html#question-2",
     "title": "Topic 1 Questions",
     "section": "Question 2",
-    "text": "Question 2\nWhat are the characteristics that underlie liquidity? Can any object acquire these characteristics or are there some physical attributes that must be met?\n\nIndicative Answer\nLiquidity is characterized by four key attributes:\n\n(i) Marketability - ease of sale\n(ii) Predictability of exchange value - more stable than individual goods\n(iii) Reversibility - minimal loss of value between acquisition and sale\n(iv) Divisibility - can be used for even the smallest transactions\n\nWhatever serves as the MoE acquires these characteristics by virtue of being universally accepted. However, not any object can become MoE. Physical attributes required include:\n\n(i) Transportability - easy to carry\n(ii) Durability - does not physically depreciate\n(iii) Inherent divisibility - can be broken into small units\n(iv) Universal appeal - not repulsive to users\n\nThese objective criteria limit what can serve as effective money."
+    "text": "Question 2\nWhat are the characteristics that underlie liquidity? Can any object acquire these characteristics or are there some physical attributes that must be met?\n\nIndicative Answer\nLiquidity is characterized by four key attributes:\n\n(i) Marketability - ease of sale\n(ii) Predictability of exchange value - more stable than individual goods\n(iii) Reversibility - minimal loss of value between acquisition and sale\n(iv) Divisibility - can be used for even the smallest transactions\n\nWhatever serves as the MoE acquires these characteristics by virtue of being universally accepted. However, not any object can become MoE. Physical attributes required include:\n\n(i) Transportability - easy to carry\n(ii) Durability - does not physically depreciate\n(iii) Inherent divisibility - can be broken into small units\n(iv) Universal appeal - not repulsive to users\n\nThese objective criteria limit what can serve as effective money.",
+    "crumbs": [
+      "Topic 1",
+      "Questions"
+    ]
   },
   {
     "objectID": "topic1questions.html#question-3",
     "href": "topic1questions.html#question-3",
     "title": "Topic 1 Questions",
     "section": "Question 3",
-    "text": "Question 3\nIn the example of three agents and three goods which is discussed in the lectures, can you think of an alternative to the use of a medium of exchange that might have allowed the three traders to acquire their most preferred good?\nContext: - Harriet: 6 Bananas ≻ 3 Apples ≻ 1 Cabbage - Ina: 1 Cabbage ≻ 6 Bananas ≻ 3 Apples - Jamal: 3 Apples ≻ 1 Cabbage ≻ 6 Bananas\n\nIndicative Answer\nAlternative mechanisms to the use of a medium of exchange:\n1. Middleman/Clearinghouse approach: In the three-trader example, one trader could accept their least preferred good to facilitate the chain of exchanges. For instance, if Ina accepts Apples from Harriet (her least preferred), she can then trade with Jamal to get Cabbage (her most preferred).\nProblem: This requires perfect knowledge of who has what and who wants what. Search and informational frictions make this risky.\n2. Multilateral simultaneous trades: All traders meet at once and exchange cooperatively (Ina gives Bananas to Harriet, who gives Apples to Jamal, who gives Cabbage to Ina - all simultaneously).\nProblem: This becomes extremely difficult with many traders and goods. Coordination costs are prohibitive.\nConclusion: The use of a MoE simplifies all these complications and reduces transaction costs significantly."
+    "text": "Question 3\nIn the example of three agents and three goods which is discussed in the lectures, can you think of an alternative to the use of a medium of exchange that might have allowed the three traders to acquire their most preferred good?\nContext: - Harriet: 6 Bananas ≻ 3 Apples ≻ 1 Cabbage - Ina: 1 Cabbage ≻ 6 Bananas ≻ 3 Apples - Jamal: 3 Apples ≻ 1 Cabbage ≻ 6 Bananas\n\nIndicative Answer\nAlternative mechanisms to the use of a medium of exchange:\n1. Middleman/Clearinghouse approach: In the three-trader example, one trader could accept their least preferred good to facilitate the chain of exchanges. For instance, if Ina accepts Apples from Harriet (her least preferred), she can then trade with Jamal to get Cabbage (her most preferred).\nProblem: This requires perfect knowledge of who has what and who wants what. Search and informational frictions make this risky.\n2. Multilateral simultaneous trades: All traders meet at once and exchange cooperatively (Ina gives Bananas to Harriet, who gives Apples to Jamal, who gives Cabbage to Ina - all simultaneously).\nProblem: This becomes extremely difficult with many traders and goods. Coordination costs are prohibitive.\nConclusion: The use of a MoE simplifies all these complications and reduces transaction costs significantly.",
+    "crumbs": [
+      "Topic 1",
+      "Questions"
+    ]
   },
   {
     "objectID": "topic1questions.html#how-to-get-started",
     "href": "topic1questions.html#how-to-get-started",
     "title": "Topic 1 Questions",
     "section": "How to Get Started",
-    "text": "How to Get Started\n\nOnline (recommended): Click the link at the top to access the interactive tutorial (hosted on Hugging Face Spaces)\nLocally: Run shiny run app.py in your terminal and visit http://127.0.0.1:8000\n\nThe interactive tutorial will provide AI-powered hints based on your answers to help improve your understanding!"
+    "text": "How to Get Started\n\nOnline (recommended): Click the link at the top to access the interactive tutorial (hosted on Hugging Face Spaces)\nLocally: Run shiny run app.py in your terminal and visit http://127.0.0.1:8000\n\nThe interactive tutorial will provide AI-powered hints based on your answers to help improve your understanding!",
+    "crumbs": [
+      "Topic 1",
+      "Questions"
+    ]
   },
   {
     "objectID": "topic2readingv001.html",

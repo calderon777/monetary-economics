@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Monetary Economics</title>
+<title>hf_sync_setup – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -30,7 +65,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./topic1reading.html" rel="next">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -82,7 +116,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./index.html">Monetary Economics</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Monetary Economics
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -109,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link active">
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Monetary Economics</span></a>
   </div>
 </li>
@@ -132,12 +168,6 @@ ul.task-list li input[type="checkbox"] {
   <div class="sidebar-item-container"> 
   <a href="./topic1lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./topic1questions.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Questions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -358,98 +388,197 @@ ul.task-list li input[type="checkbox"] {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Monetary Economics</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<p>Welcome to <strong>Monetary Economics</strong>.</p>
-<p>Use the topic sections below to move through the material in the order you need it: reading first, then slides, then the MCQs.</p>
-<section id="topic-1" class="level2">
-<h2 class="anchored" data-anchor-id="topic-1">Topic 1</h2>
+<section id="hf-sync-ai-feedback-setup-for-topic-1-questions" class="level1">
+<h1>HF Sync &amp; AI Feedback Setup for Topic 1 Questions</h1>
+<section id="overview" class="level2">
+<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<p>This document explains how the GitHub Actions workflow syncs <code>topic1questions</code> content to Hugging Face Space and integrates it with the AI feedback system in <code>app.py</code>.</p>
+<hr>
+</section>
+<section id="github-actions-workflow-.githubworkflowshf-space-sync.yml" class="level2">
+<h2 class="anchored" data-anchor-id="github-actions-workflow-.githubworkflowshf-space-sync.yml">1. GitHub Actions Workflow (<code>.github/workflows/hf-space-sync.yml</code>)</h2>
+<section id="what-changed" class="level3">
+<h3 class="anchored" data-anchor-id="what-changed">What Changed</h3>
+<p><strong>Added Pre-Sync Quarto Render Step:</strong></p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Quarto (for rendering topic1questions)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Render topic1questions.qmd to HTML</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">  run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    quarto render topic1questions.qmd --to html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Why?</strong> - <strong>Ensures fresh HTML:</strong> Every time you push to GitHub, the workflow automatically renders <code>topic1questions.qmd</code> → <code>docs/topic1questions.html</code> - <strong>No manual render needed:</strong> You forget to render locally before pushing? No problem—GitHub does it for you - <strong>Syncs both source &amp; rendered:</strong> Both <code>topic1questions.qmd</code> (source) and <code>docs/topic1questions.html</code> (rendered) go to HF Space</p>
+<p><strong>Files Synced to HF Space (Lean):</strong> - <code>app.py</code> — Shiny app (AI feedback engine) - <code>shared.py</code> — Helper functions - <code>requirements.txt</code> — Dependencies - <code>Dockerfile</code> — Container config - <code>README.hf.md</code> → <code>README.md</code> — Instructions - <code>topic1questions.qmd</code> — Source file (for reference) - <code>docs/topic1questions.html</code> — Rendered HTML (for viewing/context)</p>
+<p><strong>Files NOT Synced (Large, stay on GitHub only):</strong> - <code>ppt/</code> folder (all PPTX + PNG) - <code>docs/</code> images - Anything else not explicitly copied</p>
+</section>
+<section id="how-it-works" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-works">How It Works</h3>
+<ol type="1">
+<li>You push to <code>main</code> branch on GitHub</li>
+<li>GitHub Actions triggers automatically</li>
+<li>Workflow renders <code>topic1questions.qmd</code> → <code>docs/topic1questions.html</code></li>
+<li>Workflow copies lean files (app, config, topic1 content) to HF Space</li>
+<li>HF Space updates with fresh content</li>
+<li>AI feedback app on HF Space has access to question context</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="integration-in-app.py" class="level2">
+<h2 class="anchored" data-anchor-id="integration-in-app.py">2. Integration in <code>app.py</code></h2>
+<section id="what-changed-1" class="level3">
+<h3 class="anchored" data-anchor-id="what-changed-1">What Changed</h3>
+<p><strong>Load Questions from QMD (Optional Context):</strong></p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> load_questions_from_qmd():</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""Load question text from topic1questions.qmd for better context."""</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    qmd_path <span class="op">=</span> pathlib.Path(<span class="st">"topic1questions.qmd"</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> qmd_path.exists():</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">try</span>:</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            content <span class="op">=</span> qmd_path.read_text(encoding<span class="op">=</span><span class="st">"utf-8"</span>)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> content</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="bu">print</span>(<span class="ss">f"Warning: Could not load topic1questions.qmd: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="va">None</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Enhanced Feedback Prompt:</strong> - The <code>create_feedback_prompt()</code> now calls <code>load_questions_from_qmd()</code> - If <code>topic1questions.qmd</code> exists (on HF Space), the AI tutor has access to the full source for richer context - Falls back gracefully if file is missing</p>
+<p><strong>Updated UI:</strong> - Title: “Week 1 Tutorial Questions” → “Topic 1 - Monetary Economics Questions” - Added links to <code>topic1questions.qmd</code> and <code>docs/topic1questions.html</code> in the instructions</p>
+</section>
+<section id="how-it-benefits-ai-feedback" class="level3">
+<h3 class="anchored" data-anchor-id="how-it-benefits-ai-feedback">How It Benefits AI Feedback</h3>
+<ol type="1">
+<li><strong>Context-Aware:</strong> AI tutor can reference the original question file for more nuanced guidance</li>
+<li><strong>Consistency:</strong> Same questions on GitHub → HF Space → AI feedback system</li>
+<li><strong>Decoupled:</strong> Questions are not hardcoded in Python; they live in QMD files and are loaded dynamically</li>
+</ol>
+<hr>
+</section>
+</section>
+<section id="pre-sync-quarto-render-step-explained" class="level2">
+<h2 class="anchored" data-anchor-id="pre-sync-quarto-render-step-explained">3. Pre-Sync Quarto Render Step Explained</h2>
+<section id="what-it-does" class="level3">
+<h3 class="anchored" data-anchor-id="what-it-does">What It Does</h3>
+<p>A “pre-sync render” means: <strong>before uploading to HF Space, render all QMD files to HTML locally (in GitHub Actions).</strong></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Set up Quarto (for rendering topic1questions)</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">uses</span><span class="kw">:</span><span class="at"> quarto-dev/quarto-actions/setup@v2</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Render topic1questions.qmd to HTML</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">  run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    quarto render topic1questions.qmd --to html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="why-you-need-it" class="level3">
+<h3 class="anchored" data-anchor-id="why-you-need-it">Why You Need It</h3>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Without Pre-Sync Render</th>
+<th>With Pre-Sync Render</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>HF Space gets old/stale HTML</td>
+<td>Fresh HTML synced every push</td>
+</tr>
+<tr class="even">
+<td>Manual render step easy to forget</td>
+<td>Automatic, never forgotten</td>
+</tr>
+<tr class="odd">
+<td><code>docs/topic1questions.html</code> might be out of sync</td>
+<td>Always up-to-date</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="tradeoff" class="level3">
+<h3 class="anchored" data-anchor-id="tradeoff">Tradeoff</h3>
 <ul>
-<li><strong>Reading:</strong> <a href="./topic1reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic1lecture.html">Lecture</a></li>
-<li><strong>Questions:</strong> <a href="./topic1questions.html">Interactive Tutorial</a></li>
-<li><strong>MCQs:</strong> <a href="./topic1mcqs.html">MCQs</a></li>
+<li><strong>Time:</strong> Adds ~30-60 seconds to workflow (rendering QMD → HTML)</li>
+<li><strong>Benefit:</strong> Guaranteed fresh content on HF Space; no manual steps</li>
 </ul>
 </section>
-<section id="topic-2" class="level2">
-<h2 class="anchored" data-anchor-id="topic-2">Topic 2</h2>
-<ul>
-<li><strong>Reading:</strong> <a href="./topic2reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic2lecture.html">Lecture</a></li>
-<li><strong>MCQs:</strong> <a href="./topic2tutorial.html">MCQs</a></li>
-</ul>
+<section id="how-to-scale-it" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-scale-it">How to Scale It</h3>
+<p>To add more topics later (e.g., <code>topic2questions</code>, <code>topic3questions</code>):</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Render all questions to HTML</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">  run</span><span class="kw">: </span><span class="ch">|</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    quarto render topic1questions.qmd --to html</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    quarto render topic2questions.qmd --to html</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    quarto render topic3questions.qmd --to html</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Then update the sync section to copy all rendered files:</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cp</span> docs/topic<span class="pp">*</span>.html <span class="st">"</span><span class="va">${WORKDIR}</span><span class="st">/docs/"</span> <span class="dv">2</span><span class="op">&gt;</span>/dev/null <span class="kw">||</span> <span class="fu">true</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<hr>
 </section>
-<section id="topic-3" class="level2">
-<h2 class="anchored" data-anchor-id="topic-3">Topic 3</h2>
-<ul>
-<li><strong>Reading:</strong> <a href="./topic3reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic3lecture.html">Lecture</a></li>
-<li><strong>MCQs:</strong> <a href="./topic3tutorial.html">MCQs</a></li>
-</ul>
 </section>
-<section id="topic-4" class="level2">
-<h2 class="anchored" data-anchor-id="topic-4">Topic 4</h2>
-<ul>
-<li><strong>Reading:</strong> <a href="./topic4reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic4lecture.html">Lecture</a></li>
-<li><strong>MCQs:</strong> <a href="./topic4tutorial.html">MCQs</a></li>
-</ul>
+<section id="workflow-summary" class="level2">
+<h2 class="anchored" data-anchor-id="workflow-summary">4. Workflow Summary</h2>
+<pre><code>┌─────────────────────────────────────────┐
+│ You push to GitHub (main branch)        │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│ GitHub Actions Triggered                │
+│ 1. Set up Quarto                        │
+│ 2. Render topic1questions.qmd → HTML    │
+│ 3. Copy lean files                      │
+│ 4. Push to HF Space                     │
+└────────────────┬────────────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────────────┐
+│ HF Space Updated                        │
+│ - app.py ready to serve                 │
+│ - topic1questions.qmd &amp; HTML available  │
+│ - AI feedback system has context        │
+└─────────────────────────────────────────┘</code></pre>
+<hr>
 </section>
-<section id="topic-5" class="level2">
-<h2 class="anchored" data-anchor-id="topic-5">Topic 5</h2>
+<section id="testing-verification" class="level2">
+<h2 class="anchored" data-anchor-id="testing-verification">5. Testing &amp; Verification</h2>
+<p>After updating the workflow, test by:</p>
+<ol type="1">
+<li><p><strong>Push a small change to GitHub:</strong></p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> add .</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> commit <span class="at">-m</span> <span class="st">"Test HF sync workflow"</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> push origin main</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div></li>
+<li><p><strong>Check GitHub Actions:</strong></p>
 <ul>
-<li><strong>Reading:</strong> <a href="./topic5reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic5lecture.html">Lecture</a></li>
-<li><strong>MCQs:</strong> <a href="./topic5tutorial.html">MCQs</a></li>
-</ul>
-</section>
-<section id="topic-6" class="level2">
-<h2 class="anchored" data-anchor-id="topic-6">Topic 6</h2>
+<li>Go to your repo → “Actions” tab</li>
+<li>Watch the “Sync HF Space” workflow run</li>
+<li>Should complete in 1-2 minutes</li>
+</ul></li>
+<li><p><strong>Verify on HF Space:</strong></p>
 <ul>
-<li><strong>Reading:</strong> <a href="./topic6reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic6lecture.html">Lecture</a></li>
-<li><strong>MCQs:</strong> <a href="./topic6tutorial.html">MCQs</a></li>
-</ul>
+<li>Open your HF Space: <code>https://huggingface.co/spaces/camcalderon777/monetary-economics-questions</code></li>
+<li>Check that the app loads</li>
+<li>Check files in the HF Space repo (should see <code>topic1questions.qmd</code>, <code>docs/topic1questions.html</code>)</li>
+</ul></li>
+</ol>
+<hr>
 </section>
-<section id="topic-7" class="level2">
-<h2 class="anchored" data-anchor-id="topic-7">Topic 7</h2>
+<section id="future-improvements" class="level2">
+<h2 class="anchored" data-anchor-id="future-improvements">6. Future Improvements</h2>
 <ul>
-<li><strong>Reading:</strong> <a href="./topic7reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic7lecture.html">Lecture</a></li>
-<li><strong>MCQs:</strong> <a href="./topic7tutorial.html">MCQs</a></li>
+<li>Add <code>topic2questions</code>, <code>topic3questions</code>, etc. following the same pattern</li>
+<li>Render all <code>topicXquestions.qmd</code> files in a loop (don’t repeat yourself)</li>
+<li>Consider adding a CI check: fail the workflow if Quarto render fails (to catch errors early)</li>
+<li>Optional: cache Quarto rendering to speed up workflow</li>
 </ul>
+<hr>
 </section>
-<section id="topic-8" class="level2">
-<h2 class="anchored" data-anchor-id="topic-8">Topic 8</h2>
+<section id="files-modified" class="level2">
+<h2 class="anchored" data-anchor-id="files-modified">Files Modified</h2>
 <ul>
-<li><strong>Reading:</strong> <a href="./topic8reading.html">Reading</a></li>
-<li><strong>Slides:</strong> <a href="./topic8lecture.html">Lecture</a></li>
-<li><strong>MCQs:</strong> <a href="./topic8tutorial.html">MCQs</a></li>
+<li><code>.github/workflows/hf-space-sync.yml</code> — Updated with pre-sync render + topic1 content sync</li>
+<li><code>app.py</code> — Updated to load <code>topic1questions.qmd</code> dynamically and enhance feedback prompt</li>
+<li><code>README.md</code> (this file) — Documentation</li>
 </ul>
-</section>
-<section id="extra-readings-and-links" class="level2">
-<h2 class="anchored" data-anchor-id="extra-readings-and-links">Extra readings and links</h2>
+<p>Done! The setup is now <strong>lean, automatic, and scalable.</strong></p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -852,15 +981,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./topic1reading.html" class="pagination-link" aria-label="Reading">
-        <span class="nav-page-text">Reading</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 
