@@ -5,11 +5,17 @@ format: html
 
 ## Interactive Tutorial with AI Feedback
 
-This page contains the questions for Topic 1. To answer these questions and receive AI-powered feedback, please **[access the interactive tutorial here](https://huggingface.co/spaces/camcalderon777/monetary-economics-questions)** (or run locally: `shiny run app.py` from your terminal).
+Answer the questions below and receive AI-powered feedback. The app is embedded below:
+
+```{=html}
+<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
+```
 
 ---
 
-## Question 1
+## Question Details
+
+### Question 1
 
 **A.** Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?
 
