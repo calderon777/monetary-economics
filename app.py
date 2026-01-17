@@ -126,56 +126,316 @@ def get_ai_feedback(question_num, student_answer):
 
 
 app_ui = ui.page_fluid(
-    ui.h1("Topic 1 - Monetary Economics Questions"),
-    ui.markdown(
-        """
-### How to Use This Tutorial
-
-1. Read each question carefully
-2. Type your answer in the text box
-3. Click "Get AI Feedback" to receive hints and guidance
-4. Revise your answer based on the feedback
-5. Repeat until you've fully developed your understanding
-
-**Note:** The full question details are available in [topic1questions.qmd](topic1questions.qmd) or [topic1questions.html](docs/topic1questions.html).
-"""
+    ui.head_content(
+        ui.HTML("""
+        <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        .shiny-page-container {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            min-height: 100vh;
+        }
+        .container-custom {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 40px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin: 0 0 10px 0;
+            font-weight: 600;
+        }
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+            margin: 0;
+        }
+        .instructions {
+            background: #f0f4ff;
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            border-radius: 6px;
+            margin-bottom: 30px;
+        }
+        .instructions h3 {
+            color: #333;
+            margin-top: 0;
+        }
+        .instructions ol {
+            color: #555;
+            line-height: 1.8;
+        }
+        .nav-tabs {
+            border-bottom: 2px solid #e0e0e0 !important;
+            margin-bottom: 25px;
+        }
+        .nav-link {
+            color: #666 !important;
+            font-weight: 500;
+            padding: 12px 20px !important;
+            border: none !important;
+            border-bottom: 3px solid transparent !important;
+            transition: all 0.3s ease;
+        }
+        .nav-link:hover {
+            color: #667eea !important;
+            border-bottom-color: #667eea !important;
+        }
+        .nav-link.active {
+            color: #667eea !important;
+            border-bottom-color: #667eea !important;
+            background: transparent !important;
+        }
+        .question-card {
+            background: #fafafa;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+        .question-text {
+            color: #333;
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .answer-section {
+            margin-top: 20px;
+        }
+        .answer-section label {
+            display: block;
+            color: #555;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        textarea {
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
+            padding: 12px;
+            border: 2px solid #e0e0e0 !important;
+            border-radius: 6px;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1em;
+            resize: vertical;
+            transition: border-color 0.3s ease;
+        }
+        textarea:focus {
+            border-color: #667eea !important;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            outline: none;
+        }
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+            border: none !important;
+            color: white !important;
+            font-weight: 600;
+            padding: 12px 30px !important;
+            border-radius: 6px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            margin-top: 15px;
+        }
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4) !important;
+        }
+        .feedback-box {
+            margin-top: 20px;
+            padding: 20px;
+            background: #e8f5e9 !important;
+            border-left: 4px solid #4caf50 !important;
+            border-radius: 6px;
+            border: 1px solid #c8e6c9 !important;
+        }
+        .feedback-box h3 {
+            color: #2e7d32;
+            margin: 0 0 10px 0;
+        }
+        .feedback-box p, .feedback-box li {
+            color: #333;
+            line-height: 1.6;
+        }
+        .note-link {
+            text-align: center;
+            color: #999;
+            font-size: 0.9em;
+            margin-bottom: 20px;
+        }
+        .note-link a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .note-link a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Responsive Design for Mobile and Tablets */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            .container-custom {
+                padding: 20px;
+                border-radius: 8px;
+            }
+            .header h1 {
+                font-size: 1.8em;
+            }
+            .header p {
+                font-size: 1em;
+            }
+            .instructions {
+                padding: 15px;
+            }
+            .question-card {
+                padding: 15px;
+            }
+            .question-text {
+                font-size: 1em;
+            }
+            .nav-link {
+                padding: 10px 15px !important;
+                font-size: 0.9em;
+            }
+            textarea {
+                font-size: 0.95em;
+                padding: 10px;
+            }
+            .btn-primary {
+                width: 100%;
+                padding: 12px !important;
+            }
+            .feedback-box {
+                padding: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container-custom {
+                padding: 15px;
+            }
+            .header h1 {
+                font-size: 1.5em;
+            }
+            .header p {
+                font-size: 0.9em;
+            }
+            .question-card {
+                padding: 12px;
+            }
+            .nav-link {
+                padding: 8px 12px !important;
+                font-size: 0.85em;
+            }
+        }
+        </style>
+        """)
     ),
-    ui.navset_tab(
-        ui.nav_panel(
-            "Question 1",
-            ui.markdown(
-                """**A.** Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?
+    ui.div(
+        ui.div(
+            ui.h1("Topic 1 - Monetary Economics Questions"),
+            ui.p("Enhance your understanding of monetary economics with interactive AI-powered feedback"),
+            class_="header"
+        ),
+        ui.div(
+            ui.h3("How to Use This Tutorial"),
+            ui.HTML("""
+            <ol>
+                <li>Read each question carefully</li>
+                <li>Type your answer in the text box</li>
+                <li>Click 'Get AI Feedback' to receive hints and guidance</li>
+                <li>Revise your answer based on the feedback</li>
+                <li>Repeat until you've fully developed your understanding</li>
+            </ol>
+            """),
+            class_="instructions"
+        ),
+        ui.div(
+            ui.HTML("<div class='note-link'>Full question details available in <a href='topic1questions.qmd' target='_blank'>topic1questions.qmd</a> or <a href='docs/topic1questions.html' target='_blank'>topic1questions.html</a></div>")
+        ),
+        ui.navset_tab(
+            ui.nav_panel(
+                "Question 1",
+                ui.div(
+                    ui.div(
+                        ui.markdown(
+                            """**A.** Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?
 
 **B.** If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?"""
+                        ),
+                        class_="question-text"
+                    ),
+                    ui.div(
+                        ui.tags.label("Your Answer:"),
+                        ui.input_text_area("answer1", "", height="300px", placeholder="Type your answer here..."),
+                        ui.input_action_button("submit1", "Get AI Feedback", class_="btn-primary"),
+                        class_="answer-section"
+                    ),
+                    ui.output_ui("feedback1"),
+                    class_="question-card"
+                )
             ),
-            ui.input_text_area("answer1", "Your Answer:", height="150px", placeholder="Type your answer here..."),
-            ui.input_action_button("submit1", "Get AI Feedback", class_="btn-primary"),
-            ui.output_ui("feedback1"),
-        ),
-        ui.nav_panel(
-            "Question 2",
-            ui.markdown(
-                """What are the characteristics that underlie liquidity? Can any object acquire these characteristics or are there some physical attributes that must be met?"""
+            ui.nav_panel(
+                "Question 2",
+                ui.div(
+                    ui.div(
+                        ui.markdown(
+                            """What are the characteristics that underlie liquidity? Can any object acquire these characteristics or are there some physical attributes that must be met?"""
+                        ),
+                        class_="question-text"
+                    ),
+                    ui.div(
+                        ui.tags.label("Your Answer:"),
+                        ui.input_text_area("answer2", "", height="300px", placeholder="Type your answer here..."),
+                        ui.input_action_button("submit2", "Get AI Feedback", class_="btn-primary"),
+                        class_="answer-section"
+                    ),
+                    ui.output_ui("feedback2"),
+                    class_="question-card"
+                )
             ),
-            ui.input_text_area("answer2", "Your Answer:", height="150px", placeholder="Type your answer here..."),
-            ui.input_action_button("submit2", "Get AI Feedback", class_="btn-primary"),
-            ui.output_ui("feedback2"),
-        ),
-        ui.nav_panel(
-            "Question 3",
-            ui.markdown(
-                """In the example of three agents and three goods which is discussed in the lectures, can you think of an alternative to the use of a medium of exchange that might have allowed the three traders to acquire their most preferred good?
+            ui.nav_panel(
+                "Question 3",
+                ui.div(
+                    ui.div(
+                        ui.markdown(
+                            """In the example of three agents and three goods which is discussed in the lectures, can you think of an alternative to the use of a medium of exchange that might have allowed the three traders to acquire their most preferred good?
 
 **Context:**
 - Harriet: 6 Bananas > 3 Apples > 1 Cabbage
 - Ina: 1 Cabbage > 6 Bananas > 3 Apples
 - Jamal: 3 Apples > 1 Cabbage > 6 Bananas"""
+                        ),
+                        class_="question-text"
+                    ),
+                    ui.div(
+                        ui.tags.label("Your Answer:"),
+                        ui.input_text_area("answer3", "", height="300px", placeholder="Type your answer here..."),
+                        ui.input_action_button("submit3", "Get AI Feedback", class_="btn-primary"),
+                        class_="answer-section"
+                    ),
+                    ui.output_ui("feedback3"),
+                    class_="question-card"
+                )
             ),
-            ui.input_text_area("answer3", "Your Answer:", height="150px", placeholder="Type your answer here..."),
-            ui.input_action_button("submit3", "Get AI Feedback", class_="btn-primary"),
-            ui.output_ui("feedback3"),
         ),
-    ),
+        class_="container-custom"
+    )
 )
 
 
@@ -185,8 +445,11 @@ def server(input, output, session):
     def feedback1():
         feedback = get_ai_feedback(1, input.answer1())
         return ui.div(
-            ui.markdown(f"### AI Tutor Feedback\n\n{feedback}"),
-            style="margin-top: 20px; padding: 15px; background-color: #e8f4f8; border-left: 4px solid #2196F3; border-radius: 4px;",
+            ui.div(
+                ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),
+                ui.markdown(feedback),
+                class_="feedback-box"
+            )
         )
 
     @render.ui
@@ -194,8 +457,11 @@ def server(input, output, session):
     def feedback2():
         feedback = get_ai_feedback(2, input.answer2())
         return ui.div(
-            ui.markdown(f"### AI Tutor Feedback\n\n{feedback}"),
-            style="margin-top: 20px; padding: 15px; background-color: #e8f4f8; border-left: 4px solid #2196F3; border-radius: 4px;",
+            ui.div(
+                ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),
+                ui.markdown(feedback),
+                class_="feedback-box"
+            )
         )
 
     @render.ui
@@ -203,8 +469,11 @@ def server(input, output, session):
     def feedback3():
         feedback = get_ai_feedback(3, input.answer3())
         return ui.div(
-            ui.markdown(f"### AI Tutor Feedback\n\n{feedback}"),
-            style="margin-top: 20px; padding: 15px; background-color: #e8f4f8; border-left: 4px solid #2196F3; border-radius: 4px;",
+            ui.div(
+                ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),
+                ui.markdown(feedback),
+                class_="feedback-box"
+            )
         )
 
 
