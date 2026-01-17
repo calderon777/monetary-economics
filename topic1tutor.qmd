@@ -1,0 +1,186 @@
+---
+title: "Topic 1 - Tutor Guide"
+format: html
+---
+
+## Tutor Facilitation Guide: Topic 1
+
+This guide supports tutors in running a high-quality, reasoning-focused discussion session. Your role is to **diagnose misconceptions live**, **judge quality of reasoning**, **reframe answers using student language**, and **signal assessment relevance**.
+
+---
+
+## Before the Tutorial
+
+- Ask students to complete the AI feedback on [topic1questions.qmd](topic1questions.qmd) before arriving.
+- Review their AI-drafted answers (if collected) to identify common reasoning gaps.
+- Have [topic1answers.qmd](topic1answers.qmd) available as reference, but **do not share** until after the session.
+
+---
+
+## During the Tutorial
+
+### Core Tutor Moves
+
+#### 1. **Diagnose Misconceptions**
+Listen for gaps in causal reasoning or false equivalences.
+
+**Red flags:**
+- "Money does all three functions because it's money" (circular reasoning).
+- "All three roles always happen together" (overgeneralization).
+- Attributes listed but not causally connected to outcomes.
+
+**Diagnostic questions:**
+- "Walk me through: why does accepting money now (MoE) mean you'll store value?"
+- "If I defined prices in SDR but paid in USD, would SDR be a medium of exchange? Why not?"
+- "What *must* be true about an object for it to serve as MoE? Which of those also apply to UoA?"
+
+#### 2. **Judge Quality of Reasoning**
+Distinguish between correct labels and solid reasoning.
+
+**Good indicators:**
+- Student can identify the constraint or mechanism (time gap, information requirements, coordination costs).
+- Student qualifies claims: "MoE and SoV are linked *when* there's a time gap."
+- Student distinguishes necessity from sufficiency: "Durability is *necessary* for MoE but not *sufficient*."
+
+**Weak indicators:**
+- Lists attributes without explaining why they matter.
+- Uses examples but doesn't abstract the principle.
+- Asserts conclusions without deriving them from the problem.
+
+#### 3. **Reframe Using Student Language**
+Take their partial reasoning and sharpen it.
+
+**Student says:** "Money is hard to break so it's liquid."
+
+**You reframe:** "You're noticing divisibility. Can you connect that back to the question? If I can't divide it, what happens to my ability to make transactions?"
+
+**Student says:** "MoE is easier than barter because everyone accepts money."
+
+**You reframe:** "Right—because it's universally accepted, I don't need to find someone who both has what I want *and* wants what I have. But does that same universal acceptance matter for UoA? If I'm just pricing apples in euros, do apples need to accept euros?"
+
+#### 4. **Signal Assessment Relevance**
+Explicitly link discussion to exam skills.
+
+- "Examiners test whether you can *defend* a claim, not just state it. How would you defend 'UoA is independent' if an examiner pushed back?"
+- "In exams, you'll lose marks for overgeneralizing. Notice how we keep qualifying: 'in modern economies,' 'with commodity money,' etc."
+- "Examiners reward clear causal logic. A marking rubric would ask: 'Did the student explain *why*, not just *what*?'"
+
+---
+
+## Key Questions by Topic
+
+### Question 1: MoE → SoV → UoA
+
+**Goal:** Students see that SoV logically follows from MoE (time gap), but UoA is independent.
+
+**Challenge questions:**
+
+1. **On the SoV link:**
+   - "Why is there necessarily a time gap between selling and buying?"
+   - "Could I use MoE without storing value? What would that look like?"
+   - "Does every use of MoE involve storing value, or just some uses?"
+
+2. **On UoA independence:**
+   - "Why is UoA not automatic from MoE? What's the logical gap?"
+   - "Could prices exist without money? How?"
+   - "If I price things in euros but transact in gold, what's happening?"
+
+3. **On real examples:**
+   - "Is SDR a good example of UoA without MoE? What makes it work?"
+   - "Why doesn't everyone just use euros for UoA *and* MoE? Is there ever a reason to separate them?"
+
+**Assessment link:**
+"Exams often ask: 'Explain why X follows logically but Y does not.' This question tests that distinction. You need to show the logical chain, not just assume functions cluster together."
+
+---
+
+### Question 2: Liquidity Characteristics & Physical Attributes
+
+**Goal:** Students link liquidity (economic outcome) to physical attributes (enabling constraints).
+
+**Challenge questions:**
+
+1. **On causal direction:**
+   - "Start with why divisibility matters. If I can't split it, what happens?"
+   - "Now reverse: if something is infinitely divisible but nobody wants it, is it liquid?"
+   - "So what's the relationship: do physical attributes *cause* liquidity, or just *enable* it?"
+
+2. **On conflation:**
+   - "Is 'durability' a liquidity characteristic or a physical requirement for durability?"
+   - "Can something be durable but not liquid? (e.g., a house)."
+   - "What do we mean by 'durability' in the context of MoE—physical durability or value durability?"
+
+3. **On universality:**
+   - "Does *every* object need *all four* characteristics to be liquid, or just some?"
+   - "Can something be highly marketable (Q4) but fail on transportability?"
+
+**Assessment link:**
+"In exams, you'll encounter questions like: 'Why can't X serve as money?' The answer isn't 'because it fails on X attribute'—it's 'because when people try to use it as MoE, they encounter problem Y, which breaks attribute Z.' Show the chain."
+
+---
+
+### Question 3: Three-Trader Alternatives to MoE
+
+**Goal:** Students derive the *necessity* of MoE by working through why alternatives fail.
+
+**Challenge questions:**
+
+1. **On the middleman approach:**
+   - "How does the middleman solve the three-trader problem? Walk me through the trades."
+   - "What information does the middleman need? Who gives it to them?"
+   - "In a real market with 1000 goods and 10,000 traders, is the middleman approach scalable?"
+
+2. **On multilateral trades:**
+   - "Why does simultaneous exchange work for three people?"
+   - "Now imagine 100 traders and 50 goods. How long does coordination take?"
+   - "What's the cost of failed coordination? (Someone shows up but the deal falls through.)"
+
+3. **On MoE as solution:**
+   - "What problem does MoE *solve* that these alternatives struggle with?"
+   - "Is MoE the *only* solution, or just an efficient one?"
+   - "In a world of perfect information and zero coordination costs, would we need MoE?"
+
+**Assessment link:**
+"Exam questions often ask you to justify *why* a system exists (MoE, central banking, fiat money, etc.). The logic is: what problem does it solve? Show the problem first, then show how the solution addresses it."
+
+---
+
+## After the Tutorial
+
+### Releasing Indicative Answers
+
+**Frame explicitly:**
+> "Here are indicative answers—not model answers. They show one acceptable reasoning path. Your tutorial discussion and your own refined thinking remain primary. Use these to check your causal logic, not to replace your own reasoning."
+
+### Compare Approaches
+
+- "Notice how the indicative answer on Q1 carefully distinguishes necessity from sufficiency. Do the same in exams."
+- "Notice how the indicative answer on Q2 starts with mechanism (why marketability matters) before listing attributes."
+- "Notice how the indicative answer on Q3 derives the MoE conclusion from the failure of alternatives, not by assumption."
+
+### Next Steps
+
+- Encourage students to rewrite their answers *after* the tutorial, incorporating feedback.
+- Assign a **comparison task:** "Write a paragraph on Q2 that contrasts two liquidity characteristics and explains why both matter."
+- Link forward: "Question 3 logic applies next week when we discuss why fiat money works. Same reasoning pattern."
+
+---
+
+## Common Tutor Pitfalls to Avoid
+
+- **Don't lecture.** Ask questions that force students to build the logic themselves.
+- **Don't accept incomplete reasoning.** Probe: "That's true, but why is it true? What's the mechanism?"
+- **Don't ignore real-world intuition.** If a student says "everyone accepts money," validate it and then generalize: "Right—what does that universal acceptance *enable*?"
+- **Don't skip exam framing.** Students need to know *how* to translate their reasoning into exam-style answers.
+
+---
+
+## Tips for Scaling Across Topics
+
+Once you've run Q1 with this structure, the pattern repeats:
+1. **Diagnose** → Ask "Walk me through the logic."
+2. **Judge** → Look for causal chains and qualified claims.
+3. **Reframe** → "You mean...?" or "Let me sharpen that: ...?"
+4. **Signal** → "Exams test this by asking: ...?"
+
+Use this consistent pattern across Topics 2–8 for coherence.

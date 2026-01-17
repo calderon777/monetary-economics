@@ -16,7 +16,12 @@ Use this page to practise **concept clarity** and **economic reasoning** before 
 1) Write your own answer first.
 2) Click **Get AI Feedback** and note what you got right or missed.
 3) Revise your answer in your notes; be explicit with definitions and causal reasoning.
-4) Only then, if needed, reveal the indicative answer below.
+4) **During tutorial:** Your human tutor will probe, challenge, and help you rephrase your reasoning. *The tutor is your primary feedback source.* AI is a starting point only.
+
+⚠️ **Important:** AI models can hallucinate or produce plausible-sounding but incorrect explanations. Always verify claims against lecture notes and textbooks. Bring your AI-drafted answer to tutorial for tutor feedback—don't treat AI suggestions as definitive.
+
+**About indicative answers:**
+Indicative answers will be released *after* your tutorial. They are explicitly **not** model answers—they illustrate one acceptable line of reasoning. Your tutorial discussion and your own reasoning remain primary.
 
 **Reflection after you reveal an indicative answer:**
 - What did you miss? Where was your reasoning thin?
@@ -25,4 +30,34 @@ Use this page to practise **concept clarity** and **economic reasoning** before 
 ```{=html}
 <iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
 ```
+
+---
+
+## Tutor Commentary
+
+### Common Misconceptions Observed
+
+**Question 1 (MoE → SoV → UoA):**
+- Students often conflate "automatic" with "necessary". SoV follows from MoE *in practice* (time gap), but students sometimes suggest all three roles are equally entangled.
+- UoA independence is frequently overlooked; students default to assuming MoE is always UoA.
+
+**Question 2 (Liquidity characteristics):**
+- Students list the four attributes but struggle to connect them causally. They state "marketability matters" without explaining *why* it generates liquidity.
+- Physical attributes are sometimes confused with economic attributes; e.g., "gold is valuable" vs. "gold is transportable and durable, which enables it to be valuable as MoE."
+
+**Question 3 (Three-trader alternatives):**
+- Students often propose clearinghouse as a general solution without acknowledging search costs or information requirements.
+- The conclusion about MoE simplifying coordination is stated but not *derived* from the example's complexity.
+
+### Good Reasoning Patterns to Highlight
+
+- Explicit causal chains: "Because there is a time gap between sale and purchase, money *must store value*."
+- Contrasts between concepts: "Unlike MoE, which requires universal acceptance, UoA only requires shared definition."
+- Links to real examples with reasoning: "SDR shows UoA can exist without MoE because it's used for accounting, not transactions."
+
+### Links to Exam Expectations
+
+- **Exam-style framing:** Questions will test whether you can *defend* a position using economic logic, not just list definitions.
+- **Marking focus:** Marks are awarded for reasoning (causal links, scope limitations) more than for correct labels.
+- **Common traps:** Overgeneralizing from one context (e.g., "all money serves all three roles everywhere") without qualification.
 
