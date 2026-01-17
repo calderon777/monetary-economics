@@ -21,7 +21,8 @@ Answer the questions below and receive AI-powered feedback. The app is embedded 
 
 **B.** If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?
 
-### Indicative Answer
+<details>
+<summary><strong>💡 Click to reveal indicative answer</strong></summary>
 
 The Store of Value (SoV) role of money automatically follows from its Medium of Exchange (MoE) role. This is because using money as MoE leads inevitably to a time gap between acquiring money through sale and spending it to buy something else. During this time, money stores the value of what was sold.
 
@@ -31,13 +32,16 @@ However, there is no inevitable link between MoE and Unit of Account (UoA). The 
 - **IMF's Special Drawing Right (SDR)**: A fictitious currency based on a basket of major currencies, used to denominate loans but not freely traded
 - **European Currency Unit (ECU)**: Preceded the Euro, used for harmonizing accounts but not an actual medium of exchange
 
+</details>
+
 ---
 
 ## Question 2
 
 What are the characteristics that underlie liquidity? Can any object acquire these characteristics or are there some physical attributes that must be met?
 
-### Indicative Answer
+<details>
+<summary><strong>💡 Click to reveal indicative answer</strong></summary>
 
 Liquidity is characterized by four key attributes:
 
@@ -55,6 +59,8 @@ Whatever serves as the MoE acquires these characteristics by virtue of being uni
 
 These objective criteria limit what can serve as effective money.
 
+</details>
+
 ---
 
 ## Question 3
@@ -66,7 +72,8 @@ In the example of three agents and three goods which is discussed in the lecture
 - Ina: 1 Cabbage ≻ 6 Bananas ≻ 3 Apples
 - Jamal: 3 Apples ≻ 1 Cabbage ≻ 6 Bananas
 
-### Indicative Answer
+<details>
+<summary><strong>💡 Click to reveal indicative answer</strong></summary>
 
 **Alternative mechanisms to the use of a medium of exchange:**
 
@@ -81,6 +88,8 @@ All traders meet at once and exchange cooperatively (Ina gives Bananas to Harrie
 *Problem:* This becomes extremely difficult with many traders and goods. Coordination costs are prohibitive.
 
 **Conclusion:** The use of a MoE simplifies all these complications and reduces transaction costs significantly.
+
+</details>
 
 ---
 
