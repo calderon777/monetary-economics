@@ -112,10 +112,11 @@ def get_ai_feedback(question_num, student_answer):
         indicative_answer = INDICATIVE_ANSWERS.get(question_num, "")
         prompt = create_feedback_prompt(question_num, student_answer, indicative_answer)
 
-        # Use a supported Groq model (mixtral-8x7b-32768 was decommissioned)
+        # Use a supported Groq model
+        # Visit https://console.groq.com/docs/models for current available models
         message = client.chat.completions.create(
             messages=[{"role": "user", "content": prompt}],
-            model="llama-3.1-70b-versatile",
+            model="mixtral-8x7b-32768",
         )
 
         return message.choices[0].message.content
