@@ -1,5 +1,6 @@
 ---
 title: "Classical Theory of Money"
+author: "Adapted by Dr Camilo Calderon"
 format:
   html:
     toc: true

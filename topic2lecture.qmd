@@ -1,6 +1,6 @@
 ---
 title: "Lecture 2"
-author: "By Dr Camilo Calderon"
+author: "Adapted by Dr Camilo Calderon"
 format:
   revealjs:
     theme: default

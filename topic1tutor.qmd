@@ -1,6 +1,7 @@
 ---
 title: "Topic 1 - Tutor Guide"
 format: html
+author: Dr Camilo Calderon
 ---
 
 ## Tutor Facilitation Guide: Topic 1

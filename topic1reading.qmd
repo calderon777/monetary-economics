@@ -1,7 +1,7 @@
 ---
 title: "Monetary Economics"
 subtitle: "The Nature and Economic Role of Money"
-author: "Dr Camilo Calderon"
+author: "Adapted by Dr Camilo Calderon"
 format:
   html:
     toc: true
