@@ -2,6 +2,10 @@ from shiny import App, ui, render, reactive
 from groq import Groq
 import os
 import pathlib
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # Try to load topic1questions.qmd for context
 def load_questions_from_qmd():

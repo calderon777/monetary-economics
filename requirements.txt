@@ -5,3 +5,4 @@ plotly
 pandas
 ridgeplot
 groq
+python-dotenv
