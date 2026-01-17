@@ -19,7 +19,7 @@ website:
             file: topic1questions.qmd
           - text: "MCQs"
             file: topic1mcqs.qmd
-      - section: "Topic 2"
+      - section: "Topic 2 - Classical Theory of Money"
         contents:
           - text: "Reading"
             file: topic2reading.qmd
