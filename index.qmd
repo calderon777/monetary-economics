@@ -5,54 +5,54 @@ format: html
 
 Welcome to **Monetary Economics**.
 
-Use the weekly sections below to move through the material in the order you need it: reading first, then slides, then the tutorial. 
+Use the topic sections below to move through the material in the order you need it: reading first, then slides, then the MCQs. 
 
-## Week 1
+## Topic 1
 
-- **Reading:** [Reading](week1reading.qmd)
-- **Slides:** [Lecture](week1lecture.qmd)
-- **Tutorial:** [Tutorial](week1tutorial.qmd)
+- **Reading:** [Reading](topic1reading.qmd)
+- **Slides:** [Lecture](topic1lecture.qmd)
+- **MCQs:** [MCQs](topic1mcqs.qmd)
 
-## Week 2
+## Topic 2
 
-- **Reading:** [Reading](week2reading.qmd)
-- **Slides:** [Lecture](week2lecture.qmd)
-- **Tutorial:** [Tutorial](week2tutorial.qmd)
+- **Reading:** [Reading](topic2reading.qmd)
+- **Slides:** [Lecture](topic2lecture.qmd)
+- **MCQs:** [MCQs](topic2tutorial.qmd)
 
-## Week 3
+## Topic 3
 
-- **Reading:** [Reading](week3reading.qmd)
-- **Slides:** [Lecture](week3lecture.qmd)
-- **Tutorial:** [Tutorial](week3tutorial.qmd)
+- **Reading:** [Reading](topic3reading.qmd)
+- **Slides:** [Lecture](topic3lecture.qmd)
+- **MCQs:** [MCQs](topic3tutorial.qmd)
 
-## Week 4
+## Topic 4
 
-- **Reading:** [Reading](week4reading.qmd)
-- **Slides:** [Lecture](week4lecture.qmd)
-- **Tutorial:** [Tutorial](week4tutorial.qmd)
+- **Reading:** [Reading](topic4reading.qmd)
+- **Slides:** [Lecture](topic4lecture.qmd)
+- **MCQs:** [MCQs](topic4tutorial.qmd)
 
-## Week 5
+## Topic 5
 
-- **Reading:** [Reading](week5reading.qmd)
-- **Slides:** [Lecture](week5lecture.qmd)
-- **Tutorial:** [Tutorial](week5tutorial.qmd)
+- **Reading:** [Reading](topic5reading.qmd)
+- **Slides:** [Lecture](topic5lecture.qmd)
+- **MCQs:** [MCQs](topic5tutorial.qmd)
 
-## Week 6
+## Topic 6
 
-- **Reading:** [Reading](week6reading.qmd)
-- **Slides:** [Lecture](week6lecture.qmd)
-- **Tutorial:** [Tutorial](week6tutorial.qmd)
+- **Reading:** [Reading](topic6reading.qmd)
+- **Slides:** [Lecture](topic6lecture.qmd)
+- **MCQs:** [MCQs](topic6tutorial.qmd)
 
-## Week 7
+## Topic 7
 
-- **Reading:** [Reading](week7reading.qmd)
-- **Slides:** [Lecture](week7lecture.qmd)
-- **Tutorial:** [Tutorial](week7tutorial.qmd)
+- **Reading:** [Reading](topic7reading.qmd)
+- **Slides:** [Lecture](topic7lecture.qmd)
+- **MCQs:** [MCQs](topic7tutorial.qmd)
 
-## Week 8
+## Topic 8
 
-- **Reading:** [Reading](week8reading.qmd)
-- **Slides:** [Lecture](week8lecture.qmd)
-- **Tutorial:** [Tutorial](week8tutorial.qmd)
+- **Reading:** [Reading](topic8reading.qmd)
+- **Slides:** [Lecture](topic8lecture.qmd)
+- **MCQs:** [MCQs](topic8tutorial.qmd)
 
 ## Extra readings and links

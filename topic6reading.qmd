@@ -1,0 +1,12 @@
+---
+title: "Topic 6 Reading"
+format:
+  html:
+    toc: true
+execute:
+  echo: false
+---
+
+# Topic 6 Reading (Placeholder)
+
+Content will be added soon.

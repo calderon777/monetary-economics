@@ -66,5 +66,88 @@
   },
   "week8lecture.qmd": {
     "week8lecture.html": "0283113e"
+  },
+  "topic1lecture.qmd": {
+    "topic1lecture.html": "b78bd0fc"
+  },
+  "topic1mcqs.qmd": {
+    "topic1mcqs.html": "ce981eda"
+  },
+  "topic1questions.qmd": {
+    "topic1questions.html": "f25c5b3c"
+  },
+  "topic1reading.qmd": {
+    "topic1reading.html": "fa5d68a3",
+    "topic1reading.tex": "f18eca8f"
+  },
+  "topic2lecture.qmd": {
+    "topic2lecture.html": "6b1f4b07"
+  },
+  "topic2reading.qmd": {
+    "topic2reading.html": "ae50c8f5"
+  },
+  "topic2readingv001.qmd": {
+    "topic2readingv001.html": "c8fab93a",
+    "topic2readingv001.tex": "19dd173a"
+  },
+  "topic3lecture.qmd": {
+    "topic3lecture.html": "e74e2d3a"
+  },
+  "topic4lecture.qmd": {
+    "topic4lecture.html": "8682666d"
+  },
+  "topic5lecture.qmd": {
+    "topic5lecture.html": "18092427"
+  },
+  "topic6lecture.qmd": {
+    "topic6lecture.html": "7f64e7a8"
+  },
+  "topic7lecture.qmd": {
+    "topic7lecture.html": "f45beddd"
+  },
+  "topic8lecture.qmd": {
+    "topic8lecture.html": "a2d6726b"
+  },
+  "archive/topic2readingv001.qmd": {
+    "topic2readingv001.html": "b8ad7f25"
+  },
+  "topic2tutorial.qmd": {
+    "topic2tutorial.html": "b24b9e2a"
+  },
+  "topic3reading.qmd": {
+    "topic3reading.html": "0a2c07bc"
+  },
+  "topic3tutorial.qmd": {
+    "topic3tutorial.html": "afbc50a9"
+  },
+  "topic4reading.qmd": {
+    "topic4reading.html": "99dd260a"
+  },
+  "topic4tutorial.qmd": {
+    "topic4tutorial.html": "60bf1da9"
+  },
+  "topic5reading.qmd": {
+    "topic5reading.html": "ed08278a"
+  },
+  "topic5tutorial.qmd": {
+    "topic5tutorial.html": "d3d245d2"
+  },
+  "topic6reading.qmd": {
+    "topic6reading.html": "f694b5b3"
+  },
+  "topic6tutorial.qmd": {
+    "topic6tutorial.html": "a943a0c1"
+  },
+  "topic7reading.qmd": {
+    "topic7reading.html": "c207f95d"
+  },
+  "topic7tutorial.qmd": {
+    "topic7tutorial.html": "3aabb54d"
+  },
+  "topic8reading.qmd": {
+    "topic8reading.html": "819a0065"
+  },
+  "topic8tutorial.qmd": {
+    "topic8tutorial.html": "c1d7a114"
   }
 }

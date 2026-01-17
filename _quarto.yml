@@ -9,70 +9,70 @@ website:
     style: floating
     contents:
       - index.qmd
-      - section: "Week 1"
+      - section: "Topic 1"
         contents:
           - text: "Reading"
-            file: week1reading.qmd
+            file: topic1reading.qmd
           - text: "Lecture"
-            file: week1lecture.qmd
-          - text: "Tutorial"
-            file: week1tutorial.qmd
-      - section: "Week 2"
+            file: topic1lecture.qmd
+          - text: "MCQs"
+            file: topic1mcqs.qmd
+      - section: "Topic 2"
         contents:
           - text: "Reading"
-            file: week2reading.qmd
+            file: topic2reading.qmd
           - text: "Lecture"
-            file: week2lecture.qmd
-          - text: "Tutorial"
-            file: week2tutorial.qmd
-      - section: "Week 3"
+            file: topic2lecture.qmd
+          - text: "MCQs"
+            file: topic2tutorial.qmd
+      - section: "Topic 3"
         contents:
           - text: "Reading"
-            file: week3reading.qmd
+            file: topic3reading.qmd
           - text: "Lecture"
-            file: week3lecture.qmd
-          - text: "Tutorial"
-            file: week3tutorial.qmd
-      - section: "Week 4"
+            file: topic3lecture.qmd
+          - text: "MCQs"
+            file: topic3tutorial.qmd
+      - section: "Topic 4"
         contents:
           - text: "Reading"
-            file: week4reading.qmd
+            file: topic4reading.qmd
           - text: "Lecture"
-            file: week4lecture.qmd
-          - text: "Tutorial"
-            file: week4tutorial.qmd
-      - section: "Week 5"
+            file: topic4lecture.qmd
+          - text: "MCQs"
+            file: topic4tutorial.qmd
+      - section: "Topic 5"
         contents:
           - text: "Reading"
-            file: week5reading.qmd
+            file: topic5reading.qmd
           - text: "Lecture"
-            file: week5lecture.qmd
-          - text: "Tutorial"
-            file: week5tutorial.qmd
-      - section: "Week 6"
+            file: topic5lecture.qmd
+          - text: "MCQs"
+            file: topic5tutorial.qmd
+      - section: "Topic 6"
         contents:
           - text: "Reading"
-            file: week6reading.qmd
+            file: topic6reading.qmd
           - text: "Lecture"
-            file: week6lecture.qmd
-          - text: "Tutorial"
-            file: week6tutorial.qmd
-      - section: "Week 7"
+            file: topic6lecture.qmd
+          - text: "MCQs"
+            file: topic6tutorial.qmd
+      - section: "Topic 7"
         contents:
           - text: "Reading"
-            file: week7reading.qmd
+            file: topic7reading.qmd
           - text: "Lecture"
-            file: week7lecture.qmd
-          - text: "Tutorial"
-            file: week7tutorial.qmd
-      - section: "Week 8"
+            file: topic7lecture.qmd
+          - text: "MCQs"
+            file: topic7tutorial.qmd
+      - section: "Topic 8"
         contents:
           - text: "Reading"
-            file: week8reading.qmd
+            file: topic8reading.qmd
           - text: "Lecture"
-            file: week8lecture.qmd
-          - text: "Tutorial"
-            file: week8tutorial.qmd
+            file: topic8lecture.qmd
+          - text: "MCQs"
+            file: topic8tutorial.qmd
 format:
   html:
     theme: litera

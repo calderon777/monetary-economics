@@ -1,0 +1,12 @@
+---
+title: "Topic 4 Reading"
+format:
+  html:
+    toc: true
+execute:
+  echo: false
+---
+
+# Topic 4 Reading (Placeholder)
+
+Content will be added soon.

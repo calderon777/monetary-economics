@@ -1,0 +1,10 @@
+---
+title: "Topic 7 - MCQs"
+format: html
+execute:
+  echo: false
+---
+
+This is a placeholder page for Topic 7 MCQs.
+
+Content will be added soon.
