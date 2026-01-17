@@ -27,7 +27,7 @@ website:
             file: topic2lecture.qmd
           - text: "MCQs"
             file: topic2tutorial.qmd
-      - section: "Topic 3"
+      - section: "Topic 3 - Keynes' Theory of Money"
         contents:
           - text: "Reading"
             file: topic3reading.qmd
@@ -35,7 +35,7 @@ website:
             file: topic3lecture.qmd
           - text: "MCQs"
             file: topic3tutorial.qmd
-      - section: "Topic 4"
+      - section: "Topic 4 - Friedman's Monetarism"
         contents:
           - text: "Reading"
             file: topic4reading.qmd
@@ -43,7 +43,7 @@ website:
             file: topic4lecture.qmd
           - text: "MCQs"
             file: topic4tutorial.qmd
-      - section: "Topic 5"
+      - section: "Topic 5 - The New Classical ApproachTheory of Money"
         contents:
           - text: "Reading"
             file: topic5reading.qmd
@@ -51,7 +51,7 @@ website:
             file: topic5lecture.qmd
           - text: "MCQs"
             file: topic5tutorial.qmd
-      - section: "Topic 6"
+      - section: "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy"
         contents:
           - text: "Reading"
             file: topic6reading.qmd
@@ -59,7 +59,7 @@ website:
             file: topic6lecture.qmd
           - text: "MCQs"
             file: topic6tutorial.qmd
-      - section: "Topic 7"
+      - section: "Topic 7 - The MOnetary Policy Consensus and the Great Moderation"
         contents:
           - text: "Reading"
             file: topic7reading.qmd
@@ -67,7 +67,7 @@ website:
             file: topic7lecture.qmd
           - text: "MCQs"
             file: topic7tutorial.qmd
-      - section: "Topic 8"
+      - section: "Topic 8 - Monetary Policy in the Post-Crisis"
         contents:
           - text: "Reading"
             file: topic8reading.qmd
