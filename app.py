@@ -375,9 +375,6 @@ app_ui = ui.page_fluid(
             """),
             class_="instructions"
         ),
-        ui.div(
-            ui.HTML("<div class='note-link'>Full question details available in <a href='topic1questions.qmd' target='_blank'>topic1questions.qmd</a> or <a href='docs/topic1questions.html' target='_blank'>topic1questions.html</a></div>")
-        ),
         ui.navset_tab(
             ui.nav_panel(
                 "Question 1",
