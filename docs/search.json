@@ -498,7 +498,7 @@
     "href": "index.html#topic-1",
     "title": "Monetary Economics",
     "section": "Topic 1",
-    "text": "Topic 1\n\nReading: Reading\nSlides: Lecture\nQuestions: Interactive Tutorial\nMCQs: MCQs",
+    "text": "Topic 1\n\nReading: Reading\nSlides: Lecture\nQuestions: Open Questions\nMCQs: MCQs",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -588,7 +588,7 @@
     "href": "topic1questions.html",
     "title": "Topic 1 Questions",
     "section": "",
-    "text": "This page contains the questions for Topic 1. To answer these questions and receive AI-powered feedback, please access the interactive tutorial here (or run locally: shiny run app.py from your terminal).",
+    "text": "Answer the questions below and receive AI-powered feedback. The app is embedded below:",
     "crumbs": [
       "Topic 1",
       "Questions"
@@ -599,7 +599,7 @@
     "href": "topic1questions.html#interactive-tutorial-with-ai-feedback",
     "title": "Topic 1 Questions",
     "section": "",
-    "text": "This page contains the questions for Topic 1. To answer these questions and receive AI-powered feedback, please access the interactive tutorial here (or run locally: shiny run app.py from your terminal).",
+    "text": "Answer the questions below and receive AI-powered feedback. The app is embedded below:",
     "crumbs": [
       "Topic 1",
       "Questions"
@@ -720,6 +720,17 @@
     "crumbs": [
       "Topic 8",
       "Reading"
+    ]
+  },
+  {
+    "objectID": "topic1questions.html#question-details",
+    "href": "topic1questions.html#question-details",
+    "title": "Topic 1 Questions",
+    "section": "Question Details",
+    "text": "Question Details\n\nQuestion 1\nA. Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?\nB. If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?\n\n\nIndicative Answer\nThe Store of Value (SoV) role of money automatically follows from its Medium of Exchange (MoE) role. This is because using money as MoE leads inevitably to a time gap between acquiring money through sale and spending it to buy something else. During this time, money stores the value of what was sold.\nHowever, there is no inevitable link between MoE and Unit of Account (UoA). The need for a UoA can arise even in a non-monetary economy to define prices. While it makes sense for the MoE to also serve as UoA, they are conceptually independent functions.\nExamples of UoA without MoE: - IMF’s Special Drawing Right (SDR): A fictitious currency based on a basket of major currencies, used to denominate loans but not freely traded - European Currency Unit (ECU): Preceded the Euro, used for harmonizing accounts but not an actual medium of exchange",
+    "crumbs": [
+      "Topic 1",
+      "Questions"
     ]
   }
 ]

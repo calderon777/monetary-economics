@@ -9,4 +9,4 @@ app_port: 7860
 pinned: false
 ---
 
-Monetary Economics questions app (Shiny for Python).
+Monetary Economics questions app (Shiny for Python). 
