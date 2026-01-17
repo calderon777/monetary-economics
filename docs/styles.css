@@ -1,3 +1,16 @@
+:root {
+  --bslib-sidebar-main-bg: #f8f8f8;
+}
+
+.popover {
+  --bs-popover-header-bg: #222;
+  --bs-popover-header-color: #fff;
+}
+
+.popover .btn-close {
+  filter: var(--bs-btn-close-white-filter);
+}
+
 /* Cambridge Supervisions: subtle typography polish */
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -72,17 +85,13 @@ pre code { font-size: 0.9em; }
 .mcq-we input[type="checkbox"]:checked + span,
 .mcq-we label:has(input:checked) { font-weight: 500; }
 
-/* --- Feedback text (✓/✗) ---
-   Webexercises may place correctness on different elements depending on version.
-   Cover common cases: the label itself, a wrapper (li/div) around label,
-   or the input getting the class and the label following.
-*/
+/* Feedback text */
 .mcq-we label.webex-correct::after,
 .mcq-we li.webex-correct > label::after,
 .mcq-we div.webex-correct > label::after,
 .mcq-we input.webex-correct + label::after,
 .mcq-we .webex-solution-true > label::after {
-  content: " ✓ Correct";
+  content: " Correct";
   color: var(--mcq-correct);
   font-weight: 600;
   margin-left: .35rem;
@@ -92,7 +101,7 @@ pre code { font-size: 0.9em; }
 .mcq-we div.webex-incorrect > label::after,
 .mcq-we input.webex-incorrect + label::after,
 .mcq-we .webex-solution-false > label::after {
-  content: " ✗ Incorrect";
+  content: " Incorrect";
   color: var(--mcq-incorrect);
   font-weight: 600;
   margin-left: .35rem;
@@ -129,10 +138,10 @@ pre code { font-size: 0.9em; }
 
 /* feedback driven by our script */
 .mcq-we label.is-correct::after {
-  content: " ✓ Correct"; color: #15803d; font-weight: 600; margin-left: .35rem;
+  content: " Correct"; color: #15803d; font-weight: 600; margin-left: .35rem;
 }
 .mcq-we label.is-incorrect::after {
-  content: " ✗ Incorrect"; color: #b91c1c; font-weight: 600; margin-left: .35rem;
+  content: " Incorrect"; color: #b91c1c; font-weight: 600; margin-left: .35rem;
 }
 /* optional tint for the whole line */
 .mcq-we label.is-correct  { color: #15803d; }

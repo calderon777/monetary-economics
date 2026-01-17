@@ -16,5 +16,43 @@ Use the weekly sections below to move through the material in the order you need
 ## Week 2
 
 - **Reading:** [Reading](week2reading.qmd)
+- **Slides:** [Lecture](week2lecture.qmd)
+- **Tutorial:** [Tutorial](week2tutorial.qmd)
+
+## Week 3
+
+- **Reading:** [Reading](week3reading.qmd)
+- **Slides:** [Lecture](week3lecture.qmd)
+- **Tutorial:** [Tutorial](week3tutorial.qmd)
+
+## Week 4
+
+- **Reading:** [Reading](week4reading.qmd)
+- **Slides:** [Lecture](week4lecture.qmd)
+- **Tutorial:** [Tutorial](week4tutorial.qmd)
+
+## Week 5
+
+- **Reading:** [Reading](week5reading.qmd)
+- **Slides:** [Lecture](week5lecture.qmd)
+- **Tutorial:** [Tutorial](week5tutorial.qmd)
+
+## Week 6
+
+- **Reading:** [Reading](week6reading.qmd)
+- **Slides:** [Lecture](week6lecture.qmd)
+- **Tutorial:** [Tutorial](week6tutorial.qmd)
+
+## Week 7
+
+- **Reading:** [Reading](week7reading.qmd)
+- **Slides:** [Lecture](week7lecture.qmd)
+- **Tutorial:** [Tutorial](week7tutorial.qmd)
+
+## Week 8
+
+- **Reading:** [Reading](week8reading.qmd)
+- **Slides:** [Lecture](week8lecture.qmd)
+- **Tutorial:** [Tutorial](week8tutorial.qmd)
 
 ## Extra readings and links

@@ -25,6 +25,54 @@ website:
             file: week2lecture.qmd
           - text: "Tutorial"
             file: week2tutorial.qmd
+      - section: "Week 3"
+        contents:
+          - text: "Reading"
+            file: week3reading.qmd
+          - text: "Lecture"
+            file: week3lecture.qmd
+          - text: "Tutorial"
+            file: week3tutorial.qmd
+      - section: "Week 4"
+        contents:
+          - text: "Reading"
+            file: week4reading.qmd
+          - text: "Lecture"
+            file: week4lecture.qmd
+          - text: "Tutorial"
+            file: week4tutorial.qmd
+      - section: "Week 5"
+        contents:
+          - text: "Reading"
+            file: week5reading.qmd
+          - text: "Lecture"
+            file: week5lecture.qmd
+          - text: "Tutorial"
+            file: week5tutorial.qmd
+      - section: "Week 6"
+        contents:
+          - text: "Reading"
+            file: week6reading.qmd
+          - text: "Lecture"
+            file: week6lecture.qmd
+          - text: "Tutorial"
+            file: week6tutorial.qmd
+      - section: "Week 7"
+        contents:
+          - text: "Reading"
+            file: week7reading.qmd
+          - text: "Lecture"
+            file: week7lecture.qmd
+          - text: "Tutorial"
+            file: week7tutorial.qmd
+      - section: "Week 8"
+        contents:
+          - text: "Reading"
+            file: week8reading.qmd
+          - text: "Lecture"
+            file: week8lecture.qmd
+          - text: "Tutorial"
+            file: week8tutorial.qmd
 format:
   html:
     theme: litera
