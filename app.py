@@ -140,7 +140,8 @@ app_ui = ui.page_fluid(
             min-height: 100vh;
         }
         .container-custom {
-            max-width: 900px;
+            max-width: 1200px;
+            width: 95%;
             margin: 0 auto;
             background: white;
             border-radius: 12px;
@@ -206,6 +207,7 @@ app_ui = ui.page_fluid(
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 20px;
+            width: 100%;
         }
         .question-text {
             color: #333;
@@ -215,6 +217,7 @@ app_ui = ui.page_fluid(
         }
         .answer-section {
             margin-top: 20px;
+            width: 100%;
         }
         .answer-section label {
             display: block;
@@ -222,17 +225,24 @@ app_ui = ui.page_fluid(
             font-weight: 600;
             margin-bottom: 10px;
         }
-        textarea {
+        .shiny-input-container {
+            width: 100% !important;
+        }
+        textarea,
+        textarea.form-control {
+            display: block !important;
             width: 100% !important;
             max-width: 100% !important;
+            min-width: 100% !important;
             box-sizing: border-box !important;
-            padding: 12px;
+            padding: 12px !important;
+            margin: 0 !important;
             border: 2px solid #e0e0e0 !important;
-            border-radius: 6px;
-            font-family: 'Segoe UI', sans-serif;
-            font-size: 1em;
-            resize: vertical;
-            transition: border-color 0.3s ease;
+            border-radius: 6px !important;
+            font-family: 'Segoe UI', sans-serif !important;
+            font-size: 1em !important;
+            resize: vertical !important;
+            transition: border-color 0.3s ease !important;
         }
         textarea:focus {
             border-color: #667eea !important;
