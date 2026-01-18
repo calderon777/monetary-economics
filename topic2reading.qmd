@@ -7,6 +7,13 @@ format:
     toc-depth: 3
     number-sections: true
     code-fold: true
+    page-layout: article
+    css:
+      - styles.css
+      - article-style.css
+  pdf:
+    toc: true
+    number-sections: true
 bibliography: references.bib
 csl: https://www.zotero.org/styles/harvard-cite-them-right
 link-citations: true

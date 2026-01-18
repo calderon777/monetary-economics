@@ -84,7 +84,8 @@
     "topic2lecture.html": "6b1f4b07"
   },
   "topic2reading.qmd": {
-    "topic2reading.html": "ae50c8f5"
+    "topic2reading.html": "ae50c8f5",
+    "topic2reading.tex": "f7b069a1"
   },
   "topic2readingv001.qmd": {
     "topic2readingv001.html": "c8fab93a",
@@ -115,7 +116,8 @@
     "topic2tutorial.html": "b24b9e2a"
   },
   "topic3reading.qmd": {
-    "topic3reading.html": "0a2c07bc"
+    "topic3reading.html": "0a2c07bc",
+    "topic3reading.tex": "033076b0"
   },
   "topic3tutorial.qmd": {
     "topic3tutorial.html": "afbc50a9"

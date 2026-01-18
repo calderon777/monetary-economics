@@ -8,6 +8,10 @@ format:
     toc-depth: 3
     number-sections: true
     code-fold: true
+    page-layout: article
+    css:
+      - styles.css
+      - article-style.css
   pdf:
     toc: true
     number-sections: true
@@ -16,6 +20,10 @@ execute:
 ---
 
 # The Nature and Economic Role of Money
+
+::: {.abstract}
+**Abstract.** Money reduces the frictions of decentralised exchange by providing a unit of account, a medium of exchange, and a store of value. This note sets out those functions, illustrates why barter scales poorly, and connects liquidity, search frictions, and macro perspectives on money.
+:::
 
 ## Introduction to the Economic Role of Money
 

@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Adapted by Dr Camilo Calderon">
 
-<title>Topic 3 Reading – Monetary Economics</title>
+<title>Keynes’s Theory of Money – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -70,8 +106,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="article-style.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -362,22 +428,82 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topic-3-reading-placeholder" id="toc-topic-3-reading-placeholder" class="nav-link active" data-scroll-target="#topic-3-reading-placeholder">Topic 3 Reading (Placeholder)</a></li>
+  <li><a href="#keyness-theory-of-money" id="toc-keyness-theory-of-money" class="nav-link active" data-scroll-target="#keyness-theory-of-money"><span class="header-section-number">1</span> Keynes’s Theory of Money</a>
+  <ul class="collapse">
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.1</span> Introduction</a></li>
+  <li><a href="#the-exceptional-nature-of-the-money-market" id="toc-the-exceptional-nature-of-the-money-market" class="nav-link" data-scroll-target="#the-exceptional-nature-of-the-money-market"><span class="header-section-number">1.2</span> The Exceptional Nature of the Money Market</a>
+  <ul class="collapse">
+  <li><a href="#why-money-market-disequilibrium-differs" id="toc-why-money-market-disequilibrium-differs" class="nav-link" data-scroll-target="#why-money-market-disequilibrium-differs"><span class="header-section-number">1.2.1</span> Why Money-Market Disequilibrium Differs</a></li>
+  <li><a href="#three-special-features-of-money" id="toc-three-special-features-of-money" class="nav-link" data-scroll-target="#three-special-features-of-money"><span class="header-section-number">1.2.2</span> Three Special Features of Money</a></li>
+  <li><a href="#a-modern-interpretation-safe-assets-and-flight-to-quality" id="toc-a-modern-interpretation-safe-assets-and-flight-to-quality" class="nav-link" data-scroll-target="#a-modern-interpretation-safe-assets-and-flight-to-quality"><span class="header-section-number">1.2.3</span> A Modern Interpretation: Safe Assets and Flight-to-Quality</a></li>
+  </ul></li>
+  <li><a href="#says-law-walras-law-and-unemployment-in-a-monetary-economy" id="toc-says-law-walras-law-and-unemployment-in-a-monetary-economy" class="nav-link" data-scroll-target="#says-law-walras-law-and-unemployment-in-a-monetary-economy"><span class="header-section-number">1.3</span> Say’s Law, Walras’ Law, and Unemployment in a Monetary Economy</a>
+  <ul class="collapse">
+  <li><a href="#keyness-mechanism-saving-as-hoarding" id="toc-keyness-mechanism-saving-as-hoarding" class="nav-link" data-scroll-target="#keyness-mechanism-saving-as-hoarding"><span class="header-section-number">1.3.1</span> Keynes’s Mechanism: Saving as Hoarding</a></li>
+  <li><a href="#walras-law-does-not-imply-says-law-in-a-monetary-economy" id="toc-walras-law-does-not-imply-says-law-in-a-monetary-economy" class="nav-link" data-scroll-target="#walras-law-does-not-imply-says-law-in-a-monetary-economy"><span class="header-section-number">1.3.2</span> Walras’ Law Does Not Imply Say’s Law in a Monetary Economy</a></li>
+  </ul></li>
+  <li><a href="#normal-mechanisms-for-restoring-equilibrium-and-why-they-can-fail" id="toc-normal-mechanisms-for-restoring-equilibrium-and-why-they-can-fail" class="nav-link" data-scroll-target="#normal-mechanisms-for-restoring-equilibrium-and-why-they-can-fail"><span class="header-section-number">1.4</span> Normal Mechanisms for Restoring Equilibrium (and Why They Can Fail)</a>
+  <ul class="collapse">
+  <li><a href="#adjustment-through-other-markets" id="toc-adjustment-through-other-markets" class="nav-link" data-scroll-target="#adjustment-through-other-markets"><span class="header-section-number">1.4.1</span> Adjustment Through Other Markets</a></li>
+  <li><a href="#price-stickiness-as-a-macroeconomic-amplifier" id="toc-price-stickiness-as-a-macroeconomic-amplifier" class="nav-link" data-scroll-target="#price-stickiness-as-a-macroeconomic-amplifier"><span class="header-section-number">1.4.2</span> Price Stickiness as a Macroeconomic Amplifier</a></li>
+  </ul></li>
+  <li><a href="#keyness-theory-of-money-demand" id="toc-keyness-theory-of-money-demand" class="nav-link" data-scroll-target="#keyness-theory-of-money-demand"><span class="header-section-number">1.5</span> Keynes’s Theory of Money Demand</a>
+  <ul class="collapse">
+  <li><a href="#classical-vs.-keynesian-interest-theory" id="toc-classical-vs.-keynesian-interest-theory" class="nav-link" data-scroll-target="#classical-vs.-keynesian-interest-theory"><span class="header-section-number">1.5.1</span> Classical vs.&nbsp;Keynesian Interest Theory</a></li>
+  <li><a href="#the-three-motives-for-holding-money" id="toc-the-three-motives-for-holding-money" class="nav-link" data-scroll-target="#the-three-motives-for-holding-money"><span class="header-section-number">1.5.2</span> The Three Motives for Holding Money</a></li>
+  <li><a href="#liquidity-preference-function" id="toc-liquidity-preference-function" class="nav-link" data-scroll-target="#liquidity-preference-function"><span class="header-section-number">1.5.3</span> Liquidity Preference Function</a></li>
+  </ul></li>
+  <li><a href="#the-liquidity-trap-and-its-implications" id="toc-the-liquidity-trap-and-its-implications" class="nav-link" data-scroll-target="#the-liquidity-trap-and-its-implications"><span class="header-section-number">1.6</span> The Liquidity Trap and Its Implications</a>
+  <ul class="collapse">
+  <li><a href="#definition-in-liquidity-preference-terms" id="toc-definition-in-liquidity-preference-terms" class="nav-link" data-scroll-target="#definition-in-liquidity-preference-terms"><span class="header-section-number">1.6.1</span> Definition in Liquidity Preference Terms</a></li>
+  <li><a href="#implication-monetary-expansions-lose-traction" id="toc-implication-monetary-expansions-lose-traction" class="nav-link" data-scroll-target="#implication-monetary-expansions-lose-traction"><span class="header-section-number">1.6.2</span> Implication: Monetary Expansions Lose Traction</a></li>
+  <li><a href="#real-world-policy-responses-historical-anchors" id="toc-real-world-policy-responses-historical-anchors" class="nav-link" data-scroll-target="#real-world-policy-responses-historical-anchors"><span class="header-section-number">1.6.3</span> Real-World Policy Responses (Historical Anchors)</a></li>
+  </ul></li>
+  <li><a href="#disequilibrium-analysis-using-is-lm-and-ad-as" id="toc-disequilibrium-analysis-using-is-lm-and-ad-as" class="nav-link" data-scroll-target="#disequilibrium-analysis-using-is-lm-and-ad-as"><span class="header-section-number">1.7</span> Disequilibrium Analysis Using IS-LM and AD-AS</a></li>
+  <li><a href="#disequilibrium-analysis-using-is-lm-and-ad-as-1" id="toc-disequilibrium-analysis-using-is-lm-and-ad-as-1" class="nav-link" data-scroll-target="#disequilibrium-analysis-using-is-lm-and-ad-as-1"><span class="header-section-number">1.8</span> Disequilibrium Analysis Using IS-LM and AD-AS</a>
+  <ul class="collapse">
+  <li><a href="#outside-the-trap-prices-help-restore-full-employment" id="toc-outside-the-trap-prices-help-restore-full-employment" class="nav-link" data-scroll-target="#outside-the-trap-prices-help-restore-full-employment"><span class="header-section-number">1.8.1</span> Outside the Trap: Prices Help Restore Full Employment</a></li>
+  <li><a href="#inside-the-trap-lm-stretches-right-but-does-not-shift-down" id="toc-inside-the-trap-lm-stretches-right-but-does-not-shift-down" class="nav-link" data-scroll-target="#inside-the-trap-lm-stretches-right-but-does-not-shift-down"><span class="header-section-number">1.8.2</span> Inside the Trap: LM Stretches Right but Does Not Shift Down</a></li>
+  <li><a href="#ad-becomes-approximately-vertical-in-the-trap" id="toc-ad-becomes-approximately-vertical-in-the-trap" class="nav-link" data-scroll-target="#ad-becomes-approximately-vertical-in-the-trap"><span class="header-section-number">1.8.3</span> AD Becomes (Approximately) Vertical in the Trap</a></li>
+  <li><a href="#monetary-policy-ineffectiveness-in-the-trap" id="toc-monetary-policy-ineffectiveness-in-the-trap" class="nav-link" data-scroll-target="#monetary-policy-ineffectiveness-in-the-trap"><span class="header-section-number">1.8.4</span> Monetary Policy Ineffectiveness in the Trap</a></li>
+  </ul></li>
+  <li><a href="#neutrality-and-non-neutrality-of-money" id="toc-neutrality-and-non-neutrality-of-money" class="nav-link" data-scroll-target="#neutrality-and-non-neutrality-of-money"><span class="header-section-number">1.9</span> Neutrality and Non-Neutrality of Money</a>
+  <ul class="collapse">
+  <li><a href="#classical-view-dichotomy-neutrality" id="toc-classical-view-dichotomy-neutrality" class="nav-link" data-scroll-target="#classical-view-dichotomy-neutrality"><span class="header-section-number">1.9.1</span> Classical View: Dichotomy &amp; Neutrality</a></li>
+  <li><a href="#keyness-challenge-uneven-adjustment-non-neutrality" id="toc-keyness-challenge-uneven-adjustment-non-neutrality" class="nav-link" data-scroll-target="#keyness-challenge-uneven-adjustment-non-neutrality"><span class="header-section-number">1.9.2</span> Keynes’s Challenge: Uneven Adjustment &amp; Non-Neutrality</a></li>
+  </ul></li>
+  <li><a href="#the-pigou-effect-and-critiques-of-keynes" id="toc-the-pigou-effect-and-critiques-of-keynes" class="nav-link" data-scroll-target="#the-pigou-effect-and-critiques-of-keynes"><span class="header-section-number">1.10</span> The Pigou Effect and Critiques of Keynes</a>
+  <ul class="collapse">
+  <li><a href="#patinkins-critique-real-balances-as-a-quasi-good" id="toc-patinkins-critique-real-balances-as-a-quasi-good" class="nav-link" data-scroll-target="#patinkins-critique-real-balances-as-a-quasi-good"><span class="header-section-number">1.10.1</span> Patinkin’s Critique: Real Balances as a Quasi-Good</a></li>
+  <li><a href="#pigou-effect-deflation-raises-real-balances-and-shifts-is" id="toc-pigou-effect-deflation-raises-real-balances-and-shifts-is" class="nav-link" data-scroll-target="#pigou-effect-deflation-raises-real-balances-and-shifts-is"><span class="header-section-number">1.10.2</span> Pigou Effect: Deflation Raises Real Balances and Shifts IS</a></li>
+  <li><a href="#keynesian-responses-and-limitations" id="toc-keynesian-responses-and-limitations" class="nav-link" data-scroll-target="#keynesian-responses-and-limitations"><span class="header-section-number">1.10.3</span> Keynesian Responses and Limitations</a></li>
+  <li><a href="#analytical-significance" id="toc-analytical-significance" class="nav-link" data-scroll-target="#analytical-significance"><span class="header-section-number">1.10.4</span> Analytical Significance</a></li>
+  </ul></li>
+  <li><a href="#summary-and-key-takeaways" id="toc-summary-and-key-takeaways" class="nav-link" data-scroll-target="#summary-and-key-takeaways"><span class="header-section-number">1.11</span> Summary and Key Takeaways</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">1.12</span> Conclusion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">1.13</span> References</a></li>
+  </ul></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="topic3reading.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic3reading.html">Topic 3 - Keynes’ Theory of Money</a></li><li class="breadcrumb-item"><a href="./topic3reading.html">Reading</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Topic 3 Reading</h1>
+<h1 class="title">Keynes’s Theory of Money</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adapted by Dr Camilo Calderon </p>
+          </div>
+  </div>
     
   
     
@@ -388,11 +514,484 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="topic-3-reading-placeholder" class="level1">
-<h1>Topic 3 Reading (Placeholder)</h1>
-<p>Content will be added soon.</p>
+<section id="keyness-theory-of-money" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Keynes’s Theory of Money</h1>
+<section id="introduction" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.1</span> Introduction</h2>
+<p>John Maynard Keynes revolutionized monetary economics by examining the roles money plays in the economy and their macroeconomic implications. Writing during the Great Depression, Keynes challenged the classical view that money is merely a neutral medium of exchange or “veil” that affects only prices but not real output or employment. In classical theory, the economy was thought to naturally gravitate to full employment equilibrium via flexible prices (the classical dichotomy), implying money had no real effects in the long run. Keynes, however, argued that in a monetary economy – where money actively influences decisions – there is no automatic guarantee of full employment. He developed a theory of liquidity preference and money demand that highlights how money can matter in both the short run and long run. This chapter examines Keynes’s theory of money demand (transactions, precautionary, and speculative motives), his concept of the liquidity trap, and the resulting disequilibrium analysis using the IS-LM model. We also contrast the neutrality of money in classical theory with Keynes’s view of non-neutrality, and discuss the Pigou effect as a classical critique of Keynes. Throughout, we integrate historical and contemporary examples – from Japan’s 1990s stagnation to post-2008 low interest environments in the US, UK, and Eurozone – to illustrate these concepts in practice.</p>
+</section>
+<section id="the-exceptional-nature-of-the-money-market" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="the-exceptional-nature-of-the-money-market"><span class="header-section-number">1.2</span> The Exceptional Nature of the Money Market</h2>
+<section id="why-money-market-disequilibrium-differs" class="level3" data-number="1.2.1">
+<h3 data-number="1.2.1" class="anchored" data-anchor-id="why-money-market-disequilibrium-differs"><span class="header-section-number">1.2.1</span> Why Money-Market Disequilibrium Differs</h3>
+<p>Keynes’s key analytical move is to treat the money market as exceptional. In many markets, an excess demand triggers adjustment through at least three channels: (i) the good’s own price rises, (ii) supply expands, and (iii) agents substitute toward close substitutes. Keynes argued that these equilibrating forces are weak or absent for money in its role as a pure medium of exchange.</p>
+</section>
+<section id="three-special-features-of-money" class="level3" data-number="1.2.2">
+<h3 data-number="1.2.2" class="anchored" data-anchor-id="three-special-features-of-money"><span class="header-section-number">1.2.2</span> Three Special Features of Money</h3>
+<p>Keynes highlighted three features of the money market that make it hard to clear through “normal” market mechanisms:</p>
+<ol type="1">
+<li><p><strong>The nominal price of money is unresponsive to disequilibrium</strong> — Money has a face value. Unlike ordinary goods, an excess demand for money does not “bid up” the nominal value of money in the same way that excess demand for apples bids up apple prices.</p></li>
+<li><p><strong>Supply is unresponsive because the money stock is exogenously determined</strong> — The stock of money is set by the monetary authority rather than being produced in response to higher “money prices”.</p></li>
+<li><p><strong>There are no close substitutes as media of exchange</strong> — Even if near-money instruments exist today, Keynes’s emphasis is that money’s payment finality and transactional acceptability are difficult to replicate fully. This matters when confidence collapses: agents may prefer money to specific private liabilities (bank deposits, firm credits) perceived as risky.</p></li>
+</ol>
+</section>
+<section id="a-modern-interpretation-safe-assets-and-flight-to-quality" class="level3" data-number="1.2.3">
+<h3 data-number="1.2.3" class="anchored" data-anchor-id="a-modern-interpretation-safe-assets-and-flight-to-quality"><span class="header-section-number">1.2.3</span> A Modern Interpretation: Safe Assets and Flight-to-Quality</h3>
+<p>In modern financial systems, some substitutes exist (money market funds, repos, short-maturity government bills). However, Keynes’s core point survives: in stress episodes, investors demand the most liquid and safest instrument, and the system can experience a shortage of safe and liquid assets. This is consistent with observed “flight-to-quality” and “flight-to-liquidity” dynamics in financial crises.</p>
+<hr>
+</section>
+</section>
+<section id="says-law-walras-law-and-unemployment-in-a-monetary-economy" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="says-law-walras-law-and-unemployment-in-a-monetary-economy"><span class="header-section-number">1.3</span> Say’s Law, Walras’ Law, and Unemployment in a Monetary Economy</h2>
+<section id="keyness-mechanism-saving-as-hoarding" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="keyness-mechanism-saving-as-hoarding"><span class="header-section-number">1.3.1</span> Keynes’s Mechanism: Saving as Hoarding</h3>
+<p>In a non-monetary (or effectively barter) economy, an increase in saving typically reallocates demand rather than destroying it. Classical reasoning holds: higher saving means more purchases of durable goods or more lending to firms for investment, shifting production across sectors but leaving aggregate employment roughly unchanged.</p>
+<p>In a monetary economy, however, higher desired saving can take the form of hoarding money (increasing money demand) rather than purchasing goods or financing investment. When this occurs:</p>
+<ul>
+<li>Overall demand for goods falls,</li>
+<li>Demand for money rises,</li>
+<li>Labour demand falls,</li>
+<li>Unemployment emerges.</li>
+</ul>
+</section>
+<section id="walras-law-does-not-imply-says-law-in-a-monetary-economy" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="walras-law-does-not-imply-says-law-in-a-monetary-economy"><span class="header-section-number">1.3.2</span> Walras’ Law Does Not Imply Say’s Law in a Monetary Economy</h3>
+<p>A crucial insight from the lecture notes: <strong>in a monetary economy, Walras’ Law no longer implies Say’s Law</strong>. An excess demand for money can co-exist with an excess supply of goods. When agents attempt to rebuild liquidity positions, desired spending falls below output. This is Keynes’s fundamental explanation for why unemployment can be an equilibrium outcome in a monetary economy: the “missing demand” is not redirected automatically into other goods; it can be redirected into money balances.</p>
+<hr>
+</section>
+</section>
+<section id="normal-mechanisms-for-restoring-equilibrium-and-why-they-can-fail" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="normal-mechanisms-for-restoring-equilibrium-and-why-they-can-fail"><span class="header-section-number">1.4</span> Normal Mechanisms for Restoring Equilibrium (and Why They Can Fail)</h2>
+<section id="adjustment-through-other-markets" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="adjustment-through-other-markets"><span class="header-section-number">1.4.1</span> Adjustment Through Other Markets</h3>
+<p>Keynes acknowledges that money-market disequilibrium can in principle be eliminated via adjustment in other markets, even if money’s own “price” does not move:</p>
+<ol type="1">
+<li><p><strong>Interest rate adjustment</strong>: If returns on alternative assets rise, agents substitute away from money; money demand falls.</p></li>
+<li><p><strong>Price-level adjustment</strong>: If goods prices fall, real balances <span class="math inline">\(M/P\)</span> rise and goods demand may increase; money demand (as a share of expenditure) falls.</p></li>
+</ol>
+<p>This is crucial: Keynes is not claiming the money market is always permanently out of equilibrium. He is claiming that adjustment can be slow, incomplete, or blocked—especially when prices are sticky and when interest rates approach a floor.</p>
+</section>
+<section id="price-stickiness-as-a-macroeconomic-amplifier" class="level3" data-number="1.4.2">
+<h3 data-number="1.4.2" class="anchored" data-anchor-id="price-stickiness-as-a-macroeconomic-amplifier"><span class="header-section-number">1.4.2</span> Price Stickiness as a Macroeconomic Amplifier</h3>
+<p>The key point is that adjustment mechanisms “might” work but do not necessarily “will” work because of price stickiness. Equilibrating adjustments may take significant time. Modern macroeconomic evidence is consistent with the idea that wages and prices (especially nominal wages and administered prices) adjust sluggishly, so output and employment take the hit in the interim.</p>
+<hr>
+</section>
+</section>
+<section id="keyness-theory-of-money-demand" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="keyness-theory-of-money-demand"><span class="header-section-number">1.5</span> Keynes’s Theory of Money Demand</h2>
+<section id="classical-vs.-keynesian-interest-theory" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="classical-vs.-keynesian-interest-theory"><span class="header-section-number">1.5.1</span> Classical vs.&nbsp;Keynesian Interest Theory</h3>
+<section id="classical-theory-loanable-funds" class="level4" data-number="1.5.1.1">
+<h4 data-number="1.5.1.1" class="anchored" data-anchor-id="classical-theory-loanable-funds"><span class="header-section-number">1.5.1.1</span> Classical Theory: Loanable Funds</h4>
+<p>Classical economists view interest as the reward for saving (deferring consumption) and determine it via supply and demand for loanable funds:</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>lf <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>S <span class="ot">&lt;-</span> <span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> lf  <span class="co"># Saving supply</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>I <span class="ot">&lt;-</span> <span class="dv">7</span> <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> lf  <span class="co"># Investment demand</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Equilibrium</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>eq_lf <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>eq_i <span class="ot">&lt;-</span> <span class="fl">4.5</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> lf, <span class="at">y =</span> S, <span class="at">color =</span> <span class="st">"S (Saving supply)"</span>), <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> lf, <span class="at">y =</span> I, <span class="at">color =</span> <span class="st">"I (Investment demand)"</span>), <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> eq_lf, <span class="at">y =</span> eq_i, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> eq_lf, <span class="at">xend =</span> eq_lf, <span class="at">y =</span> <span class="dv">0</span>, <span class="at">yend =</span> eq_i), <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_segment</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">xend =</span> eq_lf, <span class="at">y =</span> eq_i, <span class="at">yend =</span> eq_i), <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> eq_lf <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">y =</span> eq_i, <span class="at">label =</span> <span class="st">"Equilibrium</span><span class="sc">\n</span><span class="st">(i*)"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"S (Saving supply)"</span> <span class="ot">=</span> <span class="st">"blue"</span>, <span class="st">"I (Investment demand)"</span> <span class="ot">=</span> <span class="st">"red"</span>)) <span class="sc">+</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Loanable Funds"</span>, <span class="at">y =</span> <span class="st">"Interest Rate (i)"</span>, </span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Classical Loanable Funds Market"</span>, <span class="at">color =</span> <span class="st">""</span>) <span class="sc">+</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"top"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-loanable-funds" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-loanable-funds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="topic3reading_files/figure-html/fig-loanable-funds-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-loanable-funds-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Classical Theory of Interest (Loanable Funds Market)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="keyness-liquidity-preference-core-view" class="level4" data-number="1.5.1.2">
+<h4 data-number="1.5.1.2" class="anchored" data-anchor-id="keyness-liquidity-preference-core-view"><span class="header-section-number">1.5.1.2</span> Keynes’s Liquidity Preference: Core View</h4>
+<p>Keynes reframes interest as the reward for holding wealth in illiquid form rather than liquid form. Thus:</p>
+<ul>
+<li>A fall in <span class="math inline">\(i\)</span> increases money demand (agents prefer liquidity over bonds),</li>
+<li>Money demand and money supply jointly determine <span class="math inline">\(i\)</span>,</li>
+<li>Higher income shifts money demand right and raises <span class="math inline">\(i\)</span> (via higher transactions demand).</li>
+</ul>
+<p>Keynes also notes the reconciliation with the classical view via a system approach (IS–LM), as later formalized by Hicks.</p>
+<p>Classical economists explained interest rate determination through the loanable funds market, where the interest rate adjusts to equate saving and investment. In that view (often illustrated by a supply-of-savings and demand-for-investment diagram), the interest rate is the price of funds: households’ willingness to save (defer consumption) increases with a higher interest return, while firms’ willingness to invest in new capital decreases with higher financing costs. Equilibrium occurs when <span class="math inline">\(S = I\)</span>, and at that point the interest rate balances the economy’s ex ante saving and investment. An increase in desired saving (e.g.&nbsp;due to higher income or thriftiness) would shift the savings supply curve rightward and drive the equilibrium interest rate down, encouraging more investment. In this classical view, interest is ultimately governed by real factors (productivity and time preference) and saving-investment behavior, not directly by the quantity of money.</p>
+<p>Keynes’s liquidity preference theory, by contrast, emphasizes money market equilibrium. He did not deny that income affects saving and investment, but in the short run he assumed saving is mostly driven by income (via the marginal propensity to consume) rather than by the interest rate. Investment, on the other hand, depends on interest and profit expectations. In Keynes’s theory, the interest rate adjusts until money demanded = money supplied, given the level of income and money stock. For example, if income rises (more transactions), the money demand curve <span class="math inline">\(L(Y,i)\)</span> shifts right; if the money supply is unchanged, this excess demand for money will drive up interest rates until people are content holding the available money (because higher <span class="math inline">\(i\)</span> reduces the speculative and precautionary demand). Conversely, if the central bank increases the money supply, initially there is excess money in portfolios, so people try to rebalance by buying bonds and assets – bidding up their prices and pushing down the interest rate. Thus, in liquidity preference theory, an increase in income raises interest rates (money demand up), and an increase in money supply lowers interest rates (money supply up), ceteris paribus.</p>
+<p>Keynes’s view can be reconciled with the classical loanable funds approach by considering interactions in both goods and money markets simultaneously. In fact, the IS-LM model (originally formulated by John Hicks in 1937 as an interpretation of Keynes) combines the two: the IS curve captures equilibrium in the goods market (where investment equals saving, or equivalently aggregate demand equals output), and the LM curve captures equilibrium in the money market (liquidity preference equals money supply). We will use IS-LM shortly to analyze Keynesian equilibrium and disequilibrium conditions. First, however, we examine Keynes’s famous concept of the liquidity trap, an extreme case of liquidity preference with profound policy implications.</p>
+</section>
+</section>
+<section id="the-three-motives-for-holding-money" class="level3" data-number="1.5.2">
+<h3 data-number="1.5.2" class="anchored" data-anchor-id="the-three-motives-for-holding-money"><span class="header-section-number">1.5.2</span> The Three Motives for Holding Money</h3>
+<p>Keynes’s theory of money demand begins with the recognition of three motives for holding money, expanding beyond the single transactions motive emphasized by classical economists. In classical thinking (e.g.&nbsp;quantity theory), people hold money only to facilitate transactions – the medium of exchange function – and any excess money would quickly be spent, rendering money neutral in its effect on the economy. Keynes acknowledged the transactions motive (holding money for routine purchases of goods and services) but also identified two additional motives arising from money’s role as a liquid store of value that pays no interest:</p>
+<p>• <strong>Precautionary motive</strong> – holding money for unexpected contingencies or emergencies that might require quick expenditure. Even households and firms with planned budgets keep some funds in readily accessible cash or deposits as a precaution against unforeseen events (medical bills, urgent repairs, etc.). This motive implies money demand increases with the uncertainty of the environment or the need for flexibility.</p>
+<p>• <strong>Speculative motive</strong> – holding money instead of other assets when the return on bonds or other interest-bearing assets is low, or when those assets are expected to fall in price. This is related to expectations about future interest rates. If people expect interest rates to rise (which means bond prices will fall), they may prefer to hold wealth in money now and wait for a better opportunity to buy bonds later. Money is perfectly liquid (it can be used directly for transactions and does not incur capital loss), whereas bonds and other assets carry interest but can fluctuate in value. The speculative demand for money is inversely related to the interest rate: when interest (<span class="math inline">\(i\)</span>) is high, people are more willing to hold bonds (earning interest) and less inclined to hold idle money; but when <span class="math inline">\(i\)</span> is low, the opportunity cost of holding money is small, so people are more inclined to keep wealth liquid in money form.</p>
+</section>
+<section id="liquidity-preference-function" class="level3" data-number="1.5.3">
+<h3 data-number="1.5.3" class="anchored" data-anchor-id="liquidity-preference-function"><span class="header-section-number">1.5.3</span> Liquidity Preference Function</h3>
+<p>Keynes formalized these ideas in his liquidity preference theory. The demand for money can be expressed as a function <span class="math inline">\(L(Y, i)\)</span>, where <span class="math inline">\(Y\)</span> is income and <span class="math inline">\(i\)</span> is the interest rate. The transactions and precautionary motives imply that <span class="math inline">\(L\)</span> increases with real income <span class="math inline">\(Y\)</span> (higher income means more spending and a larger buffer for contingencies). The speculative motive implies that <span class="math inline">\(L\)</span> decreases as <span class="math inline">\(i\)</span> rises (higher interest provides a reward for parting with liquidity). In other words:</p>
+<p>• <span class="math inline">\(\frac{\partial L}{\partial Y} &gt; 0\)</span>: Higher income raises money demand (for transactions and safety reserves). • <span class="math inline">\(\frac{\partial L}{\partial i} &lt; 0\)</span>: Higher interest rates reduce money demanded (as the public holds interest-bearing assets instead).</p>
+<p>Keynes described interest rate as the reward for relinquishing liquidity. Unlike classical theory which saw interest as the reward for saving (waiting to consume), Keynes argued that at any given level of income, the interest rate adjusts to equilibrate money demand with the fixed money supply. In equilibrium, money supply <span class="math inline">\(M\)</span> = money demand <span class="math inline">\(L(Y, i)\)</span>, and the interest rate is the “price” that brings this about. If the central bank sets a fixed nominal money supply <span class="math inline">\(M\)</span> (and for a given price level <span class="math inline">\(P\)</span>, a fixed real money supply <span class="math inline">\(M/P\)</span>), then the interest rate will move until money market clears.</p>
+</section>
+</section>
+<section id="the-liquidity-trap-and-its-implications" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="the-liquidity-trap-and-its-implications"><span class="header-section-number">1.6</span> The Liquidity Trap and Its Implications</h2>
+<section id="definition-in-liquidity-preference-terms" class="level3" data-number="1.6.1">
+<h3 data-number="1.6.1" class="anchored" data-anchor-id="definition-in-liquidity-preference-terms"><span class="header-section-number">1.6.1</span> Definition in Liquidity Preference Terms</h3>
+<p>At very low interest rates <span class="math inline">\(i_L\)</span>, the speculative motive dominates: agents are reluctant to hold bonds because:</p>
+<ul>
+<li>Yields are too low to compensate for inconvenience and illiquidity,</li>
+<li>They expect rates cannot go much lower (so bond prices are “too high”) and thus fear capital losses when rates rise.</li>
+</ul>
+<p>Hence the liquidity preference schedule becomes horizontal: money demand becomes infinitely interest-elastic.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Money demand - normal region</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>M_normal <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">8</span>, <span class="at">length.out =</span> <span class="dv">50</span>)</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>i_normal <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">-</span> M_normal</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Liquidity trap region</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>M_trap <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="at">length.out =</span> <span class="dv">20</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>i_trap <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="fl">1.5</span>, <span class="fu">length</span>(M_trap))</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">M =</span> <span class="fu">c</span>(M_normal, M_trap),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">i =</span> <span class="fu">c</span>(i_normal, i_trap)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> M, <span class="at">y =</span> i)) <span class="sc">+</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"red"</span>,  </span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>             <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="fl">0.8</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">8</span>, <span class="at">xmax =</span> <span class="dv">12</span>, <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="fl">1.5</span>, </span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">10</span>, <span class="at">y =</span> <span class="fl">1.9</span>, <span class="at">label =</span> <span class="st">"i[L]~(trap~floor)"</span>, </span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>           <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fl">1.5</span>, <span class="at">xmax =</span> <span class="fl">4.5</span>, <span class="at">ymin =</span> <span class="fl">4.5</span>, <span class="at">ymax =</span> <span class="fl">5.5</span>,</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="st">"wheat"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">3</span>, <span class="at">y =</span> <span class="dv">5</span>, </span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Normal region:</span><span class="sc">\n</span><span class="st">downward sloping"</span>, </span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Money Demand (M)"</span>, <span class="at">y =</span> <span class="st">"Interest Rate (i)"</span>, </span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"Liquidity Preference Schedule"</span>) <span class="sc">+</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">12</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">9</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-liquidity-preference" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-liquidity-preference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="topic3reading_files/figure-html/fig-liquidity-preference-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-liquidity-preference-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Liquidity Preference Schedule with Liquidity Trap
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="implication-monetary-expansions-lose-traction" class="level3" data-number="1.6.2">
+<h3 data-number="1.6.2" class="anchored" data-anchor-id="implication-monetary-expansions-lose-traction"><span class="header-section-number">1.6.2</span> Implication: Monetary Expansions Lose Traction</h3>
+<p>When liquidity preference is horizontal, an increase in money supply shifts portfolios into money balances without lowering <span class="math inline">\(i\)</span> further. This is the canonical statement that conventional monetary policy becomes ineffective in a liquidity trap.</p>
+</section>
+<section id="real-world-policy-responses-historical-anchors" class="level3" data-number="1.6.3">
+<h3 data-number="1.6.3" class="anchored" data-anchor-id="real-world-policy-responses-historical-anchors"><span class="header-section-number">1.6.3</span> Real-World Policy Responses (Historical Anchors)</h3>
+<p>The major economies have faced liquidity trap conditions:</p>
+<ul>
+<li><p><strong>Bank of England</strong> (March 2009): Cut Bank Rate to 0.5% and launched an asset purchase programme (“QE”) to provide further monetary loosening once conventional policy was constrained.</p></li>
+<li><p><strong>Bank of Japan</strong> (1999–2001): Adopted a Zero Interest Rate Policy (ZIRP) in 1999 and Quantitative Easing in 2001, reflecting prolonged low-rate conditions consistent with liquidity-trap concerns.</p></li>
+<li><p><strong>European Central Bank</strong> (2014–2019): Introduced negative deposit facility rates in June 2014 and lowered them further (to -0.5% by 2019), reflecting attempts to relax constraints near the effective lower bound.</p></li>
+</ul>
+<p>These episodes are best interpreted as policy responses to Keynesian concerns about weak demand at very low rates—though modern frameworks emphasize multiple transmission channels beyond the short rate (QE, forward guidance, credit policy).</p>
+<hr>
+</section>
+</section>
+<section id="disequilibrium-analysis-using-is-lm-and-ad-as" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="disequilibrium-analysis-using-is-lm-and-ad-as"><span class="header-section-number">1.7</span> Disequilibrium Analysis Using IS-LM and AD-AS</h2>
+</section>
+<section id="disequilibrium-analysis-using-is-lm-and-ad-as-1" class="level2" data-number="1.8">
+<h2 data-number="1.8" class="anchored" data-anchor-id="disequilibrium-analysis-using-is-lm-and-ad-as-1"><span class="header-section-number">1.8</span> Disequilibrium Analysis Using IS-LM and AD-AS</h2>
+<section id="outside-the-trap-prices-help-restore-full-employment" class="level3" data-number="1.8.1">
+<h3 data-number="1.8.1" class="anchored" data-anchor-id="outside-the-trap-prices-help-restore-full-employment"><span class="header-section-number">1.8.1</span> Outside the Trap: Prices Help Restore Full Employment</h3>
+<p>In standard IS-LM, if the intersection occurs below potential output <span class="math inline">\(\bar{Y}\)</span>, goods demand is weak, placing downward pressure on the price level <span class="math inline">\(P\)</span>. A fall in <span class="math inline">\(P\)</span> raises real money balances <span class="math inline">\(M/P\)</span>, shifting LM down/right, lowering <span class="math inline">\(i\)</span>, and increasing <span class="math inline">\(Y\)</span>, restoring equilibrium at <span class="math inline">\(\bar{Y}\)</span>.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Output</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># IS curve (downward sloping)</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>IS <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">-</span> <span class="fl">0.6</span> <span class="sc">*</span> Y</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="co"># LM curves</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>LM1 <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> Y  <span class="co"># Initial LM</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>LM2 <span class="ot">&lt;-</span> <span class="fl">0.3</span> <span class="sc">+</span> <span class="fl">0.5</span> <span class="sc">*</span> Y  <span class="co"># LM after price fall (shifted down/right)</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Full employment output</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>Y_bar <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Initial equilibrium (below full employment)</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>Y0 <span class="ot">&lt;-</span> <span class="fl">4.3</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>i0 <span class="ot">&lt;-</span> <span class="fl">5.4</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># New equilibrium (at full employment)</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>Y1 <span class="ot">&lt;-</span> Y_bar</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>i1 <span class="ot">&lt;-</span> <span class="dv">8</span> <span class="sc">-</span> <span class="fl">0.6</span> <span class="sc">*</span> Y1</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Y, <span class="at">y =</span> IS), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Y, <span class="at">y =</span> LM1), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">x =</span> Y, <span class="at">y =</span> LM2), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Y_bar, <span class="at">linetype =</span> <span class="st">"dotted"</span>, <span class="at">color =</span> <span class="st">"gray50"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> Y0, <span class="at">y =</span> i0, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> Y1, <span class="at">y =</span> i1, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">color =</span> <span class="st">"darkgreen"</span>) <span class="sc">+</span></span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> Y0, <span class="at">y =</span> i0, <span class="at">xend =</span> Y1, <span class="at">yend =</span> i1, </span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"cm"</span>)), </span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>           <span class="at">color =</span> <span class="st">"darkgreen"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> Y_bar <span class="sc">+</span> <span class="fl">0.2</span>, <span class="at">y =</span> <span class="fl">0.5</span>, <span class="at">label =</span> <span class="st">"bar(Y)"</span>, <span class="at">parse =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>           <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="fl">4.5</span>) <span class="sc">+</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fl">4.5</span>, <span class="at">xmax =</span> <span class="fl">6.5</span>, <span class="at">ymin =</span> <span class="fl">4.0</span>, <span class="at">ymax =</span> <span class="fl">5.0</span>,</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>           <span class="at">fill =</span> <span class="st">"lightgreen"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">5.5</span>, <span class="at">y =</span> <span class="fl">4.5</span>, </span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>           <span class="at">label =</span> <span class="st">"Price falls →</span><span class="sc">\n</span><span class="st">LM shifts right"</span>, </span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">8.5</span>, <span class="at">y =</span> <span class="fl">2.5</span>, <span class="at">label =</span> <span class="st">"IS"</span>, <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">5</span>) <span class="sc">+</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">9.5</span>, <span class="at">y =</span> <span class="fl">5.8</span>, <span class="at">label =</span> <span class="st">"LM(P[0])"</span>, <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">9.5</span>, <span class="at">y =</span> <span class="fl">5.0</span>, <span class="at">label =</span> <span class="st">"LM'(P' &lt; P[0])"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Output (Y)"</span>, <span class="at">y =</span> <span class="st">"Interest Rate (i)"</span>, </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>       <span class="at">title =</span> <span class="st">"IS-LM: Normal Times Adjustment via Deflation"</span>) <span class="sc">+</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">8</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-islm-normal" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-islm-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="topic3reading_files/figure-html/fig-islm-normal-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-islm-normal-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: IS-LM Adjustment in Normal Times (Price Deflation Restores Full Employment)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key mechanism (Keynes effect):</strong> Deflation → higher real money → lower interest → higher investment → higher output.</p>
+</section>
+<section id="inside-the-trap-lm-stretches-right-but-does-not-shift-down" class="level3" data-number="1.8.2">
+<h3 data-number="1.8.2" class="anchored" data-anchor-id="inside-the-trap-lm-stretches-right-but-does-not-shift-down"><span class="header-section-number">1.8.2</span> Inside the Trap: LM Stretches Right but Does Not Shift Down</h3>
+<p>In the liquidity trap, LM is horizontal at <span class="math inline">\(i_L\)</span>. The critical point: <strong>falling <span class="math inline">\(P\)</span> stretches LM rightwards but does not shift it downwards</strong>. Therefore, the economy cannot reach <span class="math inline">\(\bar{Y}\)</span> via the usual adjustment channel.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Output and curves</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>IS <span class="ot">&lt;-</span> <span class="dv">6</span> <span class="sc">-</span> <span class="fl">0.5</span> <span class="sc">*</span> Y</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>i_L <span class="ot">&lt;-</span> <span class="fl">2.0</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>Y_bar <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> Y, <span class="at">IS =</span> IS)</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>Y0 <span class="ot">&lt;-</span> (<span class="dv">6</span> <span class="sc">-</span> i_L) <span class="sc">/</span> <span class="fl">0.5</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> Y)) <span class="sc">+</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> IS), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> i_L, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> i_L, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> Y0, <span class="at">y =</span> i_L, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Y_bar, <span class="at">linetype =</span> <span class="st">"dotted"</span>, <span class="at">color =</span> <span class="st">"gray50"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> Y_bar <span class="sc">+</span> <span class="fl">0.3</span>, <span class="at">y =</span> <span class="fl">0.3</span>, <span class="at">label =</span> <span class="st">"bar(Y)"</span>, <span class="at">parse =</span> <span class="cn">TRUE</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">min</span>(Y0, Y_bar), <span class="at">xmax =</span> <span class="fu">max</span>(Y0, Y_bar), <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">6.5</span>, <span class="at">y =</span> <span class="fl">3.5</span>, <span class="at">label =</span> <span class="st">"Output gap:</span><span class="sc">\n</span><span class="st">cannot close</span><span class="sc">\n</span><span class="st">via deflation"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Output (Y)"</span>, <span class="at">y =</span> <span class="st">"Interest Rate (i)"</span>, <span class="at">title =</span> <span class="st">"IS-LM in Liquidity Trap: Interest Rate Channel Blocked"</span>) <span class="sc">+</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-islm-trap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-islm-trap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="topic3reading_files/figure-html/fig-islm-trap-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-islm-trap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: IS-LM in a Liquidity Trap (Price Adjustment Fails)
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key insight:</strong> Price adjustment mechanism broken; interest-rate channel blocked.</p>
+</section>
+<section id="ad-becomes-approximately-vertical-in-the-trap" class="level3" data-number="1.8.3">
+<h3 data-number="1.8.3" class="anchored" data-anchor-id="ad-becomes-approximately-vertical-in-the-trap"><span class="header-section-number">1.8.3</span> AD Becomes (Approximately) Vertical in the Trap</h3>
+<p>Because price falls do not stimulate aggregate demand, the AD curve becomes vertical in a liquidity trap. This is the stark Keynesian disequilibrium result: even flexible prices may not restore full employment if the interest-rate mechanism is blocked.</p>
+<div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>Y <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">10</span>, <span class="at">length.out =</span> <span class="dv">100</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>Y_bar <span class="ot">&lt;-</span> <span class="dv">7</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>P_normal <span class="ot">&lt;-</span> <span class="dv">10</span> <span class="sc">-</span> <span class="fl">0.8</span> <span class="sc">*</span> Y</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>Y_trap <span class="ot">&lt;-</span> <span class="dv">4</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>P0 <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>df_ad <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">Y =</span> Y, <span class="at">P_normal =</span> P_normal)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df_ad, <span class="fu">aes</span>(<span class="at">x =</span> Y)) <span class="sc">+</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> P_normal), <span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>, <span class="at">alpha =</span> <span class="fl">0.5</span>) <span class="sc">+</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Y_trap, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> Y_bar, <span class="at">color =</span> <span class="st">"green"</span>, <span class="at">linetype =</span> <span class="st">"dashed"</span>, <span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"point"</span>, <span class="at">x =</span> Y_trap, <span class="at">y =</span> P0, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> Y_trap <span class="sc">-</span> <span class="fl">0.5</span>, <span class="at">y =</span> P0 <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">label =</span> <span class="st">"Stuck at Y₀"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="fu">min</span>(Y_trap, Y_bar), <span class="at">xmax =</span> <span class="fu">max</span>(Y_trap, Y_bar), <span class="at">ymin =</span> <span class="dv">0</span>, <span class="at">ymax =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"red"</span>, <span class="at">alpha =</span> <span class="fl">0.15</span>) <span class="sc">+</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="fl">5.5</span>, <span class="at">y =</span> <span class="dv">7</span>, <span class="at">label =</span> <span class="st">"Output gap"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"darkred"</span>) <span class="sc">+</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> Y_trap, <span class="at">y =</span> <span class="dv">8</span>, <span class="at">xend =</span> Y_trap, <span class="at">yend =</span> <span class="dv">2</span>, </span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>           <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.3</span>, <span class="st">"cm"</span>)), <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> Y_trap <span class="sc">+</span> <span class="fl">0.5</span>, <span class="at">y =</span> <span class="fl">4.5</span>, <span class="at">label =</span> <span class="st">"P falls but</span><span class="sc">\n</span><span class="st">Y unchanged"</span>, <span class="at">color =</span> <span class="st">"red"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Output (Y)"</span>, <span class="at">y =</span> <span class="st">"Price Level (P)"</span>, <span class="at">title =</span> <span class="st">"AD-AS: Liquidity Trap Implies Vertical AD"</span>) <span class="sc">+</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">10</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div id="fig-adas-trap" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-adas-trap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="topic3reading_files/figure-html/fig-adas-trap-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-adas-trap-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: AD-AS: Vertical Aggregate Demand in Liquidity Trap
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="monetary-policy-ineffectiveness-in-the-trap" class="level3" data-number="1.8.4">
+<h3 data-number="1.8.4" class="anchored" data-anchor-id="monetary-policy-ineffectiveness-in-the-trap"><span class="header-section-number">1.8.4</span> Monetary Policy Ineffectiveness in the Trap</h3>
+<p>Any increase in money supply shifts LM rightwards but not downward, so the economy does not move to full-employment output. Hence <strong>conventional monetary policy cannot affect aggregate demand</strong> in a liquidity trap. This is why central banks have resorted to unconventional measures (quantitative easing, forward guidance, credit policy).</p>
+<hr>
+</section>
+</section>
+<section id="neutrality-and-non-neutrality-of-money" class="level2" data-number="1.9">
+<h2 data-number="1.9" class="anchored" data-anchor-id="neutrality-and-non-neutrality-of-money"><span class="header-section-number">1.9</span> Neutrality and Non-Neutrality of Money</h2>
+<section id="classical-view-dichotomy-neutrality" class="level3" data-number="1.9.1">
+<h3 data-number="1.9.1" class="anchored" data-anchor-id="classical-view-dichotomy-neutrality"><span class="header-section-number">1.9.1</span> Classical View: Dichotomy &amp; Neutrality</h3>
+<p>The <strong>classical dichotomy</strong> implies a separation between nominal and real variables: in equilibrium, money affects only prices, not output or employment. Money is neutral in the long run – doubling the money supply eventually doubles all prices and wages, with no impact on real GDP, employment, or real interest rates.</p>
+</section>
+<section id="keyness-challenge-uneven-adjustment-non-neutrality" class="level3" data-number="1.9.2">
+<h3 data-number="1.9.2" class="anchored" data-anchor-id="keyness-challenge-uneven-adjustment-non-neutrality"><span class="header-section-number">1.9.2</span> Keynes’s Challenge: Uneven Adjustment &amp; Non-Neutrality</h3>
+<p>Keynes disputed the assumption of rapid, uniform nominal price adjustment, particularly in labour markets. He observed an “unevenness” in price adjustment: some prices (like wages in long-term contracts) are quite sticky or inflexible downwards, whereas others (like commodity prices or exchange rates) might be more flexible.</p>
+<p>If nominal prices adjust unevenly, relative prices deviate from their market-clearing values for extended periods. Therefore:</p>
+<ul>
+<li><strong>Money is not neutral</strong> (at least over relevant horizons),</li>
+<li><strong>Dichotomy fails</strong> because money can affect real outcomes (relative prices, unemployment),</li>
+<li><strong>Monetary policy has real effects</strong> in the short-to-medium term due to nominal rigidities.</li>
+</ul>
+<p>This line of reasoning is foundational for why modern macroeconomics treats monetary policy as potentially stabilizing in the presence of nominal rigidities—even though long-run neutrality may still hold in many models.</p>
+</section>
+</section>
+<section id="the-pigou-effect-and-critiques-of-keynes" class="level2" data-number="1.10">
+<h2 data-number="1.10" class="anchored" data-anchor-id="the-pigou-effect-and-critiques-of-keynes"><span class="header-section-number">1.10</span> The Pigou Effect and Critiques of Keynes</h2>
+<section id="patinkins-critique-real-balances-as-a-quasi-good" class="level3" data-number="1.10.1">
+<h3 data-number="1.10.1" class="anchored" data-anchor-id="patinkins-critique-real-balances-as-a-quasi-good"><span class="header-section-number">1.10.1</span> Patinkin’s Critique: Real Balances as a Quasi-Good</h3>
+<p>Don Patinkin argued that money provides “utility” because it facilitates transactions; thus money should enter utility functions as a quasi-good, particularly in real terms <span class="math inline">\(M/P\)</span>. This insight forms the foundation of the Pigou effect critique.</p>
+</section>
+<section id="pigou-effect-deflation-raises-real-balances-and-shifts-is" class="level3" data-number="1.10.2">
+<h3 data-number="1.10.2" class="anchored" data-anchor-id="pigou-effect-deflation-raises-real-balances-and-shifts-is"><span class="header-section-number">1.10.2</span> Pigou Effect: Deflation Raises Real Balances and Shifts IS</h3>
+<p>Pigou’s argument applies Patinkin’s insight against Keynes’s trap logic: if demand depends positively on real balances, falling prices increase <span class="math inline">\(M/P\)</span>, potentially shifting IS right/up and closing the demand gap.</p>
+<p><strong>The mechanism:</strong> - Prices fall → real money balances (<span class="math inline">\(M/P\)</span>) rise - Households and firms feel wealthier - Consumption and investment demand increase (wealth effect) - IS curve shifts rightward - Even in a liquidity trap (with <span class="math inline">\(i_L\)</span> fixed), the rightward IS shift can eventually intersect LM at full employment <span class="math inline">\(\bar{Y}\)</span></p>
+<p>This implies the trap might be overcome by market forces alone.</p>
+</section>
+<section id="keynesian-responses-and-limitations" class="level3" data-number="1.10.3">
+<h3 data-number="1.10.3" class="anchored" data-anchor-id="keynesian-responses-and-limitations"><span class="header-section-number">1.10.3</span> Keynesian Responses and Limitations</h3>
+<p>Keynesians offer several rebuttals:</p>
+<ol type="1">
+<li><p><strong>Quantitatively small or very slow-acting</strong>: In a deep recession or depression, people might be too pessimistic or liquidity-constrained to increase consumption just because prices are a bit lower. They might instead hoard any extra real wealth to rebuild balance sheets.</p></li>
+<li><p><strong>Debt-deflation dynamics</strong>: Deflation raises the real burden of debt, which can reduce debtors’ spending (counteracting Pigou). This redistributes wealth from borrowers (who curtail spending) to creditors (who may not increase spending much), possibly resulting in a net drop in demand.</p></li>
+<li><p><strong>Destabilizing expectations</strong>: Sustained deflation can worsen expectations – if people expect prices to keep falling, they might postpone purchases (the opposite of Pigou’s assumption), a dynamic observed in Japan’s deflationary period.</p></li>
+<li><p><strong>Institutional constraints</strong>: Prices and wages cannot fall indefinitely due to institutional and psychological limits. Central banks actively fight deflation for these reasons—for example, the ECB’s commitment to a positive inflation target (near 2%) is partly to avoid falling into a deflationary trap where any Pigou effect would be too feeble and slow.</p></li>
+</ol>
+</section>
+<section id="analytical-significance" class="level3" data-number="1.10.4">
+<h3 data-number="1.10.4" class="anchored" data-anchor-id="analytical-significance"><span class="header-section-number">1.10.4</span> Analytical Significance</h3>
+<p>All that said, the Pigou effect remains an important theoretical critique because it highlights a channel (wealth-consumption) that Keynes’s original model left out. In later developments of Keynesian theory, economists like Patinkin integrated real balances into the analysis, which helped reconcile some classical and Keynesian views. They concluded that if prices are perfectly flexible and wages adjust (so no other frictions), then even a liquidity trap would eventually be resolved by sufficient deflation raising real money balances – thus restoring <strong>long-run neutrality of money</strong> even if short-run non-neutrality is severe. However, if there are other constraints (like the inability of nominal interest to go below zero, or institutional and psychological limits to how much and how fast prices can fall), then the economy can suffer prolonged departures from full employment – just as Keynes asserted.</p>
+<hr>
+</section>
+</section>
+<section id="summary-and-key-takeaways" class="level2" data-number="1.11">
+<h2 data-number="1.11" class="anchored" data-anchor-id="summary-and-key-takeaways"><span class="header-section-number">1.11</span> Summary and Key Takeaways</h2>
+<p>The following points capture the essence of Keynes’s monetary economics in the context of lecture notes on Monetary Economics EC3014:</p>
+<ol type="1">
+<li><p><strong>In a monetary economy, Walras’ Law does not imply Say’s Law</strong> – excess demand for money can co-exist with excess supply of goods.</p></li>
+<li><p><strong>The money market is exceptional</strong> – money’s nominal price does not adjust, supply is exogenous, and close substitutes are limited.</p></li>
+<li><p><strong>Usually, interest rates and/or the price level can restore equilibrium</strong>, but sluggish adjustment can generate prolonged unemployment.</p></li>
+<li><p><strong>In a liquidity trap, money demand is infinitely interest-elastic</strong> – LM becomes horizontal and conventional monetary policy loses power.</p></li>
+<li><p><strong>In that case, price changes may not raise aggregate demand</strong> – AD becomes vertical in the trap logic.</p></li>
+<li><p><strong>Say’s Law breaks down in a monetary economy</strong> – Keynes showed that excess saving can translate into hoarding money, destroying aggregate demand and causing unemployment.</p></li>
+<li><p><strong>Pigou and Patinkin offer a critique</strong> – rising real balances under deflation can potentially stimulate demand (Pigou effect), but this mechanism may be weak or slow in practice.</p></li>
+<li><p><strong>Even outside traps, Keynes argues money is not neutral</strong> because price adjustment is uneven; the classical dichotomy fails.</p></li>
+<li><p><strong>Policy implications are profound</strong> – when the interest-rate channel is blocked (liquidity trap), policymakers must rely on unconventional tools (quantitative easing, fiscal policy, forward guidance) to restore demand.</p></li>
+</ol>
+</section>
+<section id="conclusion" class="level2" data-number="1.12">
+<h2 data-number="1.12" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">1.12</span> Conclusion</h2>
+<p>Keynes’s theory of money brought money demand and liquidity preference to the forefront of macroeconomics, fundamentally altering how we analyze interest rates and output. Unlike the classical one-dimensional view of money (for transactions only), Keynes identified multiple motives for holding money – transactions, precautionary, and speculative – which together imply that money demand depends on both income and interest rates. The interest rate, in turn, is viewed as the price that equilibrates the supply and demand for money (liquidity), rather than purely the reward for saving as in classical theory.</p>
+<p>We explored the concept of the liquidity trap, Keynes’s most dramatic departure from classical thinking. In a liquidity trap, extremely low interest rates lead to a horizontal money demand curve – additional money gets hoarded rather than spent. The liquidity trap highlights how an economy can get stuck with inadequate demand, zero interest rates, and even deflation, rendering conventional monetary policy ineffective. The IS-LM disequilibrium analysis showed that in such a scenario, the usual self-correcting mechanisms (interest rate adjustment and price-level adjustment) may fail to restore full employment. This underlines Keynes’s broader point that money is not neutral, especially during economic downturns.</p>
+<p>The experiences of Japan’s lost decade and the post-2008 global slump demonstrate the importance of Keynes’s insights: when money’s usual role as a lubricator of the economy breaks down, proactive measures are needed to avoid long-term stagnation. At the same time, the debate between Keynesian and classical views (as epitomized by the Pigou effect discussion) highlights that the long-run interaction between money and the real economy is complex. Overall, Keynes’s work ensures that economists and policymakers treat money not as a mere veil, but as a fundamental part of the economy’s structure that can shape macroeconomic outcomes.</p>
+</section>
+<section id="references" class="level2" data-number="1.13">
+<h2 data-number="1.13" class="anchored" data-anchor-id="references"><span class="header-section-number">1.13</span> References</h2>
+<p>Benford, J., Berry, S., Nikolov, K., &amp; Young, C. (2009). Quantitative easing. <em>Bank of England Quarterly Bulletin</em>.</p>
+<p>Bank of England (2009). MPC announcement: Bank Rate reduced to 0.5% and asset purchases launched (March 2009).</p>
+<p>Callen, T., &amp; Ostry, J. D. (2003). Japan’s Lost Decade: Policies for Economic Revival. International Monetary Fund.</p>
+<p>European Central Bank (2014). Why negative interest rates? ECB Economic Bulletin.</p>
+<p>European Central Bank (2020). Going negative: The ECB’s experience. ECB Economic Bulletin.</p>
+<p>Hicks, J. R. (1937). Mr.&nbsp;Keynes and the “Classics”: A suggested interpretation. <em>Econometrica</em>, 5(2), 147–159.</p>
+<p>IMF (2003). Japan’s Lost Decade: Policies for Economic Revival. <em>IMF Policy Discussion Paper</em>.</p>
+<p>IMF (2012). Bank of Japan’s quantitative and credit easing. <em>IMF Country Report</em>.</p>
+<p>Keynes, J. M. (1936). <em>The General Theory of Employment, Interest and Money</em>. London: Macmillan.</p>
+<p>Krugman, P. (1998). It’s Baaack: Japan’s slump and the return of the liquidity trap. <em>Brookings Papers on Economic Activity</em>, 1998(2), 137–205.</p>
+<p>Lewis, M. K., &amp; Mizen, P. D. (2000). <em>Monetary Economics</em>. Oxford: Oxford University Press. (Chapter 5)</p>
+<p>Patinkin, D. (1956). <em>Money, Interest, and Prices</em>. Evanston, IL: Row, Peterson &amp; Company.</p>
+<p>Pigou, A. C. (1943). The classical stationary state. <em>The Economic Journal</em>, 53(212), 343–351.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

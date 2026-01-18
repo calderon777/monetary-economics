@@ -1,0 +1,51 @@
+:root {
+  --article-width: 650px;
+  --article-font: "Georgia", "Times New Roman", Times, serif;
+}
+body {
+  font-family: var(--article-font);
+  line-height: 1.65;
+  color: #1a1a1a;
+}
+
+/* Constrain main content when using page-layout: article with TOC */
+#quarto-content main {
+  max-width: var(--article-width) !important;
+}
+
+#quarto-content .page-columns .content,
+#quarto-content .page-columns .column-body {
+  max-width: var(--article-width) !important;
+}
+
+/* Ensure all content respects the width */
+.quarto-title-block,
+#quarto-content article {
+  max-width: var(--article-width);
+}
+h1, h2, h3 {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: #111;
+}
+blockquote {
+  border-left: 3px solid #d0d0d0;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #444;
+}
+hr {
+  margin: 2.5rem 0;
+  border-top: 1px solid #d8d8d8;
+}
+
+/* Constrain figures and images to article width */
+img, .figure, .quarto-figure {
+  max-width: 100%;
+  height: auto;
+}
+
+.cell-output-display {
+  max-width: 100%;
+  overflow-x: auto;
+}
