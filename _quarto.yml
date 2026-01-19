@@ -26,7 +26,7 @@ website:
           - text: "Lecture"
             file: topic2lecture.qmd
           - text: "MCQs"
-            file: topic2tutorial.qmd
+            file: topic2mcqs.qmd
       - section: "Topic 3 - Keynes' Theory of Money"
         contents:
           - text: "Reading"
@@ -34,7 +34,7 @@ website:
           - text: "Lecture"
             file: topic3lecture.qmd
           - text: "MCQs"
-            file: topic3tutorial.qmd
+            file: topic3mcqs.qmd
       - section: "Topic 4 - Friedman's Monetarism"
         contents:
           - text: "Reading"
@@ -42,7 +42,7 @@ website:
           - text: "Lecture"
             file: topic4lecture.qmd
           - text: "MCQs"
-            file: topic4tutorial.qmd
+            file: topic4mcqs.qmd
       - section: "Topic 5 - The New Classical ApproachTheory of Money"
         contents:
           - text: "Reading"
@@ -50,7 +50,7 @@ website:
           - text: "Lecture"
             file: topic5lecture.qmd
           - text: "MCQs"
-            file: topic5tutorial.qmd
+            file: topic5mcqs.qmd
       - section: "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy"
         contents:
           - text: "Reading"
@@ -58,7 +58,7 @@ website:
           - text: "Lecture"
             file: topic6lecture.qmd
           - text: "MCQs"
-            file: topic6tutorial.qmd
+            file: topic6mcqs.qmd
       - section: "Topic 7 - The MOnetary Policy Consensus and the Great Moderation"
         contents:
           - text: "Reading"
@@ -66,7 +66,7 @@ website:
           - text: "Lecture"
             file: topic7lecture.qmd
           - text: "MCQs"
-            file: topic7tutorial.qmd
+            file: topic7mcqs.qmd
       - section: "Topic 8 - Monetary Policy in the Post-Crisis"
         contents:
           - text: "Reading"
@@ -74,7 +74,7 @@ website:
           - text: "Lecture"
             file: topic8lecture.qmd
           - text: "MCQs"
-            file: topic8tutorial.qmd
+            file: topic8mcqs.qmd
 format:
   html:
     theme: litera

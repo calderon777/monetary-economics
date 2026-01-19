@@ -18,42 +18,42 @@ Use the topic sections below to move through the material in the order you need 
 
 - **Reading:** [Reading](topic2reading.qmd)
 - **Slides:** [Lecture](topic2lecture.qmd)
-- **MCQs:** [MCQs](topic2tutorial.qmd)
+- **MCQs:** [MCQs](topic2mcqs.qmd)
 
 ## Topic 3 - Keynes' Theory of Money
 
 - **Reading:** [Reading](topic3reading.qmd)
 - **Slides:** [Lecture](topic3lecture.qmd)
-- **MCQs:** [MCQs](topic3tutorial.qmd)
+- **MCQs:** [MCQs](topic3mcqs.qmd)
 
 ## Topic 4 - Friedman's Monetarism
 
 - **Reading:** [Reading](topic4reading.qmd)
 - **Slides:** [Lecture](topic4lecture.qmd)
-- **MCQs:** [MCQs](topic4tutorial.qmd)
+- **MCQs:** [MCQs](topic4mcqs.qmd)
 
 ## Topic 5 - The New Classical ApproachTheory of Money
 
 - **Reading:** [Reading](topic5reading.qmd)
 - **Slides:** [Lecture](topic5lecture.qmd)
-- **MCQs:** [MCQs](topic5tutorial.qmd)
+- **MCQs:** [MCQs](topic5mcqs.qmd)
 
 ## Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy
 
 - **Reading:** [Reading](topic6reading.qmd)
 - **Slides:** [Lecture](topic6lecture.qmd)
-- **MCQs:** [MCQs](topic6tutorial.qmd)
+- **MCQs:** [MCQs](topic6mcqs.qmd)
 
 ## Topic 7 - The MOnetary Policy Consensus and the Great Moderation
 
 - **Reading:** [Reading](topic7reading.qmd)
 - **Slides:** [Lecture](topic7lecture.qmd)
-- **MCQs:** [MCQs](topic7tutorial.qmd)
+- **MCQs:** [MCQs](topic7mcqs.qmd)
 
 ## Topic 8 - Monetary Policy in the Post-Crisis
 
 - **Reading:** [Reading](topic8reading.qmd)
 - **Slides:** [Lecture](topic8lecture.qmd)
-- **MCQs:** [MCQs](topic8tutorial.qmd)
+- **MCQs:** [MCQs](topic8mcqs.qmd)
 
 ## Extra readings and links
