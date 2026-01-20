@@ -2,11 +2,11 @@
 title: Monetary Economics - Topic 7 Questions
 emoji: 💰
 colorFrom: indigo
-colorTo: blue
+colorTo: indigo
 sdk: docker
 pinned: false
 license: mit
-short_description: Interactive AI tutor for Topic 7 - Monetary Policy Instruments
+short_description: AI tutor for Monetary Policy Transmission
 ---
 
 # Monetary Economics EC3014 - Topic 7 Questions

@@ -2,11 +2,11 @@
 title: Monetary Economics - Topic 4 Questions
 emoji: 💰
 colorFrom: orange
-colorTo: red
+colorTo: blue
 sdk: docker
 pinned: false
 license: mit
-short_description: Interactive AI tutor for Topic 4 - Friedman's Monetarism
+short_description: AI tutor for Friedman's Monetarism
 ---
 
 # Monetary Economics EC3014 - Topic 4 Questions

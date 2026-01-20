@@ -2,11 +2,11 @@
 title: Monetary Economics - Topic 6 Questions
 emoji: 💰
 colorFrom: blue
-colorTo: cyan
+colorTo: blue
 sdk: docker
 pinned: false
 license: mit
-short_description: Interactive AI tutor for Topic 6 - Central Bank Credibility
+short_description: AI tutor for Central Bank Credibility
 ---
 
 # Monetary Economics EC3014 - Topic 6 Questions

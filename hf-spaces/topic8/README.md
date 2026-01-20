@@ -2,11 +2,11 @@
 title: Monetary Economics - Topic 8 Questions
 emoji: 💰
 colorFrom: red
-colorTo: orange
+colorTo: red
 sdk: docker
 pinned: false
 license: mit
-short_description: Interactive AI tutor for Topic 8 - Post-Great Recession Policy
+short_description: AI tutor for Policy Consensus Post-2010
 ---
 
 # Monetary Economics EC3014 - Topic 8 Questions

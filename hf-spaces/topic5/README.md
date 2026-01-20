@@ -2,11 +2,11 @@
 title: Monetary Economics - Topic 5 Questions
 emoji: 💰
 colorFrom: green
-colorTo: teal
+colorTo: green
 sdk: docker
 pinned: false
 license: mit
-short_description: Interactive AI tutor for Topic 5 - New Classical Macroeconomics
+short_description: AI tutor for New Classical Macroeconomics
 ---
 
 # Monetary Economics EC3014 - Topic 5 Questions
