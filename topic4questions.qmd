@@ -5,7 +5,7 @@ title: "Topic 4 - Friedman's Monetarism"
 # Topic 4 - Questions
 
 ```{=html}
-<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic4-questions" width="100%" height="800" frameborder="0"></iframe>
+<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic4-questions" width="100%" height="800" frameborder="0"></iframe>
 ```
 
 ## Questions

@@ -5,7 +5,7 @@ title: "Topic 6 - Central Bank Credibility and Inflation Control"
 # Topic 6 - Questions
 
 ```{=html}
-<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic6-questions" width="100%" height="800" frameborder="0"></iframe>
+<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic6-questions" width="100%" height="800" frameborder="0"></iframe>
 ```
 
 ## Questions
