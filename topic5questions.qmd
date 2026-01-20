@@ -1,23 +1,43 @@
 ---
-title: "Topic 5 Questions"
+title: "Topic 5 - New Classical Macroeconomics"
 ---
 
-## Topic 5 - Interactive Questions
+# Topic 5 - Questions
 
-[Questions placeholder - Add content here]
+```{=html}
+<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic5-questions" width="100%" height="800" frameborder="0"></iframe>
+```
 
-### Question 1
+## Questions
 
-[Add question text]
+::: {.callout-note collapse="true"}
 
-**Indicative Answer:**
+## Question 1: Adaptive vs Rational Expectations
 
-[Add answer]
+Adaptive expectations are backward looking while forward looking behaviour leads naturally to rational expectations. Discuss.
 
-### Question 2
+:::
 
-[Add question text]
+::: {.callout-note collapse="true"}
 
-**Indicative Answer:**
+## Question 2: Lucas Aggregate Supply and Friedman's Monetary Policy
 
-[Add answer]
+In what sense can the Lucas Aggregate Supply Equation be used to explain the short run effects of monetary policy as argued by Milton Friedman? Explain.
+
+:::
+
+::: {.callout-note collapse="true"}
+
+## Question 3: Monetary Policy Volatility and Output Effects
+
+According to the New Classical model, the more volatile is monetary policy the lower is the effect of unpredictable changes in the price level on output. Intuitively explain why this is the case.
+
+:::
+
+::: {.callout-note collapse="true"}
+
+## Question 4: Systematic Monetary Policy and Technology Shocks
+
+Under what circumstances can a central bank use systematic monetary policy to stabilise the economy when it faces random shocks to productive technology? Explain.
+
+:::

@@ -17,14 +17,18 @@ def load_questions_from_qmd():
     return None
 
 INDICATIVE_ANSWERS = {
-    1: "**Placeholder: Add Topic 8 Question 1 indicative answer here**",
-    2: "**Placeholder: Add Topic 8 Question 2 indicative answer here**",
+    1: """Four shocks: (i) Eurozone sovereign debt crisis (2009-2012)—BoE provided expansionary support via QE while eurozone pursued austerity; (ii) Brexit (2016)—BoE cut rates, restarted QE, managed inflation from currency depreciation; (iii) COVID-19 (2020)—immediate near-zero rates, large QE, lending facilities, coordination with other CBs and governments; (iv) Post-COVID inflation (2021-2023)—rapid rate rises to 5.25%, QT, aggressive communication. Compared to 2007: initial response was gradual; post-2010 responses were immediate, large-scale, multi-dimensional, coordinated, and explicitly supporting real economy with transparent communication.""",
+    2: """Great Moderation consensus: (i) inflation stability ensures overall stability, (ii) target inflation via policy rate. Post-Great Recession challenges this in two ways: (i) Policy rate insufficient at zero lower bound—led to QE and unconventional tools. Central banks use interest rates + QE + forward guidance + lending facilities, not just policy rate. (ii) Price stability ≠ overall stability—2008 crash showed low inflation didn't prevent recession. CBs now balance inflation + financial stability + employment. Modifications: (i) Tool expansion (policy rate → QE), (ii) Objective expansion (inflation → inflation+stability+employment), (iii) Philosophy shift (rigid rules → flexible, context-dependent with communication), (iv) Coordination (independent → coordinated with other CBs/governments).""",
 }
 
 def get_question_text(num):
     questions = {
-        1: "**Question 1: Topic 8 - Question 1 placeholder**\n\nAdd your question text here.",
-        2: "**Question 2: Topic 8 - Question 2 placeholder**\n\nAdd your question text here.",
+        1: """**Question 1: Four UK Economic Shocks Since 2010 and BoE Responses**
+
+Discuss the four shocks to have hit the UK economy since 2010. How has the Bank of England responded to each of these shocks and how has this response compared with its initial response following the sub-prime market crash of July 2007?""",
+        2: """**Question 2: Post-Great Recession Modifications to Monetary Policy Consensus**
+
+How did the conduct of monetary policy by major central banks in the period after the Great Recession modify the monetary policy consensus that prevailed during the Great Moderation?""",
     }
     return questions.get(num, "")
 
@@ -32,22 +36,39 @@ def create_feedback_prompt(question_num, student_answer, indicative_answer):
     qmd_context = load_questions_from_qmd()
     context_note = ""
     if qmd_context:
-        context_note = "\n\nNote: This question is from Topic 8 of EC3014 Monetary Economics."
+        context_note = "\n\nNote: This question is from Topic 8 - Monetary Policy in Crisis and Recovery in EC3014 Monetary Economics."
     
-    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 8. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
+    topic_concepts = {
+        1: "eurozone debt crisis, Brexit, COVID-19, energy shocks, BoE responses, QE, forward guidance, fiscal austerity, monetary coordination, real economy support",
+        2: "Great Moderation consensus, price stability, financial stability, zero lower bound, QE, monetary mandates, unconventional policy, central bank coordination, policy flexibility",
+    }
+    
+    key_concepts = topic_concepts.get(question_num, "Topic 8 concepts")
+    
+    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 8: Monetary Policy in Crisis and Recovery. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
 
-QUESTION {{question_num}}:
-{{get_question_text(question_num)}}
+Key concepts for this question: {key_concepts}
+
+QUESTION {question_num}:
+{get_question_text(question_num)}
 
 STUDENT'S ANSWER:
-{{student_answer}}
+{student_answer}
 
 INDICATIVE ANSWER (for your reference only - DO NOT share directly):
-{{indicative_answer}}
+{indicative_answer}
 
 INSTRUCTIONS:
 1. Identify what the student got right and acknowledge it
 2. If the answer is incomplete or has gaps, provide HINTS to guide them toward the correct reasoning
+3. For multi-part questions (especially Q1's four shocks), address each part briefly
+4. If misconceptions exist, gently point toward the correct approach
+5. Connect to the key economic concepts listed above
+6. For Q2, encourage them to think about how the consensus changed in different dimensions
+7. Keep feedback concise (200-250 words max)
+8. Be encouraging and constructive
+
+Provide your feedback now:{context_note}"""
 3. If the answer contains misconceptions, gently point them toward the correct approach
 4. For multi-part questions, address each part briefly
 5. Encourage them to think about the economic intuition
@@ -245,8 +266,8 @@ app_ui = ui.page_fluid(
     ),
     ui.div(
         ui.div(
-            ui.h1("Topic 8 - Monetary Economics"),
-            ui.p("Interactive questions with AI-powered feedback"),
+            ui.h1("Topic 8 - Monetary Policy in Crisis and Recovery"),
+            ui.p("Interactive questions on post-Great Recession policy changes and UK economic shocks"),
             class_="header"
         ),
         ui.div(

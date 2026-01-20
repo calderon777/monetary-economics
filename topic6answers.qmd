@@ -1,22 +1,129 @@
 ---
 title: "Topic 6 - Indicative Answers"
-format: html
 ---
 
-## Question 1
+# Topic 6 - Indicative Answers
 
-[Add question text here]
+## Question 1: Central Bank Loss Function and Inflation Bias
 
-### Indicative Answer
+::: {.callout-tip collapse="false"}
 
-[Add indicative answer here]
+**The Central Bank's Loss Function**
+
+The central bank has a loss function that reflects its preferences over inflation and output:
+
+$$L = \frac{a}{2}\pi^2 + \frac{b}{2}(Y - Y^T)^2$$
+
+where:
+- $\pi$ is inflation
+- $Y$ is national income
+- $Y^T$ is the CB's desired level of national income
+- $a, b$ reflect the CB's aversion to inflation and output shortfalls, respectively
+- $Y^* = Y^T + \lambda$ where $Y^*$ is the natural level of output
+- $\lambda > 0$ reflects the CB's preference for income to exceed its natural level (output bias)
+
+**Scenario: Public Expects $\pi = \frac{bκλ}{a}$**
+
+If the CB accommodates this expectation, then from the Lucas AS equation:
+$$Y = Y^* \text{ (no surprise inflation, so } Y - Y^* = 0\text{)}$$
+
+The loss from the real side: $\frac{b\lambda^2}{2}$ (output is $\lambda$ below desired level)
+
+The loss from the inflation side: $\frac{a}{2}\left(\frac{bκλ}{a}\right)^2 = \frac{bκ^2λ^2}{2a}$
+
+Total loss under accommodation:
+$$L = \frac{bλ^2}{2}\left[\frac{bκ^2}{a} + 1\right]$$
+
+**Alternative: Setting $\pi = 0$ (Surprise Deflation)**
+
+If the CB sets $\pi = 0$ despite the public expecting $\pi = \frac{bκλ}{a}$:
+
+From the Lucas AS equation, the price surprise causes output to deviate from potential:
+$$Y - Y^* = -κ\frac{bκλ}{a}$$
+
+Since $Y^T = Y^* - \lambda$, the output gap becomes:
+$$Y - Y^T = -κ\frac{bκλ}{a} + \lambda = -κ\frac{bκ^2λ}{a} + \lambda = λ\left[-\frac{bκ^2}{a} + 1\right]$$
+
+The loss from the real side is now much larger:
+$$L_{\text{real}} = \frac{b}{2}\left[κ\frac{bκλ}{a} + λ\right]^2 = \frac{bλ^2}{2}\left[\frac{bκ^2}{a} + 1\right]^2$$
+
+The inflation loss is zero: $L_{\text{inflation}} = 0$
+
+Total loss under surprise deflation:
+$$L = \frac{bλ^2}{2}\left[\frac{bκ^2}{a} + 1\right]^2$$
+
+**Why Accommodation is Preferred**
+
+Since $\left[\frac{bκ^2}{a} + 1\right]^2 > \left[\frac{bκ^2}{a} + 1\right]$, the loss from implementing zero inflation exceeds the loss from accommodating expected inflation.
+
+**Key Insight: The Inflation Bias Paradox**
+
+Even though the CB has no intention to surprise the public with inflation, it chooses to allow inflation at the expected level because:
+
+1. The CB has an output target ($Y^T$) above the natural rate of output
+2. The public, knowing this, expects accommodating inflation
+3. Disappointing these expectations causes a severe recession that exceeds the inflation costs
+4. The CB prefers accepting expected inflation over the real losses from surprising the public with deflation
+
+This is the essence of **time-inconsistency** and the **inflation bias problem**: the CB's ex-post incentive to accommodate expected inflation conflicts with its ex-ante desire to commit to low inflation. This creates a credibility problem that generates inflation bias in equilibrium.
+
+:::
 
 ---
 
-## Question 2
+## Question 2: Fixed Exchange Rates and Alternative Credibility Mechanisms
 
-[Add question text here]
+::: {.callout-tip collapse="false"}
 
-### Indicative Answer
+**The High-Inflation Country Problem**
 
-[Add indicative answer here]
+Countries with persistently high inflation often have central banks pursuing excessive monetary growth to achieve real sector objectives. This causes balance-of-payments deficits against low-inflation countries. Under floating exchange rates, the high-inflation currency depreciates, reflecting the difference in inflation rates.
+
+**The Fixed Exchange Rate Solution**
+
+One approach for a high-inflation country to reduce inflation is to unilaterally fix its exchange rate against a low-inflation anchor currency. Once fixed, the money supply can no longer be set independently—the country must match the anchor currency's inflation rate to maintain the peg. By surrendering monetary autonomy, the CB signals commitment to low inflation.
+
+**Problems with Fixed Exchange Rates:**
+
+**(i) Weak Commitment Signal**
+
+Fixing the exchange rate is not the most obvious or direct way to signal commitment to low inflation. Other mechanisms might more clearly demonstrate policy resolve without restricting policy flexibility.
+
+**(ii) Recurring Balance-of-Payments Deficits**
+
+If the fixed rate is set too low (too many units of local currency per anchor currency unit), the economy experiences recurring trade deficits. These deficits steadily deplete the central bank's foreign exchange reserves, which cannot be replenished if monetary growth is constrained. Eventually, reserve depletion forces either devaluation or regime abandonment.
+
+**(iii) Loss of Monetary Autonomy During Shocks**
+
+When recessionary technology or demand shocks hit the economy, the CB may want to expand the money supply to stabilise domestic output. But the fixed rate peg prevents this, forcing the economy to bear the full burden of adjustment through price and wage deflation—a costly process.
+
+**(iv) Speculative Attacks**
+
+If markets suspect the peg is unsustainable (due to depleting reserves or political pressure to abandon it), they may engage in speculative attacks—selling the currency en masse to force devaluation. These attacks can be self-fulfilling, destroying reserves and forcing the very devaluation speculators expected.
+
+**Alternative Credibility Mechanisms:**
+
+**(i) Adopting Policy Rules Rather Than Discretion**
+
+Instead of relying on discretionary decisions, the CB can commit to a transparent rule—e.g., "the money supply grows at 2% annually" or "inflation must stay within a 1-3% band." Rules constrain the CB's ability to pursue short-term output objectives and make policy predictable. However, rules limit flexibility during genuine emergencies.
+
+**(ii) Appointing a Conservative, Inflation-Hawk Central Banker**
+
+Credibility can be strengthened by appointing a CB governor known to be strongly committed to price stability and skeptical of inflation. If the CB leader has a public reputation as an inflation-hawk, markets and the public expect low inflation regardless of political pressure. Examples include Paul Volcker (US Fed) or the Bundesbank leadership.
+
+**(iii) Performance-Based Compensation and Incentive Schemes**
+
+Add personal financial rewards and penalties to CB officials' compensation based on inflation outcomes. For example, senior CB managers receive bonuses if inflation stays below target but face penalties if it exceeds target. This aligns personal incentives with low-inflation objectives, counteracting bureaucratic or political biases toward expansionary policy. It makes the commitment credible because officials' own financial interests depend on delivering low inflation.
+
+**Comparative Effectiveness**
+
+These mechanisms address the **time-inconsistency problem** differently:
+- **Rules** eliminate discretion ex-post
+- **Conservative leadership** creates strong ex-ante reputation and expectations of resistance to inflation
+- **Performance incentives** align individual incentives with institutional objectives, making officials directly accountable
+
+The most credible approach typically combines multiple mechanisms: clear rules, conservative leadership, transparency, and performance accountability.
+
+:::
+
+---

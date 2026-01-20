@@ -17,14 +17,26 @@ def load_questions_from_qmd():
     return None
 
 INDICATIVE_ANSWERS = {
-    1: "**Placeholder: Add Topic 5 Question 1 indicative answer here**",
-    2: "**Placeholder: Add Topic 5 Question 2 indicative answer here**",
+    1: """Adaptive expectations backward-looking: use historical patterns to project future, ignoring structural breaks. Rational expectations forward-looking: agents use economic models and all available information about future exogenous variables to forecast endogenously determined variables. Key difference: rational agents anticipate announced changes; adaptive agents only gradually adjust. Example—predictable money increases have no real effects under rational expectations but temporary output effects under adaptive expectations.""",
+    2: """Lucas AS equation: $Y_t - Y^* = \\kappa(P_t - E_{t-1}P_t)$. Output deviates from potential only when prices surprise agents. Explains Friedman's short-run effects: unpredictable money → price surprise → labour supply response → temporary output rise. Beyond Friedman: Lucas showed $\\kappa$ inversely related to monetary volatility, so more volatile policy produces smaller real output effects—agents learn to discount monetary noise.""",
+    3: """With high monetary volatility, rational agents recognise that price fluctuations mainly reflect unpredictable money, not real demand. When seeing price increases, they ask "monetary noise or real shock?" and discount the signal. Coefficient $\\kappa$ (output sensitivity to price surprises) becomes small—unpredictable monetary shocks have minimal output effects. Paradox: money affects output only by being unpredictable, yet more unpredictability reduces real effects.""",
+    4: """Systematic policy normally predictable, hence ineffective. But works when: (i) technology shocks persist over multiple periods, (ii) central bank observes shock magnitude immediately while public learns later. Central bank can condition future money on observed shock size via known rule. Public knows the rule but lacks current shock info, so cannot predict exact money expansion. Information asymmetry creates room for systematic policy to generate price surprises offsetting negative supply shocks.""",
 }
 
 def get_question_text(num):
     questions = {
-        1: "**Question 1: Topic 5 - Question 1 placeholder**\n\nAdd your question text here.",
-        2: "**Question 2: Topic 5 - Question 2 placeholder**\n\nAdd your question text here.",
+        1: """**Question 1: Adaptive vs Rational Expectations**
+
+Adaptive expectations are backward looking while forward looking behaviour leads naturally to rational expectations. Discuss.""",
+        2: """**Question 2: Lucas Aggregate Supply and Friedman**
+
+In what sense can the Lucas Aggregate Supply Equation be used to explain the short run effects of monetary policy as argued by Milton Friedman? Explain.""",
+        3: """**Question 3: Monetary Volatility and Output Effects**
+
+According to the New Classical model, the more volatile is monetary policy the lower is the effect of unpredictable changes in the price level on output. Intuitively explain why this is the case.""",
+        4: """**Question 4: Systematic Policy and Technology Shocks**
+
+Under what circumstances can a central bank use systematic monetary policy to stabilise the economy when it faces random shocks to productive technology? Explain.""",
     }
     return questions.get(num, "")
 
@@ -32,22 +44,41 @@ def create_feedback_prompt(question_num, student_answer, indicative_answer):
     qmd_context = load_questions_from_qmd()
     context_note = ""
     if qmd_context:
-        context_note = "\n\nNote: This question is from Topic 5 of EC3014 Monetary Economics."
+        context_note = "\n\nNote: This question is from Topic 5 - New Classical Macroeconomics in EC3014 Monetary Economics."
     
-    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 5. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
+    topic_concepts = {
+        1: "adaptive expectations, rational expectations, forward-looking behaviour, information set, expectation formation, Lucas critique",
+        2: "Lucas Aggregate Supply equation, price surprises, monetary policy, Friedman's expectations hypothesis, short-run vs long-run neutrality",
+        3: "monetary volatility, New Classical model, signal extraction, price surprises, output effects, information processing",
+        4: "systematic monetary policy, technology shocks, information asymmetry, policy rules, central bank information advantage",
+    }
+    
+    key_concepts = topic_concepts.get(question_num, "Topic 5 concepts")
+    
+    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 5: New Classical Macroeconomics. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
 
-QUESTION {{question_num}}:
-{{get_question_text(question_num)}}
+Key concepts for this question: {key_concepts}
+
+QUESTION {question_num}:
+{get_question_text(question_num)}
 
 STUDENT'S ANSWER:
-{{student_answer}}
+{student_answer}
 
 INDICATIVE ANSWER (for your reference only - DO NOT share directly):
-{{indicative_answer}}
+{indicative_answer}
 
 INSTRUCTIONS:
 1. Identify what the student got right and acknowledge it
 2. If the answer is incomplete or has gaps, provide HINTS to guide them toward the correct reasoning
+3. For multi-part questions, address each part briefly
+4. If misconceptions exist, gently point toward the correct approach
+5. Connect to the key economic concepts listed above
+6. Encourage them to verify their logic and economic intuition
+7. Keep feedback concise (200-250 words max)
+8. Be encouraging and constructive
+
+Provide your feedback now:{context_note}"""
 3. If the answer contains misconceptions, gently point them toward the correct approach
 4. For multi-part questions, address each part briefly
 5. Encourage them to think about the economic intuition
@@ -245,8 +276,8 @@ app_ui = ui.page_fluid(
     ),
     ui.div(
         ui.div(
-            ui.h1("Topic 5 - Monetary Economics"),
-            ui.p("Interactive questions with AI-powered feedback"),
+            ui.h1("Topic 5 - New Classical Macroeconomics"),
+            ui.p("Interactive questions on expectations, Lucas AS equation, and monetary policy rules"),
             class_="header"
         ),
         ui.div(
@@ -290,6 +321,34 @@ app_ui = ui.page_fluid(
                     class_="question-card"
                 )
             ),
+            ui.nav_panel(
+                "Question 3",
+                ui.div(
+                    ui.div(ui.markdown(get_question_text(3)), class_="question-text"),
+                    ui.div(
+                        ui.tags.label("Your Answer:"),
+                        ui.input_text_area("answer3", "", height="400px", placeholder="Type your answer here..."),
+                        ui.input_action_button("submit3", "Get AI Feedback", class_="btn-primary"),
+                        class_="answer-section"
+                    ),
+                    ui.output_ui("feedback3"),
+                    class_="question-card"
+                )
+            ),
+            ui.nav_panel(
+                "Question 4",
+                ui.div(
+                    ui.div(ui.markdown(get_question_text(4)), class_="question-text"),
+                    ui.div(
+                        ui.tags.label("Your Answer:"),
+                        ui.input_text_area("answer4", "", height="400px", placeholder="Type your answer here..."),
+                        ui.input_action_button("submit4", "Get AI Feedback", class_="btn-primary"),
+                        class_="answer-section"
+                    ),
+                    ui.output_ui("feedback4"),
+                    class_="question-card"
+                )
+            ),
         ),
         class_="container-custom"
     )
@@ -312,6 +371,30 @@ def server(input, output, session):
     @reactive.event(input.submit2)
     def feedback2():
         feedback = get_ai_feedback(2, input.answer2())
+        return ui.div(
+            ui.div(
+                ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),
+                ui.markdown(feedback),
+                class_="feedback-box"
+            )
+        )
+
+    @render.ui
+    @reactive.event(input.submit3)
+    def feedback3():
+        feedback = get_ai_feedback(3, input.answer3())
+        return ui.div(
+            ui.div(
+                ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),
+                ui.markdown(feedback),
+                class_="feedback-box"
+            )
+        )
+
+    @render.ui
+    @reactive.event(input.submit4)
+    def feedback4():
+        feedback = get_ai_feedback(4, input.answer4())
         return ui.div(
             ui.div(
                 ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),

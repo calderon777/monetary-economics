@@ -1,23 +1,27 @@
 ---
-title: "Topic 6 Questions"
+title: "Topic 6 - Central Bank Credibility and Inflation Control"
 ---
 
-## Topic 6 - Interactive Questions
+# Topic 6 - Questions
 
-[Questions placeholder - Add content here]
+```{=html}
+<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic6-questions" width="100%" height="800" frameborder="0"></iframe>
+```
 
-### Question 1
+## Questions
 
-[Add question text]
+::: {.callout-note collapse="true"}
 
-**Indicative Answer:**
+## Question 1: Central Bank Loss Function and Inflation Bias
 
-[Add answer]
+Explain why, if the public expect the central bank to set inflation at the equilibrium level $\pi = \frac{bκλ}{a}$, the central bank will set this inflation rate, rather than $\pi = 0$, even if it has no intention to create a "surprise" inflation.
 
-### Question 2
+:::
 
-[Add question text]
+::: {.callout-note collapse="true"}
 
-**Indicative Answer:**
+## Question 2: Fixed Exchange Rates and Inflation Credibility
 
-[Add answer]
+Discuss the pros and cons for the central bank of a country which has been experiencing high inflation to fix the exchange rate of its own currency against that of a major, low inflation country. Briefly discuss other methods by which a central bank can credibly lower the inflation rate of its currency.
+
+:::

@@ -17,14 +17,22 @@ def load_questions_from_qmd():
     return None
 
 INDICATIVE_ANSWERS = {
-    1: "**Placeholder: Add Topic 7 Question 1 indicative answer here**",
-    2: "**Placeholder: Add Topic 7 Question 2 indicative answer here**",
+    1: """Two key problems: (i) Central banks control only the monetary base (M₀), but broader money aggregates (M₁, M₂) include demand deposits created by commercial banks. The money multiplier depends on bank reserve decisions and public preferences, which are unstable. (ii) Money demand is not stable—financial innovation (money market funds, sweep accounts), payment technology changes (credit cards, digital payments), and deregulation shifted money demand unpredictably. Without stable money demand, targeting money growth didn't reliably control inflation. These problems motivated shift to interest rate targeting.""",
+    2: """Three key problems: (i) Deflation risk—inflation fluctuates around target; with zero target, deflation risk is high and one-sided. Deflation is self-reinforcing and triggers zero lower bound, making monetary policy ineffective. (ii) Interest rate constraint—with 2% target, CB has buffer before hitting zero bound; with zero target, little room to cut rates during recessions. (iii) Wage adjustment mechanism—positive inflation allows real wage falls without nominal cuts. Workers resist nominal wage cuts; moderate inflation (e.g. 2%) erodes real wages naturally, helping labour markets clear during downturns. Zero inflation requires explicit wage cuts, prolonging unemployment.""",
+    3: """Policy rate is overnight lending rate between CB and banks; primary instrument for most central banks. Three transmission channels: (i) Credit channel (indirect)—rate ↑ → bank lending rates ↑ → investment/spending ↓ → labour/goods demand ↓ → wages/prices ↓; (ii) Expectations channel (direct)—rate ↑ → CB signals π will ↓ → wage/price setters expect lower inflation → moderate wage/price setting → π↓ (faster); (iii) Exchange rate channel—rate ↑ → foreign capital inflows → currency appreciates → import prices ↓ → π↓. See diagram for all three channels operating simultaneously.""",
 }
 
 def get_question_text(num):
     questions = {
-        1: "**Question 1: Topic 7 - Question 1 placeholder**\n\nAdd your question text here.",
-        2: "**Question 2: Topic 7 - Question 2 placeholder**\n\nAdd your question text here.",
+        1: """**Question 1: Problems Leading to Abandonment of Money Supply Targeting**
+
+What problems led major central banks to abandon direct control of the money supply as the primary instrument of monetary policy? Explain.""",
+        2: """**Question 2: Why Zero Inflation is Undesirable**
+
+Why is zero inflation considered to be an undesirable target for monetary policy? Explain all the relevant points in this argument.""",
+        3: """**Question 3: The Policy Interest Rate and Transmission Channels**
+
+What instrument is normally used to keep inflation close to its target and through what channels does it work in achieving this task? Discuss with the help of a diagram.""",
     }
     return questions.get(num, "")
 
@@ -32,22 +40,40 @@ def create_feedback_prompt(question_num, student_answer, indicative_answer):
     qmd_context = load_questions_from_qmd()
     context_note = ""
     if qmd_context:
-        context_note = "\n\nNote: This question is from Topic 7 of EC3014 Monetary Economics."
+        context_note = "\n\nNote: This question is from Topic 7 - Monetary Policy Instruments and Inflation Targeting in EC3014 Monetary Economics."
     
-    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 7. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
+    topic_concepts = {
+        1: "monetary base, money supply, money multiplier, financial innovation, money demand stability, commercial banks, interest rate targeting",
+        2: "zero inflation, deflation risk, zero lower bound, nominal interest rates, wage rigidity, real wages, labour market adjustment",
+        3: "policy interest rate, transmission channels, credit channel, expectations channel, exchange rate channel, inflation dynamics",
+    }
+    
+    key_concepts = topic_concepts.get(question_num, "Topic 7 concepts")
+    
+    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 7: Monetary Policy Instruments and Inflation Targeting. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
 
-QUESTION {{question_num}}:
-{{get_question_text(question_num)}}
+Key concepts for this question: {key_concepts}
+
+QUESTION {question_num}:
+{get_question_text(question_num)}
 
 STUDENT'S ANSWER:
-{{student_answer}}
+{student_answer}
 
 INDICATIVE ANSWER (for your reference only - DO NOT share directly):
-{{indicative_answer}}
+{indicative_answer}
 
 INSTRUCTIONS:
 1. Identify what the student got right and acknowledge it
 2. If the answer is incomplete or has gaps, provide HINTS to guide them toward the correct reasoning
+3. For multi-part questions, address each part briefly
+4. If misconceptions exist, gently point toward the correct approach
+5. Connect to the key economic concepts listed above
+6. For Question 3, encourage them to think about how all three channels work together
+7. Keep feedback concise (200-250 words max)
+8. Be encouraging and constructive
+
+Provide your feedback now:{context_note}"""
 3. If the answer contains misconceptions, gently point them toward the correct approach
 4. For multi-part questions, address each part briefly
 5. Encourage them to think about the economic intuition
@@ -245,8 +271,8 @@ app_ui = ui.page_fluid(
     ),
     ui.div(
         ui.div(
-            ui.h1("Topic 7 - Monetary Economics"),
-            ui.p("Interactive questions with AI-powered feedback"),
+            ui.h1("Topic 7 - Monetary Policy Instruments and Inflation Targeting"),
+            ui.p("Interactive questions on policy rates, transmission channels, and inflation targets"),
             class_="header"
         ),
         ui.div(

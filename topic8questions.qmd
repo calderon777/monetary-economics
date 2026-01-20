@@ -1,23 +1,27 @@
 ---
-title: "Topic 8 Questions"
+title: "Topic 8 - Monetary Policy in Crisis and Recovery"
 ---
 
-## Topic 8 - Interactive Questions
+# Topic 8 - Questions
 
-[Questions placeholder - Add content here]
+```{=html}
+<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic8-questions" width="100%" height="800" frameborder="0"></iframe>
+```
 
-### Question 1
+## Questions
 
-[Add question text]
+::: {.callout-note collapse="true"}
 
-**Indicative Answer:**
+## Question 1: UK Economic Shocks Since 2010 and Bank of England Responses
 
-[Add answer]
+Discuss the four shocks to have hit the UK economy since 2010. How has the Bank of England responded to each of these shocks and how has this response compared with its initial response following the sub-prime market crash of July 2007?
 
-### Question 2
+:::
 
-[Add question text]
+::: {.callout-note collapse="true"}
 
-**Indicative Answer:**
+## Question 2: Post-Great Recession Modifications to Monetary Policy Consensus
 
-[Add answer]
+How did the conduct of monetary policy by major central banks in the period after the Great Recession modify the monetary policy consensus that prevailed during the Great Moderation?
+
+:::

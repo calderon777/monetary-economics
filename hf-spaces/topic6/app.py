@@ -17,14 +17,18 @@ def load_questions_from_qmd():
     return None
 
 INDICATIVE_ANSWERS = {
-    1: "**Placeholder: Add Topic 6 Question 1 indicative answer here**",
-    2: "**Placeholder: Add Topic 6 Question 2 indicative answer here**",
+    1: """CB's loss function: $L = \\frac{a}{2}\\pi^2 + \\frac{b}{2}(Y - Y^T)^2$. CB has output target $Y^T = Y^* + \\lambda$ above natural rate. If public expects $\\pi = \\frac{b\\kappa\\lambda}{a}$: accommodating yields loss $\\frac{b\\lambda^2}{2}[\\frac{b\\kappa^2}{a} + 1]$. Setting $\\pi=0$ causes recession $Y - Y^* = -\\kappa\\frac{b\\kappa\\lambda}{a}$, yielding quadratically larger real loss $\\frac{b\\lambda^2}{2}[\\frac{b\\kappa^2}{a} + 1]^2$. Since squared term dominates, CB prefers accommodating expected inflation despite output bias—this is the inflation bias paradox and time-inconsistency problem.""",
+    2: """Fixed exchange rate forces money supply to match anchor currency, signaling commitment. But problems: (i) not obvious commitment signal, (ii) recurring deficits if rate set too low deplete reserves, (iii) loss of monetary autonomy to handle domestic shocks, (iv) speculative attacks if sustainability questioned. Alternatives: (i) adopt policy rules limiting discretion, (ii) appoint conservative inflation-hawk CB governor with public reputation for low-inflation commitment, (iii) tie CB officials' compensation to inflation targets (bonuses for low inflation, penalties for high), aligning personal incentives with price stability.""",
 }
 
 def get_question_text(num):
     questions = {
-        1: "**Question 1: Topic 6 - Question 1 placeholder**\n\nAdd your question text here.",
-        2: "**Question 2: Topic 6 - Question 2 placeholder**\n\nAdd your question text here.",
+        1: """**Question 1: Central Bank Loss Function and Inflation Bias**
+
+Explain why, if the public expect the central bank to set inflation at the equilibrium level $\\pi = \\frac{b\\kappa\\lambda}{a}$, the central bank will set this inflation rate, rather than $\\pi = 0$, even if it has no intention to create a "surprise" inflation.""",
+        2: """**Question 2: Fixed Exchange Rates and Inflation Credibility**
+
+Discuss the pros and cons for the central bank of a country which has been experiencing high inflation to fix the exchange rate of its own currency against that of a major, low inflation country. Briefly discuss other methods by which a central bank can credibly lower the inflation rate of its currency.""",
     }
     return questions.get(num, "")
 
@@ -32,22 +36,39 @@ def create_feedback_prompt(question_num, student_answer, indicative_answer):
     qmd_context = load_questions_from_qmd()
     context_note = ""
     if qmd_context:
-        context_note = "\n\nNote: This question is from Topic 6 of EC3014 Monetary Economics."
+        context_note = "\n\nNote: This question is from Topic 6 - Central Bank Credibility and Inflation Control in EC3014 Monetary Economics."
     
-    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 6. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
+    topic_concepts = {
+        1: "central bank loss function, output bias, inflation bias, time-inconsistency, Lucas AS equation, inflation expectations, accommodation",
+        2: "fixed exchange rates, commitment mechanisms, monetary autonomy, balance-of-payments, policy rules, central banker reputation, incentive schemes",
+    }
+    
+    key_concepts = topic_concepts.get(question_num, "Topic 6 concepts")
+    
+    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 6: Central Bank Credibility and Inflation Control. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
 
-QUESTION {{question_num}}:
-{{get_question_text(question_num)}}
+Key concepts for this question: {key_concepts}
+
+QUESTION {question_num}:
+{get_question_text(question_num)}
 
 STUDENT'S ANSWER:
-{{student_answer}}
+{student_answer}
 
 INDICATIVE ANSWER (for your reference only - DO NOT share directly):
-{{indicative_answer}}
+{indicative_answer}
 
 INSTRUCTIONS:
 1. Identify what the student got right and acknowledge it
 2. If the answer is incomplete or has gaps, provide HINTS to guide them toward the correct reasoning
+3. For multi-part questions, address each part briefly
+4. If misconceptions exist, gently point toward the correct approach
+5. Connect to the key economic concepts listed above
+6. Encourage them to work through the mathematics and logic carefully
+7. Keep feedback concise (200-250 words max)
+8. Be encouraging and constructive
+
+Provide your feedback now:{context_note}"""
 3. If the answer contains misconceptions, gently point them toward the correct approach
 4. For multi-part questions, address each part briefly
 5. Encourage them to think about the economic intuition
@@ -245,8 +266,8 @@ app_ui = ui.page_fluid(
     ),
     ui.div(
         ui.div(
-            ui.h1("Topic 6 - Monetary Economics"),
-            ui.p("Interactive questions with AI-powered feedback"),
+            ui.h1("Topic 6 - Central Bank Credibility and Inflation Control"),
+            ui.p("Interactive questions on inflation bias, commitment mechanisms, and monetary policy credibility"),
             class_="header"
         ),
         ui.div(

@@ -1,22 +1,176 @@
 ---
 title: "Topic 5 - Indicative Answers"
-format: html
 ---
 
-## Question 1
+# Topic 5 - Indicative Answers
 
-[Add question text here]
+## Question 1: Adaptive vs Rational Expectations
 
-### Indicative Answer
+::: {.callout-tip collapse="false"}
 
-[Add indicative answer here]
+**Adaptive Expectations: Backward-Looking**
+
+The first claim is true. Adaptive expectations are formed by using the observed historical time path of a variable to project its future expected value. This approach is inherently backward-looking because it ignores the possibility that a variable's trajectory might suddenly change if one of its underlying determinants changes.
+
+For example, if inflation has been 2% for several years, adaptive expectations would predict future inflation around 2%, even if the central bank has just announced a permanent increase in money growth targeting 5% inflation. The model would only gradually adjust expectations upward as inflation actually rises over time.
+
+**Rational Expectations: Forward-Looking**
+
+The second claim is best understood in reverse: rational expectations naturally lead to forward-looking forecasting behaviour. A rational agent recognises that variables are interdependent and uses a model describing mutual inter-relationships between variables to predict future values of endogenous variables, using all available information about future exogenous variables.
+
+Under rational expectations, whenever an agent is informed that an exogenous variable will deviate from its historical trend, they can correctly forecast that the endogenous variable they're interested in will also deviate from its own historical trend. This ability to forecast sudden deviations from observed patterns makes rational expectations forward-looking.
+
+**Example: Predictable vs Unpredictable Money Changes**
+
+- **Predictable money increase**: Under adaptive expectations, workers don't anticipate the wage inflation coming from increased money supply. They're surprised by higher nominal wages, work more (thinking real wages rose), and output expands temporarily.
+
+- Under rational expectations, if workers know the central bank has announced a permanent money increase, they predict prices and wages will rise proportionally. They don't increase labour supply, output remains unchanged—money is neutral even in the short run.
+
+This illustrates the key difference: rational expectations allow agents to anticipate and respond to announced future changes, making the economy respond differently than adaptive expectations would suggest.
+
+:::
 
 ---
 
-## Question 2
+## Question 2: Lucas Aggregate Supply and Friedman's Monetary Policy
 
-[Add question text here]
+::: {.callout-tip collapse="false"}
 
-### Indicative Answer
+**The Lucas Aggregate Supply Equation**
 
-[Add indicative answer here]
+The Lucas AS equation expresses a relationship between deviations of output from its full-employment level and deviations of the price level from its expected value:
+
+$$Y_t - Y^* = \kappa(P_t - E_{t-1}P_t)$$
+
+In words: **output deviates from potential only when actual prices differ from expected prices**—that is, when agents face price surprises.
+
+**Connection to Friedman's Monetary Policy Analysis**
+
+The Lucas AS equation explains Friedman's argument about short-run monetary effects through the following mechanism:
+
+1. An **unpredictable increase in money** causes prices to rise unexpectedly
+2. Workers and firms observe higher nominal wages/prices but expect lower inflation
+3. Misperceiving real wages as higher, workers supply more labour
+4. Output temporarily expands above potential
+5. Once expectations adjust and workers realise prices are higher, output returns to $Y^*$
+
+This captures Friedman's key insight: **monetary policy affects real variables (output and employment) only when unpredictable**, creating a temporary Phillips curve trade-off in the short run.
+
+**Beyond Friedman: The Volatility Effect**
+
+However, the Lucas version based on rational expectations reveals something Friedman's analysis didn't emphasise: the **magnitude of the output effect depends on monetary volatility**. 
+
+Lucas showed that the coefficient $\kappa$ is inversely proportional to the volatility of monetary policy. When monetary policy is highly volatile:
+- Agents realise that price fluctuations are largely driven by unpredictable money changes
+- They discount price surprises in making supply decisions
+- Price surprises have smaller effects on output
+
+Thus, the Lucas AS equation not only explains Friedman's short-run effects but also shows that **more volatile monetary policy paradoxically produces smaller real effects**—a distinctly New Classical insight.
+
+:::
+
+---
+
+## Question 3: Monetary Policy Volatility and Output Effects
+
+::: {.callout-tip collapse="false"}
+
+**The Lucas AS Equation and Monetary Shocks**
+
+In the New Classical model, the Lucas AS equation states:
+
+$$Y_t - Y^* = \kappa(P_t - E_{t-1}P_t)$$
+
+where output deviates from potential only when actual prices exceed expected prices.
+
+**The Relationship Between Money and Price Surprises**
+
+With rational expectations, the price surprise is related to the money surprise by:
+
+$$P_t - E_{t-1}P_t = \frac{1}{1+\kappa}(M_t - E_{t-1}M_t)$$
+
+Combining these gives the relationship between unpredictable monetary shocks and output:
+
+$$Y_t - Y^* = \frac{\kappa}{1+\kappa}(M_t - E_{t-1}M_t)$$
+
+Note that the coefficient $\frac{\kappa}{1+\kappa}$ decreases as $\kappa$ increases—and Lucas proved that **$\kappa$ is inversely proportional to monetary volatility**.
+
+**Intuitive Explanation**
+
+When monetary policy is **highly volatile**:
+
+1. Agents experience frequent, large, unpredictable fluctuations in the money supply and prices
+2. They realise that most price changes are driven by monetary shocks, not real productivity changes
+3. When they observe a price increase, rational agents ask: "Is this real inflation or just monetary noise?"
+4. Recognising it's likely monetary noise, they **discount the price signal** and don't adjust supply decisions much
+5. The measured $\kappa$ (sensitivity of output to price surprises) becomes very small
+6. **Result**: Output remains closer to potential despite frequent price surprises
+
+Conversely, when monetary policy is **predictable and stable**:
+
+1. Agents see price changes as more likely reflecting real demand shifts
+2. Price surprises are taken as genuine signals about real conditions
+3. Agents respond more strongly to price changes
+4. $\kappa$ is larger, and unpredictable monetary changes have bigger output effects
+
+**The Paradox**
+
+This creates an apparent paradox: **money affects output only by being unpredictable, yet the more unpredictable money is, the smaller its real effects become.** 
+
+The resolution is that rational agents learn the volatility characteristics of monetary policy and adjust their attention to different types of signals. In a highly volatile monetary environment, price signals become noisier and less informative about real conditions, so agents respond less to them.
+
+:::
+
+---
+
+## Question 4: Systematic Monetary Policy and Technology Shocks
+
+::: {.callout-tip collapse="false"}
+
+**The Problem: Systematic Policy is Predictable**
+
+In standard New Classical theory, a systematic monetary policy rule—where money supply is deliberately set according to some formula—is predictable by rational agents. They form expectations based on this anticipated money supply, rendering the policy unable to affect real variables. **Monetary policy cannot systematically stabilise the economy.**
+
+**The Solution: Exploiting Information Asymmetry**
+
+However, a special combination of circumstances allows systematic stabilisation:
+
+**(i) Technology shocks with persistence**: Productivity shocks whose effects persist over multiple periods (not just the current period). A negative productivity shock reduces output not only immediately but through reduced capital productivity in subsequent periods.
+
+**(ii) Information asymmetry**: The central bank observes these technology shocks as they arise, but the public learns about them only **after their effects have dissipated** or become much smaller.
+
+**How Systematic Policy Can Work**
+
+Holding money constant, a recessionary technology shock would:
+- Reduce output in period $t$ (when shock occurs)
+- Continue damaging output in periods $t+1$, $t+2$, etc. (persistence effect)
+
+But if the central bank, having observed the shock, conditions future money supply over several periods on the shock's magnitude, it can eliminate the persistence effect:
+
+**Example**: Following a recessionary productivity shock,
+1. Central bank observes the shock in period $t$ (public doesn't yet know its magnitude)
+2. Central bank increases money supply in periods $t+1$, $t+2$, etc.
+3. This increases aggregate demand and raises the price level
+4. Since public doesn't yet know the magnitude of the supply shock, they don't perfectly predict the money increase
+5. The resulting **price surprise stimulates employment and output**, offsetting the negative supply-side effect
+6. By quantitatively linking money injections to observed shock size, the central bank can precisely neutralise output persistence
+
+**The Role of the Policy Rule**
+
+Crucially, the policy follows a **known rule**: "If we observe a productivity shock of size $X$, we will expand money by $Y$."
+
+- **Rational agents know this rule**, so they can predict it ex-ante
+- **But they lack current information on shock magnitude**, so they cannot predict the exact money expansion that will result
+- The policy is "systematic" (not arbitrary) yet remains unpredictable to the public
+
+**Key Insight**
+
+This works because the central bank has a **comparative information advantage**. It observes current shocks faster than the public; it uses this advantage to inject money that will be surprising (but predictable in principle if you knew the shock size). The public, knowing the policy rule but not current shock magnitudes, cannot perfectly predict the resulting money supply, leaving room for systematic policy to have real effects.
+
+**Implications**
+
+This explains why central banks focus on real-time shock monitoring (employment data, inflation, financial conditions) and why forward guidance is only effective when it conveys **new information the public doesn't have**—not merely statements of predictable rules.
+
+:::
+
+---

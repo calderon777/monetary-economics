@@ -1,22 +1,269 @@
 ---
 title: "Topic 7 - Indicative Answers"
-format: html
 ---
 
-## Question 1
+# Topic 7 - Indicative Answers
 
-[Add question text here]
+## Question 1: Why Central Banks Abandoned Money Supply Targeting
 
-### Indicative Answer
+::: {.callout-tip collapse="false"}
 
-[Add indicative answer here]
+**Problem 1: Central Banks Control the Monetary Base, Not the Money Supply**
+
+The fundamental issue is that central banks only directly control the monetary base ($M_0$)—cash in circulation plus bank reserves. However, conventional monetary aggregates like $M_1$ and $M_2$ also include demand deposits and other bank liabilities created by the commercial banking sector, not the central bank.
+
+The relationship between the monetary base and broader money aggregates depends on the money multiplier, which is determined by:
+- Commercial banks' reserve requirements
+- Banks' reserve management decisions (which vary over time)
+- The public's preferences for cash vs deposits
+
+When banks hold excess reserves or reduce lending, the money multiplier contracts, meaning the CB cannot reliably control the broader money supply even if it controls the base. This became especially problematic during financial crises when banks hoarded reserves and the money multiplier collapsed.
+
+**Problem 2: Money Demand is Unstable**
+
+The second problem contradicts a key assumption of the Quantity Theory of Money: that the demand for money is a stable, predictable function of nominal income.
+
+In reality, money demand shifted significantly due to:
+- **Financial innovation**: Development of money market mutual funds, sweep accounts, and other near-money instruments that allowed the public to minimize cash holdings
+- **Changing payment technologies**: Credit cards, electronic funds transfers, and later digital payments reduced the need to hold transaction balances
+- **Deregulation**: Removal of deposit interest rate ceilings allowed competition, shifting funds between deposits and other financial assets
+
+These shifts meant that targeting a particular growth rate for the money supply did not reliably control inflation or output. For example, if the CB targeted $M_1$ growth at 5%, but money demand shifted inward due to financial innovation, the actual growth in monetary liquidity would be much less, potentially causing economic contraction despite the CB "hitting" its money growth target.
+
+**The Combined Effect: Loss of Control**
+
+Together, these two problems meant that:
+1. The CB could not reliably control the money supply (only the base)
+2. Even if it could, controlling money growth didn't reliably control inflation (because money demand was unstable)
+
+This motivated the shift toward **interest rate targeting** as the primary policy instrument, which offers more direct control over financial conditions and is less dependent on the stability of money demand or the money multiplier.
+
+:::
 
 ---
 
-## Question 2
+## Question 2: Why Zero Inflation is Undesirable
 
-[Add question text here]
+::: {.callout-tip collapse="false"}
 
-### Indicative Answer
+**Point 1: Risk of Deflation**
 
-[Add indicative answer here]
+If the central bank targets zero inflation, there is only downside risk of deflation. In practice, inflation fluctuates around any target due to shocks and forecasting errors. With a zero target:
+
+- Inflation might temporarily fall to $-1\%$, $-2\%$, or lower
+- Once deflation begins, it can be self-reinforcing: expectations of falling prices cause households and firms to delay spending, further reducing demand and pushing prices down
+- Deflation creates the zero lower bound problem: nominal interest rates cannot fall below zero, limiting the CB's ability to stimulate the economy
+- In a deflationary episode, real interest rates become too high even when nominal rates are zero, making borrowing expensive and investment unattractive
+
+Historical example: Japan's "Lost Decade" (1990s) saw deflation that made monetary policy ineffective despite near-zero nominal rates.
+
+**Point 2: The Zero Lower Bound and Interest Rates**
+
+Related to the deflation risk is the constraint on monetary policy transmission. If the CB targets zero inflation:
+
+- The equilibrium real interest rate must be achieved through nominal rates close to zero
+- When shocks hit, the CB has little room to cut rates further
+- The nominal interest rate hits the zero lower bound, preventing real rate cuts
+- Monetary policy becomes powerless when the economy most needs stimulus
+
+With a positive inflation target (e.g., 2%), the CB has a buffer. When it needs to cut the nominal rate to stimulate, there's room before hitting zero. For example, if inflation is 2% and the natural real rate is 2%, the CB can set the nominal rate at 4% (= 2% + 2%), leaving room to cut rates during recessions.
+
+**Point 3: The Wage Adjustment Mechanism**
+
+A critical but indirect mechanism is that moderate inflation allows real wages to fall without nominal wage cuts. 
+
+In recessions with high unemployment, there is downward pressure on real wages. But:
+- Nominal wage cuts are politically unpopular and resisted by workers
+- Labour contracts often have downward rigidity in nominal wages
+- If nominal wages cannot fall but inflation erodes the real value, real wages adjust
+
+With positive inflation (say 2%):
+- A worker's nominal wage stays at $50,000 but prices rise 2%
+- Real wage falls from $50,000/$P_0$ to $50,000/$P_1$
+- This real adjustment allows labour markets to clear during downturns
+
+With zero inflation target:
+- If real wages must fall to clear the labour market, firms must negotiate nominal wage cuts
+- Workers resist, unemployment persists
+- The economy cannot efficiently adjust to shocks
+
+This is particularly important during periods of high unemployment when downward pressure on real wages would normally help restore labour market equilibrium.
+
+**Summary of Three Problems**
+
+1. **Deflation risk** → monetary policy becomes ineffective (zero lower bound)
+2. **Interest rate constraint** → less room to stimulate during recessions
+3. **Wage rigidity** → real wage adjustment becomes harder, prolonging unemployment
+
+Most central banks target **2% inflation** as a compromise: high enough to provide a buffer against deflation and interest rate constraints, yet low enough to maintain price stability.
+
+:::
+
+---
+
+## Question 3: The Policy Interest Rate and Transmission Channels
+
+::: {.callout-tip collapse="false"}
+
+**The Primary Instrument: The Policy (Base) Interest Rate**
+
+The policy rate (also called the base rate or overnight rate) is the interest rate at which the central bank lends short-term funds—typically overnight—to commercial banks. Major central banks (Federal Reserve, ECB, Bank of England, etc.) set this rate as their primary policy instrument.
+
+**The Three Main Transmission Channels**
+
+Changes in the policy rate affect inflation through three distinct channels:
+
+### **Channel 1: The Credit Channel (Less Direct)**
+
+This is the gradual transmission through the financial system:
+
+1. **Interbank markets**: When the CB raises the policy rate, banks paying higher overnight rates pass increased costs through the interbank lending market
+2. **Money market rates**: Rates on commercial paper, certificates of deposit, and other money market instruments rise
+3. **Bank lending rates**: Banks increase rates on mortgages, business loans, and consumer credit
+4. **Firm and household decisions**: Higher borrowing costs cause:
+   - Firms to cut investment (returns lower relative to borrowing cost)
+   - Households to reduce consumption (especially discretionary spending and home purchases)
+5. **Goods and labour markets**: Reduced spending decreases demand for goods and labour
+6. **Wages and prices**: Lower labour demand reduces wage growth; reduced goods demand reduces price growth
+
+**Effect on inflation**: Slower growth in wages and prices → lower inflation
+
+### **Channel 2: The Expectations/Signalling Channel (More Direct)**
+
+This works through central bank communication and expectations:
+
+1. **CB signals intent**: When the CB raises the policy rate, it signals that it intends to bring inflation down
+2. **Forward guidance**: The CB may explicitly state that rates will remain high until inflation targets are met
+3. **Wage and price setter expectations**: Workers and firms, believing inflation will fall, moderate their own wage and price demands
+4. **Immediate effect**: Even before spending contracts significantly, inflation expectations fall because wage and price setters anticipate lower inflation ahead
+5. **Self-fulfilling**: As workers accept lower nominal wage growth and firms set lower prices (expecting lower future inflation), inflation actually falls faster
+
+**Effect on inflation**: Faster reduction in inflation through expectation management and forward guidance
+
+### **Channel 3: The Exchange Rate Channel**
+
+This works through international financial flows:
+
+1. **Higher domestic rates**: The CB raises the policy rate
+2. **Capital attraction**: Higher returns attract foreign investment seeking yield
+3. **Currency appreciation**: Increased foreign demand for the domestic currency causes it to appreciate
+4. **Lower import prices**: An appreciated currency makes foreign goods cheaper in domestic terms (e.g., if the dollar appreciates, US importers pay fewer dollars for foreign goods)
+5. **Reduced inflation**: Cheaper imports directly lower consumer price indices and reduce inflationary pressure from import costs
+6. **Competitiveness effect**: Appreciated currency also makes domestic exports more expensive abroad, reducing external demand and further dampening inflation
+
+**Effect on inflation**: Through lower import prices and reduced external demand
+
+---
+
+**Diagram: Monetary Policy Transmission Channels**
+
+```{r}
+#| label: fig-transmission-channels
+#| fig-cap: "Three Channels of Monetary Policy Transmission to Inflation"
+library(ggplot2)
+library(gridExtra)
+library(grid)
+
+# Create three diagrams side by side showing the channels
+
+# Channel 1: Credit Channel
+channel1 <- ggplot() +
+  annotate("rect", xmin = 0, xmax = 10, ymin = 9, ymax = 10, fill = "#1f77b4", alpha = 0.7) +
+  annotate("text", x = 5, y = 9.5, label = "↑ Policy Rate", fontface = "bold", color = "white", size = 4) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 7.5, ymax = 8.5, fill = "#ff7f0e", alpha = 0.7) +
+  annotate("text", x = 5, y = 8, label = "↑ Bank Lending Rates", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 9, yend = 8.5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 6, ymax = 7, fill = "#2ca02c", alpha = 0.7) +
+  annotate("text", x = 5, y = 6.5, label = "↓ Investment & Spending", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 7.5, yend = 7, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 4.5, ymax = 5.5, fill = "#d62728", alpha = 0.7) +
+  annotate("text", x = 5, y = 5, label = "↓ Labour/Goods Demand", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 6, yend = 5.5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 3, ymax = 4, fill = "#9467bd", alpha = 0.7) +
+  annotate("text", x = 5, y = 3.5, label = "↓ Wages & Prices (π↓)", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 4.5, yend = 4, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("text", x = 5, y = 1.5, label = "Channel 1: Credit Channel\n(Indirect, Slower)", 
+           fontface = "bold", size = 3.5) +
+  
+  xlim(-0.5, 10.5) + ylim(0, 10.5) +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 10))
+
+# Channel 2: Expectations Channel
+channel2 <- ggplot() +
+  annotate("rect", xmin = 0, xmax = 10, ymin = 8.5, ymax = 9.5, fill = "#1f77b4", alpha = 0.7) +
+  annotate("text", x = 5, y = 9, label = "↑ Policy Rate", fontface = "bold", color = "white", size = 4) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 7, ymax = 8, fill = "#ff7f0e", alpha = 0.7) +
+  annotate("text", x = 5, y = 7.5, label = "CB Signals: π will ↓", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 8.5, yend = 8, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 5.5, ymax = 6.5, fill = "#2ca02c", alpha = 0.7) +
+  annotate("text", x = 5, y = 6, label = "Workers & Firms expect ↓π", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 7, yend = 6.5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 4, ymax = 5, fill = "#d62728", alpha = 0.7) +
+  annotate("text", x = 5, y = 4.5, label = "Moderate wage/price setting", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 5.5, yend = 5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 2.5, ymax = 3.5, fill = "#9467bd", alpha = 0.7) +
+  annotate("text", x = 5, y = 3, label = "↓π (Self-fulfilling)", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 4, yend = 3.5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("text", x = 5, y = 1, label = "Channel 2: Expectations\n(Direct, Fast)", 
+           fontface = "bold", size = 3.5) +
+  
+  xlim(-0.5, 10.5) + ylim(0, 10.5) +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 10))
+
+# Channel 3: Exchange Rate Channel
+channel3 <- ggplot() +
+  annotate("rect", xmin = 0, xmax = 10, ymin = 8.5, ymax = 9.5, fill = "#1f77b4", alpha = 0.7) +
+  annotate("text", x = 5, y = 9, label = "↑ Policy Rate", fontface = "bold", color = "white", size = 4) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 7, ymax = 8, fill = "#ff7f0e", alpha = 0.7) +
+  annotate("text", x = 5, y = 7.5, label = "Foreign capital inflows", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 8.5, yend = 8, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 5.5, ymax = 6.5, fill = "#2ca02c", alpha = 0.7) +
+  annotate("text", x = 5, y = 6, label = "Currency appreciates", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 7, yend = 6.5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 4, ymax = 5, fill = "#d62728", alpha = 0.7) +
+  annotate("text", x = 5, y = 4.5, label = "↓ Import prices", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 5.5, yend = 5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("rect", xmin = 0, xmax = 10, ymin = 2.5, ymax = 3.5, fill = "#9467bd", alpha = 0.7) +
+  annotate("text", x = 5, y = 3, label = "↓π (& ↓ external demand)", color = "white", size = 3.5) +
+  annotate("segment", x = 5, xend = 5, y = 4, yend = 3.5, arrow = arrow(length = unit(0.2, "cm"))) +
+  
+  annotate("text", x = 5, y = 1, label = "Channel 3: Exchange Rate\n(Open Economy)", 
+           fontface = "bold", size = 3.5) +
+  
+  xlim(-0.5, 10.5) + ylim(0, 10.5) +
+  theme_void() +
+  theme(plot.title = element_text(hjust = 0.5, face = "bold", size = 10))
+
+# Combine all three plots
+gridExtra::grid.arrange(channel1, channel2, channel3, nrow = 1)
+```
+
+**Summary of Transmission Channels**
+
+| Channel | Mechanism | Speed | Key Players |
+|---------|-----------|-------|------------|
+| **Credit** | Rate ↑ → Lending ↑ → Investment ↓ → Demand ↓ → π↓ | Slow (3-12 months) | Banks, firms, households |
+| **Expectations** | Rate ↑ → Expectations ↓ → Behaviour ↓ → π↓ | Fast (weeks to months) | Workers, firms, wage/price setters |
+| **Exchange Rate** | Rate ↑ → Capital inflows → Currency ↑ → Imports ↓ → π↓ | Medium (2-6 months) | International investors, importers |
+
+All three channels reinforce each other. A well-designed monetary policy exploits all three to bring inflation to target efficiently and credibly.
+
+:::
+
+---
