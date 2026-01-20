@@ -79,13 +79,6 @@ INSTRUCTIONS:
 8. Be encouraging and constructive
 
 Provide your feedback now:{context_note}"""
-3. If the answer contains misconceptions, gently point them toward the correct approach
-4. For multi-part questions, address each part briefly
-5. Encourage them to think about the economic intuition
-6. Keep feedback concise (200-250 words max)
-7. Be encouraging and constructive
-
-Provide your feedback now:{{context_note}}"""
 
 def get_ai_feedback(question_num, student_answer):
     if not student_answer.strip():
