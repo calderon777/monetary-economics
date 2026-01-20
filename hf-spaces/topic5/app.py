@@ -292,7 +292,7 @@ app_ui = ui.page_fluid(
                     ui.div(ui.markdown(get_question_text(1)), class_="question-text"),
                     ui.div(
                         ui.tags.label("Your Answer:"),
-                        ui.input_text_area("answer1", "", height="400px", placeholder="Type your answer here..."),
+                        ui.input_text_area("answer1", "", height="400px", placeholder="Type your answer here...", style="width: 100%;"),
                         ui.input_action_button("submit1", "Get AI Feedback", class_="btn-primary"),
                         class_="answer-section"
                     ),
@@ -306,7 +306,7 @@ app_ui = ui.page_fluid(
                     ui.div(ui.markdown(get_question_text(2)), class_="question-text"),
                     ui.div(
                         ui.tags.label("Your Answer:"),
-                        ui.input_text_area("answer2", "", height="400px", placeholder="Type your answer here..."),
+                        ui.input_text_area("answer2", "", height="400px", placeholder="Type your answer here...", style="width: 100%;"),
                         ui.input_action_button("submit2", "Get AI Feedback", class_="btn-primary"),
                         class_="answer-section"
                     ),
@@ -320,7 +320,7 @@ app_ui = ui.page_fluid(
                     ui.div(ui.markdown(get_question_text(3)), class_="question-text"),
                     ui.div(
                         ui.tags.label("Your Answer:"),
-                        ui.input_text_area("answer3", "", height="400px", placeholder="Type your answer here..."),
+                        ui.input_text_area("answer3", "", height="400px", placeholder="Type your answer here...", style="width: 100%;"),
                         ui.input_action_button("submit3", "Get AI Feedback", class_="btn-primary"),
                         class_="answer-section"
                     ),
@@ -334,7 +334,7 @@ app_ui = ui.page_fluid(
                     ui.div(ui.markdown(get_question_text(4)), class_="question-text"),
                     ui.div(
                         ui.tags.label("Your Answer:"),
-                        ui.input_text_area("answer4", "", height="400px", placeholder="Type your answer here..."),
+                        ui.input_text_area("answer4", "", height="400px", placeholder="Type your answer here...", style="width: 100%;"),
                         ui.input_action_button("submit4", "Get AI Feedback", class_="btn-primary"),
                         class_="answer-section"
                     ),
