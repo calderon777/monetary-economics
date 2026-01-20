@@ -174,7 +174,7 @@ After updating the workflow, test by:
    - Should complete in 1-2 minutes
 
 3. **Verify on HF Space:**
-   - Open your HF Space: `https://huggingface.co/spaces/camcalderon777/monetary-economics-questions`
+   - Open your HF Space: `https://huggingface.co/spaces/camcalderon777/monetary-economics-topic1-questions`
    - Check that the app loads
    - Check files in the HF Space repo (should see `topic1questions.qmd`, `docs/topic1questions.html`)
 

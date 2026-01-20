@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Topic 2 Questions – Monetary Economics</title>
+<title>deployment – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,28 +20,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./topic2mcqs.html" rel="next">
-<link href="./topic2lecture.html" rel="prev">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5fdb1057cce39226931b7d9a85af9cfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-5fdb1057cce39226931b7d9a85af9cfc.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -70,37 +103,8 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="../styles.css">
 </head>
 
 <body class="nav-sidebar floating fullcontent quarto-light">
@@ -112,7 +116,9 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic2reading.html">Topic 2 - Classical Theory of Money</a></li><li class="breadcrumb-item"><a href="./topic2questions.html">Questions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Monetary Economics
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -127,7 +133,7 @@ window.Quarto = {
   <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
-      <a href="./">Monetary Economics</a> 
+      <a href="../">Monetary Economics</a> 
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -139,7 +145,7 @@ window.Quarto = {
     <ul class="list-unstyled mt-1">
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./index.html" class="sidebar-item-text sidebar-link">
+  <a href="../index.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Monetary Economics</span></a>
   </div>
 </li>
@@ -154,25 +160,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic1reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic1reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic1lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic1lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic1questions.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic1questions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Questions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic1mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic1mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -189,25 +195,25 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic2reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic2reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic2lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic2lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic2questions.html" class="sidebar-item-text sidebar-link active">
+  <a href="../topic2questions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Questions</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic2mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic2mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -224,19 +230,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic3reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic3reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic3lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic3lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic3mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic3mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -253,19 +259,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic4reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic4reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic4lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic4lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic4mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic4mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -282,19 +288,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic5reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic5reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic5lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic5lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic5mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic5mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -311,19 +317,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic6reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic6reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic6lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic6lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic6mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic6mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -340,19 +346,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic7reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic7reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic7lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic7lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic7mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic7mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -369,19 +375,19 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-8" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic8reading.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic8reading.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Reading</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic8lecture.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic8lecture.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Lecture</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic8mcqs.html" class="sidebar-item-text sidebar-link">
+  <a href="../topic8mcqs.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">MCQs</span></a>
   </div>
 </li>
@@ -394,126 +400,58 @@ window.Quarto = {
 <!-- margin-sidebar -->
     
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic2reading.html">Topic 2 - Classical Theory of Money</a></li><li class="breadcrumb-item"><a href="./topic2questions.html">Questions</a></li></ol></nav>
-<div class="quarto-title">
-<h1 class="title">Topic 2 Questions</h1>
-</div>
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
-<div class="quarto-title-meta">
 
-    
-  
-    
-  </div>
-  
-
-
-</header>
-
-
-<section id="interactive-tutorial-with-ai-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-tutorial-with-ai-feedback">Interactive Tutorial with AI Feedback</h2>
-<p>Use this page to practise <strong>concept clarity</strong> and <strong>economic reasoning</strong> before your tutorial.</p>
-<p><strong>Learning objectives (before you start):</strong> - Identify the core concept in each question and state it explicitly. - Apply economic reasoning (not just examples) to justify your answers. - Explain the “why”, not just the “what”, for every claim you make.</p>
-<p><strong>How to use the AI tutor:</strong> 1) Write your own answer first. 2) Click <strong>Get AI Feedback</strong> and note what you got right or missed. 3) Revise your answer in your notes; be explicit with definitions and causal reasoning. 4) <strong>During tutorial:</strong> Your human tutor will probe, challenge, and help you rephrase your reasoning. <em>The tutor is your primary feedback source.</em> AI is a starting point only.</p>
-<p>⚠️ <strong>Important:</strong> AI models can hallucinate or produce plausible-sounding but incorrect explanations. Always verify claims against lecture notes and textbooks. Bring your AI-drafted answer to tutorial for tutor feedback—don’t treat AI suggestions as definitive.</p>
-<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic2-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
-<hr>
+<section id="deployment-checklist-for-topic-2-hf-space" class="level1">
+<h1>Deployment Checklist for Topic 2 HF Space</h1>
+<section id="create-new-huggingface-space" class="level2">
+<h2 class="anchored" data-anchor-id="create-new-huggingface-space">1. Create New HuggingFace Space</h2>
+<ol type="1">
+<li>Go to https://huggingface.co/spaces</li>
+<li>Click “Create new Space”</li>
+<li><strong>Name</strong>: <code>monetary-economics-topic2-questions</code></li>
+<li><strong>License</strong>: MIT</li>
+<li><strong>SDK</strong>: Docker (or Gradio if you prefer)</li>
+<li><strong>Visibility</strong>: Public</li>
+</ol>
 </section>
-<section id="questions-on-topic-2---classical-theory-of-money" class="level2">
-<h2 class="anchored" data-anchor-id="questions-on-topic-2---classical-theory-of-money">Questions on Topic 2 - Classical Theory of Money</h2>
-<section id="question-1-utility-maximization" class="level3">
-<h3 class="anchored" data-anchor-id="question-1-utility-maximization">Question 1: Utility Maximization</h3>
-<p>Consider a trader who derives utility from two goods, 1 and 2. Her utility function is given by</p>
-<p><span class="math display">\[U = d_1^{\alpha} d_2^{1-\alpha}\]</span></p>
-<p>where <span class="math inline">\(d_1\)</span> is her demand for good 1 and <span class="math inline">\(d_2\)</span> is her demand for good 2; <span class="math inline">\(\alpha\)</span> is a parameter that lies between 0 and 1.</p>
-<p>Her initial endowment is <span class="math inline">\(s_1 \geq 0\)</span> units of good 1 and <span class="math inline">\(s_2 \geq 0\)</span> units of good 2.</p>
-<p><strong>(a)</strong> Suppose that the nominal price of good 1 is <span class="math inline">\(P_1\)</span> and that of good 2 is <span class="math inline">\(P_2\)</span>. Write an expression for her nominal “income” <span class="math inline">\(y_N\)</span>.</p>
-<p><strong>(b)</strong> Write her budget constraint as a function of the price of each good, her demand of each good and her nominal income <span class="math inline">\(y_N\)</span>.</p>
-<p><strong>(c)</strong> She maximises her utility function subject to the budget constraint. Write down her utility maximisation problem and derive the first-order conditions.</p>
-<p><strong>(d)</strong> Solve for her demands of each good <span class="math inline">\(d_1\)</span>, <span class="math inline">\(d_2\)</span> as functions of <span class="math inline">\(P_1\)</span>, <span class="math inline">\(P_2\)</span> and <span class="math inline">\(y_N\)</span>.</p>
-<p><strong>(e)</strong> Now express her demands <span class="math inline">\(d_1\)</span>, <span class="math inline">\(d_2\)</span> as functions of <span class="math inline">\(P_1\)</span>, <span class="math inline">\(P_2\)</span>, <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span>. What happens to her demands if all prices double?</p>
-<p><strong>(f)</strong> Suppose <span class="math inline">\(s_1 = 2\)</span>, <span class="math inline">\(s_2 = 10\)</span>, <span class="math inline">\(P_1 = 2\)</span>, <span class="math inline">\(P_2 = 1\)</span>, and <span class="math inline">\(\alpha = 0.5\)</span>. What will be her <em>net purchase</em> of each good. Note: A net purchase is the difference between the amount she demands of each good and the amount she had in her endowment.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Indicative Answer to Question 1
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>(a)</strong> Nominal income: <span class="math display">\[y_N = P_1 s_1 + P_2 s_2\]</span></p>
-<p><strong>(b)</strong> Budget constraint: <span class="math display">\[P_1 d_1 + P_2 d_2 = y_N\]</span></p>
-<p><strong>(c)</strong> Utility maximisation problem: <span class="math display">\[\mathcal{L} = d_1^{\alpha} d_2^{1-\alpha} + \lambda[y_N - P_1 d_1 - P_2 d_2]\]</span></p>
-<p>First-order conditions: <span class="math display">\[\frac{\partial \mathcal{L}}{\partial d_1} = \alpha \left(\frac{d_2}{d_1}\right)^{1-\alpha} - \lambda P_1 = 0\]</span> <span class="math display">\[\frac{\partial \mathcal{L}}{\partial d_2} = (1-\alpha) \left(\frac{d_1}{d_2}\right)^{\alpha} - \lambda P_2 = 0\]</span> <span class="math display">\[\frac{\partial \mathcal{L}}{\partial \lambda} = y_N - P_1 d_1 - P_2 d_2 = 0\]</span></p>
-<p><strong>(d)</strong> Combining FOCs for <span class="math inline">\(d_1\)</span> and <span class="math inline">\(d_2\)</span>: <span class="math display">\[\lambda = \frac{\alpha}{P_1}\left(\frac{d_2}{d_1}\right)^{1-\alpha} = \frac{(1-\alpha)}{P_2}\left(\frac{d_1}{d_2}\right)^{\alpha}\]</span></p>
-<p>Rearranging: <span class="math display">\[\frac{d_2}{d_1} = \frac{(1-\alpha)}{\alpha} \frac{P_1}{P_2}\]</span> <span class="math display">\[d_2 = \left[\frac{(1-\alpha)}{\alpha} \frac{P_1}{P_2}\right] d_1\]</span></p>
-<p>Plugging into the budget constraint: <span class="math display">\[P_1 d_1 + P_2 \left[\frac{(1-\alpha)}{\alpha} \frac{P_1}{P_2}\right] d_1 = y_N\]</span> <span class="math display">\[P_1 d_1 \left[1 + \frac{1-\alpha}{\alpha}\right] = y_N\]</span> <span class="math display">\[P_1 d_1 \left[\frac{\alpha + 1 - \alpha}{\alpha}\right] = y_N\]</span></p>
-<p>Therefore: <span class="math display">\[d_1^* = \alpha \frac{y_N}{P_1}\]</span> <span class="math display">\[d_2^* = (1-\alpha) \frac{y_N}{P_2}\]</span></p>
-<p>These represent optimal choices of <span class="math inline">\(d_1\)</span>, <span class="math inline">\(d_2\)</span>.</p>
-<p><strong>(e)</strong> Expanding <span class="math inline">\(y_N\)</span>: <span class="math display">\[d_1^* = \alpha \left[\frac{P_1 s_1 + P_2 s_2}{P_1}\right] = \alpha\left[s_1 + \frac{P_2}{P_1}s_2\right]\]</span> <span class="math display">\[d_2^* = (1-\alpha)\left[\frac{P_1 s_1 + P_2 s_2}{P_2}\right] = (1-\alpha)\left[\frac{P_1}{P_2}s_1 + s_2\right]\]</span></p>
-<p>If <span class="math inline">\(P_1\)</span>, <span class="math inline">\(P_2\)</span> double, <span class="math inline">\(\frac{P_1}{P_2}\)</span> and <span class="math inline">\(\frac{P_2}{P_1}\)</span> are unaffected.</p>
-<p>So <span class="math inline">\(d_1^*\)</span>, <span class="math inline">\(d_2^*\)</span> unchanged, reflecting the homogeneity of demand functions.</p>
-<p><strong>(f)</strong> Plugging in <span class="math inline">\(s_1 = 2\)</span>, <span class="math inline">\(s_2 = 10\)</span>, <span class="math inline">\(P_1 = 2\)</span>, <span class="math inline">\(P_2 = 1\)</span>, <span class="math inline">\(\alpha = 0.5\)</span>: <span class="math display">\[d_1^* = 0.5\left[2 + \frac{1}{2}(10)\right] = 0.5[2 + 5] = 3.5\]</span> <span class="math display">\[d_2^* = 0.5\left[\frac{2}{1}(2) + 10\right] = 0.5[4 + 10] = 7\]</span></p>
-<p>Net purchase: <span class="math display">\[d_1^* - s_1 = 3.5 - 2 = 1.5 \text{ (net purchase of good 1)}\]</span> <span class="math display">\[d_2^* - s_2 = 7 - 10 = -3 \text{ (net sale of good 2)}\]</span></p>
-<p>Note that net purchase of 1 = net sale of 2 in value terms.</p>
-</div>
-</div>
-</div>
-<hr>
+<section id="upload-files" class="level2">
+<h2 class="anchored" data-anchor-id="upload-files">2. Upload Files</h2>
+<p>Upload these files to the space: - [ ] <code>app.py</code> - [ ] <code>requirements.txt</code> - [ ] <code>README.md</code> - [ ] <code>.env.example</code> (optional - for local testing)</p>
 </section>
-<section id="question-2-general-equilibrium-in-an-exchange-economy" class="level3">
-<h3 class="anchored" data-anchor-id="question-2-general-equilibrium-in-an-exchange-economy">Question 2: General Equilibrium in an Exchange Economy</h3>
-<p>Consider an exchange economy with 2 traders, <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> and 2 goods, 1 and 2. The nominal price of each good is <span class="math inline">\(P_1\)</span> and <span class="math inline">\(P_2\)</span> respectively.</p>
-<p>Suppose that each trader has the following endowment of each good:</p>
-<p><span class="math display">\[s^A = (s_1^A, s_2^A)\]</span> <span class="math display">\[s^B = (s_1^B, s_2^B)\]</span></p>
-<p>where <span class="math inline">\(s_j^i \geq 0\)</span> for <span class="math inline">\(i = A, B\)</span> and <span class="math inline">\(j = 1, 2\)</span>.</p>
-<p>Let <span class="math inline">\(d_1^A\)</span>, <span class="math inline">\(d_2^A\)</span> represent agent <span class="math inline">\(A\)</span>’s demand for each of the two goods and <span class="math inline">\(d_1^B\)</span>, <span class="math inline">\(d_2^B\)</span> likewise for agent <span class="math inline">\(B\)</span>. Suppose that each agent’s endowment is exogenous but her demand for each good is a function of its relative price.</p>
-<p><strong>(a)</strong> Write down each agent’s budget constraint in (i) nominal terms and (ii) in real terms, using good 1 as a numeraire (<em>i.e.</em> unit of account).</p>
-<p><strong>(b)</strong> Write down the market clearing condition for each good (Note: The demand for each good by each agent will be expressed as a function of the relative price of <span class="math inline">\(P_2/P_1\)</span> and her real income evaluated in equivalent units of good 1).</p>
-<p><strong>(c)</strong> Show that when: (i) each agent’s budget constraint is binding (<em>i.e.</em> their total spending exactly equals their real income) (ii) the market for good 1 is in equilibrium, then the market for good 2 is also bound to be in equilibrium. What ‘law’ have you illustrated?</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Indicative Answer to Question 2
-</div>
-<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
-</div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
-<div class="callout-body-container callout-body">
-<p><strong>(a)</strong> Budget constraints:</p>
-<p><strong>Nominal budget constraints:</strong></p>
-<p>Agent A: <span class="math inline">\(P_1 d_1^{A*} + P_2 d_2^{A*} \leq P_1 s_1^A + P_2 s_2^A\)</span></p>
-<p>Agent B: <span class="math inline">\(P_1 d_1^{B*} + P_2 d_2^{B*} \leq P_1 s_1^B + P_2 s_2^B\)</span></p>
-<p><strong>Real terms (using good 1 as numeraire):</strong></p>
-<p>Agent A: <span class="math inline">\(d_1^{A*} + \frac{P_2}{P_1} d_2^{A*} \leq s_1^A + \frac{P_2}{P_1} s_2^A\)</span></p>
-<p>Agent B: <span class="math inline">\(d_1^{B*} + \frac{P_2}{P_1} d_2^{B*} \leq s_1^B + \frac{P_2}{P_1} s_2^B\)</span></p>
-<p>where demands are functions of relative price and real income: <span class="math display">\[d_1^{A*} = d_1^A\left(\frac{P_2}{P_1}, \frac{y_N^A}{P_1}\right), \quad d_2^{A*} = d_2^A\left(\frac{P_2}{P_1}, \frac{y_N^A}{P_1}\right)\]</span> <span class="math display">\[d_1^{B*} = d_1^B\left(\frac{P_2}{P_1}, \frac{y_N^B}{P_1}\right), \quad d_2^{B*} = d_2^B\left(\frac{P_2}{P_1}, \frac{y_N^B}{P_1}\right)\]</span></p>
-<p><strong>(b)</strong> Market clearing conditions (total purchases = total sales):</p>
-<p><strong>Good 1:</strong> <span class="math inline">\(d_1^{A*} + d_1^{B*} = s_1^A + s_1^B \Rightarrow D_1 = S_1\)</span></p>
-<p><strong>Good 2:</strong> <span class="math inline">\(d_2^{A*} + d_2^{B*} = s_2^A + s_2^B \Rightarrow D_2 = S_2\)</span></p>
-<p><strong>(c)</strong> Suppose <span class="math inline">\(D_1 = S_1\)</span>, assume that the budget constraint of each agent holds as “=” (binding), then only the real ones need to be looked at:</p>
-<p><span class="math display">\[d_1^{A*} + \frac{P_2}{P_1} d_2^{A*} + d_1^{B*} + \frac{P_2}{P_1} d_2^{B*} = s_1^A + \frac{P_2}{P_1}s_2^A + s_1^B + \frac{P_2}{P_1}s_2^B\]</span></p>
-<p>Rearranging: <span class="math display">\[\underbrace{(d_1^{A*} + d_1^{B*})}_{A} + \frac{P_2}{P_1}\underbrace{(d_2^{A*} + d_2^{B*})}_{B} = \underbrace{(s_1^A + s_1^B)}_{A} + \frac{P_2}{P_1}\underbrace{(s_2^A + s_2^B)}_{B}\]</span></p>
-<p>Since <span class="math inline">\(D_1 = S_1\)</span> (market for good 1 clears), terms A cancel: <span class="math display">\[\frac{P_2}{P_1}(d_2^{A*} + d_2^{B*}) = \frac{P_2}{P_1}(s_2^A + s_2^B)\]</span> <span class="math display">\[\therefore D_2 = S_2\]</span></p>
-<p><strong>This establishes Walras’ Law</strong>: If <span class="math inline">\(n-1\)</span> markets clear and all budget constraints bind, the <span class="math inline">\(n\)</span>-th market must also clear.</p>
-</div>
-</div>
-</div>
-<hr>
-<p><strong>Reflection after you reveal an indicative answer:</strong> - What did you miss? Where was your reasoning thin? - Rewrite one stronger sentence that uses an explicit definition + a clear “because”.</p>
-<p><strong>About indicative answers:</strong> Indicative answers will be released <em>after</em> your tutorial. They are explicitly <strong>not</strong> model answers—they illustrate one acceptable line of reasoning. Your tutorial discussion and your own reasoning remain primary.</p>
+<section id="set-environment-variable" class="level2">
+<h2 class="anchored" data-anchor-id="set-environment-variable">3. Set Environment Variable</h2>
+<p>In your HuggingFace Space settings: 1. Go to Settings → Repository secrets 2. Add a new secret: - <strong>Name</strong>: <code>GROQ_API_KEY</code> - <strong>Value</strong>: Your Groq API key from https://console.groq.com/keys</p>
+</section>
+<section id="test-the-space" class="level2">
+<h2 class="anchored" data-anchor-id="test-the-space">4. Test the Space</h2>
+<ol type="1">
+<li>Wait for the space to build (usually 2-3 minutes)</li>
+<li>Test both questions</li>
+<li>Verify AI feedback is working</li>
+<li>Check mobile responsiveness</li>
+</ol>
+</section>
+<section id="update-topic2questions.qmd" class="level2">
+<h2 class="anchored" data-anchor-id="update-topic2questions.qmd">5. Update topic2questions.qmd</h2>
+<p>Once your space is deployed at: <code>https://huggingface.co/spaces/camcalderon777/monetary-economics-topic2-questions</code></p>
+<p>Update the iframe in topic2questions.qmd to:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">iframe</span><span class="ot"> src</span><span class="op">=</span><span class="st">"https://huggingface.co/spaces/camcalderon777/monetary-economics-topic2-questions/embed"</span><span class="ot"> frameborder</span><span class="op">=</span><span class="st">"0"</span><span class="ot"> width</span><span class="op">=</span><span class="st">"100%"</span><span class="ot"> height</span><span class="op">=</span><span class="st">"1400"</span><span class="dt">&gt;&lt;/</span><span class="kw">iframe</span><span class="dt">&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="deploy-to-netlify" class="level2">
+<h2 class="anchored" data-anchor-id="deploy-to-netlify">6. Deploy to Netlify</h2>
+<p>Run <code>quarto render</code> to rebuild your site with the new iframe link, then push to GitHub/deploy to Netlify.</p>
+</section>
+<section id="notes" class="level2">
+<h2 class="anchored" data-anchor-id="notes">Notes</h2>
+<ul>
+<li>The space name should match your HuggingFace username</li>
+<li>Make sure GROQ_API_KEY is set as a secret, not hardcoded</li>
+<li>Test thoroughly before updating topic2questions.qmd</li>
+</ul>
 
 
 </section>
@@ -919,18 +857,6 @@ Indicative Answer to Question 2
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./topic2lecture.html" class="pagination-link" aria-label="Lecture">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lecture</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./topic2mcqs.html" class="pagination-link" aria-label="MCQs">
-        <span class="nav-page-text">MCQs</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

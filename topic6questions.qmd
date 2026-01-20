@@ -1,0 +1,23 @@
+---
+title: "Topic 6 Questions"
+---
+
+## Topic 6 - Interactive Questions
+
+[Questions placeholder - Add content here]
+
+### Question 1
+
+[Add question text]
+
+**Indicative Answer:**
+
+[Add answer]
+
+### Question 2
+
+[Add question text]
+
+**Indicative Answer:**
+
+[Add answer]

@@ -3,6 +3,10 @@ name: Sync HF Space
 on:
   push:
     branches: [main]
+    paths:
+      - 'hf-spaces/topic1/**'
+      - 'topic1questions.qmd'
+      - '.github/workflows/hf-space-sync.yml'
 
 jobs:
   sync:
@@ -24,11 +28,14 @@ jobs:
             exit 1
           fi
 
-          HF_REPO="camcalderon777/monetary-economics-questions"
+          HF_REPO="camcalderon777/monetary-economics-topic1-questions"
           WORKDIR="$(mktemp -d)"
 
-          # Copy core app files
-          cp app.py requirements.txt styles.css shared.py Dockerfile README.hf.md "${WORKDIR}/"
+          # Copy Topic 1 app files from new location
+          cp hf-spaces/topic1/app.py hf-spaces/topic1/requirements.txt hf-spaces/topic1/Dockerfile "${WORKDIR}/"
+          
+          # Also copy styles.css and shared.py if they're needed (from root if they exist)
+          cp styles.css shared.py 2>/dev/null || true | xargs -I {} cp {} "${WORKDIR}/" 2>/dev/null || true
           
           # Copy topic1questions content (QMD + rendered HTML)
           cp topic1questions.qmd "${WORKDIR}/" 2>/dev/null || true
@@ -37,7 +44,8 @@ jobs:
             cp docs/topic1questions.html "${WORKDIR}/docs/" 2>/dev/null || true
           fi
           
-          mv "${WORKDIR}/README.hf.md" "${WORKDIR}/README.md"
+          # Copy README from new location
+          cp hf-spaces/topic1/README.md "${WORKDIR}/" 2>/dev/null || true
 
           cd "${WORKDIR}"
           git init

@@ -1,0 +1,55 @@
+name: Sync HF Topic 3 Space
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'hf-spaces/topic3/**'
+      - 'topic3questions.qmd'
+      - '.github/workflows/hf-topic3-sync.yml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Quarto (for rendering topic3questions)
+        uses: quarto-dev/quarto-actions/setup@v2
+      - name: Render topic3questions.qmd to HTML
+        run: |
+          quarto render topic3questions.qmd --to html 2>/dev/null || true
+      - name: Push Topic 3 Space files to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HF_TOKEN}" ]; then
+            echo "HF_TOKEN secret is not set."
+            exit 1
+          fi
+
+          HF_REPO="camcalderon777/monetary-economics-topic3-questions"
+          WORKDIR="$(mktemp -d)"
+
+          # Copy Topic 3 app files from new location
+          cp hf-spaces/topic3/app.py hf-spaces/topic3/requirements.txt hf-spaces/topic3/Dockerfile "${WORKDIR}/"
+          
+          # Copy topic3questions content (QMD + rendered HTML)
+          cp topic3questions.qmd "${WORKDIR}/" 2>/dev/null || true
+          if [ -d "docs" ]; then
+            mkdir -p "${WORKDIR}/docs"
+            cp docs/topic3questions.html "${WORKDIR}/docs/" 2>/dev/null || true
+          fi
+          
+          # Copy README from new location
+          cp hf-spaces/topic3/README.md "${WORKDIR}/" 2>/dev/null || true
+
+          cd "${WORKDIR}"
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add .
+          git commit -m "Sync from GitHub ${GITHUB_SHA}"
+          git branch -M main
+          git remote add hf "https://user:${HF_TOKEN}@huggingface.co/spaces/${HF_REPO}"
+          git push -f hf main

@@ -11,7 +11,7 @@ Your project is configured for **automatic GitHub → Hugging Face Space deploym
 - ✅ **Quarto Setup Step**: Installed on GitHub runner
 - ✅ **Pre-Sync Render Step**: Renders `topic1questions.qmd` → `docs/topic1questions.html`
 - ✅ **Lean Sync Strategy**: Only copies essential app files + topic1 content (excludes large `ppt/` folder)
-- ✅ **HF Space Push**: Deploys to `camcalderon777/monetary-economics-questions`
+- ✅ **HF Space Push**: Deploys to `camcalderon777/monetary-economics-topic1-questions`
 
 **What happens on each `git push`:**
 1. Workflow triggers on push to main branch
@@ -65,7 +65,7 @@ create_feedback_prompt(...)       # Builds LLM prompt with indicative answers + 
    - Expected runtime: 1-2 minutes (depends on Quarto render time)
 
 3. **Verify on HF Space:**
-   - Check the HF Space repo: `camcalderon777/monetary-economics-questions`
+   - Check the HF Space repo: `camcalderon777/monetary-economics-topic1-questions`
    - Confirm `topic1questions.qmd` is synced
    - Confirm `docs/topic1questions.html` is present
    - Test the app in HF Space UI

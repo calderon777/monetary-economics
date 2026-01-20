@@ -1,29 +1,30 @@
 ---
-title: Monetary Economics - Topic 2 Questions
+title: Monetary Economics - Topic 1 Questions
 emoji: 💰
 colorFrom: purple
 colorTo: blue
 sdk: docker
 pinned: false
 license: mit
-short_description: Interactive AI tutor for Topic 2 - Classical Theory of Money
+short_description: Interactive AI tutor for Topic 1 questions
 ---
 
-# Monetary Economics EC3014 - Topic 2 Questions
+# Monetary Economics EC3014 - Topic 1 Questions
 
-Interactive AI-powered tutorial for Topic 2: Classical Theory of Money.
+Interactive AI-powered tutorial for Topic 1: Functions of Money.
 
 ## Features
 
-- 2 questions covering utility maximization and general equilibrium
+- 3 questions covering money functions and properties
 - AI-powered feedback using Groq's Llama 3.3 70B model
 - Mobile-responsive design
 - Hints and guidance (not complete answers)
 
 ## Topics Covered
 
-1. **Utility Maximization**: Cobb-Douglas utility functions, budget constraints, demand functions, homogeneity
-2. **General Equilibrium**: Exchange economies, market clearing, Walras' Law
+1. **Unit of Account vs Medium of Exchange**: Relationship and independence
+2. **Liquidity Characteristics**: Properties and physical requirements
+3. **Alternative Exchange Mechanisms**: Transaction cost analysis
 
 ## Usage
 

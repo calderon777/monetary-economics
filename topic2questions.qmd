@@ -21,7 +21,7 @@ Use this page to practise **concept clarity** and **economic reasoning** before 
 ⚠️ **Important:** AI models can hallucinate or produce plausible-sounding but incorrect explanations. Always verify claims against lecture notes and textbooks. Bring your AI-drafted answer to tutorial for tutor feedback—don't treat AI suggestions as definitive.
 
 ```{=html}
-<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
+<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic2-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
 ```
 
 ---
