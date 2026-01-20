@@ -18,6 +18,7 @@ Use the topic sections below to move through the material in the order you need 
 
 - **Reading:** [Reading](topic2reading.qmd)
 - **Slides:** [Lecture](topic2lecture.qmd)
+- **Questions:** [Open Questions](topic2questions.qmd)
 - **MCQs:** [MCQs](topic2mcqs.qmd)
 
 ## Topic 3 - Keynes' Theory of Money

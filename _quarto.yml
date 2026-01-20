@@ -25,6 +25,8 @@ website:
             file: topic2reading.qmd
           - text: "Lecture"
             file: topic2lecture.qmd
+          - text: "Questions"
+            file: topic2questions.qmd
           - text: "MCQs"
             file: topic2mcqs.qmd
       - section: "Topic 3 - Keynes' Theory of Money"
