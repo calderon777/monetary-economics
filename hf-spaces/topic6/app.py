@@ -212,6 +212,12 @@ app_ui = ui.page_fluid(
             resize: vertical !important;
             transition: border-color 0.3s ease !important;
         }
+        .answer-section textarea,
+        .answer-section textarea.form-control {{
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+        }
         textarea:focus {{
             border-color: #667eea !important;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
@@ -282,7 +288,7 @@ app_ui = ui.page_fluid(
                     ui.div(ui.markdown(get_question_text(1)), class_="question-text"),
                     ui.div(
                         ui.tags.label("Your Answer:"),
-                        ui.input_text_area("answer1", "", height="400px", placeholder="Type your answer here...", style="width: 100%;"),
+                        ui.input_text_area("answer1", "", height="400px", placeholder="Type your answer here..."),
                         ui.input_action_button("submit1", "Get AI Feedback", class_="btn-primary"),
                         class_="answer-section"
                     ),
@@ -296,7 +302,7 @@ app_ui = ui.page_fluid(
                     ui.div(ui.markdown(get_question_text(2)), class_="question-text"),
                     ui.div(
                         ui.tags.label("Your Answer:"),
-                        ui.input_text_area("answer2", "", height="400px", placeholder="Type your answer here...", style="width: 100%;"),
+                        ui.input_text_area("answer2", "", height="400px", placeholder="Type your answer here..."),
                         ui.input_action_button("submit2", "Get AI Feedback", class_="btn-primary"),
                         class_="answer-section"
                     ),
