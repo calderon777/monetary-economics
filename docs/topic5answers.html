@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -386,21 +415,164 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="question-1" class="level2">
-<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p>[Add question text here]</p>
-<section id="indicative-answer" class="level3">
-<h3 class="anchored" data-anchor-id="indicative-answer">Indicative Answer</h3>
-<p>[Add indicative answer here]</p>
+<section id="topic-5---indicative-answers" class="level1">
+<h1>Topic 5 - Indicative Answers</h1>
+<section id="question-1-adaptive-vs-rational-expectations" class="level2">
+<h2 class="anchored" data-anchor-id="question-1-adaptive-vs-rational-expectations">Question 1: Adaptive vs Rational Expectations</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>Adaptive Expectations: Backward-Looking</strong></p>
+<p>The first claim is true. Adaptive expectations are formed by using the observed historical time path of a variable to project its future expected value. This approach is inherently backward-looking because it ignores the possibility that a variable’s trajectory might suddenly change if one of its underlying determinants changes.</p>
+<p>For example, if inflation has been 2% for several years, adaptive expectations would predict future inflation around 2%, even if the central bank has just announced a permanent increase in money growth targeting 5% inflation. The model would only gradually adjust expectations upward as inflation actually rises over time.</p>
+<p><strong>Rational Expectations: Forward-Looking</strong></p>
+<p>The second claim is best understood in reverse: rational expectations naturally lead to forward-looking forecasting behaviour. A rational agent recognises that variables are interdependent and uses a model describing mutual inter-relationships between variables to predict future values of endogenous variables, using all available information about future exogenous variables.</p>
+<p>Under rational expectations, whenever an agent is informed that an exogenous variable will deviate from its historical trend, they can correctly forecast that the endogenous variable they’re interested in will also deviate from its own historical trend. This ability to forecast sudden deviations from observed patterns makes rational expectations forward-looking.</p>
+<p><strong>Example: Predictable vs Unpredictable Money Changes</strong></p>
+<ul>
+<li><p><strong>Predictable money increase</strong>: Under adaptive expectations, workers don’t anticipate the wage inflation coming from increased money supply. They’re surprised by higher nominal wages, work more (thinking real wages rose), and output expands temporarily.</p></li>
+<li><p>Under rational expectations, if workers know the central bank has announced a permanent money increase, they predict prices and wages will rise proportionally. They don’t increase labour supply, output remains unchanged—money is neutral even in the short run.</p></li>
+</ul>
+<p>This illustrates the key difference: rational expectations allow agents to anticipate and respond to announced future changes, making the economy respond differently than adaptive expectations would suggest.</p>
+</div>
+</div>
+</div>
 <hr>
 </section>
+<section id="question-2-lucas-aggregate-supply-and-friedmans-monetary-policy" class="level2">
+<h2 class="anchored" data-anchor-id="question-2-lucas-aggregate-supply-and-friedmans-monetary-policy">Question 2: Lucas Aggregate Supply and Friedman’s Monetary Policy</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>The Lucas Aggregate Supply Equation</strong></p>
+<p>The Lucas AS equation expresses a relationship between deviations of output from its full-employment level and deviations of the price level from its expected value:</p>
+<p><span class="math display">\[Y_t - Y^* = \kappa(P_t - E_{t-1}P_t)\]</span></p>
+<p>In words: <strong>output deviates from potential only when actual prices differ from expected prices</strong>—that is, when agents face price surprises.</p>
+<p><strong>Connection to Friedman’s Monetary Policy Analysis</strong></p>
+<p>The Lucas AS equation explains Friedman’s argument about short-run monetary effects through the following mechanism:</p>
+<ol type="1">
+<li>An <strong>unpredictable increase in money</strong> causes prices to rise unexpectedly</li>
+<li>Workers and firms observe higher nominal wages/prices but expect lower inflation</li>
+<li>Misperceiving real wages as higher, workers supply more labour</li>
+<li>Output temporarily expands above potential</li>
+<li>Once expectations adjust and workers realise prices are higher, output returns to <span class="math inline">\(Y^*\)</span></li>
+</ol>
+<p>This captures Friedman’s key insight: <strong>monetary policy affects real variables (output and employment) only when unpredictable</strong>, creating a temporary Phillips curve trade-off in the short run.</p>
+<p><strong>Beyond Friedman: The Volatility Effect</strong></p>
+<p>However, the Lucas version based on rational expectations reveals something Friedman’s analysis didn’t emphasise: the <strong>magnitude of the output effect depends on monetary volatility</strong>.</p>
+<p>Lucas showed that the coefficient <span class="math inline">\(\kappa\)</span> is inversely proportional to the volatility of monetary policy. When monetary policy is highly volatile: - Agents realise that price fluctuations are largely driven by unpredictable money changes - They discount price surprises in making supply decisions - Price surprises have smaller effects on output</p>
+<p>Thus, the Lucas AS equation not only explains Friedman’s short-run effects but also shows that <strong>more volatile monetary policy paradoxically produces smaller real effects</strong>—a distinctly New Classical insight.</p>
+</div>
+</div>
+</div>
+<hr>
 </section>
-<section id="question-2" class="level2">
-<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<p>[Add question text here]</p>
-<section id="indicative-answer-1" class="level3">
-<h3 class="anchored" data-anchor-id="indicative-answer-1">Indicative Answer</h3>
-<p>[Add indicative answer here]</p>
+<section id="question-3-monetary-policy-volatility-and-output-effects" class="level2">
+<h2 class="anchored" data-anchor-id="question-3-monetary-policy-volatility-and-output-effects">Question 3: Monetary Policy Volatility and Output Effects</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>The Lucas AS Equation and Monetary Shocks</strong></p>
+<p>In the New Classical model, the Lucas AS equation states:</p>
+<p><span class="math display">\[Y_t - Y^* = \kappa(P_t - E_{t-1}P_t)\]</span></p>
+<p>where output deviates from potential only when actual prices exceed expected prices.</p>
+<p><strong>The Relationship Between Money and Price Surprises</strong></p>
+<p>With rational expectations, the price surprise is related to the money surprise by:</p>
+<p><span class="math display">\[P_t - E_{t-1}P_t = \frac{1}{1+\kappa}(M_t - E_{t-1}M_t)\]</span></p>
+<p>Combining these gives the relationship between unpredictable monetary shocks and output:</p>
+<p><span class="math display">\[Y_t - Y^* = \frac{\kappa}{1+\kappa}(M_t - E_{t-1}M_t)\]</span></p>
+<p>Note that the coefficient <span class="math inline">\(\frac{\kappa}{1+\kappa}\)</span> decreases as <span class="math inline">\(\kappa\)</span> increases—and Lucas proved that <strong><span class="math inline">\(\kappa\)</span> is inversely proportional to monetary volatility</strong>.</p>
+<p><strong>Intuitive Explanation</strong></p>
+<p>When monetary policy is <strong>highly volatile</strong>:</p>
+<ol type="1">
+<li>Agents experience frequent, large, unpredictable fluctuations in the money supply and prices</li>
+<li>They realise that most price changes are driven by monetary shocks, not real productivity changes</li>
+<li>When they observe a price increase, rational agents ask: “Is this real inflation or just monetary noise?”</li>
+<li>Recognising it’s likely monetary noise, they <strong>discount the price signal</strong> and don’t adjust supply decisions much</li>
+<li>The measured <span class="math inline">\(\kappa\)</span> (sensitivity of output to price surprises) becomes very small</li>
+<li><strong>Result</strong>: Output remains closer to potential despite frequent price surprises</li>
+</ol>
+<p>Conversely, when monetary policy is <strong>predictable and stable</strong>:</p>
+<ol type="1">
+<li>Agents see price changes as more likely reflecting real demand shifts</li>
+<li>Price surprises are taken as genuine signals about real conditions</li>
+<li>Agents respond more strongly to price changes</li>
+<li><span class="math inline">\(\kappa\)</span> is larger, and unpredictable monetary changes have bigger output effects</li>
+</ol>
+<p><strong>The Paradox</strong></p>
+<p>This creates an apparent paradox: <strong>money affects output only by being unpredictable, yet the more unpredictable money is, the smaller its real effects become.</strong></p>
+<p>The resolution is that rational agents learn the volatility characteristics of monetary policy and adjust their attention to different types of signals. In a highly volatile monetary environment, price signals become noisier and less informative about real conditions, so agents respond less to them.</p>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="question-4-systematic-monetary-policy-and-technology-shocks" class="level2">
+<h2 class="anchored" data-anchor-id="question-4-systematic-monetary-policy-and-technology-shocks">Question 4: Systematic Monetary Policy and Technology Shocks</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>The Problem: Systematic Policy is Predictable</strong></p>
+<p>In standard New Classical theory, a systematic monetary policy rule—where money supply is deliberately set according to some formula—is predictable by rational agents. They form expectations based on this anticipated money supply, rendering the policy unable to affect real variables. <strong>Monetary policy cannot systematically stabilise the economy.</strong></p>
+<p><strong>The Solution: Exploiting Information Asymmetry</strong></p>
+<p>However, a special combination of circumstances allows systematic stabilisation:</p>
+<p><strong>(i) Technology shocks with persistence</strong>: Productivity shocks whose effects persist over multiple periods (not just the current period). A negative productivity shock reduces output not only immediately but through reduced capital productivity in subsequent periods.</p>
+<p><strong>(ii) Information asymmetry</strong>: The central bank observes these technology shocks as they arise, but the public learns about them only <strong>after their effects have dissipated</strong> or become much smaller.</p>
+<p><strong>How Systematic Policy Can Work</strong></p>
+<p>Holding money constant, a recessionary technology shock would: - Reduce output in period <span class="math inline">\(t\)</span> (when shock occurs) - Continue damaging output in periods <span class="math inline">\(t+1\)</span>, <span class="math inline">\(t+2\)</span>, etc. (persistence effect)</p>
+<p>But if the central bank, having observed the shock, conditions future money supply over several periods on the shock’s magnitude, it can eliminate the persistence effect:</p>
+<p><strong>Example</strong>: Following a recessionary productivity shock, 1. Central bank observes the shock in period <span class="math inline">\(t\)</span> (public doesn’t yet know its magnitude) 2. Central bank increases money supply in periods <span class="math inline">\(t+1\)</span>, <span class="math inline">\(t+2\)</span>, etc. 3. This increases aggregate demand and raises the price level 4. Since public doesn’t yet know the magnitude of the supply shock, they don’t perfectly predict the money increase 5. The resulting <strong>price surprise stimulates employment and output</strong>, offsetting the negative supply-side effect 6. By quantitatively linking money injections to observed shock size, the central bank can precisely neutralise output persistence</p>
+<p><strong>The Role of the Policy Rule</strong></p>
+<p>Crucially, the policy follows a <strong>known rule</strong>: “If we observe a productivity shock of size <span class="math inline">\(X\)</span>, we will expand money by <span class="math inline">\(Y\)</span>.”</p>
+<ul>
+<li><strong>Rational agents know this rule</strong>, so they can predict it ex-ante</li>
+<li><strong>But they lack current information on shock magnitude</strong>, so they cannot predict the exact money expansion that will result</li>
+<li>The policy is “systematic” (not arbitrary) yet remains unpredictable to the public</li>
+</ul>
+<p><strong>Key Insight</strong></p>
+<p>This works because the central bank has a <strong>comparative information advantage</strong>. It observes current shocks faster than the public; it uses this advantage to inject money that will be surprising (but predictable in principle if you knew the shock size). The public, knowing the policy rule but not current shock magnitudes, cannot perfectly predict the resulting money supply, leaving room for systematic policy to have real effects.</p>
+<p><strong>Implications</strong></p>
+<p>This explains why central banks focus on real-time shock monitoring (employment data, inflation, financial conditions) and why forward guidance is only effective when it conveys <strong>new information the public doesn’t have</strong>—not merely statements of predictable rules.</p>
+</div>
+</div>
+</div>
+<hr>
 
 
 </section>

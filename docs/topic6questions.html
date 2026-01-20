@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Topic 6 Questions – Monetary Economics</title>
+<title>Topic 6 - Central Bank Credibility and Inflation Control – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -68,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -369,7 +398,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Topic 6 Questions</h1>
+<h1 class="title">Topic 6 - Central Bank Credibility and Inflation Control</h1>
 </div>
 
 
@@ -386,20 +415,43 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="topic-6---interactive-questions" class="level2">
-<h2 class="anchored" data-anchor-id="topic-6---interactive-questions">Topic 6 - Interactive Questions</h2>
-<p>[Questions placeholder - Add content here]</p>
-<section id="question-1" class="level3">
-<h3 class="anchored" data-anchor-id="question-1">Question 1</h3>
-<p>[Add question text]</p>
-<p><strong>Indicative Answer:</strong></p>
-<p>[Add answer]</p>
-</section>
-<section id="question-2" class="level3">
-<h3 class="anchored" data-anchor-id="question-2">Question 2</h3>
-<p>[Add question text]</p>
-<p><strong>Indicative Answer:</strong></p>
-<p>[Add answer]</p>
+<section id="topic-6---questions" class="level1">
+<h1>Topic 6 - Questions</h1>
+<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic6-questions" width="100%" height="800" frameborder="0"></iframe>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 1: Central Bank Loss Function and Inflation Bias
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Explain why, if the public expect the central bank to set inflation at the equilibrium level <span class="math inline">\(\pi = \frac{bκλ}{a}\)</span>, the central bank will set this inflation rate, rather than <span class="math inline">\(\pi = 0\)</span>, even if it has no intention to create a “surprise” inflation.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 2: Fixed Exchange Rates and Inflation Credibility
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Discuss the pros and cons for the central bank of a country which has been experiencing high inflation to fix the exchange rate of its own currency against that of a major, low inflation country. Briefly discuss other methods by which a central bank can credibly lower the inflation rate of its currency.</p>
+</div>
+</div>
+</div>
 
 
 </section>

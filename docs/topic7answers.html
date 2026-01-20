@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -68,6 +103,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -386,21 +450,304 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="question-1" class="level2">
-<h2 class="anchored" data-anchor-id="question-1">Question 1</h2>
-<p>[Add question text here]</p>
-<section id="indicative-answer" class="level3">
-<h3 class="anchored" data-anchor-id="indicative-answer">Indicative Answer</h3>
-<p>[Add indicative answer here]</p>
+<section id="topic-7---indicative-answers" class="level1">
+<h1>Topic 7 - Indicative Answers</h1>
+<section id="question-1-why-central-banks-abandoned-money-supply-targeting" class="level2">
+<h2 class="anchored" data-anchor-id="question-1-why-central-banks-abandoned-money-supply-targeting">Question 1: Why Central Banks Abandoned Money Supply Targeting</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>Problem 1: Central Banks Control the Monetary Base, Not the Money Supply</strong></p>
+<p>The fundamental issue is that central banks only directly control the monetary base (<span class="math inline">\(M_0\)</span>)—cash in circulation plus bank reserves. However, conventional monetary aggregates like <span class="math inline">\(M_1\)</span> and <span class="math inline">\(M_2\)</span> also include demand deposits and other bank liabilities created by the commercial banking sector, not the central bank.</p>
+<p>The relationship between the monetary base and broader money aggregates depends on the money multiplier, which is determined by: - Commercial banks’ reserve requirements - Banks’ reserve management decisions (which vary over time) - The public’s preferences for cash vs deposits</p>
+<p>When banks hold excess reserves or reduce lending, the money multiplier contracts, meaning the CB cannot reliably control the broader money supply even if it controls the base. This became especially problematic during financial crises when banks hoarded reserves and the money multiplier collapsed.</p>
+<p><strong>Problem 2: Money Demand is Unstable</strong></p>
+<p>The second problem contradicts a key assumption of the Quantity Theory of Money: that the demand for money is a stable, predictable function of nominal income.</p>
+<p>In reality, money demand shifted significantly due to: - <strong>Financial innovation</strong>: Development of money market mutual funds, sweep accounts, and other near-money instruments that allowed the public to minimize cash holdings - <strong>Changing payment technologies</strong>: Credit cards, electronic funds transfers, and later digital payments reduced the need to hold transaction balances - <strong>Deregulation</strong>: Removal of deposit interest rate ceilings allowed competition, shifting funds between deposits and other financial assets</p>
+<p>These shifts meant that targeting a particular growth rate for the money supply did not reliably control inflation or output. For example, if the CB targeted <span class="math inline">\(M_1\)</span> growth at 5%, but money demand shifted inward due to financial innovation, the actual growth in monetary liquidity would be much less, potentially causing economic contraction despite the CB “hitting” its money growth target.</p>
+<p><strong>The Combined Effect: Loss of Control</strong></p>
+<p>Together, these two problems meant that: 1. The CB could not reliably control the money supply (only the base) 2. Even if it could, controlling money growth didn’t reliably control inflation (because money demand was unstable)</p>
+<p>This motivated the shift toward <strong>interest rate targeting</strong> as the primary policy instrument, which offers more direct control over financial conditions and is less dependent on the stability of money demand or the money multiplier.</p>
+</div>
+</div>
+</div>
 <hr>
 </section>
+<section id="question-2-why-zero-inflation-is-undesirable" class="level2">
+<h2 class="anchored" data-anchor-id="question-2-why-zero-inflation-is-undesirable">Question 2: Why Zero Inflation is Undesirable</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>Point 1: Risk of Deflation</strong></p>
+<p>If the central bank targets zero inflation, there is only downside risk of deflation. In practice, inflation fluctuates around any target due to shocks and forecasting errors. With a zero target:</p>
+<ul>
+<li>Inflation might temporarily fall to <span class="math inline">\(-1\%\)</span>, <span class="math inline">\(-2\%\)</span>, or lower</li>
+<li>Once deflation begins, it can be self-reinforcing: expectations of falling prices cause households and firms to delay spending, further reducing demand and pushing prices down</li>
+<li>Deflation creates the zero lower bound problem: nominal interest rates cannot fall below zero, limiting the CB’s ability to stimulate the economy</li>
+<li>In a deflationary episode, real interest rates become too high even when nominal rates are zero, making borrowing expensive and investment unattractive</li>
+</ul>
+<p>Historical example: Japan’s “Lost Decade” (1990s) saw deflation that made monetary policy ineffective despite near-zero nominal rates.</p>
+<p><strong>Point 2: The Zero Lower Bound and Interest Rates</strong></p>
+<p>Related to the deflation risk is the constraint on monetary policy transmission. If the CB targets zero inflation:</p>
+<ul>
+<li>The equilibrium real interest rate must be achieved through nominal rates close to zero</li>
+<li>When shocks hit, the CB has little room to cut rates further</li>
+<li>The nominal interest rate hits the zero lower bound, preventing real rate cuts</li>
+<li>Monetary policy becomes powerless when the economy most needs stimulus</li>
+</ul>
+<p>With a positive inflation target (e.g., 2%), the CB has a buffer. When it needs to cut the nominal rate to stimulate, there’s room before hitting zero. For example, if inflation is 2% and the natural real rate is 2%, the CB can set the nominal rate at 4% (= 2% + 2%), leaving room to cut rates during recessions.</p>
+<p><strong>Point 3: The Wage Adjustment Mechanism</strong></p>
+<p>A critical but indirect mechanism is that moderate inflation allows real wages to fall without nominal wage cuts.</p>
+<p>In recessions with high unemployment, there is downward pressure on real wages. But: - Nominal wage cuts are politically unpopular and resisted by workers - Labour contracts often have downward rigidity in nominal wages - If nominal wages cannot fall but inflation erodes the real value, real wages adjust</p>
+<p>With positive inflation (say 2%): - A worker’s nominal wage stays at $50,000 but prices rise 2% - Real wage falls from <span class="math inline">\(50,000/\)</span>P_0$ to <span class="math inline">\(50,000/\)</span>P_1$ - This real adjustment allows labour markets to clear during downturns</p>
+<p>With zero inflation target: - If real wages must fall to clear the labour market, firms must negotiate nominal wage cuts - Workers resist, unemployment persists - The economy cannot efficiently adjust to shocks</p>
+<p>This is particularly important during periods of high unemployment when downward pressure on real wages would normally help restore labour market equilibrium.</p>
+<p><strong>Summary of Three Problems</strong></p>
+<ol type="1">
+<li><strong>Deflation risk</strong> → monetary policy becomes ineffective (zero lower bound)</li>
+<li><strong>Interest rate constraint</strong> → less room to stimulate during recessions</li>
+<li><strong>Wage rigidity</strong> → real wage adjustment becomes harder, prolonging unemployment</li>
+</ol>
+<p>Most central banks target <strong>2% inflation</strong> as a compromise: high enough to provide a buffer against deflation and interest rate constraints, yet low enough to maintain price stability.</p>
+</div>
+</div>
+</div>
+<hr>
 </section>
-<section id="question-2" class="level2">
-<h2 class="anchored" data-anchor-id="question-2">Question 2</h2>
-<p>[Add question text here]</p>
-<section id="indicative-answer-1" class="level3">
-<h3 class="anchored" data-anchor-id="indicative-answer-1">Indicative Answer</h3>
-<p>[Add indicative answer here]</p>
+<section id="question-3-the-policy-interest-rate-and-transmission-channels" class="level2">
+<h2 class="anchored" data-anchor-id="question-3-the-policy-interest-rate-and-transmission-channels">Question 3: The Policy Interest Rate and Transmission Channels</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p><strong>The Primary Instrument: The Policy (Base) Interest Rate</strong></p>
+<p>The policy rate (also called the base rate or overnight rate) is the interest rate at which the central bank lends short-term funds—typically overnight—to commercial banks. Major central banks (Federal Reserve, ECB, Bank of England, etc.) set this rate as their primary policy instrument.</p>
+<p><strong>The Three Main Transmission Channels</strong></p>
+<p>Changes in the policy rate affect inflation through three distinct channels:</p>
+<section id="channel-1-the-credit-channel-less-direct" class="level3">
+<h3 class="anchored" data-anchor-id="channel-1-the-credit-channel-less-direct"><strong>Channel 1: The Credit Channel (Less Direct)</strong></h3>
+<p>This is the gradual transmission through the financial system:</p>
+<ol type="1">
+<li><strong>Interbank markets</strong>: When the CB raises the policy rate, banks paying higher overnight rates pass increased costs through the interbank lending market</li>
+<li><strong>Money market rates</strong>: Rates on commercial paper, certificates of deposit, and other money market instruments rise</li>
+<li><strong>Bank lending rates</strong>: Banks increase rates on mortgages, business loans, and consumer credit</li>
+<li><strong>Firm and household decisions</strong>: Higher borrowing costs cause:
+<ul>
+<li>Firms to cut investment (returns lower relative to borrowing cost)</li>
+<li>Households to reduce consumption (especially discretionary spending and home purchases)</li>
+</ul></li>
+<li><strong>Goods and labour markets</strong>: Reduced spending decreases demand for goods and labour</li>
+<li><strong>Wages and prices</strong>: Lower labour demand reduces wage growth; reduced goods demand reduces price growth</li>
+</ol>
+<p><strong>Effect on inflation</strong>: Slower growth in wages and prices → lower inflation</p>
+</section>
+<section id="channel-2-the-expectationssignalling-channel-more-direct" class="level3">
+<h3 class="anchored" data-anchor-id="channel-2-the-expectationssignalling-channel-more-direct"><strong>Channel 2: The Expectations/Signalling Channel (More Direct)</strong></h3>
+<p>This works through central bank communication and expectations:</p>
+<ol type="1">
+<li><strong>CB signals intent</strong>: When the CB raises the policy rate, it signals that it intends to bring inflation down</li>
+<li><strong>Forward guidance</strong>: The CB may explicitly state that rates will remain high until inflation targets are met</li>
+<li><strong>Wage and price setter expectations</strong>: Workers and firms, believing inflation will fall, moderate their own wage and price demands</li>
+<li><strong>Immediate effect</strong>: Even before spending contracts significantly, inflation expectations fall because wage and price setters anticipate lower inflation ahead</li>
+<li><strong>Self-fulfilling</strong>: As workers accept lower nominal wage growth and firms set lower prices (expecting lower future inflation), inflation actually falls faster</li>
+</ol>
+<p><strong>Effect on inflation</strong>: Faster reduction in inflation through expectation management and forward guidance</p>
+</section>
+<section id="channel-3-the-exchange-rate-channel" class="level3">
+<h3 class="anchored" data-anchor-id="channel-3-the-exchange-rate-channel"><strong>Channel 3: The Exchange Rate Channel</strong></h3>
+<p>This works through international financial flows:</p>
+<ol type="1">
+<li><strong>Higher domestic rates</strong>: The CB raises the policy rate</li>
+<li><strong>Capital attraction</strong>: Higher returns attract foreign investment seeking yield</li>
+<li><strong>Currency appreciation</strong>: Increased foreign demand for the domestic currency causes it to appreciate</li>
+<li><strong>Lower import prices</strong>: An appreciated currency makes foreign goods cheaper in domestic terms (e.g., if the dollar appreciates, US importers pay fewer dollars for foreign goods)</li>
+<li><strong>Reduced inflation</strong>: Cheaper imports directly lower consumer price indices and reduce inflationary pressure from import costs</li>
+<li><strong>Competitiveness effect</strong>: Appreciated currency also makes domestic exports more expensive abroad, reducing external demand and further dampening inflation</li>
+</ol>
+<p><strong>Effect on inflation</strong>: Through lower import prices and reduced external demand</p>
+<hr>
+<p><strong>Diagram: Monetary Policy Transmission Channels</strong></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gridExtra)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'gridExtra' was built under R version 4.4.3</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(grid)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Create three diagrams side by side showing the channels</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Channel 1: Credit Channel</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>channel1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="dv">9</span>, <span class="at">ymax =</span> <span class="dv">10</span>, <span class="at">fill =</span> <span class="st">"#1f77b4"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">9.5</span>, <span class="at">label =</span> <span class="st">"↑ Policy Rate"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">7.5</span>, <span class="at">ymax =</span> <span class="fl">8.5</span>, <span class="at">fill =</span> <span class="st">"#ff7f0e"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">8</span>, <span class="at">label =</span> <span class="st">"↑ Bank Lending Rates"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">9</span>, <span class="at">yend =</span> <span class="fl">8.5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="dv">6</span>, <span class="at">ymax =</span> <span class="dv">7</span>, <span class="at">fill =</span> <span class="st">"#2ca02c"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">6.5</span>, <span class="at">label =</span> <span class="st">"↓ Investment &amp; Spending"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">7.5</span>, <span class="at">yend =</span> <span class="dv">7</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">4.5</span>, <span class="at">ymax =</span> <span class="fl">5.5</span>, <span class="at">fill =</span> <span class="st">"#d62728"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">5</span>, <span class="at">label =</span> <span class="st">"↓ Labour/Goods Demand"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">6</span>, <span class="at">yend =</span> <span class="fl">5.5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="dv">3</span>, <span class="at">ymax =</span> <span class="dv">4</span>, <span class="at">fill =</span> <span class="st">"#9467bd"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">3.5</span>, <span class="at">label =</span> <span class="st">"↓ Wages &amp; Prices (π↓)"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">4.5</span>, <span class="at">yend =</span> <span class="dv">4</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">1.5</span>, <span class="at">label =</span> <span class="st">"Channel 1: Credit Channel</span><span class="sc">\n</span><span class="st">(Indirect, Slower)"</span>, </span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>           <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">10.5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">10.5</span>) <span class="sc">+</span></span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>))</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Channel 2: Expectations Channel</span></span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>channel2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">8.5</span>, <span class="at">ymax =</span> <span class="fl">9.5</span>, <span class="at">fill =</span> <span class="st">"#1f77b4"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">9</span>, <span class="at">label =</span> <span class="st">"↑ Policy Rate"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="dv">7</span>, <span class="at">ymax =</span> <span class="dv">8</span>, <span class="at">fill =</span> <span class="st">"#ff7f0e"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">7.5</span>, <span class="at">label =</span> <span class="st">"CB Signals: π will ↓"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">8.5</span>, <span class="at">yend =</span> <span class="dv">8</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">5.5</span>, <span class="at">ymax =</span> <span class="fl">6.5</span>, <span class="at">fill =</span> <span class="st">"#2ca02c"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">6</span>, <span class="at">label =</span> <span class="st">"Workers &amp; Firms expect ↓π"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">7</span>, <span class="at">yend =</span> <span class="fl">6.5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="dv">4</span>, <span class="at">ymax =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"#d62728"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">4.5</span>, <span class="at">label =</span> <span class="st">"Moderate wage/price setting"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">5.5</span>, <span class="at">yend =</span> <span class="dv">5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">2.5</span>, <span class="at">ymax =</span> <span class="fl">3.5</span>, <span class="at">fill =</span> <span class="st">"#9467bd"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">3</span>, <span class="at">label =</span> <span class="st">"↓π (Self-fulfilling)"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">4</span>, <span class="at">yend =</span> <span class="fl">3.5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">label =</span> <span class="st">"Channel 2: Expectations</span><span class="sc">\n</span><span class="st">(Direct, Fast)"</span>, </span>
+<span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>           <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">10.5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">10.5</span>) <span class="sc">+</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>))</span>
+<span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Channel 3: Exchange Rate Channel</span></span>
+<span id="cb5-62"><a href="#cb5-62" aria-hidden="true" tabindex="-1"></a>channel3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">8.5</span>, <span class="at">ymax =</span> <span class="fl">9.5</span>, <span class="at">fill =</span> <span class="st">"#1f77b4"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">9</span>, <span class="at">label =</span> <span class="st">"↑ Policy Rate"</span>, <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="dv">4</span>) <span class="sc">+</span></span>
+<span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="dv">7</span>, <span class="at">ymax =</span> <span class="dv">8</span>, <span class="at">fill =</span> <span class="st">"#ff7f0e"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">7.5</span>, <span class="at">label =</span> <span class="st">"Foreign capital inflows"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">8.5</span>, <span class="at">yend =</span> <span class="dv">8</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">5.5</span>, <span class="at">ymax =</span> <span class="fl">6.5</span>, <span class="at">fill =</span> <span class="st">"#2ca02c"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">6</span>, <span class="at">label =</span> <span class="st">"Currency appreciates"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">7</span>, <span class="at">yend =</span> <span class="fl">6.5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="dv">4</span>, <span class="at">ymax =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"#d62728"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">4.5</span>, <span class="at">label =</span> <span class="st">"↓ Import prices"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="fl">5.5</span>, <span class="at">yend =</span> <span class="dv">5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"rect"</span>, <span class="at">xmin =</span> <span class="dv">0</span>, <span class="at">xmax =</span> <span class="dv">10</span>, <span class="at">ymin =</span> <span class="fl">2.5</span>, <span class="at">ymax =</span> <span class="fl">3.5</span>, <span class="at">fill =</span> <span class="st">"#9467bd"</span>, <span class="at">alpha =</span> <span class="fl">0.7</span>) <span class="sc">+</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">3</span>, <span class="at">label =</span> <span class="st">"↓π (&amp; ↓ external demand)"</span>, <span class="at">color =</span> <span class="st">"white"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"segment"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">xend =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">4</span>, <span class="at">yend =</span> <span class="fl">3.5</span>, <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.2</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>  <span class="fu">annotate</span>(<span class="st">"text"</span>, <span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">1</span>, <span class="at">label =</span> <span class="st">"Channel 3: Exchange Rate</span><span class="sc">\n</span><span class="st">(Open Economy)"</span>, </span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>           <span class="at">fontface =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="fl">3.5</span>) <span class="sc">+</span></span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">10.5</span>) <span class="sc">+</span> <span class="fu">ylim</span>(<span class="dv">0</span>, <span class="fl">10.5</span>) <span class="sc">+</span></span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_void</span>() <span class="sc">+</span></span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="fl">0.5</span>, <span class="at">face =</span> <span class="st">"bold"</span>, <span class="at">size =</span> <span class="dv">10</span>))</span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine all three plots</span></span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>gridExtra<span class="sc">::</span><span class="fu">grid.arrange</span>(channel1, channel2, channel3, <span class="at">nrow =</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div id="fig-transmission-channels" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-transmission-channels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="topic7answers_files/figure-html/fig-transmission-channels-1.png" class="img-fluid figure-img" width="672">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transmission-channels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Three Channels of Monetary Policy Transmission to Inflation
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Summary of Transmission Channels</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 28%">
+<col style="width: 17%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Channel</th>
+<th>Mechanism</th>
+<th>Speed</th>
+<th>Key Players</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Credit</strong></td>
+<td>Rate ↑ → Lending ↑ → Investment ↓ → Demand ↓ → π↓</td>
+<td>Slow (3-12 months)</td>
+<td>Banks, firms, households</td>
+</tr>
+<tr class="even">
+<td><strong>Expectations</strong></td>
+<td>Rate ↑ → Expectations ↓ → Behaviour ↓ → π↓</td>
+<td>Fast (weeks to months)</td>
+<td>Workers, firms, wage/price setters</td>
+</tr>
+<tr class="odd">
+<td><strong>Exchange Rate</strong></td>
+<td>Rate ↑ → Capital inflows → Currency ↑ → Imports ↓ → π↓</td>
+<td>Medium (2-6 months)</td>
+<td>International investors, importers</td>
+</tr>
+</tbody>
+</table>
+<p>All three channels reinforce each other. A well-designed monetary policy exploits all three to bring inflation to target efficiently and credibly.</p>
+</section>
+</div>
+</div>
+</div>
+<hr>
 
 
 </section>
