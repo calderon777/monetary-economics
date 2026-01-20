@@ -3,9 +3,30 @@ title: "Topic 2 Questions"
 format: html
 ---
 
-## Questions on Topic 2 - Classical Theory of Money
+## Interactive Tutorial with AI Feedback
 
-These questions focus on utility maximization, budget constraints, and general equilibrium in exchange economies.
+Use this page to practise **concept clarity** and **economic reasoning** before your tutorial.
+
+**Learning objectives (before you start):**
+- Identify the core concept in each question and state it explicitly.
+- Apply economic reasoning (not just examples) to justify your answers.
+- Explain the "why", not just the "what", for every claim you make.
+
+**How to use the AI tutor:**
+1) Write your own answer first.
+2) Click **Get AI Feedback** and note what you got right or missed.
+3) Revise your answer in your notes; be explicit with definitions and causal reasoning.
+4) **During tutorial:** Your human tutor will probe, challenge, and help you rephrase your reasoning. *The tutor is your primary feedback source.* AI is a starting point only.
+
+⚠️ **Important:** AI models can hallucinate or produce plausible-sounding but incorrect explanations. Always verify claims against lecture notes and textbooks. Bring your AI-drafted answer to tutorial for tutor feedback—don't treat AI suggestions as definitive.
+
+```{=html}
+<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
+```
+
+---
+
+## Questions on Topic 2 - Classical Theory of Money
 
 ### Question 1: Utility Maximization
 
@@ -13,7 +34,7 @@ Consider a trader who derives utility from two goods, 1 and 2. Her utility funct
 
 $$U = d_1^{\alpha} d_2^{1-\alpha}$$
 
-where $d_1$ is her demand for good 1 and $d_2$ is her demand of good 2; $\alpha$ is a parameter that lies between 0 and 1.
+where $d_1$ is her demand for good 1 and $d_2$ is her demand for good 2; $\alpha$ is a parameter that lies between 0 and 1.
 
 Her initial endowment is $s_1 \geq 0$ units of good 1 and $s_2 \geq 0$ units of good 2.
 
@@ -65,8 +86,8 @@ $$d_2^* = (1-\alpha) \frac{y_N}{P_2}$$
 These represent optimal choices of $d_1$, $d_2$.
 
 **(e)** Expanding $y_N$:
-$$d_1^* = \alpha \left[\frac{P_1 s_1 + P_2 s_2}{P_1}\right] = \alpha[s_1 + \frac{P_2}{P_1}s_2]$$
-$$d_2^* = (1-\alpha)\left[\frac{P_1 s_1 + P_2 s_2}{P_2}\right] = (1-\alpha)[\frac{P_1}{P_2}s_1 + s_2]$$
+$$d_1^* = \alpha \left[\frac{P_1 s_1 + P_2 s_2}{P_1}\right] = \alpha\left[s_1 + \frac{P_2}{P_1}s_2\right]$$
+$$d_2^* = (1-\alpha)\left[\frac{P_1 s_1 + P_2 s_2}{P_2}\right] = (1-\alpha)\left[\frac{P_1}{P_2}s_1 + s_2\right]$$
 
 If $P_1$, $P_2$ double, $\frac{P_1}{P_2}$ and $\frac{P_2}{P_1}$ are unaffected.
 
@@ -147,10 +168,9 @@ $$\therefore D_2 = S_2$$
 
 ---
 
-## Reflection Questions
+**Reflection after you reveal an indicative answer:**
+- What did you miss? Where was your reasoning thin?
+- Rewrite one stronger sentence that uses an explicit definition + a clear "because".
 
-After working through these questions:
-
-1. How does the homogeneity property of demand functions reflect the classical theory's view on money neutrality?
-2. Why is Walras' Law important for general equilibrium analysis?
-3. How do budget constraints in real vs nominal terms help us understand the role of relative prices?
+**About indicative answers:**
+Indicative answers will be released *after* your tutorial. They are explicitly **not** model answers—they illustrate one acceptable line of reasoning. Your tutorial discussion and your own reasoning remain primary.
