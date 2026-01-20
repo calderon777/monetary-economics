@@ -1,0 +1,94 @@
+---
+title: "Topic 2 - Indicative Answers"
+format: html
+---
+
+## Question 1: Utility Maximization
+
+**Question:** Consider a trader with utility function $U = d_1^{\alpha} d_2^{1-\alpha}$ where $d_1$ and $d_2$ are demands for goods 1 and 2, and $\alpha \in (0,1)$. Initial endowment: $s_1, s_2$ units.
+
+(a) Write an expression for her nominal income $y_N$ given prices $P_1$ and $P_2$.
+(b) Write her budget constraint.
+(c) Write down the utility maximisation problem and derive first-order conditions.
+(d) Solve for demands $d_1, d_2$ as functions of $P_1, P_2$, and $y_N$.
+(e) Express demands as functions of $P_1, P_2, s_1, s_2$. What happens if all prices double?
+(f) Calculate net purchase with $s_1=2, s_2=10, P_1=2, P_2=1, \alpha=0.5$.
+
+### Indicative Answer
+
+**(a)** Nominal income: $y_N = P_1 s_1 + P_2 s_2$
+
+**(b)** Budget constraint: $P_1 d_1 + P_2 d_2 = y_N$
+
+**(c)** Utility maximisation problem using Lagrangian:
+$$L = d_1^\alpha d_2^{(1-\alpha)} + \lambda[y_N - P_1 d_1 - P_2 d_2]$$
+
+First-order conditions:
+$$\frac{\partial L}{\partial d_1} = \alpha\left(\frac{d_2}{d_1}\right)^{(1-\alpha)} - \lambda P_1 = 0$$
+$$\frac{\partial L}{\partial d_2} = (1-\alpha)\left(\frac{d_1}{d_2}\right)^\alpha - \lambda P_2 = 0$$
+$$\frac{\partial L}{\partial \lambda} = y_N - P_1 d_1 - P_2 d_2 = 0$$
+
+**(d)** Combining FOCs yields:
+$$d_1^* = \alpha\left(\frac{y_N}{P_1}\right)$$
+$$d_2^* = (1-\alpha)\left(\frac{y_N}{P_2}\right)$$
+
+These represent optimal choices (demands).
+
+**(e)** Expanding $y_N$:
+$$d_1^* = \alpha\left[s_1 + \frac{P_2}{P_1}s_2\right]$$
+$$d_2^* = (1-\alpha)\left[\frac{P_1}{P_2}s_1 + s_2\right]$$
+
+If all prices double, the ratios $P_1/P_2$ and $P_2/P_1$ are unaffected, so demands remain unchanged. This reflects the homogeneity of demand functions.
+
+**(f)** With $s_1=2$, $s_2=10$, $P_1=2$, $P_2=1$, $\alpha=0.5$:
+$$d_1^* = 0.5\left[2 + \frac{1}{2}(10)\right] = 3.5$$
+$$d_2^* = 0.5\left[\frac{2}{1}(2) + 10\right] = 7$$
+
+Net purchase:
+$$d_1^* - s_1 = 3.5 - 2 = 1.5 \text{ (net purchase of good 1)}$$
+$$d_2^* - s_2 = 7 - 10 = -3 \text{ (net sale of good 2)}$$
+
+Note that net purchase of 1 = net sale of 2 in value terms.
+
+---
+
+## Question 2: General Equilibrium in an Exchange Economy
+
+**Question:** Consider 2 traders (A, B) and 2 goods (1, 2) with prices $P_1, P_2$.
+Endowments: $s^A = (s_1^A, s_2^A)$, $s^B = (s_1^B, s_2^B)$.
+
+(a) Write each agent's budget constraint in (i) nominal terms and (ii) real terms using good 1 as numeraire.
+(b) Write the market clearing condition for each good.
+(c) Show that when (i) budget constraints bind and (ii) market 1 clears, then market 2 must also clear. What 'law' is illustrated?
+
+### Indicative Answer
+
+**(a)** Budget constraints:
+
+**Nominal terms:**
+$$\text{Agent A: } P_1 d_1^{A*} + P_2 d_2^{A*} \leq P_1 s_1^A + P_2 s_2^A$$
+$$\text{Agent B: } P_1 d_1^{B*} + P_2 d_2^{B*} \leq P_1 s_1^B + P_2 s_2^B$$
+
+**Real terms (good 1 as numeraire):**
+$$\text{Agent A: } d_1^{A*} + \frac{P_2}{P_1}d_2^{A*} \leq s_1^A + \frac{P_2}{P_1}s_2^A$$
+$$\text{Agent B: } d_1^{B*} + \frac{P_2}{P_1}d_2^{B*} \leq s_1^B + \frac{P_2}{P_1}s_2^B$$
+
+where demands are functions of relative price and real income.
+
+**(b)** Market clearing conditions:
+$$\text{Good 1: } d_1^{A*} + d_1^{B*} = s_1^A + s_1^B \rightarrow D_1 = S_1$$
+$$\text{Good 2: } d_2^{A*} + d_2^{B*} = s_2^A + s_2^B \rightarrow D_2 = S_2$$
+
+**(c)** Suppose $D_1 = S_1$ (good 1 market clears) and budget constraints bind (hold as "=").
+
+Adding both agents' real budget constraints:
+$$d_1^{A*} + \frac{P_2}{P_1}d_2^{A*} + d_1^{B*} + \frac{P_2}{P_1}d_2^{B*} = s_1^A + \frac{P_2}{P_1}s_2^A + s_1^B + \frac{P_2}{P_1}s_2^B$$
+
+Rearranging:
+$$(d_1^{A*} + d_1^{B*}) + \frac{P_2}{P_1}(d_2^{A*} + d_2^{B*}) = (s_1^A + s_1^B) + \frac{P_2}{P_1}(s_2^A + s_2^B)$$
+
+Since $D_1 = S_1$, the terms in first brackets cancel:
+$$\frac{P_2}{P_1}(d_2^{A*} + d_2^{B*}) = \frac{P_2}{P_1}(s_2^A + s_2^B)$$
+Therefore: $D_2 = S_2$
+
+**This establishes Walras' Law**: If n-1 markets clear and all budget constraints bind, the nth market must also clear.

@@ -18,14 +18,57 @@ def load_questions_from_qmd():
     return None
 
 INDICATIVE_ANSWERS = {
-    1: "**Placeholder: Add Topic 3 Question 1 indicative answer here**",
-    2: "**Placeholder: Add Topic 3 Question 2 indicative answer here**",
+    1: """**Main points of similarity:**
+
+1. Both approaches relate the transaction demand for money positively to nominal GDP.
+2. Both can be interpreted using the Cambridge Equation of Exchange as a framework, although the treatment of velocity differs between them.
+
+**Main points of difference:**
+
+1. **Store of value role:** Keynes emphasised the store of value role of money, which is neglected by the Quantity Theory of Money (QTM). The store-of-value role leads to Keynes' Liquidity Preference theory, which relates money demand negatively to the interest rate. It also underlies the precautionary and speculative motives for money demand that Keynes emphasised.
+
+2. **Interest rate determination:** The different approaches to money demand led to different theories of what determines the interest rate. In Classical theory it is determined by equilibrium in the market for loanable funds, while in Keynesian theory it is determined by equilibrium in the money market. However, these two theories can be reconciled using IS-LM analysis.
+
+3. **Full employment and neutrality:** Classics and Keynes took different positions on the ability of markets to generate full employment equilibrium. The Classical belief in dichotomy of the real from the monetary and the neutrality of money is founded on the assumption of wage and price flexibility in all markets. Keynes disagreed with this in two distinct ways: (i) The possibility of a liquidity trap in which an excess demand for money could coexist with an excess supply in the goods market for an indefinite period, despite falling price levels; (ii) Even outside the liquidity trap, because prices adjusted at different rates in different markets, relative prices would not remain unaffected by price movements; hence the principles of dichotomy and neutrality would not hold.""",
+
+    2: """**Three exceptional features:**
+
+(a) The price of money is literally one; this is a direct consequence of its role as unit of account. Unlike other markets where disequilibrium results in changes in the nominal price of the item in question, this is not possible in the market for money.
+
+(b) The supply of money is also unresponsive, as money is exogenously supplied by a sovereign authority (a Central Bank in the modern context).
+
+(c) There are no close substitutes for money in terms of the liquidity services that it provides (although this is less true today than it was in Keynes' time).
+
+**Is this a problem?**
+
+This is not always a problem. Precisely because money is so central in both asset and goods markets, an exogenous increase in the demand for money can lead to collective adjustments in these markets that restore macroeconomic equilibrium. An increase in the demand for money can lead to an increase in the interest rate (inducing a shift back from money to interest-bearing assets) and/or a decrease in the price level (inducing an increase in the demand for goods collectively, and thus a decrease in the demand for money via Walras' Law).
+
+**When it becomes a problem:**
+
+These normal adjustment mechanisms fail to work if the economy is caught in a liquidity trap. In such a situation, economic agents are willing to hold unlimited amounts of money due to its perceived security. Thus neither can the interest rate rise in a liquidity trap, nor can falling prices induce a greater demand for goods.""",
+
+    3: """The liquidity trap is characterised by a situation in which the economy is suffering from low levels of output as well as low interest rates. In such a situation, Keynes argued that economic agents could become unwilling to part with their money (beyond some minimum needed to cover essentials) in exchange either for goods or for other assets. This situation is also known as absolute liquidity preference.
+
+At the individual level, absolute liquidity preference can be justified as a result of agents' uncertainty and pessimism about the future state of the economy. However, when all agents indulge this absolute liquidity preference, the result is precisely the collapse of aggregate demand—and with it economic activity—that agents fear in the first place.
+
+**Why normal price adjustments fail:**
+
+In normal times, an increase in the demand for money might temporarily lead to a decrease in the collective demand for goods at the going market price in each goods market. This would trigger competition between goods' suppliers in each market, leading to a decrease in each good's price, and therefore of the overall price level. This falling price level would induce greater spending on goods—so long as the economy was not in a liquidity trap.
+
+In a liquidity trap, however, falling prices do not induce greater spending precisely because the desire to hoard money is unlimited.
+
+**Why normal interest rate adjustments fail:**
+
+Similarly, because money is also a store of value that competes with interest-bearing stores of value in agents' portfolios, an increase in the demand for money would, in normal times, lead to a collective decrease in the demand for interest-bearing assets. Competition amongst the issuers of such assets would result in a higher interest rate, inducing a shift back by savers into holding such assets and eliminating the excess demand for money.
+
+In a liquidity trap, however, precisely because the desire to hoard money is unlimited, this mechanism also ceases to work."""
 }
 
 def get_question_text(num):
     questions = {
-        1: "**Question 1: Topic 3 - Question 1 placeholder**\n\nAdd your question text here.",
-        2: "**Question 2: Topic 3 - Question 2 placeholder**\n\nAdd your question text here.",
+        1: "**Question 1: Classical vs. Keynesian Views**\n\nCompare and contrast Classical and Keynesian views on the macroeconomic role of money.",
+        2: "**Question 2: Exceptional Features of the Money Market**\n\nWhat features of the market for money make it exceptional in terms of how it reacts if there is a shock to the demand for money? Is this a problem for macroeconomic equilibrium? Why or why not?",
+        3: "**Question 3: The Liquidity Trap**\n\nExplain in words alone (without using diagrams) how the normal adjustment mechanisms that allow equilibrium to be restored following an increase in the demand for money, do not work if the economy is in a liquidity trap.",
     }
     return questions.get(num, "")
 
@@ -35,7 +78,7 @@ def create_feedback_prompt(question_num, student_answer, indicative_answer):
     if qmd_context:
         context_note = "\n\nNote: This question is from Topic 3 of EC3014 Monetary Economics."
     
-    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 3. Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
+    return f"""You are an expert economics tutor providing feedback on a Monetary Economics question from Topic 3 (Keynes's Theory of Money). Your goal is to help students improve their understanding by providing hints and guidance, NOT complete answers.
 
 QUESTION {question_num}:
 {get_question_text(question_num)}
@@ -45,6 +88,14 @@ STUDENT'S ANSWER:
 
 INDICATIVE ANSWER (for your reference only - DO NOT share directly):
 {indicative_answer}
+
+TOPIC 3 KEY CONCEPTS:
+- Classical vs. Keynesian views on money's role
+- Money market exceptionality (price of money, supply rigidity, no substitutes)
+- Liquidity preference and store of value
+- Liquidity trap and absolute liquidity preference
+- Price adjustment mechanisms and their failure in liquidity traps
+- Interest rate determination (loanable funds vs. money market equilibrium)
 
 INSTRUCTIONS:
 1. Identify what the student got right and acknowledge it
@@ -260,8 +311,8 @@ app_ui = ui.page_fluid(
     ),
     ui.div(
         ui.div(
-            ui.h1("Topic 3 - Monetary Economics"),
-            ui.p("Interactive questions with AI-powered feedback"),
+            ui.h1("Topic 3 - Keynes's Theory of Money"),
+            ui.p("Interactive questions on liquidity preference, money market dynamics, and the liquidity trap"),
             class_="header"
         ),
         ui.div(
@@ -306,6 +357,20 @@ app_ui = ui.page_fluid(
                     class_="question-card"
                 )
             ),
+            ui.nav_panel(
+                "Question 3",
+                ui.div(
+                    ui.div(ui.markdown(get_question_text(3)), class_="question-text"),
+                    ui.div(
+                        ui.tags.label("Your Answer:"),
+                        ui.input_text_area("answer3", "", height="400px", placeholder="Type your answer here..."),
+                        ui.input_action_button("submit3", "Get AI Feedback", class_="btn-primary"),
+                        class_="answer-section"
+                    ),
+                    ui.output_ui("feedback3"),
+                    class_="question-card"
+                )
+            ),
         ),
         class_="container-custom"
     )
@@ -328,6 +393,18 @@ def server(input, output, session):
     @reactive.event(input.submit2)
     def feedback2():
         feedback = get_ai_feedback(2, input.answer2())
+        return ui.div(
+            ui.div(
+                ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),
+                ui.markdown(feedback),
+                class_="feedback-box"
+            )
+        )
+
+    @render.ui
+    @reactive.event(input.submit3)
+    def feedback3():
+        feedback = get_ai_feedback(3, input.answer3())
         return ui.div(
             ui.div(
                 ui.h3("AI Tutor Feedback", style="margin-top: 0; color: #2e7d32;"),

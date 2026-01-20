@@ -1,23 +1,81 @@
 ---
-title: "Topic 4 Questions"
+title: "Topic 4 - Friedman's Monetarism"
 ---
 
-## Topic 4 - Interactive Questions
+# Topic 4 - Questions
 
-[Questions placeholder - Add content here]
+```{=html}
+<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic4-questions" width="100%" height="800" frameborder="0"></iframe>
+```
 
-### Question 1
+## Questions
 
-[Add question text]
+::: {.callout-note collapse="true"}
 
-**Indicative Answer:**
+## Question 1: Monetarist Model of the Labour Market
 
-[Add answer]
+Consider the following monetarist model of the macroeconomy. The labour market is characterised by
 
-### Question 2
+$$N^S = 100\theta$$
+$$N^D = \frac{6400}{\theta^2}$$
 
-[Add question text]
+where $N^S$ is the supply of labour, $N^D$ is labour demand and $\theta$ is shorthand for the real wage (i.e. $W/P$: $W$ is the nominal wage and $P$ the price level).
 
-**Indicative Answer:**
+The production function is
+$$Y = 160\sqrt{N}$$
 
-[Add answer]
+where $N$ is the labour employed when the labour market is in equilibrium.
+
+The demand side of the economy is characterised by the Quantity Theory of Money:
+$$M = 2PY$$
+
+where $M$ is the money supply and the proportionality constant is $k = 2$.
+
+(a) Verify that the above equation describing labour demand is consistent with the production function (i.e. labour demand is at the point where the marginal product of labour is equal to the real wage).
+
+(b) Solve for the equilibrium values of $\theta$ and $N$ and plugging the latter into the production function, solve for $Y$.
+
+(c) Suppose that the initial money supply, $M_0 = 32000$. Solve for $P_0$ and $W_0$.
+
+(d) Now suppose that the money supply increases to $M_1 = 48000$. In the new long-run equilibrium, will the values of $\theta$, $N$ and $Y$ be affected? Solve for the new long run values of price, $P_1$, and money wage, $W_1$.
+
+(e) Does the above model exhibit dichotomy of real variables from nominal ones and neutrality of money? Explain.
+
+:::
+
+::: {.callout-note collapse="true"}
+
+## Question 2: Short-Run Effects with Money Illusion
+
+Now suppose that, starting from $M_0 = 32000$, the money supply increases to $M_1 = 48000$ as before. But now assume that workers are temporarily unable to perceive the ensuing increase in the price level. But they do observe any change in their money wage; so long as the money wage rises at the original price level, $P_0$ (from your answer to part (b) of Question 1) they will supply more labour.
+
+The labour supply curve is temporarily characterised by the equation
+$$N^S = 100\frac{W}{P_0}$$
+
+All other relationships in the economy, including the demand for labour, remain as in Question 1. Let $P'$, $W'$ and $Y'$ denote the (short-run) equilibrium values of the price level, money wage and output respectively, when workers are supplying labour according to the above equation.
+
+(a) Plugging in the value of $P_0$ from your answer to part (b), Question 1, derive a relationship between $P'$ and $W'$ such that the labour market is in short-run equilibrium. **Hint:** The equation you derive should be
+$$P' = \frac{\sqrt{80}(W')^{3/2}}{160}$$
+
+(b) Now, noting that in the short-run equilibrium, the level of output can be expressed by plugging in the short run labour supply equation into the production function, $Y' = 160\sqrt{100(W'/P_0)}$, use the QTM to derive a second relationship between $P'$ and $W'$. **Hint:** The equation should be
+$$P' = \frac{150}{\sqrt{20\,W'}}$$
+
+(c) Solve for $W'$ using the two relationships derived above. Then solve for $Y'$ from the production function and finally $P'$ from the QTM and calculate the real wage $\theta'$ in this short-run equilibrium.
+
+(d) Verify that at the above value of $\theta'$, the labour market is indeed in short run equilibrium.
+
+(e) How do the above exercises shed light on Friedman's arguments about the short- versus long-run effects of monetary policy?
+
+:::
+
+::: {.callout-note collapse="true"}
+
+## Question 3: Dynamic QTM and Monetary Growth
+
+Suppose that the growth rate of GDP is $g_Y = 1\%$ per year and that the money supply has been increasing for some time at a constant rate $g_M = 3\%$ annually. Suppose the long run real interest rate, $r$, is $2\%$.
+
+(a) What, according to the dynamic version of the QTM and the Fisher equation, will be the rate of inflation, $\pi$ and the nominal interest rate $i$?
+
+(b) Suppose now that the growth rate of money accelerates to $g'_M = 6\%$. How will this affect (i) the growth rate of output, (ii) the rate of inflation, (iii) the nominal interest rate and (iv) the real interest rate in both the short run and the long run? Explain your answers and illustrate them on diagrams.
+
+:::

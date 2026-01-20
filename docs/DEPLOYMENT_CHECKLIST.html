@@ -420,7 +420,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>✅ <strong>Quarto Setup Step</strong>: Installed on GitHub runner</li>
 <li>✅ <strong>Pre-Sync Render Step</strong>: Renders <code>topic1questions.qmd</code> → <code>docs/topic1questions.html</code></li>
 <li>✅ <strong>Lean Sync Strategy</strong>: Only copies essential app files + topic1 content (excludes large <code>ppt/</code> folder)</li>
-<li>✅ <strong>HF Space Push</strong>: Deploys to <code>camcalderon777/monetary-economics-questions</code></li>
+<li>✅ <strong>HF Space Push</strong>: Deploys to <code>camcalderon777/monetary-economics-topic1-questions</code></li>
 </ul>
 <p><strong>What happens on each <code>git push</code>:</strong> 1. Workflow triggers on push to main branch 2. Quarto renders topic1questions.qmd to HTML (fresh output every time) 3. App files + topic1 content copied to temp directory 4. Changes synced to HF Space via force push</p>
 <hr>
@@ -474,7 +474,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </ul></li>
 <li><p><strong>Verify on HF Space:</strong></p>
 <ul>
-<li>Check the HF Space repo: <code>camcalderon777/monetary-economics-questions</code></li>
+<li>Check the HF Space repo: <code>camcalderon777/monetary-economics-topic1-questions</code></li>
 <li>Confirm <code>topic1questions.qmd</code> is synced</li>
 <li>Confirm <code>docs/topic1questions.html</code> is present</li>
 <li>Test the app in HF Space UI</li>

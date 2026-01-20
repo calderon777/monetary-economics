@@ -6,18 +6,25 @@ colorTo: blue
 sdk: docker
 pinned: false
 license: mit
-short_description: Interactive AI tutor for Topic 3
+short_description: Interactive AI tutor for Topic 3 - Keynes's Theory of Money
 ---
 
 # Monetary Economics EC3014 - Topic 3 Questions
 
-Interactive AI-powered tutorial for Topic 3. Answer questions with AI-powered feedback.
+Interactive AI-powered tutorial for Topic 3: Keynes's Theory of Money. Answer questions on Classical vs. Keynesian views, money market dynamics, and the liquidity trap with AI-powered feedback.
 
 ## Features
 
-- Interactive questions with AI-powered feedback
+- 3 questions covering Keynes's theory of money
+- AI-powered feedback using Groq's Llama 3.3 70B model
 - Mobile-responsive design
 - Hints and guidance (not complete answers)
+
+## Topics Covered
+
+1. **Classical vs. Keynesian Views**: Money's macroeconomic role, liquidity preference, interest rate determination
+2. **Money Market Exceptionality**: Price rigidity, supply inelasticity, lack of substitutes
+3. **The Liquidity Trap**: Absolute liquidity preference, failure of price and interest rate adjustments
 
 ## Usage
 

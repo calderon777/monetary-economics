@@ -1,39 +1,13 @@
 ---
-title: "Topic 3 Questions"
+title: "Topic 3 - Indicative Answers"
 format: html
 ---
 
-## Interactive Tutorial with AI Feedback
+## Question 1: Classical vs. Keynesian Views
 
-Use this page to practise **concept clarity** and **economic reasoning** before your tutorial.
+**Question:** Compare and contrast Classical and Keynesian views on the macroeconomic role of money.
 
-**Learning objectives (before you start):**
-- Identify the core concept in each question and state it explicitly.
-- Apply economic reasoning (not just examples) to justify your answers.
-- Explain the "why", not just the "what", for every claim you make.
-
-**How to use the AI tutor:**
-1) Write your own answer first.
-2) Click **Get AI Feedback** and note what you got right or missed.
-3) Revise your answer in your notes; be explicit with definitions and causal reasoning.
-4) **During tutorial:** Your human tutor will probe, challenge, and help you rephrase your reasoning. *The tutor is your primary feedback source.* AI is a starting point only.
-
-⚠️ **Important:** AI models can hallucinate or produce plausible-sounding but incorrect explanations. Always verify claims against lecture notes and textbooks. Bring your AI-drafted answer to tutorial for tutor feedback—don't treat AI suggestions as definitive.
-
-```{=html}
-<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic3-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
-```
-
----
-
-## Questions on Topic 3 - Keynes's Theory of Money
-
-### Question 1: Classical vs. Keynesian Views
-
-Compare and contrast Classical and Keynesian views on the macroeconomic role of money.
-
-::: {.callout-note collapse="true"}
-### Indicative Answer to Question 1
+### Indicative Answer
 
 **Main points of similarity:**
 
@@ -50,16 +24,13 @@ Compare and contrast Classical and Keynesian views on the macroeconomic role of 
    - **(i)** The possibility of a liquidity trap in which an excess demand for money could coexist with an excess supply in the goods market for an indefinite period, despite falling price levels.
    - **(ii)** Even outside the liquidity trap, because prices adjusted at different rates in different markets, relative prices would not remain unaffected by price movements; hence the principles of dichotomy and neutrality would not hold.
 
-:::
-
 ---
 
-### Question 2: Exceptional Features of the Money Market
+## Question 2: Exceptional Features of the Money Market
 
-What features of the market for money make it exceptional in terms of how it reacts if there is a shock to the demand for money? Is this a problem for macroeconomic equilibrium? Why or why not?
+**Question:** What features of the market for money make it exceptional in terms of how it reacts if there is a shock to the demand for money? Is this a problem for macroeconomic equilibrium? Why or why not?
 
-::: {.callout-note collapse="true"}
-### Indicative Answer to Question 2
+### Indicative Answer
 
 **Three exceptional features:**
 
@@ -81,16 +52,13 @@ An increase in the demand for money can lead to:
 
 These normal adjustment mechanisms fail to work if the economy is caught in a **liquidity trap**. In such a situation, economic agents are willing to hold unlimited amounts of money due to its perceived security. Thus neither can the interest rate rise in a liquidity trap, nor can falling prices induce a greater demand for goods.
 
-:::
-
 ---
 
-### Question 3: The Liquidity Trap
+## Question 3: The Liquidity Trap
 
-Explain in words alone (without using diagrams) how the normal adjustment mechanisms that allow equilibrium to be restored following an increase in the demand for money, do not work if the economy is in a liquidity trap.
+**Question:** Explain in words alone (without using diagrams) how the normal adjustment mechanisms that allow equilibrium to be restored following an increase in the demand for money, do not work if the economy is in a liquidity trap.
 
-::: {.callout-note collapse="true"}
-### Indicative Answer to Question 3
+### Indicative Answer
 
 The **liquidity trap** is characterised by a situation in which the economy is suffering from low levels of output as well as low interest rates. In such a situation, Keynes argued that economic agents could become unwilling to part with their money (beyond some minimum needed to cover essentials) in exchange either for goods or for other assets. This situation is also known as **absolute liquidity preference**.
 
@@ -107,14 +75,3 @@ In a **liquidity trap**, however, falling prices do not induce greater spending 
 Similarly, because money is also a store of value that competes with interest-bearing stores of value in agents' portfolios, an increase in the demand for money would, in normal times, lead to a collective decrease in the demand for interest-bearing assets. Competition amongst the issuers of such assets would result in a higher interest rate, inducing a shift back by savers into holding such assets and eliminating the excess demand for money—so long as the latter is not due to a desire to hoard unlimited amounts of money.
 
 In a **liquidity trap**, however, precisely because the desire to hoard money is unlimited, this mechanism also ceases to work.
-
-:::
-
----
-
-**Reflection after you reveal an indicative answer:**
-- What did you miss? Where was your reasoning thin?
-- Rewrite one stronger sentence that uses an explicit definition + a clear "because".
-
-**About indicative answers:**
-Indicative answers are explicitly **not** model answers—they illustrate one acceptable line of reasoning. Your tutorial discussion and your own reasoning remain primary.

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Topic 1 Questions – Monetary Economics</title>
+<title>Topic 4 - Friedman’s Monetarism – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -30,8 +30,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./topic1mcqs.html" rel="next">
-<link href="./topic1lecture.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -70,6 +68,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -83,7 +110,9 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic1reading.html">Topic 1 - The Nature and Economic Role of Money</a></li><li class="breadcrumb-item"><a href="./topic1questions.html">Questions</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
+      Monetary Economics
+      </li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -137,7 +166,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./topic1questions.html" class="sidebar-item-text sidebar-link active">
+  <a href="./topic1questions.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">Questions</span></a>
   </div>
 </li>
@@ -367,9 +396,9 @@ ul.task-list li input[type="checkbox"] {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic1reading.html">Topic 1 - The Nature and Economic Role of Money</a></li><li class="breadcrumb-item"><a href="./topic1questions.html">Questions</a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Topic 1 Questions</h1>
+<h1 class="title">Topic 4 - Friedman’s Monetarism</h1>
 </div>
 
 
@@ -386,17 +415,88 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="interactive-tutorial-with-ai-feedback" class="level2">
-<h2 class="anchored" data-anchor-id="interactive-tutorial-with-ai-feedback">Interactive Tutorial with AI Feedback</h2>
-<p>Use this page to practise <strong>concept clarity</strong> and <strong>economic reasoning</strong> before your tutorial.</p>
-<p><strong>Learning objectives (before you start):</strong> - Identify the core concept in each question and state it explicitly. - Apply economic reasoning (not just examples) to justify your answers. - Explain the “why”, not just the “what”, for every claim you make.</p>
-<p><strong>How to use the AI tutor:</strong> 1) Write your own answer first. 2) Click <strong>Get AI Feedback</strong> and note what you got right or missed. 3) Revise your answer in your notes; be explicit with definitions and causal reasoning. 4) <strong>During tutorial:</strong> Your human tutor will probe, challenge, and help you rephrase your reasoning. <em>The tutor is your primary feedback source.</em> AI is a starting point only.</p>
-<p>⚠️ <strong>Important:</strong> AI models can hallucinate or produce plausible-sounding but incorrect explanations. Always verify claims against lecture notes and textbooks. Bring your AI-drafted answer to tutorial for tutor feedback—don’t treat AI suggestions as definitive.</p>
-<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic1-questions/embed" frameborder="0" width="100%" height="1400"></iframe>
-<p><strong>Reflection after you reveal an indicative answer:</strong> - What did you miss? Where was your reasoning thin? - Rewrite one stronger sentence that uses an explicit definition + a clear “because”.</p>
-<p><strong>About indicative answers:</strong> Indicative answers will be released <em>after</em> your tutorial. They are explicitly <strong>not</strong> model answers—they illustrate one acceptable line of reasoning. Your tutorial discussion and your own reasoning remain primary.</p>
+<section id="topic-4---questions" class="level1">
+<h1>Topic 4 - Questions</h1>
+<iframe src="https://huggingface.co/spaces/Camshobjec/monetary-economics-topic4-questions" width="100%" height="800" frameborder="0"></iframe>
+<section id="questions" class="level2">
+<h2 class="anchored" data-anchor-id="questions">Questions</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 1: Monetarist Model of the Labour Market
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Consider the following monetarist model of the macroeconomy. The labour market is characterised by</p>
+<p><span class="math display">\[N^S = 100\theta\]</span> <span class="math display">\[N^D = \frac{6400}{\theta^2}\]</span></p>
+<p>where <span class="math inline">\(N^S\)</span> is the supply of labour, <span class="math inline">\(N^D\)</span> is labour demand and <span class="math inline">\(\theta\)</span> is shorthand for the real wage (i.e.&nbsp;<span class="math inline">\(W/P\)</span>: <span class="math inline">\(W\)</span> is the nominal wage and <span class="math inline">\(P\)</span> the price level).</p>
+<p>The production function is <span class="math display">\[Y = 160\sqrt{N}\]</span></p>
+<p>where <span class="math inline">\(N\)</span> is the labour employed when the labour market is in equilibrium.</p>
+<p>The demand side of the economy is characterised by the Quantity Theory of Money: <span class="math display">\[M = 2PY\]</span></p>
+<p>where <span class="math inline">\(M\)</span> is the money supply and the proportionality constant is <span class="math inline">\(k = 2\)</span>.</p>
+<ol type="a">
+<li><p>Verify that the above equation describing labour demand is consistent with the production function (i.e.&nbsp;labour demand is at the point where the marginal product of labour is equal to the real wage).</p></li>
+<li><p>Solve for the equilibrium values of <span class="math inline">\(\theta\)</span> and <span class="math inline">\(N\)</span> and plugging the latter into the production function, solve for <span class="math inline">\(Y\)</span>.</p></li>
+<li><p>Suppose that the initial money supply, <span class="math inline">\(M_0 = 32000\)</span>. Solve for <span class="math inline">\(P_0\)</span> and <span class="math inline">\(W_0\)</span>.</p></li>
+<li><p>Now suppose that the money supply increases to <span class="math inline">\(M_1 = 48000\)</span>. In the new long-run equilibrium, will the values of <span class="math inline">\(\theta\)</span>, <span class="math inline">\(N\)</span> and <span class="math inline">\(Y\)</span> be affected? Solve for the new long run values of price, <span class="math inline">\(P_1\)</span>, and money wage, <span class="math inline">\(W_1\)</span>.</p></li>
+<li><p>Does the above model exhibit dichotomy of real variables from nominal ones and neutrality of money? Explain.</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 2: Short-Run Effects with Money Illusion
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Now suppose that, starting from <span class="math inline">\(M_0 = 32000\)</span>, the money supply increases to <span class="math inline">\(M_1 = 48000\)</span> as before. But now assume that workers are temporarily unable to perceive the ensuing increase in the price level. But they do observe any change in their money wage; so long as the money wage rises at the original price level, <span class="math inline">\(P_0\)</span> (from your answer to part (b) of Question 1) they will supply more labour.</p>
+<p>The labour supply curve is temporarily characterised by the equation <span class="math display">\[N^S = 100\frac{W}{P_0}\]</span></p>
+<p>All other relationships in the economy, including the demand for labour, remain as in Question 1. Let <span class="math inline">\(P'\)</span>, <span class="math inline">\(W'\)</span> and <span class="math inline">\(Y'\)</span> denote the (short-run) equilibrium values of the price level, money wage and output respectively, when workers are supplying labour according to the above equation.</p>
+<ol type="a">
+<li><p>Plugging in the value of <span class="math inline">\(P_0\)</span> from your answer to part (b), Question 1, derive a relationship between <span class="math inline">\(P'\)</span> and <span class="math inline">\(W'\)</span> such that the labour market is in short-run equilibrium. <strong>Hint:</strong> The equation you derive should be <span class="math display">\[P' = \frac{\sqrt{80}(W')^{3/2}}{160}\]</span></p></li>
+<li><p>Now, noting that in the short-run equilibrium, the level of output can be expressed by plugging in the short run labour supply equation into the production function, <span class="math inline">\(Y' = 160\sqrt{100(W'/P_0)}\)</span>, use the QTM to derive a second relationship between <span class="math inline">\(P'\)</span> and <span class="math inline">\(W'\)</span>. <strong>Hint:</strong> The equation should be <span class="math display">\[P' = \frac{150}{\sqrt{20\,W'}}\]</span></p></li>
+<li><p>Solve for <span class="math inline">\(W'\)</span> using the two relationships derived above. Then solve for <span class="math inline">\(Y'\)</span> from the production function and finally <span class="math inline">\(P'\)</span> from the QTM and calculate the real wage <span class="math inline">\(\theta'\)</span> in this short-run equilibrium.</p></li>
+<li><p>Verify that at the above value of <span class="math inline">\(\theta'\)</span>, the labour market is indeed in short run equilibrium.</p></li>
+<li><p>How do the above exercises shed light on Friedman’s arguments about the short- versus long-run effects of monetary policy?</p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Question 3: Dynamic QTM and Monetary Growth
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>Suppose that the growth rate of GDP is <span class="math inline">\(g_Y = 1\%\)</span> per year and that the money supply has been increasing for some time at a constant rate <span class="math inline">\(g_M = 3\%\)</span> annually. Suppose the long run real interest rate, <span class="math inline">\(r\)</span>, is <span class="math inline">\(2\%\)</span>.</p>
+<ol type="a">
+<li><p>What, according to the dynamic version of the QTM and the Fisher equation, will be the rate of inflation, <span class="math inline">\(\pi\)</span> and the nominal interest rate <span class="math inline">\(i\)</span>?</p></li>
+<li><p>Suppose now that the growth rate of money accelerates to <span class="math inline">\(g'_M = 6\%\)</span>. How will this affect (i) the growth rate of output, (ii) the rate of inflation, (iii) the nominal interest rate and (iv) the real interest rate in both the short run and the long run? Explain your answers and illustrate them on diagrams.</p></li>
+</ol>
+</div>
+</div>
+</div>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -799,18 +899,6 @@ ul.task-list li input[type="checkbox"] {
     }
   });
   </script>
-<nav class="page-navigation">
-  <div class="nav-page nav-page-previous">
-      <a href="./topic1lecture.html" class="pagination-link" aria-label="Lecture">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Lecture</span>
-      </a>          
-  </div>
-  <div class="nav-page nav-page-next">
-      <a href="./topic1mcqs.html" class="pagination-link" aria-label="MCQs">
-        <span class="nav-page-text">MCQs</span> <i class="bi bi-arrow-right-short"></i>
-      </a>
-  </div>
-</nav>
 </div> <!-- /content -->
 
 

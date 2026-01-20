@@ -1,0 +1,317 @@
+---
+title: "Topic 4 - Indicative Answers"
+---
+
+# Topic 4 - Indicative Answers
+
+## Question 1: Monetarist Model of the Labour Market
+
+::: {.callout-tip collapse="false"}
+
+### Part (a)
+
+From the production function, the marginal product of labour is:
+$$\frac{\partial Y}{\partial N} = \frac{160}{2\sqrt{N}} = \frac{80}{\sqrt{N}}$$
+
+When firms maximise profit, they hire labour until $MPN = \theta$. Therefore:
+$$\theta = \frac{80}{\sqrt{N}}$$
+$$\sqrt{N} = \frac{80}{\theta}$$
+$$N = \frac{6400}{\theta^2}$$
+
+This matches the given labour demand equation, confirming consistency. ✓
+
+### Part (b)
+
+Setting $N^S = N^D$:
+$$100\theta = \frac{6400}{\theta^2}$$
+$$100\theta^3 = 6400$$
+$$\theta^3 = 64$$
+$$\theta = 4$$
+
+Therefore: $N = 100 \times 4 = 400$
+
+Substituting into the production function:
+$$Y = 160\sqrt{400} = 160 \times 20 = 3200$$
+
+### Part (c)
+
+From the QTM: $P = \frac{M}{kY}$
+
+With $M_0 = 32000$ and $k = 2$:
+$$P_0 = \frac{32000}{2 \times 3200} = \frac{32000}{6400} = 5$$
+
+The money wage is:
+$$W_0 = \theta \times P_0 = 4 \times 5 = 20$$
+
+### Part (d)
+
+With $M_1 = 48000$:
+$$P_1 = \frac{48000}{2 \times 3200} = \frac{48000}{6400} = 7.5$$
+
+In long-run equilibrium, the labour market remains at its natural level regardless of money supply changes. Therefore:
+$$\theta = 4, \quad N = 400, \quad Y = 3200 \text{ (unchanged)}$$
+$$W_1 = 4 \times 7.5 = 30$$
+
+### Part (e)
+
+**Yes, the model exhibits dichotomy and neutrality of money.** Real variables ($\theta$, $N$, $Y$) are determined solely by production technology and labour supply preferences, independent of the money supply. A 50% increase in $M$ (from 32000 to 48000) causes exactly proportional increases in nominal variables (prices and wages double from $5 \to 7.5$, $20 \to 30$) but leaves all real variables unchanged. This demonstrates classical neutrality: **in the long run, money is a veil over the real economy.**
+
+:::
+
+---
+
+## Question 2: Short-Run Effects with Money Illusion
+
+::: {.callout-tip collapse="false"}
+
+### Part (a)
+
+With workers using $P_0 = 5$ as the reference price:
+$$N^S = 100\frac{W'}{5} = 20W'$$
+
+Setting $N^S = N^D$:
+$$20W' = \frac{6400}{(\theta')^2} = \frac{6400(P')^2}{(W')^2}$$
+$$(W')^3 = \frac{6400(P')^2}{20} = 320(P')^2$$
+$$P' = \frac{\sqrt{(W')^3}}{\sqrt{320}} = \frac{(W')^{3/2}}{\sqrt{320}} = \frac{\sqrt{80}(W')^{3/2}}{160}$$
+
+### Part (b)
+
+From the labour supply: $N' = 20W'$
+
+Plugging into production function:
+$$Y' = 160\sqrt{20W'}$$
+
+From the QTM with $M_1 = 48000$:
+$$P' = \frac{M_1}{kY'} = \frac{48000}{2 \times 160\sqrt{20W'}} = \frac{150}{\sqrt{20W'}}$$
+
+### Part (c)
+
+Equating the two expressions for $P'$:
+$$\frac{\sqrt{80}(W')^{3/2}}{160} = \frac{150}{\sqrt{20W'}}$$
+
+Solving:
+$$(W')^2 = \frac{150^2 \times 160^2}{80 \times 20} = 600$$
+$$W' \approx 24.49$$
+
+Therefore:
+$$N' = 20 \times 24.49 = 489.8$$
+$$Y' = 160\sqrt{489.8} \approx 3545.7$$
+$$P' = \frac{48000}{2 \times 3545.7} \approx 6.76$$
+$$\theta' = \frac{W'}{P'} = \frac{24.49}{6.76} \approx 3.62$$
+
+Note that $\theta' = 3.62 < 4 = \theta_0$, but $W' = 24.49 > 20 = W_0$. Workers perceive a wage rise even though the real wage has fallen!
+
+### Part (d)
+
+Verifying labour market equilibrium at $\theta' = 3.62$:
+$$N^S = 20 \times 24.49 = 489.8$$
+$$N^D = \frac{6400}{(3.62)^2} \approx 488.5 \approx N^S$$ ✓
+
+Labour market clears in the short run.
+
+### Part (e)
+
+**Friedman's key insight: Money illusion creates short-run non-neutrality.** Workers observe $W' > W_0$ and perceive a real wage increase even though $\theta' < \theta_0$. This illusion causes labour supply to expand far beyond its natural level, pulling down the real wage and increasing both employment and output above their long-run levels.
+
+**Short run:** Monetary expansion stimulates employment ($N' = 489.8 > 400$) and output ($Y' = 3545.7 > 3200$) because workers are fooled about inflation.
+
+**Long run:** When workers eventually recognise that $P'$ has risen more than $W'$, they realise their real wage has fallen. Labour supply contracts back to its natural level, $N$ returns to 400, $Y$ reverts to 3200, and $\theta$ returns to 4.
+
+This supports **Friedman's argument that monetary policy has temporary real effects in the short run but is neutral in the long run**—the lag between actual and perceived inflation is crucial to short-run monetary non-neutrality. The Phillips curve is downward-sloping in the short run (trade-off between inflation and unemployment) but vertical in the long run (no permanent trade-off).
+
+:::
+
+---
+
+## Question 3: Dynamic QTM and Monetary Growth
+
+::: {.callout-tip collapse="false"}
+
+### Part (a)
+
+From the dynamic QTM:
+$$\pi = g_M - g_Y = 3\% - 1\% = 2\%$$
+
+From the Fisher equation:
+$$i = r + \pi = 2\% + 2\% = 4\%$$
+
+### Part (b)
+
+When $g_M$ accelerates from $3\%$ to $6\%$:
+
+**Short Run:**
+
+- **(i) Growth rate of output** temporarily rises above $1\%$ (to ~$1.5\%$). The increase in money growth stimulates employment and output via money illusion. Workers see nominal wages rising faster than expected and supply more labour, pushing output above trend.
+
+- **(ii) Rate of inflation** rises but **lags** the increase in money growth (to ~$3-4\%$, less than the full $5\%$). Initially, prices adjust slowly while the monetary expansion feeds into employment growth. The inflation gap ($g_M - \pi > 0$) creates the real stimulus.
+
+- **(iii) Nominal interest rate** initially **falls** below $4\%$ (to ~$3\%$). Real rates are pushed down as inflation expectations lag, and the output boom creates downward pressure on interest rates.
+
+- **(iv) Real interest rate** falls temporarily below $2\%$ into negative territory. The excess money supply and output expansion compress real returns.
+
+**Long Run:**
+
+- **(i) Growth rate of output** returns to $1\%$. Once workers and firms perceive the true inflation, they adjust expectations. Labour supply reverts to its natural level, and output growth returns to its trend determined by labour force growth and technology.
+
+- **(ii) Rate of inflation** settles at $\pi = g_M - g_Y = 6\% - 1\% = 5\%$. The full monetary impulse translates to inflation once expectations fully adjust.
+
+- **(iii) Nominal interest rate** rises to $i = r + \pi = 2\% + 5\% = 7\%$. Higher inflation raises nominal rates accordingly.
+
+- **(iv) Real interest rate** returns to $2\%$. The real rate is determined by real fundamentals (time preferences, productivity) independent of monetary growth. Monetary changes affect only nominal magnitudes in the long run.
+
+**Diagrams:**
+
+#### (i) Money Growth Over Time
+
+```{r}
+#| label: fig-money-growth
+#| fig-cap: "Money Growth Rate: Step Increase from 3% to 6%"
+library(ggplot2)
+
+# Time periods
+time <- c(0, 5, 5.1, 15)
+g_M <- c(3, 3, 6, 6)
+
+df_gM <- data.frame(time = time, g_M = g_M)
+
+ggplot(df_gM, aes(x = time, y = g_M)) +
+  geom_line(color = "darkblue", linewidth = 1.2) +
+  geom_vline(xintercept = 5, linetype = "dashed", color = "gray", linewidth = 0.8, alpha = 0.7) +
+  annotate("text", x = 5.5, y = 7, label = "Monetary\nAcceleration", size = 3.5, color = "darkblue") +
+  scale_y_continuous(limits = c(0, 8), breaks = seq(0, 8, 2), labels = function(x) paste0(x, "%")) +
+  scale_x_continuous(breaks = seq(0, 15, 5), labels = c("t=0", "t=5", "t=10", "t=15")) +
+  labs(x = "Time", y = "Money Growth Rate (g_M)", 
+       title = "Shock: Money Supply Growth Accelerates") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 11),
+        axis.title = element_text(size = 10))
+```
+
+#### (ii) Output Growth: Short-Run Expansion, Long-Run Return
+
+```{r}
+#| label: fig-output-growth
+#| fig-cap: "Output Growth: Temporary Rise Above Natural Rate"
+library(ggplot2)
+
+# Simulate output growth path
+time <- seq(0, 15, length.out = 100)
+# Before shock: 1%
+# After shock: gradually rises to 1.5%, then falls back to 1%
+g_Y <- ifelse(time <= 5, 1, 
+              ifelse(time <= 7, 1 + 0.5 * (1 - cos(pi * (time - 5) / 2)) / 2,
+                     1 + 0.5 * cos(pi * (time - 7) / 8)))
+
+df_gY <- data.frame(time = time, g_Y = g_Y)
+
+ggplot(df_gY, aes(x = time, y = g_Y)) +
+  geom_line(color = "darkgreen", linewidth = 1.2) +
+  geom_hline(yintercept = 1, linetype = "dashed", color = "red", alpha = 0.6, linewidth = 0.8) +
+  geom_vline(xintercept = 5, linetype = "dashed", color = "gray", alpha = 0.5, linewidth = 0.8) +
+  annotate("text", x = 5, y = 0.5, label = "Natural Rate", size = 3, color = "red", hjust = -0.1) +
+  annotate("text", x = 6.5, y = 1.65, label = "SR Expansion", size = 3.5, color = "darkgreen") +
+  annotate("text", x = 12, y = 0.7, label = "LR Return", size = 3.5, color = "darkgreen") +
+  scale_y_continuous(limits = c(0, 2), breaks = seq(0, 2, 0.5), labels = function(x) paste0(x, "%")) +
+  scale_x_continuous(breaks = seq(0, 15, 5), labels = c("t=0", "t=5", "t=10", "t=15")) +
+  labs(x = "Time", y = "Output Growth Rate (g_Y)", 
+       title = "Output Growth: Temporary Non-Neutrality in Short Run") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 11),
+        axis.title = element_text(size = 10))
+```
+
+#### (iii) Inflation Rate: Gradual Rise to New Equilibrium
+
+```{r}
+#| label: fig-inflation-rate
+#| fig-cap: "Inflation: Lags Behind Money Growth"
+library(ggplot2)
+
+# Inflation path: starts at 2%, gradually rises to ~4-4.5%, then settles at 5%
+time <- seq(0, 15, length.out = 100)
+pi <- ifelse(time <= 5, 2,
+             ifelse(time <= 12, 2 + 2.5 * (1 - cos(pi * (time - 5) / 7)) / 2,
+                    5 - 0.5 * cos(pi * (time - 12) / 3)))
+
+df_pi <- data.frame(time = time, pi = pi)
+
+ggplot(df_pi, aes(x = time, y = pi)) +
+  geom_line(color = "darkorange", linewidth = 1.2) +
+  geom_hline(yintercept = 2, linetype = "dashed", color = "blue", alpha = 0.6, linewidth = 0.8) +
+  geom_hline(yintercept = 5, linetype = "dashed", color = "red", alpha = 0.6, linewidth = 0.8) +
+  geom_vline(xintercept = 5, linetype = "dashed", color = "gray", alpha = 0.5, linewidth = 0.8) +
+  annotate("text", x = 2.5, y = 1.5, label = "Initial π=2%", size = 3, color = "blue") +
+  annotate("text", x = 13, y = 5.3, label = "New LR π=5%", size = 3, color = "red") +
+  annotate("text", x = 8, y = 4.9, label = "Lag: π rises\nslowly", size = 3.5, color = "darkorange") +
+  scale_y_continuous(limits = c(0, 7), breaks = seq(0, 7, 1), labels = function(x) paste0(x, "%")) +
+  scale_x_continuous(breaks = seq(0, 15, 5), labels = c("t=0", "t=5", "t=10", "t=15")) +
+  labs(x = "Time", y = "Inflation Rate (π)", 
+       title = "Inflation Expectations Lag Behind Money Growth") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 11),
+        axis.title = element_text(size = 10))
+```
+
+#### (iv) Real Interest Rate: Constant at Natural Level
+
+```{r}
+#| label: fig-real-interest-rate
+#| fig-cap: "Real Interest Rate: Invariant to Monetary Changes"
+library(ggplot2)
+
+# Real rate is constant throughout
+time <- seq(0, 15, length.out = 100)
+r <- rep(2, length(time))
+
+df_r <- data.frame(time = time, r = r)
+
+ggplot(df_r, aes(x = time, y = r)) +
+  geom_line(color = "darkred", linewidth = 1.5) +
+  geom_vline(xintercept = 5, linetype = "dashed", color = "gray", alpha = 0.5, linewidth = 0.8) +
+  annotate("text", x = 7.5, y = 2.5, label = "Real Rate Determined\nby Real Fundamentals\n(Independent of Money)", 
+           size = 3.5, color = "darkred", fontface = "bold") +
+  scale_y_continuous(limits = c(0, 4), breaks = seq(0, 4, 1), labels = function(x) paste0(x, "%")) +
+  scale_x_continuous(breaks = seq(0, 15, 5), labels = c("t=0", "t=5", "t=10", "t=15")) +
+  labs(x = "Time", y = "Real Interest Rate (r)", 
+       title = "Real Interest Rate: Money Neutrality in Long Run") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 11),
+        axis.title = element_text(size = 10))
+```
+
+#### (v) Nominal Interest Rate: Initial Fall, Then Rise to New Equilibrium
+
+```{r}
+#| label: fig-nominal-interest-rate
+#| fig-cap: "Nominal Interest Rate: Fisher Effect Adjustment"
+library(ggplot2)
+
+# Nominal rate: starts at 4%, falls to 3%, then rises to 7%
+time <- seq(0, 15, length.out = 100)
+i <- ifelse(time <= 5, 4,
+            ifelse(time <= 7, 4 - 1 * (1 - cos(pi * (time - 5) / 2)) / 2,
+                   7 - 4 * cos(pi * (time - 7) / 8)))
+
+df_i <- data.frame(time = time, i = i)
+
+ggplot(df_i, aes(x = time, y = i)) +
+  geom_line(color = "purple", linewidth = 1.2) +
+  geom_hline(yintercept = 4, linetype = "dashed", color = "blue", alpha = 0.6, linewidth = 0.8) +
+  geom_hline(yintercept = 7, linetype = "dashed", color = "red", alpha = 0.6, linewidth = 0.8) +
+  geom_vline(xintercept = 5, linetype = "dashed", color = "gray", alpha = 0.5, linewidth = 0.8) +
+  annotate("text", x = 2.5, y = 3.5, label = "Initial i=4%", size = 3, color = "blue") +
+  annotate("text", x = 13, y = 7.3, label = "New LR i=7%", size = 3, color = "red") +
+  annotate("text", x = 6, y = 2.8, label = "Initial Fall:\nInflation Lag", size = 3.5, color = "purple") +
+  annotate("text", x = 11, y = 6.5, label = "Rise: Fisher\nEffect", size = 3.5, color = "purple") +
+  scale_y_continuous(limits = c(0, 8), breaks = seq(0, 8, 1), labels = function(x) paste0(x, "%")) +
+  scale_x_continuous(breaks = seq(0, 15, 5), labels = c("t=0", "t=5", "t=10", "t=15")) +
+  labs(x = "Time", y = "Nominal Interest Rate (i)", 
+       title = "Nominal Rate: Fisher Equation Adjustment (i = r + π)") +
+  theme_minimal() +
+  theme(plot.title = element_text(face = "bold", size = 11),
+        axis.title = element_text(size = 10))
+```
+
+**Key insight:** Monetary acceleration causes **temporary real effects** because inflation lags behind money growth—expectations adjust with a lag. But as workers and firms recognise true inflation, real variables return to their natural levels and the full monetary impulse translates into higher inflation and nominal rates. This illustrates the **expectations-augmented Phillips curve**: a short-run trade-off between inflation and output growth, but a vertical long-run Phillips curve at the natural rate of unemployment.
+
+:::

@@ -190,5 +190,44 @@
   },
   "topic2-hf-space/DEPLOYMENT.md": {
     "DEPLOYMENT.html": "6d0afc76"
+  },
+  "topic2answers.qmd": {
+    "topic2answers.html": "163068f5"
+  },
+  "topic3answers.qmd": {
+    "topic3answers.html": "460bcfd6"
+  },
+  "topic3questions.qmd": {
+    "topic3questions.html": "2d9fc8b6"
+  },
+  "topic4answers.qmd": {
+    "topic4answers.html": "672d67b8"
+  },
+  "topic4questions.qmd": {
+    "topic4questions.html": "85f0d68d"
+  },
+  "topic5answers.qmd": {
+    "topic5answers.html": "f9eebb20"
+  },
+  "topic5questions.qmd": {
+    "topic5questions.html": "7e7cbf8c"
+  },
+  "topic6answers.qmd": {
+    "topic6answers.html": "bce1396d"
+  },
+  "topic6questions.qmd": {
+    "topic6questions.html": "cbaa33ee"
+  },
+  "topic7answers.qmd": {
+    "topic7answers.html": "35f31738"
+  },
+  "topic7questions.qmd": {
+    "topic7questions.html": "920fb8cc"
+  },
+  "topic8answers.qmd": {
+    "topic8answers.html": "5c269757"
+  },
+  "topic8questions.qmd": {
+    "topic8questions.html": "00247d4a"
   }
 }
