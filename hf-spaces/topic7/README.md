@@ -1,7 +1,7 @@
 ---
 title: Monetary Economics - Topic 7 Questions
 emoji: 💰
-colorFrom: indigo
+colorFrom: pink
 colorTo: indigo
 sdk: docker
 pinned: false
