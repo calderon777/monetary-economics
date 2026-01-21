@@ -275,7 +275,27 @@ app_ui = ui.page_fluid(
         }
         </style>
         '''),
+        ui.tags.script("""
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+            displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
+            processEscapes: true
+          },
+          svg: { fontCache: 'global' }
+        };
+        """),
         ui.tags.script(src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"),
+        ui.tags.script("""
+        function renderMath() {
+          if (window.MathJax) {
+            MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
+          }
+        }
+        document.addEventListener('DOMContentLoaded', renderMath);
+        const observer = new MutationObserver(renderMath);
+        observer.observe(document.body, { childList: true, subtree: true });
+        """)
     ),
     ui.div(
         ui.div(
