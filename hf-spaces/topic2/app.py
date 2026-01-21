@@ -392,7 +392,27 @@ app_ui = ui.page_fluid(
         </style>
         """
         ),
-        ui.tags.script(\"\"\"\n        window.MathJax = {\n          tex: {\n            inlineMath: [['$', '$'], ['\\\\\\\\(', '\\\\\\\\)']],\n            displayMath: [['$$', '$$'], ['\\\\\\\\[', '\\\\\\\\]']],\n            processEscapes: true\n          },\n          svg: { fontCache: 'global' }\n        };\n        \"\"\"),\n        ui.tags.script(src=\"https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js\"),\n        ui.tags.script(\"\"\"\n        function renderMath() {\n          if (window.MathJax) {\n            MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));\n          }\n        }\n        document.addEventListener('DOMContentLoaded', renderMath);\n        const observer = new MutationObserver(renderMath);\n        observer.observe(document.body, { childList: true, subtree: true });\n        \"\"\")
+        ui.tags.script("""
+        window.MathJax = {
+          tex: {
+            inlineMath: [['$', '$'], ['\\\\(', '\\\\)']],
+            displayMath: [['$$', '$$'], ['\\\\[', '\\\\]']],
+            processEscapes: true
+          },
+          svg: { fontCache: 'global' }
+        };
+        """),
+        ui.tags.script(src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"),
+        ui.tags.script("""
+        function renderMath() {
+          if (window.MathJax) {
+            MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
+          }
+        }
+        document.addEventListener('DOMContentLoaded', renderMath);
+        const observer = new MutationObserver(renderMath);
+        observer.observe(document.body, { childList: true, subtree: true });
+        """)
     ),
     ui.div(
         ui.div(
