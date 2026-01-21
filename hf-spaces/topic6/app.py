@@ -292,7 +292,7 @@ app_ui = ui.page_fluid(
           const observer = new MutationObserver(renderMath);
           observer.observe(document.body, { childList: true, subtree: true });
         });
-        """))
+        """)
     ),
     ui.div(
         ui.div(
