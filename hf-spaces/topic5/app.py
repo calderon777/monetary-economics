@@ -100,7 +100,7 @@ def get_ai_feedback(question_num, student_answer):
 
         return message.choices[0].message.content
     except Exception as e:
-        return f"Error getting feedback: {{str(e)}}. Make sure your GROQ_API_KEY environment variable is set correctly."
+        return f"Error getting feedback: {str(e)}. Make sure your GROQ_API_KEY environment variable is set correctly."
 
 app_ui = ui.page_fluid(
     ui.head_content(
@@ -125,43 +125,43 @@ app_ui = ui.page_fluid(
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             padding: 40px;
         }
-        .header {{
+        .header {
             text-align: center;
             margin-bottom: 30px;
             border-bottom: 3px solid #667eea;
             padding-bottom: 20px;
         }
-        .header h1 {{
+        .header h1 {
             color: #333;
             font-size: 2.5em;
             margin: 0 0 10px 0;
             font-weight: 600;
         }
-        .header p {{
+        .header p {
             color: #666;
             font-size: 1.1em;
             margin: 0;
         }
-        .instructions {{
+        .instructions {
             background: #f0f4ff;
             border-left: 4px solid #667eea;
             padding: 20px;
             border-radius: 6px;
             margin-bottom: 30px;
         }
-        .instructions h3 {{
+        .instructions h3 {
             color: #333;
             margin-top: 0;
         }
-        .instructions ol {{
+        .instructions ol {
             color: #555;
             line-height: 1.8;
         }
-        .nav-tabs {{
+        .nav-tabs {
             border-bottom: 2px solid #e0e0e0 !important;
             margin-bottom: 25px;
         }
-        .nav-link {{
+        .nav-link {
             color: #666 !important;
             font-weight: 500;
             padding: 12px 20px !important;
@@ -169,16 +169,16 @@ app_ui = ui.page_fluid(
             border-bottom: 3px solid transparent !important;
             transition: all 0.3s ease;
         }
-        .nav-link:hover {{
+        .nav-link:hover {
             color: #667eea !important;
             border-bottom-color: #667eea !important;
         }
-        .nav-link.active {{
+        .nav-link.active {
             color: #667eea !important;
             border-bottom-color: #667eea !important;
             background: transparent !important;
         }
-        .question-card {{
+        .question-card {
             background: #fafafa;
             border: 1px solid #e0e0e0;
             border-radius: 8px;
@@ -186,28 +186,28 @@ app_ui = ui.page_fluid(
             margin-bottom: 20px;
             width: 100%;
         }
-        .question-text {{
+        .question-text {
             color: #333;
             font-size: 1.1em;
             line-height: 1.6;
             margin-bottom: 15px;
             white-space: pre-line;
         }
-        .answer-section {{
+        .answer-section {
             margin-top: 20px;
             width: 100%;
         }
-        .answer-section label {{
+        .answer-section label {
             display: block;
             color: #555;
             font-weight: 600;
             margin-bottom: 10px;
         }
-        .shiny-input-container {{
+        .shiny-input-container {
             width: 100% !important;
         }
         textarea,
-        textarea.form-control {{
+        textarea.form-control {
             display: block !important;
             width: 100% !important;
             max-width: 100% !important;
@@ -226,23 +226,23 @@ app_ui = ui.page_fluid(
         .answer-section .shiny-input-container,
         .answer-section .form-control,
         .answer-section textarea,
-        .answer-section textarea.form-control {{
+        .answer-section textarea.form-control {
             width: 100% !important;
             max-width: 100% !important;
             min-width: 100% !important;
         }
         .answer-section textarea,
-        .answer-section textarea.form-control {{
+        .answer-section textarea.form-control {
             width: 100% !important;
             max-width: 100% !important;
             min-width: 100% !important;
         }
-        textarea:focus {{
+        textarea:focus {
             border-color: #667eea !important;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
             outline: none;
         }
-        .btn-primary {{
+        .btn-primary {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
             border: none !important;
             color: white !important;
@@ -252,11 +252,11 @@ app_ui = ui.page_fluid(
             transition: transform 0.2s ease, box-shadow 0.2s ease;
             margin-top: 15px;
         }
-        .btn-primary:hover {{
+        .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4) !important;
         }
-        .feedback-box {{
+        .feedback-box {
             margin-top: 20px;
             padding: 20px;
             background: #e8f5e9 !important;
@@ -264,20 +264,20 @@ app_ui = ui.page_fluid(
             border-radius: 6px;
             border: 1px solid #c8e6c9 !important;
         }
-        .feedback-box h3 {{
+        .feedback-box h3 {
             color: #2e7d32;
             margin: 0 0 10px 0;
         }
-        .feedback-box p, .feedback-box li {{
+        .feedback-box p, .feedback-box li {
             color: #333;
             line-height: 1.6;
         }
-        @media (max-width: 768px) {{
-            body {{ padding: 10px; }}
-            .container-custom {{ padding: 20px; }}
-            .header h1 {{ font-size: 1.8em; }}
-            .question-card {{ padding: 15px; }}
-        }}
+        @media (max-width: 768px) {
+            body { padding: 10px; }
+            .container-custom { padding: 20px; }
+            .header h1 { font-size: 1.8em; }
+            .question-card { padding: 15px; }
+        }
         </style>
         '''),
         ui.tags.script(src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"),
