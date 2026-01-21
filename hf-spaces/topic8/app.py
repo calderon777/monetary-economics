@@ -212,6 +212,15 @@ app_ui = ui.page_fluid(
             resize: vertical !important;
             transition: border-color 0.3s ease !important;
         }
+        .answer-section,
+        .answer-section .shiny-input-container,
+        .answer-section .form-control,
+        .answer-section textarea,
+        .answer-section textarea.form-control {{
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+        }
         textarea:focus {{
             border-color: #667eea !important;
             box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);

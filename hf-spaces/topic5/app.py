@@ -222,6 +222,15 @@ app_ui = ui.page_fluid(
             resize: vertical !important;
             transition: border-color 0.3s ease !important;
         }
+        .answer-section,
+        .answer-section .shiny-input-container,
+        .answer-section .form-control,
+        .answer-section textarea,
+        .answer-section textarea.form-control {{
+            width: 100% !important;
+            max-width: 100% !important;
+            min-width: 100% !important;
+        }
         .answer-section textarea,
         .answer-section textarea.form-control {{
             width: 100% !important;
