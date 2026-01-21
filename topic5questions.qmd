@@ -1,11 +1,12 @@
 ---
 title: "Topic 5 - New Classical Macroeconomics"
+page-layout: full
 ---
 
 # Topic 5 - Questions
 
 ```{=html}
-<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic5-questions" width="100%" height="800" frameborder="0"></iframe>
+<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic5-questions/embed" width="100%" height="1400" frameborder="0"></iframe>
 ```
 
 ## Questions

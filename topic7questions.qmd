@@ -1,11 +1,12 @@
 ---
 title: "Topic 7 - Monetary Policy Instruments and Inflation Targeting"
+page-layout: full
 ---
 
 # Topic 7 - Questions
 
 ```{=html}
-<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic7-questions" width="100%" height="800" frameborder="0"></iframe>
+<iframe src="https://huggingface.co/spaces/camcalderon777/monetary-economics-topic7-questions/embed" width="100%" height="1400" frameborder="0"></iframe>
 ```
 
 ## Questions
