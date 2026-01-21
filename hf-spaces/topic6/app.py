@@ -290,7 +290,7 @@ app_ui = ui.page_fluid(
         document.addEventListener('DOMContentLoaded', renderMath);
         const observer = new MutationObserver(renderMath);
         observer.observe(document.body, { childList: true, subtree: true });
-        """)
+        """))
     ),
     ui.div(
         ui.div(
