@@ -324,9 +324,11 @@ app_ui = ui.page_fluid(
             MathJax.typesetPromise().catch(err => console.error('MathJax error:', err));
           }
         }
-        document.addEventListener('DOMContentLoaded', renderMath);
-        const observer = new MutationObserver(renderMath);
-        observer.observe(document.body, { childList: true, subtree: true });
+        document.addEventListener('DOMContentLoaded', function() {
+          renderMath();
+          const observer = new MutationObserver(renderMath);
+          observer.observe(document.body, { childList: true, subtree: true });
+        });
         """)
     ),
     ui.div(
