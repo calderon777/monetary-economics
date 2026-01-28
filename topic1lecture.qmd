@@ -106,6 +106,58 @@ if (length(pngs) == 0) {
 }
 ```
 
+```{r export-pptx-to-pdf}
+#| include: false
+#| eval: true
+
+# Export PPTX to PDF for download
+pdf_filename <- paste0(tools::file_path_sans_ext(ppt_filename), ".pdf")
+pdf_path <- file.path("ppt", pdf_filename)
+pdf_abs <- normalizePath(dirname(pdf_path), mustWork = TRUE)
+pdf_full <- file.path(pdf_abs, pdf_filename)
+
+# Create PowerShell script for PDF export
+ps_pdf_file <- file.path(tempdir(), "export_pdf.ps1")
+
+ps_pdf_code <- sprintf('
+$in = "%s"
+$out = "%s"
+
+$ppt = New-Object -ComObject PowerPoint.Application
+$ppt.Visible = [Microsoft.Office.Core.MsoTriState]::msoFalse
+
+$pres = $ppt.Presentations.Open($in, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse)
+
+# 32 = ppSaveAsPDF format
+$pres.SaveAs($out, 32)
+
+$pres.Close()
+$ppt.Quit()
+
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($pres) | Out-Null
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($ppt) | Out-Null
+[GC]::Collect()
+[GC]::WaitForPendingFinalizers()
+
+Write-Host "PDF export complete"
+', in_abs, pdf_full)
+
+writeLines(ps_pdf_code, ps_pdf_file)
+
+# Run PowerShell script
+result_pdf <- system2("powershell", 
+                      args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_pdf_file),
+                      stdout = TRUE, stderr = TRUE)
+
+# Clean up
+file.remove(ps_pdf_file)
+
+# Verify PDF was created
+if (!file.exists(pdf_path)) {
+  warning(paste("PDF export may have failed:", paste(result_pdf, collapse = "\n")))
+}
+```
+
 ```{r render-png-slides}
 #| output: asis
 #| eval: true
@@ -120,10 +172,19 @@ get_slide_number <- function(x) {
 imgs <- imgs[order(sapply(imgs, get_slide_number))]
 
 # Render each PNG as a Reveal.js slide background
-for (img in imgs) {
+for (i in seq_along(imgs)) {
+  img <- imgs[i]
   rel <- gsub("\\\\", "/", img)
   cat("\n---\n\n")
   cat(sprintf('## {background-image="%s" background-size="contain" background-position="center"}\n\n', rel))
+  
+  # Add PDF download button on first slide
+  if (i == 1) {
+    pdf_rel <- gsub("\\\\", "/", file.path("ppt", paste0(tools::file_path_sans_ext(ppt_filename), ".pdf")))
+    cat(sprintf('\n<div style="position: absolute; top: 20px; right: 20px; z-index: 100;">\n'))
+    cat(sprintf('  <a href="%s" download style="text-decoration: none; font-size: 2em; color: #e74c3c; background: white; padding: 10px 15px; border-radius: 50%%; box-shadow: 0 2px 5px rgba(0,0,0,0.3);" title="Download PDF">📄</a>\n', pdf_rel))
+    cat('</div>\n\n')
+  }
 }
 ```
 
