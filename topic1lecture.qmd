@@ -13,6 +13,18 @@ execute:
   message: false
 ---
 
+```{r}
+#| echo: false
+#| output: asis
+
+# Add PDF download button to title slide
+pdf_filename <- "topic1lecture.pdf"
+pdf_rel <- paste0("ppt/", pdf_filename)
+cat(sprintf('\n<div style="position: absolute; top: 20px; right: 20px; z-index: 100;">\n'))
+cat(sprintf('  <a href="%s" download style="text-decoration: none; background: #e74c3c; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.2em;" title="Download Lecture PDF">📄 PDF</a>\n', pdf_rel))
+cat('</div>\n\n')
+```
+
 ```{r setup}
 #| include: false
 
@@ -177,14 +189,6 @@ for (i in seq_along(imgs)) {
   rel <- gsub("\\\\", "/", img)
   cat("\n---\n\n")
   cat(sprintf('## {background-image="%s" background-size="contain" background-position="center"}\n\n', rel))
-  
-  # Add PDF download button on first slide
-  if (i == 1) {
-    pdf_rel <- gsub("\\\\", "/", file.path("ppt", paste0(tools::file_path_sans_ext(ppt_filename), ".pdf")))
-    cat(sprintf('\n<div style="position: absolute; top: 20px; right: 20px; z-index: 100;">\n'))
-    cat(sprintf('  <a href="%s" download style="text-decoration: none; font-size: 2em; color: #e74c3c; background: white; padding: 10px 15px; border-radius: 50%%; box-shadow: 0 2px 5px rgba(0,0,0,0.3);" title="Download PDF">📄</a>\n', pdf_rel))
-    cat('</div>\n\n')
-  }
 }
 ```
 
