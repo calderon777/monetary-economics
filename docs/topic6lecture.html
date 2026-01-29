@@ -751,6 +751,17 @@ Then close PowerPoint and re-render.
         }
       });
       </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var titleSlide = document.querySelector('.reveal .slides section:first-child');
+      if (titleSlide) {
+        var pdfButton = document.createElement('div');
+        pdfButton.style.cssText = 'position: absolute; top: 30px; right: 30px; z-index: 100;';
+        pdfButton.innerHTML = '<a href="ppt/topic6lecture.pdf" download style="text-decoration: none; background: #e74c3c; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.2em;" title="Download Lecture PDF">⬇️ PDF</a>';
+        titleSlide.appendChild(pdfButton);
+      }
+    });
+    </script>
     
 
 </body></html>

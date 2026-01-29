@@ -7,23 +7,24 @@ format:
     slide-number: true
     chalkboard: true
     preview-links: auto
+    include-after-body: 
+      text: |
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var titleSlide = document.querySelector('.reveal .slides section:first-child');
+          if (titleSlide) {
+            var pdfButton = document.createElement('div');
+            pdfButton.style.cssText = 'position: absolute; top: 30px; right: 30px; z-index: 100;';
+            pdfButton.innerHTML = '<a href="ppt/topic1lecture.pdf" download style="text-decoration: none; background: #e74c3c; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.2em;" title="Download Lecture PDF">⬇️ PDF</a>';
+            titleSlide.appendChild(pdfButton);
+          }
+        });
+        </script>
 execute:
   echo: false
   warning: false
   message: false
 ---
-
-```{r}
-#| echo: false
-#| output: asis
-
-# Add PDF download button to title slide
-pdf_filename <- "topic1lecture.pdf"
-pdf_rel <- paste0("ppt/", pdf_filename)
-cat(sprintf('\n<div style="position: absolute; top: 20px; right: 20px; z-index: 100;">\n'))
-cat(sprintf('  <a href="%s" download style="text-decoration: none; background: #e74c3c; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.2em;" title="Download Lecture PDF">📄 PDF</a>\n', pdf_rel))
-cat('</div>\n\n')
-```
 
 ```{r setup}
 #| include: false
