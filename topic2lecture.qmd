@@ -14,8 +14,8 @@ format:
           var titleSlide = document.querySelector('.reveal .slides section:first-child');
           if (titleSlide) {
             var pdfButton = document.createElement('div');
-            pdfButton.style.cssText = 'position: absolute; top: 30px; right: 30px; z-index: 100;';
-            pdfButton.innerHTML = '<a href="ppt/topic2lecture.pdf" download style="text-decoration: none; background: #e74c3c; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.2em;" title="Download Lecture PDF">⬇️ PDF</a>';
+            pdfButton.style.cssText = 'text-align: center; margin-top: 40px;';
+            pdfButton.innerHTML = '<a href="pdf/topic2lecture.pdf" download style="text-decoration: none; background: #e74c3c; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.2em;" title="Download Lecture PDF">⬇️ PDF</a>';
             titleSlide.appendChild(pdfButton);
           }
         });
@@ -116,6 +116,62 @@ if (length(pngs) == 0) {
     "Error:\n",
     paste(result, collapse = "\n")
   ))
+}
+```
+
+```{r export-pptx-to-pdf}
+#| include: false
+#| eval: true
+
+# Export PPTX to PDF for download
+pdf_filename <- paste0(tools::file_path_sans_ext(ppt_filename), ".pdf")
+pdf_path <- file.path("ppt", pdf_filename)
+pdf_abs <- normalizePath(dirname(pdf_path), mustWork = TRUE)
+pdf_full <- file.path(pdf_abs, pdf_filename)
+
+# Create PowerShell script for PDF export
+ps_pdf_file <- file.path(tempdir(), "export_pdf.ps1")
+
+ps_pdf_code <- sprintf('
+$in = "%s"
+$out = "%s"
+
+$ppt = New-Object -ComObject PowerPoint.Application
+$ppt.Visible = [Microsoft.Office.Core.MsoTriState]::msoFalse
+
+$pres = $ppt.Presentations.Open($in, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse)
+
+# 32 = ppSaveAsPDF format
+$pres.SaveAs($out, 32)
+
+$pres.Close()
+$ppt.Quit()
+
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($pres) | Out-Null
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($ppt) | Out-Null
+[GC]::Collect()
+[GC]::WaitForPendingFinalizers()
+
+Write-Host "PDF export complete"
+', in_abs, pdf_full)
+
+writeLines(ps_pdf_code, ps_pdf_file)
+
+# Run PowerShell script
+result_pdf <- system2("powershell", 
+                      args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_pdf_file),
+                      stdout = TRUE, stderr = TRUE)
+
+# Clean up
+file.remove(ps_pdf_file)
+
+# Verify PDF was created and copy to pdf folder
+if (file.exists(pdf_path)) {
+  pdf_dest <- file.path("pdf", pdf_filename)
+  dir.create("pdf", recursive = TRUE, showWarnings = FALSE)
+  file.copy(pdf_path, pdf_dest, overwrite = TRUE)
+} else {
+  warning(paste("PDF export may have failed:", paste(result_pdf, collapse = "\n")))
 }
 ```
 

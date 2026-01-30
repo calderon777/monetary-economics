@@ -7,6 +7,14 @@ Welcome to **Monetary Economics**.
 
 Use the topic sections below to move through the material in the order you need it: reading first, then slides, then the MCQs. 
 
+## PDF Slides
+
+::: {.callout-warning}
+Please note that the lecture slides may be updated and revised during the weekly lecturer reviews. We recommend downloading the slides before your lecture session to ensure you have the most current version.
+:::
+
+[Topic 1 PDF](pdf/topic1lecture.pdf){download="topic1lecture.pdf"} | [Topic 2 PDF](pdf/topic2lecture.pdf){download="topic2lecture.pdf"} | [Topic 3 PDF](pdf/topic3lecture.pdf){download="topic3lecture.pdf"} | [Topic 4 PDF](pdf/topic4lecture.pdf){download="topic4lecture.pdf"} | [Topic 5 PDF](pdf/topic5lecture.pdf){download="topic5lecture.pdf"} | [Topic 6 PDF](pdf/topic6lecture.pdf){download="topic6lecture.pdf"} | [Topic 7 PDF](pdf/topic7lecture.pdf){download="topic7lecture.pdf"} | [Topic 8 PDF](pdf/topic8lecture.pdf){download="topic8lecture.pdf"}
+
 ## Topic 1 - The Nature and Economic Role of Money
 
 - **Reading:** [Reading](topic1reading.qmd)
