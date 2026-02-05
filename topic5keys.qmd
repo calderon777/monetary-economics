@@ -1,0 +1,9 @@
+---
+title: "Topic 5 - MCQ Answer Key"
+format: html
+draft: true
+---
+
+This is a placeholder for Topic 5 MCQ answer key.
+
+Content will be added when Topic 5 MCQs are developed.

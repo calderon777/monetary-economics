@@ -1,0 +1,101 @@
+---
+title: "Topic 1 - MCQ Answer Key"
+format: html
+draft: true
+---
+
+## Answer Key for Topic 1 MCQs
+
+### Subject Knowledge (SK)
+
+**SK1)** Means of production
+
+**SK2)** Medium of exchange
+
+**SK3)** Unit of account
+
+**SK4)** The ease with which an asset can be exchanged for goods or other assets
+
+**SK5)** M1
+
+**SK6)** Scarcity
+
+**SK7)** It has no direct consumption or production use
+
+**SK8)** IMF Special Drawing Rights (SDR)
+
+**SK9)** Because there is typically a time gap between selling and buying
+
+**SK10)** Money is a veil over real economic activity
+
+---
+
+### Analysis (AN)
+
+**AN1)** Because both traders must want what the other offers
+
+**AN2)** Because traders only need to find someone who accepts money
+
+**AN3)** It reduces the number of relative prices that must be known
+
+**AN4)** Because liquidity provides convenience and flexibility
+
+**AN5)** Because money only affects nominal variables, not real outcomes
+
+**AN6)** Because changes in liquidity preference spill over into goods and asset markets
+
+**AN7)** Because coordination failures and liquidity hoarding can still occur
+
+**AN8)** Because liquidity depends on both asset characteristics and social acceptance
+
+**AN9)** Because people substitute money for consumption and investment
+
+**AN10)** Keynes emphasises coordination frictions; Classics assume they are negligible
+
+---
+
+### Problem Solving (PS)
+
+**PS1)** Double coincidence of wants
+
+**PS2)** Because money can be exchanged later for preferred goods
+
+**PS3)** Preferences are cyclical and misaligned
+
+**PS4)** Because they risk being unable to trade it away later
+
+**PS5)** Multilateral simultaneous exchange
+
+**PS6)** Because coordinating many participants simultaneously becomes difficult
+
+**PS7)** Reduced spending on goods and assets
+
+**PS8)** Traders fail to exchange even though mutually beneficial trades exist
+
+**PS9)** Because spending declines, reducing aggregate demand
+
+**PS10)** Expanding the money supply or lowering interest rates
+
+---
+
+### Mathematical Thinking (MT)
+
+**MT1)** 1
+
+**MT2)** 3
+
+**MT3)** 10
+
+**MT4)** 2
+
+**MT5)** 0.5
+
+**MT6)** 45
+
+**MT7)** It quadruples
+
+**MT8)** 245,000
+
+**MT9)** 6
+
+**MT10)** Proportionally to n
