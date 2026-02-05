@@ -18,6 +18,10 @@ __pycache__/
 # VS Code
 .vscode/
 
+# Credentials (sensitive data)
+.env
+.env.local
+PRIVATE_CREDENTIALS.md
 # Environment variables (secrets)
 .env
 .env.local

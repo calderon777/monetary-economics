@@ -4,6 +4,64 @@ format: html
 author: Dr Camilo Calderon
 ---
 
+```{=html}
+<style>
+  #password-gate {
+    max-width: 500px;
+    margin: 100px auto;
+    padding: 30px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    text-align: center;
+    background-color: #f9f9f9;
+  }
+  #password-gate h2 {
+    color: #333;
+    margin-bottom: 20px;
+  }
+  #password-input {
+    width: 100%;
+    padding: 12px;
+    margin: 15px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box;
+  }
+  #password-submit {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  #password-submit:hover {
+    background-color: #45a049;
+  }
+  #password-error {
+    color: #d32f2f;
+    margin-top: 10px;
+    display: none;
+  }
+  #tutor-content {
+    display: none;
+  }
+</style>
+
+<div id="password-gate">
+  <h2>🔒 Tutor Access Only</h2>
+  <p>This guide is restricted to course tutors. Please enter the password to continue.</p>
+  <input type="password" id="password-input" placeholder="Enter password" autocomplete="off" />
+  <br>
+  <button id="password-submit">Access Guide</button>
+  <p id="password-error">Incorrect password. Please try again.</p>
+</div>
+
+<div id="tutor-content">
+```
+
 ## Tutor Facilitation Guide: Topic 1
 
 This guide supports tutors in running a high-quality, reasoning-focused discussion session. Your role is to **diagnose misconceptions live**, **judge quality of reasoning**, **reframe answers using student language**, and **signal assessment relevance**.
@@ -213,3 +271,44 @@ Once you've run Q1 with this structure, the pattern repeats:
 4. **Signal** → "Exams test this by asking: ...?"
 
 Use this consistent pattern across Topics 2–8 for coherence.
+
+</div>
+
+```{=html}
+<script>
+(function() {
+  const correctPassword = "camcamcam";
+  const passwordInput = document.getElementById("password-input");
+  const submitBtn = document.getElementById("password-submit");
+  const errorMsg = document.getElementById("password-error");
+  const gate = document.getElementById("password-gate");
+  const content = document.getElementById("tutor-content");
+  
+  // Check if already authenticated in this session
+  if (sessionStorage.getItem("tutorAccess") === "granted") {
+    gate.style.display = "none";
+    content.style.display = "block";
+  }
+  
+  function checkPassword() {
+    if (passwordInput.value === correctPassword) {
+      sessionStorage.setItem("tutorAccess", "granted");
+      gate.style.display = "none";
+      content.style.display = "block";
+      errorMsg.style.display = "none";
+    } else {
+      errorMsg.style.display = "block";
+      passwordInput.value = "";
+      passwordInput.focus();
+    }
+  }
+  
+  submitBtn.addEventListener("click", checkPassword);
+  passwordInput.addEventListener("keypress", function(e) {
+    if (e.key === "Enter") {
+      checkPassword();
+    }
+  });
+})();
+</script>
+```

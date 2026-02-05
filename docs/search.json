@@ -177,14 +177,14 @@
     "href": "topic1tutor.html",
     "title": "Topic 1 - Tutor Guide",
     "section": "",
-    "text": "This guide supports tutors in running a high-quality, reasoning-focused discussion session. Your role is to diagnose misconceptions live, judge quality of reasoning, reframe answers using student language, and signal assessment relevance."
+    "text": "This guide is restricted to course tutors. Please enter the password to continue.\n  \n  \n  Access Guide\n  Incorrect password. Please try again."
   },
   {
     "objectID": "topic1tutor.html#tutor-facilitation-guide-topic-1",
     "href": "topic1tutor.html#tutor-facilitation-guide-topic-1",
     "title": "Topic 1 - Tutor Guide",
-    "section": "",
-    "text": "This guide supports tutors in running a high-quality, reasoning-focused discussion session. Your role is to diagnose misconceptions live, judge quality of reasoning, reframe answers using student language, and signal assessment relevance."
+    "section": "Tutor Facilitation Guide: Topic 1",
+    "text": "Tutor Facilitation Guide: Topic 1\nThis guide supports tutors in running a high-quality, reasoning-focused discussion session. Your role is to diagnose misconceptions live, judge quality of reasoning, reframe answers using student language, and signal assessment relevance."
   },
   {
     "objectID": "topic1tutor.html#before-the-tutorial",
@@ -429,7 +429,7 @@
     "href": "index.html#topic-1---the-nature-and-economic-role-of-money",
     "title": "Monetary Economics",
     "section": "Topic 1 - The Nature and Economic Role of Money",
-    "text": "Topic 1 - The Nature and Economic Role of Money\n\nReading: Reading\nSlides: Lecture\nQuestions: Open Questions\nMCQs: MCQs",
+    "text": "Topic 1 - The Nature and Economic Role of Money\n\nReading: Reading\nSlides: Lecture\nQuestions: Open Questions\nAnswers: Answers\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -439,7 +439,7 @@
     "href": "index.html#topic-2---classical-theory-of-money",
     "title": "Monetary Economics",
     "section": "Topic 2 - Classical Theory of Money",
-    "text": "Topic 2 - Classical Theory of Money\n\nReading: Reading\nSlides: Lecture\nQuestions: Open Questions\nMCQs: MCQs",
+    "text": "Topic 2 - Classical Theory of Money\n\nReading: Reading\nSlides: Lecture\nQuestions: Open Questions\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -449,7 +449,7 @@
     "href": "index.html#topic-3---keynes-theory-of-money",
     "title": "Monetary Economics",
     "section": "Topic 3 - Keynes’ Theory of Money",
-    "text": "Topic 3 - Keynes’ Theory of Money\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs",
+    "text": "Topic 3 - Keynes’ Theory of Money\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -459,7 +459,7 @@
     "href": "index.html#topic-4---friedmans-monetarism",
     "title": "Monetary Economics",
     "section": "Topic 4 - Friedman’s Monetarism",
-    "text": "Topic 4 - Friedman’s Monetarism\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs",
+    "text": "Topic 4 - Friedman’s Monetarism\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -469,7 +469,7 @@
     "href": "index.html#topic-5---the-new-classical-approachtheory-of-money",
     "title": "Monetary Economics",
     "section": "Topic 5 - The New Classical ApproachTheory of Money",
-    "text": "Topic 5 - The New Classical ApproachTheory of Money\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs",
+    "text": "Topic 5 - The New Classical ApproachTheory of Money\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -479,7 +479,7 @@
     "href": "index.html#topic-6---the-time-inconsistency-problem-and-credibility-of-monetary-policy",
     "title": "Monetary Economics",
     "section": "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
-    "text": "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs",
+    "text": "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -489,7 +489,7 @@
     "href": "index.html#topic-7---the-monetary-policy-consensus-and-the-great-moderation",
     "title": "Monetary Economics",
     "section": "Topic 7 - The MOnetary Policy Consensus and the Great Moderation",
-    "text": "Topic 7 - The MOnetary Policy Consensus and the Great Moderation\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs",
+    "text": "Topic 7 - The MOnetary Policy Consensus and the Great Moderation\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -499,7 +499,7 @@
     "href": "index.html#topic-8---monetary-policy-in-the-post-crisis",
     "title": "Monetary Economics",
     "section": "Topic 8 - Monetary Policy in the Post-Crisis",
-    "text": "Topic 8 - Monetary Policy in the Post-Crisis\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs",
+    "text": "Topic 8 - Monetary Policy in the Post-Crisis\n\nReading: Reading\nSlides: Lecture\nMCQs: MCQs\nTutor Guide: Tutor Guide 🔒",
     "crumbs": [
       "Monetary Economics"
     ]
@@ -513,34 +513,6 @@
     "crumbs": [
       "Monetary Economics"
     ]
-  },
-  {
-    "objectID": "topic1answers.html",
-    "href": "topic1answers.html",
-    "title": "Topic 1 - Indicative Answers",
-    "section": "",
-    "text": "A. Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?\nB. If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?\n\n\nThe Store of Value (SoV) role of money automatically follows from its Medium of Exchange (MoE) role. This is because using money as MoE leads inevitably to a time gap between acquiring money through sale and spending it to buy something else. During this time, money stores the value of what was sold.\nHowever, there is no inevitable link between MoE and Unit of Account (UoA). The need for a UoA can arise even in a non-monetary economy to define prices. While it makes sense for the MoE to also serve as UoA, they are conceptually independent functions.\nExamples of UoA without MoE: - IMF’s Special Drawing Right (SDR): A fictitious currency based on a basket of major currencies, used to denominate loans but not freely traded - European Currency Unit (ECU): Preceded the Euro, used for harmonizing accounts but not an actual medium of exchange"
-  },
-  {
-    "objectID": "topic1answers.html#question-1",
-    "href": "topic1answers.html#question-1",
-    "title": "Topic 1 - Indicative Answers",
-    "section": "",
-    "text": "A. Any object that serves as a medium of exchange (MoE) will also serve as a store of value (SoV). What about the unit of account (UoA) role of money? Does it also follow from the MoE role or is it an independent feature of money?\nB. If you believe that UoA is independent of MoE, can you provide one example of a UoA that is not itself a widely used MoE?\n\n\nThe Store of Value (SoV) role of money automatically follows from its Medium of Exchange (MoE) role. This is because using money as MoE leads inevitably to a time gap between acquiring money through sale and spending it to buy something else. During this time, money stores the value of what was sold.\nHowever, there is no inevitable link between MoE and Unit of Account (UoA). The need for a UoA can arise even in a non-monetary economy to define prices. While it makes sense for the MoE to also serve as UoA, they are conceptually independent functions.\nExamples of UoA without MoE: - IMF’s Special Drawing Right (SDR): A fictitious currency based on a basket of major currencies, used to denominate loans but not freely traded - European Currency Unit (ECU): Preceded the Euro, used for harmonizing accounts but not an actual medium of exchange"
-  },
-  {
-    "objectID": "topic1answers.html#question-2",
-    "href": "topic1answers.html#question-2",
-    "title": "Topic 1 - Indicative Answers",
-    "section": "Question 2",
-    "text": "Question 2\nWhat are the characteristics that underlie liquidity? Can any object acquire these characteristics or are there some physical attributes that must be met?\n\nIndicative Answer\nLiquidity is characterized by four key attributes:\n\n(i) Marketability - ease of sale\n(ii) Predictability of exchange value - more stable than individual goods\n(iii) Reversibility - minimal loss of value between acquisition and sale\n(iv) Divisibility - can be used for even the smallest transactions\n\nWhatever serves as the MoE acquires these characteristics by virtue of being universally accepted. However, not any object can become MoE. Physical attributes required include:\n\n(i) Transportability - easy to carry\n(ii) Durability - does not physically depreciate\n(iii) Inherent divisibility - can be broken into small units\n(iv) Universal appeal - not repulsive to users\n\nThese objective criteria limit what can serve as effective money."
-  },
-  {
-    "objectID": "topic1answers.html#question-3",
-    "href": "topic1answers.html#question-3",
-    "title": "Topic 1 - Indicative Answers",
-    "section": "Question 3",
-    "text": "Question 3\nIn the example of three agents and three goods which is discussed in the lectures, can you think of an alternative to the use of a medium of exchange that might have allowed the three traders to acquire their most preferred good?\nContext: - Harriet: 6 Bananas ≻ 3 Apples ≻ 1 Cabbage - Ina: 1 Cabbage ≻ 6 Bananas ≻ 3 Apples - Jamal: 3 Apples ≻ 1 Cabbage ≻ 6 Bananas\n\nIndicative Answer\nAlternative mechanisms to the use of a medium of exchange:\n1. Middleman/Clearinghouse approach: In the three-trader example, one trader could accept their least preferred good to facilitate the chain of exchanges. For instance, if Ina accepts Apples from Harriet (her least preferred), she can then trade with Jamal to get Cabbage (her most preferred).\nProblem: This requires perfect knowledge of who has what and who wants what. Search and informational frictions make this risky.\n2. Multilateral simultaneous trades: All traders meet at once and exchange cooperatively (Ina gives Bananas to Harriet, who gives Apples to Jamal, who gives Cabbage to Ina - all simultaneously).\nProblem: This becomes extremely difficult with many traders and goods. Coordination costs are prohibitive.\nConclusion: The use of a MoE simplifies all these complications and reduces transaction costs significantly."
   },
   {
     "objectID": "topic1mcqs.html",

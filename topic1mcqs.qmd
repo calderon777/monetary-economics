@@ -168,35 +168,105 @@ library(webexercises)
     // Filter for this quiz only
     const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
 
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];  // SK1, AN1, etc.
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);  // fallback
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
     // Count incorrect attempts per question
     const questionStats = {};
-    filtered.forEach(row => {
-      const details = row.details || {};
-      Object.keys(details).forEach(qKey => {
-        const detail = details[qKey];
-        if (detail.ok === 0) {  // incorrect attempt
-          if (!questionStats[qKey]) {
-            questionStats[qKey] = { incorrectCount: 0, totalCount: 0 };
-          }
-          questionStats[qKey].incorrectCount += 1;
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === 'string') {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.error(`Row ${rowIdx} - Failed to parse details:`, e);
+          details = {};
         }
-        if (!questionStats[qKey]) {
-          questionStats[qKey] = { incorrectCount: 0, totalCount: 0 };
+      }
+      
+      // Handle both object and array-like structures
+      Object.keys(details).forEach(keyOrIndex => {
+        const detail = details[keyOrIndex];
+        
+        // Determine the question identifier
+        let questionId;
+        
+        // Try to use the key as-is if it looks like SK1, AN1, Q1, etc.
+        if (typeof keyOrIndex === 'string' && /^(SK|AN|PS|MT)(\d+)/.test(keyOrIndex)) {
+          // Already in proper format (SK1, AN1, etc.)
+          questionId = keyOrIndex;
+        } else if (typeof keyOrIndex === 'string' && /^Q(\d+)/.test(keyOrIndex)) {
+          // Old format: Q1, Q21, Q33, etc. - extract number and map to position
+          const match = keyOrIndex.match(/^Q(\d+)/);
+          const qNumber = parseInt(match[1]);
+          const idx = qNumber - 1;  // Convert Q21 to index 20
+          questionId = questionIdentifiers[idx] || "Q" + qNumber;  // Map to proper identifier or fallback
+        } else if (!isNaN(keyOrIndex)) {
+          // If it's a numeric index, map it to the identifier
+          const idx = parseInt(keyOrIndex);
+          questionId = questionIdentifiers[idx] || "Q" + (idx + 1);
+        } else {
+          questionId = keyOrIndex;
         }
-        questionStats[qKey].totalCount += 1;
+        
+        // Initialize if needed
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        // Count total attempts
+        questionStats[questionId].totalCount += 1;
+        
+        // Determine if incorrect: check ok field first, then fallback to comparing selected vs correct
+        let isIncorrect = false;
+        if (detail.ok !== undefined && detail.ok !== null) {
+          // Use the ok field if available
+          isIncorrect = detail.ok === 0 || detail.ok === "0" || detail.ok === false;
+        } else if (detail.selected && detail.correct) {
+          // Fallback: compare selected answer vs correct answer
+          isIncorrect = detail.selected !== detail.correct;
+        }
+        
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
       });
     });
 
-    // Get top 10 most incorrect questions
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
     const sortedQuestions = Object.entries(questionStats)
       .map(([qKey, stats]) => ({
-        qKey,
+        qKey: qKey,  // Keep original identifier like SK1, AN1, Q1, etc.
         incorrectCount: stats.incorrectCount,
         totalCount: stats.totalCount,
         incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
       }))
       .sort((a, b) => b.incorrectCount - a.incorrectCount)
       .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
 
     if (sortedQuestions.length === 0) {
       statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
@@ -258,16 +328,21 @@ library(webexercises)
       const isCorrect = selected && (selected === correct);
       if (isCorrect) score += 1;
 
-      // Extract category from question text (SK1, AN1, PS1, MT1, etc.)
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
       const questionText = qEl.querySelector("strong")?.textContent || "";
-      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)\d+\)/);
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+      let questionId = "Q" + (idx + 1);  // fallback
+      
       if (categoryMatch) {
         const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;  // Use actual identifier like SK1, AN1, etc.
+        
         categories[cat].total += 1;
         if (isCorrect) categories[cat].score += 1;
       }
 
-      details["Q" + (idx + 1)] = { selected, correct, ok: isCorrect ? 1 : 0 };
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
 
       // Mark only after submit
       if (selected) {
@@ -299,11 +374,19 @@ library(webexercises)
         const selected = getSelectedLabelText(qEl);
         const isCorrect = selected && (selected === correct);
         
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+        let questionId = "Q" + (idx + 1);  // fallback
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];  // SK1, AN1, etc.
+        }
+        
         if (selected) {
           if (isCorrect) {
-            correctQuestions.push("Q" + (idx + 1));
+            correctQuestions.push(questionId);
           } else {
-            incorrectQuestions.push("Q" + (idx + 1));
+            incorrectQuestions.push(questionId);
           }
         }
       });
