@@ -152,9 +152,68 @@ library(webexercises)
             "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
           ).join("");
       }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
     } catch (err) {
       table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
       console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach(row => {
+      const details = row.details || {};
+      Object.keys(details).forEach(qKey => {
+        const detail = details[qKey];
+        if (detail.ok === 0) {  // incorrect attempt
+          if (!questionStats[qKey]) {
+            questionStats[qKey] = { incorrectCount: 0, totalCount: 0 };
+          }
+          questionStats[qKey].incorrectCount += 1;
+        }
+        if (!questionStats[qKey]) {
+          questionStats[qKey] = { incorrectCount: 0, totalCount: 0 };
+        }
+        questionStats[qKey].totalCount += 1;
+      });
+    });
+
+    // Get top 10 most incorrect questions
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey,
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
     }
   }
 
@@ -229,6 +288,28 @@ library(webexercises)
           resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
         }
       }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push("Q" + (idx + 1));
+          } else {
+            incorrectQuestions.push("Q" + (idx + 1));
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
       
       resultEl.innerHTML = resultHTML;
     }
@@ -574,6 +655,8 @@ library(webexercises)
 
 <h3>Leaderboard (Top 30)</h3>
 <table id="leaderboard"></table>
+
+<div id="question-stats"></div>
 
 </div>
 
