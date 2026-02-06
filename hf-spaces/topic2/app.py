@@ -21,7 +21,7 @@ def load_questions_from_qmd():
 
 # Store indicative answers for each question (from topic2questions.qmd)
 INDICATIVE_ANSWERS = {
-    1: """**(a)** Nominal income:
+    1: r"""**(a)** Nominal income:
 $$y_N = P_1 s_1 + P_2 s_2$$
 
 **(b)** Budget constraint:
@@ -71,7 +71,7 @@ $$d_2^* - s_2 = 7 - 10 = -3 \text{ (net sale of good 2)}$$
 
 Note that net purchase of 1 = net sale of 2 in value terms.""",
 
-    2: """**(a)** Budget constraints:
+    2: r"""**(a)** Budget constraints:
 
 **Nominal budget constraints:**
 
@@ -112,7 +112,7 @@ $$\therefore D_2 = S_2$$
 
 def get_question_text(num):
     questions = {
-    1: """**Question 1: Utility Maximization**
+    1: r"""**Question 1: Utility Maximization**
 
 Consider a trader who derives utility from two goods, 1 and 2. Her utility function is given by
 
@@ -134,7 +134,7 @@ Her initial endowment is $s_1 \geq 0$ units of good 1 and $s_2 \geq 0$ units of 
 
 **(f)** Suppose $s_1 = 2$, $s_2 = 10$, $P_1 = 2$, $P_2 = 1$, and $\alpha = 0.5$. What will be her *net purchase* of each good. Note: A net purchase is the difference between the amount she demands of each good and the amount she had in her endowment.""",
 
-    2: """**Question 2: General Equilibrium in an Exchange Economy**
+    2: r"""**Question 2: General Equilibrium in an Exchange Economy**
 
 Consider an exchange economy with 2 traders, $A$ and $B$ and 2 goods, 1 and 2. The nominal price of each good is $P_1$ and $P_2$ respectively.
 
