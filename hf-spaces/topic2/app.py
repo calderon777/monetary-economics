@@ -19,71 +19,94 @@ def load_questions_from_qmd():
             print(f"Warning: Could not load topic2questions.qmd: {e}")
     return None
 
-# Store indicative answers for each question (from your handwritten notes)
+# Store indicative answers for each question (from topic2questions.qmd)
 INDICATIVE_ANSWERS = {
-    1: """**(a)** Nominal income: y_N = P_1 s_1 + P_2 s_2
+    1: """**(a)** Nominal income:
+$$y_N = P_1 s_1 + P_2 s_2$$
 
-**(b)** Budget constraint: P_1 d_1 + P_2 d_2 = y_N
+**(b)** Budget constraint:
+$$P_1 d_1 + P_2 d_2 = y_N$$
 
-**(c)** Utility maximisation problem using Lagrangian:
-L = d_1^α d_2^(1-α) + λ[y_N - P_1 d_1 - P_2 d_2]
+**(c)** Utility maximisation problem:
+$$\mathcal{L} = d_1^{\alpha} d_2^{1-\alpha} + \lambda[y_N - P_1 d_1 - P_2 d_2]$$
 
 First-order conditions:
-∂L/∂d_1 = α(d_2/d_1)^(1-α) - λP_1 = 0
-∂L/∂d_2 = (1-α)(d_1/d_2)^α - λP_2 = 0
-∂L/∂λ = y_N - P_1 d_1 - P_2 d_2 = 0
+$$\frac{\partial \mathcal{L}}{\partial d_1} = \alpha \left(\frac{d_2}{d_1}\right)^{1-\alpha} - \lambda P_1 = 0$$
+$$\frac{\partial \mathcal{L}}{\partial d_2} = (1-\alpha) \left(\frac{d_1}{d_2}\right)^{\alpha} - \lambda P_2 = 0$$
+$$\frac{\partial \mathcal{L}}{\partial \lambda} = y_N - P_1 d_1 - P_2 d_2 = 0$$
 
-**(d)** Combining FOCs yields:
-d_1* = α(y_N/P_1)
-d_2* = (1-α)(y_N/P_2)
+**(d)** Combining FOCs for $d_1$ and $d_2$:
+$$\lambda = \frac{\alpha}{P_1}\left(\frac{d_2}{d_1}\right)^{1-\alpha} = \frac{(1-\alpha)}{P_2}\left(\frac{d_1}{d_2}\right)^{\alpha}$$
 
-These represent optimal choices (demands).
+Rearranging:
+$$\frac{d_2}{d_1} = \frac{(1-\alpha)}{\alpha} \frac{P_1}{P_2}$$
+$$d_2 = \left[\frac{(1-\alpha)}{\alpha} \frac{P_1}{P_2}\right] d_1$$
 
-**(e)** Expanding y_N:
-d_1* = α[s_1 + (P_2/P_1)s_2]
-d_2* = (1-α)[(P_1/P_2)s_1 + s_2]
+Plugging into the budget constraint:
+$$P_1 d_1 + P_2 \left[\frac{(1-\alpha)}{\alpha} \frac{P_1}{P_2}\right] d_1 = y_N$$
+$$P_1 d_1 \left[1 + \frac{1-\alpha}{\alpha}\right] = y_N$$
+$$P_1 d_1 \left[\frac{\alpha + 1 - \alpha}{\alpha}\right] = y_N$$
 
-If all prices double, the ratios P_1/P_2 and P_2/P_1 are unaffected, so demands remain unchanged. This reflects the homogeneity of demand functions.
+Therefore:
+$$d_1^* = \alpha \frac{y_N}{P_1}$$
+$$d_2^* = (1-\alpha) \frac{y_N}{P_2}$$
 
-**(f)** With s_1=2, s_2=10, P_1=2, P_2=1, α=0.5:
-d_1* = 0.5[2 + (1/2)(10)] = 3.5
-d_2* = 0.5[(2/1)(2) + 10] = 7
+These represent optimal choices of $d_1$, $d_2$.
+
+**(e)** Expanding $y_N$:
+$$d_1^* = \alpha \left[\frac{P_1 s_1 + P_2 s_2}{P_1}\right] = \alpha\left[s_1 + \frac{P_2}{P_1}s_2\right]$$
+$$d_2^* = (1-\alpha)\left[\frac{P_1 s_1 + P_2 s_2}{P_2}\right] = (1-\alpha)\left[\frac{P_1}{P_2}s_1 + s_2\right]$$
+
+If $P_1$, $P_2$ double, $\frac{P_1}{P_2}$ and $\frac{P_2}{P_1}$ are unaffected.
+
+So $d_1^*$, $d_2^*$ unchanged, reflecting the homogeneity of demand functions.
+
+**(f)** Plugging in $s_1 = 2$, $s_2 = 10$, $P_1 = 2$, $P_2 = 1$, $\alpha = 0.5$:
+$$d_1^* = 0.5\left[2 + \frac{1}{2}(10)\right] = 0.5[2 + 5] = 3.5$$
+$$d_2^* = 0.5\left[\frac{2}{1}(2) + 10\right] = 0.5[4 + 10] = 7$$
 
 Net purchase:
-d_1* - s_1 = 3.5 - 2 = 1.5 (net purchase of good 1)
-d_2* - s_2 = 7 - 10 = -3 (net sale of good 2)
+$$d_1^* - s_1 = 3.5 - 2 = 1.5 \text{ (net purchase of good 1)}$$
+$$d_2^* - s_2 = 7 - 10 = -3 \text{ (net sale of good 2)}$$
 
 Note that net purchase of 1 = net sale of 2 in value terms.""",
 
     2: """**(a)** Budget constraints:
 
-**Nominal terms:**
-Agent A: P_1 d_1^A* + P_2 d_2^A* ≤ P_1 s_1^A + P_2 s_2^A
-Agent B: P_1 d_1^B* + P_2 d_2^B* ≤ P_1 s_1^B + P_2 s_2^B
+**Nominal budget constraints:**
 
-**Real terms (good 1 as numeraire):**
-Agent A: d_1^A* + (P_2/P_1)d_2^A* ≤ s_1^A + (P_2/P_1)s_2^A
-Agent B: d_1^B* + (P_2/P_1)d_2^B* ≤ s_1^B + (P_2/P_1)s_2^B
+Agent A: $P_1 d_1^{A*} + P_2 d_2^{A*} \leq P_1 s_1^A + P_2 s_2^A$
 
-where demands are functions of relative price and real income.
+Agent B: $P_1 d_1^{B*} + P_2 d_2^{B*} \leq P_1 s_1^B + P_2 s_2^B$
 
-**(b)** Market clearing conditions:
-Good 1: d_1^A* + d_1^B* = s_1^A + s_1^B → D_1 = S_1
-Good 2: d_2^A* + d_2^B* = s_2^A + s_2^B → D_2 = S_2
+**Real terms (using good 1 as numeraire):**
 
-**(c)** Suppose D_1 = S_1 (good 1 market clears) and budget constraints bind (hold as "=").
+Agent A: $d_1^{A*} + \frac{P_2}{P_1} d_2^{A*} \leq s_1^A + \frac{P_2}{P_1} s_2^A$
 
-Adding both agents' real budget constraints:
-d_1^A* + (P_2/P_1)d_2^A* + d_1^B* + (P_2/P_1)d_2^B* = s_1^A + (P_2/P_1)s_2^A + s_1^B + (P_2/P_1)s_2^B
+Agent B: $d_1^{B*} + \frac{P_2}{P_1} d_2^{B*} \leq s_1^B + \frac{P_2}{P_1} s_2^B$
+
+where demands are functions of relative price and real income:
+$$d_1^{A*} = d_1^A\left(\frac{P_2}{P_1}, \frac{y_N^A}{P_1}\right), \quad d_2^{A*} = d_2^A\left(\frac{P_2}{P_1}, \frac{y_N^A}{P_1}\right)$$
+$$d_1^{B*} = d_1^B\left(\frac{P_2}{P_1}, \frac{y_N^B}{P_1}\right), \quad d_2^{B*} = d_2^B\left(\frac{P_2}{P_1}, \frac{y_N^B}{P_1}\right)$$
+
+**(b)** Market clearing conditions (total purchases = total sales):
+
+**Good 1:** $d_1^{A*} + d_1^{B*} = s_1^A + s_1^B \Rightarrow D_1 = S_1$
+
+**Good 2:** $d_2^{A*} + d_2^{B*} = s_2^A + s_2^B \Rightarrow D_2 = S_2$
+
+**(c)** Suppose $D_1 = S_1$, assume that the budget constraint of each agent holds as "=" (binding), then only the real ones need to be looked at:
+
+$$d_1^{A*} + \frac{P_2}{P_1} d_2^{A*} + d_1^{B*} + \frac{P_2}{P_1} d_2^{B*} = s_1^A + \frac{P_2}{P_1}s_2^A + s_1^B + \frac{P_2}{P_1}s_2^B$$
 
 Rearranging:
-(d_1^A* + d_1^B*) + (P_2/P_1)(d_2^A* + d_2^B*) = (s_1^A + s_1^B) + (P_2/P_1)(s_2^A + s_2^B)
+$$\underbrace{(d_1^{A*} + d_1^{B*})}_{A} + \frac{P_2}{P_1}\underbrace{(d_2^{A*} + d_2^{B*})}_{B} = \underbrace{(s_1^A + s_1^B)}_{A} + \frac{P_2}{P_1}\underbrace{(s_2^A + s_2^B)}_{B}$$
 
-Since D_1 = S_1, the terms in first brackets cancel:
-(P_2/P_1)(d_2^A* + d_2^B*) = (P_2/P_1)(s_2^A + s_2^B)
-Therefore: D_2 = S_2
+Since $D_1 = S_1$ (market for good 1 clears), terms A cancel:
+$$\frac{P_2}{P_1}(d_2^{A*} + d_2^{B*}) = \frac{P_2}{P_1}(s_2^A + s_2^B)$$
+$$\therefore D_2 = S_2$$
 
-**This establishes Walras' Law**: If n-1 markets clear and all budget constraints bind, the nth market must also clear."""
+**This establishes Walras' Law**: If $n-1$ markets clear and all budget constraints bind, the $n$-th market must also clear."""
 }
 
 
@@ -91,23 +114,44 @@ def get_question_text(num):
     questions = {
     1: """**Question 1: Utility Maximization**
 
-Consider a trader with utility function $U = d_1^{\alpha} d_2^{1-\alpha}$ where $d_1$ and $d_2$ are demands for goods 1 and 2, and $\alpha \in (0,1)$. Initial endowment: $s_1, s_2$ units.
+Consider a trader who derives utility from two goods, 1 and 2. Her utility function is given by
 
-(a) Write an expression for her nominal income $y_N$ given prices $P_1$ and $P_2$.
-(b) Write her budget constraint.
-(c) Write down the utility maximisation problem and derive first-order conditions.
-(d) Solve for demands $d_1, d_2$ as functions of $P_1, P_2$, and $y_N$.
-(e) Express demands as functions of $P_1, P_2, s_1, s_2$. What happens if all prices double?
-(f) Calculate net purchase with $s_1=2, s_2=10, P_1=2, P_2=1, \alpha=0.5$.""",
+$$U = d_1^{\alpha} d_2^{1-\alpha}$$
+
+where $d_1$ is her demand for good 1 and $d_2$ is her demand for good 2; $\alpha$ is a parameter that lies between 0 and 1.
+
+Her initial endowment is $s_1 \geq 0$ units of good 1 and $s_2 \geq 0$ units of good 2.
+
+**(a)** Suppose that the nominal price of good 1 is $P_1$ and that of good 2 is $P_2$. Write an expression for her nominal "income" $y_N$.
+
+**(b)** Write her budget constraint as a function of the price of each good, her demand of each good and her nominal income $y_N$.
+
+**(c)** She maximises her utility function subject to the budget constraint. Write down her utility maximisation problem and derive the first-order conditions.
+
+**(d)** Solve for her demands of each good $d_1$, $d_2$ as functions of $P_1$, $P_2$ and $y_N$.
+
+**(e)** Now express her demands $d_1$, $d_2$ as functions of $P_1$, $P_2$, $s_1$ and $s_2$. What happens to her demands if all prices double?
+
+**(f)** Suppose $s_1 = 2$, $s_2 = 10$, $P_1 = 2$, $P_2 = 1$, and $\alpha = 0.5$. What will be her *net purchase* of each good. Note: A net purchase is the difference between the amount she demands of each good and the amount she had in her endowment.""",
 
     2: """**Question 2: General Equilibrium in an Exchange Economy**
 
-Consider 2 traders (A, B) and 2 goods (1, 2) with prices $P_1, P_2$.
-Endowments: $s^A = (s_1^A, s_2^A)$, $s^B = (s_1^B, s_2^B)$.
+Consider an exchange economy with 2 traders, $A$ and $B$ and 2 goods, 1 and 2. The nominal price of each good is $P_1$ and $P_2$ respectively.
 
-(a) Write each agent's budget constraint in (i) nominal terms and (ii) real terms using good 1 as numeraire.
-(b) Write the market clearing condition for each good.
-(c) Show that when (i) budget constraints bind and (ii) market 1 clears, then market 2 must also clear. What 'law' is illustrated?"""
+Suppose that each trader has the following endowment of each good:
+
+$$s^A = (s_1^A, s_2^A)$$
+$$s^B = (s_1^B, s_2^B)$$
+
+where $s_j^i \geq 0$ for $i = A, B$ and $j = 1, 2$.
+
+Let $d_1^A$, $d_2^A$ represent agent $A$'s demand for each of the two goods and $d_1^B$, $d_2^B$ likewise for agent $B$. Suppose that each agent's endowment is exogenous but her demand for each good is a function of its relative price.
+
+**(a)** Write down each agent's budget constraint in (i) nominal terms and (ii) in real terms, using good 1 as a numeraire (*i.e.* unit of account).
+
+**(b)** Write down the market clearing condition for each good (Note: The demand for each good by each agent will be expressed as a function of the relative price of $P_2/P_1$ and her real income evaluated in equivalent units of good 1).
+
+**(c)** Show that when: (i) each agent's budget constraint is binding (*i.e.* their total spending exactly equals their real income) (ii) the market for good 1 is in equilibrium, then the market for good 2 is also bound to be in equilibrium. What 'law' have you illustrated?"""
     }
     return questions.get(num, "")
 
