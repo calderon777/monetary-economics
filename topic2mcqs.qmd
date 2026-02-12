@@ -1,10 +1,710 @@
 ---
-title: "Topic 2 - MCQs"
+title: "Topic 2 - MCQs Formative Assessment"
+author: by Dr Camilo Calderon
 format: html
 execute:
   echo: false
 ---
 
-This is a placeholder page for Topic 2 MCQs.
+::: callout-note
+## How to use this quiz
 
-Content will be added soon.
+This quiz is designed as a **formative self-assessment tool**, not as a test.
+
+Its purpose is to help you:
+- check your understanding of the key concepts from Topic 2,
+- identify which types of thinking you find more difficult, and
+- guide your revision before the tutorial and future assessments.
+
+### What this quiz measures
+
+Each question belongs to one of four categories:
+
+- **Subject Knowledge (SK):** definitions, concepts, and facts.  
+- **Analysis (AN):** understanding relationships and economic mechanisms.  
+- **Problem Solving (PS):** applying concepts to new situations.  
+- **Mathematical Thinking (MT):** working with ratios, prices, and scaling.
+
+Your score will be broken down by category so you can see **where** you are strong and where you need more practice.
+
+### How to complete the quiz
+
+- You may use your notes and the lecture materials.
+- Take your time — the goal is understanding, not speed.
+- Use the **Hints** if you get stuck.
+- You may refresh and retry the quiz as many times as you like.
+
+### How to interpret your results
+
+- A low score is **not a problem** — it tells you what to focus on.
+- If you score low in:
+  - **SK:** revise definitions and core concepts.
+  - **AN:** revisit the logic of the models and examples.
+  - **PS:** practise applying concepts to new cases.
+  - **MT:** practise the price and ratio calculations.
+
+### About the leaderboard
+
+The leaderboard is optional and anonymous. It exists only to make practice more engaging.  
+It has **no effect** on your grade and is not used for evaluation.
+
+The only purpose of this quiz is to support your learning.
+
+:::
+
+```{r}
+#| echo: false
+library(webexercises)
+```
+
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
+```{=html}
+<script>
+(function () {
+  // 1) Configure your Google Apps Script Web App URL here.
+  //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function getSelectedLabelText(qEl) {
+    const input = qEl.querySelector('input[type="radio"]:checked');
+    if (!input) return "";
+    const label = input.closest('label') || document.querySelector('label[for="' + input.id + '"]');
+    return label ? norm(label.textContent) : "";
+  }
+
+  function clearFeedback(qEl) {
+    qEl.querySelectorAll("label").forEach(l => l.classList.remove("is-correct", "is-incorrect"));
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (line) {
+      line.textContent = "";
+      line.classList.add("hidden");
+    }
+  }
+
+  function setFeedback(qEl, isCorrect) {
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (!line) return;
+    line.textContent = isCorrect ? "Correct." : "Incorrect.";
+    line.classList.remove("hidden");
+  }
+
+  async function postAttempt(payload) {
+    // Do not attempt POST if ENDPOINT is not configured
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) return;
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Could not save attempt:", err);
+    }
+  }
+
+  async function loadLeaderboard(quizName) {
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
+
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
+      return;
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 30);
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
+      }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];  // SK1, AN1, etc.
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);  // fallback
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === 'string') {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.warn(`Row ${rowIdx} - Could not parse details:`, details);
+          return;
+        }
+      }
+
+      console.log(`Row ${rowIdx} - Processing details:`, details);
+
+      Object.entries(details).forEach(([questionId, qData]) => {
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        questionStats[questionId].totalCount += 1;
+        
+        // Check if answer was incorrect (ok: 0 means incorrect)
+        const isIncorrect = qData.ok === 0;
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
+      });
+    });
+
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey: qKey,  // Keep original identifier like SK1, AN1, Q1, etc.
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
+    }
+  }
+
+  async function submitQuiz() {
+    const nicknameEl = document.getElementById("nickname");
+    const resultEl = document.getElementById("quiz-result");
+    const submitBtn = document.getElementById("quiz-submit");
+
+    const nickname = (nicknameEl?.value || "").trim();
+    if (!nickname) {
+      alert("Please enter a nickname before submitting.");
+      nicknameEl?.focus();
+      return;
+    }
+
+    // Lock submit to avoid double posting
+    if (submitBtn) submitBtn.disabled = true;
+
+    let score = 0;
+    let total = 0;
+    const details = {};
+    
+    // Category scores
+    const categories = {
+      SK: { score: 0, total: 0, name: "Subject Knowledge" },
+      AN: { score: 0, total: 0, name: "Analysis" },
+      PS: { score: 0, total: 0, name: "Problem Solving" },
+      MT: { score: 0, total: 0, name: "Mathematical Thinking" }
+    };
+
+    const questions = Array.from(document.querySelectorAll(".mcq-we-q"));
+
+    // Clear any prior feedback first (important if student re-submits)
+    questions.forEach(clearFeedback);
+
+    questions.forEach((qEl, idx) => {
+      total += 1;
+      const keyEl = qEl.querySelector(".mcq-key");
+      const correct = norm(keyEl?.getAttribute("data-correct") || "");
+      const selected = getSelectedLabelText(qEl);
+
+      const isCorrect = selected && (selected === correct);
+      if (isCorrect) score += 1;
+
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+      let questionId = "Q" + (idx + 1);  // fallback
+      
+      if (categoryMatch) {
+        const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;  // Use actual identifier like SK1, AN1, etc.
+        
+        categories[cat].total += 1;
+        if (isCorrect) categories[cat].score += 1;
+      }
+
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
+
+      // Mark only after submit
+      if (selected) {
+        const input = qEl.querySelector('input[type="radio"]:checked');
+        const label = input?.closest('label') || (input ? document.querySelector('label[for="' + input.id + '"]') : null);
+        if (label) label.classList.add(isCorrect ? "is-correct" : "is-incorrect");
+      }
+      setFeedback(qEl, isCorrect);
+    });
+
+    if (resultEl) {
+      let resultHTML = "<strong>Overall Score: " + score + " / " + total + "</strong><br><br>";
+      
+      // Add category breakdown
+      for (const key in categories) {
+        const cat = categories[key];
+        if (cat.total > 0) {
+          resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
+        }
+      }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+        let questionId = "Q" + (idx + 1);  // fallback
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];  // SK1, AN1, etc.
+        }
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push(questionId);
+          } else {
+            incorrectQuestions.push(questionId);
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
+      
+      resultEl.innerHTML = resultHTML;
+    }
+
+    // Persist attempt (best practice: store what you need; nickname only = low GDPR footprint)
+    await postAttempt({
+      timestamp: new Date().toISOString(),
+      nickname,
+      quiz: "Week2",
+      score,
+      total,
+      details
+    });
+
+    // Refresh leaderboard after a successful submit (or best-effort submit)
+    await loadLeaderboard("Week2");
+
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  // Expose submitQuiz globally for the button onclick
+  window.submitQuiz = submitQuiz;
+
+  // Add a feedback line container to each question if it doesn't exist
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mcq-we-q").forEach(qEl => {
+      if (!qEl.querySelector(".quiz-feedback-line")) {
+        const line = document.createElement("div");
+        line.className = "quiz-feedback-line hidden";
+        qEl.appendChild(line);
+      }
+    });
+
+    loadLeaderboard("Week2");
+  });
+})();
+</script>
+```
+
+<div class="mcq-we">
+
+## Subject Knowledge
+
+<div class="mcq-we-q">
+**SK1) Money is defined in Topic 2 primarily as:**  
+`r webexercises::longmcq(c("Any asset that yields interest", "A government-issued token", answer = "An asset that is widely accepted in exchange", "A store of wealth with intrinsic value"))`
+<span class="mcq-key" data-correct="An asset that is widely accepted in exchange"></span>
+<details class="hint"><summary>Hint</summary>Focus on the function that solves the exchange problem.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK2) The "double coincidence of wants" problem arises when:**  
+`r webexercises::longmcq(c("Prices are too high", "Two agents both want to save", answer = "Each trader must want exactly what the other offers", "The government restricts trade"))`
+<span class="mcq-key" data-correct="Each trader must want exactly what the other offers"></span>
+<details class="hint"><summary>Hint</summary>Think about what must align for barter to work.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK3) A medium of exchange differs from a unit of account because it:**  
+`r webexercises::longmcq(c("Must be backed by gold", "Is physically durable", answer = "Is directly used to conduct transactions", "Determines relative prices"))`
+<span class="mcq-key" data-correct="Is directly used to conduct transactions"></span>
+<details class="hint"><summary>Hint</summary>One function is about doing exchange; the other is about measuring.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK4) Liquidity refers to:**  
+`r webexercises::longmcq(c("An asset's intrinsic value", answer = "How quickly an asset can be exchanged without loss of value", "Government backing", "The asset's inflation rate"))`
+<span class="mcq-key" data-correct="How quickly an asset can be exchanged without loss of value"></span>
+<details class="hint"><summary>Hint</summary>Think "ease of trade."</details>
+</div>
+
+<div class="mcq-we-q">
+**SK5) In a barter economy with N goods, the number of relative prices is:**  
+`r webexercises::longmcq(c("N", "N − 1", answer = "N(N − 1)/2", "N²"))`
+<span class="mcq-key" data-correct="N(N − 1)/2"></span>
+<details class="hint"><summary>Hint</summary>Each pair of goods defines one relative price.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK6) A good becomes money primarily because:**  
+`r webexercises::longmcq(c("It has the highest intrinsic value", "It yields dividends", answer = "Others are willing to accept it", "The government mandates it"))`
+<span class="mcq-key" data-correct="Others are willing to accept it"></span>
+<details class="hint"><summary>Hint</summary>Acceptability can be self-reinforcing.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK7) The circularity problem in monetary theory refers to the idea that:**  
+`r webexercises::longmcq(c("Money must be round", answer = "People accept money because others accept it", "Prices determine money supply", "Inflation causes unemployment"))`
+<span class="mcq-key" data-correct="People accept money because others accept it"></span>
+<details class="hint"><summary>Hint</summary>Think about coordination and expectations.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK8) In a monetary economy with N goods and 1 money, the number of relative prices is:**  
+`r webexercises::longmcq(c("N(N − 1)/2", "N²", answer = "N", "N − 1"))`
+<span class="mcq-key" data-correct="N"></span>
+<details class="hint"><summary>Hint</summary>Each good has one price in terms of money.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK9) Money reduces transaction costs mainly by:**  
+`r webexercises::longmcq(c("Increasing production", "Eliminating inflation", answer = "Removing the need for bilateral matching", "Ensuring equal wealth"))`
+<span class="mcq-key" data-correct="Removing the need for bilateral matching"></span>
+<details class="hint"><summary>Hint</summary>Compare matching requirements under barter vs money.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK10) Under the classical "veil of money" view, changes in money primarily affect:**  
+`r webexercises::longmcq(c("Real output permanently", "Relative prices", answer = "Nominal variables", "Preferences"))`
+<span class="mcq-key" data-correct="Nominal variables"></span>
+<details class="hint"><summary>Hint</summary>Distinguish real vs nominal magnitudes.</details>
+</div>
+
+## Analysis
+
+<div class="mcq-we-q">
+**AN1) If a good is highly durable but rarely accepted in trade, it is unlikely to function as:**  
+`r webexercises::longmcq(c("A consumption good", "A store of value", answer = "A medium of exchange", "Capital"))`
+<span class="mcq-key" data-correct="A medium of exchange"></span>
+<details class="hint"><summary>Hint</summary>Acceptance matters more than durability alone.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN2) If more agents begin accepting a good in exchange, its liquidity will likely:**  
+`r webexercises::longmcq(c("Fall", "Remain unchanged", answer = "Increase", "Become irrelevant"))`
+<span class="mcq-key" data-correct="Increase"></span>
+<details class="hint"><summary>Hint</summary>Liquidity depends on marketability.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN3) In barter, trade may fail even if gains from trade exist because:**  
+`r webexercises::longmcq(c("Prices are rigid", answer = "Preferences are misaligned", "Inflation is high", "Output is low"))`
+<span class="mcq-key" data-correct="Preferences are misaligned"></span>
+<details class="hint"><summary>Hint</summary>Think matching, not efficiency.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN4) If a society moves from barter to money, the informational burden of tracking prices:**  
+`r webexercises::longmcq(c("Increases", answer = "Decreases", "Remains the same", "Becomes infinite"))`
+<span class="mcq-key" data-correct="Decreases"></span>
+<details class="hint"><summary>Hint</summary>Compare number of price ratios.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN5) Suppose everyone expects a token to be worthless tomorrow. Today it will likely:**  
+`r webexercises::longmcq(c("Be widely accepted", "Gain value", answer = "Lose acceptability", "Become capital"))`
+<span class="mcq-key" data-correct="Lose acceptability"></span>
+<details class="hint"><summary>Hint</summary>Expectations affect acceptability.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN6) If a commodity has high intrinsic value but low marketability, it may fail as money because:**  
+`r webexercises::longmcq(c("Intrinsic value guarantees acceptability", answer = "Exchange requires liquidity", "It cannot store value", "Government bans it"))`
+<span class="mcq-key" data-correct="Exchange requires liquidity"></span>
+<details class="hint"><summary>Hint</summary>Distinguish value from tradability.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN7) In monetary exchange, specialization becomes easier because:**  
+`r webexercises::longmcq(c("Inflation falls", answer = "Agents no longer need bilateral coincidence", "Output is fixed", "Prices disappear"))`
+<span class="mcq-key" data-correct="Agents no longer need bilateral coincidence"></span>
+<details class="hint"><summary>Hint</summary>Specialization requires reliable exchange.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN8) If relative prices are stable but the money supply doubles proportionally, under the classical view nominal prices will:**  
+`r webexercises::longmcq(c("Fall", "Remain unchanged", answer = "Double", "Become undefined"))`
+<span class="mcq-key" data-correct="Double"></span>
+<details class="hint"><summary>Hint</summary>Apply neutrality logic.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN9) Money's value depends fundamentally on:**  
+`r webexercises::longmcq(c("Its metal content", "Its use in production", answer = "Social coordination and expectations", "Government debt levels"))`
+<span class="mcq-key" data-correct="Social coordination and expectations"></span>
+<details class="hint"><summary>Hint</summary>Think equilibrium beliefs.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN10) A breakdown in acceptability primarily disrupts money's role as:**  
+`r webexercises::longmcq(c("Unit of account", answer = "Medium of exchange", "Store of value", "Capital asset"))`
+<span class="mcq-key" data-correct="Medium of exchange"></span>
+<details class="hint"><summary>Hint</summary>Which function depends most directly on trust in exchange?</details>
+</div>
+
+## Problem Solving
+
+<div class="mcq-we-q">
+**PS1) In a 3-good barter economy (apples, bread, milk), how many relative prices exist?**  
+`r webexercises::longmcq(c("2", answer = "3", "6", "9"))`
+<span class="mcq-key" data-correct="3"></span>
+<details class="hint"><summary>Hint</summary>Use N(N − 1)/2.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS2) If money eliminates 45 relative prices in a 10-good economy, how many relative prices remain?**  
+`r webexercises::longmcq(c(answer = "10", "9", "45", "90"))`
+<span class="mcq-key" data-correct="10"></span>
+<details class="hint"><summary>Hint</summary>Each good has one money price.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS3) Trader A has fish and wants rice. Trader B has rice but wants cloth. With money present, A can trade by:**  
+`r webexercises::longmcq(c("Waiting for triple coincidence", answer = "Trading fish for money, then money for rice", "Producing rice", "Reducing preferences"))`
+<span class="mcq-key" data-correct="Trading fish for money, then money for rice"></span>
+<details class="hint"><summary>Hint</summary>Think sequential exchange.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS4) If a good becomes twice as liquid, its probability of successful exchange likely:**  
+`r webexercises::longmcq(c("Falls", answer = "Doubles", "Remains unchanged", "Becomes negative"))`
+<span class="mcq-key" data-correct="Doubles"></span>
+<details class="hint"><summary>Hint</summary>Liquidity improves matching likelihood.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS5) If trust collapses and money is no longer accepted, the economy likely reverts toward:**  
+`r webexercises::longmcq(c("Perfect competition", answer = "Barter-like exchange", "Full specialization", "Zero prices"))`
+<span class="mcq-key" data-correct="Barter-like exchange"></span>
+<details class="hint"><summary>Hint</summary>Remove the coordination device.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS6) In barter with 6 goods, how many relative prices must agents track?**  
+`r webexercises::longmcq(c("6", answer = "15", "30", "36"))`
+<span class="mcq-key" data-correct="15"></span>
+<details class="hint"><summary>Hint</summary>Apply pair-count logic.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS7) If agents specialize but money disappears unexpectedly, output likely:**  
+`r webexercises::longmcq(c("Rises", answer = "Falls due to coordination failure", "Remains constant", "Doubles"))`
+<span class="mcq-key" data-correct="Falls due to coordination failure"></span>
+<details class="hint"><summary>Hint</summary>Specialization relies on exchange reliability.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS8) If everyone believes a fiat currency will retain purchasing power, this belief alone can sustain:**  
+`r webexercises::longmcq(c("Intrinsic value", "Commodity backing", answer = "Equilibrium acceptability", "Gold convertibility"))`
+<span class="mcq-key" data-correct="Equilibrium acceptability"></span>
+<details class="hint"><summary>Hint</summary>Think self-fulfilling equilibrium.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS9) If the number of goods increases from 4 to 8 in barter, relative prices increase from:**  
+`r webexercises::longmcq(c(answer = "6 to 28", "4 to 8", "8 to 16", "12 to 32"))`
+<span class="mcq-key" data-correct="6 to 28"></span>
+<details class="hint"><summary>Hint</summary>Compute N(N − 1)/2 for both cases.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS10) If a monetary economy shifts to using two competing currencies, informational complexity relative to one currency:**  
+`r webexercises::longmcq(c("Decreases", "Doubles exactly", answer = "Increases", "Becomes zero"))`
+<span class="mcq-key" data-correct="Increases"></span>
+<details class="hint"><summary>Hint</summary>More price ratios must be tracked.</details>
+</div>
+
+## Mathematical Thinking
+
+<div class="mcq-we-q">
+**MT1) With 5 goods in barter, how many relative prices?**  
+`r webexercises::longmcq(c("5", answer = "10", "15", "20"))`
+<span class="mcq-key" data-correct="10"></span>
+<details class="hint"><summary>Hint</summary>Apply N(N − 1)/2.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT2) If N = 7 goods, relative prices in barter equal:**  
+`r webexercises::longmcq(c(answer = "21", "42", "14", "7"))`
+<span class="mcq-key" data-correct="21"></span>
+<details class="hint"><summary>Hint</summary>Use combination formula.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT3) If money reduces price quotes from 21 to 7, N equals:**  
+`r webexercises::longmcq(c("6", answer = "7", "8", "9"))`
+<span class="mcq-key" data-correct="7"></span>
+<details class="hint"><summary>Hint</summary>Match barter formula and monetary count.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT4) If prices double but real quantities stay constant, nominal expenditure:**  
+`r webexercises::longmcq(c("Halves", answer = "Doubles", "Stays constant", "Falls to zero"))`
+<span class="mcq-key" data-correct="Doubles"></span>
+<details class="hint"><summary>Hint</summary>Nominal = price × quantity.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT5) In barter with 8 goods, adding one more good increases relative prices by:**  
+`r webexercises::longmcq(c(answer = "8", "9", "16", "36"))`
+<span class="mcq-key" data-correct="8"></span>
+<details class="hint"><summary>Hint</summary>New good forms one price with each existing good.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT6) If money supply triples and velocity and output are constant, price level:**  
+`r webexercises::longmcq(c(answer = "Triples", "Doubles", "Halves", "Unchanged"))`
+<span class="mcq-key" data-correct="Triples"></span>
+<details class="hint"><summary>Hint</summary>Apply proportional reasoning from quantity equation logic.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT7) In barter with 10 goods, relative prices equal 45. Adding one good makes total:**  
+`r webexercises::longmcq(c("50", answer = "55", "60", "100"))`
+<span class="mcq-key" data-correct="55"></span>
+<details class="hint"><summary>Hint</summary>Add 10 new price pairs.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT8) If price level rises 10% and nominal wage rises 5%, real wage:**  
+`r webexercises::longmcq(c("Rises", answer = "Falls", "Unchanged", "Doubles"))`
+<span class="mcq-key" data-correct="Falls"></span>
+<details class="hint"><summary>Hint</summary>Real wage adjusts for inflation.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT9) If nominal GDP rises 8% and price level rises 3%, real GDP rises approximately:**  
+`r webexercises::longmcq(c(answer = "5%", "11%", "3%", "8%"))`
+<span class="mcq-key" data-correct="5%"></span>
+<details class="hint"><summary>Hint</summary>Approximate real growth ≈ nominal − inflation.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT10) If 6 goods require 15 prices in barter, the proportional increase in price quotes when moving to 12 goods is closest to:**  
+`r webexercises::longmcq(c("Double", "Triple", answer = "Four times", "Six times"))`
+<span class="mcq-key" data-correct="Four times"></span>
+<details class="hint"><summary>Hint</summary>Compare 6C2 with 12C2.</details>
+</div>
+
+<div class="quiz-controls">
+  <input id="nickname" type="text" placeholder="Full name or nickname" autocomplete="off" />
+  <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button>
+  <button type="button" onclick="location.reload()">Reset</button>
+</div>
+
+<div id="quiz-result"></div>
+
+<h3>Leaderboard (Top 30)</h3>
+<table id="leaderboard"></table>
+
+<div id="question-stats"></div>
+
+</div>

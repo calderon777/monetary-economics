@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="by Dr Camilo Calderon">
 
-<title>Topic 2 - MCQs – Monetary Economics</title>
+<title>Topic 2 - MCQs Formative Assessment – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -375,13 +376,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic2reading.html">Topic 2 - Classical Theory of Money</a></li><li class="breadcrumb-item"><a href="./topic2mcqs.html">MCQs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Topic 2 - MCQs</h1>
+<h1 class="title">Topic 2 - MCQs Formative Assessment</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>by Dr Camilo Calderon </p>
+          </div>
+  </div>
     
   
     
@@ -392,8 +399,994 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a placeholder page for Topic 2 MCQs.</p>
-<p>Content will be added soon.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to use this quiz
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This quiz is designed as a <strong>formative self-assessment tool</strong>, not as a test.</p>
+<p>Its purpose is to help you: - check your understanding of the key concepts from Topic 2, - identify which types of thinking you find more difficult, and - guide your revision before the tutorial and future assessments.</p>
+<section id="what-this-quiz-measures" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-quiz-measures">What this quiz measures</h3>
+<p>Each question belongs to one of four categories:</p>
+<ul>
+<li><strong>Subject Knowledge (SK):</strong> definitions, concepts, and facts.<br>
+</li>
+<li><strong>Analysis (AN):</strong> understanding relationships and economic mechanisms.<br>
+</li>
+<li><strong>Problem Solving (PS):</strong> applying concepts to new situations.<br>
+</li>
+<li><strong>Mathematical Thinking (MT):</strong> working with ratios, prices, and scaling.</li>
+</ul>
+<p>Your score will be broken down by category so you can see <strong>where</strong> you are strong and where you need more practice.</p>
+</section>
+<section id="how-to-complete-the-quiz" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-complete-the-quiz">How to complete the quiz</h3>
+<ul>
+<li>You may use your notes and the lecture materials.</li>
+<li>Take your time — the goal is understanding, not speed.</li>
+<li>Use the <strong>Hints</strong> if you get stuck.</li>
+<li>You may refresh and retry the quiz as many times as you like.</li>
+</ul>
+</section>
+<section id="how-to-interpret-your-results" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-interpret-your-results">How to interpret your results</h3>
+<ul>
+<li>A low score is <strong>not a problem</strong> — it tells you what to focus on.</li>
+<li>If you score low in:
+<ul>
+<li><strong>SK:</strong> revise definitions and core concepts.</li>
+<li><strong>AN:</strong> revisit the logic of the models and examples.</li>
+<li><strong>PS:</strong> practise applying concepts to new cases.</li>
+<li><strong>MT:</strong> practise the price and ratio calculations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="about-the-leaderboard" class="level3">
+<h3 class="anchored" data-anchor-id="about-the-leaderboard">About the leaderboard</h3>
+<p>The leaderboard is optional and anonymous. It exists only to make practice more engaging.<br>
+It has <strong>no effect</strong> on your grade and is not used for evaluation.</p>
+<p>The only purpose of this quiz is to support your learning.</p>
+</section>
+</div>
+</div>
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
+<script>
+(function () {
+  // 1) Configure your Google Apps Script Web App URL here.
+  //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function getSelectedLabelText(qEl) {
+    const input = qEl.querySelector('input[type="radio"]:checked');
+    if (!input) return "";
+    const label = input.closest('label') || document.querySelector('label[for="' + input.id + '"]');
+    return label ? norm(label.textContent) : "";
+  }
+
+  function clearFeedback(qEl) {
+    qEl.querySelectorAll("label").forEach(l => l.classList.remove("is-correct", "is-incorrect"));
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (line) {
+      line.textContent = "";
+      line.classList.add("hidden");
+    }
+  }
+
+  function setFeedback(qEl, isCorrect) {
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (!line) return;
+    line.textContent = isCorrect ? "Correct." : "Incorrect.";
+    line.classList.remove("hidden");
+  }
+
+  async function postAttempt(payload) {
+    // Do not attempt POST if ENDPOINT is not configured
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) return;
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Could not save attempt:", err);
+    }
+  }
+
+  async function loadLeaderboard(quizName) {
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
+
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
+      return;
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 30);
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
+      }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];  // SK1, AN1, etc.
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);  // fallback
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === 'string') {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.warn(`Row ${rowIdx} - Could not parse details:`, details);
+          return;
+        }
+      }
+
+      console.log(`Row ${rowIdx} - Processing details:`, details);
+
+      Object.entries(details).forEach(([questionId, qData]) => {
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        questionStats[questionId].totalCount += 1;
+        
+        // Check if answer was incorrect (ok: 0 means incorrect)
+        const isIncorrect = qData.ok === 0;
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
+      });
+    });
+
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey: qKey,  // Keep original identifier like SK1, AN1, Q1, etc.
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
+    }
+  }
+
+  async function submitQuiz() {
+    const nicknameEl = document.getElementById("nickname");
+    const resultEl = document.getElementById("quiz-result");
+    const submitBtn = document.getElementById("quiz-submit");
+
+    const nickname = (nicknameEl?.value || "").trim();
+    if (!nickname) {
+      alert("Please enter a nickname before submitting.");
+      nicknameEl?.focus();
+      return;
+    }
+
+    // Lock submit to avoid double posting
+    if (submitBtn) submitBtn.disabled = true;
+
+    let score = 0;
+    let total = 0;
+    const details = {};
+    
+    // Category scores
+    const categories = {
+      SK: { score: 0, total: 0, name: "Subject Knowledge" },
+      AN: { score: 0, total: 0, name: "Analysis" },
+      PS: { score: 0, total: 0, name: "Problem Solving" },
+      MT: { score: 0, total: 0, name: "Mathematical Thinking" }
+    };
+
+    const questions = Array.from(document.querySelectorAll(".mcq-we-q"));
+
+    // Clear any prior feedback first (important if student re-submits)
+    questions.forEach(clearFeedback);
+
+    questions.forEach((qEl, idx) => {
+      total += 1;
+      const keyEl = qEl.querySelector(".mcq-key");
+      const correct = norm(keyEl?.getAttribute("data-correct") || "");
+      const selected = getSelectedLabelText(qEl);
+
+      const isCorrect = selected && (selected === correct);
+      if (isCorrect) score += 1;
+
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+      let questionId = "Q" + (idx + 1);  // fallback
+      
+      if (categoryMatch) {
+        const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;  // Use actual identifier like SK1, AN1, etc.
+        
+        categories[cat].total += 1;
+        if (isCorrect) categories[cat].score += 1;
+      }
+
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
+
+      // Mark only after submit
+      if (selected) {
+        const input = qEl.querySelector('input[type="radio"]:checked');
+        const label = input?.closest('label') || (input ? document.querySelector('label[for="' + input.id + '"]') : null);
+        if (label) label.classList.add(isCorrect ? "is-correct" : "is-incorrect");
+      }
+      setFeedback(qEl, isCorrect);
+    });
+
+    if (resultEl) {
+      let resultHTML = "<strong>Overall Score: " + score + " / " + total + "</strong><br><br>";
+      
+      // Add category breakdown
+      for (const key in categories) {
+        const cat = categories[key];
+        if (cat.total > 0) {
+          resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
+        }
+      }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)\)/);
+        let questionId = "Q" + (idx + 1);  // fallback
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];  // SK1, AN1, etc.
+        }
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push(questionId);
+          } else {
+            incorrectQuestions.push(questionId);
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
+      
+      resultEl.innerHTML = resultHTML;
+    }
+
+    // Persist attempt (best practice: store what you need; nickname only = low GDPR footprint)
+    await postAttempt({
+      timestamp: new Date().toISOString(),
+      nickname,
+      quiz: "Week2",
+      score,
+      total,
+      details
+    });
+
+    // Refresh leaderboard after a successful submit (or best-effort submit)
+    await loadLeaderboard("Week2");
+
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  // Expose submitQuiz globally for the button onclick
+  window.submitQuiz = submitQuiz;
+
+  // Add a feedback line container to each question if it doesn't exist
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mcq-we-q").forEach(qEl => {
+      if (!qEl.querySelector(".quiz-feedback-line")) {
+        const line = document.createElement("div");
+        line.className = "quiz-feedback-line hidden";
+        qEl.appendChild(line);
+      }
+    });
+
+    loadLeaderboard("Week2");
+  });
+})();
+</script>
+<div class="mcq-we">
+<section id="subject-knowledge" class="level2">
+<h2 class="anchored" data-anchor-id="subject-knowledge">Subject Knowledge</h2>
+<div class="mcq-we-q">
+<strong>SK1) Money is defined in Topic 2 primarily as:</strong><br>
+
+<div id="radio_RJOYVGQRJI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RJOYVGQRJI" value=""> <span>Any asset that yields interest</span></label><label><input type="radio" autocomplete="off" name="radio_RJOYVGQRJI" value=""> <span>A government-issued token</span></label><label><input type="radio" autocomplete="off" name="radio_RJOYVGQRJI" value="answer"> <span>An asset that is widely accepted in exchange</span></label><label><input type="radio" autocomplete="off" name="radio_RJOYVGQRJI" value=""> <span>A store of wealth with intrinsic value</span></label>
+</div>
+<span class="mcq-key" data-correct="An asset that is widely accepted in exchange"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Focus on the function that solves the exchange problem.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK2) The “double coincidence of wants” problem arises when:</strong><br>
+
+<div id="radio_QFKWNSZCTX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QFKWNSZCTX" value=""> <span>Prices are too high</span></label><label><input type="radio" autocomplete="off" name="radio_QFKWNSZCTX" value=""> <span>Two agents both want to save</span></label><label><input type="radio" autocomplete="off" name="radio_QFKWNSZCTX" value="answer"> <span>Each trader must want exactly what the other offers</span></label><label><input type="radio" autocomplete="off" name="radio_QFKWNSZCTX" value=""> <span>The government restricts trade</span></label>
+</div>
+<span class="mcq-key" data-correct="Each trader must want exactly what the other offers"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think about what must align for barter to work.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK3) A medium of exchange differs from a unit of account because it:</strong><br>
+
+<div id="radio_GZQDGZMKBH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GZQDGZMKBH" value=""> <span>Must be backed by gold</span></label><label><input type="radio" autocomplete="off" name="radio_GZQDGZMKBH" value=""> <span>Is physically durable</span></label><label><input type="radio" autocomplete="off" name="radio_GZQDGZMKBH" value="answer"> <span>Is directly used to conduct transactions</span></label><label><input type="radio" autocomplete="off" name="radio_GZQDGZMKBH" value=""> <span>Determines relative prices</span></label>
+</div>
+<span class="mcq-key" data-correct="Is directly used to conduct transactions"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+One function is about doing exchange; the other is about measuring.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK4) Liquidity refers to:</strong><br>
+
+<div id="radio_MDQATMALRY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MDQATMALRY" value=""> <span>An asset's intrinsic value</span></label><label><input type="radio" autocomplete="off" name="radio_MDQATMALRY" value="answer"> <span>How quickly an asset can be exchanged without loss of value</span></label><label><input type="radio" autocomplete="off" name="radio_MDQATMALRY" value=""> <span>Government backing</span></label><label><input type="radio" autocomplete="off" name="radio_MDQATMALRY" value=""> <span>The asset's inflation rate</span></label>
+</div>
+<span class="mcq-key" data-correct="How quickly an asset can be exchanged without loss of value"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think “ease of trade.”
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK5) In a barter economy with N goods, the number of relative prices is:</strong><br>
+
+<div id="radio_RYIPOVVNJT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RYIPOVVNJT" value=""> <span>N</span></label><label><input type="radio" autocomplete="off" name="radio_RYIPOVVNJT" value=""> <span>N − 1</span></label><label><input type="radio" autocomplete="off" name="radio_RYIPOVVNJT" value="answer"> <span>N(N − 1)/2</span></label><label><input type="radio" autocomplete="off" name="radio_RYIPOVVNJT" value=""> <span>N²</span></label>
+</div>
+<span class="mcq-key" data-correct="N(N − 1)/2"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Each pair of goods defines one relative price.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK6) A good becomes money primarily because:</strong><br>
+
+<div id="radio_LBHZJFVYXC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LBHZJFVYXC" value=""> <span>It has the highest intrinsic value</span></label><label><input type="radio" autocomplete="off" name="radio_LBHZJFVYXC" value=""> <span>It yields dividends</span></label><label><input type="radio" autocomplete="off" name="radio_LBHZJFVYXC" value="answer"> <span>Others are willing to accept it</span></label><label><input type="radio" autocomplete="off" name="radio_LBHZJFVYXC" value=""> <span>The government mandates it</span></label>
+</div>
+<span class="mcq-key" data-correct="Others are willing to accept it"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Acceptability can be self-reinforcing.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK7) The circularity problem in monetary theory refers to the idea that:</strong><br>
+
+<div id="radio_QMUWDASVYH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QMUWDASVYH" value=""> <span>Money must be round</span></label><label><input type="radio" autocomplete="off" name="radio_QMUWDASVYH" value="answer"> <span>People accept money because others accept it</span></label><label><input type="radio" autocomplete="off" name="radio_QMUWDASVYH" value=""> <span>Prices determine money supply</span></label><label><input type="radio" autocomplete="off" name="radio_QMUWDASVYH" value=""> <span>Inflation causes unemployment</span></label>
+</div>
+<span class="mcq-key" data-correct="People accept money because others accept it"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think about coordination and expectations.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK8) In a monetary economy with N goods and 1 money, the number of relative prices is:</strong><br>
+
+<div id="radio_BIHBXXWSEP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BIHBXXWSEP" value=""> <span>N(N − 1)/2</span></label><label><input type="radio" autocomplete="off" name="radio_BIHBXXWSEP" value=""> <span>N²</span></label><label><input type="radio" autocomplete="off" name="radio_BIHBXXWSEP" value="answer"> <span>N</span></label><label><input type="radio" autocomplete="off" name="radio_BIHBXXWSEP" value=""> <span>N − 1</span></label>
+</div>
+<span class="mcq-key" data-correct="N"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Each good has one price in terms of money.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK9) Money reduces transaction costs mainly by:</strong><br>
+
+<div id="radio_AZTKFBWQZK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AZTKFBWQZK" value=""> <span>Increasing production</span></label><label><input type="radio" autocomplete="off" name="radio_AZTKFBWQZK" value=""> <span>Eliminating inflation</span></label><label><input type="radio" autocomplete="off" name="radio_AZTKFBWQZK" value="answer"> <span>Removing the need for bilateral matching</span></label><label><input type="radio" autocomplete="off" name="radio_AZTKFBWQZK" value=""> <span>Ensuring equal wealth</span></label>
+</div>
+<span class="mcq-key" data-correct="Removing the need for bilateral matching"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare matching requirements under barter vs money.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK10) Under the classical “veil of money” view, changes in money primarily affect:</strong><br>
+
+<div id="radio_MIRFKTITHJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MIRFKTITHJ" value=""> <span>Real output permanently</span></label><label><input type="radio" autocomplete="off" name="radio_MIRFKTITHJ" value=""> <span>Relative prices</span></label><label><input type="radio" autocomplete="off" name="radio_MIRFKTITHJ" value="answer"> <span>Nominal variables</span></label><label><input type="radio" autocomplete="off" name="radio_MIRFKTITHJ" value=""> <span>Preferences</span></label>
+</div>
+<span class="mcq-key" data-correct="Nominal variables"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Distinguish real vs nominal magnitudes.
+</details>
+</div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<div class="mcq-we-q">
+<strong>AN1) If a good is highly durable but rarely accepted in trade, it is unlikely to function as:</strong><br>
+
+<div id="radio_BQGYFEWVUC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BQGYFEWVUC" value=""> <span>A consumption good</span></label><label><input type="radio" autocomplete="off" name="radio_BQGYFEWVUC" value=""> <span>A store of value</span></label><label><input type="radio" autocomplete="off" name="radio_BQGYFEWVUC" value="answer"> <span>A medium of exchange</span></label><label><input type="radio" autocomplete="off" name="radio_BQGYFEWVUC" value=""> <span>Capital</span></label>
+</div>
+<span class="mcq-key" data-correct="A medium of exchange"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Acceptance matters more than durability alone.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN2) If more agents begin accepting a good in exchange, its liquidity will likely:</strong><br>
+
+<div id="radio_QNEUCZMBKN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QNEUCZMBKN" value=""> <span>Fall</span></label><label><input type="radio" autocomplete="off" name="radio_QNEUCZMBKN" value=""> <span>Remain unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_QNEUCZMBKN" value="answer"> <span>Increase</span></label><label><input type="radio" autocomplete="off" name="radio_QNEUCZMBKN" value=""> <span>Become irrelevant</span></label>
+</div>
+<span class="mcq-key" data-correct="Increase"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Liquidity depends on marketability.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN3) In barter, trade may fail even if gains from trade exist because:</strong><br>
+
+<div id="radio_BHXFTPCZPL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BHXFTPCZPL" value=""> <span>Prices are rigid</span></label><label><input type="radio" autocomplete="off" name="radio_BHXFTPCZPL" value="answer"> <span>Preferences are misaligned</span></label><label><input type="radio" autocomplete="off" name="radio_BHXFTPCZPL" value=""> <span>Inflation is high</span></label><label><input type="radio" autocomplete="off" name="radio_BHXFTPCZPL" value=""> <span>Output is low</span></label>
+</div>
+<span class="mcq-key" data-correct="Preferences are misaligned"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think matching, not efficiency.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN4) If a society moves from barter to money, the informational burden of tracking prices:</strong><br>
+
+<div id="radio_IICHSCAQYT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IICHSCAQYT" value=""> <span>Increases</span></label><label><input type="radio" autocomplete="off" name="radio_IICHSCAQYT" value="answer"> <span>Decreases</span></label><label><input type="radio" autocomplete="off" name="radio_IICHSCAQYT" value=""> <span>Remains the same</span></label><label><input type="radio" autocomplete="off" name="radio_IICHSCAQYT" value=""> <span>Becomes infinite</span></label>
+</div>
+<span class="mcq-key" data-correct="Decreases"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare number of price ratios.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN5) Suppose everyone expects a token to be worthless tomorrow. Today it will likely:</strong><br>
+
+<div id="radio_DNWJWQXJYS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DNWJWQXJYS" value=""> <span>Be widely accepted</span></label><label><input type="radio" autocomplete="off" name="radio_DNWJWQXJYS" value=""> <span>Gain value</span></label><label><input type="radio" autocomplete="off" name="radio_DNWJWQXJYS" value="answer"> <span>Lose acceptability</span></label><label><input type="radio" autocomplete="off" name="radio_DNWJWQXJYS" value=""> <span>Become capital</span></label>
+</div>
+<span class="mcq-key" data-correct="Lose acceptability"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Expectations affect acceptability.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN6) If a commodity has high intrinsic value but low marketability, it may fail as money because:</strong><br>
+
+<div id="radio_ZOTUEILBQO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZOTUEILBQO" value=""> <span>Intrinsic value guarantees acceptability</span></label><label><input type="radio" autocomplete="off" name="radio_ZOTUEILBQO" value="answer"> <span>Exchange requires liquidity</span></label><label><input type="radio" autocomplete="off" name="radio_ZOTUEILBQO" value=""> <span>It cannot store value</span></label><label><input type="radio" autocomplete="off" name="radio_ZOTUEILBQO" value=""> <span>Government bans it</span></label>
+</div>
+<span class="mcq-key" data-correct="Exchange requires liquidity"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Distinguish value from tradability.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN7) In monetary exchange, specialization becomes easier because:</strong><br>
+
+<div id="radio_EQQFRFTERX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EQQFRFTERX" value=""> <span>Inflation falls</span></label><label><input type="radio" autocomplete="off" name="radio_EQQFRFTERX" value="answer"> <span>Agents no longer need bilateral coincidence</span></label><label><input type="radio" autocomplete="off" name="radio_EQQFRFTERX" value=""> <span>Output is fixed</span></label><label><input type="radio" autocomplete="off" name="radio_EQQFRFTERX" value=""> <span>Prices disappear</span></label>
+</div>
+<span class="mcq-key" data-correct="Agents no longer need bilateral coincidence"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Specialization requires reliable exchange.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN8) If relative prices are stable but the money supply doubles proportionally, under the classical view nominal prices will:</strong><br>
+
+<div id="radio_MVAZXGQSWQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MVAZXGQSWQ" value=""> <span>Fall</span></label><label><input type="radio" autocomplete="off" name="radio_MVAZXGQSWQ" value=""> <span>Remain unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_MVAZXGQSWQ" value="answer"> <span>Double</span></label><label><input type="radio" autocomplete="off" name="radio_MVAZXGQSWQ" value=""> <span>Become undefined</span></label>
+</div>
+<span class="mcq-key" data-correct="Double"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply neutrality logic.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN9) Money’s value depends fundamentally on:</strong><br>
+
+<div id="radio_XYFLNJHIYU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XYFLNJHIYU" value=""> <span>Its metal content</span></label><label><input type="radio" autocomplete="off" name="radio_XYFLNJHIYU" value=""> <span>Its use in production</span></label><label><input type="radio" autocomplete="off" name="radio_XYFLNJHIYU" value="answer"> <span>Social coordination and expectations</span></label><label><input type="radio" autocomplete="off" name="radio_XYFLNJHIYU" value=""> <span>Government debt levels</span></label>
+</div>
+<span class="mcq-key" data-correct="Social coordination and expectations"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think equilibrium beliefs.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN10) A breakdown in acceptability primarily disrupts money’s role as:</strong><br>
+
+<div id="radio_DLTNYYKZHR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DLTNYYKZHR" value=""> <span>Unit of account</span></label><label><input type="radio" autocomplete="off" name="radio_DLTNYYKZHR" value="answer"> <span>Medium of exchange</span></label><label><input type="radio" autocomplete="off" name="radio_DLTNYYKZHR" value=""> <span>Store of value</span></label><label><input type="radio" autocomplete="off" name="radio_DLTNYYKZHR" value=""> <span>Capital asset</span></label>
+</div>
+<span class="mcq-key" data-correct="Medium of exchange"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Which function depends most directly on trust in exchange?
+</details>
+</div>
+</section>
+<section id="problem-solving" class="level2">
+<h2 class="anchored" data-anchor-id="problem-solving">Problem Solving</h2>
+<div class="mcq-we-q">
+<strong>PS1) In a 3-good barter economy (apples, bread, milk), how many relative prices exist?</strong><br>
+
+<div id="radio_AVINRATAGS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AVINRATAGS" value=""> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_AVINRATAGS" value="answer"> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_AVINRATAGS" value=""> <span>6</span></label><label><input type="radio" autocomplete="off" name="radio_AVINRATAGS" value=""> <span>9</span></label>
+</div>
+<span class="mcq-key" data-correct="3"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Use N(N − 1)/2.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS2) If money eliminates 45 relative prices in a 10-good economy, how many relative prices remain?</strong><br>
+
+<div id="radio_RVKRVTEKUT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_RVKRVTEKUT" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_RVKRVTEKUT" value=""> <span>9</span></label><label><input type="radio" autocomplete="off" name="radio_RVKRVTEKUT" value=""> <span>45</span></label><label><input type="radio" autocomplete="off" name="radio_RVKRVTEKUT" value=""> <span>90</span></label>
+</div>
+<span class="mcq-key" data-correct="10"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Each good has one money price.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS3) Trader A has fish and wants rice. Trader B has rice but wants cloth. With money present, A can trade by:</strong><br>
+
+<div id="radio_GEFZEZILSF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GEFZEZILSF" value=""> <span>Waiting for triple coincidence</span></label><label><input type="radio" autocomplete="off" name="radio_GEFZEZILSF" value="answer"> <span>Trading fish for money, then money for rice</span></label><label><input type="radio" autocomplete="off" name="radio_GEFZEZILSF" value=""> <span>Producing rice</span></label><label><input type="radio" autocomplete="off" name="radio_GEFZEZILSF" value=""> <span>Reducing preferences</span></label>
+</div>
+<span class="mcq-key" data-correct="Trading fish for money, then money for rice"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think sequential exchange.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS4) If a good becomes twice as liquid, its probability of successful exchange likely:</strong><br>
+
+<div id="radio_FFMORLYEVT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FFMORLYEVT" value=""> <span>Falls</span></label><label><input type="radio" autocomplete="off" name="radio_FFMORLYEVT" value="answer"> <span>Doubles</span></label><label><input type="radio" autocomplete="off" name="radio_FFMORLYEVT" value=""> <span>Remains unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_FFMORLYEVT" value=""> <span>Becomes negative</span></label>
+</div>
+<span class="mcq-key" data-correct="Doubles"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Liquidity improves matching likelihood.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS5) If trust collapses and money is no longer accepted, the economy likely reverts toward:</strong><br>
+
+<div id="radio_URVUORNRCD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_URVUORNRCD" value=""> <span>Perfect competition</span></label><label><input type="radio" autocomplete="off" name="radio_URVUORNRCD" value="answer"> <span>Barter-like exchange</span></label><label><input type="radio" autocomplete="off" name="radio_URVUORNRCD" value=""> <span>Full specialization</span></label><label><input type="radio" autocomplete="off" name="radio_URVUORNRCD" value=""> <span>Zero prices</span></label>
+</div>
+<span class="mcq-key" data-correct="Barter-like exchange"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Remove the coordination device.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS6) In barter with 6 goods, how many relative prices must agents track?</strong><br>
+
+<div id="radio_CJSFZUBLHP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CJSFZUBLHP" value=""> <span>6</span></label><label><input type="radio" autocomplete="off" name="radio_CJSFZUBLHP" value="answer"> <span>15</span></label><label><input type="radio" autocomplete="off" name="radio_CJSFZUBLHP" value=""> <span>30</span></label><label><input type="radio" autocomplete="off" name="radio_CJSFZUBLHP" value=""> <span>36</span></label>
+</div>
+<span class="mcq-key" data-correct="15"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply pair-count logic.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS7) If agents specialize but money disappears unexpectedly, output likely:</strong><br>
+
+<div id="radio_SVQXIYOMDJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SVQXIYOMDJ" value=""> <span>Rises</span></label><label><input type="radio" autocomplete="off" name="radio_SVQXIYOMDJ" value="answer"> <span>Falls due to coordination failure</span></label><label><input type="radio" autocomplete="off" name="radio_SVQXIYOMDJ" value=""> <span>Remains constant</span></label><label><input type="radio" autocomplete="off" name="radio_SVQXIYOMDJ" value=""> <span>Doubles</span></label>
+</div>
+<span class="mcq-key" data-correct="Falls due to coordination failure"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Specialization relies on exchange reliability.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS8) If everyone believes a fiat currency will retain purchasing power, this belief alone can sustain:</strong><br>
+
+<div id="radio_KMTWGLLZZI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KMTWGLLZZI" value=""> <span>Intrinsic value</span></label><label><input type="radio" autocomplete="off" name="radio_KMTWGLLZZI" value=""> <span>Commodity backing</span></label><label><input type="radio" autocomplete="off" name="radio_KMTWGLLZZI" value="answer"> <span>Equilibrium acceptability</span></label><label><input type="radio" autocomplete="off" name="radio_KMTWGLLZZI" value=""> <span>Gold convertibility</span></label>
+</div>
+<span class="mcq-key" data-correct="Equilibrium acceptability"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think self-fulfilling equilibrium.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS9) If the number of goods increases from 4 to 8 in barter, relative prices increase from:</strong><br>
+
+<div id="radio_SDMGNLISSC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SDMGNLISSC" value="answer"> <span>6 to 28</span></label><label><input type="radio" autocomplete="off" name="radio_SDMGNLISSC" value=""> <span>4 to 8</span></label><label><input type="radio" autocomplete="off" name="radio_SDMGNLISSC" value=""> <span>8 to 16</span></label><label><input type="radio" autocomplete="off" name="radio_SDMGNLISSC" value=""> <span>12 to 32</span></label>
+</div>
+<span class="mcq-key" data-correct="6 to 28"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compute N(N − 1)/2 for both cases.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS10) If a monetary economy shifts to using two competing currencies, informational complexity relative to one currency:</strong><br>
+
+<div id="radio_UKXYRHWJHI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UKXYRHWJHI" value=""> <span>Decreases</span></label><label><input type="radio" autocomplete="off" name="radio_UKXYRHWJHI" value=""> <span>Doubles exactly</span></label><label><input type="radio" autocomplete="off" name="radio_UKXYRHWJHI" value="answer"> <span>Increases</span></label><label><input type="radio" autocomplete="off" name="radio_UKXYRHWJHI" value=""> <span>Becomes zero</span></label>
+</div>
+<span class="mcq-key" data-correct="Increases"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+More price ratios must be tracked.
+</details>
+</div>
+</section>
+<section id="mathematical-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-thinking">Mathematical Thinking</h2>
+<div class="mcq-we-q">
+<strong>MT1) With 5 goods in barter, how many relative prices?</strong><br>
+
+<div id="radio_XWRZVUXOPC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XWRZVUXOPC" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_XWRZVUXOPC" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_XWRZVUXOPC" value=""> <span>15</span></label><label><input type="radio" autocomplete="off" name="radio_XWRZVUXOPC" value=""> <span>20</span></label>
+</div>
+<span class="mcq-key" data-correct="10"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply N(N − 1)/2.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT2) If N = 7 goods, relative prices in barter equal:</strong><br>
+
+<div id="radio_ZMJIYNIDVA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZMJIYNIDVA" value="answer"> <span>21</span></label><label><input type="radio" autocomplete="off" name="radio_ZMJIYNIDVA" value=""> <span>42</span></label><label><input type="radio" autocomplete="off" name="radio_ZMJIYNIDVA" value=""> <span>14</span></label><label><input type="radio" autocomplete="off" name="radio_ZMJIYNIDVA" value=""> <span>7</span></label>
+</div>
+<span class="mcq-key" data-correct="21"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Use combination formula.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT3) If money reduces price quotes from 21 to 7, N equals:</strong><br>
+
+<div id="radio_WTTFAENEHS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WTTFAENEHS" value=""> <span>6</span></label><label><input type="radio" autocomplete="off" name="radio_WTTFAENEHS" value="answer"> <span>7</span></label><label><input type="radio" autocomplete="off" name="radio_WTTFAENEHS" value=""> <span>8</span></label><label><input type="radio" autocomplete="off" name="radio_WTTFAENEHS" value=""> <span>9</span></label>
+</div>
+<span class="mcq-key" data-correct="7"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Match barter formula and monetary count.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT4) If prices double but real quantities stay constant, nominal expenditure:</strong><br>
+
+<div id="radio_EGSANXJFKJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EGSANXJFKJ" value=""> <span>Halves</span></label><label><input type="radio" autocomplete="off" name="radio_EGSANXJFKJ" value="answer"> <span>Doubles</span></label><label><input type="radio" autocomplete="off" name="radio_EGSANXJFKJ" value=""> <span>Stays constant</span></label><label><input type="radio" autocomplete="off" name="radio_EGSANXJFKJ" value=""> <span>Falls to zero</span></label>
+</div>
+<span class="mcq-key" data-correct="Doubles"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Nominal = price × quantity.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT5) In barter with 8 goods, adding one more good increases relative prices by:</strong><br>
+
+<div id="radio_XBNFJOZDEV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XBNFJOZDEV" value="answer"> <span>8</span></label><label><input type="radio" autocomplete="off" name="radio_XBNFJOZDEV" value=""> <span>9</span></label><label><input type="radio" autocomplete="off" name="radio_XBNFJOZDEV" value=""> <span>16</span></label><label><input type="radio" autocomplete="off" name="radio_XBNFJOZDEV" value=""> <span>36</span></label>
+</div>
+<span class="mcq-key" data-correct="8"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+New good forms one price with each existing good.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT6) If money supply triples and velocity and output are constant, price level:</strong><br>
+
+<div id="radio_SUIRDUQDFG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SUIRDUQDFG" value="answer"> <span>Triples</span></label><label><input type="radio" autocomplete="off" name="radio_SUIRDUQDFG" value=""> <span>Doubles</span></label><label><input type="radio" autocomplete="off" name="radio_SUIRDUQDFG" value=""> <span>Halves</span></label><label><input type="radio" autocomplete="off" name="radio_SUIRDUQDFG" value=""> <span>Unchanged</span></label>
+</div>
+<span class="mcq-key" data-correct="Triples"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply proportional reasoning from quantity equation logic.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT7) In barter with 10 goods, relative prices equal 45. Adding one good makes total:</strong><br>
+
+<div id="radio_TXRCBZAIQQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TXRCBZAIQQ" value=""> <span>50</span></label><label><input type="radio" autocomplete="off" name="radio_TXRCBZAIQQ" value="answer"> <span>55</span></label><label><input type="radio" autocomplete="off" name="radio_TXRCBZAIQQ" value=""> <span>60</span></label><label><input type="radio" autocomplete="off" name="radio_TXRCBZAIQQ" value=""> <span>100</span></label>
+</div>
+<span class="mcq-key" data-correct="55"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Add 10 new price pairs.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT8) If price level rises 10% and nominal wage rises 5%, real wage:</strong><br>
+
+<div id="radio_AKXAZABBGZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AKXAZABBGZ" value=""> <span>Rises</span></label><label><input type="radio" autocomplete="off" name="radio_AKXAZABBGZ" value="answer"> <span>Falls</span></label><label><input type="radio" autocomplete="off" name="radio_AKXAZABBGZ" value=""> <span>Unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_AKXAZABBGZ" value=""> <span>Doubles</span></label>
+</div>
+<span class="mcq-key" data-correct="Falls"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Real wage adjusts for inflation.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT9) If nominal GDP rises 8% and price level rises 3%, real GDP rises approximately:</strong><br>
+
+<div id="radio_NTBXKFATRK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NTBXKFATRK" value="answer"> <span>5%</span></label><label><input type="radio" autocomplete="off" name="radio_NTBXKFATRK" value=""> <span>11%</span></label><label><input type="radio" autocomplete="off" name="radio_NTBXKFATRK" value=""> <span>3%</span></label><label><input type="radio" autocomplete="off" name="radio_NTBXKFATRK" value=""> <span>8%</span></label>
+</div>
+<span class="mcq-key" data-correct="5%"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Approximate real growth ≈ nominal − inflation.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT10) If 6 goods require 15 prices in barter, the proportional increase in price quotes when moving to 12 goods is closest to:</strong><br>
+
+<div id="radio_QJQERDMYEI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QJQERDMYEI" value=""> <span>Double</span></label><label><input type="radio" autocomplete="off" name="radio_QJQERDMYEI" value=""> <span>Triple</span></label><label><input type="radio" autocomplete="off" name="radio_QJQERDMYEI" value="answer"> <span>Four times</span></label><label><input type="radio" autocomplete="off" name="radio_QJQERDMYEI" value=""> <span>Six times</span></label>
+</div>
+<span class="mcq-key" data-correct="Four times"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare 6C2 with 12C2.
+</details>
+</div>
+<div class="quiz-controls">
+<p><input id="nickname" type="text" placeholder="Full name or nickname" autocomplete="off"> <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button> <button type="button" onclick="location.reload()">Reset</button></p>
+</div>
+<div id="quiz-result">
+
+</div>
+<h3 class="anchored">
+Leaderboard (Top 30)
+</h3>
+<table id="leaderboard">
+</table>
+<div id="question-stats">
+
+</div>
+</section>
+</div>
 
 
 
