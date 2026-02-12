@@ -1,0 +1,294 @@
+---
+title: "Topic 2: Song Generation - Ludic Activity"
+subtitle: "AI-Assisted Music Creation with ACE-Step 1.5"
+author: "EC3014 - Monetary Economics"
+date: today
+format: html
+---
+
+## 🎵 Create Your Own Song
+
+Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
+
+1. **Write lyrics or narrative** based on economic concepts from Topic 2
+2. **Provide a music prompt** (genre, mood, style)
+3. **ACE-Step 1.5 generates the music locally** to accompany your words
+4. **Reflect** on the creative process and economic ideas
+
+> **Note:** This activity uses **ACE-Step 1.5**, a free, open-source music generation model running locally. No API keys needed!
+
+---
+
+## Your Creative Input
+
+```{python}
+import os
+from pathlib import Path
+import requests
+import json
+from datetime import datetime
+import time
+
+# Configuration
+ACESTEP_API_URL = "http://localhost:8001"
+OUTPUT_DIR = Path("generated_songs")
+OUTPUT_DIR.mkdir(exist_ok=True)
+
+# Create interactive input form
+print("=" * 60)
+print("SONG GENERATION FORM")
+print("=" * 60)
+
+# Get student inputs
+print("\n📝 Step 1: Write your lyrics or narrative")
+print("(Hint: Relate it to monetary policy, inflation, interest rates, or central banking)")
+print("-" * 60)
+student_lyrics = input("Enter your lyrics/narrative: ").strip()
+
+print("\n🎼 Step 2: Describe your music")
+print("(Example: 'upbeat pop about inflation', 'calm jazz exploring monetary policy', 'energetic rap')")
+print("-" * 60)
+music_prompt = input("Enter your music prompt: ").strip()
+
+print("\n👤 Step 3: Your name")
+print("-" * 60)
+student_name = input("Enter your name: ").strip()
+
+# Store metadata
+metadata = {
+    "student": student_name,
+    "timestamp": datetime.now().isoformat(),
+    "lyrics": student_lyrics,
+    "music_prompt": music_prompt
+}
+
+print("\n" + "=" * 60)
+print("SUBMISSION RECEIVED")
+print("=" * 60)
+print(f"Student: {student_name}")
+print(f"Lyrics: {student_lyrics[:50]}...")
+print(f"Music Style: {music_prompt}")
+print("\nGenerating music now...\n")
+```
+
+---
+
+## 🤖 AI Music Generation with ACE-Step 1.5
+
+```{python}
+def generate_music_with_acestep(lyrics: str, music_prompt: str) -> dict:
+    """
+    Call ACE-Step 1.5 local API to generate music with lyric conditioning
+    
+    Args:
+        lyrics: Student-written lyrics or narrative
+        music_prompt: Description of music style/genre
+    
+    Returns:
+        Dictionary with audio data and metadata
+    """
+    
+    payload = {
+        "lyrics": lyrics,
+        "prompt": music_prompt,
+        "duration": 30,  # 30 seconds for quick generation
+        "temperature": 0.7
+    }
+    
+    headers = {"Content-Type": "application/json"}
+    
+    try:
+        print("🎵 Sending request to ACE-Step API...")
+        response = requests.post(
+            f"{ACESTEP_API_URL}/generate",
+            json=payload,
+            headers=headers,
+            timeout=300  # 5 min timeout for generation
+        )
+        
+        if response.status_code == 200:
+            return {
+                "success": True,
+                "audio_bytes": response.content,
+                "lyrics": lyrics,
+                "prompt": music_prompt
+            }
+        else:
+            return {
+                "success": False,
+                "error": f"API returned status {response.status_code}",
+                "message": response.text,
+                "hint": "Is ACE-Step API running? Check: uv run acestep-api"
+            }
+    
+    except requests.exceptions.ConnectionError:
+        return {
+            "success": False,
+            "error": "Cannot connect to ACE-Step API on localhost:8001",
+            "hint": "Start ACE-Step API with: uv run acestep-api"
+        }
+    except Exception as e:
+        return {
+            "success": False,
+            "error": str(e),
+            "hint": "Check ACE-Step installation and API startup"
+        }
+
+# Generate music
+print("🎵 Connecting to ACE-Step 1.5 API...")
+
+# Check if API is reachable
+try:
+    response = requests.get(f"{ACESTEP_API_URL}/health", timeout=5)
+    api_ready = response.status_code == 200
+except:
+    api_ready = False
+
+if api_ready:
+    result = generate_music_with_acestep(student_lyrics, music_prompt)
+    
+    if result["success"]:
+        # Save audio file
+        filename = f"{OUTPUT_DIR}/song_{datetime.now().strftime('%Y%m%d_%H%M%S')}.wav"
+        with open(filename, "wb") as f:
+            f.write(result["audio_bytes"])
+        
+        # Save metadata
+        metadata_file = filename.replace(".wav", "_metadata.json")
+        metadata["output_file"] = filename
+        with open(metadata_file, "w") as f:
+            json.dump(metadata, f, indent=2)
+        
+        print(f"✅ Music generated successfully!")
+        print(f"📁 Saved to: {filename}\n")
+        song_file = filename
+        
+    else:
+        print(f"❌ Error generating music: {result.get('error', 'Unknown error')}")
+        print(f"💡 Hint: {result.get('hint', '')}")
+        song_file = None
+else:
+    print("⚠️  ACE-Step API not running!")
+    print("\n🚀 To start the API, open a new terminal and run:")
+    print("   uv run acestep-api")
+    print("\nThe API will start on http://localhost:8001")
+    song_file = None
+```
+
+---
+
+## 🎧 Your Generated Song
+
+```{python}
+if song_file and Path(song_file).exists():
+    print(f"<audio controls style='width: 100%;'><source src='{song_file}' type='audio/wav'></audio>")
+    print(f"\n**Your song is ready to listen to!**")
+    print(f"\n---\n")
+    print(f"**Student:** {metadata['student']}")
+    print(f"**Your Lyrics/Theme:**\n> {metadata['lyrics']}\n")
+    print(f"**Music Style Requested:**\n> {metadata['music_prompt']}\n")
+else:
+    print("Song generation in progress or awaiting API setup...")
+```
+
+---
+
+## 📚 Reflection Questions
+
+After listening to your generated song, consider:
+
+1. **Authorship & Creativity**: How did you and the AI contribute to this song? Who is the "author"?
+
+2. **Economic Concepts**: Does the music reflect the economic themes in your lyrics? Why or why not?
+
+3. **Limitations**: What did the AI do well? What would you change or improve?
+
+4. **Monetary Economics Connection**: How could this creative approach help explain monetary policy concepts to others?
+
+5. **Ethical Reflection**: In what ways is this different from a student writing a song entirely on their own?
+
+---
+
+## 🔧 Setup Instructions: ACE-Step 1.5
+
+This activity uses **ACE-Step 1.5**, a free, open-source music generation model that runs **locally on your computer**. No API keys needed!
+
+### Step 1: Install ACE-Step (One-time setup)
+
+**Windows/macOS/Linux:**
+
+```bash
+# 1) Install uv (universal Python package manager)
+# Go to: https://astral.sh/uv/install.sh
+# Windows: Download and run the installer
+# Or use PowerShell:
+powershell -ExecutionPolicy BypassUser -c "irm https://astral.sh/uv/install.ps1 | iex"
+
+# 2) Clone the ACE-Step repository
+git clone https://github.com/ACE-Step/ACE-Step-1.5.git
+cd ACE-Step-1.5
+
+# 3) Install dependencies
+uv sync
+```
+
+### Step 2: Start the ACE-Step API
+
+Before running the activity, start the API in a separate terminal:
+
+```bash
+cd ACE-Step-1.5
+uv run acestep-api
+```
+
+You should see:
+```
+INFO:     Uvicorn running on http://127.0.0.1:8001
+```
+
+**Keep this terminal open while students use the activity.**
+
+### Step 3: Run the Activity
+
+With the API running, open this file (`topic2ludic.qmd`) in Quarto Preview:
+
+```bash
+quarto preview topic2ludic.qmd
+```
+
+Students enter their lyrics and music preferences, and ACE-Step generates the audio locally.
+
+### Step 4: Optional - Use the Gradio UI
+
+If preferred, students can also use ACE-Step's built-in UI:
+
+```bash
+uv run acestep
+```
+
+Then open `http://localhost:7860` in a browser.
+
+---
+
+## ✅ Why ACE-Step 1.5?
+
+- **Free & Open-source** — No subscriptions or API keys
+- **Local generation** — Runs entirely on your computer
+- **Fast** — Optimized for modern GPUs (CPU supported too)
+- **Multi-language** — Supports lyrics in many languages
+- **Lyric-aware** — Conditions music generation on student-written content
+- **Scalable** — No rate limits for 10 concurrent student groups
+- **Educational** — Clear boundary: students write meaning, AI generates sound
+
+---
+
+## 📖 Resources
+
+- **ACE-Step GitHub**: [github.com/ACE-Step/ACE-Step-1.5](https://github.com/ACE-Step/ACE-Step-1.5)
+- **ACE-Step Paper**: "ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation"
+- **Hugging Face Model**: [huggingface.co/ACE-Step/Ace-Step1.5](https://huggingface.co/ACE-Step/Ace-Step1.5)
+- **uv Package Manager**: [astral.sh/uv](https://astral.sh/uv)
+
+---
+
+**Enjoy creating! 🎵**

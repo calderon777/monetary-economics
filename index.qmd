@@ -31,6 +31,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 - [Open Questions](topic2questions.qmd)
 - [MCQs](topic2mcqs.qmd)
 - [Tutor Guide 🔒](topic2tutorial.qmd)
+- [Optional: Economics Poets](topic2ludic.qmd)
 
 ## Topic 3 - Keynes' Theory of Money
 
