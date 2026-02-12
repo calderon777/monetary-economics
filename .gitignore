@@ -27,3 +27,5 @@ PRIVATE_CREDENTIALS.md
 .env.local
 
 /.quarto/
+# ACE-Step (large local model, not for repo)
+ACE-Step-1.5/
