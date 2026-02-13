@@ -47,6 +47,8 @@ dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
 ```{r export-pptx-to-png}
 #| include: false
 #| eval: true
+#| cache: true
+#| cache-extra: file.info(ppt_path)$mtime
 
 # Windows + PowerPoint only
 if (.Platform$OS.type != "windows") {

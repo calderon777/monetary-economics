@@ -4,6 +4,9 @@ project:
   resources:
     - pdf/
 
+execute:
+  freeze: auto
+
 website:
   title: "Monetary Economics"
   page-navigation: true
