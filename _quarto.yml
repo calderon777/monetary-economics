@@ -51,7 +51,7 @@ website:
             file: topic4lecture.qmd
           - text: "MCQs"
             file: topic4mcqs.qmd
-      - section: "Topic 5 - The New Classical ApproachTheory of Money"
+      - section: "Topic 5 - The New Classical Approach"
         contents:
           - text: "Reading"
             file: topic5reading.qmd
@@ -67,7 +67,7 @@ website:
             file: topic6lecture.qmd
           - text: "MCQs"
             file: topic6mcqs.qmd
-      - section: "Topic 7 - The MOnetary Policy Consensus and the Great Moderation"
+      - section: "Topic 7 - Monetary Policy Consensus and the Great Moderation"
         contents:
           - text: "Reading"
             file: topic7reading.qmd
