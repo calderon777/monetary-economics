@@ -253,5 +253,125 @@
   },
   "topic8keys.qmd": {
     "topic8keys.html": "c9d053cb"
+  },
+  "topic2ludic.qmd": {
+    "topic2ludic.html": "09a35e3d"
+  },
+  "ACE-Step-1.5/AGENTS.md": {
+    "AGENTS.html": "232be8f7"
+  },
+  "ACE-Step-1.5/CONTRIBUTING.md": {
+    "CONTRIBUTING.html": "0434e8a7"
+  },
+  "ACE-Step-1.5/docs/en/ACE-Step1.5-Rocm-Manual-Linux.md": {
+    "ACE-Step1.5-Rocm-Manual-Linux.html": "215f4691"
+  },
+  "ACE-Step-1.5/docs/en/ace_step_musicians_guide.md": {
+    "ace_step_musicians_guide.html": "deba17ef"
+  },
+  "ACE-Step-1.5/docs/en/API.md": {
+    "API.html": "5cce89f4"
+  },
+  "ACE-Step-1.5/docs/en/BENCHMARK.md": {
+    "BENCHMARK.html": "d5c0c0b2"
+  },
+  "ACE-Step-1.5/docs/en/CLI.md": {
+    "CLI.html": "0514aac4"
+  },
+  "ACE-Step-1.5/docs/en/GPU_COMPATIBILITY.md": {
+    "GPU_COMPATIBILITY.html": "9dd97f21"
+  },
+  "ACE-Step-1.5/docs/en/GPU_TROUBLESHOOTING.md": {
+    "GPU_TROUBLESHOOTING.html": "8e6366de"
+  },
+  "ACE-Step-1.5/docs/en/GRADIO_GUIDE.md": {
+    "GRADIO_GUIDE.html": "7b004618"
+  },
+  "ACE-Step-1.5/docs/en/INFERENCE.md": {
+    "INFERENCE.html": "a2e6f272"
+  },
+  "ACE-Step-1.5/docs/en/INSTALL.md": {
+    "INSTALL.html": "f55e63c6"
+  },
+  "ACE-Step-1.5/docs/en/Openrouter_API_DOC.md": {
+    "Openrouter_API_DOC.html": "1d6e49c4"
+  },
+  "ACE-Step-1.5/docs/en/studio.md": {
+    "studio.html": "5eba4ac5"
+  },
+  "ACE-Step-1.5/docs/en/Tutorial.md": {
+    "Tutorial.html": "1cfce0a0"
+  },
+  "ACE-Step-1.5/docs/ja/API.md": {
+    "API.html": "2f8701be"
+  },
+  "ACE-Step-1.5/docs/ja/GPU_COMPATIBILITY.md": {
+    "GPU_COMPATIBILITY.html": "fa19a733"
+  },
+  "ACE-Step-1.5/docs/ja/GRADIO_GUIDE.md": {
+    "GRADIO_GUIDE.html": "65172bb4"
+  },
+  "ACE-Step-1.5/docs/ja/INFERENCE.md": {
+    "INFERENCE.html": "06448df4"
+  },
+  "ACE-Step-1.5/docs/ja/INSTALL.md": {
+    "INSTALL.html": "b4723e22"
+  },
+  "ACE-Step-1.5/docs/ja/Openrouter_API_DOC.md": {
+    "Openrouter_API_DOC.html": "ca26dd3d"
+  },
+  "ACE-Step-1.5/docs/ja/Tutorial.md": {
+    "Tutorial.html": "22e1c85a"
+  },
+  "ACE-Step-1.5/docs/ko/API.md": {
+    "API.html": "8c529656"
+  },
+  "ACE-Step-1.5/docs/ko/GPU_COMPATIBILITY.md": {
+    "GPU_COMPATIBILITY.html": "c6afc70f"
+  },
+  "ACE-Step-1.5/docs/ko/GRADIO_GUIDE.md": {
+    "GRADIO_GUIDE.html": "93023236"
+  },
+  "ACE-Step-1.5/docs/ko/INFERENCE.md": {
+    "INFERENCE.html": "3f8880ed"
+  },
+  "ACE-Step-1.5/docs/ko/Openrouter_API_DOC.md": {
+    "Openrouter_API_DOC.html": "04a5eac2"
+  },
+  "ACE-Step-1.5/docs/ko/Tutorial.md": {
+    "Tutorial.html": "e0459c69"
+  },
+  "topic2lecture.knit.md": {
+    "topic2lecture.knit.html": "52bb2a90"
+  },
+  "ACE-Step-1.5/docs/lora-scale-deterministic-registry-note-2026-02-10.md": {
+    "lora-scale-deterministic-registry-note-2026-02-10.html": "10482af2"
+  },
+  "ACE-Step-1.5/docs/zh/API.md": {
+    "API.html": "ca141aba"
+  },
+  "ACE-Step-1.5/docs/zh/BENCHMARK.md": {
+    "BENCHMARK.html": "20d4d0af"
+  },
+  "ACE-Step-1.5/docs/zh/GPU_COMPATIBILITY.md": {
+    "GPU_COMPATIBILITY.html": "c09b3d17"
+  },
+  "ACE-Step-1.5/docs/zh/GRADIO_GUIDE.md": {
+    "GRADIO_GUIDE.html": "0fdf3fd9"
+  },
+  "ACE-Step-1.5/docs/zh/INFERENCE.md": {
+    "INFERENCE.html": "8e9163d2"
+  },
+  "ACE-Step-1.5/docs/zh/INSTALL.md": {
+    "INSTALL.html": "58a4cb95"
+  },
+  "ACE-Step-1.5/docs/zh/Openrouter_API_DOC.md": {
+    "Openrouter_API_DOC.html": "001fb1e5"
+  },
+  "ACE-Step-1.5/docs/zh/Tutorial.md": {
+    "Tutorial.html": "71fd24db"
+  },
+  "ACE-Step-1.5/SECURITY.md": {
+    "SECURITY.html": "a67c777a"
   }
 }
