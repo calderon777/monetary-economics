@@ -60,6 +60,12 @@ To visualize money neutrality, consider a simple money market diagram (value of 
 
 # Base R textbook-style diagram (no external packages)
 
+# Styling
+par(mar = c(4.2, 4.6, 2.4, 2.6))
+demand_col <- "#1f4e79"
+supply_col <- "#444444"
+guide_col <- "#9a9a9a"
+
 # Money demand: (1/P) = a - b*M  (downward sloping)
 a <- 10
 b <- 1
@@ -84,12 +90,15 @@ plot(
   xlab = "Quantity of Money (M)",
   ylab = "Value of Money (1/P)",
   main = "Money Market and Money Neutrality",
-  lwd = 2
+  lwd = 2.4,
+  col = demand_col,
+  xaxs = "i",
+  yaxs = "i"
 )
 
 # Money supply lines
-abline(v = M1, lty = 2, lwd = 2)
-abline(v = M2, lty = 2, lwd = 2)
+abline(v = M1, lty = 2, lwd = 2, col = supply_col)
+abline(v = M2, lty = 2, lwd = 2, col = supply_col)
 
 # Mark equilibria
 points(M1, V1, pch = 19, cex = 1.1)
@@ -100,24 +109,27 @@ text(M1, V1, labels = expression(E[1]), pos = 3, xpd = NA)
 text(M2, V2, labels = expression(E[2]), pos = 3, xpd = NA)
 
 # Axis annotations for M1, M2
-axis(1, at = c(M1, M2), labels = c(expression(M[1]), expression(M[2])), tick = TRUE)
+mtext(expression(M[1]), side = 1, at = M1, line = 2, cex = 0.9)
+mtext(expression(M[2]), side = 1, at = M2, line = 2, cex = 0.9)
 
 # Optional dashed horizontals to show (1/P)1 and (1/P)2
-segments(0, V1, M1, V1, lty = 3)
-segments(0, V2, M2, V2, lty = 3)
-axis(2, at = c(V1, V2), labels = c(expression((1/P)[1]), expression((1/P)[2])), las = 1)
+segments(0, V1, M1, V1, lty = 3, col = guide_col)
+segments(0, V2, M2, V2, lty = 3, col = guide_col)
+text(Mmax * 1.02, V1, labels = expression((1/P)[1]), pos = 4, xpd = NA, col = guide_col)
+text(Mmax * 1.02, V2, labels = expression((1/P)[2]), pos = 4, xpd = NA, col = guide_col)
 
 # Curve and line labels
-text(8.2, a - b*8.2 + 0.6, labels = expression(M^d), xpd = NA)
-text(M1, a*0.98, labels = expression(M^s[1]), pos = 3, xpd = NA)
-text(M2, a*0.98, labels = expression(M^s[2]), pos = 3, xpd = NA)
+text(8.2, a - b*8.2 + 0.6, labels = expression(M^d), xpd = NA, col = demand_col)
+text(M1, a*0.96, labels = expression(M^s[1]), pos = 3, xpd = NA, col = supply_col)
+text(M2, a*0.96, labels = expression(M^s[2]), pos = 3, xpd = NA, col = supply_col)
 
 # Legend (simple, top-right)
 legend(
   "topright",
   legend = c(expression(M^d), expression(M^s[1]), expression(M^s[2])),
   lty = c(1, 2, 2),
-  lwd = c(2, 2, 2),
+  lwd = c(2.4, 2, 2),
+  col = c(demand_col, supply_col, supply_col),
   bty = "n"
 )
 ```
