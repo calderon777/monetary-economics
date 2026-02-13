@@ -34,25 +34,22 @@ ACESTEP_API_URL = "http://localhost:8001"
 OUTPUT_DIR = Path("generated_songs")
 OUTPUT_DIR.mkdir(exist_ok=True)
 
-# Create interactive input form
+# Sample data for demonstration (replace with actual student input)
+# In an interactive environment, you would use input() instead
 print("=" * 60)
-print("SONG GENERATION FORM")
+print("SONG GENERATION FORM - DEMONSTRATION")
 print("=" * 60)
 
-# Get student inputs
-print("\n📝 Step 1: Write your lyrics or narrative")
-print("(Hint: Relate it to monetary policy, inflation, interest rates, or central banking)")
-print("-" * 60)
-student_lyrics = input("Enter your lyrics/narrative: ").strip()
+# Example student inputs (modify these in your own notebook)
+student_name = "Economics Student"
+student_lyrics = """Inflation's rising, money's value falls,
+Central banks step in to answer the calls.
+Interest rates climbing, purchasing power tight,
+Monetary policy's steering the ship right.
+Classical theory meets the modern age,
+As economic forces take center stage."""
 
-print("\n🎼 Step 2: Describe your music")
-print("(Example: 'upbeat pop about inflation', 'calm jazz exploring monetary policy', 'energetic rap')")
-print("-" * 60)
-music_prompt = input("Enter your music prompt: ").strip()
-
-print("\n👤 Step 3: Your name")
-print("-" * 60)
-student_name = input("Enter your name: ").strip()
+music_prompt = "analytical yet upbeat, economics-themed, educational"
 
 # Store metadata
 metadata = {
@@ -66,9 +63,11 @@ print("\n" + "=" * 60)
 print("SUBMISSION RECEIVED")
 print("=" * 60)
 print(f"Student: {student_name}")
-print(f"Lyrics: {student_lyrics[:50]}...")
+print(f"Lyrics (first 80 chars): {student_lyrics[:80]}...")
 print(f"Music Style: {music_prompt}")
-print("\nGenerating music now...\n")
+print("\nGenerating music starting in 3 seconds...\n")
+
+time.sleep(1)  # Brief pause for display
 ```
 
 ---
