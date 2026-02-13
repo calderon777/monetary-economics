@@ -21,180 +21,87 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
 
 ## Your Creative Input
 
-```{python}
-#| echo: false
+<div class="song-form">
+  <label for="student-name"><strong>Name</strong></label>
+  <input id="student-name" type="text" placeholder="Your name" />
 
-import os
-from pathlib import Path
-import requests
-import json
-from datetime import datetime
-import time
+  <label for="lyrics"><strong>Lyrics or narrative</strong></label>
+  <textarea id="lyrics" rows="6" placeholder="Write about inflation, interest rates, money demand..."></textarea>
 
-# Configuration
-ACESTEP_API_URL = "http://localhost:8001"
-OUTPUT_DIR = Path("generated_songs")
-OUTPUT_DIR.mkdir(exist_ok=True)
+  <label for="prompt"><strong>Music prompt</strong></label>
+  <input id="prompt" type="text" placeholder="e.g., calm jazz, upbeat pop, energetic rap" />
 
-# Sample data for demonstration (replace with actual student input)
-# In an interactive environment, you would use input() instead
-print("=" * 60)
-print("SONG GENERATION FORM - DEMONSTRATION")
-print("=" * 60)
-
-# Example student inputs (modify these in your own notebook)
-student_name = "Economics Student"
-student_lyrics = """Inflation's rising, money's value falls,
-Central banks step in to answer the calls.
-Interest rates climbing, purchasing power tight,
-Monetary policy's steering the ship right.
-Classical theory meets the modern age,
-As economic forces take center stage."""
-
-music_prompt = "analytical yet upbeat, economics-themed, educational"
-
-# Store metadata
-metadata = {
-    "student": student_name,
-    "timestamp": datetime.now().isoformat(),
-    "lyrics": student_lyrics,
-    "music_prompt": music_prompt
-}
-
-print("\n" + "=" * 60)
-print("SUBMISSION RECEIVED")
-print("=" * 60)
-print(f"Student: {student_name}")
-print(f"Lyrics (first 80 chars): {student_lyrics[:80]}...")
-print(f"Music Style: {music_prompt}")
-print("\nGenerating music starting in 3 seconds...\n")
-
-time.sleep(1)  # Brief pause for display
-```
+  <button id="generate-song" type="button">Generate Song (Local)</button>
+  <div id="song-status" class="song-status">Waiting for input.</div>
+</div>
 
 ---
 
 ## 🤖 AI Music Generation with ACE-Step 1.5
 
-```{python}
-#| echo: false
+<div id="song-result">
+  <audio id="song-audio" controls style="width: 100%; display: none;"></audio>
+  <div id="song-summary"></div>
+</div>
 
-def generate_music_with_acestep(lyrics: str, music_prompt: str) -> dict:
-    """
-    Call ACE-Step 1.5 local API to generate music with lyric conditioning
-    
-    Args:
-        lyrics: Student-written lyrics or narrative
-        music_prompt: Description of music style/genre
-    
-    Returns:
-        Dictionary with audio data and metadata
-    """
-    
-    payload = {
-        "lyrics": lyrics,
-        "prompt": music_prompt,
-        "duration": 30,  # 30 seconds for quick generation
-        "temperature": 0.7
+<script>
+(function() {
+  var statusEl = document.getElementById("song-status");
+  var audioEl = document.getElementById("song-audio");
+  var summaryEl = document.getElementById("song-summary");
+
+  function setStatus(text) {
+    statusEl.textContent = text;
+  }
+
+  document.getElementById("generate-song").addEventListener("click", async function() {
+    var name = document.getElementById("student-name").value.trim();
+    var lyrics = document.getElementById("lyrics").value.trim();
+    var prompt = document.getElementById("prompt").value.trim();
+
+    if (!lyrics || !prompt) {
+      setStatus("Please enter both lyrics and a music prompt.");
+      return;
     }
-    
-    headers = {"Content-Type": "application/json"}
-    
-    try:
-        print("🎵 Sending request to ACE-Step API...")
-        response = requests.post(
-            f"{ACESTEP_API_URL}/generate",
-            json=payload,
-            headers=headers,
-            timeout=300  # 5 min timeout for generation
-        )
-        
-        if response.status_code == 200:
-            return {
-                "success": True,
-                "audio_bytes": response.content,
-                "lyrics": lyrics,
-                "prompt": music_prompt
-            }
-        else:
-            return {
-                "success": False,
-                "error": f"API returned status {response.status_code}",
-                "message": response.text,
-                "hint": "Is ACE-Step API running? Check: uv run acestep-api"
-            }
-    
-    except requests.exceptions.ConnectionError:
-        return {
-            "success": False,
-            "error": "Cannot connect to ACE-Step API on localhost:8001",
-            "hint": "Start ACE-Step API with: uv run acestep-api"
-        }
-    except Exception as e:
-        return {
-            "success": False,
-            "error": str(e),
-            "hint": "Check ACE-Step installation and API startup"
-        }
 
-# Generate music
-print("🎵 Connecting to ACE-Step 1.5 API...")
+    setStatus("Connecting to ACE-Step API on http://localhost:8001 ...");
+    audioEl.style.display = "none";
+    summaryEl.innerHTML = "";
 
-# Check if API is reachable
-try:
-    response = requests.get(f"{ACESTEP_API_URL}/health", timeout=5)
-    api_ready = response.status_code == 200
-except:
-    api_ready = False
+    var payload = {
+      lyrics: lyrics,
+      prompt: prompt,
+      duration: 30,
+      temperature: 0.7
+    };
 
-if api_ready:
-    result = generate_music_with_acestep(student_lyrics, music_prompt)
-    
-    if result["success"]:
-        # Save audio file
-        filename = f"{OUTPUT_DIR}/song_{datetime.now().strftime('%Y%m%d_%H%M%S')}.wav"
-        with open(filename, "wb") as f:
-            f.write(result["audio_bytes"])
-        
-        # Save metadata
-        metadata_file = filename.replace(".wav", "_metadata.json")
-        metadata["output_file"] = filename
-        with open(metadata_file, "w") as f:
-            json.dump(metadata, f, indent=2)
-        
-        print(f"✅ Music generated successfully!")
-        print(f"📁 Saved to: {filename}\n")
-        song_file = filename
-        
-    else:
-        print(f"❌ Error generating music: {result.get('error', 'Unknown error')}")
-        print(f"💡 Hint: {result.get('hint', '')}")
-        song_file = None
-else:
-    print("⚠️  ACE-Step API not running!")
-    print("\n🚀 To start the API, open a new terminal and run:")
-    print("   uv run acestep-api")
-    print("\nThe API will start on http://localhost:8001")
-    song_file = None
-```
+    try {
+      var response = await fetch("http://localhost:8001/generate", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      });
 
----
+      if (!response.ok) {
+        setStatus("ACE-Step API returned an error. Is the server running?");
+        return;
+      }
 
-## 🎧 Your Generated Song
+      var audioBlob = await response.blob();
+      var audioUrl = URL.createObjectURL(audioBlob);
+      audioEl.src = audioUrl;
+      audioEl.style.display = "block";
+      setStatus("Song generated successfully.");
 
-```{python}
-#| echo: false
-
-if song_file and Path(song_file).exists():
-    print(f"<audio controls style='width: 100%;'><source src='{song_file}' type='audio/wav'></audio>")
-    print(f"\n**Your song is ready to listen to!**")
-    print(f"\n---\n")
-    print(f"**Student:** {metadata['student']}")
-    print(f"**Your Lyrics/Theme:**\n> {metadata['lyrics']}\n")
-    print(f"**Music Style Requested:**\n> {metadata['music_prompt']}\n")
-else:
-    print("Song generation in progress or awaiting API setup...")
-```
+      summaryEl.innerHTML = "<p><strong>Student:</strong> " + (name || "Anonymous") + "</p>" +
+        "<p><strong>Lyrics:</strong><br>" + lyrics.replace(/\n/g, "<br>") + "</p>" +
+        "<p><strong>Music prompt:</strong> " + prompt + "</p>";
+    } catch (err) {
+      setStatus("Could not connect to ACE-Step API. Start it with: uv run acestep-api");
+    }
+  });
+})();
+</script>
 
 ---
 
