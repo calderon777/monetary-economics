@@ -22,6 +22,8 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
 ## Your Creative Input
 
 ```{python}
+#| echo: false
+
 import os
 from pathlib import Path
 import requests
@@ -75,6 +77,8 @@ time.sleep(1)  # Brief pause for display
 ## 🤖 AI Music Generation with ACE-Step 1.5
 
 ```{python}
+#| echo: false
+
 def generate_music_with_acestep(lyrics: str, music_prompt: str) -> dict:
     """
     Call ACE-Step 1.5 local API to generate music with lyric conditioning
@@ -179,6 +183,8 @@ else:
 ## 🎧 Your Generated Song
 
 ```{python}
+#| echo: false
+
 if song_file and Path(song_file).exists():
     print(f"<audio controls style='width: 100%;'><source src='{song_file}' type='audio/wav'></audio>")
     print(f"\n**Your song is ready to listen to!**")
