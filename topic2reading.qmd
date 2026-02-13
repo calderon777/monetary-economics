@@ -51,7 +51,80 @@ How does this adjustment occur? We can think in terms of supply and demand for m
 
 To visualize money neutrality, consider a simple money market diagram (value of money on the vertical axis and quantity of money on the horizontal axis). The demand for money is downward sloping in terms of the value of money (i.e. $1/P$) – at higher price levels (lower $1/P$), people need to hold more nominal money for transactions, so the demand for nominal balances increases as $1/P$ falls. The supply of money is fixed exogenously by the central bank (a vertical line at the given $M$). Equilibrium occurs where money supply equals money demand, determining the equilibrium $1/P$. Now, if the money supply increases (the vertical line shifts to the right), the intersection with the demand curve moves downward – the equilibrium value of money $1/P$ falls, which means the price level $P$ rises in proportion to the increase in $M$. The following figure illustrates this outcome:
 
-Illustration: Equilibrium in the money market determines the value of money (the inverse of the price level). The demand for money ($D_M$) is downward sloping in terms of $1/P$, and the money supply ($S_M$) is vertical (fixed by policy). An increase in the money supply from $M_0$ to $M_1$ shifts the supply curve rightward, causing the equilibrium value of money to drop from $1/P_0$ to $1/P_1$ – equivalently, the price level $P$ rises. In classical theory, real output ($Y$) and money demand parameters are unchanged, so this change in $P$ leaves real variables unaffected.[9]
+```{r}
+#| label: fig-money-neutrality
+#| fig-cap: "Money market equilibrium determines the value of money (1/P). Money demand (Md) slopes downward in 1/P and money supply (Ms) is fixed exogenously. An increase in money supply from M1 to M2 shifts Ms rightward, lowering the equilibrium value of money from (1/P)1 to (1/P)2 (equivalently, raising P)."
+#| fig-alt: "Money market diagram with downward-sloping money demand in 1/P and vertical money supply shifting right from M1 to M2, reducing 1/P."
+#| fig-width: 7
+#| fig-height: 4.8
+
+# Base R textbook-style diagram (no external packages)
+
+# Money demand: (1/P) = a - b*M  (downward sloping)
+a <- 10
+b <- 1
+
+# Money supplies
+M1 <- 4
+M2 <- 6
+
+# Range for plotting
+Mmax <- 10
+M <- seq(0, Mmax, length.out = 400)
+val_money <- a - b*M
+
+# Equilibria (intersections with Md)
+V1 <- a - b*M1   # (1/P)1
+V2 <- a - b*M2   # (1/P)2
+
+# Plot demand curve
+plot(
+  x = M, y = val_money, type = "l",
+  xlim = c(0, Mmax), ylim = c(0, a),
+  xlab = "Quantity of Money (M)",
+  ylab = "Value of Money (1/P)",
+  main = "Money Market and Money Neutrality",
+  lwd = 2
+)
+
+# Money supply lines
+abline(v = M1, lty = 2, lwd = 2)
+abline(v = M2, lty = 2, lwd = 2)
+
+# Mark equilibria
+points(M1, V1, pch = 19, cex = 1.1)
+points(M2, V2, pch = 19, cex = 1.1)
+
+# Labels for equilibria
+text(M1, V1, labels = expression(E[1]), pos = 3, xpd = NA)
+text(M2, V2, labels = expression(E[2]), pos = 3, xpd = NA)
+
+# Axis annotations for M1, M2
+axis(1, at = c(M1, M2), labels = c(expression(M[1]), expression(M[2])), tick = TRUE)
+
+# Optional dashed horizontals to show (1/P)1 and (1/P)2
+segments(0, V1, M1, V1, lty = 3)
+segments(0, V2, M2, V2, lty = 3)
+axis(2, at = c(V1, V2), labels = c(expression((1/P)[1]), expression((1/P)[2])), las = 1)
+
+# Curve and line labels
+text(8.2, a - b*8.2 + 0.6, labels = expression(M^d), xpd = NA)
+text(M1, a*0.98, labels = expression(M^s[1]), pos = 3, xpd = NA)
+text(M2, a*0.98, labels = expression(M^s[2]), pos = 3, xpd = NA)
+
+# Legend (simple, top-right)
+legend(
+  "topright",
+  legend = c(expression(M^d), expression(M^s[1]), expression(M^s[2])),
+  lty = c(1, 2, 2),
+  lwd = c(2, 2, 2),
+  bty = "n"
+)
+```
+
+Illustration: The diagram shows money demand $M^d$ sloping downward in $1/P$ and two vertical money supplies, $M_1$ and $M_2$. When supply shifts right from $M_1$ to $M_2$, equilibrium moves from $E_1$ to $E_2$, lowering $1/P$ from $(1/P)_1$ to $(1/P)_2$ (equivalently, raising $P$). This mirrors the text: with real output and money demand behavior unchanged, an increase in $M$ changes only nominal values, not real outcomes.[9]
+
+
 
 In the classical long-run perspective, empirical evidence does show that countries with persistently higher money growth tend to have higher inflation, consistent with money neutrality in the long term. Cross-country studies find a close one-to-one relationship between the rate of money growth (in excess of real GDP growth) and the inflation rate in the long run[10]. For example, during episodes of hyperinflation, excessive money creation clearly leads to soaring prices: Zimbabwe’s central bank, by printing money in the 2000s, contributed to one of the worst hyperinflations on record – at its peak in 2008, prices in Zimbabwe were estimated to be rising at an astronomical rate of 500 billion percent per year[11]. Such extreme cases demonstrate that pouring huge amounts of money into an economy with limited output will drastically reduce money’s value (raise the price level). In more moderate circumstances too, “if the money supply grows too big relative to the size of an economy, the unit value of the currency diminishes – its purchasing power falls and prices rise”[12], which is precisely the quantity theory prediction.
 
