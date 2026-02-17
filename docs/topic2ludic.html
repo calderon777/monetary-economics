@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="EC3014 - Monetary Economics">
-<meta name="dcterms.date" content="2026-02-13">
+<meta name="dcterms.date" content="2026-02-17">
 
 <title>Topic 2: Song Generation - Ludic Activity – Monetary Economics</title>
 <style>
@@ -436,7 +436,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">February 13, 2026</p>
+      <p class="date">February 17, 2026</p>
     </div>
   </div>
   
@@ -464,48 +464,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="your-creative-input" class="level2">
 <h2 class="anchored" data-anchor-id="your-creative-input">Your Creative Input</h2>
-<div id="f03b2d60" class="cell" data-execution_count="1">
-<div class="cell-output cell-output-stdout">
-<pre><code>============================================================
-SONG GENERATION FORM - DEMONSTRATION
-============================================================
-
-============================================================
-SUBMISSION RECEIVED
-============================================================
-Student: Economics Student
-Lyrics (first 80 chars): Inflation's rising, money's value falls,
-Central banks step in to answer the cal...
-Music Style: analytical yet upbeat, economics-themed, educational
-
-Generating music starting in 3 seconds...
-</code></pre>
+<div class="song-form">
+<p><label for="student-name"><strong>Name</strong></label> <input id="student-name" type="text" placeholder="Your name"></p>
+<label for="lyrics"><strong>Lyrics or narrative</strong></label>
+<textarea id="lyrics" rows="6" placeholder="Write about inflation, interest rates, money demand..."></textarea>
+<p><label for="prompt"><strong>Music prompt</strong></label> <input id="prompt" type="text" placeholder="e.g., calm jazz, upbeat pop, energetic rap"></p>
+<button id="generate-song" type="button">Generate Song (Local)</button>
+<div id="song-status" class="song-status">
+Waiting for input.
 </div>
 </div>
 <hr>
 </section>
 <section id="ai-music-generation-with-ace-step-1.5" class="level2">
 <h2 class="anchored" data-anchor-id="ai-music-generation-with-ace-step-1.5">🤖 AI Music Generation with ACE-Step 1.5</h2>
-<div id="99b76016" class="cell" data-execution_count="2">
-<div class="cell-output cell-output-stdout">
-<pre><code>🎵 Connecting to ACE-Step 1.5 API...
-⚠️  ACE-Step API not running!
+<div id="song-result">
+<audio id="song-audio" controls="" style="width: 100%; display: none;"></audio>
+<div id="song-summary">
 
-🚀 To start the API, open a new terminal and run:
-   uv run acestep-api
+</div>
+</div>
+<script>
+(function() {
+  var statusEl = document.getElementById("song-status");
+  var audioEl = document.getElementById("song-audio");
+  var summaryEl = document.getElementById("song-summary");
 
-The API will start on http://localhost:8001</code></pre>
-</div>
-</div>
-<hr>
-</section>
-<section id="your-generated-song" class="level2">
-<h2 class="anchored" data-anchor-id="your-generated-song">🎧 Your Generated Song</h2>
-<div id="b17798ad" class="cell" data-execution_count="3">
-<div class="cell-output cell-output-stdout">
-<pre><code>Song generation in progress or awaiting API setup...</code></pre>
-</div>
-</div>
+  function setStatus(text) {
+    statusEl.textContent = text;
+  }
+
+  document.getElementById("generate-song").addEventListener("click", async function() {
+    var name = document.getElementById("student-name").value.trim();
+    var lyrics = document.getElementById("lyrics").value.trim();
+    var prompt = document.getElementById("prompt").value.trim();
+
+    if (!lyrics || !prompt) {
+      setStatus("Please enter both lyrics and a music prompt.");
+      return;
+    }
+
+    setStatus("Connecting to ACE-Step API on http://localhost:8001 ...");
+    audioEl.style.display = "none";
+    summaryEl.innerHTML = "";
+
+    var payload = {
+      lyrics: lyrics,
+      prompt: prompt,
+      duration: 30,
+      temperature: 0.7
+    };
+
+    try {
+      var response = await fetch("http://localhost:8001/generate", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify(payload)
+      });
+
+      if (!response.ok) {
+        setStatus("ACE-Step API returned an error. Is the server running?");
+        return;
+      }
+
+      var audioBlob = await response.blob();
+      var audioUrl = URL.createObjectURL(audioBlob);
+      audioEl.src = audioUrl;
+      audioEl.style.display = "block";
+      setStatus("Song generated successfully.");
+
+      summaryEl.innerHTML = "<p><strong>Student:</strong> " + (name || "Anonymous") + "</p>" +
+        "<p><strong>Lyrics:</strong><br>" + lyrics.replace(/\n/g, "<br>") + "</p>" +
+        "<p><strong>Music prompt:</strong> " + prompt + "</p>";
+    } catch (err) {
+      setStatus("Could not connect to ACE-Step API. Start it with: uv run acestep-api");
+    }
+  });
+})();
+</script>
 <hr>
 </section>
 <section id="reflection-questions" class="level2">
@@ -526,24 +562,24 @@ The API will start on http://localhost:8001</code></pre>
 <section id="step-1-install-ace-step-one-time-setup" class="level3">
 <h3 class="anchored" data-anchor-id="step-1-install-ace-step-one-time-setup">Step 1: Install ACE-Step (One-time setup)</h3>
 <p><strong>Windows/macOS/Linux:</strong></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Install uv (universal Python package manager)</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Go to: https://astral.sh/uv/install.sh</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows: Download and run the installer</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use PowerShell:</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="ex">powershell</span> <span class="at">-ExecutionPolicy</span> BypassUser <span class="at">-c</span> <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Clone the ACE-Step repository</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/ACE-Step/ACE-Step-1.5.git</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ACE-Step-1.5</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Install dependencies</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 1) Install uv (universal Python package manager)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Go to: https://astral.sh/uv/install.sh</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Windows: Download and run the installer</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Or use PowerShell:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">powershell</span> <span class="at">-ExecutionPolicy</span> BypassUser <span class="at">-c</span> <span class="st">"irm https://astral.sh/uv/install.ps1 | iex"</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 2) Clone the ACE-Step repository</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">git</span> clone https://github.com/ACE-Step/ACE-Step-1.5.git</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ACE-Step-1.5</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 3) Install dependencies</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> sync</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="step-2-start-the-ace-step-api" class="level3">
 <h3 class="anchored" data-anchor-id="step-2-start-the-ace-step-api">Step 2: Start the ACE-Step API</h3>
 <p>Before running the activity, start the API in a separate terminal:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ACE-Step-1.5</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run acestep-api</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">cd</span> ACE-Step-1.5</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run acestep-api</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>You should see:</p>
 <pre><code>INFO:     Uvicorn running on http://127.0.0.1:8001</code></pre>
 <p><strong>Keep this terminal open while students use the activity.</strong></p>
@@ -551,13 +587,13 @@ The API will start on http://localhost:8001</code></pre>
 <section id="step-3-run-the-activity" class="level3">
 <h3 class="anchored" data-anchor-id="step-3-run-the-activity">Step 3: Run the Activity</h3>
 <p>With the API running, open this file (<code>topic2ludic.qmd</code>) in Quarto Preview:</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview topic2ludic.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="ex">quarto</span> preview topic2ludic.qmd</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Students enter their lyrics and music preferences, and ACE-Step generates the audio locally.</p>
 </section>
 <section id="step-4-optional---use-the-gradio-ui" class="level3">
 <h3 class="anchored" data-anchor-id="step-4-optional---use-the-gradio-ui">Step 4: Optional - Use the Gradio UI</h3>
 <p>If preferred, students can also use ACE-Step’s built-in UI:</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run acestep</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="ex">uv</span> run acestep</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Then open <code>http://localhost:7860</code> in a browser.</p>
 <hr>
 </section>

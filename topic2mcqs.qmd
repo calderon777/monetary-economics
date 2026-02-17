@@ -369,14 +369,14 @@ library(webexercises)
     await postAttempt({
       timestamp: new Date().toISOString(),
       nickname,
-      quiz: "Week2",
+      quiz: "Topic2",
       score,
       total,
       details
     });
 
     // Refresh leaderboard after a successful submit (or best-effort submit)
-    await loadLeaderboard("Week2");
+    await loadLeaderboard("Topic2");
 
     // Disable all radio buttons and submit button to prevent further changes
     document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
@@ -398,7 +398,7 @@ library(webexercises)
       }
     });
 
-    loadLeaderboard("Week2");
+    loadLeaderboard("Topic2");
   });
 })();
 </script>

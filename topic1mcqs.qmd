@@ -401,14 +401,14 @@ library(webexercises)
     await postAttempt({
       timestamp: new Date().toISOString(),
       nickname,
-      quiz: "Week1",
+      quiz: "Topic1",
       score,
       total,
       details
     });
 
     // Refresh leaderboard after a successful submit (or best-effort submit)
-    await loadLeaderboard("Week1");
+    await loadLeaderboard("Topic1");
 
     // Disable all radio buttons and submit button to prevent further changes
     document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
@@ -430,7 +430,7 @@ library(webexercises)
       }
     });
 
-    loadLeaderboard("Week1");
+    loadLeaderboard("Topic1");
   });
 })();
 </script>
