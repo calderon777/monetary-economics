@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -538,40 +503,33 @@ window.Quarto = {
 <p>In the UK, the political narrative of “stability” became highly salient. A famous statement often associated with this period is Gordon Brown’s “no return to boom and bust,” recorded in a 2006 Budget statement.</p>
 <p>The consensus did <strong>not</strong> imply that recessions were impossible. Many emerging and developing economies continued to experience episodes of currency and financial crisis during the 1990s (for example, crises associated with fixed or heavily managed exchange rates). An IMF analysis by Stanley Fischer—reflecting on crises in Asia, Russia and elsewhere—explicitly highlighted the vulnerability of “more or less fixed” exchange-rate systems to crisis pressure.</p>
 <p>This chapter is designed to replace the relevant student reading from Lewis &amp; Mizen (2000), Chapter 16, while preserving and enhancing the core lecture-note ideas with modern academic and institutional sources.</p>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Figure generation
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>This chapter includes data-driven figures generated using R. To create the figures, run:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">source</span>(<span class="st">"R/make_consensus_figures.R"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>This will pull real data from BoE, ECB, Fed (FRED), and BIS sources and generate all figures in <code>figs/</code> directory.</p>
-</div>
-</div>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-timeline" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Timeline of monetary policy consensus evolution with key institutional changes">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_great_moderation_timeline.png" class="img-fluid figure-img" style="width:95.0%" alt="Timeline of monetary policy consensus evolution with key institutional changes">
+<img src="topic7reading_files/figure-html/fig-timeline-1.png" class="img-fluid figure-img" alt="Timeline of monetary policy consensus evolution with key institutional changes" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-timeline-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;1: Great Moderation and consensus-era timeline showing key milestones from 1990s inflation targeting adoption through COVID and recent tightening cycles
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-volatility" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Rolling volatility of UK CPI inflation showing Great Moderation period">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-volatility-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_great_moderation_inflation_volatility_proxy.png" class="img-fluid figure-img" style="width:90.0%" alt="Rolling volatility of UK CPI inflation showing Great Moderation period">
+<img src="topic7reading_files/figure-html/fig-volatility-1.png" class="img-fluid figure-img" alt="Rolling volatility of UK CPI inflation showing Great Moderation period" width="864">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-volatility-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;2: UK inflation volatility (rolling 5-year standard deviation) illustrating the Great Moderation period of reduced volatility
 </figcaption>
 </figure>
+</div>
+</div>
 </div>
 <section id="learning-goals" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="learning-goals"><span class="header-section-number">1.1</span> Learning goals</h2>
@@ -648,15 +606,19 @@ Figure&nbsp;2: UK inflation volatility (rolling 5-year standard deviation) illus
 <section id="strategies-for-achieving-low-inflation-targets-and-nominal-anchors" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> Strategies for achieving low inflation: targets and nominal anchors</h1>
 <p>Inflation control can be organized into three practical strategies: <strong>monetary targeting</strong>, <strong>fixed exchange rates</strong>, and <strong>inflation targeting</strong>. A useful way to frame the differences is: all three strategies try to solve a credibility problem by providing the public with a <strong>nominal anchor</strong>—a variable that helps pin down expectations about future inflation.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-anchors" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Heatmap comparing monetary targeting, exchange-rate pegs, and inflation targeting">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-anchors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_nominal_anchor_comparison_heatmap.png" class="img-fluid figure-img" style="width:85.0%" alt="Heatmap comparing monetary targeting, exchange-rate pegs, and inflation targeting">
+<img src="topic7reading_files/figure-html/fig-anchors-1.png" class="img-fluid figure-img" alt="Heatmap comparing monetary targeting, exchange-rate pegs, and inflation targeting" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-anchors-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;3: Qualitative comparison of three nominal anchor strategies across key dimensions
 </figcaption>
 </figure>
+</div>
+</div>
 </div>
 <section id="monetary-targeting" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="monetary-targeting"><span class="header-section-number">4.1</span> Monetary targeting</h2>
@@ -729,15 +691,19 @@ Figure&nbsp;3: Qualitative comparison of three nominal anchor strategies across 
 <h3 data-number="4.3.3" class="anchored" data-anchor-id="the-policy-instrument-the-short-term-interest-rate"><span class="header-section-number">4.3.3</span> The policy instrument: the short-term interest rate</h3>
 <p>Inflation targeting is implemented primarily through a short‑term policy rate (with money aggregates adjusting endogenously).</p>
 <p>The Bank of England’s transmission-mechanism paper describes how the MPC sets the official short-term rate, which influences market rates, expectations, asset prices and the exchange rate, and then spending decisions, ultimately affecting inflation. More recent BoE work—explicitly linking nominal rigidities and expectations to transmission—reinforces the same core mechanism. The ECB’s transmission overview similarly highlights expectations, asset prices, exchange rates, and spending decisions as key channels.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-transmission" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Flow diagram of monetary transmission from policy rate to inflation">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-transmission-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_transmission_mechanism_schematic.png" class="img-fluid figure-img" style="width:90.0%" alt="Flow diagram of monetary transmission from policy rate to inflation">
+<img src="topic7reading_files/figure-html/fig-transmission-1.png" class="img-fluid figure-img" alt="Flow diagram of monetary transmission from policy rate to inflation" width="960">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-transmission-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;4: Monetary transmission mechanism schematic showing how policy rates affect inflation through multiple channels
 </figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 <section id="inflation-targeting-after-the-global-financial-crisis-the-toolkit-expands" class="level3" data-number="4.3.4">
@@ -748,25 +714,33 @@ Figure&nbsp;4: Monetary transmission mechanism schematic showing how policy rate
 <li>The Federal Reserve documents large-scale asset purchases beginning in 2008–09 (LSAP1), illustrating how balance-sheet tools were used when conventional rate cuts were constrained.</li>
 <li>The Bank of Japan’s official reference timeline lists ZIRP (1999), QE (2001), QQE (2013), and later negative rates and yield curve control—illustrating sustained reliance on unconventional tools in a low-inflation environment.</li>
 </ul>
-<div id="fig-rates" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Policy rate comparison across four major central banks 2000-2025">
+<div class="cell">
+<div class="cell-output-display">
+<div id="fig-rates" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Policy rate comparison across major central banks 2000-2025">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-rates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_policy_rates_cross_country.png" class="img-fluid figure-img" style="width:90.0%" alt="Policy rate comparison across four major central banks 2000-2025">
+<img src="topic7reading_files/figure-html/fig-rates-1.png" class="img-fluid figure-img" alt="Policy rate comparison across major central banks 2000-2025" width="864">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rates-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;5: Cross-country policy rates (BoE, ECB, Fed, BoJ) with key event markers for crisis periods and unconventional policy adoptions
+Figure&nbsp;5: Cross-country policy rates (BoE, ECB, Fed) with key event markers for crisis periods and unconventional policy adoptions
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-qe" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Step chart of QE program announcement sizes over time">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-qe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_qe_envelopes_step.png" class="img-fluid figure-img" style="width:90.0%" alt="Step chart of QE program announcement sizes over time">
+<img src="topic7reading_files/figure-html/fig-qe-1.png" class="img-fluid figure-img" alt="Step chart of QE program announcement sizes over time" width="864">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-qe-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;6: Quantitative easing envelope announcements showing stepped increases in BoE APF, ECB PEPP, and Fed LSAP1 programs
 </figcaption>
 </figure>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -782,35 +756,33 @@ Figure&nbsp;6: Quantitative easing envelope announcements showing stepped increa
 <h2 data-number="5.2" class="anchored" data-anchor-id="accountability-open-letters"><span class="header-section-number">5.2</span> Accountability: open letters</h2>
 <p>If inflation deviates beyond the tolerance threshold, the Bank must provide an explanation in writing.</p>
 <p>This mechanism is described clearly in HM Treasury’s “open letters” collection and the BoE’s public explanation of the 2% target: if CPI inflation is above 3% or below 1%, the Governor writes an open letter to the Chancellor explaining why inflation moved away from target and how policy will return it to target.</p>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-uk-inflation" class="quarto-float quarto-figure quarto-figure-center anchored" alt="UK CPI inflation versus BoE 2% target and accountability thresholds">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-uk-inflation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_uk_inflation_target_band.png" class="img-fluid figure-img" style="width:90.0%" alt="UK CPI inflation versus BoE 2% target and accountability thresholds">
+<img src="topic7reading_files/figure-html/fig-uk-inflation-1.png" class="img-fluid figure-img" alt="UK CPI inflation versus BoE 2% target and accountability thresholds" width="864">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uk-inflation-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;7: UK CPI inflation with 2% target and 1-3% open-letter threshold band since 1997 operational independence
 </figcaption>
 </figure>
 </div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
 <div id="fig-uk-rate" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Bank of England official Bank Rate since 1997">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-uk-rate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_uk_bank_rate.png" class="img-fluid figure-img" style="width:90.0%" alt="Bank of England official Bank Rate since 1997">
+<img src="topic7reading_files/figure-html/fig-uk-rate-1.png" class="img-fluid figure-img" alt="Bank of England official Bank Rate since 1997" width="864">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uk-rate-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Figure&nbsp;8: UK Bank Rate (official policy instrument) evolution demonstrating operational independence era
 </figcaption>
 </figure>
 </div>
-<div id="fig-uk-expectations" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Survey-based UK inflation expectations at 1-year and 5-year horizons">
-<figure class="quarto-float quarto-float-fig figure">
-<div aria-describedby="fig-uk-expectations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="figs/fig_uk_inflation_expectations_proxies.png" class="img-fluid figure-img" style="width:90.0%" alt="Survey-based UK inflation expectations at 1-year and 5-year horizons">
 </div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-uk-expectations-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;9: UK inflation expectations from BoE Inflation Attitudes Survey showing anchoring around 2% target
-</figcaption>
-</figure>
 </div>
 </section>
 <section id="transparency-reports-and-forecasts" class="level2" data-number="5.3">

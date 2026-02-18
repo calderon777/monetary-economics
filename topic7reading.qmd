@@ -80,54 +80,29 @@ as_month_end <- function(df, date_col = "date", value_col = "value") {
 ```{r}
 #| label: data-fetch-functions
 
-# BoE Bank Rate data
-fetch_boe_bank_rate <- function(start = "01/Jan/1990") {
-  url <- paste0(
-    "https://www.bankofengland.co.uk/boeapps/database/_iadb-fromshowcolumns.asp?excel97.x=yes",
-    "&Datefrom=", URLencode(start),
-    "&Dateto=now",
-    "&SeriesCodes=IUDBEDR",
-    "&UsingCodes=Y",
-    "&VPD=Y",
-    "&VFD=N"
-  )
-  f <- download_with_cache(url, "data_cache/boe_IUDBEDR_bank_rate.xls")
-  for (sk in 0:12) {
-    tmp <- try(readxl::read_excel(f, skip = sk), silent = TRUE)
-    if (!inherits(tmp, "try-error")) {
-      nm <- names(tmp) %>% str_to_lower()
-      if (any(nm %in% c("date", "dates"))) {
-        tmp <- tmp %>% clean_names()
-        dcol <- guess_col(tmp, c("date"))
-        vcol <- setdiff(names(tmp), dcol)[1]
-        out <- tmp %>%
-          transmute(date = as.Date(.data[[dcol]]),
-                    value = as.numeric(.data[[vcol]])) %>%
-          filter(!is.na(date), !is.na(value))
-        return(out)
-      }
-    }
-  }
-  stop("Could not parse BoE IADB output.")
-}
-
-# ECB Deposit Facility Rate
-fetch_ecb_deposit_facility <- function(start_period = "1999-01-01") {
-  url <- paste0(
-    "https://data-api.ecb.europa.eu/service/data/ILM/ILM.D.U2.C.L020200.U2.EUR",
-    "?startPeriod=", start_period, "&format=csvdata"
-  )
-  f <- download_with_cache(url, "data_cache/ecb_deposit_facility.csv")
-  df <- readr::read_csv(f, show_col_types = FALSE) %>% clean_names()
-  dcol <- guess_col(df, c("time_period", "time"))
-  vcol <- guess_col(df, c("obs_value", "value"))
+# All data from FRED for reliability
+fetch_boe_bank_rate <- function() {
+  url <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOERUKQ"
+  f <- download_with_cache(url, "data_cache/boe_rate_fred.csv")
+  df <- readr::read_csv(f, show_col_types = FALSE)
+  names(df) <- c("date", "value")
   df %>%
-    transmute(date = as.Date(.data[[dcol]]),
-              value = as.numeric(.data[[vcol]])) %>%
+    mutate(date = as.Date(date),
+           value = as.numeric(value)) %>%
     filter(!is.na(date), !is.na(value))
 }
 
-# Fed Target Range Midpoint
+fetch_ecb_deposit_facility <- function() {
+  url <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=ECBDFR"
+  f <- download_with_cache(url, "data_cache/ecb_rate_fred.csv")
+  df <- readr::read_csv(f, show_col_types = FALSE)
+  names(df) <- c("date", "value")
+  df %>%
+    mutate(date = as.Date(date),
+           value = as.numeric(value)) %>%
+    filter(!is.na(date), !is.na(value))
+}
+
 fetch_fed_target_midpoint <- function() {
   url_l <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARL"
   url_u <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARU"
@@ -541,11 +516,12 @@ events <- tibble(
 
 ggplot(policy_rates, aes(x = date, y = value, group = bank)) +
   geom_line(linewidth = 0.8) +
-  geom_vline(data = events, aes(xintercept = date), linetype = "dashed", linewidth = 0.4) +
+  geom_vline(data = events, aes(xintercept = date), linetype = "dashed", linewidth = 0.4, inherit.aes = FALSE) +
   geom_text(
     data = events,
     aes(x = date, y = Inf, label = label),
-    angle = 90, vjust = 1.2, hjust = 1.0, size = 3
+    angle = 90, vjust = 1.2, hjust = 1.0, size = 3,
+    inherit.aes = FALSE
   ) +
   scale_y_continuous(labels = percent_format(scale = 1)) +
   labs(
