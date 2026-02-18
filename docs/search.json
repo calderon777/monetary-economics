@@ -1511,9 +1511,174 @@
   {
     "objectID": "topic6reading.html",
     "href": "topic6reading.html",
-    "title": "Topic 6 Reading",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
     "section": "",
-    "text": "Topic 6 Reading (Placeholder)\nContent will be added soon.",
+    "text": "The time inconsistency problem arises when a policy that is optimal when announced (“ex ante”) is no longer optimal when it is time to implement it (“ex post”), because incentives change once private agents have acted on the announcement (Kydland & Prescott, 1977).\nA simple non-monetary illustration is building on a flood plain. A government can credibly announce “no disaster relief” to deter risky construction. But if people build anyway and a flood occurs, political pressure makes it optimal to provide relief, so the original announcement is not carried out. The announcement was “optimal” at the start, but not credible when the time comes to act—so it fails to shape private behavior in the intended way.\nIn monetary economics, time inconsistency is central because modern monetary policy works heavily through expectations. If the public believes a low-inflation plan, expected inflation falls; but once expectations are low, a policymaker who cares about output/employment may be tempted to create a surprise inflation to push output temporarily above potential. Anticipating this, rational agents discount (or ignore) overly ambitious low-inflation announcements, producing an equilibrium with higher inflation but no sustained gain in output—the classic inflation bias of discretion (Barro & Gordon, 1983).\nThis chapter replaces readings on credibility and reputation in monetary policy (mapping to Lewis & Mizen, Sections 10.3–10.6) by reconstructing and modernizing the theory and evidence using primary academic papers and official institutional sources.\n\n\nBy the end of this chapter, you should be able to:\n\nExplain why discretion can generate inflation bias even when the policymaker dislikes inflation (Kydland & Prescott, 1977; Barro & Gordon, 1983).\nDerive the time-consistent inflation rate in the benchmark model and interpret the roles of policy preferences and the Phillips/Lucas supply slope (Rogoff, 1985).\nShow how reputation in repeated interaction can support low inflation as an equilibrium—and why multiple equilibria (trust vs distrust) can exist (Barro & Gordon, 1983; Faust & Svensson, 2001).\nEvaluate institutional “commitment devices” in practice: rules, central bank independence, conservative delegation, contracts/targets, and exchange-rate pegs (Taylor, 1993; Rogoff, 1985; Walsh, 1995).",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#learning-objectives",
+    "href": "topic6reading.html#learning-objectives",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "",
+    "text": "By the end of this chapter, you should be able to:\n\nExplain why discretion can generate inflation bias even when the policymaker dislikes inflation (Kydland & Prescott, 1977; Barro & Gordon, 1983).\nDerive the time-consistent inflation rate in the benchmark model and interpret the roles of policy preferences and the Phillips/Lucas supply slope (Rogoff, 1985).\nShow how reputation in repeated interaction can support low inflation as an equilibrium—and why multiple equilibria (trust vs distrust) can exist (Barro & Gordon, 1983; Faust & Svensson, 2001).\nEvaluate institutional “commitment devices” in practice: rules, central bank independence, conservative delegation, contracts/targets, and exchange-rate pegs (Taylor, 1993; Rogoff, 1985; Walsh, 1995).",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#assumptions-and-notation",
+    "href": "topic6reading.html#assumptions-and-notation",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "2.1 Assumptions and notation",
+    "text": "2.1 Assumptions and notation\nLet inflation be \\(\\pi\\), expected inflation formed last period be \\(E_{-1}\\pi\\), potential output be \\(Y^*\\), and the policymaker’s desired output target be \\(Y^T\\). The policymaker’s political bias is \\(\\lambda = Y^T - Y^*\\). A positive \\(\\lambda\\) means the policymaker wants output above potential.\nThe central bank’s quadratic loss is: \\[L = (a/2)\\pi^2 + (b/2)(Y - Y^T)^2,\\] with \\(a&gt;0\\) capturing inflation aversion and \\(b&gt;0\\) capturing aversion to output deviations from target. The ratio \\(b/a\\) is a useful “dove/hawk” index: higher \\(b/a\\) corresponds to more dovish (output-focused), lower \\(b/a\\) more hawkish (inflation-focused).\nOutput is linked to surprise inflation using a Lucas supply relation: \\[Y - Y^* = \\kappa(\\pi - E_{-1}\\pi),\\] where \\(\\kappa&gt;0\\) measures how strongly output responds to an inflation surprise. Higher \\(\\kappa\\) means larger short-run output response; lower \\(\\kappa\\) means surprises translate mostly into prices.\nSubstituting \\(Y - Y^T = \\kappa(\\pi - E_{-1}\\pi) - \\lambda\\) into the loss function yields: \\[L = (a/2)\\pi^2 + (b/2)(\\kappa(\\pi - E_{-1}\\pi) - \\lambda)^2.\\]\nThis expression makes the tension explicit: inflation is costly, but if \\(\\lambda&gt;0\\) the policymaker has an incentive to generate surprise inflation to move output toward its preferred target.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#sequence-of-moves-and-time-consistency",
+    "href": "topic6reading.html#sequence-of-moves-and-time-consistency",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "3.1 Sequence of moves and time consistency",
+    "text": "3.1 Sequence of moves and time consistency\nThe one-shot sequence is:\n\nAt time \\(-1\\), the central bank announces an intended inflation rate.\n\nStill at time \\(-1\\), private agents form \\(E_{-1}\\pi\\), using rational expectations.\n\nAt time \\(0\\), the central bank chooses actual inflation \\(\\pi\\).\n\nA time-consistent policy satisfies \\(\\pi = E_{-1}\\pi\\).\n\nUnder rational expectations, anything systematically implemented is anticipated, so “systematic surprises” cannot persist. This connects directly to the New Classical policy-ineffectiveness insight: predictable policy does not move real output; only unanticipated components can.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#the-temptation-to-deviate",
+    "href": "topic6reading.html#the-temptation-to-deviate",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "3.2 The temptation to deviate",
+    "text": "3.2 The temptation to deviate\nIf the central bank accepts that output is at \\(Y^*\\) absent shocks, it cannot systematically keep \\(Y\\) above \\(Y^*\\). In that case, it would like to minimize inflation costs and choose \\(\\pi=0\\). This makes “zero inflation” an ex ante optimal announcement.\nBut if the public believed \\(E_{-1}\\pi=0\\), the central bank faces an incentive to create a positive \\(\\pi\\) once expectations are set, because surprise inflation temporarily closes the output gap. This is the core time inconsistency: once expectations are set, surprise inflation has short-run benefits, so the policymaker is tempted to deviate (Kydland & Prescott, 1977; Barro & Gordon, 1983).",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#the-central-bank-reaction-function",
+    "href": "topic6reading.html#the-central-bank-reaction-function",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "3.3 The central bank reaction function",
+    "text": "3.3 The central bank reaction function\nHolding \\(E_{-1}\\pi\\) fixed, the central bank minimizes the loss. The first-order condition implies the best response (reaction function): \\[\\pi = \\frac{b\\kappa\\lambda}{a+b\\kappa^2} + \\frac{b\\kappa^2}{a+b\\kappa^2}E_{-1}\\pi.\\]\nThe public’s rational expectations condition is \\(E_{-1}\\pi=\\pi\\). Substituting yields the time-consistent inflation rate: \\[\\pi^e = \\pi = \\frac{b\\kappa\\lambda}{a}.\\]\nInterpretation (inflation bias). If \\(\\lambda&gt;0\\) (the policymaker wants output above potential), equilibrium inflation is positive even though output ends up at \\(Y^*\\) on average because surprises cannot be systematic under rational expectations. The bias grows when the policymaker is more dovish (higher \\(b/a\\)), when the surprise inflation channel is stronger (higher \\(\\kappa\\)), or when the political bias \\(\\lambda\\) is larger.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#comparing-outcomes-four-scenarios",
+    "href": "topic6reading.html#comparing-outcomes-four-scenarios",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "3.4 Comparing outcomes: four scenarios",
+    "text": "3.4 Comparing outcomes: four scenarios\nThe benchmark compares four outcomes using stylized loss levels:\n\nHonest commitment: Announce and deliver \\(\\pi=0\\) when the public believes it. Loss is \\(L^* = (b/2)\\lambda^2\\) because output stays at \\(Y^*\\) but the policymaker wants \\(Y^T=Y^*+\\lambda\\).\nDiscretionary equilibrium: The public expects and the central bank delivers \\(\\pi=(b\\kappa\\lambda)/a\\). Output remains at \\(Y^*\\), but inflation is higher: \\(L^e = (b/2)\\lambda^2(1 + (b\\kappa^2)/a)\\).\nCheating: If the central bank could convince the public it will deliver \\(\\pi=0\\), then set positive inflation once expectations are fixed, output rises temporarily. Cheating loss is \\(L^c = (a/(a+b\\kappa^2))(b/2)\\lambda^2 &lt; L^*\\), explaining the temptation.\nPurist strategy: The public expects the time-consistent rate but the central bank delivers \\(\\pi=0\\) anyway. Output falls below \\(Y^*\\). This is the worst case: \\(L^p = (b/2)\\lambda^2(1+(b\\kappa^2)/a)^2 &gt; L^e\\). Key insight: sudden disinflation without credibility can create a recession without immediate credibility gains.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#infinite-repetition-and-trigger-strategies",
+    "href": "topic6reading.html#infinite-repetition-and-trigger-strategies",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "4.1 Infinite repetition and trigger strategies",
+    "text": "4.1 Infinite repetition and trigger strategies\nIn a repeated-game setting, the central bank’s loss is: \\[L_{\\text{total}} = L_0 + \\beta L_1 + \\beta^2 L_2 + ...,\\] where \\(0&lt;\\beta&lt;1\\) is a discount factor. Higher \\(\\beta\\) means the central bank puts more weight on future losses.\nA trigger strategy supports credibility: the public believes the central bank’s announcement unless it cheats; if it cheats, the public distrusts it forever and reverts to expecting the time-consistent rate. Cheating yields a one-time gain but permanently higher future losses because expectations become unanchored. The central bank honors its promise when the discounted future cost exceeds today’s gain—i.e., when \\(\\beta\\) is “high enough.”\nThis logic formalizes why credibility depends on institutions that make policymakers patient and forward-looking: longer horizons, reputational concerns, and governance arrangements that reduce short-term political pressures all raise the effective discount factor.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#multiple-equilibria-and-self-fulfilling-expectations",
+    "href": "topic6reading.html#multiple-equilibria-and-self-fulfilling-expectations",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "4.2 Multiple equilibria and self-fulfilling expectations",
+    "text": "4.2 Multiple equilibria and self-fulfilling expectations\nA major insight is that repeated games can have multiple equilibria. If the public starts out distrustful, it may coordinate on expecting the high-inflation (time-consistent) outcome from the outset, trapping the central bank in a high-inflation equilibrium. If the public starts trusting and the bank validates that trust, a low-inflation equilibrium is sustained. These equilibria can be self-fulfilling.\nThis connects to modern work on transparency and credibility: when private agents infer central bank preferences from outcomes, transparency can strengthen discipline by making reputational consequences more sensitive to deviations (Faust & Svensson, 2001).",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#modern-credibility-in-practice",
+    "href": "topic6reading.html#modern-credibility-in-practice",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "4.3 Modern credibility in practice",
+    "text": "4.3 Modern credibility in practice\nThe same credibility logic appears in modern central banking:\n\nThe Federal Reserve emphasizes that well-anchored long-run inflation expectations “foster price stability” and improve policy trade-offs, and commits to act “forcefully” to keep expectations anchored.\nThe European Central Bank strategy statement says a clear 2% symmetric target provides an anchor and that near the effective lower bound it may require “especially forceful or persistent” action to avoid disinflation becoming entrenched.\n\nThese are institutional expressions of a New Classical lesson: expectations are not passive; credibility is part of the transmission mechanism.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#rules-rather-than-discretion",
+    "href": "topic6reading.html#rules-rather-than-discretion",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "5.1 Rules rather than discretion",
+    "text": "5.1 Rules rather than discretion\nA “rule” is a systematic, predictable mapping from observed conditions to policy actions. Rules can raise credibility by reducing scope for opportunistic surprise inflation.\nThe Taylor rule is an instrument rule associated with John Taylor: \\(i_t = \\alpha(\\pi_{t-1}-\\pi^T) + \\delta(Y_{t-1}-Y^T)\\). Taylor emphasizes that useful rules adjust the policy rate in response to inflation and real activity, but practical policymaking cannot follow any formula mechanically; rules should discipline and inform decisions (Taylor, 1993).\nWhy rules help credibility: if the public believes the rule, it anchors expectations, reducing the incentive for surprise inflation and lowering the inflation bias.\nWhy strict rules can backfire: the lecture notes highlight conflict under adverse supply shocks (e.g., the 1973 oil shock). Inflation can rise while output falls, creating tension between inflation and output stabilization. A mechanical rule can force a painful trade-off. This is why most inflation targeting regimes are “flexible” rather than strict.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#delegation-and-central-bank-independence",
+    "href": "topic6reading.html#delegation-and-central-bank-independence",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "5.2 Delegation and central bank independence",
+    "text": "5.2 Delegation and central bank independence\nA second commitment device is delegation: appoint a decision-maker who is more inflation-averse than society as a whole. Rogoff’s classic result shows that appointing a “conservative” central banker can reduce average inflation (the inflation bias) but may increase output variability when supply shocks are large—so the optimal degree of conservatism is finite (Rogoff, 1985).\nThis supports the institutional case for central bank independence: improving credibility by insulating monetary policy from short-term political incentives to engineer booms.\n\n5.2.1 The Volcker disinflation (US credibility regime shift)\nA well-known credibility episode is the “Volcker disinflation.” The Federal Reserve Board documents that President Carter appointed Paul Volcker in 1979 as an inflation “hawk,” when inflation had reached about 9% by the GNP deflator. Volcker announced a decisive policy shift and oversaw sharp increases in the federal funds rate, aiming to break inflation expectations (Federal Reserve Board, 2007).\n\n\n5.2.2 UK operational independence\nIn the UK, the institutional credibility device is operational independence for monetary policy, granted in 1997 and codified by the Bank of England Act 1998. The Bank received responsibility for setting the policy rate to achieve an inflation target set by government, with structured accountability via the Monetary Policy Committee (Bank of England, 2017).\nThe UK’s annual remit letters state that statutory objectives are to maintain price stability and support the government’s economic objectives. The inflation target is currently 2% CPI, explicitly forward-looking to anchor expectations (HM Treasury, 2021; HM Treasury, 2023).",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#contracts-and-targets",
+    "href": "topic6reading.html#contracts-and-targets",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "5.3 Contracts and targets",
+    "text": "5.3 Contracts and targets\nThe performance-related pay approach ties central bank incentives to inflation outcomes. The modern academic counterpart is the principal-agent “central banker contract” literature, where optimal contracts can eliminate inflation bias by tying payoff to realized inflation (Walsh, 1995).\nA stylized version is: \\[L_t = (a/2)(\\pi_t-\\pi^T)^2 + (b/2)(Y_t-Y^T)^2 - B \\cdot \\mathbb{1}(\\pi_t \\le \\pi^T) + F \\cdot \\mathbb{1}(\\pi_t&gt;\\pi^T),\\] where \\(B&gt;0\\) is a bonus and \\(F&gt;0\\) is a fine.\n\n5.3.1 New Zealand’s accountability framework\nThe Reserve Bank of New Zealand Act 1989 establishes price stability as the primary monetary policy objective and sets out policy targets agreements between the Minister and the Governor. Crucially for credibility, the Act provides for removal of the Governor if performance in ensuring policy targets is inadequate (section 49), a strong accountability mechanism consistent with performance-based incentives.\nPolicy Targets Agreements (PTAs) define the inflation target range and emphasize transparency, explicitly linking credibility to public reporting.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#exchange-rate-pegs-as-credibility-anchors",
+    "href": "topic6reading.html#exchange-rate-pegs-as-credibility-anchors",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "5.4 Exchange-rate pegs as credibility anchors",
+    "text": "5.4 Exchange-rate pegs as credibility anchors\nFixing the exchange rate (especially to a low-inflation country like the US) signals credibility: if domestic inflation exceeds foreign inflation, the peg becomes hard to defend, reserves are lost, and the regime may collapse.\n\n5.4.1 Why pegs fail\nModern evidence supports both the logic and the risks. IMF work describes how self-fulfilling expectations can turn into speculative attacks, eroding reserves and forcing abandonment of pegs—illustrated by Argentina and Uruguay in 2002 (IMF, 2011). Argentina abandoned its convertibility regime (a peg to the US dollar since 1991) in early 2002 amid severe crisis dynamics, showing that pegs are not an absolute credibility solution when fiscal and financial conditions are inconsistent with the regime (IMF IEO, 2004).\n\n\n5.4.2 The UK ERM experience\nThe Bank of England’s analysis of leaving the Exchange Rate Mechanism in September 1992 shows that exiting involved an initial credibility loss, followed by gradual credibility rebuilding under the post-1992 inflation targeting framework (Bank of England, 1995).",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#credibility-as-a-policy-instrument-communication-and-commitment",
+    "href": "topic6reading.html#credibility-as-a-policy-instrument-communication-and-commitment",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "6.1 Credibility as a policy instrument: communication and commitment",
+    "text": "6.1 Credibility as a policy instrument: communication and commitment\nA vivid credibility-based crisis intervention is the ECB’s “whatever it takes” episode. In July 2012, the ECB President stated: “Within our mandate, the ECB is ready to do whatever it takes to preserve the euro. And believe me, it will be enough.” This is widely interpreted as an expectations and credibility intervention, clarifying commitment to the currency even before major new instruments were deployed (European Central Bank, 2012).\nSimilarly, the Bank of Japan’s policies near the zero lower bound illustrate explicit commitment devices aimed at shifting expectations. Governor Kuroda described an “inflation-overshooting commitment”—tied to realized inflation exceeding 2%—as an unusually strong and intentionally credibility-building form of guidance (Bank of Japan, 2016).\nThese episodes show how the credibility framework extends beyond the inflation-bias story: when policy is constrained (e.g., near the effective lower bound), central banks rely more heavily on managing expectations through commitments and communication.",
+    "crumbs": [
+      "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic6reading.html#anchoring-and-inflation-persistence",
+    "href": "topic6reading.html#anchoring-and-inflation-persistence",
+    "title": "Time Inconsistency and Credibility in Monetary Policy",
+    "section": "6.2 Anchoring and inflation persistence",
+    "text": "6.2 Anchoring and inflation persistence\nThe time inconsistency literature predicts that fragile credibility makes inflation expectations less anchored, increasing inflation persistence. IMF evidence supports this: an IMF working paper constructs an anchoring index for 45 economies (since 1989) and finds that terms-of-trade shocks have more persistent inflation effects when expectations are poorly anchored, while inflation returns more quickly to baseline when expectations are strongly anchored (IMF, 2018).\nIn 2025 IMF Annual Meetings transcripts, the Chief Economist warned that political pressure to ease monetary policy at the expense of price stability “always backfires,” emphasizing that “trust in central banks helps anchor inflation expectations, and this credibility needs to be protected” (IMF, 2025).\nThese institutional statements align closely with the theoretical message: credibility is not just a normative ideal, but empirically relevant for inflation dynamics and macro stability.",
     "crumbs": [
       "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy",
       "Reading"

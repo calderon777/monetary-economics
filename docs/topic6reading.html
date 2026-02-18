@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Adapted by Dr Camilo Calderon">
 
-<title>Topic 6 Reading – Monetary Economics</title>
+<title>Time Inconsistency and Credibility in Monetary Policy – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,8 +71,38 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="article-style.css">
 </head>
 
 <body class="nav-sidebar floating quarto-light">
@@ -380,22 +411,74 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#topic-6-reading-placeholder" id="toc-topic-6-reading-placeholder" class="nav-link active" data-scroll-target="#topic-6-reading-placeholder">Topic 6 Reading (Placeholder)</a></li>
+  <li><a href="#introduction-and-motivation" id="toc-introduction-and-motivation" class="nav-link active" data-scroll-target="#introduction-and-motivation"><span class="header-section-number">1</span> Introduction and motivation</a>
+  <ul class="collapse">
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link" data-scroll-target="#learning-objectives"><span class="header-section-number">1.1</span> Learning objectives</a></li>
+  </ul></li>
+  <li><a href="#the-benchmark-model-preferences-expectations-and-supply" id="toc-the-benchmark-model-preferences-expectations-and-supply" class="nav-link" data-scroll-target="#the-benchmark-model-preferences-expectations-and-supply"><span class="header-section-number">2</span> The benchmark model: preferences, expectations, and supply</a>
+  <ul class="collapse">
+  <li><a href="#assumptions-and-notation" id="toc-assumptions-and-notation" class="nav-link" data-scroll-target="#assumptions-and-notation"><span class="header-section-number">2.1</span> Assumptions and notation</a></li>
+  </ul></li>
+  <li><a href="#the-one-shot-game-inflation-bias-and-the-temptation-to-cheat" id="toc-the-one-shot-game-inflation-bias-and-the-temptation-to-cheat" class="nav-link" data-scroll-target="#the-one-shot-game-inflation-bias-and-the-temptation-to-cheat"><span class="header-section-number">3</span> The one-shot game: inflation bias and the temptation to cheat</a>
+  <ul class="collapse">
+  <li><a href="#sequence-of-moves-and-time-consistency" id="toc-sequence-of-moves-and-time-consistency" class="nav-link" data-scroll-target="#sequence-of-moves-and-time-consistency"><span class="header-section-number">3.1</span> Sequence of moves and time consistency</a></li>
+  <li><a href="#the-temptation-to-deviate" id="toc-the-temptation-to-deviate" class="nav-link" data-scroll-target="#the-temptation-to-deviate"><span class="header-section-number">3.2</span> The temptation to deviate</a></li>
+  <li><a href="#the-central-bank-reaction-function" id="toc-the-central-bank-reaction-function" class="nav-link" data-scroll-target="#the-central-bank-reaction-function"><span class="header-section-number">3.3</span> The central bank reaction function</a></li>
+  <li><a href="#comparing-outcomes-four-scenarios" id="toc-comparing-outcomes-four-scenarios" class="nav-link" data-scroll-target="#comparing-outcomes-four-scenarios"><span class="header-section-number">3.4</span> Comparing outcomes: four scenarios</a></li>
+  </ul></li>
+  <li><a href="#reputation-and-repeated-interaction" id="toc-reputation-and-repeated-interaction" class="nav-link" data-scroll-target="#reputation-and-repeated-interaction"><span class="header-section-number">4</span> Reputation and repeated interaction</a>
+  <ul class="collapse">
+  <li><a href="#infinite-repetition-and-trigger-strategies" id="toc-infinite-repetition-and-trigger-strategies" class="nav-link" data-scroll-target="#infinite-repetition-and-trigger-strategies"><span class="header-section-number">4.1</span> Infinite repetition and trigger strategies</a></li>
+  <li><a href="#multiple-equilibria-and-self-fulfilling-expectations" id="toc-multiple-equilibria-and-self-fulfilling-expectations" class="nav-link" data-scroll-target="#multiple-equilibria-and-self-fulfilling-expectations"><span class="header-section-number">4.2</span> Multiple equilibria and self-fulfilling expectations</a></li>
+  <li><a href="#modern-credibility-in-practice" id="toc-modern-credibility-in-practice" class="nav-link" data-scroll-target="#modern-credibility-in-practice"><span class="header-section-number">4.3</span> Modern credibility in practice</a></li>
+  </ul></li>
+  <li><a href="#commitment-devices-and-policy-frameworks" id="toc-commitment-devices-and-policy-frameworks" class="nav-link" data-scroll-target="#commitment-devices-and-policy-frameworks"><span class="header-section-number">5</span> Commitment devices and policy frameworks</a>
+  <ul class="collapse">
+  <li><a href="#rules-rather-than-discretion" id="toc-rules-rather-than-discretion" class="nav-link" data-scroll-target="#rules-rather-than-discretion"><span class="header-section-number">5.1</span> Rules rather than discretion</a></li>
+  <li><a href="#delegation-and-central-bank-independence" id="toc-delegation-and-central-bank-independence" class="nav-link" data-scroll-target="#delegation-and-central-bank-independence"><span class="header-section-number">5.2</span> Delegation and central bank independence</a>
+  <ul class="collapse">
+  <li><a href="#the-volcker-disinflation-us-credibility-regime-shift" id="toc-the-volcker-disinflation-us-credibility-regime-shift" class="nav-link" data-scroll-target="#the-volcker-disinflation-us-credibility-regime-shift"><span class="header-section-number">5.2.1</span> The Volcker disinflation (US credibility regime shift)</a></li>
+  <li><a href="#uk-operational-independence" id="toc-uk-operational-independence" class="nav-link" data-scroll-target="#uk-operational-independence"><span class="header-section-number">5.2.2</span> UK operational independence</a></li>
+  </ul></li>
+  <li><a href="#contracts-and-targets" id="toc-contracts-and-targets" class="nav-link" data-scroll-target="#contracts-and-targets"><span class="header-section-number">5.3</span> Contracts and targets</a>
+  <ul class="collapse">
+  <li><a href="#new-zealands-accountability-framework" id="toc-new-zealands-accountability-framework" class="nav-link" data-scroll-target="#new-zealands-accountability-framework"><span class="header-section-number">5.3.1</span> New Zealand’s accountability framework</a></li>
+  </ul></li>
+  <li><a href="#exchange-rate-pegs-as-credibility-anchors" id="toc-exchange-rate-pegs-as-credibility-anchors" class="nav-link" data-scroll-target="#exchange-rate-pegs-as-credibility-anchors"><span class="header-section-number">5.4</span> Exchange-rate pegs as credibility anchors</a>
+  <ul class="collapse">
+  <li><a href="#why-pegs-fail" id="toc-why-pegs-fail" class="nav-link" data-scroll-target="#why-pegs-fail"><span class="header-section-number">5.4.1</span> Why pegs fail</a></li>
+  <li><a href="#the-uk-erm-experience" id="toc-the-uk-erm-experience" class="nav-link" data-scroll-target="#the-uk-erm-experience"><span class="header-section-number">5.4.2</span> The UK ERM experience</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#evidence-and-case-studies-credibility-in-modern-practice" id="toc-evidence-and-case-studies-credibility-in-modern-practice" class="nav-link" data-scroll-target="#evidence-and-case-studies-credibility-in-modern-practice"><span class="header-section-number">6</span> Evidence and case studies: credibility in modern practice</a>
+  <ul class="collapse">
+  <li><a href="#credibility-as-a-policy-instrument-communication-and-commitment" id="toc-credibility-as-a-policy-instrument-communication-and-commitment" class="nav-link" data-scroll-target="#credibility-as-a-policy-instrument-communication-and-commitment"><span class="header-section-number">6.1</span> Credibility as a policy instrument: communication and commitment</a></li>
+  <li><a href="#anchoring-and-inflation-persistence" id="toc-anchoring-and-inflation-persistence" class="nav-link" data-scroll-target="#anchoring-and-inflation-persistence"><span class="header-section-number">6.2</span> Anchoring and inflation persistence</a></li>
+  </ul></li>
+  <li><a href="#end-of-chapter-summary" id="toc-end-of-chapter-summary" class="nav-link" data-scroll-target="#end-of-chapter-summary"><span class="header-section-number">7</span> End-of-chapter summary</a></li>
+  <li><a href="#problem-questions" id="toc-problem-questions" class="nav-link" data-scroll-target="#problem-questions"><span class="header-section-number">8</span> Problem questions</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9</span> References</a></li>
   </ul>
-</nav>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="topic6reading.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic6reading.html">Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy</a></li><li class="breadcrumb-item"><a href="./topic6reading.html">Reading</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Topic 6 Reading</h1>
+<h1 class="title">Time Inconsistency and Credibility in Monetary Policy</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Adapted by Dr Camilo Calderon </p>
+          </div>
+  </div>
     
   
     
@@ -406,9 +489,195 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="topic-6-reading-placeholder" class="level1">
-<h1>Topic 6 Reading (Placeholder)</h1>
-<p>Content will be added soon.</p>
+<section id="introduction-and-motivation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction and motivation</h1>
+<p>The <strong>time inconsistency problem</strong> arises when a policy that is optimal when announced (“ex ante”) is no longer optimal when it is time to implement it (“ex post”), because incentives change once private agents have acted on the announcement (Kydland &amp; Prescott, 1977).</p>
+<p>A simple non-monetary illustration is <strong>building on a flood plain</strong>. A government can credibly announce “no disaster relief” to deter risky construction. But if people build anyway and a flood occurs, political pressure makes it optimal to provide relief, so the original announcement is not carried out. The announcement was “optimal” at the start, but not credible when the time comes to act—so it fails to shape private behavior in the intended way.</p>
+<p>In monetary economics, time inconsistency is central because modern monetary policy works heavily through <strong>expectations</strong>. If the public believes a low-inflation plan, expected inflation falls; but once expectations are low, a policymaker who cares about output/employment may be tempted to create a surprise inflation to push output temporarily above potential. Anticipating this, rational agents discount (or ignore) overly ambitious low-inflation announcements, producing an equilibrium with <strong>higher inflation but no sustained gain in output</strong>—the classic <strong>inflation bias</strong> of discretion (Barro &amp; Gordon, 1983).</p>
+<p>This chapter replaces readings on credibility and reputation in monetary policy (mapping to Lewis &amp; Mizen, Sections 10.3–10.6) by reconstructing and modernizing the theory and evidence using primary academic papers and official institutional sources.</p>
+<section id="learning-objectives" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="learning-objectives"><span class="header-section-number">1.1</span> Learning objectives</h2>
+<p>By the end of this chapter, you should be able to:</p>
+<ol type="1">
+<li>Explain why discretion can generate inflation bias even when the policymaker dislikes inflation (Kydland &amp; Prescott, 1977; Barro &amp; Gordon, 1983).</li>
+<li>Derive the <strong>time-consistent</strong> inflation rate in the benchmark model and interpret the roles of policy preferences and the Phillips/Lucas supply slope (Rogoff, 1985).</li>
+<li>Show how <strong>reputation</strong> in repeated interaction can support low inflation as an equilibrium—and why multiple equilibria (trust vs distrust) can exist (Barro &amp; Gordon, 1983; Faust &amp; Svensson, 2001).</li>
+<li>Evaluate institutional “commitment devices” in practice: <strong>rules</strong>, <strong>central bank independence</strong>, <strong>conservative delegation</strong>, <strong>contracts/targets</strong>, and <strong>exchange-rate pegs</strong> (Taylor, 1993; Rogoff, 1985; Walsh, 1995).</li>
+</ol>
+</section>
+</section>
+<section id="the-benchmark-model-preferences-expectations-and-supply" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> The benchmark model: preferences, expectations, and supply</h1>
+<p>The benchmark model is a streamlined time inconsistency framework designed to isolate credibility. It uses assumptions common in the classic literature: the policymaker has a quadratic loss, agents form rational expectations, and output can deviate from potential only with <strong>surprise inflation</strong>.</p>
+<section id="assumptions-and-notation" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="assumptions-and-notation"><span class="header-section-number">2.1</span> Assumptions and notation</h2>
+<p>Let inflation be <span class="math inline">\(\pi\)</span>, expected inflation formed last period be <span class="math inline">\(E_{-1}\pi\)</span>, potential output be <span class="math inline">\(Y^*\)</span>, and the policymaker’s desired output target be <span class="math inline">\(Y^T\)</span>. The policymaker’s <strong>political bias</strong> is <span class="math inline">\(\lambda = Y^T - Y^*\)</span>. A positive <span class="math inline">\(\lambda\)</span> means the policymaker wants output above potential.</p>
+<p>The central bank’s quadratic loss is: <span class="math display">\[L = (a/2)\pi^2 + (b/2)(Y - Y^T)^2,\]</span> with <span class="math inline">\(a&gt;0\)</span> capturing inflation aversion and <span class="math inline">\(b&gt;0\)</span> capturing aversion to output deviations from target. The ratio <span class="math inline">\(b/a\)</span> is a useful “dove/hawk” index: higher <span class="math inline">\(b/a\)</span> corresponds to more dovish (output-focused), lower <span class="math inline">\(b/a\)</span> more hawkish (inflation-focused).</p>
+<p>Output is linked to surprise inflation using a Lucas supply relation: <span class="math display">\[Y - Y^* = \kappa(\pi - E_{-1}\pi),\]</span> where <span class="math inline">\(\kappa&gt;0\)</span> measures how strongly output responds to an inflation surprise. Higher <span class="math inline">\(\kappa\)</span> means larger short-run output response; lower <span class="math inline">\(\kappa\)</span> means surprises translate mostly into prices.</p>
+<p>Substituting <span class="math inline">\(Y - Y^T = \kappa(\pi - E_{-1}\pi) - \lambda\)</span> into the loss function yields: <span class="math display">\[L = (a/2)\pi^2 + (b/2)(\kappa(\pi - E_{-1}\pi) - \lambda)^2.\]</span></p>
+<p>This expression makes the tension explicit: inflation is costly, but if <span class="math inline">\(\lambda&gt;0\)</span> the policymaker has an incentive to generate surprise inflation to move output toward its preferred target.</p>
+</section>
+</section>
+<section id="the-one-shot-game-inflation-bias-and-the-temptation-to-cheat" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> The one-shot game: inflation bias and the temptation to cheat</h1>
+<section id="sequence-of-moves-and-time-consistency" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="sequence-of-moves-and-time-consistency"><span class="header-section-number">3.1</span> Sequence of moves and time consistency</h2>
+<p>The one-shot sequence is:</p>
+<ol type="1">
+<li>At time <span class="math inline">\(-1\)</span>, the central bank announces an intended inflation rate.<br>
+</li>
+<li>Still at time <span class="math inline">\(-1\)</span>, private agents form <span class="math inline">\(E_{-1}\pi\)</span>, using rational expectations.<br>
+</li>
+<li>At time <span class="math inline">\(0\)</span>, the central bank chooses actual inflation <span class="math inline">\(\pi\)</span>.<br>
+</li>
+<li>A <strong>time-consistent</strong> policy satisfies <span class="math inline">\(\pi = E_{-1}\pi\)</span>.</li>
+</ol>
+<p>Under rational expectations, anything systematically implemented is anticipated, so “systematic surprises” cannot persist. This connects directly to the New Classical policy-ineffectiveness insight: predictable policy does not move real output; only unanticipated components can.</p>
+</section>
+<section id="the-temptation-to-deviate" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="the-temptation-to-deviate"><span class="header-section-number">3.2</span> The temptation to deviate</h2>
+<p>If the central bank accepts that output is at <span class="math inline">\(Y^*\)</span> absent shocks, it cannot systematically keep <span class="math inline">\(Y\)</span> above <span class="math inline">\(Y^*\)</span>. In that case, it would like to minimize inflation costs and choose <span class="math inline">\(\pi=0\)</span>. This makes “zero inflation” an ex ante optimal announcement.</p>
+<p>But if the public believed <span class="math inline">\(E_{-1}\pi=0\)</span>, the central bank faces an incentive to create a positive <span class="math inline">\(\pi\)</span> once expectations are set, because surprise inflation temporarily closes the output gap. This is the core time inconsistency: once expectations are set, surprise inflation has short-run benefits, so the policymaker is tempted to deviate (Kydland &amp; Prescott, 1977; Barro &amp; Gordon, 1983).</p>
+</section>
+<section id="the-central-bank-reaction-function" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="the-central-bank-reaction-function"><span class="header-section-number">3.3</span> The central bank reaction function</h2>
+<p>Holding <span class="math inline">\(E_{-1}\pi\)</span> fixed, the central bank minimizes the loss. The first-order condition implies the best response (reaction function): <span class="math display">\[\pi = \frac{b\kappa\lambda}{a+b\kappa^2} + \frac{b\kappa^2}{a+b\kappa^2}E_{-1}\pi.\]</span></p>
+<p>The public’s rational expectations condition is <span class="math inline">\(E_{-1}\pi=\pi\)</span>. Substituting yields the <strong>time-consistent inflation rate</strong>: <span class="math display">\[\pi^e = \pi = \frac{b\kappa\lambda}{a}.\]</span></p>
+<p><strong>Interpretation (inflation bias).</strong> If <span class="math inline">\(\lambda&gt;0\)</span> (the policymaker wants output above potential), equilibrium inflation is positive even though output ends up at <span class="math inline">\(Y^*\)</span> on average because surprises cannot be systematic under rational expectations. The bias grows when the policymaker is more dovish (higher <span class="math inline">\(b/a\)</span>), when the surprise inflation channel is stronger (higher <span class="math inline">\(\kappa\)</span>), or when the political bias <span class="math inline">\(\lambda\)</span> is larger.</p>
+</section>
+<section id="comparing-outcomes-four-scenarios" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="comparing-outcomes-four-scenarios"><span class="header-section-number">3.4</span> Comparing outcomes: four scenarios</h2>
+<p>The benchmark compares four outcomes using stylized loss levels:</p>
+<ol type="1">
+<li><p><strong>Honest commitment</strong>: Announce and deliver <span class="math inline">\(\pi=0\)</span> when the public believes it. Loss is <span class="math inline">\(L^* = (b/2)\lambda^2\)</span> because output stays at <span class="math inline">\(Y^*\)</span> but the policymaker wants <span class="math inline">\(Y^T=Y^*+\lambda\)</span>.</p></li>
+<li><p><strong>Discretionary equilibrium</strong>: The public expects and the central bank delivers <span class="math inline">\(\pi=(b\kappa\lambda)/a\)</span>. Output remains at <span class="math inline">\(Y^*\)</span>, but inflation is higher: <span class="math inline">\(L^e = (b/2)\lambda^2(1 + (b\kappa^2)/a)\)</span>.</p></li>
+<li><p><strong>Cheating</strong>: If the central bank could convince the public it will deliver <span class="math inline">\(\pi=0\)</span>, then set positive inflation once expectations are fixed, output rises temporarily. Cheating loss is <span class="math inline">\(L^c = (a/(a+b\kappa^2))(b/2)\lambda^2 &lt; L^*\)</span>, explaining the temptation.</p></li>
+<li><p><strong>Purist strategy</strong>: The public expects the time-consistent rate but the central bank delivers <span class="math inline">\(\pi=0\)</span> anyway. Output falls below <span class="math inline">\(Y^*\)</span>. This is the worst case: <span class="math inline">\(L^p = (b/2)\lambda^2(1+(b\kappa^2)/a)^2 &gt; L^e\)</span>. <strong>Key insight</strong>: sudden disinflation without credibility can create a recession without immediate credibility gains.</p></li>
+</ol>
+</section>
+</section>
+<section id="reputation-and-repeated-interaction" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Reputation and repeated interaction</h1>
+<p>Real-world monetary policy is repeated: the private sector observes past decisions, and central banks care about future outcomes. This motivates <strong>reputation</strong> models where credibility can be sustained through repeated play.</p>
+<section id="infinite-repetition-and-trigger-strategies" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="infinite-repetition-and-trigger-strategies"><span class="header-section-number">4.1</span> Infinite repetition and trigger strategies</h2>
+<p>In a repeated-game setting, the central bank’s loss is: <span class="math display">\[L_{\text{total}} = L_0 + \beta L_1 + \beta^2 L_2 + ...,\]</span> where <span class="math inline">\(0&lt;\beta&lt;1\)</span> is a discount factor. Higher <span class="math inline">\(\beta\)</span> means the central bank puts more weight on future losses.</p>
+<p>A <strong>trigger strategy</strong> supports credibility: the public believes the central bank’s announcement unless it cheats; if it cheats, the public distrusts it forever and reverts to expecting the time-consistent rate. Cheating yields a one-time gain but permanently higher future losses because expectations become unanchored. The central bank honors its promise when the discounted future cost exceeds today’s gain—i.e., when <span class="math inline">\(\beta\)</span> is “high enough.”</p>
+<p>This logic formalizes why credibility depends on institutions that make policymakers patient and forward-looking: longer horizons, reputational concerns, and governance arrangements that reduce short-term political pressures all raise the effective discount factor.</p>
+</section>
+<section id="multiple-equilibria-and-self-fulfilling-expectations" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="multiple-equilibria-and-self-fulfilling-expectations"><span class="header-section-number">4.2</span> Multiple equilibria and self-fulfilling expectations</h2>
+<p>A major insight is that repeated games can have <strong>multiple equilibria</strong>. If the public starts out distrustful, it may coordinate on expecting the high-inflation (time-consistent) outcome from the outset, trapping the central bank in a high-inflation equilibrium. If the public starts trusting and the bank validates that trust, a low-inflation equilibrium is sustained. These equilibria can be <strong>self-fulfilling</strong>.</p>
+<p>This connects to modern work on transparency and credibility: when private agents infer central bank preferences from outcomes, transparency can strengthen discipline by making reputational consequences more sensitive to deviations (Faust &amp; Svensson, 2001).</p>
+</section>
+<section id="modern-credibility-in-practice" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="modern-credibility-in-practice"><span class="header-section-number">4.3</span> Modern credibility in practice</h2>
+<p>The same credibility logic appears in modern central banking:</p>
+<ul>
+<li><p>The <strong>Federal Reserve</strong> emphasizes that well-anchored long-run inflation expectations “foster price stability” and improve policy trade-offs, and commits to act “forcefully” to keep expectations anchored.</p></li>
+<li><p>The <strong>European Central Bank</strong> strategy statement says a clear 2% symmetric target provides an anchor and that near the effective lower bound it may require “especially forceful or persistent” action to avoid disinflation becoming entrenched.</p></li>
+</ul>
+<p>These are institutional expressions of a New Classical lesson: expectations are not passive; credibility is part of the transmission mechanism.</p>
+</section>
+</section>
+<section id="commitment-devices-and-policy-frameworks" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Commitment devices and policy frameworks</h1>
+<p>Time inconsistency motivates a family of “commitment devices.” Modern practice provides clear examples and trade-offs.</p>
+<section id="rules-rather-than-discretion" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="rules-rather-than-discretion"><span class="header-section-number">5.1</span> Rules rather than discretion</h2>
+<p>A “rule” is a systematic, predictable mapping from observed conditions to policy actions. Rules can raise credibility by reducing scope for opportunistic surprise inflation.</p>
+<p>The <strong>Taylor rule</strong> is an instrument rule associated with John Taylor: <span class="math inline">\(i_t = \alpha(\pi_{t-1}-\pi^T) + \delta(Y_{t-1}-Y^T)\)</span>. Taylor emphasizes that useful rules adjust the policy rate in response to inflation and real activity, but practical policymaking cannot follow any formula mechanically; rules should discipline and inform decisions (Taylor, 1993).</p>
+<p><strong>Why rules help credibility:</strong> if the public believes the rule, it anchors expectations, reducing the incentive for surprise inflation and lowering the inflation bias.</p>
+<p><strong>Why strict rules can backfire:</strong> the lecture notes highlight conflict under adverse supply shocks (e.g., the 1973 oil shock). Inflation can rise while output falls, creating tension between inflation and output stabilization. A mechanical rule can force a painful trade-off. This is why most inflation targeting regimes are “flexible” rather than strict.</p>
+</section>
+<section id="delegation-and-central-bank-independence" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="delegation-and-central-bank-independence"><span class="header-section-number">5.2</span> Delegation and central bank independence</h2>
+<p>A second commitment device is <strong>delegation</strong>: appoint a decision-maker who is more inflation-averse than society as a whole. Rogoff’s classic result shows that appointing a “conservative” central banker can reduce average inflation (the inflation bias) but may increase output variability when supply shocks are large—so the optimal degree of conservatism is finite (Rogoff, 1985).</p>
+<p>This supports the institutional case for <strong>central bank independence</strong>: improving credibility by insulating monetary policy from short-term political incentives to engineer booms.</p>
+<section id="the-volcker-disinflation-us-credibility-regime-shift" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="the-volcker-disinflation-us-credibility-regime-shift"><span class="header-section-number">5.2.1</span> The Volcker disinflation (US credibility regime shift)</h3>
+<p>A well-known credibility episode is the “Volcker disinflation.” The Federal Reserve Board documents that President Carter appointed Paul Volcker in 1979 as an inflation “hawk,” when inflation had reached about 9% by the GNP deflator. Volcker announced a decisive policy shift and oversaw sharp increases in the federal funds rate, aiming to break inflation expectations (Federal Reserve Board, 2007).</p>
+</section>
+<section id="uk-operational-independence" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="uk-operational-independence"><span class="header-section-number">5.2.2</span> UK operational independence</h3>
+<p>In the UK, the institutional credibility device is operational independence for monetary policy, granted in 1997 and codified by the Bank of England Act 1998. The Bank received responsibility for setting the policy rate to achieve an inflation target set by government, with structured accountability via the Monetary Policy Committee (Bank of England, 2017).</p>
+<p>The UK’s annual remit letters state that statutory objectives are to maintain price stability and support the government’s economic objectives. The inflation target is currently 2% CPI, explicitly forward-looking to anchor expectations (HM Treasury, 2021; HM Treasury, 2023).</p>
+</section>
+</section>
+<section id="contracts-and-targets" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="contracts-and-targets"><span class="header-section-number">5.3</span> Contracts and targets</h2>
+<p>The <strong>performance-related pay</strong> approach ties central bank incentives to inflation outcomes. The modern academic counterpart is the principal-agent “central banker contract” literature, where optimal contracts can eliminate inflation bias by tying payoff to realized inflation (Walsh, 1995).</p>
+<p>A stylized version is: <span class="math display">\[L_t = (a/2)(\pi_t-\pi^T)^2 + (b/2)(Y_t-Y^T)^2 - B \cdot \mathbb{1}(\pi_t \le \pi^T) + F \cdot \mathbb{1}(\pi_t&gt;\pi^T),\]</span> where <span class="math inline">\(B&gt;0\)</span> is a bonus and <span class="math inline">\(F&gt;0\)</span> is a fine.</p>
+<section id="new-zealands-accountability-framework" class="level3" data-number="5.3.1">
+<h3 data-number="5.3.1" class="anchored" data-anchor-id="new-zealands-accountability-framework"><span class="header-section-number">5.3.1</span> New Zealand’s accountability framework</h3>
+<p>The <strong>Reserve Bank of New Zealand</strong> Act 1989 establishes price stability as the primary monetary policy objective and sets out policy targets agreements between the Minister and the Governor. Crucially for credibility, the Act provides for removal of the Governor if performance in ensuring policy targets is inadequate (section 49), a strong accountability mechanism consistent with performance-based incentives.</p>
+<p>Policy Targets Agreements (PTAs) define the inflation target range and emphasize transparency, explicitly linking credibility to public reporting.</p>
+</section>
+</section>
+<section id="exchange-rate-pegs-as-credibility-anchors" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="exchange-rate-pegs-as-credibility-anchors"><span class="header-section-number">5.4</span> Exchange-rate pegs as credibility anchors</h2>
+<p>Fixing the exchange rate (especially to a low-inflation country like the US) signals credibility: if domestic inflation exceeds foreign inflation, the peg becomes hard to defend, reserves are lost, and the regime may collapse.</p>
+<section id="why-pegs-fail" class="level3" data-number="5.4.1">
+<h3 data-number="5.4.1" class="anchored" data-anchor-id="why-pegs-fail"><span class="header-section-number">5.4.1</span> Why pegs fail</h3>
+<p>Modern evidence supports both the logic and the risks. IMF work describes how self-fulfilling expectations can turn into speculative attacks, eroding reserves and forcing abandonment of pegs—illustrated by Argentina and Uruguay in 2002 (IMF, 2011). Argentina abandoned its convertibility regime (a peg to the US dollar since 1991) in early 2002 amid severe crisis dynamics, showing that pegs are not an absolute credibility solution when fiscal and financial conditions are inconsistent with the regime (IMF IEO, 2004).</p>
+</section>
+<section id="the-uk-erm-experience" class="level3" data-number="5.4.2">
+<h3 data-number="5.4.2" class="anchored" data-anchor-id="the-uk-erm-experience"><span class="header-section-number">5.4.2</span> The UK ERM experience</h3>
+<p>The Bank of England’s analysis of leaving the Exchange Rate Mechanism in September 1992 shows that exiting involved an initial credibility loss, followed by gradual credibility rebuilding under the post-1992 inflation targeting framework (Bank of England, 1995).</p>
+</section>
+</section>
+</section>
+<section id="evidence-and-case-studies-credibility-in-modern-practice" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Evidence and case studies: credibility in modern practice</h1>
+<section id="credibility-as-a-policy-instrument-communication-and-commitment" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="credibility-as-a-policy-instrument-communication-and-commitment"><span class="header-section-number">6.1</span> Credibility as a policy instrument: communication and commitment</h2>
+<p>A vivid credibility-based crisis intervention is the ECB’s “whatever it takes” episode. In July 2012, the ECB President stated: “Within our mandate, the ECB is ready to do whatever it takes to preserve the euro. And believe me, it will be enough.” This is widely interpreted as an expectations and credibility intervention, clarifying commitment to the currency even before major new instruments were deployed (European Central Bank, 2012).</p>
+<p>Similarly, the Bank of Japan’s policies near the zero lower bound illustrate explicit commitment devices aimed at shifting expectations. Governor Kuroda described an “inflation-overshooting commitment”—tied to realized inflation exceeding 2%—as an unusually strong and intentionally credibility-building form of guidance (Bank of Japan, 2016).</p>
+<p>These episodes show how the credibility framework extends beyond the inflation-bias story: when policy is constrained (e.g., near the effective lower bound), central banks rely more heavily on managing expectations through commitments and communication.</p>
+</section>
+<section id="anchoring-and-inflation-persistence" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="anchoring-and-inflation-persistence"><span class="header-section-number">6.2</span> Anchoring and inflation persistence</h2>
+<p>The time inconsistency literature predicts that fragile credibility makes inflation expectations less anchored, increasing inflation persistence. IMF evidence supports this: an IMF working paper constructs an anchoring index for 45 economies (since 1989) and finds that terms-of-trade shocks have more persistent inflation effects when expectations are poorly anchored, while inflation returns more quickly to baseline when expectations are strongly anchored (IMF, 2018).</p>
+<p>In 2025 IMF Annual Meetings transcripts, the Chief Economist warned that political pressure to ease monetary policy at the expense of price stability “always backfires,” emphasizing that “trust in central banks helps anchor inflation expectations, and this credibility needs to be protected” (IMF, 2025).</p>
+<p>These institutional statements align closely with the theoretical message: credibility is not just a normative ideal, but empirically relevant for inflation dynamics and macro stability.</p>
+</section>
+</section>
+<section id="end-of-chapter-summary" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> End-of-chapter summary</h1>
+<p>Time inconsistency in monetary policy is fundamentally a problem of strategic interaction between policymakers and rational agents (Kydland &amp; Prescott, 1977).</p>
+<p>In the benchmark model, discretion yields <strong>inflation bias</strong> <span class="math inline">\(\pi = (b\kappa\lambda)/a\)</span> when policymakers desire output above potential <span class="math inline">\(\lambda&gt;0\)</span>, but output remains at <span class="math inline">\(Y^*\)</span> on average because systematic surprises are not feasible under rational expectations (Barro &amp; Gordon, 1983).</p>
+<p>Reputation and repeated interaction can sustain lower inflation as an equilibrium when policymakers discount the future sufficiently, but multiple equilibria (trust vs distrust) can exist, making credibility fragile (Barro &amp; Gordon, 1983; Faust &amp; Svensson, 2001).</p>
+<p>Institutional design choices—rules (Taylor-type), delegation to conservative central bankers (Rogoff), accountability contracts (Walsh), inflation targets and strategy statements (Fed/ECB/BoE)—are all efforts to bind discretion, anchor expectations, and protect credibility.</p>
+</section>
+<section id="problem-questions" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> Problem questions</h1>
+<ol type="1">
+<li><p>In the benchmark model, show algebraically why the time-consistent rate is <span class="math inline">\(\pi=(b\kappa\lambda)/a\)</span>. Which parameter change most increases inflation bias: larger <span class="math inline">\(\lambda\)</span>, higher <span class="math inline">\(b/a\)</span>, or higher <span class="math inline">\(\kappa\)</span>? Explain intuitively (Barro &amp; Gordon, 1983).</p></li>
+<li><p>Explain why the “purist” outcome can be worse than discretionary equilibrium. Relate this to real-world disinflations where credibility is initially low (Bank of England, 1995; Federal Reserve Board, 2007).</p></li>
+<li><p>Compare three commitment devices—(i) Taylor-type rules, (ii) conservative delegation, and (iii) contracts/targets. For each, state one benefit and one cost (Taylor, 1993; Rogoff, 1985; Walsh, 1995).</p></li>
+<li><p>Using the IMF evidence on anchoring, explain how credibility can affect inflation persistence after shocks (IMF, 2018).</p></li>
+<li><p>Discuss why exchange-rate pegs can enhance credibility but be vulnerable to speculative attacks and regime collapse (IMF, 2011; IMF IEO, 2004).</p></li>
+</ol>
+</section>
+<section id="references" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> References</h1>
+<p>Barro, R.J., &amp; Gordon, D.B. (1983). Rules, discretion and reputation in a model of monetary policy. <em>Journal of Monetary Economics</em>, 12(1), 101–121.</p>
+<p>Bank of England. (1995). <em>Credibility and monetary policy: theory and evidence</em> (Quarterly Bulletin, Q1; M. King).</p>
+<p>Bank of England. (2017). <em>Twenty years of Bank of England independence: the evolution of monetary policy</em> (speech and PDF).</p>
+<p>European Central Bank. (2012). <em>Verbatim of the remarks made by Mario Draghi</em> (July 26, 2012).</p>
+<p>European Central Bank. (2021). <em>The ECB’s monetary policy strategy statement</em>.</p>
+<p>Federal Reserve Board. (2007). <em>Three Great American Disinflations</em> (IFDP 898).</p>
+<p>Federal Reserve Board. (2025). <em>Statement on Longer-Run Goals and Monetary Policy Strategy</em>.</p>
+<p>HM Treasury. (2021). <em>Monetary policy remit: Budget 2021</em> (UK).</p>
+<p>HM Treasury. (2023). <em>Monetary policy remit: Autumn Statement 2023</em> (UK).</p>
+<p>International Monetary Fund. (2011). <em>Can Emerging Market Central Banks Bail Out Banks?</em> (working paper; discussion of reserve loss and speculative attacks under pegs).</p>
+<p>International Monetary Fund, Independent Evaluation Office. (2004). <em>Report on the Evaluation of the Role of the IMF in Argentina, 1991–2001</em>.</p>
+<p>International Monetary Fund. (2018). <em>Expectations’ Anchoring and Inflation Persistence</em> (WP/18/280).</p>
+<p>International Monetary Fund. (2025). <em>Press Briefing Transcript: World Economic Outlook, Annual Meetings 2025</em> (credibility, independence, expectations anchoring).</p>
+<p>Kydland, F.E., &amp; Prescott, E.C. (1977). Rules rather than discretion: The inconsistency of optimal plans. <em>Journal of Political Economy</em>, 85(3), 473–491.</p>
+<p>Rogoff, K. (1985). The optimal degree of commitment to an intermediate monetary target. <em>Quarterly Journal of Economics</em>, 100(4), 1169–1189.</p>
+<p>Taylor, J.B. (1993). Discretion versus policy rules in practice. <em>Carnegie-Rochester Conference Series on Public Policy</em>, 39, 195–214.</p>
+<p>Walsh, C. (1995). Optimal contracts for central bankers. <em>American Economic Review</em>, 85(1), 150–167.</p>
 
 
 </section>
