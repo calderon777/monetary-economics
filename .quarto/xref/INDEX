@@ -123,13 +123,15 @@
     "topic3tutorial.html": "afbc50a9"
   },
   "topic4reading.qmd": {
-    "topic4reading.html": "99dd260a"
+    "topic4reading.html": "99dd260a",
+    "topic4reading.tex": "c9573cef"
   },
   "topic4tutorial.qmd": {
     "topic4tutorial.html": "60bf1da9"
   },
   "topic5reading.qmd": {
-    "topic5reading.html": "ed08278a"
+    "topic5reading.html": "ed08278a",
+    "topic5reading.tex": "61eb9b15"
   },
   "topic5tutorial.qmd": {
     "topic5tutorial.html": "d3d245d2"

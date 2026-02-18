@@ -47,7 +47,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 - [MCQs](topic4mcqs.qmd)
 - [Tutor Guide 🔒](topic4tutorial.qmd)
 
-## Topic 5 - The New Classical ApproachTheory of Money
+## Topic 5 - The New Classical Approach
 
 - [Reading](topic5reading.qmd)
 - [Lecture](topic5lecture.qmd)
@@ -61,7 +61,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 - [MCQs](topic6mcqs.qmd)
 - [Tutor Guide 🔒](topic6tutorial.qmd)
 
-## Topic 7 - The MOnetary Policy Consensus and the Great Moderation
+## Topic 7 - The Monetary Policy Consensus and the Great Moderation
 
 - [Reading](topic7reading.qmd)
 - [Lecture](topic7lecture.qmd)
