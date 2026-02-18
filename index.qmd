@@ -37,6 +37,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 
 - [Reading](topic3reading.qmd)
 - [Lecture](topic3lecture.qmd)
+- [Open Questions](topic3questions.qmd)
 - [MCQs](topic3mcqs.qmd)
 - [Tutor Guide 🔒](topic3tutorial.qmd)
 
@@ -44,6 +45,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 
 - [Reading](topic4reading.qmd)
 - [Lecture](topic4lecture.qmd)
+- [Open Questions](topic4questions.qmd)
 - [MCQs](topic4mcqs.qmd)
 - [Tutor Guide 🔒](topic4tutorial.qmd)
 
@@ -51,6 +53,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 
 - [Reading](topic5reading.qmd)
 - [Lecture](topic5lecture.qmd)
+- [Open Questions](topic5questions.qmd)
 - [MCQs](topic5mcqs.qmd)
 - [Tutor Guide 🔒](topic5tutorial.qmd)
 
@@ -58,6 +61,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 
 - [Reading](topic6reading.qmd)
 - [Lecture](topic6lecture.qmd)
+- [Open Questions](topic6questions.qmd)
 - [MCQs](topic6mcqs.qmd)
 - [Tutor Guide 🔒](topic6tutorial.qmd)
 
@@ -65,6 +69,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 
 - [Reading](topic7reading.qmd)
 - [Lecture](topic7lecture.qmd)
+- [Open Questions](topic7questions.qmd)
 - [MCQs](topic7mcqs.qmd)
 - [Tutor Guide 🔒](topic7tutorial.qmd)
 
@@ -72,6 +77,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 
 - [Reading](topic8reading.qmd)
 - [Lecture](topic8lecture.qmd)
+- [Open Questions](topic8questions.qmd)
 - [MCQs](topic8mcqs.qmd)
 - [Tutor Guide 🔒](topic8tutorial.qmd)
 

@@ -46,6 +46,8 @@ website:
             file: topic3reading.qmd
           - text: "Lecture"
             file: topic3lecture.qmd
+          - text: "Questions"
+            file: topic3questions.qmd
           - text: "MCQs"
             file: topic3mcqs.qmd
       - section: "Topic 4 - Friedman's Monetarism"
@@ -54,6 +56,8 @@ website:
             file: topic4reading.qmd
           - text: "Lecture"
             file: topic4lecture.qmd
+          - text: "Questions"
+            file: topic4questions.qmd
           - text: "MCQs"
             file: topic4mcqs.qmd
       - section: "Topic 5 - The New Classical Approach"
@@ -62,6 +66,8 @@ website:
             file: topic5reading.qmd
           - text: "Lecture"
             file: topic5lecture.qmd
+          - text: "Questions"
+            file: topic5questions.qmd
           - text: "MCQs"
             file: topic5mcqs.qmd
       - section: "Topic 6 - The Time Inconsistency Problem and Credibility of Monetary Policy"
@@ -70,6 +76,8 @@ website:
             file: topic6reading.qmd
           - text: "Lecture"
             file: topic6lecture.qmd
+          - text: "Questions"
+            file: topic6questions.qmd
           - text: "MCQs"
             file: topic6mcqs.qmd
       - section: "Topic 7 - Monetary Policy Consensus and the Great Moderation"
@@ -78,6 +86,8 @@ website:
             file: topic7reading.qmd
           - text: "Lecture"
             file: topic7lecture.qmd
+          - text: "Questions"
+            file: topic7questions.qmd
           - text: "MCQs"
             file: topic7mcqs.qmd
       - section: "Topic 8 - Monetary Policy in the Post-Crisis"
@@ -86,6 +96,8 @@ website:
             file: topic8reading.qmd
           - text: "Lecture"
             file: topic8lecture.qmd
+          - text: "Questions"
+            file: topic8questions.qmd
           - text: "MCQs"
             file: topic8mcqs.qmd
 format:
