@@ -44,9 +44,229 @@
   {
     "objectID": "topic7reading.html",
     "href": "topic7reading.html",
-    "title": "Topic 7 Reading",
+    "title": "The Monetary Policy Consensus",
     "section": "",
-    "text": "Topic 7 Reading (Placeholder)\nContent will be added soon.",
+    "text": "By the early 1990s, a widely taught “monetary policy consensus” emerged in advanced economies: monetary policy should prioritize price stability, implemented by an independent central bank using a short‑term policy interest rate, with communication and accountability designed to anchor inflation expectations and reduce macroeconomic volatility. This view became closely associated with the “Great Moderation,” the period of reduced volatility in output growth and inflation in many advanced economies from the mid‑1980s until the global financial crisis (Bernanke, 2004).\nIn the UK, the political narrative of “stability” became highly salient. A famous statement often associated with this period is Gordon Brown’s “no return to boom and bust,” recorded in a 2006 Budget statement.\nThe consensus did not imply that recessions were impossible. Many emerging and developing economies continued to experience episodes of currency and financial crisis during the 1990s (for example, crises associated with fixed or heavily managed exchange rates). An IMF analysis by Stanley Fischer—reflecting on crises in Asia, Russia and elsewhere—explicitly highlighted the vulnerability of “more or less fixed” exchange-rate systems to crisis pressure.\nThis chapter is designed to replace the relevant student reading from Lewis & Mizen (2000), Chapter 16, while preserving and enhancing the core lecture-note ideas with modern academic and institutional sources.\n\n\nAfter studying this chapter, you should be able to:\n\nExplain the core propositions of the monetary policy consensus (long‑run nominal anchor, short‑run real effects via frictions/surprises, credibility problems).\nCompare three anti‑inflation strategies: monetary targeting, fixed exchange rates, and inflation targeting—and explain why inflation targeting became dominant.\nDescribe how the UK inflation‑targeting system works (objective setting, operational independence, transparency, and the open‑letter accountability mechanism).\nEvaluate the choice of inflation target (including why “0%” is risky) and explain the difference between inflation targeting and price‑level targeting.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#learning-goals",
+    "href": "topic7reading.html#learning-goals",
+    "title": "The Monetary Policy Consensus",
+    "section": "",
+    "text": "After studying this chapter, you should be able to:\n\nExplain the core propositions of the monetary policy consensus (long‑run nominal anchor, short‑run real effects via frictions/surprises, credibility problems).\nCompare three anti‑inflation strategies: monetary targeting, fixed exchange rates, and inflation targeting—and explain why inflation targeting became dominant.\nDescribe how the UK inflation‑targeting system works (objective setting, operational independence, transparency, and the open‑letter accountability mechanism).\nEvaluate the choice of inflation target (including why “0%” is risky) and explain the difference between inflation targeting and price‑level targeting.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#long-run-monetary-policy-anchors-inflation",
+    "href": "topic7reading.html#long-run-monetary-policy-anchors-inflation",
+    "title": "The Monetary Policy Consensus",
+    "section": "2.1 Long-run: monetary policy anchors inflation",
+    "text": "2.1 Long-run: monetary policy anchors inflation\nA central pillar of the consensus is a long‑run monetarist proposition: persistent inflation is ultimately a monetary phenomenon, in the practical sense that a central bank that sets the nominal anchor can, over time, determine the long‑run inflation rate.\nModern central banks state this in policy‑framework documents. For example, the Federal Reserve’s strategy statement explicitly notes that “the inflation rate over the longer run is primarily determined by monetary policy,” and therefore the committee can specify a longer‑run inflation goal (Federal Reserve, 2025).\nFor undergraduates, you can interpret this as: in the long run, monetary policy cannot permanently raise real GDP growth, but it can deliver low and stable inflation, which improves decision-making and long-horizon planning.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#short-run-monetary-policy-can-affect-real-activity-but-only-under-specific-conditions",
+    "href": "topic7reading.html#short-run-monetary-policy-can-affect-real-activity-but-only-under-specific-conditions",
+    "title": "The Monetary Policy Consensus",
+    "section": "2.2 Short-run: monetary policy can affect real activity, but only under specific conditions",
+    "text": "2.2 Short-run: monetary policy can affect real activity, but only under specific conditions\nThe consensus emphasizes two situations where money can affect real variables in the short run:\n\nUnexpected policy innovations (surprises). In the rational expectations tradition, real effects come from the unexpected component of policy—not the predictable component. Robert Lucas’s classic analysis derives a Phillips‑curve‑like relation while excluding “money illusion,” implying that systematic, anticipated policy does not reliably buy higher output; only surprise elements can.\nNominal rigidities. Even without deliberate deception, if wages and prices adjust slowly, changes in interest rates can influence real spending and production before prices fully adjust. Modern central bank explanations of transmission explicitly highlight nominal rigidities as a reason policy affects real activity.\n\nThe consensus interpretation is careful: short‑run real effects are temporary, while the lasting effect of sustained monetary expansion is on nominal variables (especially the price level). In lecture terms: “real effects wear off; nominal effects persist.”",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#a-built-in-tension-short-run-stabilization-versus-long-run-credibility",
+    "href": "topic7reading.html#a-built-in-tension-short-run-stabilization-versus-long-run-credibility",
+    "title": "The Monetary Policy Consensus",
+    "section": "2.3 A built-in tension: short-run stabilization versus long-run credibility",
+    "text": "2.3 A built-in tension: short-run stabilization versus long-run credibility\nThe consensus stresses that these short‑run effects create a conflict:\n\nShort run: policymakers may be tempted to create a boom via surprise inflation (e.g., before an election).\nLong run: the optimal role of monetary policy is to deliver low and predictable inflation.\n\nTime inconsistency theory formalizes this temptation: discretionary “fine tuning” in pursuit of short‑run output gains can damage credibility, raising expected inflation and leading to worse outcomes.\nThis is why the consensus places special weight on reputation and credibility. A central bank known to be “soft” on inflation may find disinflation costly because private agents doubt the commitment; expectations adjust slowly and output losses can be larger. This logic is consistent with standard credibility models and with central banks’ ongoing emphasis on anchoring long‑term expectations.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#price-stability-as-the-central-banks-primary-macroeconomic-contribution",
+    "href": "topic7reading.html#price-stability-as-the-central-banks-primary-macroeconomic-contribution",
+    "title": "The Monetary Policy Consensus",
+    "section": "3.1 Price stability as the central bank’s primary macroeconomic contribution",
+    "text": "3.1 Price stability as the central bank’s primary macroeconomic contribution\nThe consensus view is that monetary policy’s comparative advantage is maintaining a stable nominal environment. Modern policy frameworks make this explicit. The ECB strategy statement says price stability is best maintained by aiming for 2% inflation over the medium term, and emphasizes the importance of the inflation target as an anchor for expectations.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#independence-from-day-to-day-politics",
+    "href": "topic7reading.html#independence-from-day-to-day-politics",
+    "title": "The Monetary Policy Consensus",
+    "section": "3.2 Independence from day-to-day politics",
+    "text": "3.2 Independence from day-to-day politics\nA central bank insulated from short-term political pressures is less likely to exploit short-run inflation-output trade-offs, and more likely to maintain credibility. In the UK, operational independence was introduced in 1997: the central bank was granted responsibility for setting the short-term policy interest rate to achieve an inflation target set by government (i.e., instrument independence).\nThe distinction remains crucial:\n\nOperational (instrument) independence: the central bank chooses how to achieve the target.\nGoal independence: the central bank also chooses the target (rare in practice).\n\nUK policy continues to operate under operational independence: the inflation target is set by government and reaffirmed in remits, while the central bank chooses instruments to achieve it.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#conservative-central-bank-leadership",
+    "href": "topic7reading.html#conservative-central-bank-leadership",
+    "title": "The Monetary Policy Consensus",
+    "section": "3.3 Conservative central bank leadership",
+    "text": "3.3 Conservative central bank leadership\nThe consensus states that monetary conservatives should run central banks. In academic monetary theory, this idea is formalized as “conservative delegation”: appointing a central banker who places relatively high weight on inflation stabilization can reduce inflation bias, though it may raise stabilization costs under some shocks.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#transparency-and-accountability-when-deviating-from-a-low-inflation-strategy",
+    "href": "topic7reading.html#transparency-and-accountability-when-deviating-from-a-low-inflation-strategy",
+    "title": "The Monetary Policy Consensus",
+    "section": "3.4 Transparency and accountability when deviating from a low-inflation strategy",
+    "text": "3.4 Transparency and accountability when deviating from a low-inflation strategy\nThe consensus approach is not “no flexibility”; it is disciplined flexibility. When policy deviates from the target path, policymakers should explain why and how inflation will return to target. Modern inflation targeting frameworks embed this in:\n\nRegular forecasts and reports\nPublished minutes and votes\nExplicit accountability triggers\n\nThe UK open-letter mechanism is a concrete example: if inflation deviates from target by more than 1 percentage point (above 3% or below 1% on a 2% target), the Governor must write publicly to the Chancellor explaining the deviation and the strategy to return inflation to target.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#monetary-targeting",
+    "href": "topic7reading.html#monetary-targeting",
+    "title": "The Monetary Policy Consensus",
+    "section": "4.1 Monetary targeting",
+    "text": "4.1 Monetary targeting\nMonetary targeting uses a target path for a money aggregate (e.g., M1, M2, broad money) as an intermediate target to achieve low inflation.\n\n4.1.1 The simple theoretical case\nStart from a quantity-theory identity: \\(MV = PY\\). In growth rates, a convenient approximation is: \\[\\pi \\approx \\mu + \\nu - g,\\] where \\(\\pi\\) is inflation, \\(\\mu\\) is money growth, \\(\\nu\\) is velocity growth, and \\(g\\) is real output growth. If velocity growth is stable (or near zero), targeting money growth consistent with output growth and desired inflation should, “on average,” stabilize inflation.\nThis is closely aligned with monetarist proposals for steady money growth (for example, a fixed \\(k\\)‑percent rule) and with the idea that predictability in monetary conditions can anchor expectations.\n\n\n4.1.2 Why it broke down in practice\nTwo practical problems emerged:\n\nDefinitional and controllability problems. It is difficult to choose which monetary aggregate matters most, and central banks have tighter control over narrow aggregates than over broad aggregates created inside the banking system.\nInstability of money demand (velocity instability). Even if the central bank can influence money growth, the relation between broad money and nominal income can become unreliable due to financial innovation and portfolio shifts.\n\nA classic Bank of England analysis from the 1980s explicitly discussed how the relationship between broad money growth and nominal incomes became increasingly unpredictable in the UK after 1980, with velocity behavior changing substantially, raising the question of whether broad money targets should be abandoned.\nThis diagnosis appears in later central bank research as well: when the money–inflation relationship is unstable, hitting a money target may not reliably deliver the inflation outcome, weakening accountability and the anchor.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#fixing-the-exchange-rate",
+    "href": "topic7reading.html#fixing-the-exchange-rate",
+    "title": "The Monetary Policy Consensus",
+    "section": "4.2 Fixing the exchange rate",
+    "text": "4.2 Fixing the exchange rate\nA fixed (or tightly managed) exchange rate can serve as a nominal anchor by “importing” the credibility of a low‑inflation anchor country.\n\n4.2.1 The simple link between exchange rates and inflation\nA stylized purchasing power parity relation suggests: \\[\\Delta e \\approx \\pi - \\pi^*,\\] where \\(e\\) is the nominal exchange rate (domestic currency per unit of foreign currency), and \\(\\pi^*\\) is foreign inflation. If the exchange rate is fixed (\\(\\Delta e = 0\\)), then domestic inflation tends to converge toward foreign inflation (\\(\\pi \\approx \\pi^*\\)) in the long run.\nThis is an intuition, not a law: PPP is imprecise in the short run. But the key policy lesson is about constraints: a credible commitment to a peg can severely limit domestic monetary discretion.\n\n\n4.2.2 Advantages (when credible)\nCentral bank research highlights two major benefits:\n\nA clear, observable anchor that can reduce inflation expectations quickly.\nA rule-like constraint that can mitigate the time inconsistency problem by putting monetary policy on “automatic pilot.”\n\n\n\n4.2.3 Disadvantages and fragility (when credibility is imperfect)\nThe main costs include:\n\nLoss of domestic policy autonomy. If the anchor country’s interest rate is inappropriate for domestic conditions, the pegging country cannot respond.\nBalance of payments stress and reserve loss. Defending an overvalued peg depletes reserves; defending an undervalued peg can force persistent reserve accumulation and balance-sheet expansion.\nSpeculative attack risk. If markets believe a peg is inconsistent with fundamentals, rational speculation can become self-fulfilling: agents buy foreign currency before devaluation, accelerating reserve loss and precipitating collapse.\n\nThe UK’s 1992 ERM episode illustrates the internal-objective vs exchange-rate-commitment conflict: the Bank of England’s analysis describes how ERM membership constrained UK interest rate policy relative to Germany, raising real interest rates as domestic inflation pressures fell, and culminating in suspension of sterling’s ERM membership after heavy intervention.\nA second canonical example is Argentina’s collapse of the convertibility regime. The IMF Independent Evaluation Office report describes how convertibility became “virtually impossible” to salvage amid collapsing confidence, leading to default and abandonment of the peg.\nA contrasting case is a “harder” rules-based currency board. The Hong Kong Monetary Authority continues to defend its linked exchange rate system, emphasizing its transparency, rules-based nature, and large reserves as elements supporting credibility.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#inflation-targeting",
+    "href": "topic7reading.html#inflation-targeting",
+    "title": "The Monetary Policy Consensus",
+    "section": "4.3 Inflation targeting",
+    "text": "4.3 Inflation targeting\nInflation targeting became the dominant consensus strategy in many economies because it combines:\n\nA clear nominal anchor (the inflation target)\nDomestic policy autonomy (unlike a peg)\nRobustness to money-demand/velocity shocks (unlike strict monetary targeting)\nInstitutional reforms (communication and accountability) to cope with time inconsistency\n\n\n4.3.1 What inflation targeting is\nA widely used definition is that a central bank publicly announces a numerical inflation objective (often with a tolerance band) and commits institutionally to achieve it over a medium-term horizon, using all available information.\nIn the academic literature, Ben Bernanke and Frederic Mishkin argued that inflation targeting is best understood as “constrained discretion”: not a mechanical rule, but a framework that disciplines decisions through transparency, forecasts, and accountability.\nIn practice, most regimes are flexible inflation-targeting regimes: they aim to stabilize inflation around target while also smoothing output and employment fluctuations.\n\n\n4.3.2 Why a tolerance band exists\nA central bank does not control inflation directly; it affects inflation with lags through aggregate demand, expectations, and exchange rates. For credibility, regimes typically define a band (or operate with an implicit tolerance) so that small forecast errors or supply shocks do not automatically appear as “policy failure.”\n\n\n4.3.3 The policy instrument: the short-term interest rate\nInflation targeting is implemented primarily through a short‑term policy rate (with money aggregates adjusting endogenously).\nThe Bank of England’s transmission-mechanism paper describes how the MPC sets the official short-term rate, which influences market rates, expectations, asset prices and the exchange rate, and then spending decisions, ultimately affecting inflation. More recent BoE work—explicitly linking nominal rigidities and expectations to transmission—reinforces the same core mechanism. The ECB’s transmission overview similarly highlights expectations, asset prices, exchange rates, and spending decisions as key channels.\n\n\n4.3.4 Inflation targeting after the Global Financial Crisis: the toolkit expands\nThe global financial crisis did not remove inflation targeting from the consensus; it expanded the toolkit when interest rates hit the effective lower bound. Concrete institutional examples:\n\nThe Bank of England explains that QE was introduced in March 2009 when Bank Rate was very low; QE lowers longer-term yields by purchasing bonds, supporting spending and helping meet the inflation target.\nThe Federal Reserve documents large-scale asset purchases beginning in 2008–09 (LSAP1), illustrating how balance-sheet tools were used when conventional rate cuts were constrained.\nThe Bank of Japan’s official reference timeline lists ZIRP (1999), QE (2001), QQE (2013), and later negative rates and yield curve control—illustrating sustained reliance on unconventional tools in a low-inflation environment.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#the-uk-framework-operational-independence-with-a-government-set-target",
+    "href": "topic7reading.html#the-uk-framework-operational-independence-with-a-government-set-target",
+    "title": "The Monetary Policy Consensus",
+    "section": "5.1 The UK framework: operational independence with a government-set target",
+    "text": "5.1 The UK framework: operational independence with a government-set target\nThe UK has operated modern inflation targeting since the early 1990s, with a major institutional change in 1997: operational independence for setting the policy rate to achieve the target. The Bank of England’s retrospective discussion of independence describes the 1997 arrangement and the construction of the MPC (monthly meetings, voting, published minutes).\nToday, the inflation target is set by government, reaffirmed in the remit, and measured by CPI inflation. The 2025 remit letter explicitly reconfirms the 2% CPI target and the primacy of price stability, and describes the Bank’s statutory objectives (price stability, and subject to that, supporting government economic policy).",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#accountability-open-letters",
+    "href": "topic7reading.html#accountability-open-letters",
+    "title": "The Monetary Policy Consensus",
+    "section": "5.2 Accountability: open letters",
+    "text": "5.2 Accountability: open letters\nIf inflation deviates beyond the tolerance threshold, the Bank must provide an explanation in writing.\nThis mechanism is described clearly in HM Treasury’s “open letters” collection and the BoE’s public explanation of the 2% target: if CPI inflation is above 3% or below 1%, the Governor writes an open letter to the Chancellor explaining why inflation moved away from target and how policy will return it to target.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#transparency-reports-and-forecasts",
+    "href": "topic7reading.html#transparency-reports-and-forecasts",
+    "title": "The Monetary Policy Consensus",
+    "section": "5.3 Transparency: reports and forecasts",
+    "text": "5.3 Transparency: reports and forecasts\nThe Bank publishes regular Monetary Policy Reports as a major communication tool (renamed from “Inflation Report” in 2019 as part of changes designed to improve communication and accountability).\nThis evolution is consistent with the consensus idea that credibility is supported by regular, structured communication of:\n\ncurrent conditions,\nforecasts (conditional on a policy path),\nand the reaction function guiding decisions.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#flexible-inflation-targeting-in-practice",
+    "href": "topic7reading.html#flexible-inflation-targeting-in-practice",
+    "title": "The Monetary Policy Consensus",
+    "section": "5.4 Flexible inflation targeting in practice",
+    "text": "5.4 Flexible inflation targeting in practice\nThe Bank does not aim to hit the target every month; it aims to return inflation to target over a horizon, justifying temporary deviations.\nThis “flexible” interpretation is also embedded in broader inflation targeting practice: supply shocks and trade-offs are handled by allowing inflation to return to target over a medium-term horizon, rather than forcing immediate reversal that would generate unnecessary output volatility.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#forward-guidance-the-uk-2013-example",
+    "href": "topic7reading.html#forward-guidance-the-uk-2013-example",
+    "title": "The Monetary Policy Consensus",
+    "section": "5.5 Forward guidance: the UK 2013 example",
+    "text": "5.5 Forward guidance: the UK 2013 example\nSince the crisis, communication expanded to include forward guidance.\nThe August 2013 MPC minutes provide an official statement of the UK’s first explicit threshold-based forward guidance under Mark Carney: the MPC intended not to raise Bank Rate from 0.5% at least until the unemployment rate fell to 7%, subject to explicit “knockout” conditions related to the inflation outlook, inflation expectations anchoring, and financial stability.\nThis example illustrates two key consensus ideas simultaneously:\n\nExpectations are part of the transmission mechanism.\nCredibility requires conditional commitments that are clearly explained and constrained.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#friedmans-optimal-quantity-of-money-and-the-friedman-rule",
+    "href": "topic7reading.html#friedmans-optimal-quantity-of-money-and-the-friedman-rule",
+    "title": "The Monetary Policy Consensus",
+    "section": "6.1 Friedman’s optimal quantity of money and the Friedman rule",
+    "text": "6.1 Friedman’s optimal quantity of money and the Friedman rule\nA standard presentation of the Friedman rule distinguishes between:\n\nthe k-percent money growth rule (a policy rule for money growth), and\nthe optimal quantity of money argument (a normative argument about the optimal nominal interest rate).\n\nBecause the marginal resource cost of producing base money is close to zero, the socially optimal policy makes it costless at the margin to hold money—implying a nominal interest rate near zero (\\(i \\approx 0\\)). Using the Fisher relation \\(i \\approx r + \\pi^e\\), achieving \\(i=0\\) in steady state implies \\(\\pi \\approx -r\\) (a steady deflation roughly equal to the real interest rate).\nThis is a powerful theoretical benchmark—but it is not a practical policy recommendation in modern regimes.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#why-target-inflation-above-zero-deflation-risk-policy-space-and-wage-adjustment",
+    "href": "topic7reading.html#why-target-inflation-above-zero-deflation-risk-policy-space-and-wage-adjustment",
+    "title": "The Monetary Policy Consensus",
+    "section": "6.2 Why target inflation above zero: deflation risk, policy space, and wage adjustment",
+    "text": "6.2 Why target inflation above zero: deflation risk, policy space, and wage adjustment\nThree reasons support inflation targeting above zero:\n\nDeflation and debt burdens. Low or negative inflation can raise real debt burdens and amplify recessions through financial stress. Bernanke’s analysis highlights how deflation can create serious problems at the zero bound and references the debt‑deflation logic associated with Irving Fisher.\nPolicy space at the effective lower bound. If inflation is too low, then nominal interest rates are lower on average, leaving less room to cut rates in downturns. Once the nominal policy rate is at (or near) zero, conventional easing is constrained, complicating stabilization.\nModern frameworks explicitly acknowledge this constraint. For example, the FOMC’s 2020 statement notes that the long-run neutral rate has declined, increasing the frequency of effective‑lower‑bound episodes; it therefore adopted a strategy of aiming for inflation averaging 2% over time (seeking periods moderately above 2% following persistent undershoots) to help prevent expectations drifting downward.\nIndirect real wage adjustment with nominal rigidities. With sticky nominal wages, positive inflation can facilitate real wage declines when needed, potentially speeding reallocation and recovery. Modern BoE analysis emphasizes nominal rigidities as central to why monetary policy transmits to real activity and inflation.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#negative-nominal-rates-what-happened-in-practice",
+    "href": "topic7reading.html#negative-nominal-rates-what-happened-in-practice",
+    "title": "The Monetary Policy Consensus",
+    "section": "6.3 Negative nominal rates: what happened in practice",
+    "text": "6.3 Negative nominal rates: what happened in practice\nSome central bankers viewed negative nominal rates as infeasible, yet the ECB and others implemented them.\nAn ECB press release documents the introduction of a negative deposit facility rate (−0.10%) effective June 2014. A BIS survey article finds that modestly negative policy rates transmitted through money markets and other rates largely similarly to positive rates, though retail deposit rates were more insulated.\nTogether, these episodes refine the lecture point: negative rates are possible but operationally and politically constrained, strengthening the case for a small positive inflation target to reduce how often policy must rely on the most unconventional measures.",
+    "crumbs": [
+      "Topic 7 - Monetary Policy Consensus and the Great Moderation",
+      "Reading"
+    ]
+  },
+  {
+    "objectID": "topic7reading.html#target-inflation-rates-or-the-price-level",
+    "href": "topic7reading.html#target-inflation-rates-or-the-price-level",
+    "title": "The Monetary Policy Consensus",
+    "section": "6.4 Target inflation rates or the price level",
+    "text": "6.4 Target inflation rates or the price level\nThe difference can be illustrated with a simple example:\n\nIf inflation is 3% one year and the objective is to keep average CPI growth at 2%, then next year inflation should be below 2% (e.g., around 1%) to bring the price level back toward the intended path.\nUnder standard inflation targeting, “bygones are bygones”: the central bank aims to return inflation to 2% going forward, allowing the price level to drift upward permanently after an overshoot.\n\nThis is the inflation‑target vs price‑level‑target contrast:\n\nPrice-level targeting: commits to a path for \\(P_t\\) (no “base drift”).\nInflation targeting: commits to a path for \\(\\pi_t\\) (allowing base drift).\n\nIn the research literature, Svensson’s analysis compares these regimes and shows that, under certain conditions, price-level targeting can reduce long-run price uncertainty and may improve outcomes under discretion.\nModern frameworks have experimented with “makeup” features that partially mimic price-level targeting without committing fully to a price-level path—for example, the Fed’s “average inflation” language adopted in 2020.",
     "crumbs": [
       "Topic 7 - Monetary Policy Consensus and the Great Moderation",
       "Reading"
