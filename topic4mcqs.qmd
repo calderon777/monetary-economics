@@ -1,10 +1,711 @@
 ---
-title: "Topic 4 - MCQs"
+title: "Topic 4 - MCQs Formative Assessment"
+author: by Dr Camilo Calderon
 format: html
 execute:
   echo: false
 ---
 
-This is a placeholder page for Topic 4 MCQs.
+::: callout-note
+## How to use this quiz
 
-Content will be added soon.
+This quiz is designed as a **formative self-assessment tool**, not as a test.
+
+Its purpose is to help you:
+- check your understanding of the key concepts from Topic 4,
+- identify which types of thinking you find more difficult, and
+- guide your revision before the tutorial and future assessments.
+
+### What this quiz measures
+
+Each question belongs to one of four categories:
+
+- **Subject Knowledge (SK):** definitions, concepts, and facts.  
+- **Analysis (AN):** understanding relationships and economic mechanisms.  
+- **Problem Solving (PS):** applying concepts to new situations.  
+- **Mathematical Thinking (MT):** working with equations and quantitative relationships.
+
+Your score will be broken down by category so you can see **where** you are strong and where you need more practice.
+
+### How to complete the quiz
+
+- You may use your notes and the lecture materials.
+- Take your time — the goal is understanding, not speed.
+- Use the **Hints** if you get stuck.
+- You may refresh and retry the quiz as many times as you like.
+
+### How to interpret your results
+
+- A low score is **not a problem** — it tells you what to focus on.
+- If you score low in:
+  - **SK:** revise definitions and core concepts.
+  - **AN:** revisit the logic of the models and examples.
+  - **PS:** practise applying concepts to new cases.
+  - **MT:** practise the mathematical calculations and equations.
+
+### About the leaderboard
+
+The leaderboard is optional and anonymous. It exists only to make practice more engaging.  
+It has **no effect** on your grade and is not used for evaluation.
+
+The only purpose of this quiz is to support your learning.
+
+:::
+
+```{r}
+#| echo: false
+library(webexercises)
+```
+
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
+```{=html}
+<script>
+(function () {
+  // 1) Configure your Google Apps Script Web App URL here.
+  //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function getSelectedLabelText(qEl) {
+    const input = qEl.querySelector('input[type="radio"]:checked');
+    if (!input) return "";
+    const label = input.closest('label') || document.querySelector('label[for="' + input.id + '"]');
+    return label ? norm(label.textContent) : "";
+  }
+
+  function clearFeedback(qEl) {
+    qEl.querySelectorAll("label").forEach(l => l.classList.remove("is-correct", "is-incorrect"));
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (line) {
+      line.textContent = "";
+      line.classList.add("hidden");
+    }
+  }
+
+  function setFeedback(qEl, isCorrect) {
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (!line) return;
+    line.textContent = isCorrect ? "Correct." : "Incorrect.";
+    line.classList.remove("hidden");
+  }
+
+  async function postAttempt(payload) {
+    // Do not attempt POST if ENDPOINT is not configured
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) return;
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Could not save attempt:", err);
+    }
+  }
+
+  async function loadLeaderboard(quizName) {
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
+
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
+      return;
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 30);
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
+      }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === "string") {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.warn(`Row ${rowIdx} - Could not parse details:`, details);
+          return;
+        }
+      }
+
+      console.log(`Row ${rowIdx} - Processing details:`, details);
+
+      Object.entries(details).forEach(([questionId, qData]) => {
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        questionStats[questionId].totalCount += 1;
+        
+        // Check if answer was incorrect (ok: 0 means incorrect)
+        const isIncorrect = qData.ok === 0;
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
+      });
+    });
+
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey: qKey,
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
+    }
+  }
+
+  async function submitQuiz() {
+    const nicknameEl = document.getElementById("nickname");
+    const resultEl = document.getElementById("quiz-result");
+    const submitBtn = document.getElementById("quiz-submit");
+
+    const nickname = (nicknameEl?.value || "").trim();
+    if (!nickname) {
+      alert("Please enter a nickname before submitting.");
+      nicknameEl?.focus();
+      return;
+    }
+
+    // Lock submit to avoid double posting
+    if (submitBtn) submitBtn.disabled = true;
+
+    let score = 0;
+    let total = 0;
+    const details = {};
+    
+    // Category scores
+    const categories = {
+      SK: { score: 0, total: 0, name: "Subject Knowledge" },
+      AN: { score: 0, total: 0, name: "Analysis" },
+      PS: { score: 0, total: 0, name: "Problem Solving" },
+      MT: { score: 0, total: 0, name: "Mathematical Thinking" }
+    };
+
+    const questions = Array.from(document.querySelectorAll(".mcq-we-q"));
+
+    // Clear any prior feedback first (important if student re-submits)
+    questions.forEach(clearFeedback);
+
+    questions.forEach((qEl, idx) => {
+      total += 1;
+      const keyEl = qEl.querySelector(".mcq-key");
+      const correct = norm(keyEl?.getAttribute("data-correct") || "");
+      const selected = getSelectedLabelText(qEl);
+
+      const isCorrect = selected && (selected === correct);
+      if (isCorrect) score += 1;
+
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      let questionId = "Q" + (idx + 1);
+      
+      if (categoryMatch) {
+        const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;
+        
+        categories[cat].total += 1;
+        if (isCorrect) categories[cat].score += 1;
+      }
+
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
+
+      // Mark only after submit
+      if (selected) {
+        const input = qEl.querySelector('input[type="radio"]:checked');
+        const label = input?.closest("label") || (input ? document.querySelector('label[for="' + input.id + '"]') : null);
+        if (label) label.classList.add(isCorrect ? "is-correct" : "is-incorrect");
+      }
+      setFeedback(qEl, isCorrect);
+    });
+
+    if (resultEl) {
+      let resultHTML = "<strong>Overall Score: " + score + " / " + total + "</strong><br><br>";
+      
+      // Add category breakdown
+      for (const key in categories) {
+        const cat = categories[key];
+        if (cat.total > 0) {
+          resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
+        }
+      }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+        let questionId = "Q" + (idx + 1);
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];
+        }
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push(questionId);
+          } else {
+            incorrectQuestions.push(questionId);
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
+      
+      resultEl.innerHTML = resultHTML;
+    }
+
+    // Persist attempt (best practice: store what you need; nickname only = low GDPR footprint)
+    await postAttempt({
+      timestamp: new Date().toISOString(),
+      nickname,
+      quiz: "Topic4",
+      score,
+      total,
+      details
+    });
+
+    // Refresh leaderboard after a successful submit (or best-effort submit)
+    await loadLeaderboard("Topic4");
+
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  // Expose submitQuiz globally for the button onclick
+  window.submitQuiz = submitQuiz;
+
+  // Add a feedback line container to each question if it doesn't exist
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mcq-we-q").forEach(qEl => {
+      if (!qEl.querySelector(".quiz-feedback-line")) {
+        const line = document.createElement("div");
+        line.className = "quiz-feedback-line hidden";
+        qEl.appendChild(line);
+      }
+    });
+
+    loadLeaderboard("Topic4");
+  });
+})();
+</script>
+```
+
+<div class="mcq-we">
+
+## Subject Knowledge
+
+<div class="mcq-we-q">
+**SK1) In the quantity theory identity ($MV = PY$), what does $V$ represent?**  
+`r webexercises::longmcq(c(answer = "The velocity of money", "The value of real output", "The nominal interest rate", "Government spending"))`
+<span class="mcq-key" data-correct="The velocity of money"></span>
+<details class="hint"><summary>Hint</summary>Recall that the identity links money to nominal spending through how frequently money circulates.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK2) According to the monetarist long-run benchmark, a permanent increase in the level of money primarily affects:**  
+`r webexercises::longmcq(c("Real output", "Employment", answer = "The price level", "The natural rate of unemployment"))`
+<span class="mcq-key" data-correct="The price level"></span>
+<details class="hint"><summary>Hint</summary>Apply the principle of long-run neutrality in the classical dichotomy.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK3) In the canonical monetarist model, equilibrium employment ($N^*$) is determined in the:**  
+`r webexercises::longmcq(c("Money market", answer = "Labour market", "Goods market", "Government sector"))`
+<span class="mcq-key" data-correct="Labour market"></span>
+<details class="hint"><summary>Hint</summary>Identify which block determines real wages and employment before nominal variables are considered.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK4) The Fisher equation links the nominal interest rate ($i$) to:**  
+`r webexercises::longmcq(c("Real money balances and output", "Government spending and taxes", answer = "The real interest rate and expected inflation", "Velocity and inflation"))`
+<span class="mcq-key" data-correct="The real interest rate and expected inflation"></span>
+<details class="hint"><summary>Hint</summary>Distinguish between real returns and inflation compensation.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK5) Money is described as "neutral" in the long run because changes in money:**  
+`r webexercises::longmcq(c("Affect real output permanently", answer = "Affect only nominal variables permanently", "Eliminate unemployment", "Stabilise velocity automatically"))`
+<span class="mcq-key" data-correct="Affect only nominal variables permanently"></span>
+<details class="hint"><summary>Hint</summary>Use the classical dichotomy to separate real and nominal variables.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK6) Under stable velocity and constant real output growth, a higher permanent money growth rate implies:**  
+`r webexercises::longmcq(c("Lower inflation", "Higher real growth", answer = "Higher long-run inflation", "Lower nominal interest rates"))`
+<span class="mcq-key" data-correct="Higher long-run inflation"></span>
+<details class="hint"><summary>Hint</summary>Start from $MV=PY$ and consider growth rates.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK7) The natural-rate hypothesis implies that attempts to keep unemployment below $u^*$:**  
+`r webexercises::longmcq(c("Permanently reduce unemployment", answer = "Cause accelerating inflation", "Lower expected inflation", "Reduce velocity"))`
+<span class="mcq-key" data-correct="Cause accelerating inflation"></span>
+<details class="hint"><summary>Hint</summary>Think about how expectations adjust in the Phillips curve framework.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK8) Hyperinflation, under the Cagan criterion, begins when monthly inflation exceeds:**  
+`r webexercises::longmcq(c("10%", "25%", answer = "50%", "100%"))`
+<span class="mcq-key" data-correct="50%"></span>
+<details class="hint"><summary>Hint</summary>Recall the numerical threshold used in historical classifications.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK9) In the Cagan money demand specification, higher expected inflation leads to:**  
+`r webexercises::longmcq(c("Higher real money demand", answer = "Lower real money demand", "Higher real output", "Lower nominal interest rates"))`
+<span class="mcq-key" data-correct="Lower real money demand"></span>
+<details class="hint"><summary>Hint</summary>Consider how inflation expectations affect the opportunity cost of holding money.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK10) The constant money-growth ($k\%$) rule is motivated primarily by concerns about:**  
+`r webexercises::longmcq(c("Fiscal deficits", answer = "Long and variable policy lags", "Labour supply elasticity", "Exchange-rate targeting"))`
+<span class="mcq-key" data-correct="Long and variable policy lags"></span>
+<details class="hint"><summary>Hint</summary>Focus on the critique of discretionary fine-tuning.</details>
+</div>
+
+## Analysis
+
+<div class="mcq-we-q">
+**AN1) If velocity becomes unstable due to financial innovation, which monetarist proposition is most directly weakened?**  
+`r webexercises::longmcq(c("Long-run neutrality of money", "The Fisher effect", answer = "A stable link between money growth and nominal GDP growth", "The existence of unemployment"))`
+<span class="mcq-key" data-correct="A stable link between money growth and nominal GDP growth"></span>
+<details class="hint"><summary>Hint</summary>Identify which empirical assumption connects money growth predictably to spending.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN2) Suppose prices adjust fully but nominal wages remain fixed temporarily after a monetary expansion. What happens to the real wage ($w/P$)?**  
+`r webexercises::longmcq(c("It rises", answer = "It falls", "It remains unchanged", "It becomes indeterminate"))`
+<span class="mcq-key" data-correct="It falls"></span>
+<details class="hint"><summary>Hint</summary>Compare the speed of adjustment between numerator and denominator.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN3) Why does the expectations-augmented Phillips curve imply no permanent inflation-unemployment trade-off?**  
+`r webexercises::longmcq(c("Because velocity is constant", answer = "Because expected inflation adjusts over time", "Because money demand is fixed", "Because fiscal policy dominates"))`
+<span class="mcq-key" data-correct="Because expected inflation adjusts over time"></span>
+<details class="hint"><summary>Hint</summary>Consider how adaptive expectations change the position of the short-run curve.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN4) If expected inflation rises permanently while the real interest rate is unchanged in the long run, what must happen to the nominal interest rate?**  
+`r webexercises::longmcq(c("It falls", "It stays constant", answer = "It rises one-for-one", "It becomes negative"))`
+<span class="mcq-key" data-correct="It rises one-for-one"></span>
+<details class="hint"><summary>Hint</summary>Apply the Fisher relation carefully.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN5) A central bank increases money growth, but velocity simultaneously falls sharply during a crisis. What is the most likely short-run effect on inflation?**  
+`r webexercises::longmcq(c("Inflation rises proportionately", "Inflation falls mechanically", answer = "The effect on inflation is ambiguous", "Inflation must accelerate"))`
+<span class="mcq-key" data-correct="The effect on inflation is ambiguous"></span>
+<details class="hint"><summary>Hint</summary>Use the identity $MV=PY$ and allow both components to change.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN6) In the monetarist four-block model, which adjustment restores long-run equilibrium after a monetary shock?**  
+`r webexercises::longmcq(c("Permanent change in employment", "Permanent fall in real wages", answer = "Adjustment of nominal wages and prices", "Collapse of money demand"))`
+<span class="mcq-key" data-correct="Adjustment of nominal wages and prices"></span>
+<details class="hint"><summary>Hint</summary>Distinguish between real equilibrium determination and nominal adjustment.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN7) Why might money-growth targeting become impractical even if long-run neutrality holds?**  
+`r webexercises::longmcq(c("Because real output is unstable", answer = "Because velocity may shift unpredictably", "Because inflation is always zero", "Because unemployment disappears"))`
+<span class="mcq-key" data-correct="Because velocity may shift unpredictably"></span>
+<details class="hint"><summary>Hint</summary>Separate theoretical neutrality from empirical stability of money demand.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN8) At the effective lower bound, why can QE still reduce longer-term yields?**  
+`r webexercises::longmcq(c("By permanently increasing real output", answer = "By lowering term and risk premia", "By eliminating inflation expectations", "By fixing velocity"))`
+<span class="mcq-key" data-correct="By lowering term and risk premia"></span>
+<details class="hint"><summary>Hint</summary>Think in terms of portfolio-balance mechanisms.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN9) In a high-inflation environment, raising inflation further may generate less seigniorage revenue because:**  
+`r webexercises::longmcq(c("Government spending falls", answer = "Real money balances shrink", "Output rises sharply", "Interest rates fall"))`
+<span class="mcq-key" data-correct="Real money balances shrink"></span>
+<details class="hint"><summary>Hint</summary>Consider how the inflation tax base responds to higher expected inflation.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN10) Why does the natural-rate hypothesis undermine activist stabilization aimed at permanently lowering unemployment?**  
+`r webexercises::longmcq(c("Because fiscal policy is stronger", "Because real wages are irrelevant", answer = "Because expectations adapt and shift the Phillips curve", "Because money demand vanishes"))`
+<span class="mcq-key" data-correct="Because expectations adapt and shift the Phillips curve"></span>
+<details class="hint"><summary>Hint</summary>Focus on dynamic expectation adjustment rather than static correlations.</details>
+</div>
+
+## Problem Solving
+
+<div class="mcq-we-q">
+**PS1) A country increases its money supply permanently. In the short run, workers suffer from money illusion and underestimate inflation. What is the most likely temporary outcome?**  
+`r webexercises::longmcq(c("Higher real wages and lower output", answer = "Lower perceived real wages and higher employment", "Immediate return to equilibrium", "Permanent fall in unemployment"))`
+<span class="mcq-key" data-correct="Lower perceived real wages and higher employment"></span>
+<details class="hint"><summary>Hint</summary>Consider how misperceptions affect labour demand decisions.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS2) Suppose money growth rises from 4% to 8% while real output growth remains at 2% and velocity is stable. What happens to long-run inflation?**  
+`r webexercises::longmcq(c(answer = "It rises from 2% to 6%", "It falls to 0%", "It stays at 2%", "It becomes negative"))`
+<span class="mcq-key" data-correct="It rises from 2% to 6%"></span>
+<details class="hint"><summary>Hint</summary>Use the growth-rate version of the quantity equation.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS3) During a crisis, the central bank doubles money growth, but households sharply increase liquidity preference. Inflation remains low. Which explanation fits monetarist logic?**  
+`r webexercises::longmcq(c("Money no longer matters", answer = "Velocity has fallen significantly", "The natural rate has disappeared", "Real output must have doubled"))`
+<span class="mcq-key" data-correct="Velocity has fallen significantly"></span>
+<details class="hint"><summary>Hint</summary>Separate money supply changes from spending behaviour.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS4) Expected inflation increases by 3 percentage points. If the real interest rate is unchanged, what happens to the nominal rate?**  
+`r webexercises::longmcq(c(answer = "It rises by 3 percentage points", "It falls by 3 percentage points", "It is unchanged", "It becomes zero"))`
+<span class="mcq-key" data-correct="It rises by 3 percentage points"></span>
+<details class="hint"><summary>Hint</summary>Apply the Fisher equation directly.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS5) A government finances persistent deficits through money creation. Expected inflation rises sharply, and real money balances collapse. What risk emerges?**  
+`r webexercises::longmcq(c("Stable disinflation", answer = "Hyperinflation dynamics", "Permanent rise in real output", "Declining nominal interest rates"))`
+<span class="mcq-key" data-correct="Hyperinflation dynamics"></span>
+<details class="hint"><summary>Hint</summary>Consider nonlinear effects in money demand.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS6) If unemployment is pushed below $u^*$ through expansionary policy, what must occur over time to restore equilibrium?**  
+`r webexercises::longmcq(c("Expected inflation falls", answer = "Expected inflation rises", "Real wages permanently decline", "Velocity stabilises"))`
+<span class="mcq-key" data-correct="Expected inflation rises"></span>
+<details class="hint"><summary>Hint</summary>Trace the implications of adaptive expectations.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS7) A permanent increase in money growth raises inflation expectations immediately. What happens to real output in the long run?**  
+`r webexercises::longmcq(c("It increases permanently", "It decreases permanently", answer = "It returns to its supply-determined level", "It becomes unpredictable"))`
+<span class="mcq-key" data-correct="It returns to its supply-determined level"></span>
+<details class="hint"><summary>Hint</summary>Recall super-neutrality in the benchmark model.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS8) If velocity falls persistently while money growth is constant, what must happen to inflation in the long run (holding real growth constant)?**  
+`r webexercises::longmcq(c("It rises", answer = "It falls", "It is unaffected", "It becomes hyperinflationary"))`
+<span class="mcq-key" data-correct="It falls"></span>
+<details class="hint"><summary>Hint</summary>Work with growth rates in the quantity identity.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS9) A credible fiscal reform eliminates expected future monetisation of deficits. What is the likely immediate effect on expected inflation?**  
+`r webexercises::longmcq(c("It rises", answer = "It falls", "It remains unchanged", "It doubles"))`
+<span class="mcq-key" data-correct="It falls"></span>
+<details class="hint"><summary>Hint</summary>Expectations respond to regime credibility.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS10) Why might a central bank prefer a rule over discretion in the presence of long and variable lags?**  
+`r webexercises::longmcq(c("To eliminate unemployment", answer = "To stabilise expectations and reduce policy-induced volatility", "To increase velocity", "To fix the real interest rate permanently"))`
+<span class="mcq-key" data-correct="To stabilise expectations and reduce policy-induced volatility"></span>
+<details class="hint"><summary>Hint</summary>Focus on informational limits and transmission delays.</details>
+</div>
+
+## Mathematical Thinking
+
+<div class="mcq-we-q">
+**MT1) Given $MV = PY$, if $M=100$, $V=5$, and $Y=250$, what is $P$?**  
+`r webexercises::longmcq(c("1", answer = "2", "5", "10"))`
+<span class="mcq-key" data-correct="2"></span>
+<details class="hint"><summary>Hint</summary>Rearrange the identity to isolate the price level.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT2) If money growth $\mu = 6\%$ and real output growth $g = 2\%$, with stable velocity, inflation $\pi$ is approximately:**  
+`r webexercises::longmcq(c("2%", answer = "4%", "6%", "8%"))`
+<span class="mcq-key" data-correct="4%"></span>
+<details class="hint"><summary>Hint</summary>Use $\pi \approx \mu - g$.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT3) From $P = \frac{M}{kY^s}$, if $M$ doubles while $k$ and $Y^s$ are constant, $P$:**  
+`r webexercises::longmcq(c("Halves", answer = "Doubles", "Is unchanged", "Falls to zero"))`
+<span class="mcq-key" data-correct="Doubles"></span>
+<details class="hint"><summary>Hint</summary>Identify proportional relationships.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT4) Using $i \approx r + \pi^e$, if $r=2\%$ and $\pi^e=5\%$, then $i$ equals:**  
+`r webexercises::longmcq(c("3%", "5%", answer = "7%", "10%"))`
+<span class="mcq-key" data-correct="7%"></span>
+<details class="hint"><summary>Hint</summary>Add real return and expected inflation.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT5) In $\pi_t = \pi_t^e - \alpha(u_t - u^*)$, if $u_t = u^*$, then inflation equals:**  
+`r webexercises::longmcq(c("Zero", answer = "Expected inflation", "Negative inflation", "The real rate"))`
+<span class="mcq-key" data-correct="Expected inflation"></span>
+<details class="hint"><summary>Hint</summary>Substitute carefully when the unemployment gap is zero.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT6) If real money demand follows $\frac{M}{P} = A e^{-\alpha \pi^e}$, what happens to $\frac{M}{P}$ when $\pi^e$ rises?**  
+`r webexercises::longmcq(c("It increases exponentially", answer = "It decreases exponentially", "It stays constant", "It becomes linear"))`
+<span class="mcq-key" data-correct="It decreases exponentially"></span>
+<details class="hint"><summary>Hint</summary>Consider the sign in the exponent.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT7) If $\mu = 10\%$, $g=3\%$, and velocity growth is 2%, inflation equals approximately:**  
+`r webexercises::longmcq(c("5%", "7%", answer = "9%", "15%"))`
+<span class="mcq-key" data-correct="9%"></span>
+<details class="hint"><summary>Hint</summary>Use growth accounting: $\mu + v = \pi + g$.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT8) If $u^* = 5\%$, $u_t=3\%$, $\alpha=0.5$, and $\pi_t^e=4\%$, what is $\pi_t$ (ignoring shocks)?**  
+`r webexercises::longmcq(c("3%", "4%", answer = "5%", "6%"))`
+<span class="mcq-key" data-correct="5%"></span>
+<details class="hint"><summary>Hint</summary>Compute the unemployment gap first.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT9) If seigniorage revenue is $S = \pi \cdot \frac{M}{P}$ and real balances fall as inflation rises, the relationship between $S$ and $\pi$ is most likely:**  
+`r webexercises::longmcq(c("Strictly linear", "Downward sloping", answer = "Hump-shaped", "Vertical"))`
+<span class="mcq-key" data-correct="Hump-shaped"></span>
+<details class="hint"><summary>Hint</summary>Combine the inflation tax rate with a shrinking tax base.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT10) If expected inflation rises by 4 percentage points and nominal rates rise by 4 percentage points while real rates remain unchanged, this empirical pattern supports:**  
+`r webexercises::longmcq(c("Liquidity trap theory", answer = "Fisher effect", "Super-neutrality failure", "Velocity instability"))`
+<span class="mcq-key" data-correct="Fisher effect"></span>
+<details class="hint"><summary>Hint</summary>Look for one-for-one adjustment between inflation expectations and nominal rates.</details>
+</div>
+
+<div class="quiz-controls">
+  <input id="nickname" type="text" placeholder="Full name or nickname" autocomplete="off" />
+  <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button>
+  <button type="button" onclick="location.reload()">Reset</button>
+</div>
+
+<div id="quiz-result"></div>
+
+<h3>Leaderboard (Top 30)</h3>
+<table id="leaderboard"></table>
+
+<div id="question-stats"></div>
+
+</div>
+*** End Patch

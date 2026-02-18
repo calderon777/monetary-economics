@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="by Dr Camilo Calderon">
 
-<title>Topic 7 - MCQs – Monetary Economics</title>
+<title>Topic 7 - MCQs Formative Assessment – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -381,13 +411,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic7reading.html">Topic 7 - Monetary Policy Consensus and the Great Moderation</a></li><li class="breadcrumb-item"><a href="./topic7mcqs.html">MCQs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Topic 7 - MCQs</h1>
+<h1 class="title">Topic 7 - MCQs Formative Assessment</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>by Dr Camilo Calderon </p>
+          </div>
+  </div>
     
   
     
@@ -398,8 +434,994 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a placeholder page for Topic 7 MCQs.</p>
-<p>Content will be added soon.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to use this quiz
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This quiz is designed as a <strong>formative self-assessment tool</strong>, not as a test.</p>
+<p>Its purpose is to help you: - check your understanding of the key concepts from Topic 7, - identify which types of thinking you find more difficult, and - guide your revision before the tutorial and future assessments.</p>
+<section id="what-this-quiz-measures" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-quiz-measures">What this quiz measures</h3>
+<p>Each question belongs to one of four categories:</p>
+<ul>
+<li><strong>Subject Knowledge (SK):</strong> definitions, concepts, and facts.<br>
+</li>
+<li><strong>Analysis (AN):</strong> understanding relationships and economic mechanisms.<br>
+</li>
+<li><strong>Problem Solving (PS):</strong> applying concepts to new situations.<br>
+</li>
+<li><strong>Mathematical Thinking (MT):</strong> working with equations and quantitative relationships.</li>
+</ul>
+<p>Your score will be broken down by category so you can see <strong>where</strong> you are strong and where you need more practice.</p>
+</section>
+<section id="how-to-complete-the-quiz" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-complete-the-quiz">How to complete the quiz</h3>
+<ul>
+<li>You may use your notes and the lecture materials.</li>
+<li>Take your time — the goal is understanding, not speed.</li>
+<li>Use the <strong>Hints</strong> if you get stuck.</li>
+<li>You may refresh and retry the quiz as many times as you like.</li>
+</ul>
+</section>
+<section id="how-to-interpret-your-results" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-interpret-your-results">How to interpret your results</h3>
+<ul>
+<li>A low score is <strong>not a problem</strong> — it tells you what to focus on.</li>
+<li>If you score low in:
+<ul>
+<li><strong>SK:</strong> revise definitions and core concepts.</li>
+<li><strong>AN:</strong> revisit the logic of the models and examples.</li>
+<li><strong>PS:</strong> practise applying concepts to new cases.</li>
+<li><strong>MT:</strong> practise the mathematical calculations and equations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="about-the-leaderboard" class="level3">
+<h3 class="anchored" data-anchor-id="about-the-leaderboard">About the leaderboard</h3>
+<p>The leaderboard is optional and anonymous. It exists only to make practice more engaging.<br>
+It has <strong>no effect</strong> on your grade and is not used for evaluation.</p>
+<p>The only purpose of this quiz is to support your learning.</p>
+</section>
+</div>
+</div>
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
+<script>
+(function () {
+  // 1) Configure your Google Apps Script Web App URL here.
+  //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function getSelectedLabelText(qEl) {
+    const input = qEl.querySelector('input[type="radio"]:checked');
+    if (!input) return "";
+    const label = input.closest('label') || document.querySelector('label[for="' + input.id + '"]');
+    return label ? norm(label.textContent) : "";
+  }
+
+  function clearFeedback(qEl) {
+    qEl.querySelectorAll("label").forEach(l => l.classList.remove("is-correct", "is-incorrect"));
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (line) {
+      line.textContent = "";
+      line.classList.add("hidden");
+    }
+  }
+
+  function setFeedback(qEl, isCorrect) {
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (!line) return;
+    line.textContent = isCorrect ? "Correct." : "Incorrect.";
+    line.classList.remove("hidden");
+  }
+
+  async function postAttempt(payload) {
+    // Do not attempt POST if ENDPOINT is not configured
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) return;
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Could not save attempt:", err);
+    }
+  }
+
+  async function loadLeaderboard(quizName) {
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
+
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
+      return;
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 30);
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
+      }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === "string") {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.warn(`Row ${rowIdx} - Could not parse details:`, details);
+          return;
+        }
+      }
+
+      console.log(`Row ${rowIdx} - Processing details:`, details);
+
+      Object.entries(details).forEach(([questionId, qData]) => {
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        questionStats[questionId].totalCount += 1;
+        
+        // Check if answer was incorrect (ok: 0 means incorrect)
+        const isIncorrect = qData.ok === 0;
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
+      });
+    });
+
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey: qKey,
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
+    }
+  }
+
+  async function submitQuiz() {
+    const nicknameEl = document.getElementById("nickname");
+    const resultEl = document.getElementById("quiz-result");
+    const submitBtn = document.getElementById("quiz-submit");
+
+    const nickname = (nicknameEl?.value || "").trim();
+    if (!nickname) {
+      alert("Please enter a nickname before submitting.");
+      nicknameEl?.focus();
+      return;
+    }
+
+    // Lock submit to avoid double posting
+    if (submitBtn) submitBtn.disabled = true;
+
+    let score = 0;
+    let total = 0;
+    const details = {};
+    
+    // Category scores
+    const categories = {
+      SK: { score: 0, total: 0, name: "Subject Knowledge" },
+      AN: { score: 0, total: 0, name: "Analysis" },
+      PS: { score: 0, total: 0, name: "Problem Solving" },
+      MT: { score: 0, total: 0, name: "Mathematical Thinking" }
+    };
+
+    const questions = Array.from(document.querySelectorAll(".mcq-we-q"));
+
+    // Clear any prior feedback first (important if student re-submits)
+    questions.forEach(clearFeedback);
+
+    questions.forEach((qEl, idx) => {
+      total += 1;
+      const keyEl = qEl.querySelector(".mcq-key");
+      const correct = norm(keyEl?.getAttribute("data-correct") || "");
+      const selected = getSelectedLabelText(qEl);
+
+      const isCorrect = selected && (selected === correct);
+      if (isCorrect) score += 1;
+
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      let questionId = "Q" + (idx + 1);
+      
+      if (categoryMatch) {
+        const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;
+        
+        categories[cat].total += 1;
+        if (isCorrect) categories[cat].score += 1;
+      }
+
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
+
+      // Mark only after submit
+      if (selected) {
+        const input = qEl.querySelector('input[type="radio"]:checked');
+        const label = input?.closest("label") || (input ? document.querySelector('label[for="' + input.id + '"]') : null);
+        if (label) label.classList.add(isCorrect ? "is-correct" : "is-incorrect");
+      }
+      setFeedback(qEl, isCorrect);
+    });
+
+    if (resultEl) {
+      let resultHTML = "<strong>Overall Score: " + score + " / " + total + "</strong><br><br>";
+      
+      // Add category breakdown
+      for (const key in categories) {
+        const cat = categories[key];
+        if (cat.total > 0) {
+          resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
+        }
+      }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+        let questionId = "Q" + (idx + 1);
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];
+        }
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push(questionId);
+          } else {
+            incorrectQuestions.push(questionId);
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
+      
+      resultEl.innerHTML = resultHTML;
+    }
+
+    // Persist attempt (best practice: store what you need; nickname only = low GDPR footprint)
+    await postAttempt({
+      timestamp: new Date().toISOString(),
+      nickname,
+      quiz: "Topic7",
+      score,
+      total,
+      details
+    });
+
+    // Refresh leaderboard after a successful submit (or best-effort submit)
+    await loadLeaderboard("Topic7");
+
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  // Expose submitQuiz globally for the button onclick
+  window.submitQuiz = submitQuiz;
+
+  // Add a feedback line container to each question if it doesn't exist
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mcq-we-q").forEach(qEl => {
+      if (!qEl.querySelector(".quiz-feedback-line")) {
+        const line = document.createElement("div");
+        line.className = "quiz-feedback-line hidden";
+        qEl.appendChild(line);
+      }
+    });
+
+    loadLeaderboard("Topic7");
+  });
+})();
+</script>
+<div class="mcq-we">
+<section id="subject-knowledge" class="level2">
+<h2 class="anchored" data-anchor-id="subject-knowledge">Subject Knowledge</h2>
+<div class="mcq-we-q">
+<strong>SK1) Financial intermediation primarily refers to:</strong><br>
+
+<div id="radio_UOZERQZWZQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UOZERQZWZQ" value=""> <span>Government taxation</span></label><label><input type="radio" autocomplete="off" name="radio_UOZERQZWZQ" value="answer"> <span>The process by which banks channel funds from savers to borrowers</span></label><label><input type="radio" autocomplete="off" name="radio_UOZERQZWZQ" value=""> <span>The printing of money by the central bank</span></label><label><input type="radio" autocomplete="off" name="radio_UOZERQZWZQ" value=""> <span>The determination of exchange rates</span></label>
+</div>
+<span class="mcq-key" data-correct="The process by which banks channel funds from savers to borrowers"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think about how surplus units and deficit units are connected in the economy.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK2) A bank’s balance sheet identity requires that:</strong><br>
+
+<div id="radio_SBKPADDVPP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SBKPADDVPP" value=""> <span>Loans equal deposits</span></label><label><input type="radio" autocomplete="off" name="radio_SBKPADDVPP" value="answer"> <span>Assets equal liabilities plus equity</span></label><label><input type="radio" autocomplete="off" name="radio_SBKPADDVPP" value=""> <span>Reserves equal profits</span></label><label><input type="radio" autocomplete="off" name="radio_SBKPADDVPP" value=""> <span>Equity equals deposits</span></label>
+</div>
+<span class="mcq-key" data-correct="Assets equal liabilities plus equity"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply the basic accounting constraint for any financial institution.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK3) Bank reserves are best described as:</strong><br>
+
+<div id="radio_TFBFVUWALN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TFBFVUWALN" value=""> <span>Loans to households</span></label><label><input type="radio" autocomplete="off" name="radio_TFBFVUWALN" value=""> <span>Physical capital</span></label><label><input type="radio" autocomplete="off" name="radio_TFBFVUWALN" value="answer"> <span>Deposits held at the central bank</span></label><label><input type="radio" autocomplete="off" name="radio_TFBFVUWALN" value=""> <span>Government spending</span></label>
+</div>
+<span class="mcq-key" data-correct="Deposits held at the central bank"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Distinguish between central bank money and commercial bank assets.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK4) The money multiplier links:</strong><br>
+
+<div id="radio_TXLCPBSTVM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TXLCPBSTVM" value=""> <span>Fiscal deficits to inflation</span></label><label><input type="radio" autocomplete="off" name="radio_TXLCPBSTVM" value="answer"> <span>The monetary base to broad money</span></label><label><input type="radio" autocomplete="off" name="radio_TXLCPBSTVM" value=""> <span>Output to unemployment</span></label><label><input type="radio" autocomplete="off" name="radio_TXLCPBSTVM" value=""> <span>Interest rates to exchange rates</span></label>
+</div>
+<span class="mcq-key" data-correct="The monetary base to broad money"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Broad money expands based on reserve holdings and deposit creation.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK5) Liquidity risk arises when:</strong><br>
+
+<div id="radio_XETTEPAZTS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_XETTEPAZTS" value=""> <span>A bank's assets fall in value permanently</span></label><label><input type="radio" autocomplete="off" name="radio_XETTEPAZTS" value=""> <span>Borrowers default on loans</span></label><label><input type="radio" autocomplete="off" name="radio_XETTEPAZTS" value="answer"> <span>A bank cannot meet short-term withdrawal demands</span></label><label><input type="radio" autocomplete="off" name="radio_XETTEPAZTS" value=""> <span>Inflation rises unexpectedly</span></label>
+</div>
+<span class="mcq-key" data-correct="A bank cannot meet short-term withdrawal demands"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Focus on timing mismatches between assets and liabilities.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK6) Capital adequacy requirements are designed to:</strong><br>
+
+<div id="radio_CNMYXQTCAI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CNMYXQTCAI" value=""> <span>Increase inflation</span></label><label><input type="radio" autocomplete="off" name="radio_CNMYXQTCAI" value="answer"> <span>Reduce the probability of bank insolvency</span></label><label><input type="radio" autocomplete="off" name="radio_CNMYXQTCAI" value=""> <span>Eliminate monetary policy</span></label><label><input type="radio" autocomplete="off" name="radio_CNMYXQTCAI" value=""> <span>Fix exchange rates</span></label>
+</div>
+<span class="mcq-key" data-correct="Reduce the probability of bank insolvency"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Equity buffers absorb unexpected losses.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK7) A bank run occurs when:</strong><br>
+
+<div id="radio_TVMZXITBXN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_TVMZXITBXN" value=""> <span>Interest rates rise</span></label><label><input type="radio" autocomplete="off" name="radio_TVMZXITBXN" value="answer"> <span>Depositors simultaneously withdraw funds due to loss of confidence</span></label><label><input type="radio" autocomplete="off" name="radio_TVMZXITBXN" value=""> <span>Government spending falls</span></label><label><input type="radio" autocomplete="off" name="radio_TVMZXITBXN" value=""> <span>Inflation becomes negative</span></label>
+</div>
+<span class="mcq-key" data-correct="Depositors simultaneously withdraw funds due to loss of confidence"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Expectations and coordination problems are central.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK8) Deposit insurance primarily aims to:</strong><br>
+
+<div id="radio_QKYUMZDFXO" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QKYUMZDFXO" value=""> <span>Increase bank profits</span></label><label><input type="radio" autocomplete="off" name="radio_QKYUMZDFXO" value=""> <span>Eliminate inflation</span></label><label><input type="radio" autocomplete="off" name="radio_QKYUMZDFXO" value="answer"> <span>Prevent self-fulfilling bank runs</span></label><label><input type="radio" autocomplete="off" name="radio_QKYUMZDFXO" value=""> <span>Fix the money supply</span></label>
+</div>
+<span class="mcq-key" data-correct="Prevent self-fulfilling bank runs"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Consider coordination failures among depositors.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK9) Moral hazard in banking arises because:</strong><br>
+
+<div id="radio_PMQGYXFRUI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PMQGYXFRUI" value=""> <span>Interest rates are fixed</span></label><label><input type="radio" autocomplete="off" name="radio_PMQGYXFRUI" value="answer"> <span>Insured banks may take excessive risk</span></label><label><input type="radio" autocomplete="off" name="radio_PMQGYXFRUI" value=""> <span>Inflation is volatile</span></label><label><input type="radio" autocomplete="off" name="radio_PMQGYXFRUI" value=""> <span>Capital flows are restricted</span></label>
+</div>
+<span class="mcq-key" data-correct="Insured banks may take excessive risk"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Protection from losses may weaken incentives.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK10) The lender of last resort function of the central bank involves:</strong><br>
+
+<div id="radio_ZGMJNLMHUL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZGMJNLMHUL" value=""> <span>Financing fiscal deficits permanently</span></label><label><input type="radio" autocomplete="off" name="radio_ZGMJNLMHUL" value="answer"> <span>Providing liquidity to solvent but illiquid banks</span></label><label><input type="radio" autocomplete="off" name="radio_ZGMJNLMHUL" value=""> <span>Setting exchange rate pegs</span></label><label><input type="radio" autocomplete="off" name="radio_ZGMJNLMHUL" value=""> <span>Controlling wages</span></label>
+</div>
+<span class="mcq-key" data-correct="Providing liquidity to solvent but illiquid banks"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Distinguish liquidity problems from solvency problems.
+</details>
+</div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<div class="mcq-we-q">
+<strong>AN1) Why can maturity transformation make banks vulnerable to runs?</strong><br>
+
+<div id="radio_KHJQWJFDVW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_KHJQWJFDVW" value=""> <span>Because assets and liabilities have identical maturities</span></label><label><input type="radio" autocomplete="off" name="radio_KHJQWJFDVW" value="answer"> <span>Because long-term loans are funded by short-term deposits</span></label><label><input type="radio" autocomplete="off" name="radio_KHJQWJFDVW" value=""> <span>Because banks hold only cash</span></label><label><input type="radio" autocomplete="off" name="radio_KHJQWJFDVW" value=""> <span>Because equity equals zero</span></label>
+</div>
+<span class="mcq-key" data-correct="Because long-term loans are funded by short-term deposits"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare withdrawal timing with asset liquidity.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN2) If deposit insurance is credible, the probability of a bank run decreases because:</strong><br>
+
+<div id="radio_LPHSCYBXAB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LPHSCYBXAB" value=""> <span>Banks hold no risky assets</span></label><label><input type="radio" autocomplete="off" name="radio_LPHSCYBXAB" value="answer"> <span>Depositors expect guaranteed repayment</span></label><label><input type="radio" autocomplete="off" name="radio_LPHSCYBXAB" value=""> <span>Loans become risk-free</span></label><label><input type="radio" autocomplete="off" name="radio_LPHSCYBXAB" value=""> <span>Inflation falls</span></label>
+</div>
+<span class="mcq-key" data-correct="Depositors expect guaranteed repayment"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Expectations shape withdrawal incentives.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN3) Why might high leverage amplify financial crises?</strong><br>
+
+<div id="radio_FUEZFIILCL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FUEZFIILCL" value="answer"> <span>Because equity buffers are small relative to assets</span></label><label><input type="radio" autocomplete="off" name="radio_FUEZFIILCL" value=""> <span>Because inflation is high</span></label><label><input type="radio" autocomplete="off" name="radio_FUEZFIILCL" value=""> <span>Because reserves are unlimited</span></label><label><input type="radio" autocomplete="off" name="radio_FUEZFIILCL" value=""> <span>Because velocity increases</span></label>
+</div>
+<span class="mcq-key" data-correct="Because equity buffers are small relative to assets"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Losses represent a larger fraction of capital when leverage is high.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN4) If asset values fall sharply, what happens first on a bank’s balance sheet?</strong><br>
+
+<div id="radio_VVQIABXUSZ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VVQIABXUSZ" value=""> <span>Liabilities automatically fall</span></label><label><input type="radio" autocomplete="off" name="radio_VVQIABXUSZ" value="answer"> <span>Equity absorbs the loss</span></label><label><input type="radio" autocomplete="off" name="radio_VVQIABXUSZ" value=""> <span>Deposits increase</span></label><label><input type="radio" autocomplete="off" name="radio_VVQIABXUSZ" value=""> <span>Reserves double</span></label>
+</div>
+<span class="mcq-key" data-correct="Equity absorbs the loss"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply the accounting identity.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN5) Why can deposit insurance create moral hazard?</strong><br>
+
+<div id="radio_GDUXJHIFWH" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GDUXJHIFWH" value=""> <span>Because banks cannot lend</span></label><label><input type="radio" autocomplete="off" name="radio_GDUXJHIFWH" value="answer"> <span>Because insured depositors stop monitoring risk-taking</span></label><label><input type="radio" autocomplete="off" name="radio_GDUXJHIFWH" value=""> <span>Because capital requirements disappear</span></label><label><input type="radio" autocomplete="off" name="radio_GDUXJHIFWH" value=""> <span>Because inflation rises</span></label>
+</div>
+<span class="mcq-key" data-correct="Because insured depositors stop monitoring risk-taking"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Risk monitoring depends on exposure to losses.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN6) If a central bank lends freely at a penalty rate during a crisis, what principle is it following?</strong><br>
+
+<div id="radio_NDNGLVXRME" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NDNGLVXRME" value=""> <span>Quantity theory</span></label><label><input type="radio" autocomplete="off" name="radio_NDNGLVXRME" value="answer"> <span>Bagehot's rule</span></label><label><input type="radio" autocomplete="off" name="radio_NDNGLVXRME" value=""> <span>Taylor principle</span></label><label><input type="radio" autocomplete="off" name="radio_NDNGLVXRME" value=""> <span>PPP</span></label>
+</div>
+<span class="mcq-key" data-correct="Bagehot's rule"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Provide liquidity but discourage excessive risk.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN7) Why can interconnectedness between banks transmit shocks?</strong><br>
+
+<div id="radio_WDDZFEZKES" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WDDZFEZKES" value=""> <span>Because reserves are infinite</span></label><label><input type="radio" autocomplete="off" name="radio_WDDZFEZKES" value="answer"> <span>Because losses in one institution reduce asset values of others</span></label><label><input type="radio" autocomplete="off" name="radio_WDDZFEZKES" value=""> <span>Because interest rates fall</span></label><label><input type="radio" autocomplete="off" name="radio_WDDZFEZKES" value=""> <span>Because inflation stabilises</span></label>
+</div>
+<span class="mcq-key" data-correct="Because losses in one institution reduce asset values of others"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think about interbank exposures.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN8) If capital requirements increase, banks may reduce lending in the short run because:</strong><br>
+
+<div id="radio_PKFZKNZNLC" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PKFZKNZNLC" value="answer"> <span>They must improve capital ratios</span></label><label><input type="radio" autocomplete="off" name="radio_PKFZKNZNLC" value=""> <span>Inflation falls</span></label><label><input type="radio" autocomplete="off" name="radio_PKFZKNZNLC" value=""> <span>Deposits disappear</span></label><label><input type="radio" autocomplete="off" name="radio_PKFZKNZNLC" value=""> <span>Velocity collapses</span></label>
+</div>
+<span class="mcq-key" data-correct="They must improve capital ratios"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Adjust either the numerator (equity) or denominator (assets).
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN9) Why can a liquidity crisis become a solvency crisis?</strong><br>
+
+<div id="radio_CTNTRMPTME" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CTNTRMPTME" value=""> <span>Because inflation rises</span></label><label><input type="radio" autocomplete="off" name="radio_CTNTRMPTME" value="answer"> <span>Because fire sales reduce asset prices below fundamentals</span></label><label><input type="radio" autocomplete="off" name="radio_CTNTRMPTME" value=""> <span>Because reserves are fixed</span></label><label><input type="radio" autocomplete="off" name="radio_CTNTRMPTME" value=""> <span>Because unemployment falls</span></label>
+</div>
+<span class="mcq-key" data-correct="Because fire sales reduce asset prices below fundamentals"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Forced sales can generate balance sheet losses.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN10) Why is distinguishing illiquidity from insolvency crucial for policy?</strong><br>
+
+<div id="radio_ZCABJZNBWE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZCABJZNBWE" value=""> <span>Because both require identical responses</span></label><label><input type="radio" autocomplete="off" name="radio_ZCABJZNBWE" value="answer"> <span>Because lending to insolvent banks increases fiscal risk</span></label><label><input type="radio" autocomplete="off" name="radio_ZCABJZNBWE" value=""> <span>Because inflation targeting fails</span></label><label><input type="radio" autocomplete="off" name="radio_ZCABJZNBWE" value=""> <span>Because exchange rates fluctuate</span></label>
+</div>
+<span class="mcq-key" data-correct="Because lending to insolvent banks increases fiscal risk"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Liquidity support is appropriate only for solvent institutions.
+</details>
+</div>
+</section>
+<section id="problem-solving" class="level2">
+<h2 class="anchored" data-anchor-id="problem-solving">Problem Solving</h2>
+<div class="mcq-we-q">
+<strong>PS1) A bank holds long-term mortgages funded by demand deposits. Rumours spread about losses. Why is it vulnerable to a run?</strong><br>
+
+<div id="radio_SNYLHNZBXA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SNYLHNZBXA" value=""> <span>Mortgages are perfectly liquid</span></label><label><input type="radio" autocomplete="off" name="radio_SNYLHNZBXA" value="answer"> <span>Depositors demand immediate withdrawal</span></label><label><input type="radio" autocomplete="off" name="radio_SNYLHNZBXA" value=""> <span>Equity automatically rises</span></label><label><input type="radio" autocomplete="off" name="radio_SNYLHNZBXA" value=""> <span>Inflation increases</span></label>
+</div>
+<span class="mcq-key" data-correct="Depositors demand immediate withdrawal"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Timing mismatch creates vulnerability.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS2) A bank has assets of 100 and liabilities of 90. What is equity?</strong><br>
+
+<div id="radio_UDYLUHKKUS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UDYLUHKKUS" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_UDYLUHKKUS" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_UDYLUHKKUS" value=""> <span>90</span></label><label><input type="radio" autocomplete="off" name="radio_UDYLUHKKUS" value=""> <span>100</span></label>
+</div>
+<span class="mcq-key" data-correct="10"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Use Assets = Liabilities + Equity.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS3) If deposit insurance is removed suddenly, what is likely to happen to depositor behaviour?</strong><br>
+
+<div id="radio_JAAZVVKKDV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JAAZVVKKDV" value=""> <span>Less monitoring</span></label><label><input type="radio" autocomplete="off" name="radio_JAAZVVKKDV" value="answer"> <span>More monitoring</span></label><label><input type="radio" autocomplete="off" name="radio_JAAZVVKKDV" value=""> <span>No change</span></label><label><input type="radio" autocomplete="off" name="radio_JAAZVVKKDV" value=""> <span>Guaranteed stability</span></label>
+</div>
+<span class="mcq-key" data-correct="More monitoring"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Incentives change when losses are possible.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS4) A bank suffers loan losses of 8 when equity is 10. What remains of equity?</strong><br>
+
+<div id="radio_FDCOLPVRXW" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FDCOLPVRXW" value="answer"> <span>2</span></label><label><input type="radio" autocomplete="off" name="radio_FDCOLPVRXW" value=""> <span>8</span></label><label><input type="radio" autocomplete="off" name="radio_FDCOLPVRXW" value=""> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_FDCOLPVRXW" value=""> <span>-2</span></label>
+</div>
+<span class="mcq-key" data-correct="2"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Losses reduce equity directly.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS5) During a crisis, solvent banks cannot roll over short-term funding. What should the central bank do under lender-of-last-resort principles?</strong><br>
+
+<div id="radio_PISAPZIQDM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_PISAPZIQDM" value=""> <span>Do nothing</span></label><label><input type="radio" autocomplete="off" name="radio_PISAPZIQDM" value="answer"> <span>Provide liquidity against good collateral</span></label><label><input type="radio" autocomplete="off" name="radio_PISAPZIQDM" value=""> <span>Nationalise permanently</span></label><label><input type="radio" autocomplete="off" name="radio_PISAPZIQDM" value=""> <span>Fix exchange rates</span></label>
+</div>
+<span class="mcq-key" data-correct="Provide liquidity against good collateral"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Separate liquidity from solvency.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS6) If required capital ratio is 10% and assets equal 200, minimum equity must be:</strong><br>
+
+<div id="radio_CKDFYTTRXB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CKDFYTTRXB" value=""> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_CKDFYTTRXB" value="answer"> <span>20</span></label><label><input type="radio" autocomplete="off" name="radio_CKDFYTTRXB" value=""> <span>30</span></label><label><input type="radio" autocomplete="off" name="radio_CKDFYTTRXB" value=""> <span>40</span></label>
+</div>
+<span class="mcq-key" data-correct="20"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Multiply assets by the required ratio.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS7) A bank increases leverage while asset risk rises. What happens to systemic risk?</strong><br>
+
+<div id="radio_NPEQYCBADR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NPEQYCBADR" value=""> <span>Falls</span></label><label><input type="radio" autocomplete="off" name="radio_NPEQYCBADR" value=""> <span>Unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_NPEQYCBADR" value="answer"> <span>Rises</span></label><label><input type="radio" autocomplete="off" name="radio_NPEQYCBADR" value=""> <span>Disappears</span></label>
+</div>
+<span class="mcq-key" data-correct="Rises"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Thin capital buffers amplify shocks.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS8) If multiple banks hold similar assets and prices fall sharply, what macroeconomic effect may follow?</strong><br>
+
+<div id="radio_BIHXCLTMHE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BIHXCLTMHE" value=""> <span>Stable equilibrium</span></label><label><input type="radio" autocomplete="off" name="radio_BIHXCLTMHE" value="answer"> <span>Credit crunch</span></label><label><input type="radio" autocomplete="off" name="radio_BIHXCLTMHE" value=""> <span>Lower leverage</span></label><label><input type="radio" autocomplete="off" name="radio_BIHXCLTMHE" value=""> <span>Zero inflation</span></label>
+</div>
+<span class="mcq-key" data-correct="Credit crunch"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Balance sheet repair reduces lending.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS9) A credible guarantee eliminates panic but encourages future risk-taking. What trade-off is illustrated?</strong><br>
+
+<div id="radio_VGPBMTNSZD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VGPBMTNSZD" value=""> <span>Phillips curve trade-off</span></label><label><input type="radio" autocomplete="off" name="radio_VGPBMTNSZD" value="answer"> <span>Stability vs moral hazard</span></label><label><input type="radio" autocomplete="off" name="radio_VGPBMTNSZD" value=""> <span>PPP vs UIP</span></label><label><input type="radio" autocomplete="off" name="radio_VGPBMTNSZD" value=""> <span>Inflation vs unemployment</span></label>
+</div>
+<span class="mcq-key" data-correct="Stability vs moral hazard"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Insurance reduces runs but alters incentives.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS10) Why might higher equity requirements reduce long-run crisis probability?</strong><br>
+
+<div id="radio_FNOAWMTFEG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FNOAWMTFEG" value=""> <span>Because they eliminate deposits</span></label><label><input type="radio" autocomplete="off" name="radio_FNOAWMTFEG" value="answer"> <span>Because larger buffers absorb shocks</span></label><label><input type="radio" autocomplete="off" name="radio_FNOAWMTFEG" value=""> <span>Because inflation falls</span></label><label><input type="radio" autocomplete="off" name="radio_FNOAWMTFEG" value=""> <span>Because velocity stabilises</span></label>
+</div>
+<span class="mcq-key" data-correct="Because larger buffers absorb shocks"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Focus on loss-absorption capacity.
+</details>
+</div>
+</section>
+<section id="mathematical-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-thinking">Mathematical Thinking</h2>
+<div class="mcq-we-q">
+<strong>MT1) If reserves are 20 and required reserve ratio is 10%, maximum deposits equal:</strong><br>
+
+<div id="radio_YEEZXVVPKV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YEEZXVVPKV" value=""> <span>100</span></label><label><input type="radio" autocomplete="off" name="radio_YEEZXVVPKV" value=""> <span>150</span></label><label><input type="radio" autocomplete="off" name="radio_YEEZXVVPKV" value="answer"> <span>200</span></label><label><input type="radio" autocomplete="off" name="radio_YEEZXVVPKV" value=""> <span>250</span></label>
+</div>
+<span class="mcq-key" data-correct="200"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Use the money multiplier (<span class="math inline">\(\frac{1}{rr}\)</span>).
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT2) If assets = 150 and equity = 15, leverage ratio (Assets/Equity) equals:</strong><br>
+
+<div id="radio_QRDZSYUILE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_QRDZSYUILE" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_QRDZSYUILE" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_QRDZSYUILE" value=""> <span>15</span></label><label><input type="radio" autocomplete="off" name="radio_QRDZSYUILE" value=""> <span>20</span></label>
+</div>
+<span class="mcq-key" data-correct="10"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Divide total assets by equity.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT3) If required capital ratio is 8%, and assets are 250, minimum equity equals:</strong><br>
+
+<div id="radio_WTZWUKIEUR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WTZWUKIEUR" value=""> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_WTZWUKIEUR" value=""> <span>15</span></label><label><input type="radio" autocomplete="off" name="radio_WTZWUKIEUR" value="answer"> <span>20</span></label><label><input type="radio" autocomplete="off" name="radio_WTZWUKIEUR" value=""> <span>25</span></label>
+</div>
+<span class="mcq-key" data-correct="20"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Multiply assets by 0.08.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT4) If deposits are 500 and reserve ratio is 5%, required reserves equal:</strong><br>
+
+<div id="radio_UCDPGIWKLK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UCDPGIWKLK" value=""> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_UCDPGIWKLK" value=""> <span>20</span></label><label><input type="radio" autocomplete="off" name="radio_UCDPGIWKLK" value="answer"> <span>25</span></label><label><input type="radio" autocomplete="off" name="radio_UCDPGIWKLK" value=""> <span>50</span></label>
+</div>
+<span class="mcq-key" data-correct="25"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply the reserve requirement formula.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT5) If loan losses equal 12 and initial equity was 15, new leverage rises because equity becomes:</strong><br>
+
+<div id="radio_FHBOYZAJPF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FHBOYZAJPF" value="answer"> <span>3</span></label><label><input type="radio" autocomplete="off" name="radio_FHBOYZAJPF" value=""> <span>12</span></label><label><input type="radio" autocomplete="off" name="radio_FHBOYZAJPF" value=""> <span>15</span></label><label><input type="radio" autocomplete="off" name="radio_FHBOYZAJPF" value=""> <span>27</span></label>
+</div>
+<span class="mcq-key" data-correct="3"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Subtract losses from equity.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT6) If leverage is 20 and asset value falls by 5%, percentage decline in equity is approximately:</strong><br>
+
+<div id="radio_FHTITKYLAN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FHTITKYLAN" value=""> <span>5%</span></label><label><input type="radio" autocomplete="off" name="radio_FHTITKYLAN" value=""> <span>20%</span></label><label><input type="radio" autocomplete="off" name="radio_FHTITKYLAN" value=""> <span>50%</span></label><label><input type="radio" autocomplete="off" name="radio_FHTITKYLAN" value="answer"> <span>100%</span></label>
+</div>
+<span class="mcq-key" data-correct="100%"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+High leverage magnifies small asset shocks.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT7) If capital ratio is <span class="math inline">\(\frac{E}{A} = 0.1\)</span>, leverage equals:</strong><br>
+
+<div id="radio_OZAGWFOPWK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OZAGWFOPWK" value=""> <span>5</span></label><label><input type="radio" autocomplete="off" name="radio_OZAGWFOPWK" value=""> <span>8</span></label><label><input type="radio" autocomplete="off" name="radio_OZAGWFOPWK" value="answer"> <span>10</span></label><label><input type="radio" autocomplete="off" name="radio_OZAGWFOPWK" value=""> <span>12</span></label>
+</div>
+<span class="mcq-key" data-correct="10"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Leverage is the inverse of the capital ratio.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT8) If reserve ratio falls from 10% to 5%, the money multiplier:</strong><br>
+
+<div id="radio_FZJJHELEPR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_FZJJHELEPR" value=""> <span>Falls</span></label><label><input type="radio" autocomplete="off" name="radio_FZJJHELEPR" value=""> <span>Is unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_FZJJHELEPR" value="answer"> <span>Doubles</span></label><label><input type="radio" autocomplete="off" name="radio_FZJJHELEPR" value=""> <span>Halves</span></label>
+</div>
+<span class="mcq-key" data-correct="Doubles"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare reciprocals.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT9) If asset prices fall by 4% and leverage is 25, equity falls by approximately:</strong><br>
+
+<div id="radio_WDZFFTJIAR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WDZFFTJIAR" value=""> <span>4%</span></label><label><input type="radio" autocomplete="off" name="radio_WDZFFTJIAR" value=""> <span>10%</span></label><label><input type="radio" autocomplete="off" name="radio_WDZFFTJIAR" value=""> <span>25%</span></label><label><input type="radio" autocomplete="off" name="radio_WDZFFTJIAR" value="answer"> <span>100%</span></label>
+</div>
+<span class="mcq-key" data-correct="100%"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Multiply percentage shock by leverage.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT10) If required capital ratio rises from 8% to 12%, banks must either:</strong><br>
+
+<div id="radio_IOTSFKQVDB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_IOTSFKQVDB" value="answer"> <span>Increase equity or reduce assets</span></label><label><input type="radio" autocomplete="off" name="radio_IOTSFKQVDB" value=""> <span>Increase deposits</span></label><label><input type="radio" autocomplete="off" name="radio_IOTSFKQVDB" value=""> <span>Raise inflation</span></label><label><input type="radio" autocomplete="off" name="radio_IOTSFKQVDB" value=""> <span>Reduce reserves</span></label>
+</div>
+<span class="mcq-key" data-correct="Increase equity or reduce assets"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Adjust numerator or denominator of the capital ratio.
+</details>
+</div>
+<div class="quiz-controls">
+<p><input id="nickname" type="text" placeholder="Full name or nickname" autocomplete="off"> <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button> <button type="button" onclick="location.reload()">Reset</button></p>
+</div>
+<div id="quiz-result">
+
+</div>
+<h3 class="anchored">
+Leaderboard (Top 30)
+</h3>
+<table id="leaderboard">
+</table>
+<div id="question-stats">
+
+</div>
+</section>
+</div>
 
 
 

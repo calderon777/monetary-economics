@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="by Dr Camilo Calderon">
 
-<title>Topic 5 - MCQs – Monetary Economics</title>
+<title>Topic 5 - MCQs Formative Assessment – Monetary Economics</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -70,6 +71,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
@@ -381,13 +411,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./topic5reading.html">Topic 5 - The New Classical Approach</a></li><li class="breadcrumb-item"><a href="./topic5mcqs.html">MCQs</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Topic 5 - MCQs</h1>
+<h1 class="title">Topic 5 - MCQs Formative Assessment</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>by Dr Camilo Calderon </p>
+          </div>
+  </div>
     
   
     
@@ -398,8 +434,994 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>This is a placeholder page for Topic 5 MCQs.</p>
-<p>Content will be added soon.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+How to use this quiz
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>This quiz is designed as a <strong>formative self-assessment tool</strong>, not as a test.</p>
+<p>Its purpose is to help you: - check your understanding of the key concepts from Topic 5, - identify which types of thinking you find more difficult, and - guide your revision before the tutorial and future assessments.</p>
+<section id="what-this-quiz-measures" class="level3">
+<h3 class="anchored" data-anchor-id="what-this-quiz-measures">What this quiz measures</h3>
+<p>Each question belongs to one of four categories:</p>
+<ul>
+<li><strong>Subject Knowledge (SK):</strong> definitions, concepts, and facts.<br>
+</li>
+<li><strong>Analysis (AN):</strong> understanding relationships and economic mechanisms.<br>
+</li>
+<li><strong>Problem Solving (PS):</strong> applying concepts to new situations.<br>
+</li>
+<li><strong>Mathematical Thinking (MT):</strong> working with equations and quantitative relationships.</li>
+</ul>
+<p>Your score will be broken down by category so you can see <strong>where</strong> you are strong and where you need more practice.</p>
+</section>
+<section id="how-to-complete-the-quiz" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-complete-the-quiz">How to complete the quiz</h3>
+<ul>
+<li>You may use your notes and the lecture materials.</li>
+<li>Take your time — the goal is understanding, not speed.</li>
+<li>Use the <strong>Hints</strong> if you get stuck.</li>
+<li>You may refresh and retry the quiz as many times as you like.</li>
+</ul>
+</section>
+<section id="how-to-interpret-your-results" class="level3">
+<h3 class="anchored" data-anchor-id="how-to-interpret-your-results">How to interpret your results</h3>
+<ul>
+<li>A low score is <strong>not a problem</strong> — it tells you what to focus on.</li>
+<li>If you score low in:
+<ul>
+<li><strong>SK:</strong> revise definitions and core concepts.</li>
+<li><strong>AN:</strong> revisit the logic of the models and examples.</li>
+<li><strong>PS:</strong> practise applying concepts to new cases.</li>
+<li><strong>MT:</strong> practise the mathematical calculations and equations.</li>
+</ul></li>
+</ul>
+</section>
+<section id="about-the-leaderboard" class="level3">
+<h3 class="anchored" data-anchor-id="about-the-leaderboard">About the leaderboard</h3>
+<p>The leaderboard is optional and anonymous. It exists only to make practice more engaging.<br>
+It has <strong>no effect</strong> on your grade and is not used for evaluation.</p>
+<p>The only purpose of this quiz is to support your learning.</p>
+</section>
+</div>
+</div>
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
+<script>
+(function () {
+  // 1) Configure your Google Apps Script Web App URL here.
+  //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function getSelectedLabelText(qEl) {
+    const input = qEl.querySelector('input[type="radio"]:checked');
+    if (!input) return "";
+    const label = input.closest('label') || document.querySelector('label[for="' + input.id + '"]');
+    return label ? norm(label.textContent) : "";
+  }
+
+  function clearFeedback(qEl) {
+    qEl.querySelectorAll("label").forEach(l => l.classList.remove("is-correct", "is-incorrect"));
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (line) {
+      line.textContent = "";
+      line.classList.add("hidden");
+    }
+  }
+
+  function setFeedback(qEl, isCorrect) {
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (!line) return;
+    line.textContent = isCorrect ? "Correct." : "Incorrect.";
+    line.classList.remove("hidden");
+  }
+
+  async function postAttempt(payload) {
+    // Do not attempt POST if ENDPOINT is not configured
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) return;
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Could not save attempt:", err);
+    }
+  }
+
+  async function loadLeaderboard(quizName) {
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
+
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
+      return;
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 30);
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
+      }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === "string") {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.warn(`Row ${rowIdx} - Could not parse details:`, details);
+          return;
+        }
+      }
+
+      console.log(`Row ${rowIdx} - Processing details:`, details);
+
+      Object.entries(details).forEach(([questionId, qData]) => {
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        questionStats[questionId].totalCount += 1;
+        
+        // Check if answer was incorrect (ok: 0 means incorrect)
+        const isIncorrect = qData.ok === 0;
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
+      });
+    });
+
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey: qKey,
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
+    }
+  }
+
+  async function submitQuiz() {
+    const nicknameEl = document.getElementById("nickname");
+    const resultEl = document.getElementById("quiz-result");
+    const submitBtn = document.getElementById("quiz-submit");
+
+    const nickname = (nicknameEl?.value || "").trim();
+    if (!nickname) {
+      alert("Please enter a nickname before submitting.");
+      nicknameEl?.focus();
+      return;
+    }
+
+    // Lock submit to avoid double posting
+    if (submitBtn) submitBtn.disabled = true;
+
+    let score = 0;
+    let total = 0;
+    const details = {};
+    
+    // Category scores
+    const categories = {
+      SK: { score: 0, total: 0, name: "Subject Knowledge" },
+      AN: { score: 0, total: 0, name: "Analysis" },
+      PS: { score: 0, total: 0, name: "Problem Solving" },
+      MT: { score: 0, total: 0, name: "Mathematical Thinking" }
+    };
+
+    const questions = Array.from(document.querySelectorAll(".mcq-we-q"));
+
+    // Clear any prior feedback first (important if student re-submits)
+    questions.forEach(clearFeedback);
+
+    questions.forEach((qEl, idx) => {
+      total += 1;
+      const keyEl = qEl.querySelector(".mcq-key");
+      const correct = norm(keyEl?.getAttribute("data-correct") || "");
+      const selected = getSelectedLabelText(qEl);
+
+      const isCorrect = selected && (selected === correct);
+      if (isCorrect) score += 1;
+
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      let questionId = "Q" + (idx + 1);
+      
+      if (categoryMatch) {
+        const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;
+        
+        categories[cat].total += 1;
+        if (isCorrect) categories[cat].score += 1;
+      }
+
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
+
+      // Mark only after submit
+      if (selected) {
+        const input = qEl.querySelector('input[type="radio"]:checked');
+        const label = input?.closest("label") || (input ? document.querySelector('label[for="' + input.id + '"]') : null);
+        if (label) label.classList.add(isCorrect ? "is-correct" : "is-incorrect");
+      }
+      setFeedback(qEl, isCorrect);
+    });
+
+    if (resultEl) {
+      let resultHTML = "<strong>Overall Score: " + score + " / " + total + "</strong><br><br>";
+      
+      // Add category breakdown
+      for (const key in categories) {
+        const cat = categories[key];
+        if (cat.total > 0) {
+          resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
+        }
+      }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+        let questionId = "Q" + (idx + 1);
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];
+        }
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push(questionId);
+          } else {
+            incorrectQuestions.push(questionId);
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
+      
+      resultEl.innerHTML = resultHTML;
+    }
+
+    // Persist attempt (best practice: store what you need; nickname only = low GDPR footprint)
+    await postAttempt({
+      timestamp: new Date().toISOString(),
+      nickname,
+      quiz: "Topic5",
+      score,
+      total,
+      details
+    });
+
+    // Refresh leaderboard after a successful submit (or best-effort submit)
+    await loadLeaderboard("Topic5");
+
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  // Expose submitQuiz globally for the button onclick
+  window.submitQuiz = submitQuiz;
+
+  // Add a feedback line container to each question if it doesn't exist
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mcq-we-q").forEach(qEl => {
+      if (!qEl.querySelector(".quiz-feedback-line")) {
+        const line = document.createElement("div");
+        line.className = "quiz-feedback-line hidden";
+        qEl.appendChild(line);
+      }
+    });
+
+    loadLeaderboard("Topic5");
+  });
+})();
+</script>
+<div class="mcq-we">
+<section id="subject-knowledge" class="level2">
+<h2 class="anchored" data-anchor-id="subject-knowledge">Subject Knowledge</h2>
+<div class="mcq-we-q">
+<strong>SK1) In the New Keynesian framework, the central bank typically sets:</strong><br>
+
+<div id="radio_ORNCDTTRAG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ORNCDTTRAG" value=""> <span>The money supply directly</span></label><label><input type="radio" autocomplete="off" name="radio_ORNCDTTRAG" value="answer"> <span>The nominal interest rate</span></label><label><input type="radio" autocomplete="off" name="radio_ORNCDTTRAG" value=""> <span>The real wage</span></label><label><input type="radio" autocomplete="off" name="radio_ORNCDTTRAG" value=""> <span>Government spending</span></label>
+</div>
+<span class="mcq-key" data-correct="The nominal interest rate"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Modern monetary policy is usually described in terms of an instrument rule rather than money quantities.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK2) The New Keynesian IS curve primarily relates:</strong><br>
+
+<div id="radio_CPFWGLSXLU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CPFWGLSXLU" value=""> <span>Inflation and unemployment</span></label><label><input type="radio" autocomplete="off" name="radio_CPFWGLSXLU" value=""> <span>Output and the nominal interest rate</span></label><label><input type="radio" autocomplete="off" name="radio_CPFWGLSXLU" value="answer"> <span>Output and the real interest rate</span></label><label><input type="radio" autocomplete="off" name="radio_CPFWGLSXLU" value=""> <span>Money supply and prices</span></label>
+</div>
+<span class="mcq-key" data-correct="Output and the real interest rate"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Intertemporal consumption decisions depend on real borrowing costs.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK3) In the New Keynesian Phillips Curve (NKPC), inflation depends on:</strong><br>
+
+<div id="radio_CKUVZYOJLR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CKUVZYOJLR" value=""> <span>Past inflation only</span></label><label><input type="radio" autocomplete="off" name="radio_CKUVZYOJLR" value="answer"> <span>Expected future inflation and marginal cost</span></label><label><input type="radio" autocomplete="off" name="radio_CKUVZYOJLR" value=""> <span>Money growth alone</span></label><label><input type="radio" autocomplete="off" name="radio_CKUVZYOJLR" value=""> <span>Government deficits</span></label>
+</div>
+<span class="mcq-key" data-correct="Expected future inflation and marginal cost"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Forward-looking price-setting is central to the Calvo framework.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK4) The output gap is defined as:</strong><br>
+
+<div id="radio_SNSOIEJGHI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SNSOIEJGHI" value=""> <span>Actual output minus government spending</span></label><label><input type="radio" autocomplete="off" name="radio_SNSOIEJGHI" value=""> <span>Potential output minus inflation</span></label><label><input type="radio" autocomplete="off" name="radio_SNSOIEJGHI" value="answer"> <span>Actual output minus natural output</span></label><label><input type="radio" autocomplete="off" name="radio_SNSOIEJGHI" value=""> <span>Inflation minus expected inflation</span></label>
+</div>
+<span class="mcq-key" data-correct="Actual output minus natural output"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Distinguish cyclical deviations from supply-determined output.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK5) Price stickiness in New Keynesian models is often formalised using:</strong><br>
+
+<div id="radio_YWELBXUAHG" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YWELBXUAHG" value=""> <span>Adaptive expectations</span></label><label><input type="radio" autocomplete="off" name="radio_YWELBXUAHG" value=""> <span>Rational bubbles</span></label><label><input type="radio" autocomplete="off" name="radio_YWELBXUAHG" value="answer"> <span>Calvo pricing</span></label><label><input type="radio" autocomplete="off" name="radio_YWELBXUAHG" value=""> <span>Quantity theory</span></label>
+</div>
+<span class="mcq-key" data-correct="Calvo pricing"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Only a fraction of firms adjust prices in each period.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK6) The Taylor rule links the policy rate to:</strong><br>
+
+<div id="radio_NKZRGTHIWQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NKZRGTHIWQ" value=""> <span>Money growth and velocity</span></label><label><input type="radio" autocomplete="off" name="radio_NKZRGTHIWQ" value="answer"> <span>Inflation and the output gap</span></label><label><input type="radio" autocomplete="off" name="radio_NKZRGTHIWQ" value=""> <span>Unemployment and fiscal deficits</span></label><label><input type="radio" autocomplete="off" name="radio_NKZRGTHIWQ" value=""> <span>Exchange rates only</span></label>
+</div>
+<span class="mcq-key" data-correct="Inflation and the output gap"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+The rule responds systematically to deviations from targets.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK7) The natural real rate of interest is the rate that:</strong><br>
+
+<div id="radio_GZMEMLKIDV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GZMEMLKIDV" value=""> <span>Maximises inflation</span></label><label><input type="radio" autocomplete="off" name="radio_GZMEMLKIDV" value=""> <span>Eliminates money demand</span></label><label><input type="radio" autocomplete="off" name="radio_GZMEMLKIDV" value="answer"> <span>Keeps output at potential</span></label><label><input type="radio" autocomplete="off" name="radio_GZMEMLKIDV" value=""> <span>Sets velocity constant</span></label>
+</div>
+<span class="mcq-key" data-correct="Keeps output at potential"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+It is the equilibrium rate consistent with zero output gap.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK8) At the effective lower bound (ELB), conventional policy is constrained because:</strong><br>
+
+<div id="radio_WBIPDILLMK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WBIPDILLMK" value=""> <span>Inflation cannot rise</span></label><label><input type="radio" autocomplete="off" name="radio_WBIPDILLMK" value="answer"> <span>Nominal interest rates cannot fall much below zero</span></label><label><input type="radio" autocomplete="off" name="radio_WBIPDILLMK" value=""> <span>Real output becomes fixed</span></label><label><input type="radio" autocomplete="off" name="radio_WBIPDILLMK" value=""> <span>Velocity becomes constant</span></label>
+</div>
+<span class="mcq-key" data-correct="Nominal interest rates cannot fall much below zero"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Consider institutional limits on nominal rates.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK9) Forward guidance works primarily by influencing:</strong><br>
+
+<div id="radio_VZMUFGXNDE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VZMUFGXNDE" value=""> <span>Current money supply</span></label><label><input type="radio" autocomplete="off" name="radio_VZMUFGXNDE" value="answer"> <span>Expected future policy rates</span></label><label><input type="radio" autocomplete="off" name="radio_VZMUFGXNDE" value=""> <span>Government taxation</span></label><label><input type="radio" autocomplete="off" name="radio_VZMUFGXNDE" value=""> <span>Labour supply</span></label>
+</div>
+<span class="mcq-key" data-correct="Expected future policy rates"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Expectations of future policy affect current long-term rates.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>SK10) In the canonical 3-equation New Keynesian model, monetary policy affects output in the short run mainly through:</strong><br>
+
+<div id="radio_OWQFWZJDGT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_OWQFWZJDGT" value=""> <span>Real wage rigidity</span></label><label><input type="radio" autocomplete="off" name="radio_OWQFWZJDGT" value="answer"> <span>The real interest rate channel</span></label><label><input type="radio" autocomplete="off" name="radio_OWQFWZJDGT" value=""> <span>Permanent productivity shifts</span></label><label><input type="radio" autocomplete="off" name="radio_OWQFWZJDGT" value=""> <span>Fiscal multipliers</span></label>
+</div>
+<span class="mcq-key" data-correct="The real interest rate channel"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Track how nominal rates translate into intertemporal substitution.
+</details>
+</div>
+</section>
+<section id="analysis" class="level2">
+<h2 class="anchored" data-anchor-id="analysis">Analysis</h2>
+<div class="mcq-we-q">
+<strong>AN1) If expected inflation rises while the nominal policy rate is unchanged, what happens to the real interest rate?</strong><br>
+
+<div id="radio_MLZSRUNUAA" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MLZSRUNUAA" value=""> <span>It rises</span></label><label><input type="radio" autocomplete="off" name="radio_MLZSRUNUAA" value="answer"> <span>It falls</span></label><label><input type="radio" autocomplete="off" name="radio_MLZSRUNUAA" value=""> <span>It stays constant</span></label><label><input type="radio" autocomplete="off" name="radio_MLZSRUNUAA" value=""> <span>It becomes zero</span></label>
+</div>
+<span class="mcq-key" data-correct="It falls"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Use the Fisher decomposition to separate nominal and real components.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN2) Why does price stickiness generate a short-run output response to monetary policy?</strong><br>
+
+<div id="radio_JFAHNZSUZP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_JFAHNZSUZP" value=""> <span>Because money directly determines productivity</span></label><label><input type="radio" autocomplete="off" name="radio_JFAHNZSUZP" value="answer"> <span>Because nominal rigidities prevent immediate price adjustment</span></label><label><input type="radio" autocomplete="off" name="radio_JFAHNZSUZP" value=""> <span>Because velocity is unstable</span></label><label><input type="radio" autocomplete="off" name="radio_JFAHNZSUZP" value=""> <span>Because fiscal policy dominates</span></label>
+</div>
+<span class="mcq-key" data-correct="Because nominal rigidities prevent immediate price adjustment"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare flexible-price neutrality with rigid-price dynamics.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN3) If the central bank raises rates more than one-for-one with inflation (Taylor principle), what is stabilised?</strong><br>
+
+<div id="radio_VPXTZSQWVQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VPXTZSQWVQ" value=""> <span>Velocity</span></label><label><input type="radio" autocomplete="off" name="radio_VPXTZSQWVQ" value=""> <span>The money supply</span></label><label><input type="radio" autocomplete="off" name="radio_VPXTZSQWVQ" value="answer"> <span>Inflation expectations</span></label><label><input type="radio" autocomplete="off" name="radio_VPXTZSQWVQ" value=""> <span>Fiscal deficits</span></label>
+</div>
+<span class="mcq-key" data-correct="Inflation expectations"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Consider determinacy conditions in rational expectations models.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN4) Why does a negative demand shock lower both output and inflation in the NK model?</strong><br>
+
+<div id="radio_AHHHHDJLAI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AHHHHDJLAI" value=""> <span>Because productivity rises</span></label><label><input type="radio" autocomplete="off" name="radio_AHHHHDJLAI" value="answer"> <span>Because marginal cost falls</span></label><label><input type="radio" autocomplete="off" name="radio_AHHHHDJLAI" value=""> <span>Because money supply shrinks mechanically</span></label><label><input type="radio" autocomplete="off" name="radio_AHHHHDJLAI" value=""> <span>Because velocity doubles</span></label>
+</div>
+<span class="mcq-key" data-correct="Because marginal cost falls"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Link the output gap to real marginal cost in the Phillips curve.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN5) If the central bank keeps rates too low relative to the natural rate, the output gap will likely be:</strong><br>
+
+<div id="radio_POJWCAYJMP" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_POJWCAYJMP" value=""> <span>Negative</span></label><label><input type="radio" autocomplete="off" name="radio_POJWCAYJMP" value=""> <span>Zero</span></label><label><input type="radio" autocomplete="off" name="radio_POJWCAYJMP" value="answer"> <span>Positive</span></label><label><input type="radio" autocomplete="off" name="radio_POJWCAYJMP" value=""> <span>Undefined</span></label>
+</div>
+<span class="mcq-key" data-correct="Positive"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare the policy rate with the equilibrium real rate.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN6) At the ELB, why can forward guidance stimulate current demand?</strong><br>
+
+<div id="radio_LWCDKUMNAX" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LWCDKUMNAX" value=""> <span>It increases productivity</span></label><label><input type="radio" autocomplete="off" name="radio_LWCDKUMNAX" value="answer"> <span>It lowers expected future real interest rates</span></label><label><input type="radio" autocomplete="off" name="radio_LWCDKUMNAX" value=""> <span>It raises taxes</span></label><label><input type="radio" autocomplete="off" name="radio_LWCDKUMNAX" value=""> <span>It fixes inflation at zero</span></label>
+</div>
+<span class="mcq-key" data-correct="It lowers expected future real interest rates"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Expectations about future borrowing costs affect current spending decisions.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN7) If firms expect lower future marginal costs, what happens to current inflation?</strong><br>
+
+<div id="radio_LRLOBPYIZI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_LRLOBPYIZI" value=""> <span>It rises</span></label><label><input type="radio" autocomplete="off" name="radio_LRLOBPYIZI" value="answer"> <span>It falls</span></label><label><input type="radio" autocomplete="off" name="radio_LRLOBPYIZI" value=""> <span>It is unaffected</span></label><label><input type="radio" autocomplete="off" name="radio_LRLOBPYIZI" value=""> <span>It becomes negative permanently</span></label>
+</div>
+<span class="mcq-key" data-correct="It falls"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+The NKPC is forward-looking.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN8) Why is the Taylor principle necessary for a unique equilibrium?</strong><br>
+
+<div id="radio_VWHYMOPHNJ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VWHYMOPHNJ" value=""> <span>To eliminate money</span></label><label><input type="radio" autocomplete="off" name="radio_VWHYMOPHNJ" value="answer"> <span>To prevent self-fulfilling inflation paths</span></label><label><input type="radio" autocomplete="off" name="radio_VWHYMOPHNJ" value=""> <span>To stabilise fiscal deficits</span></label><label><input type="radio" autocomplete="off" name="radio_VWHYMOPHNJ" value=""> <span>To ensure velocity constancy</span></label>
+</div>
+<span class="mcq-key" data-correct="To prevent self-fulfilling inflation paths"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think about how expectations can generate multiple equilibria.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN9) If fiscal policy persistently raises demand without monetary accommodation, what must happen to interest rates under a Taylor rule?</strong><br>
+
+<div id="radio_ZQJWHPIATU" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_ZQJWHPIATU" value=""> <span>They fall</span></label><label><input type="radio" autocomplete="off" name="radio_ZQJWHPIATU" value=""> <span>They remain unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_ZQJWHPIATU" value="answer"> <span>They rise</span></label><label><input type="radio" autocomplete="off" name="radio_ZQJWHPIATU" value=""> <span>They become negative</span></label>
+</div>
+<span class="mcq-key" data-correct="They rise"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply the rule mechanically to higher inflation/output gap.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>AN10) Why does the NK model reject strict long-run money neutrality as a policy guide in the short run?</strong><br>
+
+<div id="radio_GRIODSIUIM" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GRIODSIUIM" value=""> <span>Because prices are flexible</span></label><label><input type="radio" autocomplete="off" name="radio_GRIODSIUIM" value="answer"> <span>Because nominal rigidities create real effects</span></label><label><input type="radio" autocomplete="off" name="radio_GRIODSIUIM" value=""> <span>Because velocity is constant</span></label><label><input type="radio" autocomplete="off" name="radio_GRIODSIUIM" value=""> <span>Because unemployment is irrelevant</span></label>
+</div>
+<span class="mcq-key" data-correct="Because nominal rigidities create real effects"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Separate long-run neutrality from short-run non-neutrality.
+</details>
+</div>
+</section>
+<section id="problem-solving" class="level2">
+<h2 class="anchored" data-anchor-id="problem-solving">Problem Solving</h2>
+<div class="mcq-we-q">
+<strong>PS1) Inflation rises above target while the output gap is positive. According to a Taylor rule, the central bank should:</strong><br>
+
+<div id="radio_NLZRNMVQUS" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NLZRNMVQUS" value=""> <span>Cut rates</span></label><label><input type="radio" autocomplete="off" name="radio_NLZRNMVQUS" value="answer"> <span>Raise rates</span></label><label><input type="radio" autocomplete="off" name="radio_NLZRNMVQUS" value=""> <span>Fix money supply</span></label><label><input type="radio" autocomplete="off" name="radio_NLZRNMVQUS" value=""> <span>Do nothing</span></label>
+</div>
+<span class="mcq-key" data-correct="Raise rates"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Consider how the rule responds to deviations in both arguments.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS2) The natural real rate is 1%, expected inflation is 2%, and the central bank sets the nominal rate at 2%. What is the real policy rate?</strong><br>
+
+<div id="radio_GIMIWQIQXB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_GIMIWQIQXB" value="answer"> <span>0%</span></label><label><input type="radio" autocomplete="off" name="radio_GIMIWQIQXB" value=""> <span>1%</span></label><label><input type="radio" autocomplete="off" name="radio_GIMIWQIQXB" value=""> <span>2%</span></label><label><input type="radio" autocomplete="off" name="radio_GIMIWQIQXB" value=""> <span>3%</span></label>
+</div>
+<span class="mcq-key" data-correct="0%"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Subtract expected inflation from the nominal rate.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS3) A negative technology shock raises marginal cost. What happens immediately to inflation?</strong><br>
+
+<div id="radio_MKKOOLGUUF" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MKKOOLGUUF" value=""> <span>It falls</span></label><label><input type="radio" autocomplete="off" name="radio_MKKOOLGUUF" value="answer"> <span>It rises</span></label><label><input type="radio" autocomplete="off" name="radio_MKKOOLGUUF" value=""> <span>It is unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_MKKOOLGUUF" value=""> <span>It becomes zero</span></label>
+</div>
+<span class="mcq-key" data-correct="It rises"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Use the cost channel in the Phillips curve.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS4) If the central bank credibly commits to keeping rates low for longer, what happens to long-term interest rates?</strong><br>
+
+<div id="radio_HBOQHMGMAE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_HBOQHMGMAE" value=""> <span>They rise</span></label><label><input type="radio" autocomplete="off" name="radio_HBOQHMGMAE" value="answer"> <span>They fall</span></label><label><input type="radio" autocomplete="off" name="radio_HBOQHMGMAE" value=""> <span>They are unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_HBOQHMGMAE" value=""> <span>They double</span></label>
+</div>
+<span class="mcq-key" data-correct="They fall"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Long-term rates reflect expected future short rates.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS5) The economy is at the ELB and faces a negative demand shock. The central bank announces future overshooting of inflation. Why might this stimulate demand today?</strong><br>
+
+<div id="radio_NVTRYKZGPN" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NVTRYKZGPN" value=""> <span>It raises expected future real rates</span></label><label><input type="radio" autocomplete="off" name="radio_NVTRYKZGPN" value="answer"> <span>It lowers expected future real rates</span></label><label><input type="radio" autocomplete="off" name="radio_NVTRYKZGPN" value=""> <span>It eliminates marginal cost</span></label><label><input type="radio" autocomplete="off" name="radio_NVTRYKZGPN" value=""> <span>It fixes output permanently</span></label>
+</div>
+<span class="mcq-key" data-correct="It lowers expected future real rates"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Think intertemporally about expected inflation.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS6) If the real rate exceeds the natural rate, what happens to the output gap over time?</strong><br>
+
+<div id="radio_SILWCUPOTL" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_SILWCUPOTL" value=""> <span>It becomes positive</span></label><label><input type="radio" autocomplete="off" name="radio_SILWCUPOTL" value=""> <span>It remains zero</span></label><label><input type="radio" autocomplete="off" name="radio_SILWCUPOTL" value="answer"> <span>It becomes negative</span></label><label><input type="radio" autocomplete="off" name="radio_SILWCUPOTL" value=""> <span>It becomes undefined</span></label>
+</div>
+<span class="mcq-key" data-correct="It becomes negative"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare borrowing costs to equilibrium conditions.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS7) A positive demand shock raises output above potential. What happens to inflation over time if policy does not respond strongly enough?</strong><br>
+
+<div id="radio_AKWZTJUOQR" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_AKWZTJUOQR" value=""> <span>It declines</span></label><label><input type="radio" autocomplete="off" name="radio_AKWZTJUOQR" value=""> <span>It stabilises immediately</span></label><label><input type="radio" autocomplete="off" name="radio_AKWZTJUOQR" value="answer"> <span>It rises persistently</span></label><label><input type="radio" autocomplete="off" name="radio_AKWZTJUOQR" value=""> <span>It disappears</span></label>
+</div>
+<span class="mcq-key" data-correct="It rises persistently"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Use the forward-looking Phillips curve and weak policy response.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS8) If the central bank violates the Taylor principle, what risk arises?</strong><br>
+
+<div id="radio_BMXCSUZOZI" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_BMXCSUZOZI" value=""> <span>Guaranteed stability</span></label><label><input type="radio" autocomplete="off" name="radio_BMXCSUZOZI" value="answer"> <span>Multiple equilibria</span></label><label><input type="radio" autocomplete="off" name="radio_BMXCSUZOZI" value=""> <span>Permanent zero inflation</span></label><label><input type="radio" autocomplete="off" name="radio_BMXCSUZOZI" value=""> <span>Elimination of output fluctuations</span></label>
+</div>
+<span class="mcq-key" data-correct="Multiple equilibria"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Consider determinacy under rational expectations.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS9) A permanent increase in the natural real rate occurs, but the policy rate does not adjust. What happens to the output gap?</strong><br>
+
+<div id="radio_UKLJGAKXLE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_UKLJGAKXLE" value=""> <span>It becomes positive</span></label><label><input type="radio" autocomplete="off" name="radio_UKLJGAKXLE" value="answer"> <span>It becomes negative</span></label><label><input type="radio" autocomplete="off" name="radio_UKLJGAKXLE" value=""> <span>It stays zero</span></label><label><input type="radio" autocomplete="off" name="radio_UKLJGAKXLE" value=""> <span>It vanishes</span></label>
+</div>
+<span class="mcq-key" data-correct="It becomes negative"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare the stance of policy relative to equilibrium.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>PS10) Why can credible commitment to a future inflation overshoot help escape a liquidity trap?</strong><br>
+
+<div id="radio_WFYGKOGMSB" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WFYGKOGMSB" value=""> <span>It raises current real interest rates</span></label><label><input type="radio" autocomplete="off" name="radio_WFYGKOGMSB" value="answer"> <span>It lowers current real interest rates</span></label><label><input type="radio" autocomplete="off" name="radio_WFYGKOGMSB" value=""> <span>It fixes velocity</span></label><label><input type="radio" autocomplete="off" name="radio_WFYGKOGMSB" value=""> <span>It eliminates the output gap instantly</span></label>
+</div>
+<span class="mcq-key" data-correct="It lowers current real interest rates"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Expectations of higher inflation reduce real borrowing costs today.
+</details>
+</div>
+</section>
+<section id="mathematical-thinking" class="level2">
+<h2 class="anchored" data-anchor-id="mathematical-thinking">Mathematical Thinking</h2>
+<div class="mcq-we-q">
+<strong>MT1) Using <span class="math inline">\(i = r + \pi^e\)</span>, if <span class="math inline">\(r=1%\)</span> and <span class="math inline">\(\pi^e=3%\)</span>, then <span class="math inline">\(i\)</span> equals:</strong><br>
+
+<div id="radio_CPSJNDBLLE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_CPSJNDBLLE" value=""> <span>2%</span></label><label><input type="radio" autocomplete="off" name="radio_CPSJNDBLLE" value=""> <span>3%</span></label><label><input type="radio" autocomplete="off" name="radio_CPSJNDBLLE" value="answer"> <span>4%</span></label><label><input type="radio" autocomplete="off" name="radio_CPSJNDBLLE" value=""> <span>5%</span></label>
+</div>
+<span class="mcq-key" data-correct="4%"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Add the two components.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT2) If the output gap is <span class="math inline">\(x_t = Y_t - Y_t^* = 2\)</span>, what does this imply?</strong><br>
+
+<div id="radio_VQRJMDWLVQ" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_VQRJMDWLVQ" value=""> <span>Output below potential</span></label><label><input type="radio" autocomplete="off" name="radio_VQRJMDWLVQ" value="answer"> <span>Output above potential</span></label><label><input type="radio" autocomplete="off" name="radio_VQRJMDWLVQ" value=""> <span>Zero inflation</span></label><label><input type="radio" autocomplete="off" name="radio_VQRJMDWLVQ" value=""> <span>Negative inflation</span></label>
+</div>
+<span class="mcq-key" data-correct="Output above potential"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Check the sign of the deviation.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT3) Given <span class="math inline">\(\pi_t = \beta E_t[\pi_{t+1}] + \kappa x_t\)</span>, if <span class="math inline">\(x_t=0\)</span>, inflation equals:</strong><br>
+
+<div id="radio_MSJFWLHAOE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MSJFWLHAOE" value=""> <span>Zero</span></label><label><input type="radio" autocomplete="off" name="radio_MSJFWLHAOE" value="answer"> <span>beta E_t[pi_{t+1}]</span></label><label><input type="radio" autocomplete="off" name="radio_MSJFWLHAOE" value=""> <span>kappa</span></label><label><input type="radio" autocomplete="off" name="radio_MSJFWLHAOE" value=""> <span>The natural rate</span></label>
+</div>
+<span class="mcq-key" data-correct="beta E_t[pi_{t+1}]"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Substitute carefully when the output gap is zero.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT4) If <span class="math inline">\(\kappa\)</span> increases, the Phillips curve becomes:</strong><br>
+
+<div id="radio_DSNMKINETY" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_DSNMKINETY" value=""> <span>Flatter</span></label><label><input type="radio" autocomplete="off" name="radio_DSNMKINETY" value="answer"> <span>Steeper</span></label><label><input type="radio" autocomplete="off" name="radio_DSNMKINETY" value=""> <span>Vertical</span></label><label><input type="radio" autocomplete="off" name="radio_DSNMKINETY" value=""> <span>Horizontal</span></label>
+</div>
+<span class="mcq-key" data-correct="Steeper"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Consider the responsiveness of inflation to the output gap.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT5) Under the Taylor rule <span class="math inline">\(i_t = r^* + \pi_t + 0.5(\pi_t-\pi^*) + 0.5x_t\)</span>, if inflation rises above target, <span class="math inline">\(i_t\)</span> will:</strong><br>
+
+<div id="radio_WATIDIPRBT" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_WATIDIPRBT" value=""> <span>Fall</span></label><label><input type="radio" autocomplete="off" name="radio_WATIDIPRBT" value="answer"> <span>Rise</span></label><label><input type="radio" autocomplete="off" name="radio_WATIDIPRBT" value=""> <span>Stay constant</span></label><label><input type="radio" autocomplete="off" name="radio_WATIDIPRBT" value=""> <span>Become negative</span></label>
+</div>
+<span class="mcq-key" data-correct="Rise"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Focus on the deviation term.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT6) If the Taylor coefficient on inflation is less than 1, the real rate response to higher inflation is:</strong><br>
+
+<div id="radio_EYIXOGZTGK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_EYIXOGZTGK" value=""> <span>Positive</span></label><label><input type="radio" autocomplete="off" name="radio_EYIXOGZTGK" value="answer"> <span>Negative</span></label><label><input type="radio" autocomplete="off" name="radio_EYIXOGZTGK" value=""> <span>Zero</span></label><label><input type="radio" autocomplete="off" name="radio_EYIXOGZTGK" value=""> <span>Infinite</span></label>
+</div>
+<span class="mcq-key" data-correct="Negative"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Compare nominal adjustment to inflation change.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT7) If expected inflation rises by 2pp and nominal rates rise by 1pp, the real rate:</strong><br>
+
+<div id="radio_YBNUOCBCBE" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_YBNUOCBCBE" value=""> <span>Rises by 1pp</span></label><label><input type="radio" autocomplete="off" name="radio_YBNUOCBCBE" value="answer"> <span>Falls by 1pp</span></label><label><input type="radio" autocomplete="off" name="radio_YBNUOCBCBE" value=""> <span>Is unchanged</span></label><label><input type="radio" autocomplete="off" name="radio_YBNUOCBCBE" value=""> <span>Doubles</span></label>
+</div>
+<span class="mcq-key" data-correct="Falls by 1pp"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Subtract expected inflation from nominal rates.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT8) In <span class="math inline">\(x_t = E_t[x_{t+1}] - \sigma (i_t - E_t\pi_{t+1} - r^*)\)</span>, if <span class="math inline">\(i_t - E_t\pi_{t+1} &gt; r^*\)</span>, then <span class="math inline">\(x_t\)</span>:</strong><br>
+
+<div id="radio_NYMQEHBHLV" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_NYMQEHBHLV" value=""> <span>Increases</span></label><label><input type="radio" autocomplete="off" name="radio_NYMQEHBHLV" value="answer"> <span>Decreases</span></label><label><input type="radio" autocomplete="off" name="radio_NYMQEHBHLV" value=""> <span>Is zero</span></label><label><input type="radio" autocomplete="off" name="radio_NYMQEHBHLV" value=""> <span>Becomes constant</span></label>
+</div>
+<span class="mcq-key" data-correct="Decreases"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Examine the sign of the bracketed term.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT9) If <span class="math inline">\(\beta=0.99\)</span>, higher credibility (raising <span class="math inline">\(\beta\)</span> toward 1) makes inflation more:</strong><br>
+
+<div id="radio_INJNSMYZAD" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_INJNSMYZAD" value=""> <span>Backward-looking</span></label><label><input type="radio" autocomplete="off" name="radio_INJNSMYZAD" value="answer"> <span>Forward-looking</span></label><label><input type="radio" autocomplete="off" name="radio_INJNSMYZAD" value=""> <span>Random</span></label><label><input type="radio" autocomplete="off" name="radio_INJNSMYZAD" value=""> <span>Independent of expectations</span></label>
+</div>
+<span class="mcq-key" data-correct="Forward-looking"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Interpret the weight on expected future inflation.
+</details>
+</div>
+<div class="mcq-we-q">
+<strong>MT10) If the central bank raises <span class="math inline">\(i_t\)</span> more than one-for-one with inflation, the real rate response is:</strong><br>
+
+<div id="radio_MTVBUPVNKK" class="webex-radiogroup">
+<label><input type="radio" autocomplete="off" name="radio_MTVBUPVNKK" value=""> <span>Negative</span></label><label><input type="radio" autocomplete="off" name="radio_MTVBUPVNKK" value=""> <span>Zero</span></label><label><input type="radio" autocomplete="off" name="radio_MTVBUPVNKK" value="answer"> <span>Positive</span></label><label><input type="radio" autocomplete="off" name="radio_MTVBUPVNKK" value=""> <span>Undefined</span></label>
+</div>
+<span class="mcq-key" data-correct="Positive"></span>
+<details class="hint">
+<summary>
+Hint
+</summary>
+Apply the Taylor principle algebraically.
+</details>
+</div>
+<div class="quiz-controls">
+<p><input id="nickname" type="text" placeholder="Full name or nickname" autocomplete="off"> <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button> <button type="button" onclick="location.reload()">Reset</button></p>
+</div>
+<div id="quiz-result">
+
+</div>
+<h3 class="anchored">
+Leaderboard (Top 30)
+</h3>
+<table id="leaderboard">
+</table>
+<div id="question-stats">
+
+</div>
+</section>
+</div>
 
 
 

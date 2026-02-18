@@ -1,10 +1,710 @@
 ---
-title: "Topic 6 - MCQs"
+title: "Topic 6 - MCQs Formative Assessment"
+author: by Dr Camilo Calderon
 format: html
 execute:
   echo: false
 ---
 
-This is a placeholder page for Topic 6 MCQs.
+::: callout-note
+## How to use this quiz
 
-Content will be added soon.
+This quiz is designed as a **formative self-assessment tool**, not as a test.
+
+Its purpose is to help you:
+- check your understanding of the key concepts from Topic 6,
+- identify which types of thinking you find more difficult, and
+- guide your revision before the tutorial and future assessments.
+
+### What this quiz measures
+
+Each question belongs to one of four categories:
+
+- **Subject Knowledge (SK):** definitions, concepts, and facts.  
+- **Analysis (AN):** understanding relationships and economic mechanisms.  
+- **Problem Solving (PS):** applying concepts to new situations.  
+- **Mathematical Thinking (MT):** working with equations and quantitative relationships.
+
+Your score will be broken down by category so you can see **where** you are strong and where you need more practice.
+
+### How to complete the quiz
+
+- You may use your notes and the lecture materials.
+- Take your time — the goal is understanding, not speed.
+- Use the **Hints** if you get stuck.
+- You may refresh and retry the quiz as many times as you like.
+
+### How to interpret your results
+
+- A low score is **not a problem** — it tells you what to focus on.
+- If you score low in:
+  - **SK:** revise definitions and core concepts.
+  - **AN:** revisit the logic of the models and examples.
+  - **PS:** practise applying concepts to new cases.
+  - **MT:** practise the mathematical calculations and equations.
+
+### About the leaderboard
+
+The leaderboard is optional and anonymous. It exists only to make practice more engaging.  
+It has **no effect** on your grade and is not used for evaluation.
+
+The only purpose of this quiz is to support your learning.
+
+:::
+
+```{r}
+#| echo: false
+library(webexercises)
+```
+
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
+```{=html}
+<script>
+(function () {
+  // 1) Configure your Google Apps Script Web App URL here.
+  //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function getSelectedLabelText(qEl) {
+    const input = qEl.querySelector('input[type="radio"]:checked');
+    if (!input) return "";
+    const label = input.closest('label') || document.querySelector('label[for="' + input.id + '"]');
+    return label ? norm(label.textContent) : "";
+  }
+
+  function clearFeedback(qEl) {
+    qEl.querySelectorAll("label").forEach(l => l.classList.remove("is-correct", "is-incorrect"));
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (line) {
+      line.textContent = "";
+      line.classList.add("hidden");
+    }
+  }
+
+  function setFeedback(qEl, isCorrect) {
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (!line) return;
+    line.textContent = isCorrect ? "Correct." : "Incorrect.";
+    line.classList.remove("hidden");
+  }
+
+  async function postAttempt(payload) {
+    // Do not attempt POST if ENDPOINT is not configured
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) return;
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Could not save attempt:", err);
+    }
+  }
+
+  async function loadLeaderboard(quizName) {
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
+
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
+      return;
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 30);
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
+      }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === "string") {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.warn(`Row ${rowIdx} - Could not parse details:`, details);
+          return;
+        }
+      }
+
+      console.log(`Row ${rowIdx} - Processing details:`, details);
+
+      Object.entries(details).forEach(([questionId, qData]) => {
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        questionStats[questionId].totalCount += 1;
+        
+        // Check if answer was incorrect (ok: 0 means incorrect)
+        const isIncorrect = qData.ok === 0;
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
+      });
+    });
+
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey: qKey,
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
+    }
+  }
+
+  async function submitQuiz() {
+    const nicknameEl = document.getElementById("nickname");
+    const resultEl = document.getElementById("quiz-result");
+    const submitBtn = document.getElementById("quiz-submit");
+
+    const nickname = (nicknameEl?.value || "").trim();
+    if (!nickname) {
+      alert("Please enter a nickname before submitting.");
+      nicknameEl?.focus();
+      return;
+    }
+
+    // Lock submit to avoid double posting
+    if (submitBtn) submitBtn.disabled = true;
+
+    let score = 0;
+    let total = 0;
+    const details = {};
+    
+    // Category scores
+    const categories = {
+      SK: { score: 0, total: 0, name: "Subject Knowledge" },
+      AN: { score: 0, total: 0, name: "Analysis" },
+      PS: { score: 0, total: 0, name: "Problem Solving" },
+      MT: { score: 0, total: 0, name: "Mathematical Thinking" }
+    };
+
+    const questions = Array.from(document.querySelectorAll(".mcq-we-q"));
+
+    // Clear any prior feedback first (important if student re-submits)
+    questions.forEach(clearFeedback);
+
+    questions.forEach((qEl, idx) => {
+      total += 1;
+      const keyEl = qEl.querySelector(".mcq-key");
+      const correct = norm(keyEl?.getAttribute("data-correct") || "");
+      const selected = getSelectedLabelText(qEl);
+
+      const isCorrect = selected && (selected === correct);
+      if (isCorrect) score += 1;
+
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      let questionId = "Q" + (idx + 1);
+      
+      if (categoryMatch) {
+        const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;
+        
+        categories[cat].total += 1;
+        if (isCorrect) categories[cat].score += 1;
+      }
+
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
+
+      // Mark only after submit
+      if (selected) {
+        const input = qEl.querySelector('input[type="radio"]:checked');
+        const label = input?.closest("label") || (input ? document.querySelector('label[for="' + input.id + '"]') : null);
+        if (label) label.classList.add(isCorrect ? "is-correct" : "is-incorrect");
+      }
+      setFeedback(qEl, isCorrect);
+    });
+
+    if (resultEl) {
+      let resultHTML = "<strong>Overall Score: " + score + " / " + total + "</strong><br><br>";
+      
+      // Add category breakdown
+      for (const key in categories) {
+        const cat = categories[key];
+        if (cat.total > 0) {
+          resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
+        }
+      }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+        let questionId = "Q" + (idx + 1);
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];
+        }
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push(questionId);
+          } else {
+            incorrectQuestions.push(questionId);
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
+      
+      resultEl.innerHTML = resultHTML;
+    }
+
+    // Persist attempt (best practice: store what you need; nickname only = low GDPR footprint)
+    await postAttempt({
+      timestamp: new Date().toISOString(),
+      nickname,
+      quiz: "Topic6",
+      score,
+      total,
+      details
+    });
+
+    // Refresh leaderboard after a successful submit (or best-effort submit)
+    await loadLeaderboard("Topic6");
+
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  // Expose submitQuiz globally for the button onclick
+  window.submitQuiz = submitQuiz;
+
+  // Add a feedback line container to each question if it doesn't exist
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mcq-we-q").forEach(qEl => {
+      if (!qEl.querySelector(".quiz-feedback-line")) {
+        const line = document.createElement("div");
+        line.className = "quiz-feedback-line hidden";
+        qEl.appendChild(line);
+      }
+    });
+
+    loadLeaderboard("Topic6");
+  });
+})();
+</script>
+```
+
+<div class="mcq-we">
+
+## Subject Knowledge
+
+<div class="mcq-we-q">
+**SK1) In open-economy macroeconomics, the nominal exchange rate is defined as:**  
+`r webexercises::longmcq(c("The price of domestic goods in terms of foreign goods", answer = "The price of foreign currency in terms of domestic currency", "The ratio of exports to imports", "The real interest rate differential"))`
+<span class="mcq-key" data-correct="The price of foreign currency in terms of domestic currency"></span>
+<details class="hint"><summary>Hint</summary>Distinguish between nominal currency prices and relative goods prices.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK2) The real exchange rate measures:**  
+`r webexercises::longmcq(c("The inflation rate", "Relative interest rates", answer = "The relative price of domestic to foreign goods", "The money supply ratio"))`
+<span class="mcq-key" data-correct="The relative price of domestic to foreign goods"></span>
+<details class="hint"><summary>Hint</summary>Adjust the nominal exchange rate for price levels.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK3) Purchasing Power Parity (PPP) in its absolute form implies that:**  
+`r webexercises::longmcq(c("Interest rates are equalised", answer = "Real exchange rates are constant", "Nominal exchange rates are fixed", "Trade balances are zero"))`
+<span class="mcq-key" data-correct="Real exchange rates are constant"></span>
+<details class="hint"><summary>Hint</summary>PPP eliminates systematic differences in price levels across countries.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK4) Uncovered Interest Parity (UIP) links domestic and foreign interest rates to:**  
+`r webexercises::longmcq(c("Current inflation", answer = "Expected exchange rate changes", "Fiscal deficits", "Output gaps"))`
+<span class="mcq-key" data-correct="Expected exchange rate changes"></span>
+<details class="hint"><summary>Hint</summary>Investors compare expected returns across currencies.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK5) Under a flexible exchange rate regime, monetary policy primarily affects:**  
+`r webexercises::longmcq(c(answer = "The exchange rate directly", "The fiscal balance", "The real wage permanently", "The capital stock instantly"))`
+<span class="mcq-key" data-correct="The exchange rate directly"></span>
+<details class="hint"><summary>Hint</summary>Exchange rates adjust to equilibrate asset markets.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK6) An appreciation of the domestic currency means:**  
+`r webexercises::longmcq(c("Domestic goods become cheaper for foreigners", "Foreign goods become more expensive domestically", answer = "The domestic currency buys more foreign currency", "The real interest rate falls"))`
+<span class="mcq-key" data-correct="The domestic currency buys more foreign currency"></span>
+<details class="hint"><summary>Hint</summary>Focus on what happens to the purchasing power of the currency.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK7) The Marshall-Lerner condition determines whether a depreciation will:**  
+`r webexercises::longmcq(c("Reduce inflation", answer = "Improve the trade balance", "Increase interest rates", "Stabilise output automatically"))`
+<span class="mcq-key" data-correct="Improve the trade balance"></span>
+<details class="hint"><summary>Hint</summary>Consider price elasticities of exports and imports.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK8) In the Mundell-Fleming model with perfect capital mobility and fixed exchange rates, monetary policy is:**  
+`r webexercises::longmcq(c("Highly effective", answer = "Ineffective", "Inflationary but effective", "Always contractionary"))`
+<span class="mcq-key" data-correct="Ineffective"></span>
+<details class="hint"><summary>Hint</summary>Capital flows offset domestic monetary changes under a peg.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK9) A risk premium in the UIP condition implies that investors require compensation for:**  
+`r webexercises::longmcq(c("Inflation targeting", answer = "Exchange rate risk or default risk", "Government spending", "Productivity growth"))`
+<span class="mcq-key" data-correct="Exchange rate risk or default risk"></span>
+<details class="hint"><summary>Hint</summary>Expected returns may differ due to perceived uncertainty.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK10) The impossible trinity (trilemma) states that a country cannot simultaneously have:**  
+`r webexercises::longmcq(c("High growth, low inflation, and low unemployment", answer = "Fixed exchange rates, free capital mobility, and independent monetary policy", "Balanced trade, fiscal surplus, and capital mobility", "Low interest rates, low inflation, and high reserves"))`
+<span class="mcq-key" data-correct="Fixed exchange rates, free capital mobility, and independent monetary policy"></span>
+<details class="hint"><summary>Hint</summary>Only two of the three policy goals can be achieved at once.</details>
+</div>
+
+## Analysis
+
+<div class="mcq-we-q">
+**AN1) If domestic interest rates rise above foreign rates with no change in expected depreciation, what happens immediately under UIP?**  
+`r webexercises::longmcq(c("Currency depreciates", answer = "Currency appreciates", "Inflation rises", "Output falls permanently"))`
+<span class="mcq-key" data-correct="Currency appreciates"></span>
+<details class="hint"><summary>Hint</summary>Capital flows toward higher expected returns.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN2) Why does monetary expansion lead to depreciation under flexible exchange rates?**  
+`r webexercises::longmcq(c("Because productivity rises", answer = "Because lower interest rates reduce capital inflows", "Because exports automatically double", "Because fiscal deficits increase"))`
+<span class="mcq-key" data-correct="Because lower interest rates reduce capital inflows"></span>
+<details class="hint"><summary>Hint</summary>Track the interest rate channel through asset markets.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN3) If PPP holds in the long run but not the short run, what explains temporary deviations?**  
+`r webexercises::longmcq(c(answer = "Price stickiness", "Balanced budgets", "Fixed capital stocks", "Constant velocity"))`
+<span class="mcq-key" data-correct="Price stickiness"></span>
+<details class="hint"><summary>Hint</summary>Goods prices may adjust more slowly than exchange rates.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN4) Under fixed exchange rates with perfect capital mobility, why does fiscal expansion raise output?**  
+`r webexercises::longmcq(c("Because money supply contracts", answer = "Because monetary policy accommodates capital inflows", "Because exchange rates depreciate", "Because inflation falls"))`
+<span class="mcq-key" data-correct="Because monetary policy accommodates capital inflows"></span>
+<details class="hint"><summary>Hint</summary>Consider how defending the peg affects the money supply.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN5) If the Marshall-Lerner condition is not satisfied, a depreciation will:**  
+`r webexercises::longmcq(c("Improve the trade balance", answer = "Worsen the trade balance", "Leave exports unchanged", "Eliminate imports"))`
+<span class="mcq-key" data-correct="Worsen the trade balance"></span>
+<details class="hint"><summary>Hint</summary>Think about inelastic trade volumes.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN6) Why does capital mobility reduce monetary autonomy under a fixed exchange rate?**  
+`r webexercises::longmcq(c("Because fiscal policy dominates", answer = "Because capital flows force interest rate alignment", "Because inflation becomes zero", "Because trade balances vanish"))`
+<span class="mcq-key" data-correct="Because capital flows force interest rate alignment"></span>
+<details class="hint"><summary>Hint</summary>Interest parity constrains domestic rates.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN7) If investors expect future depreciation, what must happen to domestic interest rates under UIP?**  
+`r webexercises::longmcq(c("They must fall", answer = "They must rise", "They remain unchanged", "They become negative"))`
+<span class="mcq-key" data-correct="They must rise"></span>
+<details class="hint"><summary>Hint</summary>Compensation is required for expected currency loss.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN8) Why can exchange rate overshooting occur after a monetary shock?**  
+`r webexercises::longmcq(c("Because goods prices adjust faster than asset prices", answer = "Because exchange rates are forward-looking", "Because fiscal deficits increase", "Because velocity collapses"))`
+<span class="mcq-key" data-correct="Because exchange rates are forward-looking"></span>
+<details class="hint"><summary>Hint</summary>Asset markets adjust instantly; goods markets adjust slowly.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN9) If a country tries to fix its exchange rate while keeping capital mobility and independent monetary policy, what outcome emerges?**  
+`r webexercises::longmcq(c("Stable equilibrium", answer = "Persistent reserve loss or gain", "Zero inflation", "Permanent growth"))`
+<span class="mcq-key" data-correct="Persistent reserve loss or gain"></span>
+<details class="hint"><summary>Hint</summary>Violating the trilemma creates pressure on reserves.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN10) Why does a credible fixed exchange rate reduce inflation expectations?**  
+`r webexercises::longmcq(c("It increases output", answer = "It anchors policy to a low-inflation currency", "It eliminates capital flows", "It doubles exports"))`
+<span class="mcq-key" data-correct="It anchors policy to a low-inflation currency"></span>
+<details class="hint"><summary>Hint</summary>Credibility transmits the anchor country’s monetary stance.</details>
+</div>
+
+## Problem Solving
+
+<div class="mcq-we-q">
+**PS1) Domestic interest rates fall below foreign rates. Investors expect no exchange rate change. What happens to the domestic currency?**  
+`r webexercises::longmcq(c("It appreciates", answer = "It depreciates", "It is fixed", "It disappears"))`
+<span class="mcq-key" data-correct="It depreciates"></span>
+<details class="hint"><summary>Hint</summary>Investors move funds toward higher returns.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS2) The nominal exchange rate is 2 (domestic per foreign), domestic prices are 100, foreign prices are 200. What is the real exchange rate?**  
+`r webexercises::longmcq(c(answer = "1", "2", "4", "0.5"))`
+<span class="mcq-key" data-correct="1"></span>
+<details class="hint"><summary>Hint</summary>Use $q = \frac{EP^*}{P}$.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS3) A country with flexible exchange rates increases money supply. Output rises in the short run. What happens to the exchange rate?**  
+`r webexercises::longmcq(c("Appreciates", answer = "Depreciates", "Remains fixed", "Pegs automatically"))`
+<span class="mcq-key" data-correct="Depreciates"></span>
+<details class="hint"><summary>Hint</summary>Follow the interest rate channel.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS4) If export and import elasticities sum to 0.8, what does the Marshall-Lerner condition imply?**  
+`r webexercises::longmcq(c("Trade balance improves", answer = "Trade balance worsens", "No effect", "Inflation doubles"))`
+<span class="mcq-key" data-correct="Trade balance worsens"></span>
+<details class="hint"><summary>Hint</summary>Compare the sum to unity.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS5) Under fixed exchange rates and high capital mobility, the central bank cuts rates. What happens?**  
+`r webexercises::longmcq(c("Peg breaks immediately", answer = "Capital outflows reduce reserves", "Output permanently rises", "Inflation becomes zero"))`
+<span class="mcq-key" data-correct="Capital outflows reduce reserves"></span>
+<details class="hint"><summary>Hint</summary>Defending the peg requires reserve intervention.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS6) Foreign interest rates rise. With perfect capital mobility and a fixed exchange rate, domestic rates must:**  
+`r webexercises::longmcq(c("Fall", "Stay constant", answer = "Rise", "Become zero"))`
+<span class="mcq-key" data-correct="Rise"></span>
+<details class="hint"><summary>Hint</summary>Interest parity must hold under a credible peg.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS7) Expected future depreciation increases by 3%. If foreign rates are unchanged, what must happen to domestic rates?**  
+`r webexercises::longmcq(c(answer = "Rise by 3%", "Fall by 3%", "Remain unchanged", "Double"))`
+<span class="mcq-key" data-correct="Rise by 3%"></span>
+<details class="hint"><summary>Hint</summary>Use the UIP condition algebraically.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS8) A country attempts expansionary monetary policy under fixed exchange rates and perfect capital mobility. What is the long-run effect on output?**  
+`r webexercises::longmcq(c("Permanently higher", "Permanently lower", answer = "No lasting effect", "Hyperinflation"))`
+<span class="mcq-key" data-correct="No lasting effect"></span>
+<details class="hint"><summary>Hint</summary>Monetary policy loses autonomy under a peg.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS9) A credible announcement of future monetary tightening causes the exchange rate today to:**  
+`r webexercises::longmcq(c("Depreciate", answer = "Appreciate", "Remain unchanged", "Collapse"))`
+<span class="mcq-key" data-correct="Appreciate"></span>
+<details class="hint"><summary>Hint</summary>Exchange rates are forward-looking asset prices.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS10) Why might a depreciation initially worsen the trade balance before improving it?**  
+`r webexercises::longmcq(c("Velocity changes", answer = "J-curve effect", "Fisher effect", "Taylor principle"))`
+<span class="mcq-key" data-correct="J-curve effect"></span>
+<details class="hint"><summary>Hint</summary>Quantities adjust more slowly than prices.</details>
+</div>
+
+## Mathematical Thinking
+
+<div class="mcq-we-q">
+**MT1) Using $q = \frac{EP^*}{P}$, if $E=1.5$, $P^*=100$, $P=150$, then $q$ equals:**  
+`r webexercises::longmcq(c(answer = "1", "0.5", "1.5", "2"))`
+<span class="mcq-key" data-correct="1"></span>
+<details class="hint"><summary>Hint</summary>Substitute carefully and simplify.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT2) If domestic interest rate is 5% and foreign rate is 3%, expected depreciation is approximately:**  
+`r webexercises::longmcq(c(answer = "2%", "-2%", "5%", "3%"))`
+<span class="mcq-key" data-correct="2%"></span>
+<details class="hint"><summary>Hint</summary>Rearrange the UIP condition.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT3) Under UIP: $i = i^* + E[\Delta e]$. If $i^*=4%$ and expected depreciation is 1%, then $i$ equals:**  
+`r webexercises::longmcq(c("3%", "4%", answer = "5%", "6%"))`
+<span class="mcq-key" data-correct="5%"></span>
+<details class="hint"><summary>Hint</summary>Add the expected currency change.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT4) If export elasticity is 0.6 and import elasticity is 0.5, the Marshall-Lerner condition:**  
+`r webexercises::longmcq(c(answer = "Holds", "Does not hold", "Is zero", "Is negative"))`
+<span class="mcq-key" data-correct="Holds"></span>
+<details class="hint"><summary>Hint</summary>Sum the elasticities.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT5) If domestic inflation exceeds foreign inflation by 2%, PPP predicts the currency will:**  
+`r webexercises::longmcq(c("Appreciate by 2%", answer = "Depreciate by 2%", "Stay constant", "Double"))`
+<span class="mcq-key" data-correct="Depreciate by 2%"></span>
+<details class="hint"><summary>Hint</summary>Higher relative inflation weakens the currency.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT6) If $q$ rises above 1, domestic goods are:**  
+`r webexercises::longmcq(c("Relatively expensive", answer = "Relatively cheap", "Equal price", "Inflation-free"))`
+<span class="mcq-key" data-correct="Relatively cheap"></span>
+<details class="hint"><summary>Hint</summary>Interpret the real exchange rate definition.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT7) If domestic rates rise by 2pp and expected depreciation is unchanged, the currency must:**  
+`r webexercises::longmcq(c(answer = "Appreciate immediately", "Depreciate immediately", "Remain fixed", "Collapse"))`
+<span class="mcq-key" data-correct="Appreciate immediately"></span>
+<details class="hint"><summary>Hint</summary>Asset markets adjust to restore parity.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT8) If reserves fall persistently under a fixed exchange rate, this suggests:**  
+`r webexercises::longmcq(c("Excess capital inflows", answer = "Excess capital outflows", "Zero mobility", "Stable equilibrium"))`
+<span class="mcq-key" data-correct="Excess capital outflows"></span>
+<details class="hint"><summary>Hint</summary>The central bank is selling foreign currency.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT9) If $i - i^* = -3%$, expected appreciation equals:**  
+`r webexercises::longmcq(c("-3%", answer = "3%", "0%", "6%"))`
+<span class="mcq-key" data-correct="3%"></span>
+<details class="hint"><summary>Hint</summary>Rearrange UIP and interpret the sign.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT10) If a depreciation raises $E$ by 10% and foreign prices are unchanged, the percentage change in $q$ equals approximately:**  
+`r webexercises::longmcq(c("0%", answer = "10%", "-10%", "5%"))`
+<span class="mcq-key" data-correct="10%"></span>
+<details class="hint"><summary>Hint</summary>Assume domestic prices are sticky in the short run.</details>
+</div>
+
+<div class="quiz-controls">
+  <input id="nickname" type="text" placeholder="Full name or nickname" autocomplete="off" />
+  <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button>
+  <button type="button" onclick="location.reload()">Reset</button>
+</div>
+
+<div id="quiz-result"></div>
+
+<h3>Leaderboard (Top 30)</h3>
+<table id="leaderboard"></table>
+
+<div id="question-stats"></div>
+
+</div>

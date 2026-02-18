@@ -1,10 +1,710 @@
 ---
-title: "Topic 8 - MCQs"
+title: "Topic 8 - MCQs Formative Assessment"
+author: by Dr Camilo Calderon
 format: html
 execute:
   echo: false
 ---
 
-This is a placeholder page for Topic 8 MCQs.
+::: callout-note
+## How to use this quiz
 
-Content will be added soon.
+This quiz is designed as a **formative self-assessment tool**, not as a test.
+
+Its purpose is to help you:
+- check your understanding of the key concepts from Topic 8,
+- identify which types of thinking you find more difficult, and
+- guide your revision before the tutorial and future assessments.
+
+### What this quiz measures
+
+Each question belongs to one of four categories:
+
+- **Subject Knowledge (SK):** definitions, concepts, and facts.  
+- **Analysis (AN):** understanding relationships and economic mechanisms.  
+- **Problem Solving (PS):** applying concepts to new situations.  
+- **Mathematical Thinking (MT):** working with equations and quantitative relationships.
+
+Your score will be broken down by category so you can see **where** you are strong and where you need more practice.
+
+### How to complete the quiz
+
+- You may use your notes and the lecture materials.
+- Take your time — the goal is understanding, not speed.
+- Use the **Hints** if you get stuck.
+- You may refresh and retry the quiz as many times as you like.
+
+### How to interpret your results
+
+- A low score is **not a problem** — it tells you what to focus on.
+- If you score low in:
+  - **SK:** revise definitions and core concepts.
+  - **AN:** revisit the logic of the models and examples.
+  - **PS:** practise applying concepts to new cases.
+  - **MT:** practise the mathematical calculations and equations.
+
+### About the leaderboard
+
+The leaderboard is optional and anonymous. It exists only to make practice more engaging.  
+It has **no effect** on your grade and is not used for evaluation.
+
+The only purpose of this quiz is to support your learning.
+
+:::
+
+```{r}
+#| echo: false
+library(webexercises)
+```
+
+<!-- FEEDBACK SCRIPT: interactive quiz with self-assessment -->
+```{=html}
+<script>
+(function () {
+  // 1) Configure your Google Apps Script Web App URL here.
+  //    Example: https://script.google.com/macros/s/XXXXXXXXXXXX/exec
+  const ENDPOINT = "https://script.google.com/macros/s/AKfycbysCOTW2ZLw5ruYY84Y-o0zB7nt0jkowiC3OoKJSdh2OYv-ZXa_1vTb_TU4BYwcwSZ0Jw/exec";
+
+  const norm = s => (s || "").replace(/\s+/g, " ").trim();
+
+  function getSelectedLabelText(qEl) {
+    const input = qEl.querySelector('input[type="radio"]:checked');
+    if (!input) return "";
+    const label = input.closest('label') || document.querySelector('label[for="' + input.id + '"]');
+    return label ? norm(label.textContent) : "";
+  }
+
+  function clearFeedback(qEl) {
+    qEl.querySelectorAll("label").forEach(l => l.classList.remove("is-correct", "is-incorrect"));
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (line) {
+      line.textContent = "";
+      line.classList.add("hidden");
+    }
+  }
+
+  function setFeedback(qEl, isCorrect) {
+    const line = qEl.querySelector(".quiz-feedback-line");
+    if (!line) return;
+    line.textContent = isCorrect ? "Correct." : "Incorrect.";
+    line.classList.remove("hidden");
+  }
+
+  async function postAttempt(payload) {
+    // Do not attempt POST if ENDPOINT is not configured
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) return;
+
+    try {
+      await fetch(ENDPOINT, {
+        method: "POST",
+        mode: "no-cors",
+        keepalive: true,
+        body: JSON.stringify(payload)
+      });
+    } catch (err) {
+      console.warn("Could not save attempt:", err);
+    }
+  }
+
+  async function loadLeaderboard(quizName) {
+    const table = document.getElementById("leaderboard");
+    if (!table) return;
+
+    // If not configured, show a friendly message and stop.
+    if (!ENDPOINT || ENDPOINT.includes("PASTE_YOUR_")) {
+      table.innerHTML = "<tr><td>Leaderboard is not configured yet. Add your Apps Script URL in the page source.</td></tr>";
+      return;
+    }
+
+    try {
+      const res = await fetch(ENDPOINT, { method: "GET" });
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      const rows = await res.json();
+
+      // Filter for this quiz only (defensive: older rows may not have the fields)
+      const filtered = (rows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+      // Keep best score per nickname
+      const best = new Map();
+      filtered.forEach(r => {
+        const nick = String(r.nickname || "").trim();
+        if (!nick) return;
+        const score = Number(r.score);
+        const total = Number(r.total);
+        const ts = new Date(r.timestamp || 0).getTime();
+
+        const prev = best.get(nick);
+        if (!prev || score > prev.score || (score === prev.score && ts < prev.ts)) {
+          best.set(nick, { nickname: nick, score, total, ts });
+        }
+      });
+
+      const leaderboard = Array.from(best.values())
+        .sort((a, b) => (b.score - a.score) || (a.ts - b.ts))
+        .slice(0, 30);
+
+      if (leaderboard.length === 0) {
+        table.innerHTML = "<tr><td>No attempts recorded yet.</td></tr>";
+      } else {
+        table.innerHTML =
+          "<tr><th>Rank</th><th>Nickname</th><th>Score</th></tr>" +
+          leaderboard.map((r, i) =>
+            "<tr><td>" + (i + 1) + "</td><td>" + String(r.nickname) + "</td><td>" + r.score + " / " + r.total + "</td></tr>"
+          ).join("");
+      }
+
+      // Load and display question statistics
+      await loadQuestionStats(quizName, rows);
+    } catch (err) {
+      table.innerHTML = "<tr><td>Could not load leaderboard.</td></tr>";
+      console.warn("Leaderboard error:", err);
+    }
+  }
+
+  async function loadQuestionStats(quizName, allRows) {
+    const statsContainer = document.getElementById("question-stats");
+    if (!statsContainer) return;
+
+    // Filter for this quiz only
+    const filtered = (allRows || []).filter(r => String(r.quiz || "") === String(quizName));
+
+    console.log("=== DEBUGGING QUESTION STATS ===");
+    console.log("Filtered rows count:", filtered.length);
+    if (filtered.length > 0) {
+      console.log("Sample row:", filtered[0]);
+    }
+
+    // Build a map of question index to identifier
+    const questionIdentifiers = {};
+    document.querySelectorAll(".mcq-we-q").forEach((qEl, idx) => {
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      if (categoryMatch) {
+        questionIdentifiers[idx] = categoryMatch[1] + categoryMatch[2];
+      } else {
+        questionIdentifiers[idx] = "Q" + (idx + 1);
+      }
+    });
+
+    console.log("Question identifiers map:", questionIdentifiers);
+
+    // Count incorrect attempts per question
+    const questionStats = {};
+    filtered.forEach((row, rowIdx) => {
+      let details = row.details || {};
+      
+      // If details is a string (JSON), parse it
+      if (typeof details === "string") {
+        try {
+          details = JSON.parse(details);
+          console.log(`Row ${rowIdx} - Parsed details from string`);
+        } catch (e) {
+          console.warn(`Row ${rowIdx} - Could not parse details:`, details);
+          return;
+        }
+      }
+
+      console.log(`Row ${rowIdx} - Processing details:`, details);
+
+      Object.entries(details).forEach(([questionId, qData]) => {
+        if (!questionStats[questionId]) {
+          questionStats[questionId] = { incorrectCount: 0, totalCount: 0 };
+        }
+        
+        questionStats[questionId].totalCount += 1;
+        
+        // Check if answer was incorrect (ok: 0 means incorrect)
+        const isIncorrect = qData.ok === 0;
+        if (isIncorrect) {
+          questionStats[questionId].incorrectCount += 1;
+        }
+      });
+    });
+
+    console.log("\nFinal question stats:", questionStats);
+
+    // Get top 10 most incorrect questions, sorted by incorrect count
+    const sortedQuestions = Object.entries(questionStats)
+      .map(([qKey, stats]) => ({
+        qKey: qKey,
+        incorrectCount: stats.incorrectCount,
+        totalCount: stats.totalCount,
+        incorrectRate: stats.totalCount > 0 ? (stats.incorrectCount / stats.totalCount * 100).toFixed(1) : 0
+      }))
+      .sort((a, b) => b.incorrectCount - a.incorrectCount)
+      .slice(0, 10);
+
+    console.log("Sorted questions:", sortedQuestions);
+
+    if (sortedQuestions.length === 0) {
+      statsContainer.innerHTML = "<p>No question statistics available yet.</p>";
+    } else {
+      statsContainer.innerHTML =
+        "<h4>Top 10 Questions with Most Incorrect Attempts</h4>" +
+        "<table style='width: 100%; border-collapse: collapse;'>" +
+        "<tr style='border-bottom: 2px solid #ccc;'><th style='text-align: left; padding: 8px;'>Question</th><th style='text-align: center; padding: 8px;'>Incorrect Attempts</th><th style='text-align: center; padding: 8px;'>Total Attempts</th><th style='text-align: center; padding: 8px;'>Incorrect Rate</th></tr>" +
+        sortedQuestions.map(q =>
+          "<tr style='border-bottom: 1px solid #eee;'>" +
+          "<td style='padding: 8px;'>" + String(q.qKey) + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.totalCount + "</td>" +
+          "<td style='text-align: center; padding: 8px;'>" + q.incorrectRate + "%</td>" +
+          "</tr>"
+        ).join("") +
+        "</table>";
+    }
+  }
+
+  async function submitQuiz() {
+    const nicknameEl = document.getElementById("nickname");
+    const resultEl = document.getElementById("quiz-result");
+    const submitBtn = document.getElementById("quiz-submit");
+
+    const nickname = (nicknameEl?.value || "").trim();
+    if (!nickname) {
+      alert("Please enter a nickname before submitting.");
+      nicknameEl?.focus();
+      return;
+    }
+
+    // Lock submit to avoid double posting
+    if (submitBtn) submitBtn.disabled = true;
+
+    let score = 0;
+    let total = 0;
+    const details = {};
+    
+    // Category scores
+    const categories = {
+      SK: { score: 0, total: 0, name: "Subject Knowledge" },
+      AN: { score: 0, total: 0, name: "Analysis" },
+      PS: { score: 0, total: 0, name: "Problem Solving" },
+      MT: { score: 0, total: 0, name: "Mathematical Thinking" }
+    };
+
+    const questions = Array.from(document.querySelectorAll(".mcq-we-q"));
+
+    // Clear any prior feedback first (important if student re-submits)
+    questions.forEach(clearFeedback);
+
+    questions.forEach((qEl, idx) => {
+      total += 1;
+      const keyEl = qEl.querySelector(".mcq-key");
+      const correct = norm(keyEl?.getAttribute("data-correct") || "");
+      const selected = getSelectedLabelText(qEl);
+
+      const isCorrect = selected && (selected === correct);
+      if (isCorrect) score += 1;
+
+      // Extract category and question ID from question text (SK1, AN1, PS1, MT1, etc.)
+      const questionText = qEl.querySelector("strong")?.textContent || "";
+      const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+      let questionId = "Q" + (idx + 1);
+      
+      if (categoryMatch) {
+        const cat = categoryMatch[1];
+        const num = categoryMatch[2];
+        questionId = cat + num;
+        
+        categories[cat].total += 1;
+        if (isCorrect) categories[cat].score += 1;
+      }
+
+      details[questionId] = { selected, correct, ok: isCorrect ? 1 : 0 };
+
+      // Mark only after submit
+      if (selected) {
+        const input = qEl.querySelector('input[type="radio"]:checked');
+        const label = input?.closest("label") || (input ? document.querySelector('label[for="' + input.id + '"]') : null);
+        if (label) label.classList.add(isCorrect ? "is-correct" : "is-incorrect");
+      }
+      setFeedback(qEl, isCorrect);
+    });
+
+    if (resultEl) {
+      let resultHTML = "<strong>Overall Score: " + score + " / " + total + "</strong><br><br>";
+      
+      // Add category breakdown
+      for (const key in categories) {
+        const cat = categories[key];
+        if (cat.total > 0) {
+          resultHTML += cat.name + ": " + cat.score + " / " + cat.total + "<br>";
+        }
+      }
+      
+      // Add correct and incorrect questions
+      const correctQuestions = [];
+      const incorrectQuestions = [];
+      
+      questions.forEach((qEl, idx) => {
+        const keyEl = qEl.querySelector(".mcq-key");
+        const correct = norm(keyEl?.getAttribute("data-correct") || "");
+        const selected = getSelectedLabelText(qEl);
+        const isCorrect = selected && (selected === correct);
+        
+        // Extract question ID from question text
+        const questionText = qEl.querySelector("strong")?.textContent || "";
+        const categoryMatch = questionText.match(/^(SK|AN|PS|MT)(\d+)/);
+        let questionId = "Q" + (idx + 1);
+        if (categoryMatch) {
+          questionId = categoryMatch[1] + categoryMatch[2];
+        }
+        
+        if (selected) {
+          if (isCorrect) {
+            correctQuestions.push(questionId);
+          } else {
+            incorrectQuestions.push(questionId);
+          }
+        }
+      });
+      
+      resultHTML += "<br><strong>Correct Questions:</strong> " + (correctQuestions.length > 0 ? correctQuestions.join(", ") : "None") + "<br>";
+      resultHTML += "<strong>Incorrect Questions:</strong> " + (incorrectQuestions.length > 0 ? incorrectQuestions.join(", ") : "None") + "<br>";
+      
+      resultEl.innerHTML = resultHTML;
+    }
+
+    // Persist attempt (best practice: store what you need; nickname only = low GDPR footprint)
+    await postAttempt({
+      timestamp: new Date().toISOString(),
+      nickname,
+      quiz: "Topic8",
+      score,
+      total,
+      details
+    });
+
+    // Refresh leaderboard after a successful submit (or best-effort submit)
+    await loadLeaderboard("Topic8");
+
+    // Disable all radio buttons and submit button to prevent further changes
+    document.querySelectorAll(".mcq-we-q input[type='radio']").forEach(input => {
+      input.disabled = true;
+    });
+    if (submitBtn) submitBtn.disabled = true;
+  }
+
+  // Expose submitQuiz globally for the button onclick
+  window.submitQuiz = submitQuiz;
+
+  // Add a feedback line container to each question if it doesn't exist
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".mcq-we-q").forEach(qEl => {
+      if (!qEl.querySelector(".quiz-feedback-line")) {
+        const line = document.createElement("div");
+        line.className = "quiz-feedback-line hidden";
+        qEl.appendChild(line);
+      }
+    });
+
+    loadLeaderboard("Topic8");
+  });
+})();
+</script>
+```
+
+<div class="mcq-we">
+
+## Subject Knowledge
+
+<div class="mcq-we-q">
+**SK1) Central bank independence primarily refers to independence from:**  
+`r webexercises::longmcq(c("Commercial banks", "Foreign governments", answer = "Short-term political pressure", "International organisations"))`
+<span class="mcq-key" data-correct="Short-term political pressure"></span>
+<details class="hint"><summary>Hint</summary>Think about time horizons in policymaking.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK2) Inflation targeting involves:**  
+`r webexercises::longmcq(c("Fixing the exchange rate", answer = "Announcing a numerical inflation objective", "Targeting money growth exclusively", "Eliminating fiscal deficits"))`
+<span class="mcq-key" data-correct="Announcing a numerical inflation objective"></span>
+<details class="hint"><summary>Hint</summary>Transparency and numerical goals are key features.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK3) Time inconsistency in monetary policy arises because:**  
+`r webexercises::longmcq(c("Velocity is unstable", answer = "Policymakers may deviate from previously announced plans", "Exchange rates fluctuate", "Output is constant"))`
+<span class="mcq-key" data-correct="Policymakers may deviate from previously announced plans"></span>
+<details class="hint"><summary>Hint</summary>Consider incentives once private expectations are formed.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK4) The inflation bias in discretionary policy occurs when:**  
+`r webexercises::longmcq(c("Inflation is below target", answer = "Policymakers attempt to exploit a short-run Phillips curve", "Money supply is fixed", "Fiscal policy dominates"))`
+<span class="mcq-key" data-correct="Policymakers attempt to exploit a short-run Phillips curve"></span>
+<details class="hint"><summary>Hint</summary>Expectations adjust, eliminating output gains but not inflation.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK5) Credibility in monetary policy mainly affects:**  
+`r webexercises::longmcq(c("Government spending", answer = "Expected inflation", "Velocity directly", "Reserve requirements"))`
+<span class="mcq-key" data-correct="Expected inflation"></span>
+<details class="hint"><summary>Hint</summary>Expectations of future policy shape current outcomes.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK6) A conservative central banker (Rogoff model) places:**  
+`r webexercises::longmcq(c("Greater weight on output stabilisation", answer = "Greater weight on inflation stabilisation", "Equal weight on all objectives", "No weight on inflation"))`
+<span class="mcq-key" data-correct="Greater weight on inflation stabilisation"></span>
+<details class="hint"><summary>Hint</summary>Preference parameters differ from society's average.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK7) Rules-based policy differs from discretion because it:**  
+`r webexercises::longmcq(c("Eliminates inflation", answer = "Commits policymakers to systematic responses", "Fixes exchange rates permanently", "Removes capital mobility"))`
+<span class="mcq-key" data-correct="Commits policymakers to systematic responses"></span>
+<details class="hint"><summary>Hint</summary>Commitment changes expectations formation.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK8) Forward guidance enhances credibility when it is:**  
+`r webexercises::longmcq(c("Vague and flexible", answer = "Contingent and clearly communicated", "Secretive", "Unrelated to policy rules"))`
+<span class="mcq-key" data-correct="Contingent and clearly communicated"></span>
+<details class="hint"><summary>Hint</summary>Conditional commitments reduce uncertainty.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK9) An inflation-targeting regime with strong transparency primarily reduces:**  
+`r webexercises::longmcq(c("Fiscal deficits", "Risk premia", answer = "Inflation volatility", "Velocity"))`
+<span class="mcq-key" data-correct="Inflation volatility"></span>
+<details class="hint"><summary>Hint</summary>Anchored expectations dampen fluctuations.</details>
+</div>
+
+<div class="mcq-we-q">
+**SK10) The Barro-Gordon model predicts that under discretion, equilibrium inflation is:**  
+`r webexercises::longmcq(c("Zero", "Lower than target", answer = "Higher than socially optimal", "Independent of expectations"))`
+<span class="mcq-key" data-correct="Higher than socially optimal"></span>
+<details class="hint"><summary>Hint</summary>Policymakers have incentives to create surprise inflation.</details>
+</div>
+
+## Analysis
+
+<div class="mcq-we-q">
+**AN1) Why does discretionary policy generate inflation bias even when output returns to its natural level?**  
+`r webexercises::longmcq(c("Because velocity rises", answer = "Because expectations adjust upward", "Because fiscal deficits increase", "Because exchange rates float"))`
+<span class="mcq-key" data-correct="Because expectations adjust upward"></span>
+<details class="hint"><summary>Hint</summary>Rational expectations eliminate systematic output gains.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN2) If a central bank gains credibility, expected inflation becomes:**  
+`r webexercises::longmcq(c("More volatile", "Less anchored", answer = "More stable", "Irrelevant"))`
+<span class="mcq-key" data-correct="More stable"></span>
+<details class="hint"><summary>Hint</summary>Credible commitment shapes private-sector forecasts.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN3) Why can delegation to a conservative central banker reduce inflation without large output costs?**  
+`r webexercises::longmcq(c("Because money supply shrinks", answer = "Because expectations adjust downward", "Because fiscal policy changes", "Because exchange rates fix automatically"))`
+<span class="mcq-key" data-correct="Because expectations adjust downward"></span>
+<details class="hint"><summary>Hint</summary>Lower expected inflation shifts the short-run Phillips curve.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN4) If policymakers attempt surprise inflation repeatedly, what happens over time?**  
+`r webexercises::longmcq(c("Output permanently rises", answer = "Inflation expectations increase", "Inflation falls", "Velocity stabilises"))`
+<span class="mcq-key" data-correct="Inflation expectations increase"></span>
+<details class="hint"><summary>Hint</summary>Rational agents learn from repeated deviations.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN5) Why does commitment technology eliminate inflation bias?**  
+`r webexercises::longmcq(c("It removes expectations", answer = "It aligns incentives with announced targets", "It fixes exchange rates", "It raises unemployment permanently"))`
+<span class="mcq-key" data-correct="It aligns incentives with announced targets"></span>
+<details class="hint"><summary>Hint</summary>Credible rules alter policymakers' incentives.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN6) If society places equal weight on inflation and output, but the central bank is more inflation-averse, what is the likely macro outcome?**  
+`r webexercises::longmcq(c("Higher inflation variability", answer = "Lower average inflation", "Higher output volatility", "Fixed exchange rates"))`
+<span class="mcq-key" data-correct="Lower average inflation"></span>
+<details class="hint"><summary>Hint</summary>Preference parameters influence equilibrium inflation.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN7) Why can excessive conservatism increase output variability?**  
+`r webexercises::longmcq(c("Because inflation disappears", answer = "Because the central bank reacts weakly to demand shocks", "Because fiscal policy expands", "Because capital flows stop"))`
+<span class="mcq-key" data-correct="Because the central bank reacts weakly to demand shocks"></span>
+<details class="hint"><summary>Hint</summary>Stabilisation trade-offs depend on policy weights.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN8) If a central bank announces a target but frequently misses it without explanation, credibility will:**  
+`r webexercises::longmcq(c("Increase", "Remain unchanged", answer = "Decline", "Eliminate inflation"))`
+<span class="mcq-key" data-correct="Decline"></span>
+<details class="hint"><summary>Hint</summary>Reputation depends on consistent performance.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN9) Why does time inconsistency arise even when policymakers are benevolent?**  
+`r webexercises::longmcq(c("Because they prefer inflation", answer = "Because short-run incentives differ from long-run plans", "Because velocity fluctuates", "Because exchange rates float"))`
+<span class="mcq-key" data-correct="Because short-run incentives differ from long-run plans"></span>
+<details class="hint"><summary>Hint</summary>Commitment problems stem from changing optimisation constraints.</details>
+</div>
+
+<div class="mcq-we-q">
+**AN10) In the Barro-Gordon framework, why is surprise inflation ineffective systematically?**  
+`r webexercises::longmcq(c("Because output is fixed", answer = "Because agents form rational expectations", "Because inflation is zero", "Because money supply is constant"))`
+<span class="mcq-key" data-correct="Because agents form rational expectations"></span>
+<details class="hint"><summary>Hint</summary>Anticipated policy has no real effects.</details>
+</div>
+
+## Problem Solving
+
+<div class="mcq-we-q">
+**PS1) A central bank promises low inflation but has a history of high inflation. What happens to expected inflation?**  
+`r webexercises::longmcq(c("It falls immediately", answer = "It remains high", "It becomes zero", "It becomes negative"))`
+<span class="mcq-key" data-correct="It remains high"></span>
+<details class="hint"><summary>Hint</summary>Reputation influences expectation formation.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS2) Suppose inflation target is 2%, but policymakers attempt to push unemployment below its natural rate. What happens in the long run?**  
+`r webexercises::longmcq(c(answer = "Inflation rises above 2%", "Inflation falls", "Unemployment permanently falls", "Output doubles"))`
+<span class="mcq-key" data-correct="Inflation rises above 2%"></span>
+<details class="hint"><summary>Hint</summary>Attempts to exploit Phillips curve create inflation bias.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS3) A newly independent central bank adopts inflation targeting and communicates clearly. What happens to inflation volatility over time?**  
+`r webexercises::longmcq(c("It increases", answer = "It decreases", "It is unchanged", "It disappears completely"))`
+<span class="mcq-key" data-correct="It decreases"></span>
+<details class="hint"><summary>Hint</summary>Anchored expectations stabilise inflation dynamics.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS4) If policymakers can commit credibly, equilibrium inflation relative to discretion will be:**  
+`r webexercises::longmcq(c("Higher", answer = "Lower", "The same", "Random"))`
+<span class="mcq-key" data-correct="Lower"></span>
+<details class="hint"><summary>Hint</summary>Commitment removes the incentive for surprise inflation.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS5) An economy experiences a negative supply shock. A highly conservative central bank reacts aggressively to inflation. What may happen to output?**  
+`r webexercises::longmcq(c("Output stabilises fully", answer = "Output volatility increases", "Inflation doubles", "Exchange rate fixes"))`
+<span class="mcq-key" data-correct="Output volatility increases"></span>
+<details class="hint"><summary>Hint</summary>Strong anti-inflation response can amplify output losses.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS6) If expected inflation falls by 2pp due to increased credibility, what happens to nominal interest rates (holding real rate constant)?**  
+`r webexercises::longmcq(c("Rise by 2pp", answer = "Fall by 2pp", "Stay unchanged", "Double"))`
+<span class="mcq-key" data-correct="Fall by 2pp"></span>
+<details class="hint"><summary>Hint</summary>Apply the Fisher equation.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS7) Under discretion, why might inflation remain positive even if target inflation is zero?**  
+`r webexercises::longmcq(c("Because output gap is zero", answer = "Because inflation bias exists", "Because exchange rates float", "Because money supply contracts"))`
+<span class="mcq-key" data-correct="Because inflation bias exists"></span>
+<details class="hint"><summary>Hint</summary>Incentives to stimulate output create bias.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS8) If society delegates to a very conservative central banker, what trade-off arises?**  
+`r webexercises::longmcq(c("Higher inflation and lower output", answer = "Lower inflation but potentially higher output volatility", "Fixed exchange rates", "Zero unemployment"))`
+<span class="mcq-key" data-correct="Lower inflation but potentially higher output volatility"></span>
+<details class="hint"><summary>Hint</summary>Preference weights affect stabilisation trade-offs.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS9) Why does reputational loss increase the cost of breaking a commitment?**  
+`r webexercises::longmcq(c("Because inflation falls", answer = "Because future expectations become less anchored", "Because output rises", "Because money supply doubles"))`
+<span class="mcq-key" data-correct="Because future expectations become less anchored"></span>
+<details class="hint"><summary>Hint</summary>Reputation affects future policy effectiveness.</details>
+</div>
+
+<div class="mcq-we-q">
+**PS10) If policymakers follow a strict rule that responds systematically to deviations, what happens to inflation expectations?**  
+`r webexercises::longmcq(c("Become unanchored", answer = "Become more predictable", "Disappear", "Double"))`
+<span class="mcq-key" data-correct="Become more predictable"></span>
+<details class="hint"><summary>Hint</summary>Predictable policy improves expectation formation.</details>
+</div>
+
+## Mathematical Thinking
+
+<div class="mcq-we-q">
+**MT1) If the Phillips curve is $\pi = \pi^e - \alpha(u - u^*)$ and $u=u^*$, inflation equals:**  
+`r webexercises::longmcq(c("0", answer = "pi^e", "alpha", "-pi^e"))`
+<span class="mcq-key" data-correct="pi^e"></span>
+<details class="hint"><summary>Hint</summary>Substitute carefully when the unemployment gap is zero.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT2) If expected inflation is 4% and real rate is 1%, nominal rate equals:**  
+`r webexercises::longmcq(c("3%", "4%", answer = "5%", "6%"))`
+<span class="mcq-key" data-correct="5%"></span>
+<details class="hint"><summary>Hint</summary>Use $i = r + \pi^e$.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT3) If policymakers weight inflation twice as much as output, the loss function slope becomes:**  
+`r webexercises::longmcq(c("Flatter", answer = "Steeper", "Zero", "Negative"))`
+<span class="mcq-key" data-correct="Steeper"></span>
+<details class="hint"><summary>Hint</summary>Higher inflation weight increases responsiveness.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT4) If inflation bias equals $\frac{\alpha}{\beta}k$, increasing $\beta$ (weight on inflation) makes bias:**  
+`r webexercises::longmcq(c("Larger", answer = "Smaller", "Zero", "Infinite"))`
+<span class="mcq-key" data-correct="Smaller"></span>
+<details class="hint"><summary>Hint</summary>Examine the denominator.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT5) If unemployment gap is -2 and $\alpha=0.5$, inflation deviation equals:**  
+`r webexercises::longmcq(c("-1", "0", answer = "1", "2"))`
+<span class="mcq-key" data-correct="1"></span>
+<details class="hint"><summary>Hint</summary>Multiply carefully and track signs.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT6) If credibility reduces expected inflation from 5% to 3%, and output gap is zero, inflation falls by:**  
+`r webexercises::longmcq(c("0%", answer = "2%", "3%", "5%"))`
+<span class="mcq-key" data-correct="2%"></span>
+<details class="hint"><summary>Hint</summary>With no gap, inflation equals expectations.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT7) If nominal rate is 6% and expected inflation drops from 4% to 2%, real rate rises by:**  
+`r webexercises::longmcq(c("0%", "1%", answer = "2%", "4%"))`
+<span class="mcq-key" data-correct="2%"></span>
+<details class="hint"><summary>Hint</summary>Recalculate the real rate before and after.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT8) If $\alpha$ doubles, the Phillips curve becomes:**  
+`r webexercises::longmcq(c("Flatter", answer = "Steeper", "Vertical", "Horizontal"))`
+<span class="mcq-key" data-correct="Steeper"></span>
+<details class="hint"><summary>Hint</summary>Sensitivity of inflation to unemployment gap increases.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT9) If inflation bias is 3% under discretion and zero under commitment, welfare improves because:**  
+`r webexercises::longmcq(c("Output permanently rises", "Variance disappears", answer = "Average inflation falls without output loss", "Exchange rate fixes"))`
+<span class="mcq-key" data-correct="Average inflation falls without output loss"></span>
+<details class="hint"><summary>Hint</summary>Bias affects levels, not natural output.</details>
+</div>
+
+<div class="mcq-we-q">
+**MT10) If policymakers attempt surprise inflation of 2% but expectations adjust fully, long-run output change equals:**  
+`r webexercises::longmcq(c("2%", "1%", answer = "0%", "-2%"))`
+<span class="mcq-key" data-correct="0%"></span>
+<details class="hint"><summary>Hint</summary>Anticipated inflation has no real effect.</details>
+</div>
+
+<div class="quiz-controls">
+  <input id="nickname" type="text" placeholder="Full name or nickname" autocomplete="off" />
+  <button id="quiz-submit" type="button" onclick="submitQuiz()">Submit</button>
+  <button type="button" onclick="location.reload()">Reset</button>
+</div>
+
+<div id="quiz-result"></div>
+
+<h3>Leaderboard (Top 30)</h3>
+<table id="leaderboard"></table>
+
+<div id="question-stats"></div>
+
+</div>
