@@ -36,6 +36,8 @@ website:
             file: topic2lecture.qmd
           - text: "Questions"
             file: topic2questions.qmd
+          - text: "Answers"
+            file: topic2answers.qmd
           - text: "MCQs"
             file: topic2mcqs.qmd
           - text: "Optional: Economics Poets"

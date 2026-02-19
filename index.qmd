@@ -29,6 +29,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 - [Reading](topic2reading.qmd)
 - [Lecture](topic2lecture.qmd)
 - [Open Questions](topic2questions.qmd)
+- [Answers](topic2answers.qmd)
 - [MCQs](topic2mcqs.qmd)
 - [Tutor Guide 🔒](topic2tutorial.qmd)
 - [Optional: Economics Poets](topic2ludic.qmd)
