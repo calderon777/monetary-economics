@@ -1,384 +1,189 @@
 {
+  "topic4reading.qmd": {
+    "topic4reading.html": "07d84267",
+    "topic4reading.tex": "2f5a0b1e"
+  },
   "about.qmd": {
-    "about.html": "83190115"
-  },
-  "backup/week1_quiz.qmd": {
-    "week1_quiz.html": "9f7a57a5"
-  },
-  "backup/week1_quiz_leaderboard.qmd": {
-    "week1_quiz_leaderboard.html": "b1af0faf"
-  },
-  "index.qmd": {
-    "index.html": "6ce156ff"
-  },
-  "week1.qmd": {
-    "week1.html": "7b53427e"
-  },
-  "week1_old.qmd": {
-    "week1_old.html": "535a4b39"
-  },
-  "week1lecture.qmd": {
-    "week1lecture.html": "47497964"
-  },
-  "week1lecture1.qmd": {
-    "week1lecture1.html": "46c14bf6"
-  },
-  "week1lecture2.qmd": {
-    "week1lecture2.html": "c2f73202"
-  },
-  "week1tutorial.qmd": {
-    "week1tutorial.html": "ab80f3f0"
-  },
-  "week1reading.qmd": {
-    "week1reading.html": "084c5f1d",
-    "week1reading.tex": "62687f1d"
-  },
-  "week2reading.qmd": {
-    "week2reading.html": "08350fb9"
-  },
-  "week2readingv001.qmd": {
-    "week2readingv001.html": "b85abcd3",
-    "week2readingv001.tex": "113dcc92"
-  },
-  "week1questions.qmd": {
-    "week1questions.html": "84862109"
-  },
-  "README.hf.md": {
-    "README.hf.html": "cd1ece3a"
-  },
-  "week2lecture.qmd": {
-    "week2lecture.html": "69128bc7"
-  },
-  "week3lecture.qmd": {
-    "week3lecture.html": "2df25f73"
-  },
-  "week4lecture.qmd": {
-    "week4lecture.html": "ddef7ee4"
-  },
-  "week5lecture.qmd": {
-    "week5lecture.html": "d059996a"
-  },
-  "week6lecture.qmd": {
-    "week6lecture.html": "e4b585e8"
-  },
-  "week7lecture.qmd": {
-    "week7lecture.html": "32822e53"
-  },
-  "week8lecture.qmd": {
-    "week8lecture.html": "0283113e"
-  },
-  "topic1lecture.qmd": {
-    "topic1lecture.html": "b78bd0fc"
-  },
-  "topic1mcqs.qmd": {
-    "topic1mcqs.html": "ce981eda"
-  },
-  "topic1questions.qmd": {
-    "topic1questions.html": "f25c5b3c"
-  },
-  "topic1reading.qmd": {
-    "topic1reading.html": "fa5d68a3",
-    "topic1reading.tex": "f18eca8f"
-  },
-  "topic2lecture.qmd": {
-    "topic2lecture.html": "6b1f4b07"
-  },
-  "topic2reading.qmd": {
-    "topic2reading.html": "ae50c8f5",
-    "topic2reading.tex": "f7b069a1"
-  },
-  "topic2readingv001.qmd": {
-    "topic2readingv001.html": "c8fab93a",
-    "topic2readingv001.tex": "19dd173a"
-  },
-  "topic3lecture.qmd": {
-    "topic3lecture.html": "e74e2d3a"
-  },
-  "topic4lecture.qmd": {
-    "topic4lecture.html": "8682666d"
-  },
-  "topic5lecture.qmd": {
-    "topic5lecture.html": "18092427"
-  },
-  "topic6lecture.qmd": {
-    "topic6lecture.html": "7f64e7a8"
-  },
-  "topic7lecture.qmd": {
-    "topic7lecture.html": "f45beddd"
-  },
-  "topic8lecture.qmd": {
-    "topic8lecture.html": "a2d6726b"
+    "about.html": "6acf2c88"
   },
   "archive/topic2readingv001.qmd": {
-    "topic2readingv001.html": "b8ad7f25"
+    "topic2readingv001.html": "a39d3626"
   },
-  "topic2tutorial.qmd": {
-    "topic2tutorial.html": "b24b9e2a"
-  },
-  "topic3reading.qmd": {
-    "topic3reading.html": "0a2c07bc",
-    "topic3reading.tex": "033076b0"
-  },
-  "topic3tutorial.qmd": {
-    "topic3tutorial.html": "afbc50a9"
-  },
-  "topic4reading.qmd": {
-    "topic4reading.html": "99dd260a",
-    "topic4reading.tex": "c9573cef"
-  },
-  "topic4tutorial.qmd": {
-    "topic4tutorial.html": "60bf1da9"
-  },
-  "topic5reading.qmd": {
-    "topic5reading.html": "ed08278a",
-    "topic5reading.tex": "61eb9b15"
-  },
-  "topic5tutorial.qmd": {
-    "topic5tutorial.html": "d3d245d2"
-  },
-  "topic6reading.qmd": {
-    "topic6reading.html": "f694b5b3",
-    "topic6reading.tex": "9bae7b2d"
-  },
-  "topic6tutorial.qmd": {
-    "topic6tutorial.html": "a943a0c1"
-  },
-  "topic7reading.qmd": {
-    "topic7reading.html": "c207f95d",
-    "topic7reading.tex": "8018609a"
-  },
-  "topic7tutorial.qmd": {
-    "topic7tutorial.html": "3aabb54d"
-  },
-  "topic8reading.qmd": {
-    "topic8reading.html": "819a0065"
-  },
-  "topic8tutorial.qmd": {
-    "topic8tutorial.html": "c1d7a114"
-  },
-  "DEPLOYMENT_CHECKLIST.md": {
-    "DEPLOYMENT_CHECKLIST.html": "ae9f2c52"
-  },
-  "HF_SYNC_SETUP.md": {
-    "HF_SYNC_SETUP.html": "df54574b"
+  "index.qmd": {
+    "index.html": "e8a1fa8c"
   },
   "topic1answers.qmd": {
-    "topic1answers.html": "da169220"
-  },
-  "topic1tutor.qmd": {
-    "topic1tutor.html": "dd990866"
-  },
-  "topic2mcqs.qmd": {
-    "topic2mcqs.html": "9188a6b6"
-  },
-  "topic3mcqs.qmd": {
-    "topic3mcqs.html": "48608136"
-  },
-  "topic4mcqs.qmd": {
-    "topic4mcqs.html": "fb2d093d"
-  },
-  "topic5mcqs.qmd": {
-    "topic5mcqs.html": "019429be"
-  },
-  "topic6mcqs.qmd": {
-    "topic6mcqs.html": "689be205"
-  },
-  "topic7mcqs.qmd": {
-    "topic7mcqs.html": "b1dd89f1"
-  },
-  "topic8mcqs.qmd": {
-    "topic8mcqs.html": "a40a2a3a"
-  },
-  "topic2questions.qmd": {
-    "topic2questions.html": "75bc012e"
-  },
-  "topic2-hf-space/DEPLOYMENT.md": {
-    "DEPLOYMENT.html": "6d0afc76"
-  },
-  "topic2answers.qmd": {
-    "topic2answers.html": "163068f5"
-  },
-  "topic3answers.qmd": {
-    "topic3answers.html": "460bcfd6"
-  },
-  "topic3questions.qmd": {
-    "topic3questions.html": "2d9fc8b6"
-  },
-  "topic4answers.qmd": {
-    "topic4answers.html": "672d67b8"
-  },
-  "topic4questions.qmd": {
-    "topic4questions.html": "85f0d68d"
-  },
-  "topic5answers.qmd": {
-    "topic5answers.html": "f9eebb20"
-  },
-  "topic5questions.qmd": {
-    "topic5questions.html": "7e7cbf8c"
-  },
-  "topic6answers.qmd": {
-    "topic6answers.html": "bce1396d"
-  },
-  "topic6questions.qmd": {
-    "topic6questions.html": "cbaa33ee"
-  },
-  "topic7answers.qmd": {
-    "topic7answers.html": "35f31738"
-  },
-  "topic7questions.qmd": {
-    "topic7questions.html": "920fb8cc"
-  },
-  "topic8answers.qmd": {
-    "topic8answers.html": "5c269757"
-  },
-  "topic8questions.qmd": {
-    "topic8questions.html": "00247d4a"
+    "topic1answers.html": "3a32d113"
   },
   "topic1keys.qmd": {
-    "topic1keys.html": "3e325b05"
+    "topic1keys.html": "965b33c7"
+  },
+  "topic1lecture.qmd": {
+    "topic1lecture.html": "ca2fa552"
+  },
+  "topic1mcqs.qmd": {
+    "topic1mcqs.html": "c10a487e"
+  },
+  "topic1questions.qmd": {
+    "topic1questions.html": "086ea863"
+  },
+  "topic1reading.qmd": {
+    "topic1reading.html": "95b687c6",
+    "topic1reading.tex": "dca46dee"
+  },
+  "topic1tutor.qmd": {
+    "topic1tutor.html": "6f2ca9ae"
+  },
+  "topic2answers.qmd": {
+    "topic2answers.html": "862d80bc"
   },
   "topic2keys.qmd": {
-    "topic2keys.html": "cec3177b"
+    "topic2keys.html": "3ca3db56"
   },
-  "topic3keys.qmd": {
-    "topic3keys.html": "403f7a0c"
-  },
-  "topic4keys.qmd": {
-    "topic4keys.html": "c7a8df57"
-  },
-  "topic5keys.qmd": {
-    "topic5keys.html": "233f796e"
-  },
-  "topic6keys.qmd": {
-    "topic6keys.html": "e8764dd9"
-  },
-  "topic7keys.qmd": {
-    "topic7keys.html": "ecc9a99e"
-  },
-  "topic8keys.qmd": {
-    "topic8keys.html": "c9d053cb"
+  "topic2lecture.qmd": {
+    "topic2lecture.html": "fdcfa2cc"
   },
   "topic2ludic.qmd": {
-    "topic2ludic.html": "09a35e3d"
+    "topic2ludic.html": "56621a64"
   },
-  "ACE-Step-1.5/AGENTS.md": {
-    "AGENTS.html": "232be8f7"
+  "topic2mcqs.qmd": {
+    "topic2mcqs.html": "027e0586"
   },
-  "ACE-Step-1.5/CONTRIBUTING.md": {
-    "CONTRIBUTING.html": "0434e8a7"
+  "topic2questions.qmd": {
+    "topic2questions.html": "7cd0d151"
   },
-  "ACE-Step-1.5/docs/en/ACE-Step1.5-Rocm-Manual-Linux.md": {
-    "ACE-Step1.5-Rocm-Manual-Linux.html": "215f4691"
+  "topic2reading.qmd": {
+    "topic2reading.html": "94812b0e",
+    "topic2reading.tex": "7fb79e55"
   },
-  "ACE-Step-1.5/docs/en/ace_step_musicians_guide.md": {
-    "ace_step_musicians_guide.html": "deba17ef"
+  "topic2tutorial.qmd": {
+    "topic2tutorial.html": "b7f1bd0d"
   },
-  "ACE-Step-1.5/docs/en/API.md": {
-    "API.html": "5cce89f4"
+  "topic3answers.qmd": {
+    "topic3answers.html": "e5fa769d"
   },
-  "ACE-Step-1.5/docs/en/BENCHMARK.md": {
-    "BENCHMARK.html": "d5c0c0b2"
+  "topic3keys.qmd": {
+    "topic3keys.html": "8e1641b8"
   },
-  "ACE-Step-1.5/docs/en/CLI.md": {
-    "CLI.html": "0514aac4"
+  "topic3lecture.qmd": {
+    "topic3lecture.html": "e0bc2ca2"
   },
-  "ACE-Step-1.5/docs/en/GPU_COMPATIBILITY.md": {
-    "GPU_COMPATIBILITY.html": "9dd97f21"
+  "topic3mcqs.qmd": {
+    "topic3mcqs.html": "be0ea1a7"
   },
-  "ACE-Step-1.5/docs/en/GPU_TROUBLESHOOTING.md": {
-    "GPU_TROUBLESHOOTING.html": "8e6366de"
+  "topic3questions.qmd": {
+    "topic3questions.html": "47ebaef2"
   },
-  "ACE-Step-1.5/docs/en/GRADIO_GUIDE.md": {
-    "GRADIO_GUIDE.html": "7b004618"
+  "topic3reading.qmd": {
+    "topic3reading.html": "97e202d0",
+    "topic3reading.tex": "8570c0e4"
   },
-  "ACE-Step-1.5/docs/en/INFERENCE.md": {
-    "INFERENCE.html": "a2e6f272"
+  "topic3tutorial.qmd": {
+    "topic3tutorial.html": "1b5c5959"
   },
-  "ACE-Step-1.5/docs/en/INSTALL.md": {
-    "INSTALL.html": "f55e63c6"
+  "topic4answers.qmd": {
+    "topic4answers.html": "e73dad83"
   },
-  "ACE-Step-1.5/docs/en/Openrouter_API_DOC.md": {
-    "Openrouter_API_DOC.html": "1d6e49c4"
+  "topic4keys.qmd": {
+    "topic4keys.html": "94c81486"
   },
-  "ACE-Step-1.5/docs/en/studio.md": {
-    "studio.html": "5eba4ac5"
+  "topic4lecture.qmd": {
+    "topic4lecture.html": "c367e23f"
   },
-  "ACE-Step-1.5/docs/en/Tutorial.md": {
-    "Tutorial.html": "1cfce0a0"
+  "topic4mcqs.qmd": {
+    "topic4mcqs.html": "8f846f5f"
   },
-  "ACE-Step-1.5/docs/ja/API.md": {
-    "API.html": "2f8701be"
+  "topic4questions.qmd": {
+    "topic4questions.html": "23314775"
   },
-  "ACE-Step-1.5/docs/ja/GPU_COMPATIBILITY.md": {
-    "GPU_COMPATIBILITY.html": "fa19a733"
+  "topic4tutorial.qmd": {
+    "topic4tutorial.html": "93111976"
   },
-  "ACE-Step-1.5/docs/ja/GRADIO_GUIDE.md": {
-    "GRADIO_GUIDE.html": "65172bb4"
+  "topic5answers.qmd": {
+    "topic5answers.html": "8086a2e0"
   },
-  "ACE-Step-1.5/docs/ja/INFERENCE.md": {
-    "INFERENCE.html": "06448df4"
+  "topic5keys.qmd": {
+    "topic5keys.html": "7be934bc"
   },
-  "ACE-Step-1.5/docs/ja/INSTALL.md": {
-    "INSTALL.html": "b4723e22"
+  "topic5lecture.qmd": {
+    "topic5lecture.html": "8bb74d4f"
   },
-  "ACE-Step-1.5/docs/ja/Openrouter_API_DOC.md": {
-    "Openrouter_API_DOC.html": "ca26dd3d"
+  "topic5mcqs.qmd": {
+    "topic5mcqs.html": "2ccc0cf3"
   },
-  "ACE-Step-1.5/docs/ja/Tutorial.md": {
-    "Tutorial.html": "22e1c85a"
+  "topic5questions.qmd": {
+    "topic5questions.html": "322986a2"
   },
-  "ACE-Step-1.5/docs/ko/API.md": {
-    "API.html": "8c529656"
+  "topic5reading.qmd": {
+    "topic5reading.html": "f9878077",
+    "topic5reading.tex": "956fd0d6"
   },
-  "ACE-Step-1.5/docs/ko/GPU_COMPATIBILITY.md": {
-    "GPU_COMPATIBILITY.html": "c6afc70f"
+  "topic5tutorial.qmd": {
+    "topic5tutorial.html": "6bcd4139"
   },
-  "ACE-Step-1.5/docs/ko/GRADIO_GUIDE.md": {
-    "GRADIO_GUIDE.html": "93023236"
+  "topic6answers.qmd": {
+    "topic6answers.html": "84100319"
   },
-  "ACE-Step-1.5/docs/ko/INFERENCE.md": {
-    "INFERENCE.html": "3f8880ed"
+  "topic6keys.qmd": {
+    "topic6keys.html": "04179783"
   },
-  "ACE-Step-1.5/docs/ko/Openrouter_API_DOC.md": {
-    "Openrouter_API_DOC.html": "04a5eac2"
+  "topic6lecture.qmd": {
+    "topic6lecture.html": "39b9f6c4"
   },
-  "ACE-Step-1.5/docs/ko/Tutorial.md": {
-    "Tutorial.html": "e0459c69"
+  "topic6mcqs.qmd": {
+    "topic6mcqs.html": "8f8dd7ff"
   },
-  "topic2lecture.knit.md": {
-    "topic2lecture.knit.html": "52bb2a90"
+  "topic6questions.qmd": {
+    "topic6questions.html": "dedf341d"
   },
-  "ACE-Step-1.5/docs/lora-scale-deterministic-registry-note-2026-02-10.md": {
-    "lora-scale-deterministic-registry-note-2026-02-10.html": "10482af2"
+  "topic6reading.qmd": {
+    "topic6reading.html": "997757aa",
+    "topic6reading.tex": "acc37dda"
   },
-  "ACE-Step-1.5/docs/zh/API.md": {
-    "API.html": "ca141aba"
+  "topic6tutorial.qmd": {
+    "topic6tutorial.html": "c721a24a"
   },
-  "ACE-Step-1.5/docs/zh/BENCHMARK.md": {
-    "BENCHMARK.html": "20d4d0af"
+  "topic7answers.qmd": {
+    "topic7answers.html": "c9a5512f"
   },
-  "ACE-Step-1.5/docs/zh/GPU_COMPATIBILITY.md": {
-    "GPU_COMPATIBILITY.html": "c09b3d17"
+  "topic7keys.qmd": {
+    "topic7keys.html": "7722d14d"
   },
-  "ACE-Step-1.5/docs/zh/GRADIO_GUIDE.md": {
-    "GRADIO_GUIDE.html": "0fdf3fd9"
+  "topic7lecture.qmd": {
+    "topic7lecture.html": "95b98b37"
   },
-  "ACE-Step-1.5/docs/zh/INFERENCE.md": {
-    "INFERENCE.html": "8e9163d2"
+  "topic7mcqs.qmd": {
+    "topic7mcqs.html": "c4ae168d"
   },
-  "ACE-Step-1.5/docs/zh/INSTALL.md": {
-    "INSTALL.html": "58a4cb95"
+  "topic7questions.qmd": {
+    "topic7questions.html": "58daa38e"
   },
-  "ACE-Step-1.5/docs/zh/Openrouter_API_DOC.md": {
-    "Openrouter_API_DOC.html": "001fb1e5"
+  "topic7reading.qmd": {
+    "topic7reading.html": "7e71c23c",
+    "topic7reading.tex": "09a5195a"
   },
-  "ACE-Step-1.5/docs/zh/Tutorial.md": {
-    "Tutorial.html": "71fd24db"
+  "topic7tutorial.qmd": {
+    "topic7tutorial.html": "2dd715d4"
   },
-  "ACE-Step-1.5/SECURITY.md": {
-    "SECURITY.html": "a67c777a"
+  "topic8answers.qmd": {
+    "topic8answers.html": "929a5605"
   },
-  "topic3lecture.knit.md": {
-    "topic3lecture.knit.html": "0b74b4d4"
+  "topic8keys.qmd": {
+    "topic8keys.html": "94613edd"
+  },
+  "topic8lecture.qmd": {
+    "topic8lecture.html": "0556dfd1"
+  },
+  "topic8mcqs.qmd": {
+    "topic8mcqs.html": "14ebdae3"
+  },
+  "topic8questions.qmd": {
+    "topic8questions.html": "cfd58aaa"
+  },
+  "topic8reading.qmd": {
+    "topic8reading.html": "fd2fe50d"
+  },
+  "topic8tutorial.qmd": {
+    "topic8tutorial.html": "0af15db6"
   }
 }

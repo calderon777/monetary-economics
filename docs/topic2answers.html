@@ -510,8 +510,22 @@ Tip
 <p><strong>Derivation example (quick):</strong> After writing FOCs, divide the <span class="math inline">\(d_1\)</span> FOC by the <span class="math inline">\(d_2\)</span> FOC to remove <span class="math inline">\(\lambda\)</span>, giving <span class="math inline">\(\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)\)</span>. Then use the budget constraint to solve for <span class="math inline">\(d_1^*\)</span> and <span class="math inline">\(d_2^*\)</span>.</p>
 </div>
 </div>
-<p><strong>(c)</strong> Lagrangian (reminder: set each partial derivative to zero): <span class="math inline">\(L = d_1^\alpha d_2^{1-\alpha} + \lambda(y_N - P_1 d_1 - P_2 d_2)\)</span>. FOCs: <span class="math inline">\(\partial L/\partial d_1 = \alpha d_1^{\alpha-1} d_2^{1-\alpha} - \lambda P_1 = 0\)</span>, <span class="math inline">\(\partial L/\partial d_2 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha} - \lambda P_2 = 0\)</span>, and <span class="math inline">\(\partial L/\partial \lambda = y_N - P_1 d_1 - P_2 d_2 = 0\)</span>.</p>
-<p><strong>(d)</strong> Divide FOCs: <span class="math inline">\(\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)\)</span>, so <span class="math inline">\(d_2 = ((1-\alpha)/\alpha)(P_1/P_2)d_1\)</span>. Substitute into the budget constraint to get <span class="math inline">\(d_1^* = \alpha(y_N/P_1)\)</span> and <span class="math inline">\(d_2^* = (1-\alpha)(y_N/P_2)\)</span>.</p>
+<p><strong>(c)</strong> Lagrangian (set each partial derivative to zero):</p>
+<p><span class="math inline">\(L = d_1^\alpha d_2^{1-\alpha} + \lambda(y_N - P_1 d_1 - P_2 d_2)\)</span><br></p>
+<p>FOCs:<br> <span class="math inline">\(\partial L/\partial d_1 = \alpha d_1^{\alpha-1} d_2^{1-\alpha} - \lambda P_1 = 0\)</span><br> <span class="math inline">\(\partial L/\partial d_2 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha} - \lambda P_2 = 0\)</span><br> and <span class="math inline">\(\partial L/\partial \lambda = y_N - P_1 d_1 - P_2 d_2 = 0\)</span>.</p>
+<p><strong>(d)</strong> Solve for <span class="math inline">\(\lambda\)</span> from each FOC:</p>
+<p><span class="math inline">\(\lambda = \alpha d_1^{\alpha-1} d_2^{1-\alpha}/P_1\)</span> and</p>
+<p><span class="math inline">\(\lambda = (1-\alpha) d_1^{\alpha} d_2^{-\alpha}/P_2\)</span>.</p>
+<p>Equalize them to eliminate <span class="math inline">\(\lambda\)</span>, giving</p>
+<p><span class="math inline">\(\alpha d_1^{\alpha-1} d_2^{1-\alpha}/P_1 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha}/P_2\)</span>,</p>
+<p>which simplifies to</p>
+<p><span class="math inline">\(\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)\)</span>.</p>
+<p>Rearranging gives</p>
+<p><span class="math inline">\(d_2 = ((1-\alpha)/\alpha)(P_1/P_2)d_1\)</span>. This comes from cross-multiplying <span class="math inline">\(\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)\)</span> and solving for <span class="math inline">\(d_2\)</span>.<br></p>
+<p>Substitute into the budget constraint: <span class="math inline">\(P_1 d_1 + P_2 d_2 = y_N\)</span></p>
+<p>becomes</p>
+<p><span class="math inline">\(P_1 d_1 + P_2((1-\alpha)/\alpha)(P_1/P_2)d_1 = y_N\)</span>,</p>
+<p>so <span class="math inline">\(d_1(1 + (1-\alpha)/\alpha) = y_N/P_1\)</span>.<br> Hence <span class="math inline">\(d_1^* = \alpha(y_N/P_1)\)</span> and <span class="math inline">\(d_2^* = (1-\alpha)(y_N/P_2)\)</span>.</p>
 <p><strong>(e)</strong> Expand <span class="math inline">\(y_N\)</span>: <span class="math inline">\(d_1^* = \alpha(s_1 + (P_2/P_1)s_2)\)</span> and <span class="math inline">\(d_2^* = (1-\alpha)((P_1/P_2)s_1 + s_2)\)</span>. If all prices double, relative prices are unchanged, so demands are unchanged.</p>
 <p><strong>(f)</strong> With <span class="math inline">\(s_1=2\)</span>, <span class="math inline">\(s_2=10\)</span>, <span class="math inline">\(P_1=2\)</span>, <span class="math inline">\(P_2=1\)</span>, <span class="math inline">\(\alpha=0.5\)</span>, <span class="math inline">\(d_1^* = 3.5\)</span> and <span class="math inline">\(d_2^* = 7\)</span>. Net purchases: <span class="math inline">\(d_1^* - s_1 = 1.5\)</span> and <span class="math inline">\(d_2^* - s_2 = -3\)</span>.</p>
 <hr>
