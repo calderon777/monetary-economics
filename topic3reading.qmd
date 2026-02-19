@@ -67,7 +67,7 @@ In a monetary economy, however, higher desired saving can take the form of hoard
 
 ### Walras' Law Does Not Imply Say's Law in a Monetary Economy
 
-A crucial insight from the lecture notes: **in a monetary economy, Walras' Law no longer implies Say's Law**. An excess demand for money can co-exist with an excess supply of goods. When agents attempt to rebuild liquidity positions, desired spending falls below output. This is Keynes's fundamental explanation for why unemployment can be an equilibrium outcome in a monetary economy: the "missing demand" is not redirected automatically into other goods; it can be redirected into money balances. [@walras1874Elements; @keynes1936GeneralTheory]
+A crucial insight: **in a monetary economy, Walras' Law no longer implies Say's Law**. An excess demand for money can co-exist with an excess supply of goods. When agents attempt to rebuild liquidity positions, desired spending falls below output. This is Keynes's fundamental explanation for why unemployment can be an equilibrium outcome in a monetary economy: the "missing demand" is not redirected automatically into other goods; it can be redirected into money balances. [@walras1874Elements; @keynes1936GeneralTheory]
 
 ## Normal Mechanisms for Restoring Equilibrium (and Why They Can Fail)
 
@@ -471,7 +471,7 @@ All that said, the Pigou effect remains an important theoretical critique becaus
 
 ## Summary and Key Takeaways
 
-The following points capture the essence of Keynes's monetary economics in the context of lecture notes on Monetary Economics EC3014: [@keynes1936GeneralTheory]
+The following points capture the essence of Keynes's monetary economics: [@keynes1936GeneralTheory]
 
 1. **In a monetary economy, Walras' Law does not imply Say's Law** – excess demand for money can co-exist with excess supply of goods.
 

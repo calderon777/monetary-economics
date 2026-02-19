@@ -144,7 +144,7 @@ The **Taylor rule** is an instrument rule associated with John Taylor: $i_t = \a
 
 **Why rules help credibility:** if the public believes the rule, it anchors expectations, reducing the incentive for surprise inflation and lowering the inflation bias.
 
-**Why strict rules can backfire:** the lecture notes highlight conflict under adverse supply shocks (e.g., the 1973 oil shock). Inflation can rise while output falls, creating tension between inflation and output stabilization. A mechanical rule can force a painful trade-off. This is why most inflation targeting regimes are "flexible" rather than strict.
+**Why strict rules can backfire:** a key tension under adverse supply shocks (e.g., the 1973 oil shock) is between inflation and output stabilization. Inflation can rise while output falls, forcing a painful trade-off. A mechanical rule cannot navigate this. This is why most inflation targeting regimes are "flexible" rather than strict.
 
 ## Delegation and central bank independence
 
