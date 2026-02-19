@@ -61,4 +61,4 @@ Endowments: $s^A = (s_1^A, s_2^A)$, $s^B = (s_1^B, s_2^B)$.
 
 Adding both real budget constraints gives $(d_1^{A*} + d_1^{B*}) + (P_2/P_1)(d_2^{A*} + d_2^{B*}) = (s_1^A + s_1^B) + (P_2/P_1)(s_2^A + s_2^B)$. Since $D_1 = S_1$, this implies $(P_2/P_1)(d_2^{A*} + d_2^{B*}) = (P_2/P_1)(s_2^A + s_2^B)$, so $D_2 = S_2$.
 
-**This establishes Walras' Law**: If n-1 markets clear and all budget constraints bind, the nth market must also clear.
+**This establishes Walras' Law**: If n-1 markets clear and all budget constraints bind, the nth market must also clear. The algebra in (c) shows that once $D_1 = S_1$ and both agents spend their full income, the remaining budget identity forces $D_2 = S_2$ as well.
