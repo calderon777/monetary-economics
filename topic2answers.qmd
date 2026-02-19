@@ -28,9 +28,42 @@ format: html
 **Derivation example (quick):** After writing FOCs, divide the $d_1$ FOC by the $d_2$ FOC to remove $\lambda$, giving $\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)$. Then use the budget constraint to solve for $d_1^*$ and $d_2^*$.
 :::
 
-**(c)** Lagrangian (reminder: set each partial derivative to zero): $L = d_1^\alpha d_2^{1-\alpha} + \lambda(y_N - P_1 d_1 - P_2 d_2)$. FOCs: $\partial L/\partial d_1 = \alpha d_1^{\alpha-1} d_2^{1-\alpha} - \lambda P_1 = 0$, $\partial L/\partial d_2 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha} - \lambda P_2 = 0$, and $\partial L/\partial \lambda = y_N - P_1 d_1 - P_2 d_2 = 0$.
+**(c)** Lagrangian (set each partial derivative to zero):
 
-**(d)** Divide FOCs: $\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)$, so $d_2 = ((1-\alpha)/\alpha)(P_1/P_2)d_1$. Substitute into the budget constraint to get $d_1^* = \alpha(y_N/P_1)$ and $d_2^* = (1-\alpha)(y_N/P_2)$.
+$L = d_1^\alpha d_2^{1-\alpha} + \lambda(y_N - P_1 d_1 - P_2 d_2)$<br>
+
+FOCs:<br>
+$\partial L/\partial d_1 = \alpha d_1^{\alpha-1} d_2^{1-\alpha} - \lambda P_1 = 0$<br>
+$\partial L/\partial d_2 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha} - \lambda P_2 = 0$<br>
+and $\partial L/\partial \lambda = y_N - P_1 d_1 - P_2 d_2 = 0$.
+
+**(d)** Solve for $\lambda$ from each FOC: 
+
+$\lambda = \alpha d_1^{\alpha-1} d_2^{1-\alpha}/P_1$ and
+
+$\lambda = (1-\alpha) d_1^{\alpha} d_2^{-\alpha}/P_2$.
+
+Equalize them to eliminate $\lambda$, giving 
+
+$\alpha d_1^{\alpha-1} d_2^{1-\alpha}/P_1 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha}/P_2$, 
+
+which simplifies to 
+
+$\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)$. 
+
+Rearranging gives 
+
+$d_2 = ((1-\alpha)/\alpha)(P_1/P_2)d_1$. This comes from cross-multiplying $\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)$ and solving for $d_2$.<br>
+
+Substitute into the budget constraint: 
+$P_1 d_1 + P_2 d_2 = y_N$ 
+
+becomes 
+
+$P_1 d_1 + P_2((1-\alpha)/\alpha)(P_1/P_2)d_1 = y_N$, 
+
+so $d_1(1 + (1-\alpha)/\alpha) = y_N/P_1$.<br>
+Hence $d_1^* = \alpha(y_N/P_1)$ and $d_2^* = (1-\alpha)(y_N/P_2)$.
 
 **(e)** Expand $y_N$: $d_1^* = \alpha(s_1 + (P_2/P_1)s_2)$ and $d_2^* = (1-\alpha)((P_1/P_2)s_1 + s_2)$. If all prices double, relative prices are unchanged, so demands are unchanged.
 

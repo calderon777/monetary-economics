@@ -15,7 +15,7 @@ format:
     toc: true
     number-sections: true
 bibliography: references.bib
-csl: https://www.zotero.org/styles/harvard-cite-them-right
+csl: harvard-cite-them-right.csl
 link-citations: true
 ---
 
