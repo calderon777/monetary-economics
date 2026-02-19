@@ -482,17 +482,12 @@ window.Quarto = {
 </ol>
 <section id="indicative-answer" class="level3">
 <h3 class="anchored" data-anchor-id="indicative-answer">Indicative Answer</h3>
-<p><strong>(a)</strong> Nominal income: <span class="math inline">\(y_N = P_1 s_1 + P_2 s_2\)</span></p>
-<p><strong>(b)</strong> Budget constraint: <span class="math inline">\(P_1 d_1 + P_2 d_2 = y_N\)</span></p>
-<p><strong>(c)</strong> Utility maximisation problem using Lagrangian: <span class="math display">\[L = d_1^\alpha d_2^{(1-\alpha)} + \lambda[y_N - P_1 d_1 - P_2 d_2]\]</span></p>
-<p>First-order conditions: <span class="math display">\[\frac{\partial L}{\partial d_1} = \alpha\left(\frac{d_2}{d_1}\right)^{(1-\alpha)} - \lambda P_1 = 0\]</span> <span class="math display">\[\frac{\partial L}{\partial d_2} = (1-\alpha)\left(\frac{d_1}{d_2}\right)^\alpha - \lambda P_2 = 0\]</span> <span class="math display">\[\frac{\partial L}{\partial \lambda} = y_N - P_1 d_1 - P_2 d_2 = 0\]</span></p>
-<p><strong>(d)</strong> Combining FOCs yields: <span class="math display">\[d_1^* = \alpha\left(\frac{y_N}{P_1}\right)\]</span> <span class="math display">\[d_2^* = (1-\alpha)\left(\frac{y_N}{P_2}\right)\]</span></p>
-<p>These represent optimal choices (demands).</p>
-<p><strong>(e)</strong> Expanding <span class="math inline">\(y_N\)</span>: <span class="math display">\[d_1^* = \alpha\left[s_1 + \frac{P_2}{P_1}s_2\right]\]</span> <span class="math display">\[d_2^* = (1-\alpha)\left[\frac{P_1}{P_2}s_1 + s_2\right]\]</span></p>
-<p>If all prices double, the ratios <span class="math inline">\(P_1/P_2\)</span> and <span class="math inline">\(P_2/P_1\)</span> are unaffected, so demands remain unchanged. This reflects the homogeneity of demand functions.</p>
-<p><strong>(f)</strong> With <span class="math inline">\(s_1=2\)</span>, <span class="math inline">\(s_2=10\)</span>, <span class="math inline">\(P_1=2\)</span>, <span class="math inline">\(P_2=1\)</span>, <span class="math inline">\(\alpha=0.5\)</span>: <span class="math display">\[d_1^* = 0.5\left[2 + \frac{1}{2}(10)\right] = 3.5\]</span> <span class="math display">\[d_2^* = 0.5\left[\frac{2}{1}(2) + 10\right] = 7\]</span></p>
-<p>Net purchase: <span class="math display">\[d_1^* - s_1 = 3.5 - 2 = 1.5 \text{ (net purchase of good 1)}\]</span> <span class="math display">\[d_2^* - s_2 = 7 - 10 = -3 \text{ (net sale of good 2)}\]</span></p>
-<p>Note that net purchase of 1 = net sale of 2 in value terms.</p>
+<p><strong>(a)</strong> Nominal income: <span class="math inline">\(y_N = P_1 s_1 + P_2 s_2\)</span>.</p>
+<p><strong>(b)</strong> Budget constraint: <span class="math inline">\(P_1 d_1 + P_2 d_2 = y_N\)</span>.</p>
+<p><strong>(c)</strong> Lagrangian (reminder: set each partial derivative to zero): <span class="math inline">\(L = d_1^\alpha d_2^{1-\alpha} + \lambda(y_N - P_1 d_1 - P_2 d_2)\)</span>. FOCs: <span class="math inline">\(\partial L/\partial d_1 = \alpha d_1^{\alpha-1} d_2^{1-\alpha} - \lambda P_1 = 0\)</span>, <span class="math inline">\(\partial L/\partial d_2 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha} - \lambda P_2 = 0\)</span>, and <span class="math inline">\(\partial L/\partial \lambda = y_N - P_1 d_1 - P_2 d_2 = 0\)</span>.</p>
+<p><strong>(d)</strong> Divide FOCs: <span class="math inline">\(\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)\)</span>, so <span class="math inline">\(d_2 = ((1-\alpha)/\alpha)(P_1/P_2)d_1\)</span>. Substitute into the budget constraint to get <span class="math inline">\(d_1^* = \alpha(y_N/P_1)\)</span> and <span class="math inline">\(d_2^* = (1-\alpha)(y_N/P_2)\)</span>.</p>
+<p><strong>(e)</strong> Expand <span class="math inline">\(y_N\)</span>: <span class="math inline">\(d_1^* = \alpha(s_1 + (P_2/P_1)s_2)\)</span> and <span class="math inline">\(d_2^* = (1-\alpha)((P_1/P_2)s_1 + s_2)\)</span>. If all prices double, relative prices are unchanged, so demands are unchanged.</p>
+<p><strong>(f)</strong> With <span class="math inline">\(s_1=2\)</span>, <span class="math inline">\(s_2=10\)</span>, <span class="math inline">\(P_1=2\)</span>, <span class="math inline">\(P_2=1\)</span>, <span class="math inline">\(\alpha=0.5\)</span>, <span class="math inline">\(d_1^* = 3.5\)</span> and <span class="math inline">\(d_2^* = 7\)</span>. Net purchases: <span class="math inline">\(d_1^* - s_1 = 1.5\)</span> and <span class="math inline">\(d_2^* - s_2 = -3\)</span>.</p>
 <hr>
 </section>
 </section>
@@ -507,14 +502,11 @@ window.Quarto = {
 <section id="indicative-answer-1" class="level3">
 <h3 class="anchored" data-anchor-id="indicative-answer-1">Indicative Answer</h3>
 <p><strong>(a)</strong> Budget constraints:</p>
-<p><strong>Nominal terms:</strong> <span class="math display">\[\text{Agent A: } P_1 d_1^{A*} + P_2 d_2^{A*} \leq P_1 s_1^A + P_2 s_2^A\]</span> <span class="math display">\[\text{Agent B: } P_1 d_1^{B*} + P_2 d_2^{B*} \leq P_1 s_1^B + P_2 s_2^B\]</span></p>
-<p><strong>Real terms (good 1 as numeraire):</strong> <span class="math display">\[\text{Agent A: } d_1^{A*} + \frac{P_2}{P_1}d_2^{A*} \leq s_1^A + \frac{P_2}{P_1}s_2^A\]</span> <span class="math display">\[\text{Agent B: } d_1^{B*} + \frac{P_2}{P_1}d_2^{B*} \leq s_1^B + \frac{P_2}{P_1}s_2^B\]</span></p>
-<p>where demands are functions of relative price and real income.</p>
-<p><strong>(b)</strong> Market clearing conditions: <span class="math display">\[\text{Good 1: } d_1^{A*} + d_1^{B*} = s_1^A + s_1^B \rightarrow D_1 = S_1\]</span> <span class="math display">\[\text{Good 2: } d_2^{A*} + d_2^{B*} = s_2^A + s_2^B \rightarrow D_2 = S_2\]</span></p>
+<p><strong>Nominal terms:</strong> Agent A: <span class="math inline">\(P_1 d_1^{A*} + P_2 d_2^{A*} \leq P_1 s_1^A + P_2 s_2^A\)</span>. Agent B: <span class="math inline">\(P_1 d_1^{B*} + P_2 d_2^{B*} \leq P_1 s_1^B + P_2 s_2^B\)</span>.</p>
+<p><strong>Real terms (good 1 as numeraire):</strong> Agent A: <span class="math inline">\(d_1^{A*} + (P_2/P_1)d_2^{A*} \leq s_1^A + (P_2/P_1)s_2^A\)</span>. Agent B: <span class="math inline">\(d_1^{B*} + (P_2/P_1)d_2^{B*} \leq s_1^B + (P_2/P_1)s_2^B\)</span>.</p>
+<p><strong>(b)</strong> Market clearing: <span class="math inline">\(d_1^{A*} + d_1^{B*} = s_1^A + s_1^B\)</span> and <span class="math inline">\(d_2^{A*} + d_2^{B*} = s_2^A + s_2^B\)</span>.</p>
 <p><strong>(c)</strong> Suppose <span class="math inline">\(D_1 = S_1\)</span> (good 1 market clears) and budget constraints bind (hold as “=”).</p>
-<p>Adding both agents’ real budget constraints: <span class="math display">\[d_1^{A*} + \frac{P_2}{P_1}d_2^{A*} + d_1^{B*} + \frac{P_2}{P_1}d_2^{B*} = s_1^A + \frac{P_2}{P_1}s_2^A + s_1^B + \frac{P_2}{P_1}s_2^B\]</span></p>
-<p>Rearranging: <span class="math display">\[(d_1^{A*} + d_1^{B*}) + \frac{P_2}{P_1}(d_2^{A*} + d_2^{B*}) = (s_1^A + s_1^B) + \frac{P_2}{P_1}(s_2^A + s_2^B)\]</span></p>
-<p>Since <span class="math inline">\(D_1 = S_1\)</span>, the terms in first brackets cancel: <span class="math display">\[\frac{P_2}{P_1}(d_2^{A*} + d_2^{B*}) = \frac{P_2}{P_1}(s_2^A + s_2^B)\]</span> Therefore: <span class="math inline">\(D_2 = S_2\)</span></p>
+<p>Adding both real budget constraints gives <span class="math inline">\((d_1^{A*} + d_1^{B*}) + (P_2/P_1)(d_2^{A*} + d_2^{B*}) = (s_1^A + s_1^B) + (P_2/P_1)(s_2^A + s_2^B)\)</span>. Since <span class="math inline">\(D_1 = S_1\)</span>, this implies <span class="math inline">\((P_2/P_1)(d_2^{A*} + d_2^{B*}) = (P_2/P_1)(s_2^A + s_2^B)\)</span>, so <span class="math inline">\(D_2 = S_2\)</span>.</p>
 <p><strong>This establishes Walras’ Law</strong>: If n-1 markets clear and all budget constraints bind, the nth market must also clear.</p>
 
 
