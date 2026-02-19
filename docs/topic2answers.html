@@ -484,6 +484,32 @@ window.Quarto = {
 <h3 class="anchored" data-anchor-id="indicative-answer">Indicative Answer</h3>
 <p><strong>(a)</strong> Nominal income: <span class="math inline">\(y_N = P_1 s_1 + P_2 s_2\)</span>.</p>
 <p><strong>(b)</strong> Budget constraint: <span class="math inline">\(P_1 d_1 + P_2 d_2 = y_N\)</span>.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>What is the Lagrangian?</strong> It is the utility plus the constraint weighted by <span class="math inline">\(\lambda\)</span>, so <span class="math inline">\(L = U + \lambda(y_N - P_1 d_1 - P_2 d_2)\)</span>. It lets you enforce the budget while taking derivatives.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Derivation example (quick):</strong> After writing FOCs, divide the <span class="math inline">\(d_1\)</span> FOC by the <span class="math inline">\(d_2\)</span> FOC to remove <span class="math inline">\(\lambda\)</span>, giving <span class="math inline">\(\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)\)</span>. Then use the budget constraint to solve for <span class="math inline">\(d_1^*\)</span> and <span class="math inline">\(d_2^*\)</span>.</p>
+</div>
+</div>
 <p><strong>(c)</strong> Lagrangian (reminder: set each partial derivative to zero): <span class="math inline">\(L = d_1^\alpha d_2^{1-\alpha} + \lambda(y_N - P_1 d_1 - P_2 d_2)\)</span>. FOCs: <span class="math inline">\(\partial L/\partial d_1 = \alpha d_1^{\alpha-1} d_2^{1-\alpha} - \lambda P_1 = 0\)</span>, <span class="math inline">\(\partial L/\partial d_2 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha} - \lambda P_2 = 0\)</span>, and <span class="math inline">\(\partial L/\partial \lambda = y_N - P_1 d_1 - P_2 d_2 = 0\)</span>.</p>
 <p><strong>(d)</strong> Divide FOCs: <span class="math inline">\(\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)\)</span>, so <span class="math inline">\(d_2 = ((1-\alpha)/\alpha)(P_1/P_2)d_1\)</span>. Substitute into the budget constraint to get <span class="math inline">\(d_1^* = \alpha(y_N/P_1)\)</span> and <span class="math inline">\(d_2^* = (1-\alpha)(y_N/P_2)\)</span>.</p>
 <p><strong>(e)</strong> Expand <span class="math inline">\(y_N\)</span>: <span class="math inline">\(d_1^* = \alpha(s_1 + (P_2/P_1)s_2)\)</span> and <span class="math inline">\(d_2^* = (1-\alpha)((P_1/P_2)s_1 + s_2)\)</span>. If all prices double, relative prices are unchanged, so demands are unchanged.</p>

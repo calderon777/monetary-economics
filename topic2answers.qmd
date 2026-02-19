@@ -20,6 +20,14 @@ format: html
 
 **(b)** Budget constraint: $P_1 d_1 + P_2 d_2 = y_N$.
 
+::: {.callout-note}
+**What is the Lagrangian?** It is the utility plus the constraint weighted by $\lambda$, so $L = U + \lambda(y_N - P_1 d_1 - P_2 d_2)$. It lets you enforce the budget while taking derivatives.
+:::
+
+::: {.callout-tip}
+**Derivation example (quick):** After writing FOCs, divide the $d_1$ FOC by the $d_2$ FOC to remove $\lambda$, giving $\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)$. Then use the budget constraint to solve for $d_1^*$ and $d_2^*$.
+:::
+
 **(c)** Lagrangian (reminder: set each partial derivative to zero): $L = d_1^\alpha d_2^{1-\alpha} + \lambda(y_N - P_1 d_1 - P_2 d_2)$. FOCs: $\partial L/\partial d_1 = \alpha d_1^{\alpha-1} d_2^{1-\alpha} - \lambda P_1 = 0$, $\partial L/\partial d_2 = (1-\alpha) d_1^{\alpha} d_2^{-\alpha} - \lambda P_2 = 0$, and $\partial L/\partial \lambda = y_N - P_1 d_1 - P_2 d_2 = 0$.
 
 **(d)** Divide FOCs: $\alpha/(1-\alpha) = (P_1 d_1)/(P_2 d_2)$, so $d_2 = ((1-\alpha)/\alpha)(P_1/P_2)d_1$. Substitute into the budget constraint to get $d_1^* = \alpha(y_N/P_1)$ and $d_2^* = (1-\alpha)(y_N/P_2)$.
