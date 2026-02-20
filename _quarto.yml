@@ -52,6 +52,8 @@ website:
             file: topic3questions.qmd
           - text: "MCQs"
             file: topic3mcqs.qmd
+          - text: "Optional: Debate Lab"
+            file: topic3ludic.qmd
       - section: "Topic 4 - Friedman's Monetarism"
         contents:
           - text: "Reading"

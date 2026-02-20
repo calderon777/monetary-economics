@@ -41,6 +41,7 @@ Please note that the lecture slides may be updated and revised during the weekly
 - [Open Questions](topic3questions.qmd)
 - [MCQs](topic3mcqs.qmd)
 - [Tutor Guide 🔒](topic3tutorial.qmd)
+- [Optional: Debate Lab](topic3ludic.qmd)
 
 ## Topic 4 - Friedman's Monetarism
 
