@@ -8,14 +8,14 @@ SYSTEM_CLASSICAL = (
     "You are the Classical team (Leon Walras + Alfred Marshall). "
     "Speak with one unified voice. Emphasize general equilibrium, Walras' Law, "
     "the classical dichotomy, long-run neutrality, and the Cambridge cash-balance view. "
-    "Be precise, persuasive, and concise."
+    "Be EXTREMELY concise: maximum 8-10 sentences. Cut ruthlessly—avoid repetition."
 )
 
 SYSTEM_KEYNESIAN = (
     "You are the Keynesian team (John Maynard Keynes + John Hicks). "
     "Speak with one unified voice. Emphasize liquidity preference, money demand motives, "
     "the liquidity trap, and IS-LM interactions with short-run non-neutrality. "
-    "Be precise, persuasive, and concise."
+    "Be EXTREMELY concise: maximum 8-10 sentences. Cut ruthlessly—avoid repetition."
 )
 
 ROUND_GUIDANCE = {
@@ -32,7 +32,7 @@ def build_messages(system_prompt, topic, round_label, history, user_question):
         f"Topic: {topic}\n"
         f"Round: {round_label}\n"
         f"Round guidance: {guidance}\n"
-        "Respond in 180-240 words. Avoid bullet lists unless asked."
+        "Keep response to 80-120 words (8-10 sentences max). Be direct and sharp. No fluff."
     )
     messages = [{"role": "system", "content": system}]
     for turn in history:
@@ -52,7 +52,41 @@ def get_ai_response(messages):
         model=MODEL_NAME,
         messages=messages,
         temperature=0.4,
-        max_tokens=650,
+        max_tokens=280,
+    )
+    return result.choices[0].message.content.strip()
+
+
+def get_moderator_analysis(topic, round_label, classical_response, keynesian_response):
+    """Get a moderator's analysis of who won the exchange."""
+    api_key = os.environ.get("GROQ_API_KEY")
+    if not api_key:
+        return "Moderator analysis unavailable."
+
+    client = Groq(api_key=api_key)
+    
+    moderator_prompt = f"""You are an expert economics moderator scoring this debate exchange.
+
+Topic: {topic}
+Round: {round_label}
+
+Classical argument: {classical_response}
+
+Keynesian argument: {keynesian_response}
+
+Score this exchange in 2-3 punchy sentences:
+1. Who made the stronger logically-supported argument?
+2. Rate decisiveness: "Classicals win this exchange—[reason]" or "Keynesians edge it—[reason]" or "Tight exchange—both solid"
+3. Be sharp, witty, fair. No fluff.
+
+Keep it brief and decisive."""
+
+    messages = [{"role": "user", "content": moderator_prompt}]
+    result = client.chat.completions.create(
+        model=MODEL_NAME,
+        messages=messages,
+        temperature=0.3,
+        max_tokens=150,
     )
     return result.choices[0].message.content.strip()
 
@@ -268,8 +302,8 @@ def render_history(history):
     return ui.div(*items)
 
 
-def render_unified_debate(classical_history, keynes_history):
-    """Render a unified debate transcript showing both teams alternating."""
+def render_unified_debate(classical_history, keynes_history, moderator_scores):
+    """Render a unified debate transcript showing both teams alternating with moderator analysis."""
     if not classical_history and not keynes_history:
         return ui.p("No debate yet. Submit a question to start.", style="color: #999;")
     
@@ -307,12 +341,28 @@ def render_unified_debate(classical_history, keynes_history):
                 )
             )
             exchange += 1
+            
+            # Show moderator analysis after each exchange
+            if i < len(moderator_scores):
+                moderator_comment = moderator_scores[i]
+                items.append(
+                    ui.div(
+                        ui.div(
+                            ui.span("🏆 Moderator's Scorecard", 
+                                   style="font-weight: bold; color: #8b6914; font-size: 0.95rem;"),
+                            ui.p(moderator_comment, style="margin-top: 8px; line-height: 1.5; color: #333; font-style: italic;"),
+                            style="padding: 12px; background: #fffbf0; border-left: 4px solid #d4af37;"
+                        ),
+                        style="margin-bottom: 16px;"
+                    )
+                )
     
     return ui.div(*items)
 
 
 classical_history = reactive.Value([])
 keynes_history = reactive.Value([])
+moderator_scores = reactive.Value([])
 status_message = reactive.Value("Ready.")
 current_topic = reactive.Value("")
 
@@ -339,6 +389,7 @@ def server(input, output, session):
     def _clear_all():
         classical_history.set([])
         keynes_history.set([])
+        moderator_scores.set([])
         current_topic.set("")
         status_message.set("🗑️ Cleared. Enter a topic and question to start fresh.")
 
@@ -403,6 +454,10 @@ def server(input, output, session):
         )
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
 
+        # Get moderator analysis for this exchange
+        status_message.set("📋 Moderator is scoring the exchange...")
+        moderator_comment = get_moderator_analysis(topic, round_label, classical_reply, keynes_reply)
+
         # Store the full exchange in history
         classical_history.set(
             classical_history.get() + [
@@ -416,6 +471,7 @@ def server(input, output, session):
                 {"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply}
             ]
         )
+        moderator_scores.set(moderator_scores.get() + [moderator_comment])
 
         status_message.set(f"✅ Debate round complete! Ready for your next question on '{topic}' — or change the topic and Clear to start fresh.")
 
@@ -427,7 +483,7 @@ def server(input, output, session):
     @output
     @render.ui
     def debate_transcript():
-        return render_unified_debate(classical_history.get(), keynes_history.get())
+        return render_unified_debate(classical_history.get(), keynes_history.get(), moderator_scores.get())
 
 
 app = App(app_ui, server)
