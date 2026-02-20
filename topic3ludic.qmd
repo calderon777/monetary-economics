@@ -22,28 +22,28 @@ This ludic activity turns Topics 1-3 into a live debate. You will prompt two AI 
 
 <div class="debate-cards" role="list">
 <figure class="debate-card" role="listitem">
-<img src="figs/walras-ai.jpg" alt="AI-generated portrait of Leon Walras" style="filter: grayscale(100%); object-fit: cover;" />
+<img src="figs/Portrait of Leon Walras in 1880s.png" alt="AI-generated portrait of Leon Walras" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>Leon Walras</strong><br />
 Classical — General equilibrium
 </figcaption>
 </figure>
 <figure class="debate-card" role="listitem">
-<img src="figs/marshall-ai.jpg" alt="AI-generated portrait of Alfred Marshall" style="filter: grayscale(100%); object-fit: cover;" />
+<img src="figs/Portrait of Alfred Marshall, 1890s.png" alt="AI-generated portrait of Alfred Marshall" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>Alfred Marshall</strong><br />
 Classical — Cambridge cash balances
 </figcaption>
 </figure>
 <figure class="debate-card" role="listitem">
-<img src="figs/keynes-ai.jpg" alt="AI-generated portrait of John Maynard Keynes" style="filter: grayscale(100%); object-fit: cover;" />
+<img src="figs/Portrait of John Maynard Keynes.png" alt="AI-generated portrait of John Maynard Keynes" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>John Maynard Keynes</strong><br />
 Keynesian — Liquidity preference
 </figcaption>
 </figure>
 <figure class="debate-card" role="listitem">
-<img src="figs/hicks-ai.jpg" alt="AI-generated portrait of John Hicks" style="filter: grayscale(100%); object-fit: cover;" />
+<img src="figs/John Hicks, British economist in portrait.png" alt="AI-generated portrait of John Hicks" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>John Hicks</strong><br />
 Keynesian — IS-LM synthesis
