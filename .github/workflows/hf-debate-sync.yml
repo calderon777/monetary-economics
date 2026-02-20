@@ -1,0 +1,43 @@
+name: Sync HF Debate Space
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'hf-spaces/debate/**'
+      - '.github/workflows/hf-debate-sync.yml'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Push Debate Space files to Hugging Face
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        run: |
+          set -euo pipefail
+          if [ -z "${HF_TOKEN}" ]; then
+            echo "HF_TOKEN secret is not set."
+            exit 1
+          fi
+
+          HF_REPO="camcalderon777/ai-persona-debate"
+          WORKDIR="$(mktemp -d)"
+
+          # Copy debate app files
+          cp hf-spaces/debate/app.py hf-spaces/debate/requirements.txt hf-spaces/debate/Dockerfile "${WORKDIR}/"
+          
+          # Copy README if it exists
+          cp hf-spaces/debate/README.md "${WORKDIR}/" 2>/dev/null || true
+
+          cd "${WORKDIR}"
+          git init
+          git config user.name "github-actions"
+          git config user.email "github-actions@users.noreply.github.com"
+          git add .
+          git commit -m "Sync from GitHub: $(date -u +'%Y-%m-%d %H:%M:%S UTC')"
+          git remote add origin "https://oauth2:${HF_TOKEN}@huggingface.co/spaces/${HF_REPO}"
+          git push --force origin HEAD:main
+          
+          echo "✅ Successfully synced ${HF_REPO} to Hugging Face"
