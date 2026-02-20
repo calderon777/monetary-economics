@@ -63,7 +63,42 @@ The **interactive app** below runs a live debate between two AI "teams":
 
 Simply enter your debate topic and pose a focused question. Each team responds in character, and you can follow up with challenge questions across three rounds.
 
-<iframe src="https://huggingface.co/spaces/camcalderon777/ai-persona-debate/embed" frameborder="0" width="100%" height="1400"></iframe>
+<script>
+// Clear HF Spaces iframe cache and localStorage on page load to prevent persistent debates
+document.addEventListener('DOMContentLoaded', function() {
+  // Clear any cached HF Spaces storage
+  try {
+    const iframeOrigin = 'https://huggingface.co';
+    if (window.localStorage) {
+      // Clear keys that might be related to debates
+      const keysToCheck = ['debate', 'topic', 'history', 'bitcoin', 'discussion'];
+      keysToCheck.forEach(key => {
+        for (let i = 0; i < localStorage.length; i++) {
+          const k = localStorage.key(i);
+          if (k && k.toLowerCase().includes(key)) {
+            localStorage.removeItem(k);
+          }
+        }
+      });
+    }
+  } catch (e) {
+    console.log('Note: Cross-origin storage clearing not needed on first load');
+  }
+  
+  // Force iframe refresh with cache buster
+  const iframe = document.querySelector('iframe[src*="huggingface.co/spaces/camcalderon777/ai-persona-debate"]');
+  if (iframe) {
+    const timestamp = new Date().getTime();
+    const src = iframe.getAttribute('src');
+    // Add cache buster parameter if not already present
+    if (src && !src.includes('?')) {
+      iframe.setAttribute('src', src + '?v=' + timestamp);
+    }
+  }
+});
+</script>
+
+<iframe src="https://huggingface.co/spaces/camcalderon777/ai-persona-debate/embed" frameborder="0" width="100%" height="1400" title="AI Persona Debate - Classical vs Keynesian Economics"></iframe>
 
 ### How to Use
 
