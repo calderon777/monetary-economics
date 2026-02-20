@@ -22,35 +22,31 @@ This ludic activity turns Topics 1-3 into a live debate. You will prompt two AI 
 
 <div class="debate-cards" role="list">
 <figure class="debate-card" role="listitem">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/L%C3%A9on_Walras.jpg" alt="Portrait of Leon Walras" />
+<img src="figs/walras-ai.jpg" alt="AI-generated portrait of Leon Walras" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>Leon Walras</strong><br />
 Classical — General equilibrium
-<span class="debate-source"><a href="https://commons.wikimedia.org/wiki/File:L%C3%A9on_Walras.jpg">Source</a></span>
 </figcaption>
 </figure>
 <figure class="debate-card" role="listitem">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/Alfred_Marshall.jpg" alt="Portrait of Alfred Marshall" />
+<img src="figs/marshall-ai.jpg" alt="AI-generated portrait of Alfred Marshall" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>Alfred Marshall</strong><br />
 Classical — Cambridge cash balances
-<span class="debate-source"><a href="https://commons.wikimedia.org/wiki/File:Alfred_Marshall.jpg">Source</a></span>
 </figcaption>
 </figure>
 <figure class="debate-card" role="listitem">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/John_Maynard_Keynes_1933.jpg" alt="Portrait of John Maynard Keynes" />
+<img src="figs/keynes-ai.jpg" alt="AI-generated portrait of John Maynard Keynes" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>John Maynard Keynes</strong><br />
 Keynesian — Liquidity preference
-<span class="debate-source"><a href="https://commons.wikimedia.org/wiki/File:John_Maynard_Keynes_1933.jpg">Source</a></span>
 </figcaption>
 </figure>
 <figure class="debate-card" role="listitem">
-<img src="https://commons.wikimedia.org/wiki/Special:FilePath/John_Hicks_1976.jpg" alt="Portrait of John Hicks" />
+<img src="figs/hicks-ai.jpg" alt="AI-generated portrait of John Hicks" style="filter: grayscale(100%); object-fit: cover;" />
 <figcaption>
 <strong>John Hicks</strong><br />
 Keynesian — IS-LM synthesis
-<span class="debate-source"><a href="https://commons.wikimedia.org/wiki/File:John_Hicks_1976.jpg">Source</a></span>
 </figcaption>
 </figure>
 </div>
