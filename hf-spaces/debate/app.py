@@ -4,6 +4,14 @@ import os
 
 MODEL_NAME = "llama-3.3-70b-versatile"
 
+# Historical economist photos (public domain, Wikimedia Commons)
+ECONOMIST_PHOTOS = {
+    "walras": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8a/L%C3%A9on_Walras.jpg/220px-L%C3%A9on_Walras.jpg",
+    "marshall": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Alfred_Marshall.jpg/220px-Alfred_Marshall.jpg",
+    "keynes": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/John_Maynard_Keynes.jpg/220px-John_Maynard_Keynes.jpg",
+    "hicks": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/15/Hicks%2C_John_1972_Gothenburg.jpg/220px-Hicks%2C_John_1972_Gothenburg.jpg"
+}
+
 SYSTEM_CLASSICAL = (
     "You are the Classical team (Leon Walras + Alfred Marshall). "
     "Speak with one unified voice. Emphasize general equilibrium, Walras' Law, "
@@ -317,8 +325,16 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores):
             items.append(
                 ui.div(
                     ui.div(
-                        ui.span(f"Exchange {exchange} — Classicals (Walras & Marshall)", 
-                               style="font-weight: bold; color: #2c5aa0; font-size: 0.95rem;"),
+                        # Classical economists header with photos
+                        ui.div(
+                            ui.img(src=ECONOMIST_PHOTOS["walras"], 
+                                  style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); border: 2px solid #2c5aa0; margin-right: 8px;"),
+                            ui.img(src=ECONOMIST_PHOTOS["marshall"], 
+                                  style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); border: 2px solid #2c5aa0; margin-right: 12px;"),
+                            ui.span(f"Exchange {exchange} — Classicals (Walras & Marshall)", 
+                                   style="font-weight: bold; color: #2c5aa0; font-size: 0.95rem; vertical-align: middle;"),
+                            style="display: flex; align-items: center; margin-bottom: 10px;"
+                        ),
                         ui.p(classical_turn["assistant"], style="margin-top: 8px; line-height: 1.6; color: #333;"),
                         style="padding: 12px; background: #eef3ff; border-left: 4px solid #2c5aa0;"
                     ),
@@ -332,8 +348,16 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores):
             items.append(
                 ui.div(
                     ui.div(
-                        ui.span(f"Exchange {exchange} — Keynesians (Keynes & Hicks)", 
-                               style="font-weight: bold; color: #a0572c; font-size: 0.95rem;"),
+                        # Keynesian economists header with photos
+                        ui.div(
+                            ui.img(src=ECONOMIST_PHOTOS["keynes"], 
+                                  style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); border: 2px solid #a0572c; margin-right: 8px;"),
+                            ui.img(src=ECONOMIST_PHOTOS["hicks"], 
+                                  style="width: 45px; height: 45px; border-radius: 50%; object-fit: cover; filter: grayscale(100%); border: 2px solid #a0572c; margin-right: 12px;"),
+                            ui.span(f"Exchange {exchange} — Keynesians (Keynes & Hicks)", 
+                                   style="font-weight: bold; color: #a0572c; font-size: 0.95rem; vertical-align: middle;"),
+                            style="display: flex; align-items: center; margin-bottom: 10px;"
+                        ),
                         ui.p(keynes_turn["assistant"], style="margin-top: 8px; line-height: 1.6; color: #333;"),
                         style="padding: 12px; background: #fff5e6; border-left: 4px solid #a0572c;"
                     ),
