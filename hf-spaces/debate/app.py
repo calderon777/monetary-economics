@@ -32,7 +32,7 @@ def build_messages(system_prompt, topic, round_label, history, user_question):
         f"Topic: {topic}\n"
         f"Round: {round_label}\n"
         f"Round guidance: {guidance}\n"
-        "Keep response to 80-120 words (8-10 sentences max). Be direct and sharp. No fluff."
+        "Keep response to 150-180 words (12-15 sentences). Be precise, persuasive, and sharp. Avoid waffle."
     )
     messages = [{"role": "system", "content": system}]
     for turn in history:
@@ -52,7 +52,7 @@ def get_ai_response(messages):
         model=MODEL_NAME,
         messages=messages,
         temperature=0.4,
-        max_tokens=280,
+        max_tokens=400,
     )
     return result.choices[0].message.content.strip()
 
@@ -303,7 +303,7 @@ def render_history(history):
 
 
 def render_unified_debate(classical_history, keynes_history, moderator_scores):
-    """Render a unified debate transcript showing both teams alternating with moderator analysis."""
+    """Render a unified debate transcript showing both teams alternating, with moderator summary at end."""
     if not classical_history and not keynes_history:
         return ui.p("No debate yet. Submit a question to start.", style="color: #999;")
     
@@ -341,21 +341,24 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores):
                 )
             )
             exchange += 1
-            
-            # Show moderator analysis after each exchange
-            if i < len(moderator_scores):
-                moderator_comment = moderator_scores[i]
-                items.append(
-                    ui.div(
-                        ui.div(
-                            ui.span("🏆 Moderator's Scorecard", 
-                                   style="font-weight: bold; color: #8b6914; font-size: 0.95rem;"),
-                            ui.p(moderator_comment, style="margin-top: 8px; line-height: 1.5; color: #333; font-style: italic;"),
-                            style="padding: 12px; background: #fffbf0; border-left: 4px solid #d4af37;"
-                        ),
-                        style="margin-bottom: 16px;"
-                    )
-                )
+    
+    # Add moderator summary at the end
+    if moderator_scores:
+        items.append(
+            ui.div(
+                ui.html("<hr style='margin: 20px 0; border: none; border-top: 2px solid #d4af37;'>"),
+                ui.div(
+                    ui.span("🏆 Moderator's Final Scorecard", 
+                           style="font-weight: bold; color: #8b6914; font-size: 1.1rem; display: block; margin-bottom: 12px;"),
+                    ui.html("<br>".join(
+                        f"<div style='margin-bottom: 10px;'><strong>Exchange {i+1}:</strong> {score}</div>" 
+                        for i, score in enumerate(moderator_scores)
+                    )),
+                    style="padding: 16px; background: #fffbf0; border-left: 4px solid #d4af37; border-radius: 6px;"
+                ),
+                style="margin-top: 20px;"
+            )
+        )
     
     return ui.div(*items)
 
@@ -453,27 +456,56 @@ def server(input, output, session):
             keynes_rebuttal,
         )
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
+        status_message.set("📝 Keynesians have rebuted. Classicals are preparing their final response...")
 
-        # Get moderator analysis for this exchange
-        status_message.set("📋 Moderator is scoring the exchange...")
-        moderator_comment = get_moderator_analysis(topic, round_label, classical_reply, keynes_reply)
+        # EXCHANGE 3: Classicals final response
+        classical_final = f"The Keynesians just argued: \"{keynes_rebuttal_reply}\"\n\nDeliver your final response to their argument."
+        classical_msgs_3 = build_messages(
+            SYSTEM_CLASSICAL,
+            topic,
+            round_label,
+            classical_history.get(),
+            classical_final,
+        )
+        classical_final_reply = get_ai_response(classical_msgs_3)
+        status_message.set("📝 Classicals have responded. Keynesians are preparing their final word...")
 
-        # Store the full exchange in history
+        # EXCHANGE 3 (continued): Keynesians final word
+        keynes_final = f"The Classicals just concluded: \"{classical_final_reply}\"\n\nDeliver your final word on this debate."
+        keynes_msgs_3 = build_messages(
+            SYSTEM_KEYNESIAN,
+            topic,
+            round_label,
+            keynes_history.get(),
+            keynes_final,
+        )
+        keynes_final_reply = get_ai_response(keynes_msgs_3)
+
+        # Store all exchanges in history
         classical_history.set(
             classical_history.get() + [
                 {"user": question, "assistant": classical_reply},
-                {"user": keynes_rebuttal, "assistant": classical_counter_reply}
+                {"user": keynes_rebuttal, "assistant": classical_counter_reply},
+                {"user": keynes_final, "assistant": classical_final_reply}
             ]
         )
         keynes_history.set(
             keynes_history.get() + [
                 {"user": keynes_opening, "assistant": keynes_reply},
-                {"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply}
+                {"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply},
+                {"user": classical_final, "assistant": keynes_final_reply}
             ]
         )
-        moderator_scores.set(moderator_scores.get() + [moderator_comment])
 
-        status_message.set(f"✅ Debate round complete! Ready for your next question on '{topic}' — or change the topic and Clear to start fresh.")
+        # Get moderator analysis for all exchanges at the end
+        status_message.set("📋 Moderator is scoring all exchanges...")
+        moderator_comment_1 = get_moderator_analysis(topic, round_label, classical_reply, keynes_reply)
+        moderator_comment_2 = get_moderator_analysis(topic, round_label, classical_counter_reply, keynes_rebuttal_reply)
+        moderator_comment_3 = get_moderator_analysis(topic, round_label, classical_final_reply, keynes_final_reply)
+        
+        moderator_scores.set([moderator_comment_1, moderator_comment_2, moderator_comment_3])
+
+        status_message.set(f"✅ Debate complete! 3 exchanges scored. Ready for your next question on '{topic}' — or change the topic and Clear to start fresh.")
 
     @output
     @render.ui
