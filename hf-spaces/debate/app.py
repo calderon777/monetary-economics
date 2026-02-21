@@ -346,11 +346,11 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores):
     if moderator_scores:
         items.append(
             ui.div(
-                ui.html("<hr style='margin: 20px 0; border: none; border-top: 2px solid #d4af37;'>"),
+                ui.HTML("<hr style='margin: 20px 0; border: none; border-top: 2px solid #d4af37;'>"),
                 ui.div(
                     ui.span("🏆 Moderator's Final Scorecard", 
                            style="font-weight: bold; color: #8b6914; font-size: 1.1rem; display: block; margin-bottom: 12px;"),
-                    ui.html("<br>".join(
+                    ui.HTML("<br>".join(
                         f"<div style='margin-bottom: 10px;'><strong>Exchange {i+1}:</strong> {score}</div>" 
                         for i, score in enumerate(moderator_scores)
                     )),
