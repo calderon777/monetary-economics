@@ -54,26 +54,33 @@ To make the rubric fair, submit:
 
 1. **First draft lyrics/narrative** (before listening to the generated result)
 2. **Music prompt** (genre/mood/style)
-3. **Revised lyrics/narrative** (after listening and reflecting)
-4. **Short revision note (3-5 sentences)** explaining:
-   - what you changed
-   - why you changed it
-   - how the revision improved the economics
+3. **One or more improved re-submissions** under the same nickname (after listening and reflecting)
+4. **Final version submitted for scoring**
+
+> **Why no separate revision box?** For the pilot, improvement will be tracked by comparing submissions over time for the same nickname.
 
 <div class="song-form">
-  <label for="student-name"><strong>Name</strong></label>
-  <input id="student-name" type="text" placeholder="Your name" />
+  <label for="student-name"><strong>Student nickname</strong></label>
+  <input id="student-name" type="text" maxlength="30" placeholder="Choose a nickname (no real names needed)" />
 
   <label for="lyrics"><strong>Lyrics or narrative</strong></label>
-  <textarea id="lyrics" rows="6" placeholder="Write about inflation, interest rates, money demand..."></textarea>
+  <textarea id="lyrics" rows="6" maxlength="800" placeholder="Write about inflation, interest rates, money demand..."></textarea>
+  <div id="lyrics-meta" class="song-status" style="margin-top: 8px;">Lyrics: 0 words / 120 max (0/800 chars)</div>
 
   <label for="prompt"><strong>Music prompt</strong></label>
-  <input id="prompt" type="text" placeholder="e.g., calm jazz, upbeat pop, energetic rap" />
+  <input id="prompt" type="text" maxlength="140" placeholder="e.g., calm jazz, upbeat pop, energetic rap" />
+  <div id="prompt-meta" class="song-status" style="margin-top: 8px;">Prompt: 0 words / 20 max (0/140 chars)</div>
 
   <label for="api-base"><strong>ACE-Step API URL</strong></label>
   <input id="api-base" type="text" placeholder="http://127.0.0.1:8001" />
 
   <button id="generate-song" type="button">Generate Song (Local)</button>
+  <button id="submit-score" type="button">Submit for Scoring</button>
+  <label for="publish-community" style="margin-top: 10px;">
+    <input id="publish-community" type="checkbox" />
+    Publish this scored submission to the community listening list
+  </label>
+  <div id="attempt-meta" class="song-status">Generation attempts this session (nickname): 0/3</div>
   <div id="song-status" class="song-status">Waiting for input.</div>
 </div>
 
@@ -86,14 +93,50 @@ To make the rubric fair, submit:
   <div id="song-summary"></div>
 </div>
 
+### Economics X-Factor AI Judges (Frontend Preview)
+
+<div id="judge-panel">
+  <div id="judge-warning" class="song-status">No score yet. Submit after generating (or after drafting) to preview rubric scoring UI.</div>
+  <div id="judge-scores"></div>
+  <div id="judge-average"></div>
+</div>
+
+### Community Listening & Voting (Pilot Preview)
+
+<div id="community-board">
+  <div id="community-status" class="song-status">
+    Community playlist and voting will appear here once the backend is enabled.
+  </div>
+  <button id="refresh-community" type="button">Refresh Community Songs</button>
+  <div id="community-list"></div>
+</div>
+
 <script>
 (function() {
   var statusEl = document.getElementById("song-status");
   var audioEl = document.getElementById("song-audio");
   var summaryEl = document.getElementById("song-summary");
   var generateBtn = document.getElementById("generate-song");
+  var submitScoreBtn = document.getElementById("submit-score");
   var apiInputEl = document.getElementById("api-base");
+  var lyricsEl = document.getElementById("lyrics");
+  var promptEl = document.getElementById("prompt");
+  var nameEl = document.getElementById("student-name");
+  var publishCommunityEl = document.getElementById("publish-community");
+  var lyricsMetaEl = document.getElementById("lyrics-meta");
+  var promptMetaEl = document.getElementById("prompt-meta");
+  var attemptMetaEl = document.getElementById("attempt-meta");
+  var judgeWarningEl = document.getElementById("judge-warning");
+  var judgeScoresEl = document.getElementById("judge-scores");
+  var judgeAverageEl = document.getElementById("judge-average");
+  var communityStatusEl = document.getElementById("community-status");
+  var refreshCommunityBtn = document.getElementById("refresh-community");
+  var communityListEl = document.getElementById("community-list");
   var params = new URLSearchParams(window.location.search);
+  var MAX_LYRICS_WORDS = 120;
+  var MAX_PROMPT_WORDS = 20;
+  var MAX_GENERATE_ATTEMPTS_PER_NICK = 3;
+  var lastGeneratedMeta = null;
   var API_BASE = (
     window.ACESTEP_API_BASE ||
     params.get("acestep_api") ||
@@ -101,6 +144,49 @@ To make the rubric fair, submit:
     "http://127.0.0.1:8001"
   ).replace(/\/+$/, "");
   apiInputEl.value = API_BASE;
+
+  function countWords(text) {
+    var trimmed = String(text || "").trim();
+    return trimmed ? trimmed.split(/\s+/).length : 0;
+  }
+
+  function nickKey() {
+    var nick = (nameEl.value || "").trim().toLowerCase();
+    return nick || "anonymous";
+  }
+
+  function getAttemptCount() {
+    try {
+      if (window.localStorage) {
+        return parseInt(localStorage.getItem("topic2ludic_attempts_" + nickKey()) || "0", 10) || 0;
+      }
+    } catch (e) {}
+    return 0;
+  }
+
+  function setAttemptCount(count) {
+    try {
+      if (window.localStorage) {
+        localStorage.setItem("topic2ludic_attempts_" + nickKey(), String(count));
+      }
+    } catch (e) {}
+    updateAttemptMeta();
+  }
+
+  function updateAttemptMeta() {
+    attemptMetaEl.textContent =
+      "Generation attempts this session (nickname): " +
+      getAttemptCount() + "/" + MAX_GENERATE_ATTEMPTS_PER_NICK;
+  }
+
+  function updateInputMeta() {
+    var lyricsWords = countWords(lyricsEl.value);
+    var promptWords = countWords(promptEl.value);
+    lyricsMetaEl.textContent = "Lyrics: " + lyricsWords + " words / " + MAX_LYRICS_WORDS + " max (" + lyricsEl.value.length + "/800 chars)";
+    promptMetaEl.textContent = "Prompt: " + promptWords + " words / " + MAX_PROMPT_WORDS + " max (" + promptEl.value.length + "/140 chars)";
+    lyricsMetaEl.style.borderLeftColor = lyricsWords > MAX_LYRICS_WORDS ? "#dc3545" : "#0d6efd";
+    promptMetaEl.style.borderLeftColor = promptWords > MAX_PROMPT_WORDS ? "#dc3545" : "#0d6efd";
+  }
 
   function setStatus(text, isError) {
     statusEl.textContent = text;
@@ -129,6 +215,137 @@ To make the rubric fair, submit:
     return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(API_BASE);
   }
 
+  function validateInputs() {
+    var lyricsWords = countWords(lyricsEl.value);
+    var promptWords = countWords(promptEl.value);
+    if (lyricsWords > MAX_LYRICS_WORDS) {
+      setStatus("Lyrics are too long. Keep to " + MAX_LYRICS_WORDS + " words or fewer.", true);
+      return false;
+    }
+    if (promptWords > MAX_PROMPT_WORDS) {
+      setStatus("Music prompt is too long. Keep to " + MAX_PROMPT_WORDS + " words or fewer.", true);
+      return false;
+    }
+    return true;
+  }
+
+  function setJudgeWarning(text, isWarning) {
+    judgeWarningEl.textContent = text;
+    if (isWarning) {
+      judgeWarningEl.style.borderLeftColor = "#f59f00";
+      judgeWarningEl.style.backgroundColor = "#fff8e1";
+      judgeWarningEl.style.color = "#8a5a00";
+    } else {
+      judgeWarningEl.style.borderLeftColor = "#0d6efd";
+      judgeWarningEl.style.backgroundColor = "#f0f7ff";
+      judgeWarningEl.style.color = "#0c63e4";
+    }
+  }
+
+  function renderJudgeResults(name, result, modeLabel) {
+    var criteria = (result && result.criteria) || [];
+    var average = result && typeof result.average_score === "number" ? result.average_score : 0;
+    var feedbackMode = modeLabel || "Scored";
+
+    if (result && result.unreliable_warning) {
+      setJudgeWarning(
+        "Warning: score may be unreliable. " + ((result.unreliable_reasons || []).join(" ")),
+        true
+      );
+    } else {
+      setJudgeWarning("Scoring complete. Use the feedback to improve economics, then resubmit under the same nickname.", false);
+    }
+
+    judgeScoresEl.innerHTML = criteria.map(function(item) {
+      return (
+        "<div class=\"song-status\" style=\"margin-top:8px;\">" +
+        "<strong>" + htmlEscape(item.label) + " Judge</strong>: " +
+        htmlEscape(String(item.score)) + "/10" +
+        "<br><small>" + htmlEscape(item.feedback || "") + "</small>" +
+        "</div>"
+      );
+    }).join("");
+
+    judgeAverageEl.innerHTML =
+      "<p><strong>Average score (" + htmlEscape(feedbackMode) + "):</strong> " + Number(average).toFixed(1) + "/10</p>" +
+      "<p><strong>Nickname:</strong> " + htmlEscape(name || "Anonymous") + "</p>" +
+      (result && result.revision_type ? "<p><strong>Detected revision type:</strong> " + htmlEscape(result.revision_type) + "</p>" : "") +
+      (result && result.detected_topic_keywords && result.detected_topic_keywords.length
+        ? "<p><strong>Detected Topic 2 keywords:</strong> " + htmlEscape(result.detected_topic_keywords.join(", ")) + "</p>"
+        : "");
+  }
+
+  function renderCommunitySongs(data) {
+    var songs = (data && data.songs) || [];
+    communityStatusEl.textContent = songs.length
+      ? ("Community songs loaded: " + songs.length)
+      : "No community songs yet. Submit a scored song and tick 'Publish to community list'.";
+    if (!songs.length) {
+      communityListEl.innerHTML = "";
+      return;
+    }
+    communityListEl.innerHTML = songs.map(function(song) {
+      var audio = song.audio_url
+        ? ("<audio controls style=\"width:100%; margin-top:6px;\" src=\"" + htmlEscape(song.audio_url) + "\"></audio>")
+        : "<div class=\"song-status\" style=\"margin-top:6px;\">No audio URL saved for this submission.</div>";
+      return (
+        "<div class=\"song-status\" style=\"margin-top:8px;\">" +
+        "<strong>" + htmlEscape(song.nickname || "Anonymous") + "</strong> " +
+        "(score " + htmlEscape(String(song.average_score)) + "/10, votes " + htmlEscape(String(song.votes || 0)) + ")" +
+        "<br><small>Submission: " + htmlEscape(song.submission_id || "") + "</small>" +
+        audio +
+        "<button type=\"button\" class=\"vote-song\" data-submission-id=\"" + htmlEscape(song.submission_id || "") + "\" style=\"margin-top:6px;\">Vote</button>" +
+        "</div>"
+      );
+    }).join("");
+  }
+
+  async function loadCommunitySongs() {
+    var apiBase = getApiBase();
+    communityStatusEl.textContent = "Loading community songs...";
+    try {
+      var response = await fetch(apiBase + "/topic2/community-songs");
+      if (!response.ok) {
+        communityStatusEl.textContent = "Could not load community songs (HTTP " + response.status + ").";
+        return;
+      }
+      var data = await response.json();
+      renderCommunitySongs(data);
+    } catch (err) {
+      console.error("community-songs error:", err);
+      communityStatusEl.textContent = "Could not load community songs. Check backend availability and CORS.";
+    }
+  }
+
+  async function submitVote(submissionId) {
+    var nickname = nameEl.value.trim();
+    var apiBase = getApiBase();
+    if (!nickname) {
+      setStatus("Enter your nickname before voting on songs.", true);
+      return;
+    }
+    try {
+      var response = await fetch(apiBase + "/topic2/vote", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          voter_nickname: nickname,
+          submission_id: submissionId
+        })
+      });
+      var data = await response.json().catch(function() { return {}; });
+      if (!response.ok) {
+        setStatus("Vote failed: " + (data.detail || ("HTTP " + response.status)), true);
+        return;
+      }
+      setStatus("Vote recorded.", false);
+      await loadCommunitySongs();
+    } catch (err) {
+      console.error("vote error:", err);
+      setStatus("Could not submit vote. Check backend availability.", true);
+    }
+  }
+
   function getApiBase() {
     API_BASE = (apiInputEl.value || "").trim().replace(/\/+$/, "");
     if (!API_BASE) {
@@ -143,20 +360,43 @@ To make the rubric fair, submit:
     return API_BASE;
   }
 
+  lyricsEl.addEventListener("input", updateInputMeta);
+  promptEl.addEventListener("input", updateInputMeta);
+  nameEl.addEventListener("input", updateAttemptMeta);
+  updateInputMeta();
+  updateAttemptMeta();
+  loadCommunitySongs();
+  refreshCommunityBtn.addEventListener("click", loadCommunitySongs);
+  communityListEl.addEventListener("click", function(evt) {
+    var target = evt.target;
+    if (target && target.classList && target.classList.contains("vote-song")) {
+      submitVote(target.getAttribute("data-submission-id"));
+    }
+  });
+
   generateBtn.addEventListener("click", async function() {
-    var name = document.getElementById("student-name").value.trim();
-    var lyrics = document.getElementById("lyrics").value.trim();
-    var prompt = document.getElementById("prompt").value.trim();
+    var name = nameEl.value.trim();
+    var lyrics = lyricsEl.value.trim();
+    var prompt = promptEl.value.trim();
     var apiBase = getApiBase();
+    var attempts = getAttemptCount();
 
     if (!lyrics || !prompt) {
       setStatus("Please enter both lyrics and a music prompt.", true);
+      return;
+    }
+    if (!validateInputs()) {
+      return;
+    }
+    if (attempts >= MAX_GENERATE_ATTEMPTS_PER_NICK) {
+      setStatus("Generation limit reached for this nickname (3/3) in this browser session. Save your best version and submit for scoring.", true);
       return;
     }
 
     audioEl.style.display = "none";
     summaryEl.innerHTML = "";
     generateBtn.disabled = true;
+    submitScoreBtn.disabled = true;
 
     if (isLocalApi()) {
       setStatus("Submitting job to ACE-Step API on " + apiBase + " ...", false);
@@ -246,6 +486,15 @@ To make the rubric fair, submit:
       var audioUrl = audioFileUrl.indexOf("http") === 0 ? audioFileUrl : (apiBase + audioFileUrl);
       audioEl.src = audioUrl;
       audioEl.style.display = "block";
+      setAttemptCount(attempts + 1);
+      lastGeneratedMeta = {
+        task_id: taskId,
+        audio_url: audioUrl,
+        audio_duration_seconds: payload.audio_duration,
+        inference_steps: payload.inference_steps,
+        generation_attempt_number: attempts + 1,
+        api_base: apiBase
+      };
       setStatus("Song generated successfully.", false);
 
       summaryEl.innerHTML =
@@ -266,6 +515,58 @@ To make the rubric fair, submit:
       );
     } finally {
       generateBtn.disabled = false;
+      submitScoreBtn.disabled = false;
+    }
+  });
+
+  submitScoreBtn.addEventListener("click", async function() {
+    var name = nameEl.value.trim();
+    var lyrics = lyricsEl.value.trim();
+    var prompt = promptEl.value.trim();
+    var apiBase = getApiBase();
+
+    if (!lyrics || !prompt) {
+      setStatus("Enter lyrics and a music prompt before submitting for scoring.", true);
+      return;
+    }
+    if (!name) {
+      setStatus("Enter a nickname before submitting for scoring.", true);
+      return;
+    }
+    if (!validateInputs()) {
+      return;
+    }
+
+    submitScoreBtn.disabled = true;
+    setStatus("Submitting for scoring...", false);
+    try {
+      var response = await fetch(apiBase + "/topic2/submit-score", {
+        method: "POST",
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({
+          nickname: name,
+          lyrics: lyrics,
+          prompt: prompt,
+          client_timestamp: new Date().toISOString(),
+          generated_output_metadata: lastGeneratedMeta,
+          publish_to_community: !!publishCommunityEl.checked
+        })
+      });
+      var data = await response.json().catch(function() { return {}; });
+      if (!response.ok) {
+        setStatus("Scoring failed: " + (data.detail || ("HTTP " + response.status)), true);
+        return;
+      }
+      renderJudgeResults(name, data.auto_score, "backend");
+      setStatus("Scoring complete. Save your feedback and improve your economics, then resubmit if needed.", false);
+      if (publishCommunityEl.checked) {
+        await loadCommunitySongs();
+      }
+    } catch (err) {
+      console.error("submit-score error:", err);
+      setStatus("Could not submit for scoring. Check backend availability and CORS.", true);
+    } finally {
+      submitScoreBtn.disabled = false;
     }
   });
 })();

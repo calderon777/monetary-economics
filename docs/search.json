@@ -1612,7 +1612,7 @@
     "href": "topic2ludic.html#your-creative-input",
     "title": "Topic 2: Song Generation - Ludic Activity",
     "section": "Your Creative Input",
-    "text": "Your Creative Input\nUse this workflow:\n\nWrite 4-8 lines about one idea from Topic 2 (for example: inflation, money demand, velocity, quantity theory).\nKeep the economics accurate, even if the style is playful.\nChoose a music prompt that matches the tone of your message.\nGenerate, listen, and revise your text if the meaning is unclear.\n\n\nSubmission Checklist (What You Must Hand In)\nTo make the rubric fair, submit:\n\nFirst draft lyrics/narrative (before listening to the generated result)\nMusic prompt (genre/mood/style)\nRevised lyrics/narrative (after listening and reflecting)\nShort revision note (3-5 sentences) explaining:\n\nwhat you changed\nwhy you changed it\nhow the revision improved the economics\n\n\n\nName \nLyrics or narrative\n\nMusic prompt \nACE-Step API URL \nGenerate Song (Local)\n\nWaiting for input.",
+    "text": "Your Creative Input\nUse this workflow:\n\nWrite 4-8 lines about one idea from Topic 2 (for example: inflation, money demand, velocity, quantity theory).\nKeep the economics accurate, even if the style is playful.\nChoose a music prompt that matches the tone of your message.\nGenerate, listen, and revise your text if the meaning is unclear.\n\n\nSubmission Checklist (What You Must Hand In)\nTo make the rubric fair, submit:\n\nFirst draft lyrics/narrative (before listening to the generated result)\nMusic prompt (genre/mood/style)\nOne or more improved re-submissions under the same nickname (after listening and reflecting)\nFinal version submitted for scoring\n\n\nWhy no separate revision box? For the pilot, improvement will be tracked by comparing submissions over time for the same nickname.\n\n\nStudent nickname \nLyrics or narrative\n\n\nLyrics: 0 words / 120 max (0/800 chars)\n\nMusic prompt \n\nPrompt: 0 words / 20 max (0/140 chars)\n\nACE-Step API URL \nGenerate Song (Local) Submit for Scoring   Publish this scored submission to the community listening list \n\nGeneration attempts this session (nickname): 0/3\n\n\nWaiting for input.",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -2528,7 +2528,7 @@
     "href": "topic2ludic.html#generate-and-listen",
     "title": "Topic 2: Song Generation - Ludic Activity",
     "section": "Generate and Listen",
-    "text": "Generate and Listen",
+    "text": "Generate and Listen\n\n\n\n\n\n\n\nEconomics X-Factor AI Judges (Frontend Preview)\n\n\nNo score yet. Submit after generating (or after drafting) to preview rubric scoring UI.\n\n\n\n\n\n\n\n\n\n\nCommunity Listening & Voting (Pilot Preview)\n\n\nCommunity playlist and voting will appear here once the backend is enabled.\n\nRefresh Community Songs",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
