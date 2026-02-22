@@ -49,24 +49,29 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
   var statusEl = document.getElementById("song-status");
   var audioEl = document.getElementById("song-audio");
   var summaryEl = document.getElementById("song-summary");
+  var generateBtn = document.getElementById("generate-song");
 
-  function setStatus(text) {
+  function setStatus(text, isError) {
     statusEl.textContent = text;
+    statusEl.style.borderLeftColor = isError ? "#dc3545" : "#0d6efd";
+    statusEl.style.backgroundColor = isError ? "#fff5f5" : "#f0f7ff";
+    statusEl.style.color = isError ? "#dc3545" : "#0c63e4";
   }
 
-  document.getElementById("generate-song").addEventListener("click", async function() {
+  generateBtn.addEventListener("click", async function() {
     var name = document.getElementById("student-name").value.trim();
     var lyrics = document.getElementById("lyrics").value.trim();
     var prompt = document.getElementById("prompt").value.trim();
 
     if (!lyrics || !prompt) {
-      setStatus("Please enter both lyrics and a music prompt.");
+      setStatus("❌ Please enter both lyrics and a music prompt.", true);
       return;
     }
 
-    setStatus("Connecting to ACE-Step API on http://localhost:8001 ...");
+    setStatus("⏳ Connecting to ACE-Step API on http://localhost:8001 ...", false);
     audioEl.style.display = "none";
     summaryEl.innerHTML = "";
+    generateBtn.disabled = true;
 
     var payload = {
       lyrics: lyrics,
@@ -79,11 +84,13 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
       var response = await fetch("http://localhost:8001/generate", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        timeout: 60000
       });
 
       if (!response.ok) {
-        setStatus("ACE-Step API returned an error. Is the server running?");
+        console.error("API error: HTTP " + response.status);
+        setStatus("❌ ACE-Step API error (HTTP " + response.status + "). Is the server running?", true);
         return;
       }
 
@@ -91,13 +98,16 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
       var audioUrl = URL.createObjectURL(audioBlob);
       audioEl.src = audioUrl;
       audioEl.style.display = "block";
-      setStatus("Song generated successfully.");
+      setStatus("✅ Song generated successfully!", false);
 
       summaryEl.innerHTML = "<p><strong>Student:</strong> " + (name || "Anonymous") + "</p>" +
         "<p><strong>Lyrics:</strong><br>" + lyrics.replace(/\n/g, "<br>") + "</p>" +
         "<p><strong>Music prompt:</strong> " + prompt + "</p>";
     } catch (err) {
-      setStatus("Could not connect to ACE-Step API. Start it with: uv run acestep-api");
+      console.error("ACE-Step error:", err.message);
+      setStatus("❌ Could not connect to ACE-Step API. Start it with:\n'uv run acestep-api'", true);
+    } finally {
+      generateBtn.disabled = false;
     }
   });
 })();
