@@ -31,6 +31,9 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
   <label for="prompt"><strong>Music prompt</strong></label>
   <input id="prompt" type="text" placeholder="e.g., calm jazz, upbeat pop, energetic rap" />
 
+  <label for="api-base"><strong>ACE-Step API URL</strong></label>
+  <input id="api-base" type="text" placeholder="http://127.0.0.1:8001" />
+
   <button id="generate-song" type="button">Generate Song (Local)</button>
   <div id="song-status" class="song-status">Waiting for input.</div>
 </div>
@@ -50,12 +53,15 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
   var audioEl = document.getElementById("song-audio");
   var summaryEl = document.getElementById("song-summary");
   var generateBtn = document.getElementById("generate-song");
+  var apiInputEl = document.getElementById("api-base");
   var params = new URLSearchParams(window.location.search);
   var API_BASE = (
     window.ACESTEP_API_BASE ||
     params.get("acestep_api") ||
-    "http://localhost:8001"
+    (window.localStorage && localStorage.getItem("acestep_api_base")) ||
+    "http://127.0.0.1:8001"
   ).replace(/\/+$/, "");
+  apiInputEl.value = API_BASE;
 
   function setStatus(text, isError) {
     statusEl.textContent = text;
@@ -84,10 +90,25 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
     return /^https?:\/\/(localhost|127\.0\.0\.1)(:\d+)?$/i.test(API_BASE);
   }
 
+  function getApiBase() {
+    API_BASE = (apiInputEl.value || "").trim().replace(/\/+$/, "");
+    if (!API_BASE) {
+      API_BASE = "http://127.0.0.1:8001";
+      apiInputEl.value = API_BASE;
+    }
+    try {
+      if (window.localStorage) {
+        localStorage.setItem("acestep_api_base", API_BASE);
+      }
+    } catch (e) {}
+    return API_BASE;
+  }
+
   generateBtn.addEventListener("click", async function() {
     var name = document.getElementById("student-name").value.trim();
     var lyrics = document.getElementById("lyrics").value.trim();
     var prompt = document.getElementById("prompt").value.trim();
+    var apiBase = getApiBase();
 
     if (!lyrics || !prompt) {
       setStatus("Please enter both lyrics and a music prompt.", true);
@@ -99,9 +120,9 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
     generateBtn.disabled = true;
 
     if (isLocalApi()) {
-      setStatus("Submitting job to ACE-Step API on " + API_BASE + " ...", false);
+      setStatus("Submitting job to ACE-Step API on " + apiBase + " ...", false);
     } else {
-      setStatus("Submitting job to hosted ACE-Step backend: " + API_BASE, false);
+      setStatus("Submitting job to hosted ACE-Step backend: " + apiBase, false);
     }
 
     var payload = {
@@ -114,7 +135,7 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
     };
 
     try {
-      var releaseResponse = await fetch(API_BASE + "/release_task", {
+      var releaseResponse = await fetch(apiBase + "/release_task", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
@@ -140,7 +161,7 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
         setStatus("Generating song... queue check " + (i + 1) + "/" + maxPolls, false);
         await sleep(3000);
 
-        var queryResponse = await fetch(API_BASE + "/query_result", {
+        var queryResponse = await fetch(apiBase + "/query_result", {
           method: "POST",
           headers: {"Content-Type": "application/json"},
           body: JSON.stringify({ task_id_list: [taskId] })
@@ -183,7 +204,7 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
         return;
       }
 
-      var audioUrl = audioFileUrl.indexOf("http") === 0 ? audioFileUrl : (API_BASE + audioFileUrl);
+      var audioUrl = audioFileUrl.indexOf("http") === 0 ? audioFileUrl : (apiBase + audioFileUrl);
       audioEl.src = audioUrl;
       audioEl.style.display = "block";
       setStatus("Song generated successfully.", false);
@@ -195,10 +216,13 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
     } catch (err) {
       console.error("ACE-Step error:", err);
       setStatus(
-        "Could not connect to ACE-Step API at " + API_BASE +
+        "Could not connect to ACE-Step API at " + apiBase +
         (isLocalApi()
           ? ". Start it with uv run acestep-api (in ACE-Step-1.5)."
-          : ". Check that the hosted backend is running, HTTPS is enabled, and CORS allows this GitHub Pages domain."),
+          : ". Check that the hosted backend is running, HTTPS is enabled, and CORS allows this GitHub Pages domain.") +
+        (window.location.protocol === "https:" && /^http:\/\//i.test(apiBase)
+          ? " HTTPS pages cannot call an HTTP API. Use Quarto Preview locally or switch to an HTTPS backend URL."
+          : ""),
         true
       );
     } finally {

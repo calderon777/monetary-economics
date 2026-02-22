@@ -1612,7 +1612,7 @@
     "href": "topic2ludic.html#your-creative-input",
     "title": "Topic 2: Song Generation - Ludic Activity",
     "section": "Your Creative Input",
-    "text": "Your Creative Input\n\nName \nLyrics or narrative\n\nMusic prompt \nGenerate Song (Local)\n\nWaiting for input.",
+    "text": "Your Creative Input\n\nName \nLyrics or narrative\n\nMusic prompt \nACE-Step API URL \nGenerate Song (Local)\n\nWaiting for input.",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1622,8 +1622,8 @@
     "objectID": "topic2ludic.html#ai-music-generation-with-ace-step-1.5",
     "href": "topic2ludic.html#ai-music-generation-with-ace-step-1.5",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "🤖 AI Music Generation with ACE-Step 1.5",
-    "text": "🤖 AI Music Generation with ACE-Step 1.5",
+    "section": "AI Music Generation with ACE-Step 1.5",
+    "text": "AI Music Generation with ACE-Step 1.5",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1633,8 +1633,8 @@
     "objectID": "topic2ludic.html#reflection-questions",
     "href": "topic2ludic.html#reflection-questions",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "📚 Reflection Questions",
-    "text": "📚 Reflection Questions\nAfter listening to your generated song, consider:\n\nAuthorship & Creativity: How did you and the AI contribute to this song? Who is the “author”?\nEconomic Concepts: Does the music reflect the economic themes in your lyrics? Why or why not?\nLimitations: What did the AI do well? What would you change or improve?\nMonetary Economics Connection: How could this creative approach help explain monetary policy concepts to others?\nEthical Reflection: In what ways is this different from a student writing a song entirely on their own?",
+    "section": "Reflection Questions",
+    "text": "Reflection Questions\nAfter listening to your generated song, consider:\n\nAuthorship & Creativity: How did you and the AI contribute to this song? Who is the “author”?\nEconomic Concepts: Does the music reflect the economic themes in your lyrics? Why or why not?\nLimitations: What did the AI do well? What would you change or improve?\nMonetary Economics Connection: How could this creative approach help explain monetary policy concepts to others?\nEthical Reflection: In what ways is this different from a student writing a song entirely on their own?",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1644,8 +1644,8 @@
     "objectID": "topic2ludic.html#setup-instructions-ace-step-1.5",
     "href": "topic2ludic.html#setup-instructions-ace-step-1.5",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "🔧 Setup Instructions: ACE-Step 1.5",
-    "text": "🔧 Setup Instructions: ACE-Step 1.5\nThis activity uses ACE-Step 1.5, a free, open-source music generation model that runs locally on your computer. No API keys needed!\n\nStep 1: Install ACE-Step (One-time setup)\nWindows/macOS/Linux:\n# 1) Install uv (universal Python package manager)\n# Go to: https://astral.sh/uv/install.sh\n# Windows: Download and run the installer\n# Or use PowerShell:\npowershell -ExecutionPolicy BypassUser -c \"irm https://astral.sh/uv/install.ps1 | iex\"\n\n# 2) Clone the ACE-Step repository\ngit clone https://github.com/ACE-Step/ACE-Step-1.5.git\ncd ACE-Step-1.5\n\n# 3) Install dependencies\nuv sync\n\n\nStep 2: Start the ACE-Step API\nBefore running the activity, start the API in a separate terminal:\ncd ACE-Step-1.5\nuv run acestep-api\nYou should see:\nINFO:     Uvicorn running on http://127.0.0.1:8001\nKeep this terminal open while students use the activity.\n\n\nStep 3: Run the Activity\nWith the API running, open this file (topic2ludic.qmd) in Quarto Preview:\nquarto preview topic2ludic.qmd\nStudents enter their lyrics and music preferences, and ACE-Step generates the audio locally.\n\n\nStep 4: Optional - Use the Gradio UI\nIf preferred, students can also use ACE-Step’s built-in UI:\nuv run acestep\nThen open http://localhost:7860 in a browser.",
+    "section": "Setup Instructions: ACE-Step 1.5",
+    "text": "Setup Instructions: ACE-Step 1.5\nThis activity uses ACE-Step 1.5, a free, open-source music generation model that runs locally on your computer. No API keys needed!\n\nStep 1: Install ACE-Step (One-time setup)\nWindows/macOS/Linux:\n# 1) Install uv (universal Python package manager)\n# Go to: https://astral.sh/uv/install.sh\n# Windows: Download and run the installer\n# Or use PowerShell:\npowershell -ExecutionPolicy Bypass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\n\n# 2) Clone the ACE-Step repository\ngit clone https://github.com/ACE-Step/ACE-Step-1.5.git\ncd ACE-Step-1.5\n\n# 3) Install dependencies\nuv sync\n\n\nStep 2: Start the ACE-Step API\nBefore running the activity, start the API in a separate terminal:\ncd ACE-Step-1.5\nuv run acestep-api\nYou should see:\nINFO:     Uvicorn running on http://127.0.0.1:8001\nKeep this terminal open while students use the activity.\n\n\nStep 3: Run the Activity\nWith the API running, open this file (topic2ludic.qmd) in Quarto Preview:\nquarto preview topic2ludic.qmd\nStudents enter their lyrics and music preferences, and ACE-Step generates the audio locally.\n\n\nStep 4: Optional - Use the Gradio UI\nIf preferred, students can also use ACE-Step’s built-in UI:\nuv run acestep\nThen open http://localhost:7860 in a browser.",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1655,8 +1655,8 @@
     "objectID": "topic2ludic.html#why-ace-step-1.5",
     "href": "topic2ludic.html#why-ace-step-1.5",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "✅ Why ACE-Step 1.5?",
-    "text": "✅ Why ACE-Step 1.5?\n\nFree & Open-source — No subscriptions or API keys\nLocal generation — Runs entirely on your computer\nFast — Optimized for modern GPUs (CPU supported too)\nMulti-language — Supports lyrics in many languages\nLyric-aware — Conditions music generation on student-written content\nScalable — No rate limits for 10 concurrent student groups\nEducational — Clear boundary: students write meaning, AI generates sound",
+    "section": "Why ACE-Step 1.5?",
+    "text": "Why ACE-Step 1.5?\n\nFree & Open-source - No subscriptions or API keys\nLocal generation - Runs entirely on your computer\nFast - Optimized for modern GPUs (CPU supported too)\nMulti-language - Supports lyrics in many languages\nLyric-aware - Conditions music generation on student-written content\nScalable - No rate limits for 10 concurrent student groups\nEducational - Clear boundary: students write meaning, AI generates sound",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1666,8 +1666,8 @@
     "objectID": "topic2ludic.html#resources",
     "href": "topic2ludic.html#resources",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "📖 Resources",
-    "text": "📖 Resources\n\nACE-Step GitHub: github.com/ACE-Step/ACE-Step-1.5\nACE-Step Paper: “ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation”\nHugging Face Model: huggingface.co/ACE-Step/Ace-Step1.5\nuv Package Manager: astral.sh/uv\n\n\nEnjoy creating! 🎵",
+    "section": "Resources",
+    "text": "Resources\n\nACE-Step GitHub: github.com/ACE-Step/ACE-Step-1.5\nACE-Step Paper: “ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation”\nHugging Face Model: huggingface.co/ACE-Step/Ace-Step1.5\nuv Package Manager: astral.sh/uv\n\n\nEnjoy creating!",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
