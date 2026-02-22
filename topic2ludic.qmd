@@ -1,4 +1,4 @@
----
+﻿---
 title: "Topic 2: Song Generation - Ludic Activity"
 subtitle: "AI-Assisted Music Creation with ACE-Step 1.5"
 author: "EC3014 - Monetary Economics"
@@ -6,7 +6,7 @@ date: today
 format: html
 ---
 
-## 🎵 Create Your Own Song
+## Create Your Own Song
 
 Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
 
@@ -37,7 +37,7 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
 
 ---
 
-## 🤖 AI Music Generation with ACE-Step 1.5
+## AI Music Generation with ACE-Step 1.5
 
 <div id="song-result">
   <audio id="song-audio" controls style="width: 100%; display: none;"></audio>
@@ -210,7 +210,7 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
 
 ---
 
-## 📚 Reflection Questions
+## Reflection Questions
 
 After listening to your generated song, consider:
 
@@ -226,7 +226,7 @@ After listening to your generated song, consider:
 
 ---
 
-## 🔧 Setup Instructions: ACE-Step 1.5
+## Setup Instructions: ACE-Step 1.5
 
 This activity uses **ACE-Step 1.5**, a free, open-source music generation model that runs **locally on your computer**. No API keys needed!
 
@@ -239,7 +239,7 @@ This activity uses **ACE-Step 1.5**, a free, open-source music generation model 
 # Go to: https://astral.sh/uv/install.sh
 # Windows: Download and run the installer
 # Or use PowerShell:
-powershell -ExecutionPolicy BypassUser -c "irm https://astral.sh/uv/install.ps1 | iex"
+powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
 
 # 2) Clone the ACE-Step repository
 git clone https://github.com/ACE-Step/ACE-Step-1.5.git
@@ -287,19 +287,19 @@ Then open `http://localhost:7860` in a browser.
 
 ---
 
-## ✅ Why ACE-Step 1.5?
+## Why ACE-Step 1.5?
 
-- **Free & Open-source** — No subscriptions or API keys
-- **Local generation** — Runs entirely on your computer
-- **Fast** — Optimized for modern GPUs (CPU supported too)
-- **Multi-language** — Supports lyrics in many languages
-- **Lyric-aware** — Conditions music generation on student-written content
-- **Scalable** — No rate limits for 10 concurrent student groups
-- **Educational** — Clear boundary: students write meaning, AI generates sound
+- **Free & Open-source** - No subscriptions or API keys
+- **Local generation** - Runs entirely on your computer
+- **Fast** - Optimized for modern GPUs (CPU supported too)
+- **Multi-language** - Supports lyrics in many languages
+- **Lyric-aware** - Conditions music generation on student-written content
+- **Scalable** - No rate limits for 10 concurrent student groups
+- **Educational** - Clear boundary: students write meaning, AI generates sound
 
 ---
 
-## 📖 Resources
+## Resources
 
 - **ACE-Step GitHub**: [github.com/ACE-Step/ACE-Step-1.5](https://github.com/ACE-Step/ACE-Step-1.5)
 - **ACE-Step Paper**: "ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation"
@@ -308,4 +308,4 @@ Then open `http://localhost:7860` in a browser.
 
 ---
 
-**Enjoy creating! 🎵**
+**Enjoy creating!**
