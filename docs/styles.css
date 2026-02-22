@@ -278,6 +278,21 @@ label.is-incorrect {
   gap: 1rem;
 }
 
+.song-form > p {
+  margin: 0;
+  display: contents;
+}
+
+.song-form p label {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.song-form p input[type="text"] {
+  display: block;
+  width: 100%;
+}
+
 .song-form label {
   font-weight: 600;
   margin-bottom: 0.4rem;
