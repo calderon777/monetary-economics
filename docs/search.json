@@ -1590,7 +1590,7 @@
     "href": "topic2ludic.html",
     "title": "Topic 2: Song Generation - Ludic Activity",
     "section": "",
-    "text": "Welcome to the Song Generation Lab! In this ludic activity, you’ll:\n\nWrite lyrics or narrative based on economic concepts from Topic 2\nProvide a music prompt (genre, mood, style)\nACE-Step 1.5 generates the music locally to accompany your words\nReflect on the creative process and economic ideas\n\n\nNote: This activity uses ACE-Step 1.5, a free, open-source music generation model running locally. No API keys needed!",
+    "text": "Songs have long been used to communicate political, social, and economic ideas. In many contexts, including Latin American protest and revolutionary traditions (for example, forms of trova), music has helped people remember arguments, identities, and collective narratives. This activity asks a course-specific version of that question: why not songs about the Classicals, Keynesians, money demand, inflation, or monetary policy?\nWelcome to the Song Generation Lab. In this activity, you will:\n\nWrite lyrics or a short narrative using economic concepts from Topic 2\nChoose a music style (genre, mood, tempo, tone)\nGenerate a song from your words and prompt\nReflect on how well the output communicates the economics\n\n\nLearning focus: The goal is not music production quality. The goal is to communicate monetary economics ideas clearly and creatively.",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1601,7 +1601,7 @@
     "href": "topic2ludic.html#create-your-own-song",
     "title": "Topic 2: Song Generation - Ludic Activity",
     "section": "",
-    "text": "Welcome to the Song Generation Lab! In this ludic activity, you’ll:\n\nWrite lyrics or narrative based on economic concepts from Topic 2\nProvide a music prompt (genre, mood, style)\nACE-Step 1.5 generates the music locally to accompany your words\nReflect on the creative process and economic ideas\n\n\nNote: This activity uses ACE-Step 1.5, a free, open-source music generation model running locally. No API keys needed!",
+    "text": "Songs have long been used to communicate political, social, and economic ideas. In many contexts, including Latin American protest and revolutionary traditions (for example, forms of trova), music has helped people remember arguments, identities, and collective narratives. This activity asks a course-specific version of that question: why not songs about the Classicals, Keynesians, money demand, inflation, or monetary policy?\nWelcome to the Song Generation Lab. In this activity, you will:\n\nWrite lyrics or a short narrative using economic concepts from Topic 2\nChoose a music style (genre, mood, tempo, tone)\nGenerate a song from your words and prompt\nReflect on how well the output communicates the economics\n\n\nLearning focus: The goal is not music production quality. The goal is to communicate monetary economics ideas clearly and creatively.",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1612,7 +1612,7 @@
     "href": "topic2ludic.html#your-creative-input",
     "title": "Topic 2: Song Generation - Ludic Activity",
     "section": "Your Creative Input",
-    "text": "Your Creative Input\n\nName \nLyrics or narrative\n\nMusic prompt \nACE-Step API URL \nGenerate Song (Local)\n\nWaiting for input.",
+    "text": "Your Creative Input\nUse this workflow:\n\nWrite 4-8 lines about one idea from Topic 2 (for example: inflation, money demand, velocity, quantity theory).\nKeep the economics accurate, even if the style is playful.\nChoose a music prompt that matches the tone of your message.\nGenerate, listen, and revise your text if the meaning is unclear.\n\n\nSubmission Checklist (What You Must Hand In)\nTo make the rubric fair, submit:\n\nFirst draft lyrics/narrative (before listening to the generated result)\nMusic prompt (genre/mood/style)\nRevised lyrics/narrative (after listening and reflecting)\nShort revision note (3-5 sentences) explaining:\n\nwhat you changed\nwhy you changed it\nhow the revision improved the economics\n\n\n\nName \nLyrics or narrative\n\nMusic prompt \nACE-Step API URL \nGenerate Song (Local)\n\nWaiting for input.",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1634,7 +1634,7 @@
     "href": "topic2ludic.html#reflection-questions",
     "title": "Topic 2: Song Generation - Ludic Activity",
     "section": "Reflection Questions",
-    "text": "Reflection Questions\nAfter listening to your generated song, consider:\n\nAuthorship & Creativity: How did you and the AI contribute to this song? Who is the “author”?\nEconomic Concepts: Does the music reflect the economic themes in your lyrics? Why or why not?\nLimitations: What did the AI do well? What would you change or improve?\nMonetary Economics Connection: How could this creative approach help explain monetary policy concepts to others?\nEthical Reflection: In what ways is this different from a student writing a song entirely on their own?",
+    "text": "Reflection Questions\nAfter listening to your generated song, consider:\n\nAuthorship & Creativity: How did you and the AI contribute to this song? Who is the “author”?\nEconomic Concepts: Does the music reflect the economic themes in your lyrics? Why or why not?\nLimitations: What did the AI do well? What would you change or improve?\nMonetary Economics Connection: How could this creative approach help explain monetary policy concepts to others?\nEthical Reflection: In what ways is this different from a student writing a song entirely on their own?\nAI Risks (Optional): What are the risks of using AI-generated media in education (e.g., accuracy, bias, over-reliance, authorship confusion)?",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -2510,6 +2510,50 @@
     "crumbs": [
       "Topic 3 - Keynes' Theory of Money",
       "Optional: Debate Lab"
+    ]
+  },
+  {
+    "objectID": "topic2ludic.html#how-you-will-be-assessed-economics-x-factor-rubric",
+    "href": "topic2ludic.html#how-you-will-be-assessed-economics-x-factor-rubric",
+    "title": "Topic 2: Song Generation - Ludic Activity",
+    "section": "How You Will Be Assessed (Economics X-Factor Rubric)",
+    "text": "How You Will Be Assessed (Economics X-Factor Rubric)\nYour song will be judged like a performance, but the judges are scoring economics learning.\nEach criterion is scored from 1 to 10.\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nWhat judges look for\n1-3\n4-6\n7-8\n9-10\n\n\n\n\nEconomic Correctness\nAccuracy of claims about Topic 2 ideas\nMostly inaccurate\nSome correct ideas, mixed with errors\nMostly accurate\nAccurate, precise, no major errors\n\n\nConcept Use\nUse of key concepts (e.g., inflation, velocity, money demand, quantity theory)\nNamedrops only or absent\nUses some concepts but shallowly\nConcepts used meaningfully\nConcepts integrated fluently and insightfully\n\n\nCausal Reasoning\nClear cause-effect logic in the economics\nNo clear causal links\nSome causal links, but confused or incomplete\nClear causal links with minor gaps\nStrong, coherent causal chain with conditions/nuance\n\n\nCommunication Quality\nClarity, memorability, and intelligibility of the economics message\nHard to follow\nPartly clear\nClear and engaging\nClear, memorable, and teaches effectively\n\n\nRevision Quality\nImprovement from first draft to revised draft (economics, not only style)\nLittle/no improvement\nSome improvement\nClear improvement in accuracy/clarity\nMajor improvement with thoughtful corrections\n\n\n\nTotal score: /50",
+    "crumbs": [
+      "Topic 2 - Classical Theory of Money",
+      "Optional: Economics Poets"
+    ]
+  },
+  {
+    "objectID": "topic2ludic.html#generate-and-listen",
+    "href": "topic2ludic.html#generate-and-listen",
+    "title": "Topic 2: Song Generation - Ludic Activity",
+    "section": "Generate and Listen",
+    "text": "Generate and Listen",
+    "crumbs": [
+      "Topic 2 - Classical Theory of Money",
+      "Optional: Economics Poets"
+    ]
+  },
+  {
+    "objectID": "topic2ludic.html#student-notes",
+    "href": "topic2ludic.html#student-notes",
+    "title": "Topic 2: Song Generation - Ludic Activity",
+    "section": "Student Notes",
+    "text": "Student Notes\n\nIf song generation is not working, tell your instructor (it may be a connection/server issue rather than your prompt).\nYou can still complete the economics task by drafting lyrics, explaining your intended style, and answering the reflection questions.\nRevise your lyrics after listening: clearer economic language usually improves the educational value of the result.",
+    "crumbs": [
+      "Topic 2 - Classical Theory of Money",
+      "Optional: Economics Poets"
+    ]
+  },
+  {
+    "objectID": "topic2ludic.html#instructortechnical-note-optional",
+    "href": "topic2ludic.html#instructortechnical-note-optional",
+    "title": "Topic 2: Song Generation - Ludic Activity",
+    "section": "Instructor/Technical Note (Optional)",
+    "text": "Instructor/Technical Note (Optional)\nThis page connects to a music-generation backend through the ACE-Step API URL field. For student use, the technical setup should usually be handled by the instructor or institution so learners can focus on the economics task.\n\nEnjoy creating!",
+    "crumbs": [
+      "Topic 2 - Classical Theory of Money",
+      "Optional: Economics Poets"
     ]
   }
 ]

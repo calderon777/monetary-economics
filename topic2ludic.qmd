@@ -8,18 +8,57 @@ format: html
 
 ## Create Your Own Song
 
-Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
+Songs have long been used to communicate political, social, and economic ideas. In many contexts, including Latin American protest and revolutionary traditions (for example, forms of trova), music has helped people remember arguments, identities, and collective narratives. This activity asks a course-specific version of that question: why not songs about the Classicals, Keynesians, money demand, inflation, or monetary policy?
 
-1. **Write lyrics or narrative** based on economic concepts from Topic 2
-2. **Provide a music prompt** (genre, mood, style)
-3. **ACE-Step 1.5 generates the music locally** to accompany your words
-4. **Reflect** on the creative process and economic ideas
+Welcome to the **Song Generation Lab**. In this activity, you will:
 
-> **Note:** This activity uses **ACE-Step 1.5**, a free, open-source music generation model running locally. No API keys needed!
+1. **Write lyrics or a short narrative** using economic concepts from Topic 2
+2. **Choose a music style** (genre, mood, tempo, tone)
+3. **Generate a song** from your words and prompt
+4. **Reflect** on how well the output communicates the economics
+
+> **Learning focus:** The goal is not music production quality. The goal is to communicate monetary economics ideas clearly and creatively.
+
+---
+
+## How You Will Be Assessed (Economics X-Factor Rubric)
+
+Your song will be judged like a performance, but the judges are scoring **economics learning**.
+
+Each criterion is scored from **1 to 10**.
+
+| Criterion | What judges look for | 1-3 | 4-6 | 7-8 | 9-10 |
+|---|---|---|---|---|---|
+| **Economic Correctness** | Accuracy of claims about Topic 2 ideas | Mostly inaccurate | Some correct ideas, mixed with errors | Mostly accurate | Accurate, precise, no major errors |
+| **Concept Use** | Use of key concepts (e.g., inflation, velocity, money demand, quantity theory) | Namedrops only or absent | Uses some concepts but shallowly | Concepts used meaningfully | Concepts integrated fluently and insightfully |
+| **Causal Reasoning** | Clear cause-effect logic in the economics | No clear causal links | Some causal links, but confused or incomplete | Clear causal links with minor gaps | Strong, coherent causal chain with conditions/nuance |
+| **Communication Quality** | Clarity, memorability, and intelligibility of the economics message | Hard to follow | Partly clear | Clear and engaging | Clear, memorable, and teaches effectively |
+| **Revision Quality** | Improvement from first draft to revised draft (economics, not only style) | Little/no improvement | Some improvement | Clear improvement in accuracy/clarity | Major improvement with thoughtful corrections |
+
+**Total score:** /50
 
 ---
 
 ## Your Creative Input
+
+Use this workflow:
+
+1. Write 4-8 lines about one idea from Topic 2 (for example: inflation, money demand, velocity, quantity theory).
+2. Keep the economics accurate, even if the style is playful.
+3. Choose a music prompt that matches the tone of your message.
+4. Generate, listen, and revise your text if the meaning is unclear.
+
+### Submission Checklist (What You Must Hand In)
+
+To make the rubric fair, submit:
+
+1. **First draft lyrics/narrative** (before listening to the generated result)
+2. **Music prompt** (genre/mood/style)
+3. **Revised lyrics/narrative** (after listening and reflecting)
+4. **Short revision note (3-5 sentences)** explaining:
+   - what you changed
+   - why you changed it
+   - how the revision improved the economics
 
 <div class="song-form">
   <label for="student-name"><strong>Name</strong></label>
@@ -40,7 +79,7 @@ Welcome to the **Song Generation Lab**! In this ludic activity, you'll:
 
 ---
 
-## AI Music Generation with ACE-Step 1.5
+## Generate and Listen
 
 <div id="song-result">
   <audio id="song-audio" controls style="width: 100%; display: none;"></audio>
@@ -248,87 +287,21 @@ After listening to your generated song, consider:
 
 5. **Ethical Reflection**: In what ways is this different from a student writing a song entirely on their own?
 
----
-
-## Setup Instructions: ACE-Step 1.5
-
-This activity uses **ACE-Step 1.5**, a free, open-source music generation model that runs **locally on your computer**. No API keys needed!
-
-### Step 1: Install ACE-Step (One-time setup)
-
-**Windows/macOS/Linux:**
-
-```bash
-# 1) Install uv (universal Python package manager)
-# Go to: https://astral.sh/uv/install.sh
-# Windows: Download and run the installer
-# Or use PowerShell:
-powershell -ExecutionPolicy Bypass -c "irm https://astral.sh/uv/install.ps1 | iex"
-
-# 2) Clone the ACE-Step repository
-git clone https://github.com/ACE-Step/ACE-Step-1.5.git
-cd ACE-Step-1.5
-
-# 3) Install dependencies
-uv sync
-```
-
-### Step 2: Start the ACE-Step API
-
-Before running the activity, start the API in a separate terminal:
-
-```bash
-cd ACE-Step-1.5
-uv run acestep-api
-```
-
-You should see:
-```
-INFO:     Uvicorn running on http://127.0.0.1:8001
-```
-
-**Keep this terminal open while students use the activity.**
-
-### Step 3: Run the Activity
-
-With the API running, open this file (`topic2ludic.qmd`) in Quarto Preview:
-
-```bash
-quarto preview topic2ludic.qmd
-```
-
-Students enter their lyrics and music preferences, and ACE-Step generates the audio locally.
-
-### Step 4: Optional - Use the Gradio UI
-
-If preferred, students can also use ACE-Step's built-in UI:
-
-```bash
-uv run acestep
-```
-
-Then open `http://localhost:7860` in a browser.
+6. **AI Risks (Optional)**: What are the risks of using AI-generated media in education (e.g., accuracy, bias, over-reliance, authorship confusion)?
 
 ---
 
-## Why ACE-Step 1.5?
+## Student Notes
 
-- **Free & Open-source** - No subscriptions or API keys
-- **Local generation** - Runs entirely on your computer
-- **Fast** - Optimized for modern GPUs (CPU supported too)
-- **Multi-language** - Supports lyrics in many languages
-- **Lyric-aware** - Conditions music generation on student-written content
-- **Scalable** - No rate limits for 10 concurrent student groups
-- **Educational** - Clear boundary: students write meaning, AI generates sound
+- If song generation is not working, tell your instructor (it may be a connection/server issue rather than your prompt).
+- You can still complete the economics task by drafting lyrics, explaining your intended style, and answering the reflection questions.
+- Revise your lyrics after listening: clearer economic language usually improves the educational value of the result.
 
 ---
 
-## Resources
+## Instructor/Technical Note (Optional)
 
-- **ACE-Step GitHub**: [github.com/ACE-Step/ACE-Step-1.5](https://github.com/ACE-Step/ACE-Step-1.5)
-- **ACE-Step Paper**: "ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation"
-- **Hugging Face Model**: [huggingface.co/ACE-Step/Ace-Step1.5](https://huggingface.co/ACE-Step/Ace-Step1.5)
-- **uv Package Manager**: [astral.sh/uv](https://astral.sh/uv)
+This page connects to a music-generation backend through the **ACE-Step API URL** field. For student use, the technical setup should usually be handled by the instructor or institution so learners can focus on the economics task.
 
 ---
 
