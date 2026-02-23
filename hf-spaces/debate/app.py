@@ -31,11 +31,13 @@ ROUND_GUIDANCE = {
 # Voice settings for each team - mature British voices with gravitas
 CLASSICAL_VOICE = "en-GB-RyanNeural"  # Deeper British male for Walras/Marshall
 KEYNESIAN_VOICE = "en-GB-ThomasNeural"  # Mature British male for Keynes/Hicks
+MODERATOR_VOICE = "en-GB-SoniaNeural"  # Professional British female for moderator
 
 # Speech parameters for debate-like delivery
 SPEECH_RATE = "+5%"  # Slightly faster for debate energy
-CLASSICAL_PITCH = "-15Hz"  # Lower pitch for gravitas
-KEYNESIAN_PITCH = "-10Hz"  # Also lower but distinguishable from Classicals
+CLASSICAL_PITCH = "-20Hz"  # Very low pitch for gravitas
+KEYNESIAN_PITCH = "-18Hz"  # Also very low but distinguishable
+MODERATOR_PITCH = "+0Hz"  # Natural female pitch
 
 
 async def text_to_speech_async(text: str, voice: str, pitch: str = "+0Hz") -> str:
@@ -367,7 +369,7 @@ def render_history(history):
     return ui.div(*items)
 
 
-def render_unified_debate(classical_history, keynes_history, moderator_scores, classical_audio_list, keynes_audio_list):
+def render_unified_debate(classical_history, keynes_history, moderator_scores, classical_audio_list, keynes_audio_list, moderator_audio_data):
     """Render a unified debate transcript showing both teams alternating, with moderator summary at end."""
     if not classical_history and not keynes_history:
         return ui.p("No debate yet. Submit a question to start.", style="color: #999;")
@@ -482,6 +484,18 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
     
     # Add moderator summary at the end
     if moderator_scores:
+        moderator_audio_html = ""
+        if moderator_audio_data:
+            moderator_audio_html = f"""
+            <div style="margin-top: 12px; padding: 8px; background: rgba(139, 105, 20, 0.05); border-radius: 6px;">
+                <div style="font-size: 0.85rem; color: #8b6914; margin-bottom: 4px;">🎙️ Listen to Moderator</div>
+                <audio id="moderator-audio" controls style="width: 100%; height: 32px;">
+                    <source src="data:audio/mp3;base64,{moderator_audio_data}" type="audio/mp3">
+                    Your browser does not support audio playback.
+                </audio>
+            </div>
+            """
+        
         items.append(
             ui.div(
                 ui.HTML("<hr style='margin: 20px 0; border: none; border-top: 2px solid #d4af37;'>"),
@@ -492,6 +506,7 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
                         f"<div style='margin-bottom: 10px;'><strong>Exchange {i+1}:</strong> {score}</div>" 
                         for i, score in enumerate(moderator_scores)
                     )),
+                    ui.HTML(moderator_audio_html),
                     style="padding: 16px; background: #fffbf0; border-left: 4px solid #d4af37; border-radius: 6px;"
                 ),
                 style="margin-top: 20px;"
@@ -505,6 +520,7 @@ classical_history = reactive.Value([])
 keynes_history = reactive.Value([])
 classical_audio = reactive.Value([])  # Store audio for classical responses
 keynes_audio = reactive.Value([])  # Store audio for keynesian responses
+moderator_audio = reactive.Value("")  # Store audio for moderator scorecard
 moderator_scores = reactive.Value([])
 status_message = reactive.Value("Ready.")
 current_topic = reactive.Value("")
@@ -526,6 +542,7 @@ def server(input, output, session):
             keynes_history.set([])
             classical_audio.set([])
             keynes_audio.set([])
+            moderator_audio.set("")
             status_message.set(f'✨ New topic: "{new_topic}" — Ready to debate!')
             current_topic.set(new_topic)
 
@@ -536,6 +553,7 @@ def server(input, output, session):
         keynes_history.set([])
         classical_audio.set([])
         keynes_audio.set([])
+        moderator_audio.set("")
         moderator_scores.set([])
         current_topic.set("")
         status_message.set("🗑️ Cleared. Enter a topic and question to start fresh.")
@@ -671,6 +689,15 @@ def server(input, output, session):
         moderator_comment_3 = get_moderator_analysis(topic, round_label, classical_final_reply, keynes_final_reply)
         
         moderator_scores.set([moderator_comment_1, moderator_comment_2, moderator_comment_3])
+        
+        # Generate moderator audio
+        status_message.set("🎤 Producing moderator's scorecard audio...")
+        moderator_full_text = f"""Moderator's Final Scorecard. 
+        Exchange 1: {moderator_comment_1}
+        Exchange 2: {moderator_comment_2}
+        Exchange 3: {moderator_comment_3}"""
+        moderator_audio_data = text_to_speech(moderator_full_text, MODERATOR_VOICE, MODERATOR_PITCH)
+        moderator_audio.set(moderator_audio_data)
 
         status_message.set(f"✅ Debate complete! 3 exchanges scored. Ready for your next question on '{topic}' — or change the topic and Clear to start fresh.")
 
@@ -691,7 +718,8 @@ def server(input, output, session):
             keynes_history.get(), 
             moderator_scores.get(), 
             classical_audio.get(), 
-            keynes_audio.get()
+            keynes_audio.get(),
+            moderator_audio.get()
         )
 
 
