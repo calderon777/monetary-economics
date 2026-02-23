@@ -43,6 +43,8 @@ TOPIC2_MAX_PROMPT_CHARS = int(os.getenv("TOPIC2_MAX_PROMPT_CHARS", "140"))
 TOPIC2_MAX_SCORING_SUBMISSIONS_PER_NICK = int(os.getenv("TOPIC2_MAX_SCORING_SUBMISSIONS_PER_NICK", "5"))
 TOPIC2_ENABLE_GOOGLE_SHEETS = _bool_env("TOPIC2_ENABLE_GOOGLE_SHEETS", False)
 TOPIC2_GOOGLE_SHEETS_WORKBOOK = os.getenv("TOPIC2_GOOGLE_SHEETS_WORKBOOK", "").strip()
+TOPIC2_GOOGLE_SHEETS_ENDPOINT = os.getenv("TOPIC2_GOOGLE_SHEETS_ENDPOINT", "").strip()
+TOPIC2_GOOGLE_SHEETS_TAB = os.getenv("TOPIC2_GOOGLE_SHEETS_TAB", "topic2ludic").strip() or "topic2ludic"
 
 
 @dataclass
@@ -350,8 +352,10 @@ def _google_sheets_export_preview(submission: dict[str, Any]) -> dict[str, Any]:
     return {
         "workbook_enabled": TOPIC2_ENABLE_GOOGLE_SHEETS,
         "workbook_name": TOPIC2_GOOGLE_SHEETS_WORKBOOK or None,
+        "endpoint_configured": bool(TOPIC2_GOOGLE_SHEETS_ENDPOINT),
         "tabs": {
             "submissions": {
+                "sheet": TOPIC2_GOOGLE_SHEETS_TAB,
                 "submitted_at_utc": submission.get("submitted_at_utc"),
                 "nickname": submission.get("nickname"),
                 "submission_id": submission.get("submission_id"),
@@ -362,6 +366,7 @@ def _google_sheets_export_preview(submission: dict[str, Any]) -> dict[str, Any]:
                 "generated_output_metadata_json": submission.get("generated_output_metadata"),
             },
             "scores": {
+                "sheet": TOPIC2_GOOGLE_SHEETS_TAB,
                 "submission_id": submission.get("submission_id"),
                 "nickname": submission.get("nickname"),
                 "average_score": auto.get("average_score"),
@@ -386,6 +391,144 @@ def _pydantic_dump(model: Any) -> dict[str, Any]:
     raise TypeError("Unsupported model type for serialization")
 
 
+async def _post_google_sheets_row(payload: dict[str, Any]) -> dict[str, Any]:
+    """Best-effort webhook post to Google Apps Script endpoint used by MCQ pages."""
+    if not TOPIC2_ENABLE_GOOGLE_SHEETS:
+        return {"attempted": False, "ok": False, "reason": "disabled"}
+    if not TOPIC2_GOOGLE_SHEETS_ENDPOINT:
+        return {"attempted": False, "ok": False, "reason": "endpoint_not_configured"}
+    assert _http_client is not None
+    try:
+        res = await _http_client.post(
+            TOPIC2_GOOGLE_SHEETS_ENDPOINT,
+            content=json_dumps(payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"},
+        )
+        # Apps Script often returns 200/302 HTML; treat any 2xx/3xx as success.
+        return {
+            "attempted": True,
+            "ok": 200 <= res.status_code < 400,
+            "status_code": res.status_code,
+        }
+    except httpx.HTTPError as exc:
+        return {"attempted": True, "ok": False, "reason": str(exc)}
+
+
+async def _persist_topic2_submission_to_sheets(submission: dict[str, Any]) -> dict[str, Any]:
+    auto = submission.get("auto_score", {})
+    criteria = {c["id"]: c["score"] for c in auto.get("criteria", [])}
+    base_meta = {
+        "topic": "topic2ludic",
+        "workbook": TOPIC2_GOOGLE_SHEETS_WORKBOOK or "",
+        "submitted_at_utc": submission.get("submitted_at_utc"),
+        "submission_id": submission.get("submission_id"),
+        "nickname": submission.get("nickname"),
+    }
+    submissions_row = {
+        **base_meta,
+        "sheet": TOPIC2_GOOGLE_SHEETS_TAB,
+        "kind": "topic2_submission",
+        "client_timestamp": submission.get("client_timestamp") or "",
+        "lyrics": submission.get("lyrics") or "",
+        "lyrics_word_count": submission.get("lyrics_word_count") or 0,
+        "prompt": submission.get("prompt") or "",
+        "prompt_word_count": submission.get("prompt_word_count") or 0,
+        "publish_to_community": bool(submission.get("publish_to_community")),
+        "generated_output_metadata_json": json_dumps(submission.get("generated_output_metadata")),
+    }
+    scores_row = {
+        **base_meta,
+        "sheet": TOPIC2_GOOGLE_SHEETS_TAB,
+        "kind": "topic2_score",
+        "average_score": auto.get("average_score"),
+        "economic_correctness": criteria.get("economic_correctness"),
+        "concept_use": criteria.get("concept_use"),
+        "causal_reasoning": criteria.get("causal_reasoning"),
+        "communication_quality": criteria.get("communication_quality"),
+        "revision_quality": criteria.get("revision_quality"),
+        "unreliable_warning": bool(auto.get("unreliable_warning")),
+        "unreliable_reasons": " | ".join(auto.get("unreliable_reasons", [])),
+        "revision_type": auto.get("revision_type") or "none",
+        "detected_topic_keywords": ", ".join(auto.get("detected_topic_keywords", [])),
+    }
+    events_row = {
+        **base_meta,
+        "sheet": TOPIC2_GOOGLE_SHEETS_TAB,
+        "kind": "topic2_submit_score",
+        "event_timestamp_utc": _utc_now_iso(),
+        "event_payload_json": json_dumps(
+            {
+                "publish_to_community": submission.get("publish_to_community"),
+                "generated_output_metadata": submission.get("generated_output_metadata"),
+            }
+        ),
+    }
+    results = {
+        "submissions": await _post_google_sheets_row(submissions_row),
+        "scores": await _post_google_sheets_row(scores_row),
+        "events": await _post_google_sheets_row(events_row),
+    }
+    return {
+        "enabled": TOPIC2_ENABLE_GOOGLE_SHEETS,
+        "endpoint_configured": bool(TOPIC2_GOOGLE_SHEETS_ENDPOINT),
+        "workbook": TOPIC2_GOOGLE_SHEETS_WORKBOOK or None,
+        "results": results,
+    }
+
+
+async def _persist_topic2_vote_to_sheets(
+    *,
+    submission_id: str,
+    voter_nickname: str,
+    song_owner_nickname: str,
+    votes: int,
+) -> dict[str, Any]:
+    row = {
+        "sheet": TOPIC2_GOOGLE_SHEETS_TAB,
+        "kind": "topic2_vote",
+        "topic": "topic2ludic",
+        "workbook": TOPIC2_GOOGLE_SHEETS_WORKBOOK or "",
+        "event_timestamp_utc": _utc_now_iso(),
+        "submission_id": submission_id,
+        "voter_nickname": voter_nickname,
+        "song_owner_nickname": song_owner_nickname,
+        "votes_after_vote": votes,
+    }
+    result = await _post_google_sheets_row(row)
+    return {
+        "enabled": TOPIC2_ENABLE_GOOGLE_SHEETS,
+        "endpoint_configured": bool(TOPIC2_GOOGLE_SHEETS_ENDPOINT),
+        "result": result,
+    }
+
+
+async def _persist_topic2_cohort_snapshot_to_sheets() -> dict[str, Any]:
+    analytics = _cohort_analytics()
+    row = {
+        "sheet": TOPIC2_GOOGLE_SHEETS_TAB,
+        "kind": "topic2_cohort_snapshot",
+        "topic": "topic2ludic",
+        "workbook": TOPIC2_GOOGLE_SHEETS_WORKBOOK or "",
+        "snapshot_timestamp_utc": _utc_now_iso(),
+        "submission_count": analytics.get("submission_count", 0),
+        "revision_type_counts_json": json_dumps(analytics.get("revision_type_counts", {})),
+        "common_misconceptions_json": json_dumps(analytics.get("common_misconceptions", [])),
+        "concept_inaccuracy_patterns_json": json_dumps(analytics.get("concept_inaccuracy_patterns", [])),
+        "ai_over_reliance_indicators_json": json_dumps(analytics.get("ai_over_reliance_indicators", [])),
+    }
+    result = await _post_google_sheets_row(row)
+    return {
+        "enabled": TOPIC2_ENABLE_GOOGLE_SHEETS,
+        "endpoint_configured": bool(TOPIC2_GOOGLE_SHEETS_ENDPOINT),
+        "result": result,
+    }
+
+
+def json_dumps(value: Any) -> str:
+    import json
+    return json.dumps(value, ensure_ascii=False, separators=(",", ":"), default=str)
+
+
 @app.get("/healthz")
 async def healthz() -> dict:
     return {
@@ -399,6 +542,8 @@ async def healthz() -> dict:
             "max_scoring_submissions_per_nickname": TOPIC2_MAX_SCORING_SUBMISSIONS_PER_NICK,
             "google_sheets_enabled": TOPIC2_ENABLE_GOOGLE_SHEETS,
             "google_sheets_workbook": TOPIC2_GOOGLE_SHEETS_WORKBOOK or None,
+            "google_sheets_endpoint_configured": bool(TOPIC2_GOOGLE_SHEETS_ENDPOINT),
+            "google_sheets_tab": TOPIC2_GOOGLE_SHEETS_TAB,
         },
     }
 
@@ -546,6 +691,7 @@ async def topic2_submit_score(
     _topic2_submissions.append(submission)
     _topic2_score_counts_by_nickname[nick_key] += 1
 
+    sheets_persist = await _persist_topic2_submission_to_sheets(submission)
     leaderboard_rows = _build_topic2_leaderboard_rows()
     return {
         "ok": True,
@@ -553,6 +699,7 @@ async def topic2_submit_score(
         "timestamp_utc": submission["submitted_at_utc"],
         "auto_score": auto_score,
         "google_sheets_export_preview": _google_sheets_export_preview(submission),
+        "google_sheets_persist": sheets_persist,
         "leaderboard_snapshot": {
             "top": leaderboard_rows[:5],
             "bottom": leaderboard_rows[-5:] if len(leaderboard_rows) > 5 else leaderboard_rows,
@@ -603,10 +750,12 @@ async def topic2_cohort_summary(
 ):
     _enforce_rate_limit(request)
     _require_token_if_enabled(x_proxy_token)
+    sheets_persist = await _persist_topic2_cohort_snapshot_to_sheets()
     return {
         "ok": True,
         "generated_at_utc": _utc_now_iso(),
         "cohort_analytics": _cohort_analytics(),
+        "google_sheets_persist": sheets_persist,
     }
 
 
@@ -652,8 +801,16 @@ async def topic2_vote(
         raise HTTPException(status_code=400, detail="You cannot vote for your own submission.")
 
     _topic2_votes_by_submission[payload.submission_id].add(voter_key)
+    votes = len(_topic2_votes_by_submission[payload.submission_id])
+    sheets_persist = await _persist_topic2_vote_to_sheets(
+        submission_id=payload.submission_id,
+        voter_nickname=payload.voter_nickname.strip(),
+        song_owner_nickname=str(target.get("nickname", "")),
+        votes=votes,
+    )
     return {
         "ok": True,
         "submission_id": payload.submission_id,
-        "votes": len(_topic2_votes_by_submission[payload.submission_id]),
+        "votes": votes,
+        "google_sheets_persist": sheets_persist,
     }

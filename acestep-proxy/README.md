@@ -12,6 +12,8 @@ This proxy gives you:
 - a stable public `HTTPS` endpoint
 - optional token auth
 - basic rate limiting
+- Topic 2 pilot endpoints for scoring, leaderboard, cohort summary, and community voting
+- optional Google Sheets persistence (via your existing Google Apps Script web app pattern)
 
 ## Jargon (plain English)
 
@@ -49,6 +51,9 @@ Windows PowerShell quick test:
 ```powershell
 $env:ACESTEP_TARGET_BASE = "http://127.0.0.1:8001"
 $env:PROXY_ALLOWED_ORIGINS = "https://calderon777.github.io,http://localhost,http://127.0.0.1"
+$env:TOPIC2_ENABLE_GOOGLE_SHEETS = "true"
+$env:TOPIC2_GOOGLE_SHEETS_WORKBOOK = "Monetary Economics Pilot"
+$env:TOPIC2_GOOGLE_SHEETS_ENDPOINT = "https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec"
 ```
 
 ### 3. Run the proxy
@@ -63,6 +68,8 @@ Open:
 
 - `http://localhost:8080/healthz` (proxy health/config)
 - `http://localhost:8080/health` (proxied ACE-Step health)
+- `http://localhost:8080/topic2/leaderboard` (pilot scoring leaderboard)
+- `http://localhost:8080/topic2/cohort-summary` (pilot cohort analytics snapshot)
 
 ## Connect your `topic2ludic` page
 
@@ -78,6 +85,50 @@ The page will then call:
 - `https://api.yourdomain.com/release_task`
 - `https://api.yourdomain.com/query_result`
 - `https://api.yourdomain.com/v1/audio`
+- `https://api.yourdomain.com/topic2/submit-score`
+- `https://api.yourdomain.com/topic2/community-songs`
+- `https://api.yourdomain.com/topic2/vote`
+
+## Topic 2 pilot endpoints (new)
+
+These endpoints support the `topic2ludic` economics-song pilot:
+
+- `POST /topic2/submit-score`: save a submission + return rubric scores (5 criteria + average)
+- `GET /topic2/leaderboard`: top/bottom scorers
+- `GET /topic2/cohort-summary`: common misconceptions, revision types, inaccuracy patterns, AI over-reliance indicators
+- `GET /topic2/community-songs`: public/published songs list for listening + voting
+- `POST /topic2/vote`: vote by nickname (no self-voting)
+
+Current persistence behavior:
+- In-memory storage is always used (fast pilot mode)
+- Optional Google Sheets webhook persistence can be enabled simultaneously
+
+## Google Sheets persistence (Topic 2 pilot)
+
+The proxy can POST rows to a Google Apps Script web app endpoint, following the same pattern used by your `topicNmcqs.qmd` pages.
+
+Set:
+- `TOPIC2_ENABLE_GOOGLE_SHEETS=true`
+- `TOPIC2_GOOGLE_SHEETS_ENDPOINT=https://script.google.com/macros/s/.../exec`
+- `TOPIC2_GOOGLE_SHEETS_WORKBOOK=<your label>` (optional label field stored in payload)
+- `TOPIC2_GOOGLE_SHEETS_TAB=topic2ludic` (single-tab mode; recommended for pilot)
+
+The proxy sends row-style JSON payloads with:
+- `sheet=topic2ludic` (single worksheet tab)
+- `kind` to distinguish row types (`topic2_submission`, `topic2_score`, `topic2_vote`, `topic2_cohort_snapshot`, etc.)
+
+This lets you keep one worksheet tab (`topic2ludic`) while still separating event types for analysis.
+
+Example payload fields include:
+- `sheet`
+- `kind`
+- `submission_id`
+- `nickname`
+- `lyrics`
+- `prompt`
+- `average_score`
+- `revision_type`
+- `unreliable_warning`
 
 ## Deploying (recommended path)
 
@@ -125,6 +176,13 @@ Why `Caddy`:
 - `PROXY_REQUEST_TIMEOUT_SECONDS`: timeout for long generations
 - `PROXY_RATE_LIMIT_WINDOW_SECONDS`: rate-limit window
 - `PROXY_RATE_LIMIT_MAX_REQUESTS`: max requests per IP in the window
+- `TOPIC2_MAX_LYRICS_WORDS`, `TOPIC2_MAX_LYRICS_CHARS`
+- `TOPIC2_MAX_PROMPT_WORDS`, `TOPIC2_MAX_PROMPT_CHARS`
+- `TOPIC2_MAX_SCORING_SUBMISSIONS_PER_NICK`
+- `TOPIC2_ENABLE_GOOGLE_SHEETS`: enable/disable Apps Script webhook persistence
+- `TOPIC2_GOOGLE_SHEETS_ENDPOINT`: Apps Script Web App URL (same style as MCQ pages)
+- `TOPIC2_GOOGLE_SHEETS_WORKBOOK`: optional workbook label stored in payload rows
+- `TOPIC2_GOOGLE_SHEETS_TAB`: worksheet/tab name for Topic 2 pilot rows (default `topic2ludic`)
 
 ## Docker (optional)
 
@@ -136,4 +194,3 @@ docker run --rm -p 8080:8080 \
   -e PROXY_ALLOWED_ORIGINS=https://calderon777.github.io \
   acestep-proxy
 ```
-
