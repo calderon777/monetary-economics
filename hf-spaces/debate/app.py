@@ -41,13 +41,8 @@ KEYNESIAN_PITCH = "+0Hz"  # Natural pitch
 async def text_to_speech_async(text: str, voice: str, pitch: str = "+0Hz") -> str:
     """Convert text to speech and return base64-encoded audio."""
     try:
-        # Use SSML for better control over speech characteristics
-        ssml_text = f"""
-        <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
-            <prosody rate='{SPEECH_RATE}' pitch='{pitch}'>{text}</prosody>
-        </speak>
-        """
-        communicate = edge_tts.Communicate(ssml_text, voice)
+        # edge_tts accepts rate and pitch as parameters
+        communicate = edge_tts.Communicate(text, voice, rate=SPEECH_RATE, pitch=pitch)
         audio_data = BytesIO()
         async for chunk in communicate.stream():
             if chunk["type"] == "audio":
