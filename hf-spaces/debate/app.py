@@ -1,6 +1,10 @@
 from shiny import App, ui, render, reactive
 from groq import Groq
 import os
+import edge_tts
+import asyncio
+import base64
+from io import BytesIO
 
 MODEL_NAME = "llama-3.3-70b-versatile"
 
@@ -23,6 +27,32 @@ ROUND_GUIDANCE = {
     "Round 2 - Liquidity Preference": "Focus on money demand stability vs interest sensitivity.",
     "Round 3 - Policy at Low Rates": "Focus on policy options near the effective lower bound.",
 }
+
+# Voice settings for each team
+CLASSICAL_VOICE = "en-GB-RyanNeural"  # Deeper, more formal British voice for Walras/Marshall
+KEYNESIAN_VOICE = "en-GB-ThomasNeural"  # Different British male voice for Keynes/Hicks
+
+
+async def text_to_speech_async(text: str, voice: str) -> str:
+    """Convert text to speech and return base64-encoded audio."""
+    try:
+        communicate = edge_tts.Communicate(text, voice)
+        audio_data = BytesIO()
+        async for chunk in communicate.stream():
+            if chunk["type"] == "audio":
+                audio_data.write(chunk["data"])
+        audio_data.seek(0)
+        # Encode to base64 for embedding in HTML5 audio
+        audio_base64 = base64.b64encode(audio_data.read()).decode('utf-8')
+        return audio_base64
+    except Exception as e:
+        print(f"TTS Error: {e}")
+        return ""
+
+
+def text_to_speech(text: str, voice: str) -> str:
+    """Synchronous wrapper for TTS."""
+    return asyncio.run(text_to_speech_async(text, voice))
 
 
 def build_messages(system_prompt, topic, round_label, history, user_question):
@@ -302,7 +332,7 @@ def render_history(history):
     return ui.div(*items)
 
 
-def render_unified_debate(classical_history, keynes_history, moderator_scores):
+def render_unified_debate(classical_history, keynes_history, moderator_scores, classical_audio_list, keynes_audio_list):
     """Render a unified debate transcript showing both teams alternating, with moderator summary at end."""
     if not classical_history and not keynes_history:
         return ui.p("No debate yet. Submit a question to start.", style="color: #999;")
@@ -314,12 +344,24 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores):
         # Show classical response
         if i < len(classical_history):
             classical_turn = classical_history[i]
+            classical_audio = classical_audio_list[i] if i < len(classical_audio_list) else ""
+            
+            audio_html = ""
+            if classical_audio:
+                audio_html = f"""
+                <audio controls style="width: 100%; margin-top: 8px; height: 32px;">
+                    <source src="data:audio/mp3;base64,{classical_audio}" type="audio/mp3">
+                    Your browser does not support audio playback.
+                </audio>
+                """
+            
             items.append(
                 ui.div(
                     ui.div(
                         ui.span(f"Exchange {exchange} — Classicals (Walras & Marshall)", 
                                style="font-weight: bold; color: #2c5aa0; font-size: 0.95rem;"),
                         ui.p(classical_turn["assistant"], style="margin-top: 8px; line-height: 1.6; color: #333;"),
+                        ui.HTML(audio_html),
                         style="padding: 12px; background: #eef3ff; border-left: 4px solid #2c5aa0;"
                     ),
                     style="margin-bottom: 12px;"
@@ -329,12 +371,24 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores):
         # Show keynesian response
         if i < len(keynes_history):
             keynes_turn = keynes_history[i]
+            keynes_audio = keynes_audio_list[i] if i < len(keynes_audio_list) else ""
+            
+            audio_html = ""
+            if keynes_audio:
+                audio_html = f"""
+                <audio controls style="width: 100%; margin-top: 8px; height: 32px;">
+                    <source src="data:audio/mp3;base64,{keynes_audio}" type="audio/mp3">
+                    Your browser does not support audio playback.
+                </audio>
+                """
+            
             items.append(
                 ui.div(
                     ui.div(
                         ui.span(f"Exchange {exchange} — Keynesians (Keynes & Hicks)", 
                                style="font-weight: bold; color: #a0572c; font-size: 0.95rem;"),
                         ui.p(keynes_turn["assistant"], style="margin-top: 8px; line-height: 1.6; color: #333;"),
+                        ui.HTML(audio_html),
                         style="padding: 12px; background: #fff5e6; border-left: 4px solid #a0572c;"
                     ),
                     style="margin-bottom: 12px;"
@@ -365,6 +419,8 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores):
 
 classical_history = reactive.Value([])
 keynes_history = reactive.Value([])
+classical_audio = reactive.Value([])  # Store audio for classical responses
+keynes_audio = reactive.Value([])  # Store audio for keynesian responses
 moderator_scores = reactive.Value([])
 status_message = reactive.Value("Ready.")
 current_topic = reactive.Value("")
@@ -384,6 +440,8 @@ def server(input, output, session):
         if current_topic.get() != new_topic and classical_history.get():
             classical_history.set([])
             keynes_history.set([])
+            classical_audio.set([])
+            keynes_audio.set([])
             status_message.set(f'✨ New topic: "{new_topic}" — Ready to debate!')
             current_topic.set(new_topic)
 
@@ -392,6 +450,8 @@ def server(input, output, session):
     def _clear_all():
         classical_history.set([])
         keynes_history.set([])
+        classical_audio.set([])
+        keynes_audio.set([])
         moderator_scores.set([])
         current_topic.set("")
         status_message.set("🗑️ Cleared. Enter a topic and question to start fresh.")
@@ -411,6 +471,10 @@ def server(input, output, session):
         current_topic.set(topic)
         status_message.set(f"🎙️ Starting debate on '{topic}'... Classicals preparing opening statement...")
 
+        # Lists to store audio for this debate session
+        classical_audio_batch = []
+        keynes_audio_batch = []
+
         # EXCHANGE 1: Classicals open, then Keynesians respond to them
         classical_msgs = build_messages(
             SYSTEM_CLASSICAL,
@@ -420,7 +484,9 @@ def server(input, output, session):
             question,
         )
         classical_reply = get_ai_response(classical_msgs)
-        status_message.set("📝 Classicals have responded. Keynesians are formulating their counter-argument...")
+        status_message.set("🎤 Generating Classicals' audio & preparing Keynesian response...")
+        classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE)
+        classical_audio_batch.append(classical_audio_1)
 
         # Keynesians respond to the Classical argument
         keynes_opening = f"The Classicals just argued: \"{classical_reply}\"\n\nNow, respond to the student question AND address their Classical argument."
@@ -432,7 +498,9 @@ def server(input, output, session):
             keynes_opening,
         )
         keynes_reply = get_ai_response(keynes_msgs)
-        status_message.set("📝 Keynesians have responded. Classicals are preparing their counter-argument...")
+        status_message.set("🎤 Generating Keynesians' audio & preparing Classicals' counter...")
+        keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE)
+        keynes_audio_batch.append(keynes_audio_1)
 
         # EXCHANGE 2: Classicals counter-argue
         classical_counter = f"The Keynesians just countered: \"{keynes_reply}\"\n\nProvide a counter-argument to their position."
@@ -444,9 +512,11 @@ def server(input, output, session):
             classical_counter,
         )
         classical_counter_reply = get_ai_response(classical_msgs_2)
-        status_message.set("📝 Classicals have counter-argued. Keynesians are preparing their final rebuttal...")
+        status_message.set("🎤 Generating Classicals' counter-argument audio...")
+        classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE)
+        classical_audio_batch.append(classical_audio_2)
 
-        # EXCHANGE 3: Keynesians rebut
+        # EXCHANGE 2: Keynesians rebut
         keynes_rebuttal = f"The Classicals just countered with: \"{classical_counter_reply}\"\n\nProvide your final rebuttal."
         keynes_msgs_2 = build_messages(
             SYSTEM_KEYNESIAN,
@@ -456,7 +526,9 @@ def server(input, output, session):
             keynes_rebuttal,
         )
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
-        status_message.set("📝 Keynesians have rebuted. Classicals are preparing their final response...")
+        status_message.set("🎤 Generating Keynesians' rebuttal audio...")
+        keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE)
+        keynes_audio_batch.append(keynes_audio_2)
 
         # EXCHANGE 3: Classicals final response
         classical_final = f"The Keynesians just argued: \"{keynes_rebuttal_reply}\"\n\nDeliver your final response to their argument."
@@ -468,9 +540,11 @@ def server(input, output, session):
             classical_final,
         )
         classical_final_reply = get_ai_response(classical_msgs_3)
-        status_message.set("📝 Classicals have responded. Keynesians are preparing their final word...")
+        status_message.set("🎤 Generating Classicals' final response audio...")
+        classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE)
+        classical_audio_batch.append(classical_audio_3)
 
-        # EXCHANGE 3 (continued): Keynesians final word
+        # EXCHANGE 3: Keynesians final word
         keynes_final = f"The Classicals just concluded: \"{classical_final_reply}\"\n\nDeliver your final word on this debate."
         keynes_msgs_3 = build_messages(
             SYSTEM_KEYNESIAN,
@@ -480,6 +554,9 @@ def server(input, output, session):
             keynes_final,
         )
         keynes_final_reply = get_ai_response(keynes_msgs_3)
+        status_message.set("🎤 Generating Keynesians' final word audio...")
+        keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE)
+        keynes_audio_batch.append(keynes_audio_3)
 
         # Store all exchanges in history
         classical_history.set(
@@ -496,6 +573,10 @@ def server(input, output, session):
                 {"user": classical_final, "assistant": keynes_final_reply}
             ]
         )
+        
+        # Store audio for all exchanges
+        classical_audio.set(classical_audio.get() + classical_audio_batch)
+        keynes_audio.set(keynes_audio.get() + keynes_audio_batch)
 
         # Get moderator analysis for all exchanges at the end
         status_message.set("📋 Moderator is scoring all exchanges...")
@@ -515,7 +596,13 @@ def server(input, output, session):
     @output
     @render.ui
     def debate_transcript():
-        return render_unified_debate(classical_history.get(), keynes_history.get(), moderator_scores.get())
+        return render_unified_debate(
+            classical_history.get(), 
+            keynes_history.get(), 
+            moderator_scores.get(), 
+            classical_audio.get(), 
+            keynes_audio.get()
+        )
 
 
 app = App(app_ui, server)
