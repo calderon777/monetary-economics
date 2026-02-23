@@ -227,6 +227,21 @@ app_ui = ui.page_fluid(
                 border-radius: 6px;
                 margin-bottom: 18px;
             }
+            .status.producing-voice {
+                background: linear-gradient(135deg, #fff9e6 0%, #f0e6ff 100%);
+                border-left: 4px solid #6b4ea0;
+                animation: pulse-glow 1.5s ease-in-out infinite;
+            }
+            @keyframes pulse-glow {
+                0%, 100% {
+                    opacity: 1;
+                    box-shadow: 0 0 10px rgba(107, 78, 160, 0.3);
+                }
+                50% {
+                    opacity: 0.85;
+                    box-shadow: 0 0 20px rgba(107, 78, 160, 0.6);
+                }
+            }
             .debate-grid {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
@@ -538,7 +553,7 @@ def server(input, output, session):
 
         # Track the current topic
         current_topic.set(topic)
-        status_message.set(f"🎙️ Starting debate on '{topic}'... Classicals preparing opening statement...")
+        status_message.set(f"🎙️ Starting debate on '{topic}'... Producing voice debate...")
 
         # Lists to store audio for this debate session
         classical_audio_batch = []
@@ -553,7 +568,7 @@ def server(input, output, session):
             question,
         )
         classical_reply = get_ai_response(classical_msgs)
-        status_message.set("🎤 Generating Classicals' audio & preparing Keynesian response...")
+        status_message.set("🎤 Producing voice debate: Classicals speaking...")
         classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
         classical_audio_batch.append(classical_audio_1)
 
@@ -567,7 +582,7 @@ def server(input, output, session):
             keynes_opening,
         )
         keynes_reply = get_ai_response(keynes_msgs)
-        status_message.set("🎤 Generating Keynesians' audio & preparing Classicals' counter...")
+        status_message.set("🎤 Producing voice debate: Keynesians responding...")
         keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         keynes_audio_batch.append(keynes_audio_1)
 
@@ -581,7 +596,7 @@ def server(input, output, session):
             classical_counter,
         )
         classical_counter_reply = get_ai_response(classical_msgs_2)
-        status_message.set("🎤 Generating Classicals' counter-argument audio...")
+        status_message.set("🎤 Producing voice debate: Classicals counter-arguing...")
         classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
         classical_audio_batch.append(classical_audio_2)
 
@@ -595,7 +610,7 @@ def server(input, output, session):
             keynes_rebuttal,
         )
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
-        status_message.set("🎤 Generating Keynesians' rebuttal audio...")
+        status_message.set("🎤 Producing voice debate: Keynesians rebutting...")
         keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         keynes_audio_batch.append(keynes_audio_2)
 
@@ -609,7 +624,7 @@ def server(input, output, session):
             classical_final,
         )
         classical_final_reply = get_ai_response(classical_msgs_3)
-        status_message.set("🎤 Generating Classicals' final response audio...")
+        status_message.set("🎤 Producing voice debate: Classicals finalizing...")
         classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
         classical_audio_batch.append(classical_audio_3)
 
@@ -623,7 +638,7 @@ def server(input, output, session):
             keynes_final,
         )
         keynes_final_reply = get_ai_response(keynes_msgs_3)
-        status_message.set("🎤 Generating Keynesians' final word audio...")
+        status_message.set("🎤 Producing voice debate: Keynesians closing...")
         keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         keynes_audio_batch.append(keynes_audio_3)
 
@@ -660,7 +675,11 @@ def server(input, output, session):
     @output
     @render.ui
     def status():
-        return ui.div(status_message.get(), class_="status")
+        msg = status_message.get()
+        # Add special class for voice production messages
+        if "🎤" in msg or "Producing" in msg or "audio" in msg.lower():
+            return ui.div(msg, class_="status producing-voice")
+        return ui.div(msg, class_="status")
 
     @output
     @render.ui
