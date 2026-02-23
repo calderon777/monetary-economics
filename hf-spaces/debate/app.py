@@ -100,13 +100,22 @@ def get_ai_response(messages):
         return "Error: GROQ_API_KEY is not set for this Space."
 
     client = Groq(api_key=api_key)
-    result = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=messages,
-        temperature=0.4,
-        max_tokens=400,
-    )
-    return result.choices[0].message.content.strip()
+    try:
+        result = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=messages,
+            temperature=0.4,
+            max_tokens=400,
+        )
+        return result.choices[0].message.content.strip()
+    except Exception as e:
+        error_msg = str(e)
+        if "rate_limit" in error_msg.lower() or "429" in error_msg:
+            return "⏳ Rate limit reached. Please wait a few minutes and try again."
+        elif "401" in error_msg or "invalid" in error_msg.lower():
+            return "🔑 API authentication error. Please check the API key."
+        else:
+            return f"⚠️ API error: {error_msg[:100]}..."
 
 
 def get_moderator_analysis(topic, round_label, classical_response, keynesian_response):
@@ -134,13 +143,20 @@ Score this exchange in 2-3 punchy sentences:
 Keep it brief and decisive."""
 
     messages = [{"role": "user", "content": moderator_prompt}]
-    result = client.chat.completions.create(
-        model=MODEL_NAME,
-        messages=messages,
-        temperature=0.3,
-        max_tokens=150,
-    )
-    return result.choices[0].message.content.strip()
+    try:
+        result = client.chat.completions.create(
+            model=MODEL_NAME,
+            messages=messages,
+            temperature=0.3,
+            max_tokens=150,
+        )
+        return result.choices[0].message.content.strip()
+    except Exception as e:
+        error_msg = str(e)
+        if "rate_limit" in error_msg.lower() or "429" in error_msg:
+            return "⏳ Moderator scoring unavailable (rate limit reached)."
+        else:
+            return "⚠️ Moderator scoring unavailable."
 
 
 app_ui = ui.page_fluid(
@@ -512,6 +528,11 @@ def server(input, output, session):
             question,
         )
         classical_reply = get_ai_response(classical_msgs)
+        
+        # Check for API errors
+        if classical_reply.startswith(("⏳", "🔑", "⚠️")):
+            status_message.set(f"❌ {classical_reply}")
+            return
 
         # Keynesians respond to the Classical argument
         keynes_opening = f"The Classicals just argued: \"{classical_reply}\"\n\nNow, respond to the student question AND address their Classical argument."
@@ -523,6 +544,15 @@ def server(input, output, session):
             keynes_opening,
         )
         keynes_reply = get_ai_response(keynes_msgs)
+        
+        # Check for API errors
+        if keynes_reply.startswith(("⏳", "🔑", "⚠️")):
+            # Show partial debate with error message
+            classical_history.set(
+                classical_history.get() + [{"user": question, "assistant": classical_reply}]
+            )
+            status_message.set(f"❌ {keynes_reply} (Partial debate shown)")
+            return
         
         # ✨ SHOW EXCHANGE 1 IMMEDIATELY (no audio yet)
         classical_history.set(
@@ -543,6 +573,11 @@ def server(input, output, session):
             classical_counter,
         )
         classical_counter_reply = get_ai_response(classical_msgs_2)
+        
+        # Check for API errors
+        if classical_counter_reply.startswith(("⏳", "🔑", "⚠️")):
+            status_message.set(f"❌ {classical_counter_reply} (Exchange 1 shown, debate incomplete)")
+            return
 
         # EXCHANGE 2: Keynesians rebut
         keynes_rebuttal = f"The Classicals just countered with: \"{classical_counter_reply}\"\n\nProvide your final rebuttal."
@@ -554,6 +589,11 @@ def server(input, output, session):
             keynes_rebuttal,
         )
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
+        
+        # Check for API errors
+        if keynes_rebuttal_reply.startswith(("⏳", "🔑", "⚠️")):
+            status_message.set(f"❌ {keynes_rebuttal_reply} (Exchanges 1-2 shown, debate incomplete)")
+            return
         
         # ✨ SHOW EXCHANGE 2 IMMEDIATELY (no audio yet)
         classical_history.set(
@@ -574,6 +614,17 @@ def server(input, output, session):
             classical_final,
         )
         classical_final_reply = get_ai_response(classical_msgs_3)
+        
+        # Check for API errors
+        if classical_final_reply.startswith(("⏳", "🔑", "⚠️")):
+            classical_history.set(
+                classical_history.get() + [{"user": keynes_rebuttal, "assistant": classical_counter_reply}]
+            )
+            keynes_history.set(
+                keynes_history.get() + [{"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply}]
+            )
+            status_message.set(f"❌ {classical_final_reply} (Exchanges 1-2 shown, debate incomplete)")
+            return
 
         # EXCHANGE 3: Keynesians final word
         keynes_final = f"The Classicals just concluded: \"{classical_final_reply}\"\n\nDeliver your final word on this debate."
@@ -585,6 +636,15 @@ def server(input, output, session):
             keynes_final,
         )
         keynes_final_reply = get_ai_response(keynes_msgs_3)
+        
+        # Check for API errors
+        if keynes_final_reply.startswith(("⏳", "🔑", "⚠️")):
+            # Show exchanges 1-3 (Classical final included)
+            classical_history.set(
+                classical_history.get() + [{"user": keynes_final, "assistant": classical_final_reply}]
+            )
+            status_message.set(f"❌ {keynes_final_reply} (Exchanges 1-3 shown, debate incomplete)")
+            return
         
         # ✨ SHOW EXCHANGE 3 IMMEDIATELY (no audio yet)
         classical_history.set(
