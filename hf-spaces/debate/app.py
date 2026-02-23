@@ -28,15 +28,26 @@ ROUND_GUIDANCE = {
     "Round 3 - Policy at Low Rates": "Focus on policy options near the effective lower bound.",
 }
 
-# Voice settings for each team
-CLASSICAL_VOICE = "en-GB-RyanNeural"  # Deeper, more formal British voice for Walras/Marshall
-KEYNESIAN_VOICE = "en-GB-ThomasNeural"  # Different British male voice for Keynes/Hicks
+# Voice settings for each team - older, more distinguished voices
+CLASSICAL_VOICE = "en-GB-AlfieNeural"  # Older British male for Walras/Marshall
+KEYNESIAN_VOICE = "en-US-GuyNeural"  # Distinguished older American male for Keynes/Hicks
+
+# Speech parameters for debate-like delivery
+SPEECH_RATE = "+5%"  # Slightly faster for debate energy
+CLASSICAL_PITCH = "-10Hz"  # Lower pitch for gravitas
+KEYNESIAN_PITCH = "+0Hz"  # Natural pitch
 
 
-async def text_to_speech_async(text: str, voice: str) -> str:
+async def text_to_speech_async(text: str, voice: str, pitch: str = "+0Hz") -> str:
     """Convert text to speech and return base64-encoded audio."""
     try:
-        communicate = edge_tts.Communicate(text, voice)
+        # Use SSML for better control over speech characteristics
+        ssml_text = f"""
+        <speak version='1.0' xmlns='http://www.w3.org/2001/10/synthesis' xml:lang='en-US'>
+            <prosody rate='{SPEECH_RATE}' pitch='{pitch}'>{text}</prosody>
+        </speak>
+        """
+        communicate = edge_tts.Communicate(ssml_text, voice)
         audio_data = BytesIO()
         async for chunk in communicate.stream():
             if chunk["type"] == "audio":
@@ -50,7 +61,7 @@ async def text_to_speech_async(text: str, voice: str) -> str:
         return ""
 
 
-def text_to_speech(text: str, voice: str) -> str:
+def text_to_speech(text: str, voice: str, pitch: str = "+0Hz") -> str:
     """Synchronous wrapper for TTS - handles event loop properly."""
     try:
         # Try to get existing event loop
@@ -59,11 +70,11 @@ def text_to_speech(text: str, voice: str) -> str:
             # If loop is already running (in Shiny), use a new loop in a thread
             import concurrent.futures
             with concurrent.futures.ThreadPoolExecutor() as executor:
-                future = executor.submit(asyncio.run, text_to_speech_async(text, voice))
+                future = executor.submit(asyncio.run, text_to_speech_async(text, voice, pitch))
                 return future.result(timeout=30)  # 30 second timeout
         else:
             # No running loop, safe to use asyncio.run
-            return asyncio.run(text_to_speech_async(text, voice))
+            return asyncio.run(text_to_speech_async(text, voice, pitch))
     except Exception as e:
         print(f"TTS Wrapper Error: {e}")
         return ""
@@ -353,6 +364,47 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
     
     items = []
     exchange = 1
+    audio_id = 0  # Track audio elements for sequential playback
+    
+    # Add JavaScript for sequential audio playback
+    autoplay_script = """
+    <script>
+    function setupDebateAudioChain() {
+        const audioElements = document.querySelectorAll('audio[data-debate-audio]');
+        
+        audioElements.forEach((audio, index) => {
+            // When this audio ends, play the next one after a brief pause
+            audio.addEventListener('ended', () => {
+                if (index < audioElements.length - 1) {
+                    setTimeout(() => {
+                        audioElements[index + 1].play().catch(e => console.log('Autoplay prevented:', e));
+                    }, 800);  // 800ms pause between speakers (debate-like)
+                }
+            });
+        });
+        
+        // Auto-play the first audio with a slight delay
+        if (audioElements.length > 0) {
+            setTimeout(() => {
+                audioElements[0].play().catch(e => {
+                    console.log('Initial autoplay prevented - user interaction required:', e);
+                });
+            }, 500);
+        }
+    }
+    
+    // Run when page loads
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', setupDebateAudioChain);
+    } else {
+        setupDebateAudioChain();
+    }
+    // Also run immediately for dynamic updates
+    setTimeout(setupDebateAudioChain, 100);
+    </script>
+    """
+    
+    items.append(ui.HTML(autoplay_script))
     
     for i in range(max(len(classical_history), len(keynes_history))):
         # Show classical response
@@ -363,11 +415,15 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             audio_html = ""
             if classical_audio:
                 audio_html = f"""
-                <audio controls style="width: 100%; margin-top: 8px; height: 32px;">
-                    <source src="data:audio/mp3;base64,{classical_audio}" type="audio/mp3">
-                    Your browser does not support audio playback.
-                </audio>
+                <div style="margin-top: 12px; padding: 8px; background: rgba(44, 90, 160, 0.05); border-radius: 6px;">
+                    <div style="font-size: 0.85rem; color: #2c5aa0; margin-bottom: 4px;">🎙️ Listen to Classicals</div>
+                    <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
+                        <source src="data:audio/mp3;base64,{classical_audio}" type="audio/mp3">
+                        Your browser does not support audio playback.
+                    </audio>
+                </div>
                 """
+                audio_id += 1
             
             items.append(
                 ui.div(
@@ -390,11 +446,15 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             audio_html = ""
             if keynes_audio:
                 audio_html = f"""
-                <audio controls style="width: 100%; margin-top: 8px; height: 32px;">
-                    <source src="data:audio/mp3;base64,{keynes_audio}" type="audio/mp3">
-                    Your browser does not support audio playback.
-                </audio>
+                <div style="margin-top: 12px; padding: 8px; background: rgba(160, 87, 44, 0.05); border-radius: 6px;">
+                    <div style="font-size: 0.85rem; color: #a0572c; margin-bottom: 4px;">🎙️ Listen to Keynesians</div>
+                    <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
+                        <source src="data:audio/mp3;base64,{keynes_audio}" type="audio/mp3">
+                        Your browser does not support audio playback.
+                    </audio>
+                </div>
                 """
+                audio_id += 1
             
             items.append(
                 ui.div(
@@ -499,7 +559,7 @@ def server(input, output, session):
         )
         classical_reply = get_ai_response(classical_msgs)
         status_message.set("🎤 Generating Classicals' audio & preparing Keynesian response...")
-        classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE)
+        classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
         classical_audio_batch.append(classical_audio_1)
 
         # Keynesians respond to the Classical argument
@@ -513,7 +573,7 @@ def server(input, output, session):
         )
         keynes_reply = get_ai_response(keynes_msgs)
         status_message.set("🎤 Generating Keynesians' audio & preparing Classicals' counter...")
-        keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE)
+        keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         keynes_audio_batch.append(keynes_audio_1)
 
         # EXCHANGE 2: Classicals counter-argue
@@ -527,7 +587,7 @@ def server(input, output, session):
         )
         classical_counter_reply = get_ai_response(classical_msgs_2)
         status_message.set("🎤 Generating Classicals' counter-argument audio...")
-        classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE)
+        classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
         classical_audio_batch.append(classical_audio_2)
 
         # EXCHANGE 2: Keynesians rebut
@@ -541,7 +601,7 @@ def server(input, output, session):
         )
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
         status_message.set("🎤 Generating Keynesians' rebuttal audio...")
-        keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE)
+        keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         keynes_audio_batch.append(keynes_audio_2)
 
         # EXCHANGE 3: Classicals final response
@@ -555,7 +615,7 @@ def server(input, output, session):
         )
         classical_final_reply = get_ai_response(classical_msgs_3)
         status_message.set("🎤 Generating Classicals' final response audio...")
-        classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE)
+        classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
         classical_audio_batch.append(classical_audio_3)
 
         # EXCHANGE 3: Keynesians final word
@@ -569,7 +629,7 @@ def server(input, output, session):
         )
         keynes_final_reply = get_ai_response(keynes_msgs_3)
         status_message.set("🎤 Generating Keynesians' final word audio...")
-        keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE)
+        keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         keynes_audio_batch.append(keynes_audio_3)
 
         # Store all exchanges in history
