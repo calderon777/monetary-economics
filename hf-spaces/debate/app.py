@@ -376,47 +376,6 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
     
     items = []
     exchange = 1
-    audio_id = 0  # Track audio elements for sequential playback
-    
-    # Add JavaScript for sequential audio playback
-    autoplay_script = """
-    <script>
-    function setupDebateAudioChain() {
-        const audioElements = document.querySelectorAll('audio[data-debate-audio]');
-        
-        audioElements.forEach((audio, index) => {
-            // When this audio ends, play the next one after a brief pause
-            audio.addEventListener('ended', () => {
-                if (index < audioElements.length - 1) {
-                    setTimeout(() => {
-                        audioElements[index + 1].play().catch(e => console.log('Autoplay prevented:', e));
-                    }, 800);  // 800ms pause between speakers (debate-like)
-                }
-            });
-        });
-        
-        // Auto-play the first audio with a slight delay
-        if (audioElements.length > 0) {
-            setTimeout(() => {
-                audioElements[0].play().catch(e => {
-                    console.log('Initial autoplay prevented - user interaction required:', e);
-                });
-            }, 500);
-        }
-    }
-    
-    // Run when page loads
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', setupDebateAudioChain);
-    } else {
-        setupDebateAudioChain();
-    }
-    // Also run immediately for dynamic updates
-    setTimeout(setupDebateAudioChain, 100);
-    </script>
-    """
-    
-    items.append(ui.HTML(autoplay_script))
     
     for i in range(max(len(classical_history), len(keynes_history))):
         # Show classical response
@@ -424,28 +383,8 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             classical_turn = classical_history[i]
             classical_audio = classical_audio_list[i] if i < len(classical_audio_list) else ""
             
+            # Audio temporarily disabled for optimal performance
             audio_html = ""
-            if classical_audio:
-                audio_html = f"""
-                <details style="margin-top: 12px;">
-                    <summary style="cursor: pointer; padding: 8px; background: rgba(44, 90, 160, 0.05); border-radius: 6px; font-size: 0.9rem; color: #2c5aa0;">
-                        🎙️ Listen to Classicals
-                    </summary>
-                    <div style="padding: 8px; margin-top: 4px;">
-                        <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
-                            <source src="data:audio/mp3;base64,{classical_audio}" type="audio/mp3">
-                            Your browser does not support audio playback.
-                        </audio>
-                    </div>
-                </details>
-                """
-                audio_id += 1
-            else:
-                audio_html = """
-                <div style="margin-top: 12px; padding: 8px; background: rgba(44, 90, 160, 0.05); border-radius: 6px; font-size: 0.85rem; color: #999;">
-                    📝 Audio available soon (generating in background)
-                </div>
-                """
             
             items.append(
                 ui.div(
@@ -465,28 +404,8 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             keynes_turn = keynes_history[i]
             keynes_audio = keynes_audio_list[i] if i < len(keynes_audio_list) else ""
             
+            # Audio temporarily disabled for optimal performance
             audio_html = ""
-            if keynes_audio:
-                audio_html = f"""
-                <details style="margin-top: 12px;">
-                    <summary style="cursor: pointer; padding: 8px; background: rgba(160, 87, 44, 0.05); border-radius: 6px; font-size: 0.9rem; color: #a0572c;">
-                        🎙️ Listen to Keynesians
-                    </summary>
-                    <div style="padding: 8px; margin-top: 4px;">
-                        <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
-                            <source src="data:audio/mp3;base64,{keynes_audio}" type="audio/mp3">
-                            Your browser does not support audio playback.
-                        </audio>
-                    </div>
-                </details>
-                """
-                audio_id += 1
-            else:
-                audio_html = """
-                <div style="margin-top: 12px; padding: 8px; background: rgba(160, 87, 44, 0.05); border-radius: 6px; font-size: 0.85rem; color: #999;">
-                    📝 Audio available soon (generating in background)
-                </div>
-                """
             
             items.append(
                 ui.div(
@@ -504,20 +423,8 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
     
     # Add moderator summary at the end
     if moderator_scores:
+        # Audio temporarily disabled for optimal performance
         moderator_audio_html = ""
-        if moderator_audio_data:
-            moderator_audio_html = f"""
-            <details style="margin-top: 12px;">
-                <summary style="cursor: pointer; padding: 8px; background: rgba(139, 105, 20, 0.05); border-radius: 6px; font-size: 0.9rem; color: #8b6914;">
-                    🎙️ Listen to Moderator
-                </summary>
-                <div style="padding: 8px; margin-top: 4px;">
-                    <audio id="moderator-audio" controls style="width: 100%; height: 32px;">
-                        <source src="data:audio/mp3;base64,{moderator_audio_data}" type="audio/mp3">
-                        Your browser does not support audio playback.
-                    </audio>
-                </div>
-            </details>
             """
         else:
             moderator_audio_html = """
@@ -702,38 +609,12 @@ def server(input, output, session):
         
         moderator_scores.set([moderator_comment_1, moderator_comment_2, moderator_comment_3])
         
-        status_message.set(f"✅ Debate complete! Read the exchanges below. Audio will be generated in background.")
+        # Clear any old audio data
+        classical_audio.set([])
+        keynes_audio.set([])
+        moderator_audio.set("")
         
-        # Generate audio AFTER showing text (still runs synchronously but text is already visible)
-        status_message.set("🎤 Generating audio... (You can scroll and read while this happens)")
-        
-        # Exchange 1 audio
-        classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
-        keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
-        classical_audio.set([classical_audio_1])
-        keynes_audio.set([keynes_audio_1])
-        
-        # Exchange 2 audio
-        classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
-        keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
-        classical_audio.set(classical_audio.get() + [classical_audio_2])
-        keynes_audio.set(keynes_audio.get() + [keynes_audio_2])
-        
-        # Exchange 3 audio
-        classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
-        keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
-        classical_audio.set(classical_audio.get() + [classical_audio_3])
-        keynes_audio.set(keynes_audio.get() + [keynes_audio_3])
-        
-        # Moderator audio
-        moderator_full_text = f"""Moderator's Final Scorecard. 
-        Exchange 1: {moderator_comment_1}
-        Exchange 2: {moderator_comment_2}
-        Exchange 3: {moderator_comment_3}"""
-        moderator_audio_data = text_to_speech(moderator_full_text, MODERATOR_VOICE, MODERATOR_PITCH)
-        moderator_audio.set(moderator_audio_data)
-        
-        status_message.set(f"✅ Debate complete with audio! Click dropdown arrows to listen. Ready for next question on '{topic}'.")
+        status_message.set(f"✅ Debate complete! Scroll down to read the full exchange. Ready for next question on '{topic}'.")
 
     @output
     @render.ui
