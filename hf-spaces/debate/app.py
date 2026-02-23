@@ -51,8 +51,22 @@ async def text_to_speech_async(text: str, voice: str) -> str:
 
 
 def text_to_speech(text: str, voice: str) -> str:
-    """Synchronous wrapper for TTS."""
-    return asyncio.run(text_to_speech_async(text, voice))
+    """Synchronous wrapper for TTS - handles event loop properly."""
+    try:
+        # Try to get existing event loop
+        loop = asyncio.get_event_loop()
+        if loop.is_running():
+            # If loop is already running (in Shiny), use a new loop in a thread
+            import concurrent.futures
+            with concurrent.futures.ThreadPoolExecutor() as executor:
+                future = executor.submit(asyncio.run, text_to_speech_async(text, voice))
+                return future.result(timeout=30)  # 30 second timeout
+        else:
+            # No running loop, safe to use asyncio.run
+            return asyncio.run(text_to_speech_async(text, voice))
+    except Exception as e:
+        print(f"TTS Wrapper Error: {e}")
+        return ""
 
 
 def build_messages(system_prompt, topic, round_label, history, user_question):
