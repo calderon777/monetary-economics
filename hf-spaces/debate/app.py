@@ -703,6 +703,37 @@ def server(input, output, session):
         moderator_scores.set([moderator_comment_1, moderator_comment_2, moderator_comment_3])
         
         status_message.set(f"✅ Debate complete! Read the exchanges below. Audio will be generated in background.")
+        
+        # Generate audio AFTER showing text (still runs synchronously but text is already visible)
+        status_message.set("🎤 Generating audio... (You can scroll and read while this happens)")
+        
+        # Exchange 1 audio
+        classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
+        keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
+        classical_audio.set([classical_audio_1])
+        keynes_audio.set([keynes_audio_1])
+        
+        # Exchange 2 audio
+        classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
+        keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
+        classical_audio.set(classical_audio.get() + [classical_audio_2])
+        keynes_audio.set(keynes_audio.get() + [keynes_audio_2])
+        
+        # Exchange 3 audio
+        classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
+        keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
+        classical_audio.set(classical_audio.get() + [classical_audio_3])
+        keynes_audio.set(keynes_audio.get() + [keynes_audio_3])
+        
+        # Moderator audio
+        moderator_full_text = f"""Moderator's Final Scorecard. 
+        Exchange 1: {moderator_comment_1}
+        Exchange 2: {moderator_comment_2}
+        Exchange 3: {moderator_comment_3}"""
+        moderator_audio_data = text_to_speech(moderator_full_text, MODERATOR_VOICE, MODERATOR_PITCH)
+        moderator_audio.set(moderator_audio_data)
+        
+        status_message.set(f"✅ Debate complete with audio! Click dropdown arrows to listen. Ready for next question on '{topic}'.")
 
     @output
     @render.ui
