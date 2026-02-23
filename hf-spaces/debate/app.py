@@ -427,15 +427,25 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             audio_html = ""
             if classical_audio:
                 audio_html = f"""
-                <div style="margin-top: 12px; padding: 8px; background: rgba(44, 90, 160, 0.05); border-radius: 6px;">
-                    <div style="font-size: 0.85rem; color: #2c5aa0; margin-bottom: 4px;">🎙️ Listen to Classicals</div>
-                    <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
-                        <source src="data:audio/mp3;base64,{classical_audio}" type="audio/mp3">
-                        Your browser does not support audio playback.
-                    </audio>
-                </div>
+                <details style="margin-top: 12px;">
+                    <summary style="cursor: pointer; padding: 8px; background: rgba(44, 90, 160, 0.05); border-radius: 6px; font-size: 0.9rem; color: #2c5aa0;">
+                        🎙️ Listen to Classicals
+                    </summary>
+                    <div style="padding: 8px; margin-top: 4px;">
+                        <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
+                            <source src="data:audio/mp3;base64,{classical_audio}" type="audio/mp3">
+                            Your browser does not support audio playback.
+                        </audio>
+                    </div>
+                </details>
                 """
                 audio_id += 1
+            else:
+                audio_html = """
+                <div style="margin-top: 12px; padding: 8px; background: rgba(44, 90, 160, 0.05); border-radius: 6px; font-size: 0.85rem; color: #999;">
+                    📝 Audio available soon (generating in background)
+                </div>
+                """
             
             items.append(
                 ui.div(
@@ -458,15 +468,25 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             audio_html = ""
             if keynes_audio:
                 audio_html = f"""
-                <div style="margin-top: 12px; padding: 8px; background: rgba(160, 87, 44, 0.05); border-radius: 6px;">
-                    <div style="font-size: 0.85rem; color: #a0572c; margin-bottom: 4px;">🎙️ Listen to Keynesians</div>
-                    <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
-                        <source src="data:audio/mp3;base64,{keynes_audio}" type="audio/mp3">
-                        Your browser does not support audio playback.
-                    </audio>
-                </div>
+                <details style="margin-top: 12px;">
+                    <summary style="cursor: pointer; padding: 8px; background: rgba(160, 87, 44, 0.05); border-radius: 6px; font-size: 0.9rem; color: #a0572c;">
+                        🎙️ Listen to Keynesians
+                    </summary>
+                    <div style="padding: 8px; margin-top: 4px;">
+                        <audio id="debate-audio-{audio_id}" data-debate-audio controls style="width: 100%; height: 32px;">
+                            <source src="data:audio/mp3;base64,{keynes_audio}" type="audio/mp3">
+                            Your browser does not support audio playback.
+                        </audio>
+                    </div>
+                </details>
                 """
                 audio_id += 1
+            else:
+                audio_html = """
+                <div style="margin-top: 12px; padding: 8px; background: rgba(160, 87, 44, 0.05); border-radius: 6px; font-size: 0.85rem; color: #999;">
+                    📝 Audio available soon (generating in background)
+                </div>
+                """
             
             items.append(
                 ui.div(
@@ -487,12 +507,22 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
         moderator_audio_html = ""
         if moderator_audio_data:
             moderator_audio_html = f"""
-            <div style="margin-top: 12px; padding: 8px; background: rgba(139, 105, 20, 0.05); border-radius: 6px;">
-                <div style="font-size: 0.85rem; color: #8b6914; margin-bottom: 4px;">🎙️ Listen to Moderator</div>
-                <audio id="moderator-audio" controls style="width: 100%; height: 32px;">
-                    <source src="data:audio/mp3;base64,{moderator_audio_data}" type="audio/mp3">
-                    Your browser does not support audio playback.
-                </audio>
+            <details style="margin-top: 12px;">
+                <summary style="cursor: pointer; padding: 8px; background: rgba(139, 105, 20, 0.05); border-radius: 6px; font-size: 0.9rem; color: #8b6914;">
+                    🎙️ Listen to Moderator
+                </summary>
+                <div style="padding: 8px; margin-top: 4px;">
+                    <audio id="moderator-audio" controls style="width: 100%; height: 32px;">
+                        <source src="data:audio/mp3;base64,{moderator_audio_data}" type="audio/mp3">
+                        Your browser does not support audio playback.
+                    </audio>
+                </div>
+            </details>
+            """
+        else:
+            moderator_audio_html = """
+            <div style="margin-top: 12px; padding: 8px; background: rgba(139, 105, 20, 0.05); border-radius: 6px; font-size: 0.85rem; color: #999;">
+                📝 Audio available soon (generating in background)
             </div>
             """
         
@@ -571,7 +601,7 @@ def server(input, output, session):
 
         # Track the current topic
         current_topic.set(topic)
-        status_message.set(f"🎙️ Starting debate on '{topic}'... Producing voice debate...")
+        status_message.set(f"🎙️ Starting debate on '{topic}'...")
 
         # EXCHANGE 1: Classicals open, then Keynesians respond to them
         classical_msgs = build_messages(
@@ -582,8 +612,6 @@ def server(input, output, session):
             question,
         )
         classical_reply = get_ai_response(classical_msgs)
-        status_message.set("🎤 Producing voice debate: Classicals speaking...")
-        classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
 
         # Keynesians respond to the Classical argument
         keynes_opening = f"The Classicals just argued: \"{classical_reply}\"\n\nNow, respond to the student question AND address their Classical argument."
@@ -595,19 +623,15 @@ def server(input, output, session):
             keynes_opening,
         )
         keynes_reply = get_ai_response(keynes_msgs)
-        status_message.set("🎤 Producing voice debate: Keynesians responding...")
-        keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         
-        # ✨ SHOW EXCHANGE 1 IMMEDIATELY
+        # ✨ SHOW EXCHANGE 1 IMMEDIATELY (no audio yet)
         classical_history.set(
             classical_history.get() + [{"user": question, "assistant": classical_reply}]
         )
         keynes_history.set(
             keynes_history.get() + [{"user": keynes_opening, "assistant": keynes_reply}]
         )
-        classical_audio.set(classical_audio.get() + [classical_audio_1])
-        keynes_audio.set(keynes_audio.get() + [keynes_audio_1])
-        status_message.set("✅ Exchange 1 complete! Continuing debate...")
+        status_message.set("✅ Exchange 1 ready! Continuing debate...")
 
         # EXCHANGE 2: Classicals counter-argue
         classical_counter = f"The Keynesians just countered: \"{keynes_reply}\"\n\nProvide a counter-argument to their position."
@@ -619,8 +643,6 @@ def server(input, output, session):
             classical_counter,
         )
         classical_counter_reply = get_ai_response(classical_msgs_2)
-        status_message.set("🎤 Producing voice debate: Classicals counter-arguing...")
-        classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
 
         # EXCHANGE 2: Keynesians rebut
         keynes_rebuttal = f"The Classicals just countered with: \"{classical_counter_reply}\"\n\nProvide your final rebuttal."
@@ -632,19 +654,15 @@ def server(input, output, session):
             keynes_rebuttal,
         )
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
-        status_message.set("🎤 Producing voice debate: Keynesians rebutting...")
-        keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         
-        # ✨ SHOW EXCHANGE 2 IMMEDIATELY
+        # ✨ SHOW EXCHANGE 2 IMMEDIATELY (no audio yet)
         classical_history.set(
             classical_history.get() + [{"user": keynes_rebuttal, "assistant": classical_counter_reply}]
         )
         keynes_history.set(
             keynes_history.get() + [{"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply}]
         )
-        classical_audio.set(classical_audio.get() + [classical_audio_2])
-        keynes_audio.set(keynes_audio.get() + [keynes_audio_2])
-        status_message.set("✅ Exchange 2 complete! Final exchange...")
+        status_message.set("✅ Exchange 2 ready! Final exchange...")
 
         # EXCHANGE 3: Classicals final response
         classical_final = f"The Keynesians just argued: \"{keynes_rebuttal_reply}\"\n\nDeliver your final response to their argument."
@@ -656,8 +674,6 @@ def server(input, output, session):
             classical_final,
         )
         classical_final_reply = get_ai_response(classical_msgs_3)
-        status_message.set("🎤 Producing voice debate: Classicals finalizing...")
-        classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
 
         # EXCHANGE 3: Keynesians final word
         keynes_final = f"The Classicals just concluded: \"{classical_final_reply}\"\n\nDeliver your final word on this debate."
@@ -669,20 +685,16 @@ def server(input, output, session):
             keynes_final,
         )
         keynes_final_reply = get_ai_response(keynes_msgs_3)
-        status_message.set("🎤 Producing voice debate: Keynesians closing...")
-        keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
         
-        # ✨ SHOW EXCHANGE 3 IMMEDIATELY
+        # ✨ SHOW EXCHANGE 3 IMMEDIATELY (no audio yet)
         classical_history.set(
             classical_history.get() + [{"user": keynes_final, "assistant": classical_final_reply}]
         )
         keynes_history.set(
             keynes_history.get() + [{"user": classical_final, "assistant": keynes_final_reply}]
         )
-        classical_audio.set(classical_audio.get() + [classical_audio_3])
-        keynes_audio.set(keynes_audio.get() + [keynes_audio_3])
 
-        # Get moderator analysis for all exchanges at the end
+        # Get moderator analysis for all exchanges
         status_message.set("📋 Moderator is scoring all exchanges...")
         moderator_comment_1 = get_moderator_analysis(topic, round_label, classical_reply, keynes_reply)
         moderator_comment_2 = get_moderator_analysis(topic, round_label, classical_counter_reply, keynes_rebuttal_reply)
@@ -690,16 +702,7 @@ def server(input, output, session):
         
         moderator_scores.set([moderator_comment_1, moderator_comment_2, moderator_comment_3])
         
-        # Generate moderator audio
-        status_message.set("🎤 Producing moderator's scorecard audio...")
-        moderator_full_text = f"""Moderator's Final Scorecard. 
-        Exchange 1: {moderator_comment_1}
-        Exchange 2: {moderator_comment_2}
-        Exchange 3: {moderator_comment_3}"""
-        moderator_audio_data = text_to_speech(moderator_full_text, MODERATOR_VOICE, MODERATOR_PITCH)
-        moderator_audio.set(moderator_audio_data)
-
-        status_message.set(f"✅ Debate complete! 3 exchanges scored. Ready for your next question on '{topic}' — or change the topic and Clear to start fresh.")
+        status_message.set(f"✅ Debate complete! Read the exchanges below. Audio will be generated in background.")
 
     @output
     @render.ui
