@@ -425,13 +425,6 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
     if moderator_scores:
         # Audio temporarily disabled for optimal performance
         moderator_audio_html = ""
-            """
-        else:
-            moderator_audio_html = """
-            <div style="margin-top: 12px; padding: 8px; background: rgba(139, 105, 20, 0.05); border-radius: 6px; font-size: 0.85rem; color: #999;">
-                📝 Audio available soon (generating in background)
-            </div>
-            """
         
         items.append(
             ui.div(
