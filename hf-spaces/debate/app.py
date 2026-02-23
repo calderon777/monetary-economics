@@ -555,10 +555,6 @@ def server(input, output, session):
         current_topic.set(topic)
         status_message.set(f"🎙️ Starting debate on '{topic}'... Producing voice debate...")
 
-        # Lists to store audio for this debate session
-        classical_audio_batch = []
-        keynes_audio_batch = []
-
         # EXCHANGE 1: Classicals open, then Keynesians respond to them
         classical_msgs = build_messages(
             SYSTEM_CLASSICAL,
@@ -570,7 +566,6 @@ def server(input, output, session):
         classical_reply = get_ai_response(classical_msgs)
         status_message.set("🎤 Producing voice debate: Classicals speaking...")
         classical_audio_1 = text_to_speech(classical_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
-        classical_audio_batch.append(classical_audio_1)
 
         # Keynesians respond to the Classical argument
         keynes_opening = f"The Classicals just argued: \"{classical_reply}\"\n\nNow, respond to the student question AND address their Classical argument."
@@ -584,7 +579,17 @@ def server(input, output, session):
         keynes_reply = get_ai_response(keynes_msgs)
         status_message.set("🎤 Producing voice debate: Keynesians responding...")
         keynes_audio_1 = text_to_speech(keynes_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
-        keynes_audio_batch.append(keynes_audio_1)
+        
+        # ✨ SHOW EXCHANGE 1 IMMEDIATELY
+        classical_history.set(
+            classical_history.get() + [{"user": question, "assistant": classical_reply}]
+        )
+        keynes_history.set(
+            keynes_history.get() + [{"user": keynes_opening, "assistant": keynes_reply}]
+        )
+        classical_audio.set(classical_audio.get() + [classical_audio_1])
+        keynes_audio.set(keynes_audio.get() + [keynes_audio_1])
+        status_message.set("✅ Exchange 1 complete! Continuing debate...")
 
         # EXCHANGE 2: Classicals counter-argue
         classical_counter = f"The Keynesians just countered: \"{keynes_reply}\"\n\nProvide a counter-argument to their position."
@@ -598,7 +603,6 @@ def server(input, output, session):
         classical_counter_reply = get_ai_response(classical_msgs_2)
         status_message.set("🎤 Producing voice debate: Classicals counter-arguing...")
         classical_audio_2 = text_to_speech(classical_counter_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
-        classical_audio_batch.append(classical_audio_2)
 
         # EXCHANGE 2: Keynesians rebut
         keynes_rebuttal = f"The Classicals just countered with: \"{classical_counter_reply}\"\n\nProvide your final rebuttal."
@@ -612,7 +616,17 @@ def server(input, output, session):
         keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
         status_message.set("🎤 Producing voice debate: Keynesians rebutting...")
         keynes_audio_2 = text_to_speech(keynes_rebuttal_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
-        keynes_audio_batch.append(keynes_audio_2)
+        
+        # ✨ SHOW EXCHANGE 2 IMMEDIATELY
+        classical_history.set(
+            classical_history.get() + [{"user": keynes_rebuttal, "assistant": classical_counter_reply}]
+        )
+        keynes_history.set(
+            keynes_history.get() + [{"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply}]
+        )
+        classical_audio.set(classical_audio.get() + [classical_audio_2])
+        keynes_audio.set(keynes_audio.get() + [keynes_audio_2])
+        status_message.set("✅ Exchange 2 complete! Final exchange...")
 
         # EXCHANGE 3: Classicals final response
         classical_final = f"The Keynesians just argued: \"{keynes_rebuttal_reply}\"\n\nDeliver your final response to their argument."
@@ -626,7 +640,6 @@ def server(input, output, session):
         classical_final_reply = get_ai_response(classical_msgs_3)
         status_message.set("🎤 Producing voice debate: Classicals finalizing...")
         classical_audio_3 = text_to_speech(classical_final_reply, CLASSICAL_VOICE, CLASSICAL_PITCH)
-        classical_audio_batch.append(classical_audio_3)
 
         # EXCHANGE 3: Keynesians final word
         keynes_final = f"The Classicals just concluded: \"{classical_final_reply}\"\n\nDeliver your final word on this debate."
@@ -640,27 +653,16 @@ def server(input, output, session):
         keynes_final_reply = get_ai_response(keynes_msgs_3)
         status_message.set("🎤 Producing voice debate: Keynesians closing...")
         keynes_audio_3 = text_to_speech(keynes_final_reply, KEYNESIAN_VOICE, KEYNESIAN_PITCH)
-        keynes_audio_batch.append(keynes_audio_3)
-
-        # Store all exchanges in history
+        
+        # ✨ SHOW EXCHANGE 3 IMMEDIATELY
         classical_history.set(
-            classical_history.get() + [
-                {"user": question, "assistant": classical_reply},
-                {"user": keynes_rebuttal, "assistant": classical_counter_reply},
-                {"user": keynes_final, "assistant": classical_final_reply}
-            ]
+            classical_history.get() + [{"user": keynes_final, "assistant": classical_final_reply}]
         )
         keynes_history.set(
-            keynes_history.get() + [
-                {"user": keynes_opening, "assistant": keynes_reply},
-                {"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply},
-                {"user": classical_final, "assistant": keynes_final_reply}
-            ]
+            keynes_history.get() + [{"user": classical_final, "assistant": keynes_final_reply}]
         )
-        
-        # Store audio for all exchanges
-        classical_audio.set(classical_audio.get() + classical_audio_batch)
-        keynes_audio.set(keynes_audio.get() + keynes_audio_batch)
+        classical_audio.set(classical_audio.get() + [classical_audio_3])
+        keynes_audio.set(keynes_audio.get() + [keynes_audio_3])
 
         # Get moderator analysis for all exchanges at the end
         status_message.set("📋 Moderator is scoring all exchanges...")
