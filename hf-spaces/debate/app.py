@@ -28,14 +28,14 @@ ROUND_GUIDANCE = {
     "Round 3 - Policy at Low Rates": "Focus on policy options near the effective lower bound.",
 }
 
-# Voice settings for each team - older, more distinguished voices
-CLASSICAL_VOICE = "en-GB-AlfieNeural"  # Older British male for Walras/Marshall
-KEYNESIAN_VOICE = "en-US-GuyNeural"  # Distinguished older American male for Keynes/Hicks
+# Voice settings for each team - mature British voices with gravitas
+CLASSICAL_VOICE = "en-GB-RyanNeural"  # Deeper British male for Walras/Marshall
+KEYNESIAN_VOICE = "en-GB-ThomasNeural"  # Mature British male for Keynes/Hicks
 
 # Speech parameters for debate-like delivery
 SPEECH_RATE = "+5%"  # Slightly faster for debate energy
-CLASSICAL_PITCH = "-10Hz"  # Lower pitch for gravitas
-KEYNESIAN_PITCH = "+0Hz"  # Natural pitch
+CLASSICAL_PITCH = "-15Hz"  # Lower pitch for gravitas
+KEYNESIAN_PITCH = "-10Hz"  # Also lower but distinguishable from Classicals
 
 
 async def text_to_speech_async(text: str, voice: str, pitch: str = "+0Hz") -> str:
