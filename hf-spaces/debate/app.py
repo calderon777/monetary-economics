@@ -5,6 +5,7 @@ import edge_tts
 import asyncio
 import base64
 from io import BytesIO
+import threading
 
 MODEL_NAME = "llama-3.3-70b-versatile"
 
@@ -341,10 +342,12 @@ app_ui = ui.page_fluid(
         ),
         ui.div(
             ui.input_action_button("debate", "Run Debate", class_="primary"),
+            ui.input_action_button("audio_action", "Generate Audio", class_="primary"),
             ui.input_action_button("clear", "Clear", class_="secondary"),
             class_="actions",
         ),
         ui.output_ui("status"),
+        ui.output_ui("audio_autoplay"),
         ui.div(
             ui.h3("📜 Debate Transcript", style="margin-top: 20px; color: #1e1c18;"),
             ui.output_ui("debate_transcript"),
@@ -399,8 +402,11 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             classical_turn = classical_history[i]
             classical_audio = classical_audio_list[i] if i < len(classical_audio_list) else ""
             
-            # Audio temporarily disabled for optimal performance
-            audio_html = ""
+            audio_html = (
+                f"<audio controls preload='none' style='width: 100%; max-width: 420px; margin-top: 10px;'>"
+                f"<source src='data:audio/mp3;base64,{classical_audio}' type='audio/mpeg'></audio>"
+                if classical_audio else ""
+            )
             
             items.append(
                 ui.div(
@@ -420,8 +426,11 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
             keynes_turn = keynes_history[i]
             keynes_audio = keynes_audio_list[i] if i < len(keynes_audio_list) else ""
             
-            # Audio temporarily disabled for optimal performance
-            audio_html = ""
+            audio_html = (
+                f"<audio controls preload='none' style='width: 100%; max-width: 420px; margin-top: 10px;'>"
+                f"<source src='data:audio/mp3;base64,{keynes_audio}' type='audio/mpeg'></audio>"
+                if keynes_audio else ""
+            )
             
             items.append(
                 ui.div(
@@ -439,8 +448,12 @@ def render_unified_debate(classical_history, keynes_history, moderator_scores, c
     
     # Add moderator summary at the end
     if moderator_scores:
-        # Audio temporarily disabled for optimal performance
-        moderator_audio_html = ""
+        moderator_audio_html = (
+            f"<audio id='moderator-scorecard-audio' controls preload='none' "
+            f"style='width: 100%; max-width: 520px; margin-top: 12px;'>"
+            f"<source src='data:audio/mp3;base64,{moderator_audio_data}' type='audio/mpeg'></audio>"
+            if moderator_audio_data else ""
+        )
         
         items.append(
             ui.div(
@@ -470,9 +483,52 @@ moderator_audio = reactive.Value("")  # Store audio for moderator scorecard
 moderator_scores = reactive.Value([])
 status_message = reactive.Value("Ready.")
 current_topic = reactive.Value("")
+audio_state = reactive.Value("empty")  # empty | idle | processing | ready | error
+audio_error = reactive.Value("")
+audio_play_request = reactive.Value(0)
 
 
 def server(input, output, session):
+    audio_worker = {"done": False, "result": None, "error": ""}
+
+    def _debate_exists():
+        return bool(classical_history.get()) and bool(keynes_history.get())
+
+    def _set_audio_button_label():
+        state = audio_state.get()
+        if state == "processing":
+            label = "Processing Audio..."
+        elif state == "ready":
+            label = "Play Audio"
+        elif state == "error":
+            label = "Retry Audio"
+        elif _debate_exists():
+            label = "Generate Audio"
+        else:
+            label = "Generate Audio"
+        ui.update_action_button("audio_action", label=label)
+
+    def _generate_audio_background(c_hist, k_hist, scores):
+        try:
+            c_audio = []
+            k_audio = []
+
+            for turn in c_hist:
+                c_audio.append(text_to_speech(turn["assistant"], CLASSICAL_VOICE, CLASSICAL_PITCH))
+            for turn in k_hist:
+                k_audio.append(text_to_speech(turn["assistant"], KEYNESIAN_VOICE, KEYNESIAN_PITCH))
+
+            moderator_text = " ".join(scores) if scores else ""
+            m_audio = text_to_speech(moderator_text, MODERATOR_VOICE, MODERATOR_PITCH) if moderator_text else ""
+
+            audio_worker["result"] = {"classical": c_audio, "keynes": k_audio, "moderator": m_audio}
+            audio_worker["error"] = ""
+        except Exception as e:
+            audio_worker["result"] = None
+            audio_worker["error"] = str(e)
+        finally:
+            audio_worker["done"] = True
+
     @reactive.effect
     def _auto_clear_on_topic_change():
         """Clear debate history when topic changes"""
@@ -489,8 +545,12 @@ def server(input, output, session):
             classical_audio.set([])
             keynes_audio.set([])
             moderator_audio.set("")
+            moderator_scores.set([])
+            audio_state.set("empty")
+            audio_error.set("")
             status_message.set(f'✨ New topic: "{new_topic}" — Ready to debate!')
             current_topic.set(new_topic)
+            _set_audio_button_label()
 
     @reactive.effect
     @reactive.event(input.clear)
@@ -501,7 +561,10 @@ def server(input, output, session):
         keynes_audio.set([])
         moderator_audio.set("")
         moderator_scores.set([])
+        audio_state.set("empty")
+        audio_error.set("")
         current_topic.set("")
+        _set_audio_button_label()
         status_message.set("🗑️ Cleared. Enter a topic and question to start fresh.")
 
     @reactive.effect
@@ -514,6 +577,13 @@ def server(input, output, session):
         if not topic or not question:
             status_message.set("❌ Please enter a topic and a question.")
             return
+
+        classical_audio.set([])
+        keynes_audio.set([])
+        moderator_audio.set("")
+        audio_state.set("empty")
+        audio_error.set("")
+        _set_audio_button_label()
 
         # Track the current topic
         current_topic.set(topic)
@@ -597,7 +667,7 @@ def server(input, output, session):
         
         # ✨ SHOW EXCHANGE 2 IMMEDIATELY (no audio yet)
         classical_history.set(
-            classical_history.get() + [{"user": keynes_rebuttal, "assistant": classical_counter_reply}]
+            classical_history.get() + [{"user": classical_counter, "assistant": classical_counter_reply}]
         )
         keynes_history.set(
             keynes_history.get() + [{"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply}]
@@ -617,12 +687,6 @@ def server(input, output, session):
         
         # Check for API errors
         if classical_final_reply.startswith(("⏳", "🔑", "⚠️")):
-            classical_history.set(
-                classical_history.get() + [{"user": keynes_rebuttal, "assistant": classical_counter_reply}]
-            )
-            keynes_history.set(
-                keynes_history.get() + [{"user": keynes_rebuttal, "assistant": keynes_rebuttal_reply}]
-            )
             status_message.set(f"❌ {classical_final_reply} (Exchanges 1-2 shown, debate incomplete)")
             return
 
@@ -651,7 +715,7 @@ def server(input, output, session):
             classical_history.get() + [{"user": keynes_final, "assistant": classical_final_reply}]
         )
         keynes_history.set(
-            keynes_history.get() + [{"user": classical_final, "assistant": keynes_final_reply}]
+            keynes_history.get() + [{"user": keynes_final, "assistant": keynes_final_reply}]
         )
 
         # Get moderator analysis for all exchanges
@@ -666,8 +730,70 @@ def server(input, output, session):
         classical_audio.set([])
         keynes_audio.set([])
         moderator_audio.set("")
+        audio_state.set("idle")
+        audio_error.set("")
+        _set_audio_button_label()
         
         status_message.set(f"✅ Debate complete! Scroll down to read the full exchange. Ready for next question on '{topic}'.")
+
+    @reactive.effect
+    @reactive.event(input.audio_action)
+    def _audio_action():
+        if not _debate_exists():
+            status_message.set("Error: Run a debate first, then generate audio.")
+            return
+        if audio_state.get() == "processing":
+            return
+        if audio_state.get() == "ready":
+            audio_play_request.set(audio_play_request.get() + 1)
+            return
+
+        classical_audio.set([])
+        keynes_audio.set([])
+        moderator_audio.set("")
+        audio_worker["done"] = False
+        audio_worker["result"] = None
+        audio_worker["error"] = ""
+        audio_state.set("processing")
+        audio_error.set("")
+        _set_audio_button_label()
+        c_hist = list(classical_history.get())
+        k_hist = list(keynes_history.get())
+        scores = list(moderator_scores.get())
+        status_message.set("Generating audio in the background... you can keep reading the transcript.")
+        threading.Thread(target=_generate_audio_background, args=(c_hist, k_hist, scores), daemon=True).start()
+
+    @reactive.effect
+    def _poll_audio_worker():
+        reactive.invalidate_later(0.5)
+        if audio_state.get() != "processing":
+            return
+        if not audio_worker["done"]:
+            return
+
+        audio_worker["done"] = False
+        if audio_worker["error"]:
+            audio_state.set("error")
+            audio_error.set(audio_worker["error"])
+            status_message.set("Audio generation failed. Click Retry Audio.")
+            _set_audio_button_label()
+            return
+
+        result = audio_worker["result"] or {}
+        classical_audio.set(result.get("classical", []))
+        keynes_audio.set(result.get("keynes", []))
+        moderator_audio.set(result.get("moderator", ""))
+        audio_state.set("ready")
+        audio_error.set("")
+        _set_audio_button_label()
+        status_message.set("Audio is ready. Click Play Audio or use the inline players.")
+
+    @reactive.effect
+    def _sync_audio_button():
+        audio_state.get()
+        classical_history.get()
+        keynes_history.get()
+        _set_audio_button_label()
 
     @output
     @render.ui
@@ -677,6 +803,23 @@ def server(input, output, session):
         if "🎤" in msg or "Producing" in msg or "audio" in msg.lower():
             return ui.div(msg, class_="status producing-voice")
         return ui.div(msg, class_="status")
+
+    @output
+    @render.ui
+    def audio_autoplay():
+        _ = audio_play_request.get()
+        if audio_state.get() != "ready":
+            return ui.HTML("")
+        return ui.HTML(
+            """
+            <script>
+            setTimeout(function() {
+              const el = document.getElementById('moderator-scorecard-audio') || document.querySelector('audio');
+              if (el) { el.play().catch(() => {}); }
+            }, 30);
+            </script>
+            """
+        )
 
     @output
     @render.ui
