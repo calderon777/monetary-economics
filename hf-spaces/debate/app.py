@@ -41,6 +41,16 @@ KEYNESIAN_PITCH = "-18Hz"  # Also very low but distinguishable
 MODERATOR_PITCH = "+0Hz"  # Natural female pitch
 
 
+def get_groq_api_keys():
+    """Return configured Groq API keys in priority order."""
+    keys = []
+    for env_name in ["GROQ_API_KEY", "GROQ_API_KEY_FALLBACK_1", "GROQ_API_KEY_FALLBACK_2"]:
+        value = os.environ.get(env_name, "").strip()
+        if value and value not in keys:
+            keys.append(value)
+    return keys
+
+
 async def text_to_speech_async(text: str, voice: str, pitch: str = "+0Hz") -> str:
     """Convert text to speech and return base64-encoded audio."""
     try:
@@ -95,37 +105,49 @@ def build_messages(system_prompt, topic, round_label, history, user_question):
 
 
 def get_ai_response(messages):
-    api_key = os.environ.get("GROQ_API_KEY")
-    if not api_key:
-        return "Error: GROQ_API_KEY is not set for this Space."
+    api_keys = get_groq_api_keys()
+    if not api_keys:
+        return "Error: No GROQ_API_KEY is set for this Space."
 
-    client = Groq(api_key=api_key)
-    try:
-        result = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=messages,
-            temperature=0.4,
-            max_tokens=400,
-        )
-        return result.choices[0].message.content.strip()
-    except Exception as e:
-        error_msg = str(e)
-        if "rate_limit" in error_msg.lower() or "429" in error_msg:
-            return "⏳ Rate limit reached. Please wait a few minutes and try again."
-        elif "401" in error_msg or "invalid" in error_msg.lower():
-            return "🔑 API authentication error. Please check the API key."
-        else:
-            return f"⚠️ API error: {error_msg[:100]}..."
+    saw_auth_error = False
+    saw_rate_limit = False
+    last_error = ""
+
+    for api_key in api_keys:
+        client = Groq(api_key=api_key)
+        try:
+            result = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=messages,
+                temperature=0.4,
+                max_tokens=400,
+            )
+            return result.choices[0].message.content.strip()
+        except Exception as e:
+            error_msg = str(e)
+            last_error = error_msg
+            lowered = error_msg.lower()
+            if "401" in error_msg or "invalid" in lowered:
+                saw_auth_error = True
+                continue
+            if "rate_limit" in lowered or "429" in error_msg or "quota" in lowered:
+                saw_rate_limit = True
+                continue
+            return f"?? API error: {error_msg[:100]}..."
+
+    if saw_rate_limit:
+        return "? Rate limit or quota reached across configured Groq keys. Please try again later."
+    if saw_auth_error:
+        return "?? API authentication error. Please check the configured API keys."
+    return f"?? API error: {last_error[:100]}..." if last_error else "?? API error."
 
 
 def get_moderator_analysis(topic, round_label, classical_response, keynesian_response):
     """Get a moderator's analysis of who won the exchange."""
-    api_key = os.environ.get("GROQ_API_KEY")
-    if not api_key:
+    api_keys = get_groq_api_keys()
+    if not api_keys:
         return "Moderator analysis unavailable."
 
-    client = Groq(api_key=api_key)
-    
     moderator_prompt = f"""You are an expert economics moderator scoring this debate exchange.
 
 Topic: {topic}
@@ -137,26 +159,36 @@ Keynesian argument: {keynesian_response}
 
 Score this exchange in 2-3 punchy sentences:
 1. Who made the stronger logically-supported argument?
-2. Rate decisiveness: "Classicals win this exchange—[reason]" or "Keynesians edge it—[reason]" or "Tight exchange—both solid"
+2. Rate decisiveness: "Classicals win this exchange?[reason]" or "Keynesians edge it?[reason]" or "Tight exchange?both solid"
 3. Be sharp, witty, fair. No fluff.
 
 Keep it brief and decisive."""
 
     messages = [{"role": "user", "content": moderator_prompt}]
-    try:
-        result = client.chat.completions.create(
-            model=MODEL_NAME,
-            messages=messages,
-            temperature=0.3,
-            max_tokens=150,
-        )
-        return result.choices[0].message.content.strip()
-    except Exception as e:
-        error_msg = str(e)
-        if "rate_limit" in error_msg.lower() or "429" in error_msg:
-            return "⏳ Moderator scoring unavailable (rate limit reached)."
-        else:
-            return "⚠️ Moderator scoring unavailable."
+    saw_rate_limit = False
+    for api_key in api_keys:
+        client = Groq(api_key=api_key)
+        try:
+            result = client.chat.completions.create(
+                model=MODEL_NAME,
+                messages=messages,
+                temperature=0.3,
+                max_tokens=150,
+            )
+            return result.choices[0].message.content.strip()
+        except Exception as e:
+            error_msg = str(e)
+            lowered = error_msg.lower()
+            if "rate_limit" in lowered or "429" in error_msg or "quota" in lowered:
+                saw_rate_limit = True
+                continue
+            if "401" in error_msg or "invalid" in lowered:
+                continue
+            return "?? Moderator scoring unavailable."
+
+    if saw_rate_limit:
+        return "? Moderator scoring unavailable (rate limit or quota reached across configured keys)."
+    return "?? Moderator scoring unavailable."
 
 
 app_ui = ui.page_fluid(
