@@ -3,7 +3,6 @@ project:
   output-dir: docs
   resources:
     - pdf/
-    - figs/
   render:
     - "*.qmd"
 

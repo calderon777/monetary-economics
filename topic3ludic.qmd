@@ -3,6 +3,8 @@ title: "Topic 3: Debate Lab - Classical vs Keynesian"
 subtitle: "AI Roleplay Debate on Money, Neutrality, and Liquidity Preference"
 author: "EC3014 - Monetary Economics"
 date: today
+resources:
+  - figs/debate.mp4
 format: html
 ---
 
