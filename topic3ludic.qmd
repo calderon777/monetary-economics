@@ -13,17 +13,10 @@ format: html
 This ludic activity turns Topics 1-3 into a live debate. You will prompt two AI "teams" that represent rival schools of thought. Your job is to test their claims with your own questions.
 
 ## Debate Cast
-
-**Classicals**
-- **Leon Walras**: General equilibrium, Walras' Law, classical dichotomy, long-run neutrality.
-- **Alfred Marshall**: Cambridge cash-balance view, money demand and velocity, money as a convenience asset.
-
-**Keynesians**
-- **John Maynard Keynes**: Liquidity preference, money demand motives, liquidity trap.
-- **John Hicks**: IS-LM synthesis, short-run disequilibrium and policy transmission.
+Teams represent **Walras & Marshall (Classicals)** versus **Keynes & Hicks (Keynesians)**. You can jump in immediately and use the full cast notes below the debate as a reference.
 
 <div style="text-align: center; margin: 2rem 0;">
-<video src="figs/debate.mp4" style="max-width: 100%; height: auto; border-radius: 8px;" autoplay loop muted></video>
+<video src="figs/debate.mp4" style="max-width: 100%; height: auto; border-radius: 8px;" autoplay loop muted playsinline controls></video>
 </div>
 
 ## Live AI Debate: Classicals vs Keynesians
@@ -69,7 +62,17 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 
-<iframe src="https://huggingface.co/spaces/camcalderon777/ai-persona-debate/embed" frameborder="0" width="100%" height="1400" title="AI Persona Debate - Classical vs Keynesian Economics"></iframe>
+<iframe src="https://huggingface.co/spaces/camcalderon777/ai-persona-debate/embed" frameborder="0" width="100%" height="2000" title="AI Persona Debate - Classical vs Keynesian Economics"></iframe>
+
+## Debate Cast (Reference)
+
+**Classicals**
+- **Leon Walras**: General equilibrium, Walras' Law, classical dichotomy, long-run neutrality.
+- **Alfred Marshall**: Cambridge cash-balance view, money demand and velocity, money as a convenience asset.
+
+**Keynesians**
+- **John Maynard Keynes**: Liquidity preference, money demand motives, liquidity trap.
+- **John Hicks**: IS-LM synthesis, short-run disequilibrium and policy transmission.
 
 ### How to Use
 
