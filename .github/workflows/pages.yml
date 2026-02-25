@@ -23,12 +23,6 @@ jobs:
         with:
           submodules: false
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Render Quarto project
-        run: quarto render --to html
-
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
