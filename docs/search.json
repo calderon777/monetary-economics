@@ -1608,6 +1608,17 @@
     ]
   },
   {
+    "objectID": "topic2ludic.html#how-you-will-be-assessed-economics-x-factor-rubric",
+    "href": "topic2ludic.html#how-you-will-be-assessed-economics-x-factor-rubric",
+    "title": "Topic 2: Song Generation - Ludic Activity",
+    "section": "How You Will Be Assessed (Economics X-Factor Rubric)",
+    "text": "How You Will Be Assessed (Economics X-Factor Rubric)\nYour song will be judged like a performance, but the judges are scoring economics learning.\nEach criterion is scored from 1 to 10.\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nWhat judges look for\n1-3\n4-6\n7-8\n9-10\n\n\n\n\nEconomic Correctness\nAccuracy of claims about Topic 2 ideas\nMostly inaccurate\nSome correct ideas, mixed with errors\nMostly accurate\nAccurate, precise, no major errors\n\n\nConcept Use\nUse of key concepts (e.g., inflation, velocity, money demand, quantity theory)\nNamedrops only or absent\nUses some concepts but shallowly\nConcepts used meaningfully\nConcepts integrated fluently and insightfully\n\n\nCausal Reasoning\nClear cause-effect logic in the economics\nNo clear causal links\nSome causal links, but confused or incomplete\nClear causal links with minor gaps\nStrong, coherent causal chain with conditions/nuance\n\n\nCommunication Quality\nClarity, memorability, and intelligibility of the economics message\nHard to follow\nPartly clear\nClear and engaging\nClear, memorable, and teaches effectively\n\n\nRevision Quality\nImprovement from first draft to revised draft (economics, not only style)\nLittle/no improvement\nSome improvement\nClear improvement in accuracy/clarity\nMajor improvement with thoughtful corrections\n\n\n\nTotal score: /50",
+    "crumbs": [
+      "Topic 2 - Classical Theory of Money",
+      "Optional: Economics Poets"
+    ]
+  },
+  {
     "objectID": "topic2ludic.html#your-creative-input",
     "href": "topic2ludic.html#your-creative-input",
     "title": "Topic 2: Song Generation - Ludic Activity",
@@ -1619,11 +1630,11 @@
     ]
   },
   {
-    "objectID": "topic2ludic.html#ai-music-generation-with-ace-step-1.5",
-    "href": "topic2ludic.html#ai-music-generation-with-ace-step-1.5",
+    "objectID": "topic2ludic.html#generate-and-listen",
+    "href": "topic2ludic.html#generate-and-listen",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "AI Music Generation with ACE-Step 1.5",
-    "text": "AI Music Generation with ACE-Step 1.5",
+    "section": "Generate and Listen",
+    "text": "Generate and Listen\n\n\n\n\n\n\n\nEconomics X-Factor AI Judges (Frontend Preview)\n\n\nNo score yet. Submit after generating (or after drafting) to preview rubric scoring UI.\n\n\n\n\n\n\n\n\n\n\nCommunity Listening & Voting (Pilot Preview)\n\n\nCommunity playlist and voting will appear here once the backend is enabled.\n\nRefresh Community Songs",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1641,33 +1652,22 @@
     ]
   },
   {
-    "objectID": "topic2ludic.html#setup-instructions-ace-step-1.5",
-    "href": "topic2ludic.html#setup-instructions-ace-step-1.5",
+    "objectID": "topic2ludic.html#student-notes",
+    "href": "topic2ludic.html#student-notes",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "Setup Instructions: ACE-Step 1.5",
-    "text": "Setup Instructions: ACE-Step 1.5\nThis activity uses ACE-Step 1.5, a free, open-source music generation model that runs locally on your computer. No API keys needed!\n\nStep 1: Install ACE-Step (One-time setup)\nWindows/macOS/Linux:\n# 1) Install uv (universal Python package manager)\n# Go to: https://astral.sh/uv/install.sh\n# Windows: Download and run the installer\n# Or use PowerShell:\npowershell -ExecutionPolicy Bypass -c \"irm https://astral.sh/uv/install.ps1 | iex\"\n\n# 2) Clone the ACE-Step repository\ngit clone https://github.com/ACE-Step/ACE-Step-1.5.git\ncd ACE-Step-1.5\n\n# 3) Install dependencies\nuv sync\n\n\nStep 2: Start the ACE-Step API\nBefore running the activity, start the API in a separate terminal:\ncd ACE-Step-1.5\nuv run acestep-api\nYou should see:\nINFO:     Uvicorn running on http://127.0.0.1:8001\nKeep this terminal open while students use the activity.\n\n\nStep 3: Run the Activity\nWith the API running, open this file (topic2ludic.qmd) in Quarto Preview:\nquarto preview topic2ludic.qmd\nStudents enter their lyrics and music preferences, and ACE-Step generates the audio locally.\n\n\nStep 4: Optional - Use the Gradio UI\nIf preferred, students can also use ACE-Step’s built-in UI:\nuv run acestep\nThen open http://localhost:7860 in a browser.",
+    "section": "Student Notes",
+    "text": "Student Notes\n\nIf song generation is not working, tell your instructor (it may be a connection/server issue rather than your prompt).\nYou can still complete the economics task by drafting lyrics, explaining your intended style, and answering the reflection questions.\nRevise your lyrics after listening: clearer economic language usually improves the educational value of the result.",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
     ]
   },
   {
-    "objectID": "topic2ludic.html#why-ace-step-1.5",
-    "href": "topic2ludic.html#why-ace-step-1.5",
+    "objectID": "topic2ludic.html#instructortechnical-note-optional",
+    "href": "topic2ludic.html#instructortechnical-note-optional",
     "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "Why ACE-Step 1.5?",
-    "text": "Why ACE-Step 1.5?\n\nFree & Open-source - No subscriptions or API keys\nLocal generation - Runs entirely on your computer\nFast - Optimized for modern GPUs (CPU supported too)\nMulti-language - Supports lyrics in many languages\nLyric-aware - Conditions music generation on student-written content\nScalable - No rate limits for 10 concurrent student groups\nEducational - Clear boundary: students write meaning, AI generates sound",
-    "crumbs": [
-      "Topic 2 - Classical Theory of Money",
-      "Optional: Economics Poets"
-    ]
-  },
-  {
-    "objectID": "topic2ludic.html#resources",
-    "href": "topic2ludic.html#resources",
-    "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "Resources",
-    "text": "Resources\n\nACE-Step GitHub: github.com/ACE-Step/ACE-Step-1.5\nACE-Step Paper: “ACE-Step 1.5: Pushing the Boundaries of Open-Source Music Generation”\nHugging Face Model: huggingface.co/ACE-Step/Ace-Step1.5\nuv Package Manager: astral.sh/uv\n\n\nEnjoy creating!",
+    "section": "Instructor/Technical Note (Optional)",
+    "text": "Instructor/Technical Note (Optional)\nThis page connects to a music-generation backend through the ACE-Step API URL field. For student use, the technical setup should usually be handled by the instructor or institution so learners can focus on the economics task.\n\nEnjoy creating!",
     "crumbs": [
       "Topic 2 - Classical Theory of Money",
       "Optional: Economics Poets"
@@ -1736,88 +1736,55 @@
     ]
   },
   {
-    "objectID": "topic3ludic.html#how-to-use-this-debate",
-    "href": "topic3ludic.html#how-to-use-this-debate",
+    "objectID": "topic3ludic.html#live-ai-debate-classicals-vs-keynesians",
+    "href": "topic3ludic.html#live-ai-debate-classicals-vs-keynesians",
     "title": "Topic 3: Debate Lab - Classical vs Keynesian",
     "section": "",
-    "text": "Read the short scripted opening below.\nChoose a question from the prompt bank or write your own.\nRun three rounds (Round 1, Round 2, Round 3).\nAsk the Classicals to respond, then the Keynesians.\nFollow up with a challenge question.\n\n\n\nThe easiest way to run this debate is to use the interactive app below. Enter your topic and question, and watch Walras + Marshall debate Keynes + Hicks in real time.\n\n\n\nNote: The app is embedded above. Enter a debate topic and question, select a round, and click “Run Debate” to see the two teams respond.",
+    "text": "The interactive app below runs a live debate between two AI “teams”: - Team Classical: Walras (general equilibrium) and Marshall (Cambridge view) - Team Keynesian: Keynes (liquidity preference) and Hicks (IS-LM synthesis)\nSimply enter your debate topic and pose a focused question. Each team responds in character, and you can follow up with challenge questions across three rounds.",
     "crumbs": [
       "Topic 3 - Keynes' Theory of Money",
       "Optional: Debate Lab"
     ]
   },
   {
-    "objectID": "topic3ludic.html#alternative-manual-debate-instructions",
-    "href": "topic3ludic.html#alternative-manual-debate-instructions",
+    "objectID": "topic3ludic.html#debate-cast-reference",
+    "href": "topic3ludic.html#debate-cast-reference",
     "title": "Topic 3: Debate Lab - Classical vs Keynesian",
     "section": "",
-    "text": "You can use any AI chat tool. Start your prompt with the role you want to answer.\n\n\nYou are [ROLE]. Respond to the student's question in 150-220 words. Use economic reasoning from Topics 1-3. Keep a persuasive, debate tone.\nStudent question: [PASTE QUESTION]",
+    "text": "Classicals - Leon Walras: General equilibrium, Walras’ Law, classical dichotomy, long-run neutrality. - Alfred Marshall: Cambridge cash-balance view, money demand and velocity, money as a convenience asset.\nKeynesians - John Maynard Keynes: Liquidity preference, money demand motives, liquidity trap. - John Hicks: IS-LM synthesis, short-run disequilibrium and policy transmission.\n\n\n\nEnter a debate topic (e.g., “Money neutrality and the liquidity trap”)\nSelect a round (Neutrality, Liquidity Preference, or Low-Rate Policy)\nWrite your question focusing on one specific economic claim or assumption\nClick “Run Debate” to hear both teams respond\nRepeat for 2–3 rounds, posing increasingly challenging questions to test each side’s logic",
     "crumbs": [
       "Topic 3 - Keynes' Theory of Money",
       "Optional: Debate Lab"
     ]
   },
   {
-    "objectID": "topic3ludic.html#student-input-form",
-    "href": "topic3ludic.html#student-input-form",
+    "objectID": "topic3ludic.html#suggested-questions-to-explore",
+    "href": "topic3ludic.html#suggested-questions-to-explore",
     "title": "Topic 3: Debate Lab - Classical vs Keynesian",
     "section": "",
-    "text": "Use this form to assemble prompts and track three rounds. Copy the generated prompt into your AI chat tool.\n\nName \nRound  Round 1 - Neutrality Round 2 - Liquidity Preference Round 3 - Policy at Low Rates \nRole  Walras (Classical) Marshall (Classical) Keynes (Keynesian) Hicks (Keynesian) \nYour question\n\n\nGenerate Prompt\n\n\nWaiting for input.\n\nPrompt to copy",
+    "text": "Try these debate prompts to test each team’s economic reasoning:\n\n\n\n“If Central Banks double the money supply overnight, what happens to output, employment, and real wages in the short run vs. the long run?”\n“Can inflation be purely a monetary phenomenon, or does it always have real costs?”\n“Does Say’s Law hold in actual economies, or can aggregate demand really fail?”\n\n\n\n\n\n“Why would anyone hold money if bonds pay interest? What economic situation makes hoarding cash rational?”\n“Is velocity stable enough to predict inflation, or does it shift unpredictably with confidence?”\n“At zero interest rates, why can’t Central Banks stimulate the economy further?”\n\n\n\n\n\n“When interest rates are at zero, is monetary policy dead? What can central banks actually do?”\n“Should governments use fiscal stimulus (like infrastructure spending) when monetary policy fails?”\n“Can unconventional policies like quantitative easing work if the liquidity trap is real?”",
     "crumbs": [
       "Topic 3 - Keynes' Theory of Money",
       "Optional: Debate Lab"
     ]
   },
   {
-    "objectID": "topic3ludic.html#scripted-opening-read-aloud",
-    "href": "topic3ludic.html#scripted-opening-read-aloud",
+    "objectID": "topic3ludic.html#how-to-get-the-most-from-this-activity",
+    "href": "topic3ludic.html#how-to-get-the-most-from-this-activity",
     "title": "Topic 3: Debate Lab - Classical vs Keynesian",
     "section": "",
-    "text": "Moderator: Today we debate whether money is neutral and how monetary economies adjust. Classicals, your opening statement.\nWalras (Classical): In general equilibrium, relative prices adjust so all markets clear. Money is a unit of account and medium of exchange, but the real allocation is governed by preferences, technology, and endowments. Changes in money scale nominal prices, not real outcomes.\nMarshall (Classical): The Cambridge view emphasizes money demand as a stable fraction of income. If money supply changes, the price level adjusts to restore desired cash balances. In the long run, inflation is a monetary phenomenon.\nModerator: Keynesians, your opening statement.\nKeynes (Keynesian): In a monetary economy, people hold money for transactions, precaution, and speculation. When confidence collapses, they hoard liquidity. Then Walras’ Law no longer implies Say’s Law; demand can fall short and unemployment can persist.\nHicks (Keynesian): The IS-LM framework shows interaction between goods and money markets. When interest rates are near the floor, the LM curve becomes flat and conventional monetary policy loses traction. Short-run real effects are unavoidable.",
+    "text": "Be specific: Ask about concrete mechanisms, not just outcomes. “Why?” is more productive than “Can Policy X work?”\nChallenge assumptions: Push each side on what they take for granted. Do relative prices always adjust? Is money demand really stable?\nCross-examine: After hearing both sides, ask follow-up questions that test consistency or expose trade-offs.\nTake notes: Write down the key arguments from each team. Which assumptions do you find most convincing?",
     "crumbs": [
       "Topic 3 - Keynes' Theory of Money",
       "Optional: Debate Lab"
     ]
   },
   {
-    "objectID": "topic3ludic.html#three-round-debate-script-read-aloud",
-    "href": "topic3ludic.html#three-round-debate-script-read-aloud",
+    "objectID": "topic3ludic.html#reflection-after-your-debate",
+    "href": "topic3ludic.html#reflection-after-your-debate",
     "title": "Topic 3: Debate Lab - Classical vs Keynesian",
     "section": "",
-    "text": "Round 1: Neutrality\n\nModerator: Round 1 asks whether money is neutral in the long run and what that implies for real outcomes.\nWalras (Classical): Long-run equilibrium depends on real factors. Monetary changes scale all prices without altering real allocations.\nKeynes (Keynesian): Even if long-run neutrality holds, the path is not neutral. Short-run demand failures can lock in unemployment.\n\nRound 2: Liquidity Preference\n\nModerator: Round 2 asks whether money demand is stable or interest-sensitive.\nMarshall (Classical): The cash-balance ratio is stable enough to anchor the price level. Velocity shifts, but not capriciously.\nHicks (Keynesian): When rates are low, speculative demand dominates. The LM curve flattens and money demand becomes highly elastic.\n\nRound 3: Policy at Low Rates\n\nModerator: Round 3 asks what policy can do when rates approach the floor.\nWalras (Classical): Structural adjustment and price flexibility restore equilibrium. Policy should avoid distorting relative prices.\nKeynes (Keynesian): Fiscal expansion and unconventional policy are needed when liquidity traps block normal adjustment.",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#prompt-bank-choose-one",
-    "href": "topic3ludic.html#prompt-bank-choose-one",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "If money is just a veil, why did output and employment collapse during the Great Depression?\nDoes Walras’ Law imply Say’s Law in a monetary economy? Explain why or why not.\nHow does the Cambridge cash-balance equation differ from the quantity theory in practice?\nWhat makes the money market “exceptional” compared to other markets?\nIs the liquidity trap a theoretical curiosity or a real policy problem?\nCan monetary policy be effective when interest rates are near zero?\nWhich view better explains post-2008 and post-2020 monetary conditions?\nIs money demand stable or interest-sensitive? Defend your answer.",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#student-challenge-ideas",
-    "href": "topic3ludic.html#student-challenge-ideas",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "Ask each side to name one weakness in its own framework.\nAsk the Classicals to explain unemployment without money illusion.\nAsk the Keynesians to explain long-run inflation without money growth.\nAsk both sides to predict what happens if money supply doubles overnight.",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#reflection-questions",
-    "href": "topic3ludic.html#reflection-questions",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "Which side gave more convincing answers and why?\nWhere did each side rely on assumptions that might fail in reality?\nHow would a modern central bank combine insights from both views?\nWhat evidence would change your mind about neutrality or liquidity traps?",
+    "text": "Which team made stronger assumptions and which acknowledged uncertainty more?\nWhat real-world evidence supports or challenges each view?\nHow would you combine insights from both Classical and Keynesian perspectives into your own framework?",
     "crumbs": [
       "Topic 3 - Keynes' Theory of Money",
       "Optional: Debate Lab"
@@ -2466,105 +2433,6 @@
     "crumbs": [
       "Topic 8 - Monetary Policy in the Post-Crisis",
       "Reading"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#live-ai-debate-classicals-vs-keynesians",
-    "href": "topic3ludic.html#live-ai-debate-classicals-vs-keynesians",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "The interactive app below runs a live debate between two AI “teams”: - Team Classical: Walras (general equilibrium) and Marshall (Cambridge view) - Team Keynesian: Keynes (liquidity preference) and Hicks (IS-LM synthesis)\nSimply enter your debate topic and pose a focused question. Each team responds in character, and you can follow up with challenge questions across three rounds.",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#suggested-questions-to-explore",
-    "href": "topic3ludic.html#suggested-questions-to-explore",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "Try these debate prompts to test each team’s economic reasoning:\n\n\n\n“If Central Banks double the money supply overnight, what happens to output, employment, and real wages in the short run vs. the long run?”\n“Can inflation be purely a monetary phenomenon, or does it always have real costs?”\n“Does Say’s Law hold in actual economies, or can aggregate demand really fail?”\n\n\n\n\n\n“Why would anyone hold money if bonds pay interest? What economic situation makes hoarding cash rational?”\n“Is velocity stable enough to predict inflation, or does it shift unpredictably with confidence?”\n“At zero interest rates, why can’t Central Banks stimulate the economy further?”\n\n\n\n\n\n“When interest rates are at zero, is monetary policy dead? What can central banks actually do?”\n“Should governments use fiscal stimulus (like infrastructure spending) when monetary policy fails?”\n“Can unconventional policies like quantitative easing work if the liquidity trap is real?”",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#how-to-get-the-most-from-this-activity",
-    "href": "topic3ludic.html#how-to-get-the-most-from-this-activity",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "Be specific: Ask about concrete mechanisms, not just outcomes. “Why?” is more productive than “Can Policy X work?”\nChallenge assumptions: Push each side on what they take for granted. Do relative prices always adjust? Is money demand really stable?\nCross-examine: After hearing both sides, ask follow-up questions that test consistency or expose trade-offs.\nTake notes: Write down the key arguments from each team. Which assumptions do you find most convincing?",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#reflection-after-your-debate",
-    "href": "topic3ludic.html#reflection-after-your-debate",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "Which team made stronger assumptions and which acknowledged uncertainty more?\nWhat real-world evidence supports or challenges each view?\nHow would you combine insights from both Classical and Keynesian perspectives into your own framework?",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
-    ]
-  },
-  {
-    "objectID": "topic2ludic.html#how-you-will-be-assessed-economics-x-factor-rubric",
-    "href": "topic2ludic.html#how-you-will-be-assessed-economics-x-factor-rubric",
-    "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "How You Will Be Assessed (Economics X-Factor Rubric)",
-    "text": "How You Will Be Assessed (Economics X-Factor Rubric)\nYour song will be judged like a performance, but the judges are scoring economics learning.\nEach criterion is scored from 1 to 10.\n\n\n\n\n\n\n\n\n\n\n\nCriterion\nWhat judges look for\n1-3\n4-6\n7-8\n9-10\n\n\n\n\nEconomic Correctness\nAccuracy of claims about Topic 2 ideas\nMostly inaccurate\nSome correct ideas, mixed with errors\nMostly accurate\nAccurate, precise, no major errors\n\n\nConcept Use\nUse of key concepts (e.g., inflation, velocity, money demand, quantity theory)\nNamedrops only or absent\nUses some concepts but shallowly\nConcepts used meaningfully\nConcepts integrated fluently and insightfully\n\n\nCausal Reasoning\nClear cause-effect logic in the economics\nNo clear causal links\nSome causal links, but confused or incomplete\nClear causal links with minor gaps\nStrong, coherent causal chain with conditions/nuance\n\n\nCommunication Quality\nClarity, memorability, and intelligibility of the economics message\nHard to follow\nPartly clear\nClear and engaging\nClear, memorable, and teaches effectively\n\n\nRevision Quality\nImprovement from first draft to revised draft (economics, not only style)\nLittle/no improvement\nSome improvement\nClear improvement in accuracy/clarity\nMajor improvement with thoughtful corrections\n\n\n\nTotal score: /50",
-    "crumbs": [
-      "Topic 2 - Classical Theory of Money",
-      "Optional: Economics Poets"
-    ]
-  },
-  {
-    "objectID": "topic2ludic.html#generate-and-listen",
-    "href": "topic2ludic.html#generate-and-listen",
-    "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "Generate and Listen",
-    "text": "Generate and Listen\n\n\n\n\n\n\n\nEconomics X-Factor AI Judges (Frontend Preview)\n\n\nNo score yet. Submit after generating (or after drafting) to preview rubric scoring UI.\n\n\n\n\n\n\n\n\n\n\nCommunity Listening & Voting (Pilot Preview)\n\n\nCommunity playlist and voting will appear here once the backend is enabled.\n\nRefresh Community Songs",
-    "crumbs": [
-      "Topic 2 - Classical Theory of Money",
-      "Optional: Economics Poets"
-    ]
-  },
-  {
-    "objectID": "topic2ludic.html#student-notes",
-    "href": "topic2ludic.html#student-notes",
-    "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "Student Notes",
-    "text": "Student Notes\n\nIf song generation is not working, tell your instructor (it may be a connection/server issue rather than your prompt).\nYou can still complete the economics task by drafting lyrics, explaining your intended style, and answering the reflection questions.\nRevise your lyrics after listening: clearer economic language usually improves the educational value of the result.",
-    "crumbs": [
-      "Topic 2 - Classical Theory of Money",
-      "Optional: Economics Poets"
-    ]
-  },
-  {
-    "objectID": "topic2ludic.html#instructortechnical-note-optional",
-    "href": "topic2ludic.html#instructortechnical-note-optional",
-    "title": "Topic 2: Song Generation - Ludic Activity",
-    "section": "Instructor/Technical Note (Optional)",
-    "text": "Instructor/Technical Note (Optional)\nThis page connects to a music-generation backend through the ACE-Step API URL field. For student use, the technical setup should usually be handled by the instructor or institution so learners can focus on the economics task.\n\nEnjoy creating!",
-    "crumbs": [
-      "Topic 2 - Classical Theory of Money",
-      "Optional: Economics Poets"
-    ]
-  },
-  {
-    "objectID": "topic3ludic.html#debate-cast-reference",
-    "href": "topic3ludic.html#debate-cast-reference",
-    "title": "Topic 3: Debate Lab - Classical vs Keynesian",
-    "section": "",
-    "text": "Classicals - Leon Walras: General equilibrium, Walras’ Law, classical dichotomy, long-run neutrality. - Alfred Marshall: Cambridge cash-balance view, money demand and velocity, money as a convenience asset.\nKeynesians - John Maynard Keynes: Liquidity preference, money demand motives, liquidity trap. - John Hicks: IS-LM synthesis, short-run disequilibrium and policy transmission.\n\n\n\nEnter a debate topic (e.g., “Money neutrality and the liquidity trap”)\nSelect a round (Neutrality, Liquidity Preference, or Low-Rate Policy)\nWrite your question focusing on one specific economic claim or assumption\nClick “Run Debate” to hear both teams respond\nRepeat for 2–3 rounds, posing increasingly challenging questions to test each side’s logic",
-    "crumbs": [
-      "Topic 3 - Keynes' Theory of Money",
-      "Optional: Debate Lab"
     ]
   }
 ]

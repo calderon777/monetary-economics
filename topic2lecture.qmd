@@ -1,6 +1,7 @@
 ---
 title: "Lecture 2"
 author: "Adapted by Dr Camilo Calderon"
+engine: knitr
 format:
   revealjs:
     theme: default
