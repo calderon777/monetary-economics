@@ -195,7 +195,7 @@ Contemporary macroeconomics typically combines elements of both traditions: mone
 
 ---
 
-# References
+## References
 
 Atlantic Council. (n.d.). *Central Bank Digital Currency (CBDC) Tracker*. Atlantic Council GeoEconomics Center. Retrieved January 9, 2026, from https://www.atlanticcouncil.org/cbdctracker/
 

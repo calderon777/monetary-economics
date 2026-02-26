@@ -450,7 +450,7 @@ flowchart TB
   G --> H["Expectations reset; money growth falls; inflation collapses"]
 ```
 
-# References (APA style)
+## References
 
 Bank for International Settlements. (2016). How have central banks implemented negative policy rates? BIS Quarterly Review, March.
 

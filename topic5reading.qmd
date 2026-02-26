@@ -309,52 +309,6 @@ ggplot(df, aes(x = Y, y = P, color = Regime)) +
   theme(legend.position = "bottom", plot.title = element_text(face = "bold"))
 ```
 
-# Problem questions
-
-1. In the LAS equation $Y_t - Y^* = \kappa(P_t - E_{t-1}P_t)$, interpret every term economically. Why does the model predict $E_{t-1}Y_t = Y^*$ under rational expectations?
-
-2. Show that equilibrium output deviations are $Y_t - Y^* = (\kappa/(1+\kappa))(M_t - E_{t-1}M_t)$. What happens as $\kappa \to 0$? As $\kappa \to \infty$?
-
-3. Explain why "random policy can move output" is not an argument for deliberate policy randomness. Explain using both (i) sign symmetry of shocks and (ii) the "boy who cried wolf" information mechanism.
-
-4. Describe the asymmetric-information exception: what must be true about the central bank's information set relative to the private sector's for systematic stabilisation to operate under rational expectations?
-
-5. Explain Fischer's wage-contract critique: why can anticipated monetary policy offset demand shocks when only part of the economy's wages are flexible?
-
-6. Using high-frequency monetary policy shock data, explain how researchers operationalise "policy surprises." Why is this relevant to the New Classical policy-ineffectiveness result?
-
-# References
-
-Fischer, S. (1977). Long-term contracts, rational expectations, and the optimal money supply rule. *Journal of Political Economy*, 85(1), 191–205.
-
-International Monetary Fund. (2024). A new dataset of high-frequency monetary policy shocks (Working Paper 2024/224).
-
-International Monetary Fund. (2018). Expectations' anchoring and inflation persistence (Working Paper 2018/280).
-
-Lucas, R. E., Jr. (1972). Expectations and the neutrality of money. *Journal of Economic Theory*, 4(2), 103–124.
-
-Muth, J. F. (1961). Rational expectations and the theory of price movements. *Econometrica*, 29(3), 315–335.
-
-Nerlove, M. (1958). Adaptive expectations and cobweb phenomena. *The Quarterly Journal of Economics*, 72(2), 227–240.
-
-Prescott, E. C. (1986). Theory ahead of business cycle measurement. *Quarterly Review* / Federal Reserve Bank of Minneapolis (Staff Report 102).
-
-Sargent, T. J., & Wallace, N. (1976). Rational expectations and the theory of economic policy. *Journal of Monetary Economics*, 2(2), 169–183.
-
-Sargent, T. J., & Wallace, N. (1975). "Rational" expectations, the optimal monetary instrument, and the optimal money supply rule. *Journal of Political Economy*, 83(2), 241–254.
-
-European Central Bank. (2014). ECB introduces a negative deposit facility interest rate (Press release, 5 June).
-
-European Central Bank. (2021). The ECB's monetary policy strategy statement.
-
-Bank of England. (2020). Bank Rate reduced to 0.1% and asset purchases increased by £200bn (Monetary Policy Summary, 19 March).
-
-Bank of Japan. (2024). Changes in the Monetary Policy Framework (19 March).
-
-Bank of Japan. (n.d.). Unconventional Monetary Policy Measures from the Late 1990s.
-
-Federal Reserve Board. (2025). Statement on Longer-Run Goals and Monetary Policy Strategy.
-
 # The New Classical model of output and prices
 
 ## Lucas aggregate supply and aggregate demand
@@ -499,7 +453,7 @@ During COVID-19, emergency actions show how central banks reacted to extraordina
 
 6. Using high-frequency monetary policy shock data from modern empirical work, explain how researchers operationalise "policy surprises." Why is this relevant to the New Classical policy-ineffectiveness result?
 
-# References
+## References
 
 Fischer, S. (1977). Long-term contracts, rational expectations, and the optimal money supply rule. *Journal of Political Economy*, 85(1), 191–205.
 

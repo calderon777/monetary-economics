@@ -743,7 +743,7 @@ Modern frameworks have experimented with "makeup" features that partially mimic 
 
 5. "If the Friedman rule implies optimal steady-state inflation should be around −2% to −3%, why don't central banks target that?" Discuss at least two concerns about very low or negative inflation targets in practice.
 
-# References
+## References
 
 Bank of England. (1995). Credibility and monetary policy: theory and evidence. *Quarterly Bulletin*, Q1.
 

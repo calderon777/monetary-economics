@@ -228,7 +228,7 @@ Institutional design choices—rules (Taylor-type), delegation to conservative c
 
 5. Discuss why exchange-rate pegs can enhance credibility but be vulnerable to speculative attacks and regime collapse (IMF, 2011; IMF IEO, 2004).
 
-# References
+## References
 
 Barro, R.J., & Gordon, D.B. (1983). Rules, discretion and reputation in a model of monetary policy. *Journal of Monetary Economics*, 12(1), 101–121.
 
