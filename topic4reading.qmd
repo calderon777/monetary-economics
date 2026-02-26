@@ -149,8 +149,6 @@ ggplot(df, aes(x = N, y = w_P, color = curve, linetype = curve)) +
 ```
 
 ```{mermaid}
-#| label: fig-monetarist-flow
-#| fig-cap: "The monetarist dichotomy model flow: labour market equilibrium determines natural employment and output, while the money block determines the price level given output."
 flowchart TB
   A["Labour market<br/>Ns(w/P), Nd(w/P)"] --> B["Natural employment<br/>N*"]
   B --> C["Production<br/>Ys = F(K, N*)"]
@@ -277,8 +275,6 @@ where $\alpha>0$ measures how strongly unemployment gaps affect inflation (a lar
 
 
 ```{mermaid}
-#| label: fig-money-illusion-adjustment
-#| fig-cap: "Money illusion and expectations adjustment in the monetarist narrative: output can rise temporarily after monetary expansion, but returns to natural levels as expectations and nominal wages adjust."
 flowchart LR
   A["Monetary expansion: up M"] --> B["Nominal spending up"]
   B --> C["Short run:<br/>wages/prices adjust slowly"]
@@ -307,8 +303,6 @@ This observation illustrates a key point: monetarists emphasised that velocity s
 
 
 ```{mermaid}
-#| label: fig-monetarist-episodes-timeline
-#| fig-cap: "Selected monetarist-relevant monetary-policy episodes (1999-2022): Japan ZIRP/QE, post-2008 LSAP/QE, euro-area negative rates, COVID-era PEPP/QE, and later QT."
 timeline
   title Monetarism-Relevant Monetary Episodes (selected milestones)
 
@@ -404,8 +398,6 @@ Hyperinflation is significant because it exemplifies the starkest money–prices
 
 
 ```{mermaid}
-#| label: fig-hyperinflation-stabilisation-flow
-#| fig-cap: "Stylised hyperinflation mechanism and stabilisation logic: fiscal deficits financed by money creation can trigger an inflation-seigniorage spiral, while credible fiscal and monetary reform resets expectations."
 flowchart TB
   A["Large fiscal deficits<br/>+ weak tax capacity"] --> B["Monetization /<br/>seigniorage financing"]
   B --> C["Money growth accelerates"]
