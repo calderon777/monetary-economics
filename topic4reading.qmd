@@ -149,14 +149,15 @@ ggplot(df, aes(x = N, y = w_P, color = curve, linetype = curve)) +
 ```
 
 ```{mermaid}
+%%{init: {"themeVariables": {"fontSize": "12px"}, "flowchart": {"nodeSpacing": 28, "rankSpacing": 34}} }%%
 flowchart TB
-  A["Labour market<br/>Ns(w/P), Nd(w/P)"] --> B["Natural employment<br/>N*"]
+  A["Labour market<br/>Ns and Nd vs w/P"] --> B["Natural employment<br/>N*"]
   B --> C["Production<br/>Ys = F(K, N*)"]
-  C --> D["Given Ys,<br/>real output pinned"]
-  E["Money demand<br/>Md = k P Y"] --> F["Money market<br/>M = Md"]
+  C --> D["Real output fixed<br/>(Y = Ys)"]
+  E["Money demand<br/>Md = kPY"] --> F["Money market<br/>M = Md"]
   D --> F
   F --> G["Price level<br/>P = M / (kY)"]
-  G --> H["Nominal wage adjusts<br/>so w/P returns to equilibrium"]
+  G --> H["Nominal wages adjust<br/>w/P returns to equilibrium"]
   H --> A
 ```
 

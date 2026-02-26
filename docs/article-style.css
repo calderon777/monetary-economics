@@ -51,11 +51,19 @@ img, .figure, .quarto-figure {
 }
 
 /* Mermaid diagrams: prevent article typography/colors from bleeding into labels */
+.mermaid svg,
 .cell-output-display .mermaid svg {
   max-width: 100%;
   height: auto;
 }
 
+.mermaid text,
+.mermaid .nodeLabel,
+.mermaid .nodeLabel *,
+.mermaid .edgeLabel,
+.mermaid .edgeLabel *,
+.mermaid .label,
+.mermaid .label *,
 .cell-output-display .mermaid text,
 .cell-output-display .mermaid .nodeLabel,
 .cell-output-display .mermaid .edgeLabel,
@@ -63,9 +71,11 @@ img, .figure, .quarto-figure {
   font-family: "Segoe UI", Arial, sans-serif !important;
   fill: #1f2937 !important;
   color: #1f2937 !important;
-  font-size: 14px !important;
+  font-size: 13px !important;
 }
 
+.mermaid .label foreignObject div,
+.mermaid foreignObject div,
 .cell-output-display .mermaid .label foreignObject div {
   font-family: "Segoe UI", Arial, sans-serif !important;
   color: #1f2937 !important;

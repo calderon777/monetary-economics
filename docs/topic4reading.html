@@ -606,14 +606,15 @@ Figure&nbsp;1: Labour market equilibrium: natural employment N* is pinned by the
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TB
-  A["Labour market&lt;br/&gt;Ns(w/P), Nd(w/P)"] --&gt; B["Natural employment&lt;br/&gt;N*"]
+<pre class="mermaid mermaid-js">%%{init: {"themeVariables": {"fontSize": "12px"}, "flowchart": {"nodeSpacing": 28, "rankSpacing": 34}} }%%
+flowchart TB
+  A["Labour market&lt;br/&gt;Ns and Nd vs w/P"] --&gt; B["Natural employment&lt;br/&gt;N*"]
   B --&gt; C["Production&lt;br/&gt;Ys = F(K, N*)"]
-  C --&gt; D["Given Ys,&lt;br/&gt;real output pinned"]
-  E["Money demand&lt;br/&gt;Md = k P Y"] --&gt; F["Money market&lt;br/&gt;M = Md"]
+  C --&gt; D["Real output fixed&lt;br/&gt;(Y = Ys)"]
+  E["Money demand&lt;br/&gt;Md = kPY"] --&gt; F["Money market&lt;br/&gt;M = Md"]
   D --&gt; F
   F --&gt; G["Price level&lt;br/&gt;P = M / (kY)"]
-  G --&gt; H["Nominal wage adjusts&lt;br/&gt;so w/P returns to equilibrium"]
+  G --&gt; H["Nominal wages adjust&lt;br/&gt;w/P returns to equilibrium"]
   H --&gt; A
 </pre>
 </div>
