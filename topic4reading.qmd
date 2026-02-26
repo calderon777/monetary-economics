@@ -96,139 +96,6 @@ Thus the model delivers a classical dichotomy: real equilibrium $(N^*,Y^s)$ is d
 
 **Figure 1** illustrates how $N^*$ is determined by the real wage $w/P$. **Figure 2** shows the flow from the labour market through production and demand to the AD-AS framework, with vertical long-run aggregate supply and aggregate demand derived from $Y=(1/k)(M/P)$.
 
-# Reconstructed and modernised tables (core lecture-note logic preserved)
-
-## Table 1: One-off increase in money level $M$ (short run vs long run)
-
-The following table illustrates the comparative statics of monetary expansion, showing long-run neutrality and short-run transitional effects under money illusion and sticky nominal wages.
-
-| Variable | Short run (prices/wages not fully adjusted; money illusion/stickiness) | Long run (fully adjusted nominal wages/prices; classical/monetarist benchmark) |
-|---|---|---|
-| $M$ | Up (policy/monetary expansion) | Up (permanent level shift) |
-| $P$ | Tends to rise, but not necessarily one-for-one immediately | Rises approximately one-for-one with $M$ (neutrality) |
-| $w$ (nominal wage) | Adjusts sluggishly; may rise less than $P$ initially | Rises proportionately with $P$ so that $w/P$ returns to equilibrium |
-| $w/P$ (real wage) | May temporarily fall if $P$ rises faster than $w$ → firms hire more | Returns to labour-market equilibrium |
-| $N$, $Y$ | May temporarily rise if firms respond to lower perceived real wage | Returns to $N^*$, $Y^s$ |
-| Unemployment $u$ | May temporarily fall (below $u^*$) | Returns to $u^*$ |
-| Key mechanism | Misperception/adjustment lags → short-run non-neutrality | No money illusion + flexible prices → long-run neutrality |
-
-## Table 2: Permanent increase in money growth $\mu$ (super-neutrality benchmark and Fisher effect)
-
-Let money growth be $\mu \equiv \Delta M/M$, inflation $\pi \equiv \Delta P/P$, and real output growth $g \equiv \Delta Y/Y$. From $MV=PY$, under stable $V$:
-
-$$
-\pi \approx \mu - g.
-$$
-
-With expected inflation $\pi^e$, the Fisher relation can be written:
-
-$$
-i \approx r + \pi^e.
-$$
-
-| Proposition | Prediction (benchmark) | What changes in modern data-rich policy regimes |
-|---|---|---|
-| Money growth and inflation | Higher long-run $\mu$ → higher long-run $\pi$ (unless $V$ falls persistently) | Velocity instability can weaken money-nominal GDP links, complicating money-growth targeting |
-| Nominal vs real rates | Higher $\pi^e$ → higher $i$ (Fisher effect) with $r$ pinned by real forces in long run | At or near the ZLB, $i$ may be constrained; term premia and longer yields become policy targets via QE |
-| Super-neutrality | Changes in $\mu$ do not permanently change $Y$, $N$, $u$ (benchmark super-neutrality) | In practice, regime shifts, financial frictions, and policy credibility can generate persistent real effects in transitions |
-
-# Money illusion, the Phillips curve, and the natural-rate hypothesis
-
-The narrative linking short-run monetary expansions to temporary unemployment reduction is consistent with expectations-augmented Phillips curve logic: observed inflation/unemployment correlations reflect short-run nominal rigidities or misperceptions, but do not deliver a stable long-run trade-off. Friedman's 1968 address makes this a central argument by insisting monetary policy cannot peg unemployment below its natural benchmark except temporarily, because expectations adjust [@friedman1968RoleMonetaryPolicy].
-
-The key historical sequence is:
-
-- Phillips (1958) documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample [@phillips1958RelationUnemployment].
-- Samuelson and Solow (1960) interpreted this relationship in a policy context (later debates question how menu-like their intended interpretation was).
-- Phelps (1967) provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment [@phelps1967PhillipsCurves].
-- Friedman (1968) popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity [@friedman1968RoleMonetaryPolicy].
-
-In accessible final-year notation, an expectations-augmented Phillips curve can be written as:
-
-$$
-\pi_t = \pi_t^e - \alpha(u_t - u^*) + \nu_t,
-$$
-
-where $\alpha>0$ and $\nu_t$ is a supply/markup disturbance. Under adaptive expectations $\pi_t^e \approx \pi_{t-1}$, disinflation implies transitional unemployment (sacrifice ratio), a key point in the monetarist critique of discretionary stabilization.
-
-# The policy message: rules, lags, and skepticism about fine tuning
-
-A signature monetarist policy conclusion is that activist discretionary policy is likely to destabilize because policy operates with long and variable lags. This motivates the constant money-growth rule (often presented as the $k\%$ rule): target money growth at a stable constant rate roughly consistent with long-run real output growth (or desired inflation). Modern central banking rarely implements the rule in its original form, but it remains a benchmark in rules-versus-discretion debates and in the design of robust frameworks.
-
-# Monetarism in the ZLB/QE/negative-rate world
-
-Modern monetary policy must address an apparent tension: monetarism emphasises targeting money growth, but central banks predominantly implement policy through interest-rate setting, supported by balance-sheet tools when rates hit effective lower bounds. In practice, the distinction between money and rates is not a binary choice: interest-rate policy is implemented through operations that affect the central bank balance sheet and monetary aggregates; conversely, balance-sheet policies matter by altering asset supplies, term premia, and risk premia.
-
-**Example: the COVID-era money surge (US and euro area).**
-
-- In the US, the Fed's H.6 release shows a dramatic jump in M2 during early 2020, illustrating that money aggregates can move rapidly in crisis conditions [@frb2020H6June25].
-- In the euro area, the ECB documented a marked acceleration in broad money growth in March 2020 and linked it to emergency liquidity needs and precautionary money holding amid pandemic uncertainty [@ecb2020PEPP; @ecb2020CovidMeasuresBox].
-
-This observation illustrates a key point: monetarists emphasised that velocity stability is crucial. In crises, velocity can shift sharply as liquidity preference rises, so money growth alone does not map mechanically into inflation in the short run.
-
-# Nominal and real interest rates in practice
-
-The nominal versus real interest rate discussion connects the Fisher equation to two sets of contemporary facts:
-
-1. At the ZLB, the Fisher relation does not disappear, but nominal rates can be constrained, shifting adjustment into expected inflation, real rates, and longer-term yields.
-2. Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter [@bis2016NegativePolicyRates; @borioZabai2016Reappraisal].
-
-# Inflationary equilibria: money demand, fiscal dominance, and the high-inflation trap
-
-Inflationary equilibria can be analysed using a simplified Cagan-style framework consisting of (i) a semi-log money demand and (ii) a government budget constraint implying seigniorage finance.
-
-A standard high-inflation money demand specification is:
-
-$$
-\frac{M}{P} = A e^{-\alpha \pi^e}, \quad \alpha>0,
-$$
-
-so higher expected inflation reduces real money demand. Combine this with a government need for seigniorage (money creation revenue) to finance deficits when other financing is limited. A key pedagogical point is nonlinearity: when inflation rises, the tax base (real balances) can shrink rapidly, so generating a given amount of seigniorage may require ever higher inflation, potentially producing unstable dynamics or multiple equilibria in some models.
-
-# Hyperinflation: definition, evidence, and endings
-
-**Definition (Cagan criterion).** Hyperinflation begins when monthly inflation first exceeds 50% and ends when it falls below 50% for at least a year [@imf2007HighInflationLessons].
-
-**Empirical regularity: fiscal regime change and credible stabilisation.** Sargent's classic "Ends of Four Big Inflations" argues that dramatic hyperinflations ended alongside major fiscal regime shifts and reforms that changed expectations about future money creation [@sargent1982EndsFourBigInflations].
-
-Hyperinflation is significant because it exemplifies the starkest money–prices relationship and provides direct historical evidence of monetisation of fiscal deficits.
-
-# Comparative table: post-1990 policy episodes, tools, and outcomes
-
-The following table summarises post-1990 monetary episodes and their policy responses.
-
-Illustrative episode details in the table are drawn from official central bank releases/timelines and well-known empirical studies, including the BoJ policy chronology, Bank of England announcements and QE evidence, ECB press releases on negative rates and PEPP, and the New York Fed LSAP staff report [@bojMonetaryPolicyHistory; @boe2009MPCAnnouncement; @joyceEtAl2010QEWP393; @ecb2014NegativeDepositPR; @ecb2020PEPP; @gagnonEtAl2010LSAPSR441].
-
-| Episode | Monetary-policy constraint | Main tools used | Scale/timing (illustrative, official) | Evidence on financial conditions/outcomes |
-|---|---|---|---|---|
-| Japan (late 1990s-2000s; long ZLB era) | Persistent low inflation/deflation; policy rates near zero | ZIRP; QE (current account balances target); later QQE | BoJ timeline: ZIRP (Feb 1999-Aug 2000); QE (Mar 2001-Mar 2006) with explicit balance targets (e.g., ~JPY5tn initial current account balance target) | Illustrates liquidity preference/velocity shifts and the difficulty of rekindling inflation |
-| UK (GFC response, 2009-2010) | Bank Rate at effective lower bound | QE via gilt purchases financed by reserves | MPC March 2009: Bank Rate cut to 0.5% and GBP75bn purchases; by Feb 2010 purchases reached GBP200bn; BoE estimates gilt yields down about 100bp | BoE research attributes significant yield compression to QE; macro effects exist but are uncertain and model-dependent |
-| Euro area (negative rates + PEPP, 2014-2024) | Low inflation + fragmentation risk; ELB dynamics | Negative deposit facility rate; asset purchases APP/PEPP; TLTROs | ECB cut deposit facility rate to -0.10% effective 11 June 2014; PEPP launched at EUR750bn (Mar 2020), expanded to EUR1,850bn; PEPP+APP estimated to reduce GDP-weighted 10-year yield about 45bp in 2020 | ECB documents term-premium compression and transmission support; negative rates transmit unevenly |
-| US (ZLB and LSAPs, 2008-2010; COVID and beyond) | Fed funds at 0-25bp (Dec 2008), later ELB again in 2020 | LSAP/QE; forward guidance; liquidity facilities | NY Fed SR441: purchases announced Nov 2008; expanded March 2009 to total up to USD1.75tn; designed to lower private borrowing rates by reducing term/risk premia | NY Fed analysis finds meaningful reductions in longer-term rates, mainly through lower term/risk premia rather than expectations of future short rates |
-
-# Policy implications: what survives from Friedman's monetarism today
-
-**What survives robustly (high confidence):** The broad long-run propositions are consistent with standard textbook treatments and the monetarist literature [@lewisMizen2000MonetaryEconomics; @friedman1968RoleMonetaryPolicy].
-
-- Inflation cannot persist indefinitely without accommodating monetary expansion; monetary conditions matter for nominal aggregates over longer horizons.
-- Policy should be evaluated under lags and uncertainty; discretionary fine tuning can be destabilising when transmission is slow and variable.
-- Asset purchases and balance-sheet tools can matter at the ZLB by lowering term premia and risk premia, consistent with portfolio-balance mechanisms.
-
-**What needs qualification (teaching with nuance):**
-
-- Stable velocity is not guaranteed; financial innovation and regulation shape money demand and can destabilise money-nominal GDP links, reducing the practicality of money-growth targeting.
-- Money supply is not a single object; it depends on definitions (M0/base vs M1/M2/M3) and on the banking system's credit creation, which is why modern central banks focus on interest-rate implementation and broader indicator sets.
-
-# Problem questions
-
-1. **Derivation and interpretation.** Starting from $MV \equiv PY$, derive $\pi \approx \mu + v - g$ where $v$ is velocity growth. Under what assumptions does this collapse to $\pi \approx \mu - g$? What happens when $V$ becomes unstable?
-2. **Neutrality table.** Using Table 1 above, explain precisely which assumptions deliver long-run neutrality. Then propose one realistic friction (wage stickiness, imperfect information, financial frictions) that generates the short-run deviations. Anchor your discussion in Friedman's warnings about policy overreach.
-3. **Natural rate and expectations.** Write an expectations-augmented Phillips curve and show algebraically why a permanent attempt to hold $u<u^*$ generates accelerating inflation under adaptive expectations. Use Friedman (1968) and Phelps (1967) as your anchors.
-4. **Nominal vs real interest rates.** From the Fisher equation $i=r+\pi^e$, discuss what each term means and how negative policy rates complicate measurement and transmission. Use BIS evidence on negative-rate implementation to discuss one channel that behaves differently at negative rates.
-5. **LSAP/QE mechanism.** Explain the portfolio-balance channel in your own words and distinguish term-premium effects from expected-future short-rate effects. Why does this distinction matter for whether QE proves monetarism?
-6. **Hyperinflation essay.** Using the IMF definition and Sargent's evidence, explain why hyperinflation is typically linked to fiscal regimes and why stabilisation often requires credible fiscal reform. How does this relate to monetarist emphasis on money growth?
-
-# Figures
 
 **Figure 1. Labour market equilibrium in the monetarist benchmark.** Employment $N^*$ is determined by labour supply and demand as functions of the real wage $w/P$. In the long-run dichotomy, monetary changes affect nominal magnitudes but not $N^*$.
 
@@ -357,6 +224,62 @@ ggplot(df, aes(x = Y, y = P, color = curve)) +
         plot.title = element_text(face = "bold"))
 ```
 
+# Reconstructed and modernised tables (core lecture-note logic preserved)
+
+## Table 1: One-off increase in money level $M$ (short run vs long run)
+
+The following table illustrates the comparative statics of monetary expansion, showing long-run neutrality and short-run transitional effects under money illusion and sticky nominal wages.
+
+| Variable | Short run (prices/wages not fully adjusted; money illusion/stickiness) | Long run (fully adjusted nominal wages/prices; classical/monetarist benchmark) |
+|---|---|---|
+| $M$ | Up (policy/monetary expansion) | Up (permanent level shift) |
+| $P$ | Tends to rise, but not necessarily one-for-one immediately | Rises approximately one-for-one with $M$ (neutrality) |
+| $w$ (nominal wage) | Adjusts sluggishly; may rise less than $P$ initially | Rises proportionately with $P$ so that $w/P$ returns to equilibrium |
+| $w/P$ (real wage) | May temporarily fall if $P$ rises faster than $w$ → firms hire more | Returns to labour-market equilibrium |
+| $N$, $Y$ | May temporarily rise if firms respond to lower perceived real wage | Returns to $N^*$, $Y^s$ |
+| Unemployment $u$ | May temporarily fall (below $u^*$) | Returns to $u^*$ |
+| Key mechanism | Misperception/adjustment lags → short-run non-neutrality | No money illusion + flexible prices → long-run neutrality |
+
+## Table 2: Permanent increase in money growth $\mu$ (super-neutrality benchmark and Fisher effect)
+
+Let money growth be $\mu \equiv \Delta M/M$, inflation $\pi \equiv \Delta P/P$, and real output growth $g \equiv \Delta Y/Y$. From $MV=PY$, under stable $V$:
+
+$$
+\pi \approx \mu - g.
+$$
+
+With expected inflation $\pi^e$, the Fisher relation can be written:
+
+$$
+i \approx r + \pi^e.
+$$
+
+| Proposition | Prediction (benchmark) | What changes in modern data-rich policy regimes |
+|---|---|---|
+| Money growth and inflation | Higher long-run $\mu$ → higher long-run $\pi$ (unless $V$ falls persistently) | Velocity instability can weaken money-nominal GDP links, complicating money-growth targeting |
+| Nominal vs real rates | Higher $\pi^e$ → higher $i$ (Fisher effect) with $r$ pinned by real forces in long run | At or near the ZLB, $i$ may be constrained; term premia and longer yields become policy targets via QE |
+| Super-neutrality | Changes in $\mu$ do not permanently change $Y$, $N$, $u$ (benchmark super-neutrality) | In practice, regime shifts, financial frictions, and policy credibility can generate persistent real effects in transitions |
+
+# Money illusion, the Phillips curve, and the natural-rate hypothesis
+
+The narrative linking short-run monetary expansions to temporary unemployment reduction is consistent with expectations-augmented Phillips curve logic: observed inflation/unemployment correlations reflect short-run nominal rigidities or misperceptions, but do not deliver a stable long-run trade-off. Friedman's 1968 address makes this a central argument by insisting monetary policy cannot peg unemployment below its natural benchmark except temporarily, because expectations adjust [@friedman1968RoleMonetaryPolicy].
+
+The key historical sequence is:
+
+- Phillips (1958) documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample [@phillips1958RelationUnemployment].
+- Samuelson and Solow (1960) interpreted this relationship in a policy context (later debates question how menu-like their intended interpretation was).
+- Phelps (1967) provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment [@phelps1967PhillipsCurves].
+- Friedman (1968) popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity [@friedman1968RoleMonetaryPolicy].
+
+In accessible final-year notation, an expectations-augmented Phillips curve can be written as:
+
+$$
+\pi_t = \pi_t^e - \alpha(u_t - u^*) + \nu_t,
+$$
+
+where $\alpha>0$ and $\nu_t$ is a supply/markup disturbance. Under adaptive expectations $\pi_t^e \approx \pi_{t-1}$, disinflation implies transitional unemployment (sacrifice ratio), a key point in the monetarist critique of discretionary stabilization.
+
+
 **Figure 4. Money illusion and expectations adjustment (short-run vs long-run).**
 
 ```{mermaid}
@@ -370,6 +293,22 @@ flowchart LR
   G --> H["Real wage returns to equilibrium"]
   H --> I["Output/employment return to natural levels; inflation higher"]
 ```
+
+# The policy message: rules, lags, and skepticism about fine tuning
+
+A signature monetarist policy conclusion is that activist discretionary policy is likely to destabilize because policy operates with long and variable lags. This motivates the constant money-growth rule (often presented as the $k\%$ rule): target money growth at a stable constant rate roughly consistent with long-run real output growth (or desired inflation). Modern central banking rarely implements the rule in its original form, but it remains a benchmark in rules-versus-discretion debates and in the design of robust frameworks.
+
+# Monetarism in the ZLB/QE/negative-rate world
+
+Modern monetary policy must address an apparent tension: monetarism emphasises targeting money growth, but central banks predominantly implement policy through interest-rate setting, supported by balance-sheet tools when rates hit effective lower bounds. In practice, the distinction between money and rates is not a binary choice: interest-rate policy is implemented through operations that affect the central bank balance sheet and monetary aggregates; conversely, balance-sheet policies matter by altering asset supplies, term premia, and risk premia.
+
+**Example: the COVID-era money surge (US and euro area).**
+
+- In the US, the Fed's H.6 release shows a dramatic jump in M2 during early 2020, illustrating that money aggregates can move rapidly in crisis conditions [@frb2020H6June25].
+- In the euro area, the ECB documented a marked acceleration in broad money growth in March 2020 and linked it to emergency liquidity needs and precautionary money holding amid pandemic uncertainty [@ecb2020PEPP; @ecb2020CovidMeasuresBox].
+
+This observation illustrates a key point: monetarists emphasised that velocity stability is crucial. In crises, velocity can shift sharply as liquidity preference rises, so money growth alone does not map mechanically into inflation in the short run.
+
 
 **Figure 5. Timeline of key monetarist-relevant episodes (Japan, GFC, NIRP, COVID).**
 
@@ -386,6 +325,14 @@ timeline
   2020 : COVID shock: large money/balance-sheet expansions; PEPP launched (euro area)
   2022 : Balance-sheet reduction / QT begins in several jurisdictions
 ```
+
+# Nominal and real interest rates in practice
+
+The nominal versus real interest rate discussion connects the Fisher equation to two sets of contemporary facts:
+
+1. At the ZLB, the Fisher relation does not disappear, but nominal rates can be constrained, shifting adjustment into expected inflation, real rates, and longer-term yields.
+2. Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter [@bis2016NegativePolicyRates; @borioZabai2016Reappraisal].
+
 
 **Figure 6. Negative policy rate corridor and retail deposit stickiness intuition.**
 
@@ -441,6 +388,27 @@ ggplot(df, aes(x = time, y = rate, color = facility, linetype = facility)) +
         plot.title = element_text(face = "bold"))
 ```
 
+# Inflationary equilibria: money demand, fiscal dominance, and the high-inflation trap
+
+Inflationary equilibria can be analysed using a simplified Cagan-style framework consisting of (i) a semi-log money demand and (ii) a government budget constraint implying seigniorage finance.
+
+A standard high-inflation money demand specification is:
+
+$$
+\frac{M}{P} = A e^{-\alpha \pi^e}, \quad \alpha>0,
+$$
+
+so higher expected inflation reduces real money demand. Combine this with a government need for seigniorage (money creation revenue) to finance deficits when other financing is limited. A key pedagogical point is nonlinearity: when inflation rises, the tax base (real balances) can shrink rapidly, so generating a given amount of seigniorage may require ever higher inflation, potentially producing unstable dynamics or multiple equilibria in some models.
+
+# Hyperinflation: definition, evidence, and endings
+
+**Definition (Cagan criterion).** Hyperinflation begins when monthly inflation first exceeds 50% and ends when it falls below 50% for at least a year [@imf2007HighInflationLessons].
+
+**Empirical regularity: fiscal regime change and credible stabilisation.** Sargent's classic "Ends of Four Big Inflations" argues that dramatic hyperinflations ended alongside major fiscal regime shifts and reforms that changed expectations about future money creation [@sargent1982EndsFourBigInflations].
+
+Hyperinflation is significant because it exemplifies the starkest money–prices relationship and provides direct historical evidence of monetisation of fiscal deficits.
+
+
 **Figure 7. Hyperinflation definition and stabilisation logic.**
 
 ```{mermaid}
@@ -453,6 +421,41 @@ flowchart TB
   F --> G["Stabilisation: credible fiscal regime change + monetary reform"]
   G --> H["Expectations reset; money growth falls; inflation collapses"]
 ```
+
+# Comparative table: post-1990 policy episodes, tools, and outcomes
+
+The following table summarises post-1990 monetary episodes and their policy responses.
+
+Illustrative episode details in the table are drawn from official central bank releases/timelines and well-known empirical studies, including the BoJ policy chronology, Bank of England announcements and QE evidence, ECB press releases on negative rates and PEPP, and the New York Fed LSAP staff report [@bojMonetaryPolicyHistory; @boe2009MPCAnnouncement; @joyceEtAl2010QEWP393; @ecb2014NegativeDepositPR; @ecb2020PEPP; @gagnonEtAl2010LSAPSR441].
+
+| Episode | Monetary-policy constraint | Main tools used | Scale/timing (illustrative, official) | Evidence on financial conditions/outcomes |
+|---|---|---|---|---|
+| Japan (late 1990s-2000s; long ZLB era) | Persistent low inflation/deflation; policy rates near zero | ZIRP; QE (current account balances target); later QQE | BoJ timeline: ZIRP (Feb 1999-Aug 2000); QE (Mar 2001-Mar 2006) with explicit balance targets (e.g., ~JPY5tn initial current account balance target) | Illustrates liquidity preference/velocity shifts and the difficulty of rekindling inflation |
+| UK (GFC response, 2009-2010) | Bank Rate at effective lower bound | QE via gilt purchases financed by reserves | MPC March 2009: Bank Rate cut to 0.5% and GBP75bn purchases; by Feb 2010 purchases reached GBP200bn; BoE estimates gilt yields down about 100bp | BoE research attributes significant yield compression to QE; macro effects exist but are uncertain and model-dependent |
+| Euro area (negative rates + PEPP, 2014-2024) | Low inflation + fragmentation risk; ELB dynamics | Negative deposit facility rate; asset purchases APP/PEPP; TLTROs | ECB cut deposit facility rate to -0.10% effective 11 June 2014; PEPP launched at EUR750bn (Mar 2020), expanded to EUR1,850bn; PEPP+APP estimated to reduce GDP-weighted 10-year yield about 45bp in 2020 | ECB documents term-premium compression and transmission support; negative rates transmit unevenly |
+| US (ZLB and LSAPs, 2008-2010; COVID and beyond) | Fed funds at 0-25bp (Dec 2008), later ELB again in 2020 | LSAP/QE; forward guidance; liquidity facilities | NY Fed SR441: purchases announced Nov 2008; expanded March 2009 to total up to USD1.75tn; designed to lower private borrowing rates by reducing term/risk premia | NY Fed analysis finds meaningful reductions in longer-term rates, mainly through lower term/risk premia rather than expectations of future short rates |
+
+# Policy implications: what survives from Friedman's monetarism today
+
+**What survives robustly (high confidence):** The broad long-run propositions are consistent with standard textbook treatments and the monetarist literature [@lewisMizen2000MonetaryEconomics; @friedman1968RoleMonetaryPolicy].
+
+- Inflation cannot persist indefinitely without accommodating monetary expansion; monetary conditions matter for nominal aggregates over longer horizons.
+- Policy should be evaluated under lags and uncertainty; discretionary fine tuning can be destabilising when transmission is slow and variable.
+- Asset purchases and balance-sheet tools can matter at the ZLB by lowering term premia and risk premia, consistent with portfolio-balance mechanisms.
+
+**What needs qualification (teaching with nuance):**
+
+- Stable velocity is not guaranteed; financial innovation and regulation shape money demand and can destabilise money-nominal GDP links, reducing the practicality of money-growth targeting.
+- Money supply is not a single object; it depends on definitions (M0/base vs M1/M2/M3) and on the banking system's credit creation, which is why modern central banks focus on interest-rate implementation and broader indicator sets.
+
+# Problem questions
+
+1. **Derivation and interpretation.** Starting from $MV \equiv PY$, derive $\pi \approx \mu + v - g$ where $v$ is velocity growth. Under what assumptions does this collapse to $\pi \approx \mu - g$? What happens when $V$ becomes unstable?
+2. **Neutrality table.** Using Table 1 above, explain precisely which assumptions deliver long-run neutrality. Then propose one realistic friction (wage stickiness, imperfect information, financial frictions) that generates the short-run deviations. Anchor your discussion in Friedman's warnings about policy overreach.
+3. **Natural rate and expectations.** Write an expectations-augmented Phillips curve and show algebraically why a permanent attempt to hold $u<u^*$ generates accelerating inflation under adaptive expectations. Use Friedman (1968) and Phelps (1967) as your anchors.
+4. **Nominal vs real interest rates.** From the Fisher equation $i=r+\pi^e$, discuss what each term means and how negative policy rates complicate measurement and transmission. Use BIS evidence on negative-rate implementation to discuss one channel that behaves differently at negative rates.
+5. **LSAP/QE mechanism.** Explain the portfolio-balance channel in your own words and distinguish term-premium effects from expected-future short-rate effects. Why does this distinction matter for whether QE proves monetarism?
+6. **Hyperinflation essay.** Using the IMF definition and Sargent's evidence, explain why hyperinflation is typically linked to fiscal regimes and why stabilisation often requires credible fiscal reform. How does this relate to monetarist emphasis on money growth?
 
 ## References
 
