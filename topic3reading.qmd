@@ -19,6 +19,8 @@ csl: harvard-cite-them-right.csl
 link-citations: true
 execute:
   daemon: false
+  warning: false
+  message: false
   fig-width: 7
   fig-height: 5
   fig-dpi: 96

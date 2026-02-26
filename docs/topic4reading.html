@@ -89,6 +89,9 @@ div.csl-indent {
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/quarto-diagram/mermaid.min.js"></script>
+<script src="site_libs/quarto-diagram/mermaid-init.js"></script>
+<link href="site_libs/quarto-diagram/mermaid.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -821,14 +824,6 @@ i \approx r + \pi^e.
 <h1 data-number="15"><span class="header-section-number">15</span> Figures</h1>
 <p><strong>Figure 1. Labour market equilibrium in the monetarist benchmark.</strong> Employment <span class="math inline">\(N^*\)</span> is determined by labour supply and demand as functions of the real wage <span class="math inline">\(w/P\)</span>. In the long-run dichotomy, monetary changes affect nominal magnitudes but not <span class="math inline">\(N^*\)</span>.</p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_point(aes(x = N_star, y = w_P_star), color = "black", size = 3, : All aesthetics have length 1, but the data has 400 rows.
-ℹ Please consider using `annotate()` or provide this layer with data containing
-  a single row.</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-labour-market" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Labour market diagram showing downward-sloping labour demand and upward-sloping labour supply intersecting at N*.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -843,7 +838,12 @@ Figure&nbsp;1: Labour market equilibrium: natural employment N* is pinned by the
 </div>
 </div>
 <p><strong>Figure 2. The monetarist dichotomy model flow (labour -&gt; output -&gt; prices).</strong></p>
-<pre class="mermaid"><code>flowchart TB
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
   A["Labour market: Ns(w/P), Nd(w/P)"] --&gt; B["Natural employment: N*"]
   B --&gt; C["Production: Ys = F(K, N*)"]
   C --&gt; D["Given Ys, real output pinned"]
@@ -851,19 +851,15 @@ Figure&nbsp;1: Labour market equilibrium: natural employment N* is pinned by the
   D --&gt; F
   F --&gt; G["Price level: P = M / (kY)"]
   G --&gt; H["Nominal wage adjusts so w/P returns to equilibrium"]
-  H --&gt; A</code></pre>
+  H --&gt; A
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <p><strong>Figure 3. AD-AS in the monetarist benchmark (vertical long-run AS).</strong></p>
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_point(aes(x = E0_Y, y = E0_P), color = "black", size = 3, : All aesthetics have length 1, but the data has 400 rows.
-ℹ Please consider using `annotate()` or provide this layer with data containing
-  a single row.</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in geom_point(aes(x = E1_Y, y = E1_P), color = "black", size = 3, : All aesthetics have length 1, but the data has 400 rows.
-ℹ Please consider using `annotate()` or provide this layer with data containing
-  a single row.</code></pre>
-</div>
 <div class="cell-output-display">
 <div id="fig-ad-as-monetarist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="AD-AS diagram with vertical long-run AS curve at Y* and downward-sloping AD curves.">
 <figure class="quarto-float quarto-float-fig figure">
@@ -878,7 +874,12 @@ Figure&nbsp;2: Aggregates demand and supply in the monetarist model: long-run ag
 </div>
 </div>
 <p><strong>Figure 4. Money illusion and expectations adjustment (short-run vs long-run).</strong></p>
-<pre class="mermaid"><code>flowchart LR
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart LR
   A["Monetary expansion: up M"] --&gt; B["Nominal spending up"]
   B --&gt; C["Short run: wages/prices adjust slowly"]
   C --&gt; D["Perceived real wage falls (money illusion / stickiness)"]
@@ -886,9 +887,20 @@ Figure&nbsp;2: Aggregates demand and supply in the monetarist model: long-run ag
   E --&gt; F["Expectations catch up: inflation becomes anticipated"]
   F --&gt; G["Nominal wages/prices adjust fully"]
   G --&gt; H["Real wage returns to equilibrium"]
-  H --&gt; I["Output/employment return to natural levels; inflation higher"]</code></pre>
+  H --&gt; I["Output/employment return to natural levels; inflation higher"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <p><strong>Figure 5. Timeline of key monetarist-relevant episodes (Japan, GFC, NIRP, COVID).</strong></p>
-<pre class="mermaid"><code>timeline
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">timeline
   title Monetarism-Relevant Monetary Episodes (selected milestones)
 
   1999 : Japan ZIRP begins (policy rates near zero)
@@ -898,7 +910,13 @@ Figure&nbsp;2: Aggregates demand and supply in the monetarist model: long-run ag
   2014 : Euro area deposit facility rate turns negative (-0.10% effective June)
   2016 : Negative rates become a broader European toolset (implementation details vary)
   2020 : COVID shock: large money/balance-sheet expansions; PEPP launched (euro area)
-  2022 : Balance-sheet reduction / QT begins in several jurisdictions</code></pre>
+  2022 : Balance-sheet reduction / QT begins in several jurisdictions
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <p><strong>Figure 6. Negative policy rate corridor and retail deposit stickiness intuition.</strong></p>
 <div class="cell">
 <div class="cell-output-display">
@@ -915,14 +933,25 @@ Figure&nbsp;3: Central bank policy rate corridor with negative rates: policy fac
 </div>
 </div>
 <p><strong>Figure 7. Hyperinflation definition and stabilisation logic.</strong></p>
-<pre class="mermaid"><code>flowchart TB
+<div class="cell" data-layout-align="default">
+<div class="cell-output-display">
+<div>
+<p></p><figure class="figure"><p></p>
+<div>
+<pre class="mermaid mermaid-js">flowchart TB
   A["Large fiscal deficits + weak tax capacity"] --&gt; B["Monetization / seigniorage financing"]
   B --&gt; C["Money growth accelerates"]
   C --&gt; D["Inflation accelerates; real money balances fall"]
   D --&gt; E["Higher inflation needed to raise same seigniorage"]
   E --&gt; F["Potential high-inflation trap / instability"]
   F --&gt; G["Stabilisation: credible fiscal regime change + monetary reform"]
-  G --&gt; H["Expectations reset; money growth falls; inflation collapses"]</code></pre>
+  G --&gt; H["Expectations reset; money growth falls; inflation collapses"]
+</pre>
+</div>
+<p></p></figure><p></p>
+</div>
+</div>
+</div>
 <section id="references" class="level2" data-number="15.1">
 <h2 data-number="15.1" class="anchored" data-anchor-id="references"><span class="header-section-number">15.1</span> References</h2>
 <div id="refs" class="references csl-bib-body" role="list">

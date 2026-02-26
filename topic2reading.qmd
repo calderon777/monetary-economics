@@ -17,6 +17,9 @@ format:
 bibliography: references.bib
 csl: harvard-cite-them-right.csl
 link-citations: true
+execute:
+  warning: false
+  message: false
 ---
 
 # Classical Theory of Money

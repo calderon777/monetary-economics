@@ -19,6 +19,8 @@ csl: harvard-cite-them-right.csl
 link-citations: true
 execute:
   echo: false
+  warning: false
+  message: false
 ---
 
 # Introduction

@@ -17,6 +17,8 @@ format:
     number-sections: true
 execute:
   echo: false
+  warning: false
+  message: false
 bibliography: references.bib
 csl: harvard-cite-them-right.csl
 link-citations: true

@@ -19,6 +19,8 @@ csl: harvard-cite-them-right.csl
 link-citations: true
 execute:
   echo: false
+  warning: false
+  message: false
 ---
 
 # Introduction and learning objectives
@@ -283,7 +285,7 @@ ggplot(df, aes(x = N, y = w_P, color = curve, linetype = curve)) +
 
 **Figure 2. The monetarist dichotomy model flow (labour -> output -> prices).**
 
-```mermaid
+```{mermaid}
 flowchart TB
   A["Labour market: Ns(w/P), Nd(w/P)"] --> B["Natural employment: N*"]
   B --> C["Production: Ys = F(K, N*)"]
@@ -357,7 +359,7 @@ ggplot(df, aes(x = Y, y = P, color = curve)) +
 
 **Figure 4. Money illusion and expectations adjustment (short-run vs long-run).**
 
-```mermaid
+```{mermaid}
 flowchart LR
   A["Monetary expansion: up M"] --> B["Nominal spending up"]
   B --> C["Short run: wages/prices adjust slowly"]
@@ -371,7 +373,7 @@ flowchart LR
 
 **Figure 5. Timeline of key monetarist-relevant episodes (Japan, GFC, NIRP, COVID).**
 
-```mermaid
+```{mermaid}
 timeline
   title Monetarism-Relevant Monetary Episodes (selected milestones)
 
@@ -441,7 +443,7 @@ ggplot(df, aes(x = time, y = rate, color = facility, linetype = facility)) +
 
 **Figure 7. Hyperinflation definition and stabilisation logic.**
 
-```mermaid
+```{mermaid}
 flowchart TB
   A["Large fiscal deficits + weak tax capacity"] --> B["Monetization / seigniorage financing"]
   B --> C["Money growth accelerates"]
