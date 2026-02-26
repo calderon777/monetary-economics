@@ -97,8 +97,6 @@ Thus the model delivers a classical dichotomy: real equilibrium $(N^*,Y^s)$ is d
 **Figure 1** illustrates how $N^*$ is determined by the real wage $w/P$. **Figure 2** shows the flow from the labour market through production and demand to the AD-AS framework, with vertical long-run aggregate supply and aggregate demand derived from $Y=(1/k)(M/P)$.
 
 
-**Figure 1. Labour market equilibrium in the monetarist benchmark.** Employment $N^*$ is determined by labour supply and demand as functions of the real wage $w/P$. In the long-run dichotomy, monetary changes affect nominal magnitudes but not $N^*$.
-
 ```{r}
 #| label: fig-labour-market
 #| fig-cap: "Labour market equilibrium: natural employment N* is pinned by the intersection of labour supply Ns(w/P) and labour demand Nd(w/P)."
@@ -150,21 +148,19 @@ ggplot(df, aes(x = N, y = w_P, color = curve, linetype = curve)) +
         plot.title = element_text(face = "bold"))
 ```
 
-**Figure 2. The monetarist dichotomy model flow (labour -> output -> prices).**
-
 ```{mermaid}
+#| label: fig-monetarist-flow
+#| fig-cap: "The monetarist dichotomy model flow: labour market equilibrium determines natural employment and output, while the money block determines the price level given output."
 flowchart TB
-  A["Labour market: Ns(w/P), Nd(w/P)"] --> B["Natural employment: N*"]
-  B --> C["Production: Ys = F(K, N*)"]
-  C --> D["Given Ys, real output pinned"]
-  E["Money demand: Md = k P Y"] --> F["Money market: M = Md"]
+  A["Labour market<br/>Ns(w/P), Nd(w/P)"] --> B["Natural employment<br/>N*"]
+  B --> C["Production<br/>Ys = F(K, N*)"]
+  C --> D["Given Ys,<br/>real output pinned"]
+  E["Money demand<br/>Md = k P Y"] --> F["Money market<br/>M = Md"]
   D --> F
-  F --> G["Price level: P = M / (kY)"]
-  G --> H["Nominal wage adjusts so w/P returns to equilibrium"]
+  F --> G["Price level<br/>P = M / (kY)"]
+  G --> H["Nominal wage adjusts<br/>so w/P returns to equilibrium"]
   H --> A
 ```
-
-**Figure 3. AD-AS in the monetarist benchmark (vertical long-run AS).**
 
 ```{r}
 #| label: fig-ad-as-monetarist
@@ -197,7 +193,7 @@ E1_P <- 12 - 0.8 * E1_Y  # = 7.2
 df <- data.frame(
   Y = c(Y, Y),
   P = c(P_AD0, P_AD1),
-  curve = rep(c("AD0", "AD1 (↑M)"), each = length(Y))
+  curve = rep(c("AD0", "AD1 (M up)"), each = length(Y))
 )
 
 # Plot
@@ -215,7 +211,7 @@ ggplot(df, aes(x = Y, y = P, color = curve)) +
            fontface = "bold", size = 4) +
   annotate("segment", x = E0_Y, xend = E1_Y, y = E0_P, yend = E1_P,
            arrow = arrow(length = unit(0.2, "cm")), color = "gray40", alpha = 0.6) +
-  scale_color_manual(values = c("AD0" = "#1f77b4", "AD1 (↑M)" = "#d62728")) +
+  scale_color_manual(values = c("AD0" = "#1f77b4", "AD1 (M up)" = "#d62728")) +
   labs(x = "Output (Y)", y = "Price Level (P)",
        title = "AD-AS: Monetarist Long-Run Equilibrium",
        color = "") +
@@ -280,18 +276,18 @@ $$
 where $\alpha>0$ and $\nu_t$ is a supply/markup disturbance. Under adaptive expectations $\pi_t^e \approx \pi_{t-1}$, disinflation implies transitional unemployment (sacrifice ratio), a key point in the monetarist critique of discretionary stabilization.
 
 
-**Figure 4. Money illusion and expectations adjustment (short-run vs long-run).**
-
 ```{mermaid}
+#| label: fig-money-illusion-adjustment
+#| fig-cap: "Money illusion and expectations adjustment in the monetarist narrative: output can rise temporarily after monetary expansion, but returns to natural levels as expectations and nominal wages adjust."
 flowchart LR
   A["Monetary expansion: up M"] --> B["Nominal spending up"]
-  B --> C["Short run: wages/prices adjust slowly"]
-  C --> D["Perceived real wage falls (money illusion / stickiness)"]
-  D --> E["Employment and output temporarily up"]
-  E --> F["Expectations catch up: inflation becomes anticipated"]
-  F --> G["Nominal wages/prices adjust fully"]
+  B --> C["Short run:<br/>wages/prices adjust slowly"]
+  C --> D["Perceived real wage falls<br/>(money illusion / stickiness)"]
+  D --> E["Employment and output<br/>temporarily up"]
+  E --> F["Expectations catch up:<br/>inflation anticipated"]
+  F --> G["Nominal wages/prices<br/>adjust fully"]
   G --> H["Real wage returns to equilibrium"]
-  H --> I["Output/employment return to natural levels; inflation higher"]
+  H --> I["Output/employment return<br/>to natural levels; inflation higher"]
 ```
 
 # The policy message: rules, lags, and skepticism about fine tuning
@@ -310,20 +306,20 @@ Modern monetary policy must address an apparent tension: monetarism emphasises t
 This observation illustrates a key point: monetarists emphasised that velocity stability is crucial. In crises, velocity can shift sharply as liquidity preference rises, so money growth alone does not map mechanically into inflation in the short run.
 
 
-**Figure 5. Timeline of key monetarist-relevant episodes (Japan, GFC, NIRP, COVID).**
-
 ```{mermaid}
+#| label: fig-monetarist-episodes-timeline
+#| fig-cap: "Selected monetarist-relevant monetary-policy episodes (1999-2022): Japan ZIRP/QE, post-2008 LSAP/QE, euro-area negative rates, COVID-era PEPP/QE, and later QT."
 timeline
   title Monetarism-Relevant Monetary Episodes (selected milestones)
 
-  1999 : Japan ZIRP begins (policy rates near zero)
-  2001 : Japan QE begins (operating target shifts to central bank balances)
-  2008 : US funds rate reaches effective lower bound; LSAP/QE begins
-  2009 : UK QE begins (asset purchases financed by reserves)
-  2014 : Euro area deposit facility rate turns negative (-0.10% effective June)
-  2016 : Negative rates become a broader European toolset (implementation details vary)
-  2020 : COVID shock: large money/balance-sheet expansions; PEPP launched (euro area)
-  2022 : Balance-sheet reduction / QT begins in several jurisdictions
+  1999 : Japan ZIRP starts
+  2001 : Japan QE starts
+  2008 : US ELB and LSAP/QE
+  2009 : UK QE starts
+  2014 : Euro area negative DFR
+  2016 : Negative-rate toolkit widens
+  2020 : COVID QE and PEPP
+  2022 : QT begins (several CBs)
 ```
 
 # Nominal and real interest rates in practice
@@ -333,8 +329,6 @@ The nominal versus real interest rate discussion connects the Fisher equation to
 1. At the ZLB, the Fisher relation does not disappear, but nominal rates can be constrained, shifting adjustment into expected inflation, real rates, and longer-term yields.
 2. Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter [@bis2016NegativePolicyRates; @borioZabai2016Reappraisal].
 
-
-**Figure 6. Negative policy rate corridor and retail deposit stickiness intuition.**
 
 ```{r}
 #| label: fig-negative-rate-corridor
@@ -409,17 +403,17 @@ so higher expected inflation reduces real money demand. Combine this with a gove
 Hyperinflation is significant because it exemplifies the starkest money–prices relationship and provides direct historical evidence of monetisation of fiscal deficits.
 
 
-**Figure 7. Hyperinflation definition and stabilisation logic.**
-
 ```{mermaid}
+#| label: fig-hyperinflation-stabilisation-flow
+#| fig-cap: "Stylised hyperinflation mechanism and stabilisation logic: fiscal deficits financed by money creation can trigger an inflation-seigniorage spiral, while credible fiscal and monetary reform resets expectations."
 flowchart TB
-  A["Large fiscal deficits + weak tax capacity"] --> B["Monetization / seigniorage financing"]
+  A["Large fiscal deficits<br/>+ weak tax capacity"] --> B["Monetization /<br/>seigniorage financing"]
   B --> C["Money growth accelerates"]
-  C --> D["Inflation accelerates; real money balances fall"]
-  D --> E["Higher inflation needed to raise same seigniorage"]
+  C --> D["Inflation accelerates;<br/>real money balances fall"]
+  D --> E["Higher inflation needed<br/>for same seigniorage"]
   E --> F["Potential high-inflation trap / instability"]
-  F --> G["Stabilisation: credible fiscal regime change + monetary reform"]
-  G --> H["Expectations reset; money growth falls; inflation collapses"]
+  F --> G["Stabilisation:<br/>credible fiscal + monetary reform"]
+  G --> H["Expectations reset;<br/>money growth falls; inflation collapses"]
 ```
 
 # Comparative table: post-1990 policy episodes, tools, and outcomes

@@ -49,3 +49,26 @@ img, .figure, .quarto-figure {
   max-width: 100%;
   overflow-x: auto;
 }
+
+/* Mermaid diagrams: prevent article typography/colors from bleeding into labels */
+.cell-output-display .mermaid svg {
+  max-width: 100%;
+  height: auto;
+}
+
+.cell-output-display .mermaid text,
+.cell-output-display .mermaid .nodeLabel,
+.cell-output-display .mermaid .edgeLabel,
+.cell-output-display .mermaid .label {
+  font-family: "Segoe UI", Arial, sans-serif !important;
+  fill: #1f2937 !important;
+  color: #1f2937 !important;
+  font-size: 14px !important;
+}
+
+.cell-output-display .mermaid .label foreignObject div {
+  font-family: "Segoe UI", Arial, sans-serif !important;
+  color: #1f2937 !important;
+  line-height: 1.2 !important;
+  white-space: normal !important;
+}

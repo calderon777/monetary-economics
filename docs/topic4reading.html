@@ -587,7 +587,6 @@ Y^d = Y^d(i, G, T),
 <p><span class="math display">\[P = \frac{M}{k Y^s}.\]</span></p>
 <p>Thus the model delivers a classical dichotomy: real equilibrium <span class="math inline">\((N^*,Y^s)\)</span> is determined outside the monetary block; the monetary block determines nominal magnitudes.</p>
 <p><strong>Figure 1</strong> illustrates how <span class="math inline">\(N^*\)</span> is determined by the real wage <span class="math inline">\(w/P\)</span>. <strong>Figure 2</strong> shows the flow from the labour market through production and demand to the AD-AS framework, with vertical long-run aggregate supply and aggregate demand derived from <span class="math inline">\(Y=(1/k)(M/P)\)</span>.</p>
-<p><strong>Figure 1. Labour market equilibrium in the monetarist benchmark.</strong> Employment <span class="math inline">\(N^*\)</span> is determined by labour supply and demand as functions of the real wage <span class="math inline">\(w/P\)</span>. In the long-run dichotomy, monetary changes affect nominal magnitudes but not <span class="math inline">\(N^*\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-labour-market" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Labour market diagram showing downward-sloping labour demand and upward-sloping labour supply intersecting at N*.">
@@ -602,20 +601,21 @@ Figure&nbsp;1: Labour market equilibrium: natural employment N* is pinned by the
 </div>
 </div>
 </div>
-<p><strong>Figure 2. The monetarist dichotomy model flow (labour -&gt; output -&gt; prices).</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TB
-  A["Labour market: Ns(w/P), Nd(w/P)"] --&gt; B["Natural employment: N*"]
-  B --&gt; C["Production: Ys = F(K, N*)"]
-  C --&gt; D["Given Ys, real output pinned"]
-  E["Money demand: Md = k P Y"] --&gt; F["Money market: M = Md"]
+<pre class="mermaid mermaid-js">#| label: fig-monetarist-flow
+#| fig-cap: "The monetarist dichotomy model flow: labour market equilibrium determines natural employment and output, while the money block determines the price level given output."
+flowchart TB
+  A["Labour market&lt;br/&gt;Ns(w/P), Nd(w/P)"] --&gt; B["Natural employment&lt;br/&gt;N*"]
+  B --&gt; C["Production&lt;br/&gt;Ys = F(K, N*)"]
+  C --&gt; D["Given Ys,&lt;br/&gt;real output pinned"]
+  E["Money demand&lt;br/&gt;Md = k P Y"] --&gt; F["Money market&lt;br/&gt;M = Md"]
   D --&gt; F
-  F --&gt; G["Price level: P = M / (kY)"]
-  G --&gt; H["Nominal wage adjusts so w/P returns to equilibrium"]
+  F --&gt; G["Price level&lt;br/&gt;P = M / (kY)"]
+  G --&gt; H["Nominal wage adjusts&lt;br/&gt;so w/P returns to equilibrium"]
   H --&gt; A
 </pre>
 </div>
@@ -623,7 +623,6 @@ Figure&nbsp;1: Labour market equilibrium: natural employment N* is pinned by the
 </div>
 </div>
 </div>
-<p><strong>Figure 3. AD-AS in the monetarist benchmark (vertical long-run AS).</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-ad-as-monetarist" class="quarto-float quarto-figure quarto-figure-center anchored" alt="AD-AS diagram with vertical long-run AS curve at Y* and downward-sloping AD curves.">
@@ -754,21 +753,22 @@ i \approx r + \pi^e.
 \pi_t = \pi_t^e - \alpha(u_t - u^*) + \nu_t,
 \]</span></p>
 <p>where <span class="math inline">\(\alpha&gt;0\)</span> and <span class="math inline">\(\nu_t\)</span> is a supply/markup disturbance. Under adaptive expectations <span class="math inline">\(\pi_t^e \approx \pi_{t-1}\)</span>, disinflation implies transitional unemployment (sacrifice ratio), a key point in the monetarist critique of discretionary stabilization.</p>
-<p><strong>Figure 4. Money illusion and expectations adjustment (short-run vs long-run).</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart LR
+<pre class="mermaid mermaid-js">#| label: fig-money-illusion-adjustment
+#| fig-cap: "Money illusion and expectations adjustment in the monetarist narrative: output can rise temporarily after monetary expansion, but returns to natural levels as expectations and nominal wages adjust."
+flowchart LR
   A["Monetary expansion: up M"] --&gt; B["Nominal spending up"]
-  B --&gt; C["Short run: wages/prices adjust slowly"]
-  C --&gt; D["Perceived real wage falls (money illusion / stickiness)"]
-  D --&gt; E["Employment and output temporarily up"]
-  E --&gt; F["Expectations catch up: inflation becomes anticipated"]
-  F --&gt; G["Nominal wages/prices adjust fully"]
+  B --&gt; C["Short run:&lt;br/&gt;wages/prices adjust slowly"]
+  C --&gt; D["Perceived real wage falls&lt;br/&gt;(money illusion / stickiness)"]
+  D --&gt; E["Employment and output&lt;br/&gt;temporarily up"]
+  E --&gt; F["Expectations catch up:&lt;br/&gt;inflation anticipated"]
+  F --&gt; G["Nominal wages/prices&lt;br/&gt;adjust fully"]
   G --&gt; H["Real wage returns to equilibrium"]
-  H --&gt; I["Output/employment return to natural levels; inflation higher"]
+  H --&gt; I["Output/employment return&lt;br/&gt;to natural levels; inflation higher"]
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -789,23 +789,24 @@ i \approx r + \pi^e.
 <li>In the euro area, the ECB documented a marked acceleration in broad money growth in March 2020 and linked it to emergency liquidity needs and precautionary money holding amid pandemic uncertainty <span class="citation" data-cites="ecb2020PEPP ecb2020CovidMeasuresBox">(<a href="#ref-ecb2020PEPP" role="doc-biblioref">Bank, 2020a</a>, <a href="#ref-ecb2020CovidMeasuresBox" role="doc-biblioref">2020b</a>)</span>.</li>
 </ul>
 <p>This observation illustrates a key point: monetarists emphasised that velocity stability is crucial. In crises, velocity can shift sharply as liquidity preference rises, so money growth alone does not map mechanically into inflation in the short run.</p>
-<p><strong>Figure 5. Timeline of key monetarist-relevant episodes (Japan, GFC, NIRP, COVID).</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">timeline
+<pre class="mermaid mermaid-js">#| label: fig-monetarist-episodes-timeline
+#| fig-cap: "Selected monetarist-relevant monetary-policy episodes (1999-2022): Japan ZIRP/QE, post-2008 LSAP/QE, euro-area negative rates, COVID-era PEPP/QE, and later QT."
+timeline
   title Monetarism-Relevant Monetary Episodes (selected milestones)
 
-  1999 : Japan ZIRP begins (policy rates near zero)
-  2001 : Japan QE begins (operating target shifts to central bank balances)
-  2008 : US funds rate reaches effective lower bound; LSAP/QE begins
-  2009 : UK QE begins (asset purchases financed by reserves)
-  2014 : Euro area deposit facility rate turns negative (-0.10% effective June)
-  2016 : Negative rates become a broader European toolset (implementation details vary)
-  2020 : COVID shock: large money/balance-sheet expansions; PEPP launched (euro area)
-  2022 : Balance-sheet reduction / QT begins in several jurisdictions
+  1999 : Japan ZIRP starts
+  2001 : Japan QE starts
+  2008 : US ELB and LSAP/QE
+  2009 : UK QE starts
+  2014 : Euro area negative DFR
+  2016 : Negative-rate toolkit widens
+  2020 : COVID QE and PEPP
+  2022 : QT begins (several CBs)
 </pre>
 </div>
 <p></p></figure><p></p>
@@ -820,7 +821,6 @@ i \approx r + \pi^e.
 <li>At the ZLB, the Fisher relation does not disappear, but nominal rates can be constrained, shifting adjustment into expected inflation, real rates, and longer-term yields.</li>
 <li>Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter <span class="citation" data-cites="bis2016NegativePolicyRates borioZabai2016Reappraisal">(<a href="#ref-bis2016NegativePolicyRates" role="doc-biblioref">Bank for International Settlements, 2016</a>; <a href="#ref-borioZabai2016Reappraisal" role="doc-biblioref">Borio and Zabai, 2016</a>)</span>.</li>
 </ol>
-<p><strong>Figure 6. Negative policy rate corridor and retail deposit stickiness intuition.</strong></p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-negative-rate-corridor" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Policy rate corridor diagram showing lending facility, main refinancing rate, and deposit facility with negative lower bound.">
@@ -850,20 +850,21 @@ Figure&nbsp;3: Central bank policy rate corridor with negative rates: policy fac
 <p><strong>Definition (Cagan criterion).</strong> Hyperinflation begins when monthly inflation first exceeds 50% and ends when it falls below 50% for at least a year <span class="citation" data-cites="imf2007HighInflationLessons">(<a href="#ref-imf2007HighInflationLessons" role="doc-biblioref">Fund, 2007</a>)</span>.</p>
 <p><strong>Empirical regularity: fiscal regime change and credible stabilisation.</strong> Sargent’s classic “Ends of Four Big Inflations” argues that dramatic hyperinflations ended alongside major fiscal regime shifts and reforms that changed expectations about future money creation <span class="citation" data-cites="sargent1982EndsFourBigInflations">(<a href="#ref-sargent1982EndsFourBigInflations" role="doc-biblioref">Sargent, 1982</a>)</span>.</p>
 <p>Hyperinflation is significant because it exemplifies the starkest money–prices relationship and provides direct historical evidence of monetisation of fiscal deficits.</p>
-<p><strong>Figure 7. Hyperinflation definition and stabilisation logic.</strong></p>
 <div class="cell" data-layout-align="default">
 <div class="cell-output-display">
 <div>
 <p></p><figure class="figure"><p></p>
 <div>
-<pre class="mermaid mermaid-js">flowchart TB
-  A["Large fiscal deficits + weak tax capacity"] --&gt; B["Monetization / seigniorage financing"]
+<pre class="mermaid mermaid-js">#| label: fig-hyperinflation-stabilisation-flow
+#| fig-cap: "Stylised hyperinflation mechanism and stabilisation logic: fiscal deficits financed by money creation can trigger an inflation-seigniorage spiral, while credible fiscal and monetary reform resets expectations."
+flowchart TB
+  A["Large fiscal deficits&lt;br/&gt;+ weak tax capacity"] --&gt; B["Monetization /&lt;br/&gt;seigniorage financing"]
   B --&gt; C["Money growth accelerates"]
-  C --&gt; D["Inflation accelerates; real money balances fall"]
-  D --&gt; E["Higher inflation needed to raise same seigniorage"]
+  C --&gt; D["Inflation accelerates;&lt;br/&gt;real money balances fall"]
+  D --&gt; E["Higher inflation needed&lt;br/&gt;for same seigniorage"]
   E --&gt; F["Potential high-inflation trap / instability"]
-  F --&gt; G["Stabilisation: credible fiscal regime change + monetary reform"]
-  G --&gt; H["Expectations reset; money growth falls; inflation collapses"]
+  F --&gt; G["Stabilisation:&lt;br/&gt;credible fiscal + monetary reform"]
+  G --&gt; H["Expectations reset;&lt;br/&gt;money growth falls; inflation collapses"]
 </pre>
 </div>
 <p></p></figure><p></p>

@@ -57,8 +57,6 @@ If workers have access to unbiased forecasts, predictable policy loses its abili
 ## Lucas aggregate supply and aggregate demand
 
 
-**Figure 1. Lucas aggregate supply: output deviates from potential only when P differs from expected price.** If expectations are correct, output remains at potential.
-
 ```{r}
 #| label: fig-lucas-supply
 #| fig-cap: "Lucas Aggregate Supply: $Y_t - Y^* = \\kappa(P_t - E_{t-1}P_t)$"
@@ -140,8 +138,6 @@ $$Y_t - Y^* = 0.$$
 ## Systematic rules versus random disturbances
 
 
-**Figure 2. Predictable versus unpredictable monetary policy.** A predictable rise in money shifts AD and LAS upward (via expectations); equilibrium stays at $Y^*$. An unpredictable rise shifts AD without shifting LAS initially; equilibrium moves along LAS with $Y$ above $Y^*$.
-
 ```{r}
 #| label: fig-predictable-unpredictable
 #| fig-cap: "Policy predictability determines whether output effects are temporary."
@@ -199,12 +195,10 @@ $$Y_t - Y^* = \frac{\kappa}{1+\kappa}u_t.$$
 ## Why deliberate unpredictability is not recommended
 
 
-**Figure 3. Policy volatility reduces supply responsiveness via information effects.** Greater policy volatility lowers the informational content of observed price movements. Agents cannot distinguish relative-price signals from aggregate noise, reducing supply response (lower $\kappa$) and steepening LAS.
-
 ```{r}
 #| label: fig-volatility-effect
 #| fig-cap: "Higher policy volatility steepens Lucas supply through information effects."
-#| fig-alt: "Steeper LAS (lower κ) under high policy volatility vs. flat LAS (high κ) under stability."
+#| fig-alt: "Steeper LAS (lower kappa) under high policy volatility versus flatter LAS (high kappa) under stability."
 #| fig-width: 7
 #| fig-height: 5
 
@@ -223,15 +217,15 @@ P_volatile <- E_P + (1/kappa_volatile) * (Y - Y_star)
 df <- data.frame(
   Y = c(Y, Y),
   P = c(P_stable, P_volatile),
-  Regime = c(rep("Stable policy (κ high)", 150), 
-             rep("Volatile policy (κ low)", 150))
+  Regime = c(rep("Stable policy (kappa high)", 150), 
+             rep("Volatile policy (kappa low)", 150))
 )
 
 ggplot(df, aes(x = Y, y = P, color = Regime)) +
   geom_line(linewidth = 1.2) +
   geom_vline(xintercept = Y_star, color = "gray", linetype = "dotted", alpha = 0.5) +
-  scale_color_manual(values = c("Stable policy (κ high)" = "#2ca02c",
-                                 "Volatile policy (κ low)" = "#d62728")) +
+  scale_color_manual(values = c("Stable policy (kappa high)" = "#2ca02c",
+                                 "Volatile policy (kappa low)" = "#d62728")) +
   labs(x = "Output (Y)", y = "Price Level (P)",
        title = "The Boy Who Cried Wolf: Policy Volatility and Supply Responsiveness",
        color = "Policy regime") +
