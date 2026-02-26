@@ -13,9 +13,6 @@ format:
     css:
       - styles.css
       - article-style.css
-  pdf:
-    toc: true
-    number-sections: true
 execute:
   echo: false
   warning: false
@@ -750,47 +747,7 @@ The episode permanently expanded what "monetary policy" means in practice: opera
 6. Discuss the trade-off between crisis intervention and moral hazard using one facility (PDCF, CPFF, or SLS) as your example.
 
 ## References
+Primary references for the GFC-period policy chronology and crisis tools in this chapter include BIS working papers, central bank press releases/minutes, and summary research studies [@allenMoessner2010BIS310; @borioDisyatat2009UMPAppraisal; @boe2007NorthernRockLiquiditySupport; @boe2008SpecialLiquidityScheme; @boe2009AssetPurchaseFacilityJan; @boe2009MPCMinutesMar; @boe2009MPCAnnouncement; @boe2009APFMayIncrease; @boe2009APFAugIncrease; @boe2009APFNovIncrease; @joyceEtAl2010QEWP393; @ecb2008TenderProcedureCorridor; @ecb2008CollateralFrameworkLiquidity; @ecb2009MonetaryPolicyDecisionsMay; @ecb2010CBPPCompleted; @ecb2010SMPMeasures; @frb2007CoordinatedLiquidityMeasures; @frb2008CPFFCreation; @fomc2008MinutesDec1516; @fomc2009MinutesMar1718; @mishkin2009NBER14678; @mishkin2011NBER16755].
 
-Bank for International Settlements, Allen, W.A., & Moessner, R. (2010). Central bank co-operation and international liquidity in the financial crisis of 2008–9 (BIS Working Paper No. 310).
-
-Bank for International Settlements, Borio, C., & Disyatat, P. (2009). Unconventional monetary policies: an appraisal (BIS Working Paper No. 292).
-
-Bank of England. (2007). Liquidity support facility for Northern Rock plc (press release, 14 September 2007).
-
-Bank of England. (2008). Special Liquidity Scheme (press release, 21 April 2008).
-
-Bank of England. (2009). Asset Purchase Facility (press release, 29 January 2009).
-
-Bank of England. (2009). Minutes of the Monetary Policy Committee Meeting held on 4 and 5 March 2009.
-
-Bank of England. (2009). Bank Rate reduced to 0.5% and £75bn asset purchase programme announced (press release, 5 March 2009).
-
-Bank of England. (2009). MPC May 2009: Asset Purchase Programme increased to £125bn (press release, 7 May 2009).
-
-Bank of England. (2009). MPC August 2009: Asset Purchase Programme increased to £175bn (press release, 6 August 2009).
-
-Bank of England. (2009). MPC November 2009: Asset Purchase Programme increased to £200bn (press release, 5 November 2009).
-
-Bank of England. (2010). Joyce, M., Lasaosa, A., Stevens, I., & Tong, M. The financial market impact of quantitative easing (Working Paper No. 393).
-
-European Central Bank. (2008). Changes in tender procedure and in the standing facilities corridor (press release, 8 October 2008).
-
-European Central Bank. (2008). Measures to further expand the collateral framework and enhance the provision of liquidity (press release, 15 October 2008).
-
-European Central Bank. (2009). Monetary policy decisions (press release, 7 May 2009).
-
-European Central Bank. (2010). Covered bond purchase programme completed (press release, 30 June 2010).
-
-European Central Bank. (2010). ECB decides on measures to address severe tensions in financial markets (press release, 10 May 2010; SMP).
-
-Federal Reserve Board. (2007). Federal Reserve and other central banks announce measures designed to address elevated pressures in short-term funding markets (press release, 12 December 2007).
-
-Federal Reserve Board. (2008). Board announces creation of the Commercial Paper Funding Facility (CPFF) (press release, 7 October 2008).
-
-Federal Reserve Board. (2008). FOMC Minutes, December 15–16, 2008.
-
-Federal Reserve Board. (2009). FOMC Minutes, March 17–18, 2009.
-
-Mishkin, F.S. (2009). Is Monetary Policy Effective During Financial Crises? (NBER Working Paper No. 14678).
-
-Mishkin, F.S. (2011). Monetary Policy Strategy: Lessons from the Crisis (NBER Working Paper No. 16755).
+::: {#refs}
+:::

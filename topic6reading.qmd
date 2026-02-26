@@ -229,37 +229,7 @@ Institutional design choices—rules (Taylor-type), delegation to conservative c
 5. Discuss why exchange-rate pegs can enhance credibility but be vulnerable to speculative attacks and regime collapse (IMF, 2011; IMF IEO, 2004).
 
 ## References
+Principal theory and policy references used in this chapter include [@kydlandPrescott1977RulesRatherDiscretion; @barroGordon1983RulesDiscretionReputation; @rogoff1985OptimalDegreeCommitment; @taylor1993DiscretionPolicyRulesPractice; @walsh1995OptimalContractsCentralBankers; @boe1995CredibilityMonetaryPolicy; @boe2017TwentyYearsIndependence; @ecb2012WhateverItTakesVerbatim; @ecb2021StrategyStatement; @frb2007ThreeGreatAmericanDisinflations; @frb2025LongerRunGoalsStatement; @hmt2021MonetaryPolicyRemit; @hmt2023MonetaryPolicyRemit; @imf2011EmergingMarketCBBailouts; @imfIEO2004ArgentinaEvaluation; @imf2018AnchoringInflationPersistence; @imf2025WEOAnnualMeetingsBriefing].
 
-Barro, R.J., & Gordon, D.B. (1983). Rules, discretion and reputation in a model of monetary policy. *Journal of Monetary Economics*, 12(1), 101–121.
-
-Bank of England. (1995). *Credibility and monetary policy: theory and evidence* (Quarterly Bulletin, Q1; M. King).
-
-Bank of England. (2017). *Twenty years of Bank of England independence: the evolution of monetary policy* (speech and PDF).
-
-European Central Bank. (2012). *Verbatim of the remarks made by Mario Draghi* (July 26, 2012).
-
-European Central Bank. (2021). *The ECB's monetary policy strategy statement*.
-
-Federal Reserve Board. (2007). *Three Great American Disinflations* (IFDP 898).
-
-Federal Reserve Board. (2025). *Statement on Longer-Run Goals and Monetary Policy Strategy*.
-
-HM Treasury. (2021). *Monetary policy remit: Budget 2021* (UK).
-
-HM Treasury. (2023). *Monetary policy remit: Autumn Statement 2023* (UK).
-
-International Monetary Fund. (2011). *Can Emerging Market Central Banks Bail Out Banks?* (working paper; discussion of reserve loss and speculative attacks under pegs).
-
-International Monetary Fund, Independent Evaluation Office. (2004). *Report on the Evaluation of the Role of the IMF in Argentina, 1991–2001*.
-
-International Monetary Fund. (2018). *Expectations' Anchoring and Inflation Persistence* (WP/18/280).
-
-International Monetary Fund. (2025). *Press Briefing Transcript: World Economic Outlook, Annual Meetings 2025* (credibility, independence, expectations anchoring).
-
-Kydland, F.E., & Prescott, E.C. (1977). Rules rather than discretion: The inconsistency of optimal plans. *Journal of Political Economy*, 85(3), 473–491.
-
-Rogoff, K. (1985). The optimal degree of commitment to an intermediate monetary target. *Quarterly Journal of Economics*, 100(4), 1169–1189.
-
-Taylor, J.B. (1993). Discretion versus policy rules in practice. *Carnegie-Rochester Conference Series on Public Policy*, 39, 195–214.
-
-Walsh, C. (1995). Optimal contracts for central bankers. *American Economic Review*, 85(1), 150–167.
+::: {#refs}
+:::

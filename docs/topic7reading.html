@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -512,8 +531,10 @@ window.Quarto = {
   <li><a href="#negative-nominal-rates-what-happened-in-practice" id="toc-negative-nominal-rates-what-happened-in-practice" class="nav-link" data-scroll-target="#negative-nominal-rates-what-happened-in-practice"><span class="header-section-number">6.3</span> Negative nominal rates: what happened in practice</a></li>
   <li><a href="#target-inflation-rates-or-the-price-level" id="toc-target-inflation-rates-or-the-price-level" class="nav-link" data-scroll-target="#target-inflation-rates-or-the-price-level"><span class="header-section-number">6.4</span> Target inflation rates or the price level</a></li>
   </ul></li>
-  <li><a href="#problem-questions" id="toc-problem-questions" class="nav-link" data-scroll-target="#problem-questions"><span class="header-section-number">7</span> Problem questions</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8</span> References</a></li>
+  <li><a href="#problem-questions" id="toc-problem-questions" class="nav-link" data-scroll-target="#problem-questions"><span class="header-section-number">7</span> Problem questions</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">7.1</span> References</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="topic7reading.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -912,31 +933,74 @@ Modern frameworks explicitly acknowledge this constraint. For example, the FOMC�
 <li><p>Use the logic of purchasing power parity to explain why a peg to a low-inflation country can serve as an anchor. Then explain why pegs are fragile under open capital markets (consider speculative attacks and reserve loss).</p></li>
 <li><p>“If the Friedman rule implies optimal steady-state inflation should be around −2% to −3%, why don’t central banks target that?” Discuss at least two concerns about very low or negative inflation targets in practice.</p></li>
 </ol>
+<section id="references" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="references"><span class="header-section-number">7.1</span> References</h2>
+<p>Sources used across this chapter include central bank strategy statements and timelines, foundational research, and policy-history references <span class="citation" data-cites="boe1995CredibilityMonetaryPolicy boe2009MPCAnnouncement boe2013MPCMinutesAug boe2019MPRInflationReportRename bojMonetaryPolicyHistory boj2016CurrentSituationFutureProspects bernanke2002EssaysGreatDepression bernanke2004GreatModeration bernankeMishkin2004ParadoxPolicyIneffectiveness bis2015NegativePolicyRates ecb2021StrategyStatement fedLSAP1200809Timeline fomc2020FAITStatement frb2025LongerRunGoalsStatement hmt2025MonetaryPolicyRemit imf2002ArgentinaSelectedIssues imfIEO2004ArgentinaEvaluation lewisMizen2000MonetaryEconomics svensson1999PriceLevelVsInflationTargeting ukParliament2006HansardBudgetStatement">(<a href="#ref-boe1995CredibilityMonetaryPolicy" role="doc-biblioref">King and England, 1995</a>; <a href="#ref-svensson1999PriceLevelVsInflationTargeting" role="doc-biblioref">Svensson, 1999</a>; <a href="#ref-lewisMizen2000MonetaryEconomics" role="doc-biblioref">Lewis and Mizen, 2000</a>; <a href="#ref-bernanke2002EssaysGreatDepression" role="doc-biblioref">Bernanke, 2002</a>, <a href="#ref-bernanke2004GreatModeration" role="doc-biblioref">2004</a>; <a href="#ref-imf2002ArgentinaSelectedIssues" role="doc-biblioref">Fund, 2002</a>; <a href="#ref-bernankeMishkin2004ParadoxPolicyIneffectiveness" role="doc-biblioref">Bernanke and Mishkin, 2004</a>; <a href="#ref-imfIEO2004ArgentinaEvaluation" role="doc-biblioref">International Monetary Fund, Independent Evaluation Office, 2004</a>; <a href="#ref-ukParliament2006HansardBudgetStatement" role="doc-biblioref">Parliament, 2006</a>; <a href="#ref-boe2009MPCAnnouncement" role="doc-biblioref">England, 2009</a>, <a href="#ref-boe2013MPCMinutesAug" role="doc-biblioref">2013</a>, <a href="#ref-boe2019MPRInflationReportRename" role="doc-biblioref">2019</a>; <a href="#ref-fedLSAP1200809Timeline" role="doc-biblioref">Reserve, 2009</a>, <a href="#ref-fomc2020FAITStatement" role="doc-biblioref">2020</a>; <a href="#ref-bis2015NegativePolicyRates" role="doc-biblioref">Bank for International Settlements, 2015</a>; <a href="#ref-boj2016CurrentSituationFutureProspects" role="doc-biblioref">Japan, 2016</a>, <a href="#ref-bojMonetaryPolicyHistory" role="doc-biblioref">2023</a>; <a href="#ref-ecb2021StrategyStatement" role="doc-biblioref">Bank, 2021</a>; <a href="#ref-frb2025LongerRunGoalsStatement" role="doc-biblioref">Governors of the Federal Reserve System, 2025</a>; <a href="#ref-hmt2025MonetaryPolicyRemit" role="doc-biblioref">HM Treasury, 2025</a>)</span>.</p>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-ecb2021StrategyStatement" class="csl-entry" role="listitem">
+Bank, E.C. (2021) <span>“The ECB’s monetary policy strategy statement.”</span> Strategy statement. Available at: <a href="https://www.ecb.europa.eu/home/search/review/html/ecb.strategyreview_monpol_strategy_statement.en.html">https://www.ecb.europa.eu/home/search/review/html/ecb.strategyreview_monpol_strategy_statement.en.html</a>.
+</div>
+<div id="ref-bis2015NegativePolicyRates" class="csl-entry" role="listitem">
+Bank for International Settlements (2015) <span>“Negative policy rates: Consequences and alternatives,”</span> <em>BIS Quarterly Review</em> [Preprint].
+</div>
+<div id="ref-bernanke2002EssaysGreatDepression" class="csl-entry" role="listitem">
+Bernanke, B.S. (2002) <em>Essays on the great depression</em>. Princeton University Press.
+</div>
+<div id="ref-bernanke2004GreatModeration" class="csl-entry" role="listitem">
+Bernanke, B.S. (2004) <span>“The great moderation.”</span> Federal Reserve speech.
+</div>
+<div id="ref-bernankeMishkin2004ParadoxPolicyIneffectiveness" class="csl-entry" role="listitem">
+Bernanke, B.S. and Mishkin, F.S. (2004) <span>“The paradox of policy ineffectiveness,”</span> <em>Inflation targeting</em>.
+</div>
+<div id="ref-boe2009MPCAnnouncement" class="csl-entry" role="listitem">
+England, B. of (2009) <span>“MPC announcement: Bank rate reduced to 0.5.”</span> Press release. Available at: <a href="https://www.bankofengland.co.uk/news/2009/march/monetary-policy-committee-reduces-bank-rate-to-05-and-initiates-asset-purchases">https://www.bankofengland.co.uk/news/2009/march/monetary-policy-committee-reduces-bank-rate-to-05-and-initiates-asset-purchases</a>.
+</div>
+<div id="ref-boe2013MPCMinutesAug" class="csl-entry" role="listitem">
+England, B. of (2013) <span>“Minutes of the monetary policy committee meeting, august 2013.”</span> MPC minutes.
+</div>
+<div id="ref-boe2019MPRInflationReportRename" class="csl-entry" role="listitem">
+England, B. of (2019) <span>“The monetary policy report and inflation report.”</span> News release.
+</div>
+<div id="ref-imf2002ArgentinaSelectedIssues" class="csl-entry" role="listitem">
+Fund, I.M. (2002) <em>Argentina: Selected issues and statistical appendix</em>. Country Report 02/6. International Monetary Fund.
+</div>
+<div id="ref-frb2025LongerRunGoalsStatement" class="csl-entry" role="listitem">
+Governors of the Federal Reserve System, B. of (2025) <span>“Statement on longer-run goals and monetary policy strategy.”</span> FOMC statement. Available at: <a href="https://www.federalreserve.gov/monetarypolicy/review-of-monetary-policy-strategy-tools-and-communications.htm">https://www.federalreserve.gov/monetarypolicy/review-of-monetary-policy-strategy-tools-and-communications.htm</a>.
+</div>
+<div id="ref-hmt2025MonetaryPolicyRemit" class="csl-entry" role="listitem">
+HM Treasury (2025) <span>“Monetary policy remit.”</span> Annual remit.
+</div>
+<div id="ref-imfIEO2004ArgentinaEvaluation" class="csl-entry" role="listitem">
+International Monetary Fund, Independent Evaluation Office (2004) <em>Report on the evaluation of the role of the IMF in argentina, 1991–2001</em>. International Monetary Fund.
+</div>
+<div id="ref-boj2016CurrentSituationFutureProspects" class="csl-entry" role="listitem">
+Japan, B. of (2016) <span>“Japan’s monetary policy: Current situation and future prospects.”</span> Governor remarks.
+</div>
+<div id="ref-bojMonetaryPolicyHistory" class="csl-entry" role="listitem">
+Japan, B. of (2023) <span>“Monetary policy measures in japan: History and chronology.”</span> Timeline. Available at: <a href="https://www.boj.or.jp/en/mopo/outline/chrono/index.htm/">https://www.boj.or.jp/en/mopo/outline/chrono/index.htm/</a>.
+</div>
+<div id="ref-boe1995CredibilityMonetaryPolicy" class="csl-entry" role="listitem">
+King, M. and England, B. of (1995) <span>“Credibility and monetary policy: Theory and evidence.”</span> Bank of England Quarterly Bulletin, Q1.
+</div>
+<div id="ref-lewisMizen2000MonetaryEconomics" class="csl-entry" role="listitem">
+Lewis, M.K. and Mizen, P.D. (2000) <em>Monetary economics</em>. Oxford: Oxford University Press.
+</div>
+<div id="ref-ukParliament2006HansardBudgetStatement" class="csl-entry" role="listitem">
+Parliament, U. (2006) <span>“Hansard record, budget statement by gordon brown (22 march).”</span> Hansard.
+</div>
+<div id="ref-fedLSAP1200809Timeline" class="csl-entry" role="listitem">
+Reserve, F. (2009) <span>“Large-scale asset purchases (LSAP1).”</span> Official timeline / program chronology.
+</div>
+<div id="ref-fomc2020FAITStatement" class="csl-entry" role="listitem">
+Reserve, F. (2020) <span>“Flexible average inflation targeting.”</span> FOMC Statement on Longer-Run Goals and Monetary Policy Strategy.
+</div>
+<div id="ref-svensson1999PriceLevelVsInflationTargeting" class="csl-entry" role="listitem">
+Svensson, L.E.O. (1999) <span>“Price-level targeting versus inflation targeting: A free lunch?”</span> <em>Journal of Money, Credit and Banking</em>, 31(3), pp. 277–295.
+</div>
+</div>
+
+
 </section>
-<section id="references" class="level1" data-number="8">
-<h1 data-number="8"><span class="header-section-number">8</span> References</h1>
-<p>Bank of England. (1995). Credibility and monetary policy: theory and evidence. <em>Quarterly Bulletin</em>, Q1.</p>
-<p>Bank of England. (2009). Quantitative easing. Monetary Policy Announcement (March).</p>
-<p>Bank of England. (2013). Minutes of the Monetary Policy Committee Meeting, August 2013.</p>
-<p>Bank of England. (2019). The Monetary Policy Report and Inflation Report. News release (November).</p>
-<p>Bank of Japan. (n.d.). Unconventional Monetary Policy Measures from the Late 1990s. Official reference timeline.</p>
-<p>Bank of Japan. (2016). The Japan’s Monetary Policy: Current Situation and Future Prospects. Governor remarks.</p>
-<p>Bernanke, B.S. (2002). Essays on the Great Depression. Princeton University Press.</p>
-<p>Bernanke, B.S. (2004). The Great Moderation. <em>Federal Reserve speech</em> (February).</p>
-<p>Bernanke, B.S., &amp; Mishkin, F.S. (2004). The paradox of policy ineffectiveness. In <em>Inflation Targeting</em>.</p>
-<p>BIS Quarterly Review. (2015). Negative policy rates: consequences and alternatives. <em>Bank for International Settlements</em>.</p>
-<p>European Central Bank. (2021). The ECB’s Monetary Policy Strategy Statement.</p>
-<p>Federal Reserve. (2008–2009). Large-scale asset purchases (LSAP1). Official timeline.</p>
-<p>Federal Reserve. (2020). Flexible Average Inflation Targeting. <em>FOMC Statement on Longer-Run Goals and Monetary Policy Strategy</em>.</p>
-<p>Federal Reserve. (2025). Statement on Longer-Run Goals and Monetary Policy Strategy.</p>
-<p>HM Treasury. (2025). Monetary Policy Remit (annual).</p>
-<p>International Monetary Fund. (2002). Argentina: Selected Issues and Statistical Appendix. <em>IMF Country Report No.&nbsp;02/6</em>.</p>
-<p>International Monetary Fund, Independent Evaluation Office. (2004). Report on the Evaluation of the Role of the IMF in Argentina, 1991–2001.</p>
-<p>Lewis, M.K., &amp; Mizen, P.D. (2000). <em>Monetary Economics</em>. Oxford University Press.</p>
-<p>Svensson, L.E.O. (1999). Price-level targeting versus inflation targeting: a free lunch? <em>Journal of Money, Credit and Banking</em>, 31(3), 277–295.</p>
-<p>UK Parliament. (2006). Hansard record, Budget Statement by Gordon Brown (22 March).</p>
-
-
 </section>
 
 </main> <!-- /main -->

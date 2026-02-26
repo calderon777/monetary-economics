@@ -454,26 +454,8 @@ During COVID-19, emergency actions show how central banks reacted to extraordina
 6. Using high-frequency monetary policy shock data from modern empirical work, explain how researchers operationalise "policy surprises." Why is this relevant to the New Classical policy-ineffectiveness result?
 
 ## References
+Key theoretical and policy sources cited in this reading include [@lucas1972NeutralityMoney; @muth1961RationalExpectations; @sargentWallace1976EconomicPolicy; @fischer1977LongTermContracts; @prescott1986TheoryAheadMeasurement; @imf2024HighFrequencyMonetaryShocks; @ecb2014NegativeDepositPR; @ecb2021StrategyStatement; @boe2020MPCMarch19; @boj2024FrameworkChange; @bojMonetaryPolicyHistory].
 
-Fischer, S. (1977). Long-term contracts, rational expectations, and the optimal money supply rule. *Journal of Political Economy*, 85(1), 191–205.
-
-International Monetary Fund. (2024). A new dataset of high-frequency monetary policy shocks (Working Paper 2024/224).
-
-Lucas, R. E., Jr. (1972). Expectations and the neutrality of money. *Journal of Economic Theory*, 4(2), 103–124.
-
-Muth, J. F. (1961). Rational expectations and the theory of price movements. *Econometrica*, 29(3), 315–335.
-
-Prescott, E. C. (1986). Theory ahead of business cycle measurement. *Quarterly Review* / Federal Reserve Bank of Minneapolis (Staff Report 102).
-
-Sargent, T. J., & Wallace, N. (1976). Rational expectations and the theory of economic policy. *Journal of Monetary Economics*, 2(2), 169–183.
-
-European Central Bank. (2014). ECB introduces a negative deposit facility interest rate (Press release, 5 June).
-
-European Central Bank. (2021). The ECB's monetary policy strategy statement.
-
-Bank of England. (2020). Bank Rate reduced to 0.1% and asset purchases increased by £200bn (Monetary Policy Summary, 19 March).
-
-Bank of Japan. (2024). Changes in the Monetary Policy Framework (19 March).
-
-Bank of Japan. (n.d.). Unconventional Monetary Policy Measures from the Late 1990s.
+::: {#refs}
+:::
 

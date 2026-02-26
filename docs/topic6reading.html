@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -504,8 +523,10 @@ window.Quarto = {
   <li><a href="#anchoring-and-inflation-persistence" id="toc-anchoring-and-inflation-persistence" class="nav-link" data-scroll-target="#anchoring-and-inflation-persistence"><span class="header-section-number">6.2</span> Anchoring and inflation persistence</a></li>
   </ul></li>
   <li><a href="#end-of-chapter-summary" id="toc-end-of-chapter-summary" class="nav-link" data-scroll-target="#end-of-chapter-summary"><span class="header-section-number">7</span> End-of-chapter summary</a></li>
-  <li><a href="#problem-questions" id="toc-problem-questions" class="nav-link" data-scroll-target="#problem-questions"><span class="header-section-number">8</span> Problem questions</a></li>
-  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">9</span> References</a></li>
+  <li><a href="#problem-questions" id="toc-problem-questions" class="nav-link" data-scroll-target="#problem-questions"><span class="header-section-number">8</span> Problem questions</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">8.1</span> References</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="topic6reading.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -706,28 +727,65 @@ window.Quarto = {
 <li><p>Using the IMF evidence on anchoring, explain how credibility can affect inflation persistence after shocks (IMF, 2018).</p></li>
 <li><p>Discuss why exchange-rate pegs can enhance credibility but be vulnerable to speculative attacks and regime collapse (IMF, 2011; IMF IEO, 2004).</p></li>
 </ol>
+<section id="references" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="references"><span class="header-section-number">8.1</span> References</h2>
+<p>Principal theory and policy references used in this chapter include <span class="citation" data-cites="kydlandPrescott1977RulesRatherDiscretion barroGordon1983RulesDiscretionReputation rogoff1985OptimalDegreeCommitment taylor1993DiscretionPolicyRulesPractice walsh1995OptimalContractsCentralBankers boe1995CredibilityMonetaryPolicy boe2017TwentyYearsIndependence ecb2012WhateverItTakesVerbatim ecb2021StrategyStatement frb2007ThreeGreatAmericanDisinflations frb2025LongerRunGoalsStatement hmt2021MonetaryPolicyRemit hmt2023MonetaryPolicyRemit imf2011EmergingMarketCBBailouts imfIEO2004ArgentinaEvaluation imf2018AnchoringInflationPersistence imf2025WEOAnnualMeetingsBriefing">(<a href="#ref-kydlandPrescott1977RulesRatherDiscretion" role="doc-biblioref">Kydland and Prescott, 1977</a>; <a href="#ref-barroGordon1983RulesDiscretionReputation" role="doc-biblioref">Barro and Gordon, 1983</a>; <a href="#ref-rogoff1985OptimalDegreeCommitment" role="doc-biblioref">Rogoff, 1985</a>; <a href="#ref-taylor1993DiscretionPolicyRulesPractice" role="doc-biblioref">Taylor, 1993</a>; <a href="#ref-walsh1995OptimalContractsCentralBankers" role="doc-biblioref">Walsh, 1995</a>; <a href="#ref-boe1995CredibilityMonetaryPolicy" role="doc-biblioref">King and England, 1995</a>; <a href="#ref-imfIEO2004ArgentinaEvaluation" role="doc-biblioref">International Monetary Fund, Independent Evaluation Office, 2004</a>; <a href="#ref-frb2007ThreeGreatAmericanDisinflations" role="doc-biblioref">Board, 2007</a>; <a href="#ref-imf2011EmergingMarketCBBailouts" role="doc-biblioref">Fund, 2011</a>, <a href="#ref-imf2018AnchoringInflationPersistence" role="doc-biblioref">2018</a>, <a href="#ref-imf2025WEOAnnualMeetingsBriefing" role="doc-biblioref">2025</a>; <a href="#ref-ecb2012WhateverItTakesVerbatim" role="doc-biblioref">Bank, 2012</a>, <a href="#ref-ecb2021StrategyStatement" role="doc-biblioref">2021</a>; <a href="#ref-boe2017TwentyYearsIndependence" role="doc-biblioref">England, 2017</a>; <a href="#ref-hmt2021MonetaryPolicyRemit" role="doc-biblioref">HM Treasury, 2021</a>, <a href="#ref-hmt2023MonetaryPolicyRemit" role="doc-biblioref">2023</a>; <a href="#ref-frb2025LongerRunGoalsStatement" role="doc-biblioref">Governors of the Federal Reserve System, 2025</a>)</span>.</p>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-ecb2012WhateverItTakesVerbatim" class="csl-entry" role="listitem">
+Bank, E.C. (2012) <span>“Verbatim of the remarks made by mario draghi.”</span> Remarks, London. Available at: <a href="https://www.ecb.europa.eu/press/key/date/2012/html/sp120726.en.html">https://www.ecb.europa.eu/press/key/date/2012/html/sp120726.en.html</a>.
+</div>
+<div id="ref-ecb2021StrategyStatement" class="csl-entry" role="listitem">
+Bank, E.C. (2021) <span>“The ECB’s monetary policy strategy statement.”</span> Strategy statement. Available at: <a href="https://www.ecb.europa.eu/home/search/review/html/ecb.strategyreview_monpol_strategy_statement.en.html">https://www.ecb.europa.eu/home/search/review/html/ecb.strategyreview_monpol_strategy_statement.en.html</a>.
+</div>
+<div id="ref-barroGordon1983RulesDiscretionReputation" class="csl-entry" role="listitem">
+Barro, R.J. and Gordon, D.B. (1983) <span>“Rules, discretion and reputation in a model of monetary policy,”</span> <em>Journal of Monetary Economics</em>, 12(1), pp. 101–121.
+</div>
+<div id="ref-frb2007ThreeGreatAmericanDisinflations" class="csl-entry" role="listitem">
+Board, F.R. (2007) <em>Three great american disinflations</em>. International Finance Discussion Papers 898. Federal Reserve Board.
+</div>
+<div id="ref-boe2017TwentyYearsIndependence" class="csl-entry" role="listitem">
+England, B. of (2017) <span>“Twenty years of bank of england independence: The evolution of monetary policy.”</span> Speech / publication.
+</div>
+<div id="ref-imf2011EmergingMarketCBBailouts" class="csl-entry" role="listitem">
+Fund, I.M. (2011) <em>Can emerging market central banks bail out banks?</em> Working Paper. International Monetary Fund.
+</div>
+<div id="ref-imf2018AnchoringInflationPersistence" class="csl-entry" role="listitem">
+Fund, I.M. (2018) <em>Expectations’ anchoring and inflation persistence</em>. Working Paper WP/18/280. International Monetary Fund.
+</div>
+<div id="ref-imf2025WEOAnnualMeetingsBriefing" class="csl-entry" role="listitem">
+Fund, I.M. (2025) <span>“Press briefing transcript: World economic outlook, annual meetings 2025.”</span> Press briefing transcript.
+</div>
+<div id="ref-frb2025LongerRunGoalsStatement" class="csl-entry" role="listitem">
+Governors of the Federal Reserve System, B. of (2025) <span>“Statement on longer-run goals and monetary policy strategy.”</span> FOMC statement. Available at: <a href="https://www.federalreserve.gov/monetarypolicy/review-of-monetary-policy-strategy-tools-and-communications.htm">https://www.federalreserve.gov/monetarypolicy/review-of-monetary-policy-strategy-tools-and-communications.htm</a>.
+</div>
+<div id="ref-hmt2021MonetaryPolicyRemit" class="csl-entry" role="listitem">
+HM Treasury (2021) <span>“Monetary policy remit: Budget 2021.”</span> UK Treasury remit document.
+</div>
+<div id="ref-hmt2023MonetaryPolicyRemit" class="csl-entry" role="listitem">
+HM Treasury (2023) <span>“Monetary policy remit: Autumn statement 2023.”</span> UK Treasury remit document.
+</div>
+<div id="ref-imfIEO2004ArgentinaEvaluation" class="csl-entry" role="listitem">
+International Monetary Fund, Independent Evaluation Office (2004) <em>Report on the evaluation of the role of the IMF in argentina, 1991–2001</em>. International Monetary Fund.
+</div>
+<div id="ref-boe1995CredibilityMonetaryPolicy" class="csl-entry" role="listitem">
+King, M. and England, B. of (1995) <span>“Credibility and monetary policy: Theory and evidence.”</span> Bank of England Quarterly Bulletin, Q1.
+</div>
+<div id="ref-kydlandPrescott1977RulesRatherDiscretion" class="csl-entry" role="listitem">
+Kydland, F.E. and Prescott, E.C. (1977) <span>“Rules rather than discretion: The inconsistency of optimal plans,”</span> <em>Journal of Political Economy</em>, 85(3), pp. 473–491.
+</div>
+<div id="ref-rogoff1985OptimalDegreeCommitment" class="csl-entry" role="listitem">
+Rogoff, K. (1985) <span>“The optimal degree of commitment to an intermediate monetary target,”</span> <em>Quarterly Journal of Economics</em>, 100(4), pp. 1169–1189.
+</div>
+<div id="ref-taylor1993DiscretionPolicyRulesPractice" class="csl-entry" role="listitem">
+Taylor, J.B. (1993) <span>“Discretion versus policy rules in practice,”</span> <em>Carnegie-Rochester Conference Series on Public Policy</em>, 39, pp. 195–214.
+</div>
+<div id="ref-walsh1995OptimalContractsCentralBankers" class="csl-entry" role="listitem">
+Walsh, C.E. (1995) <span>“Optimal contracts for central bankers,”</span> <em>American Economic Review</em>, 85(1), pp. 150–167.
+</div>
+</div>
+
+
 </section>
-<section id="references" class="level1" data-number="9">
-<h1 data-number="9"><span class="header-section-number">9</span> References</h1>
-<p>Barro, R.J., &amp; Gordon, D.B. (1983). Rules, discretion and reputation in a model of monetary policy. <em>Journal of Monetary Economics</em>, 12(1), 101–121.</p>
-<p>Bank of England. (1995). <em>Credibility and monetary policy: theory and evidence</em> (Quarterly Bulletin, Q1; M. King).</p>
-<p>Bank of England. (2017). <em>Twenty years of Bank of England independence: the evolution of monetary policy</em> (speech and PDF).</p>
-<p>European Central Bank. (2012). <em>Verbatim of the remarks made by Mario Draghi</em> (July 26, 2012).</p>
-<p>European Central Bank. (2021). <em>The ECB’s monetary policy strategy statement</em>.</p>
-<p>Federal Reserve Board. (2007). <em>Three Great American Disinflations</em> (IFDP 898).</p>
-<p>Federal Reserve Board. (2025). <em>Statement on Longer-Run Goals and Monetary Policy Strategy</em>.</p>
-<p>HM Treasury. (2021). <em>Monetary policy remit: Budget 2021</em> (UK).</p>
-<p>HM Treasury. (2023). <em>Monetary policy remit: Autumn Statement 2023</em> (UK).</p>
-<p>International Monetary Fund. (2011). <em>Can Emerging Market Central Banks Bail Out Banks?</em> (working paper; discussion of reserve loss and speculative attacks under pegs).</p>
-<p>International Monetary Fund, Independent Evaluation Office. (2004). <em>Report on the Evaluation of the Role of the IMF in Argentina, 1991–2001</em>.</p>
-<p>International Monetary Fund. (2018). <em>Expectations’ Anchoring and Inflation Persistence</em> (WP/18/280).</p>
-<p>International Monetary Fund. (2025). <em>Press Briefing Transcript: World Economic Outlook, Annual Meetings 2025</em> (credibility, independence, expectations anchoring).</p>
-<p>Kydland, F.E., &amp; Prescott, E.C. (1977). Rules rather than discretion: The inconsistency of optimal plans. <em>Journal of Political Economy</em>, 85(3), 473–491.</p>
-<p>Rogoff, K. (1985). The optimal degree of commitment to an intermediate monetary target. <em>Quarterly Journal of Economics</em>, 100(4), 1169–1189.</p>
-<p>Taylor, J.B. (1993). Discretion versus policy rules in practice. <em>Carnegie-Rochester Conference Series on Public Policy</em>, 39, 195–214.</p>
-<p>Walsh, C. (1995). Optimal contracts for central bankers. <em>American Economic Review</em>, 85(1), 150–167.</p>
-
-
 </section>
 
 </main> <!-- /main -->

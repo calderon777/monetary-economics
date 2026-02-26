@@ -744,44 +744,8 @@ Modern frameworks have experimented with "makeup" features that partially mimic 
 5. "If the Friedman rule implies optimal steady-state inflation should be around −2% to −3%, why don't central banks target that?" Discuss at least two concerns about very low or negative inflation targets in practice.
 
 ## References
+Sources used across this chapter include central bank strategy statements and timelines, foundational research, and policy-history references [@boe1995CredibilityMonetaryPolicy; @boe2009MPCAnnouncement; @boe2013MPCMinutesAug; @boe2019MPRInflationReportRename; @bojMonetaryPolicyHistory; @boj2016CurrentSituationFutureProspects; @bernanke2002EssaysGreatDepression; @bernanke2004GreatModeration; @bernankeMishkin2004ParadoxPolicyIneffectiveness; @bis2015NegativePolicyRates; @ecb2021StrategyStatement; @fedLSAP1200809Timeline; @fomc2020FAITStatement; @frb2025LongerRunGoalsStatement; @hmt2025MonetaryPolicyRemit; @imf2002ArgentinaSelectedIssues; @imfIEO2004ArgentinaEvaluation; @lewisMizen2000MonetaryEconomics; @svensson1999PriceLevelVsInflationTargeting; @ukParliament2006HansardBudgetStatement].
 
-Bank of England. (1995). Credibility and monetary policy: theory and evidence. *Quarterly Bulletin*, Q1.
-
-Bank of England. (2009). Quantitative easing. Monetary Policy Announcement (March).
-
-Bank of England. (2013). Minutes of the Monetary Policy Committee Meeting, August 2013.
-
-Bank of England. (2019). The Monetary Policy Report and Inflation Report. News release (November).
-
-Bank of Japan. (n.d.). Unconventional Monetary Policy Measures from the Late 1990s. Official reference timeline.
-
-Bank of Japan. (2016). The Japan's Monetary Policy: Current Situation and Future Prospects. Governor remarks.
-
-Bernanke, B.S. (2002). Essays on the Great Depression. Princeton University Press.
-
-Bernanke, B.S. (2004). The Great Moderation. *Federal Reserve speech* (February).
-
-Bernanke, B.S., & Mishkin, F.S. (2004). The paradox of policy ineffectiveness. In *Inflation Targeting*.
-
-BIS Quarterly Review. (2015). Negative policy rates: consequences and alternatives. *Bank for International Settlements*.
-
-European Central Bank. (2021). The ECB's Monetary Policy Strategy Statement.
-
-Federal Reserve. (2008–2009). Large-scale asset purchases (LSAP1). Official timeline.
-
-Federal Reserve. (2020). Flexible Average Inflation Targeting. *FOMC Statement on Longer-Run Goals and Monetary Policy Strategy*.
-
-Federal Reserve. (2025). Statement on Longer-Run Goals and Monetary Policy Strategy.
-
-HM Treasury. (2025). Monetary Policy Remit (annual).
-
-International Monetary Fund. (2002). Argentina: Selected Issues and Statistical Appendix. *IMF Country Report No. 02/6*.
-
-International Monetary Fund, Independent Evaluation Office. (2004). Report on the Evaluation of the Role of the IMF in Argentina, 1991–2001.
-
-Lewis, M.K., & Mizen, P.D. (2000). *Monetary Economics*. Oxford University Press.
-
-Svensson, L.E.O. (1999). Price-level targeting versus inflation targeting: a free lunch? *Journal of Money, Credit and Banking*, 31(3), 277–295.
-
-UK Parliament. (2006). Hansard record, Budget Statement by Gordon Brown (22 March).
+::: {#refs}
+:::
 

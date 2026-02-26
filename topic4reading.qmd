@@ -54,7 +54,7 @@ where $M$ is a monetary aggregate, $V$ velocity, $P$ the price level, and $Y$ re
 - in the long run, money is neutral (changes in the level of money affect nominal variables like $P$ and nominal wages, not real output);
 - in the short run, money can be non-neutral because wages/prices adjust with lags, generating transitional output and employment effects.
 
-An institutional summary by the IMF documents why monetarism's prominence fell when velocity became unstable amid deregulation and financial innovation, an empirical point that remains central to understanding monetary policy frameworks.
+An institutional summary by the IMF documents why monetarism's prominence fell when velocity became unstable amid deregulation and financial innovation, an empirical point that remains central to understanding monetary policy frameworks [@jahanPapageorgiou2014Monetarism].
 
 # A canonical monetarist macro model: dichotomy and neutrality
 
@@ -132,14 +132,14 @@ $$
 
 # Money illusion, the Phillips curve, and the natural-rate hypothesis
 
-The narrative linking short-run monetary expansions to temporary unemployment reduction is consistent with expectations-augmented Phillips curve logic: observed inflation/unemployment correlations reflect short-run nominal rigidities or misperceptions, but do not deliver a stable long-run trade-off. Friedman's 1968 address makes this a central argument by insisting monetary policy cannot peg unemployment below its natural benchmark except temporarily, because expectations adjust.
+The narrative linking short-run monetary expansions to temporary unemployment reduction is consistent with expectations-augmented Phillips curve logic: observed inflation/unemployment correlations reflect short-run nominal rigidities or misperceptions, but do not deliver a stable long-run trade-off. Friedman's 1968 address makes this a central argument by insisting monetary policy cannot peg unemployment below its natural benchmark except temporarily, because expectations adjust [@friedman1968RoleMonetaryPolicy].
 
 The key historical sequence is:
 
-- Phillips (1958) documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample.
+- Phillips (1958) documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample [@phillips1958RelationUnemployment].
 - Samuelson and Solow (1960) interpreted this relationship in a policy context (later debates question how menu-like their intended interpretation was).
-- Phelps (1967) provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment.
-- Friedman (1968) popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity.
+- Phelps (1967) provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment [@phelps1967PhillipsCurves].
+- Friedman (1968) popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity [@friedman1968RoleMonetaryPolicy].
 
 In accessible final-year notation, an expectations-augmented Phillips curve can be written as:
 
@@ -159,8 +159,8 @@ Modern monetary policy must address an apparent tension: monetarism emphasises t
 
 **Example: the COVID-era money surge (US and euro area).**
 
-- In the US, the Fed's H.6 release shows a dramatic jump in M2 during early 2020, illustrating that money aggregates can move rapidly in crisis conditions.
-- In the euro area, the ECB documented a marked acceleration in broad money growth in March 2020 and linked it to emergency liquidity needs and precautionary money holding amid pandemic uncertainty.
+- In the US, the Fed's H.6 release shows a dramatic jump in M2 during early 2020, illustrating that money aggregates can move rapidly in crisis conditions [@frb2020H6June25].
+- In the euro area, the ECB documented a marked acceleration in broad money growth in March 2020 and linked it to emergency liquidity needs and precautionary money holding amid pandemic uncertainty [@ecb2020PEPP; @ecb2020CovidMeasuresBox].
 
 This observation illustrates a key point: monetarists emphasised that velocity stability is crucial. In crises, velocity can shift sharply as liquidity preference rises, so money growth alone does not map mechanically into inflation in the short run.
 
@@ -169,7 +169,7 @@ This observation illustrates a key point: monetarists emphasised that velocity s
 The nominal versus real interest rate discussion connects the Fisher equation to two sets of contemporary facts:
 
 1. At the ZLB, the Fisher relation does not disappear, but nominal rates can be constrained, shifting adjustment into expected inflation, real rates, and longer-term yields.
-2. Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter.
+2. Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter [@bis2016NegativePolicyRates; @borioZabai2016Reappraisal].
 
 # Inflationary equilibria: money demand, fiscal dominance, and the high-inflation trap
 
@@ -185,15 +185,17 @@ so higher expected inflation reduces real money demand. Combine this with a gove
 
 # Hyperinflation: definition, evidence, and endings
 
-**Definition (Cagan criterion).** Hyperinflation begins when monthly inflation first exceeds 50% and ends when it falls below 50% for at least a year.
+**Definition (Cagan criterion).** Hyperinflation begins when monthly inflation first exceeds 50% and ends when it falls below 50% for at least a year [@imf2007HighInflationLessons].
 
-**Empirical regularity: fiscal regime change and credible stabilisation.** Sargent's classic "Ends of Four Big Inflations" argues that dramatic hyperinflations ended alongside major fiscal regime shifts and reforms that changed expectations about future money creation.
+**Empirical regularity: fiscal regime change and credible stabilisation.** Sargent's classic "Ends of Four Big Inflations" argues that dramatic hyperinflations ended alongside major fiscal regime shifts and reforms that changed expectations about future money creation [@sargent1982EndsFourBigInflations].
 
 Hyperinflation is significant because it exemplifies the starkest money–prices relationship and provides direct historical evidence of monetisation of fiscal deficits.
 
 # Comparative table: post-1990 policy episodes, tools, and outcomes
 
 The following table summarises post-1990 monetary episodes and their policy responses.
+
+Illustrative episode details in the table are drawn from official central bank releases/timelines and well-known empirical studies, including the BoJ policy chronology, Bank of England announcements and QE evidence, ECB press releases on negative rates and PEPP, and the New York Fed LSAP staff report [@bojMonetaryPolicyHistory; @boe2009MPCAnnouncement; @joyceEtAl2010QEWP393; @ecb2014NegativeDepositPR; @ecb2020PEPP; @gagnonEtAl2010LSAPSR441].
 
 | Episode | Monetary-policy constraint | Main tools used | Scale/timing (illustrative, official) | Evidence on financial conditions/outcomes |
 |---|---|---|---|---|
@@ -204,7 +206,7 @@ The following table summarises post-1990 monetary episodes and their policy resp
 
 # Policy implications: what survives from Friedman's monetarism today
 
-**What survives robustly (high confidence):**
+**What survives robustly (high confidence):** The broad long-run propositions are consistent with standard textbook treatments and the monetarist literature [@lewisMizen2000MonetaryEconomics; @friedman1968RoleMonetaryPolicy].
 
 - Inflation cannot persist indefinitely without accommodating monetary expansion; monetary conditions matter for nominal aggregates over longer horizons.
 - Policy should be evaluated under lags and uncertainty; discretionary fine tuning can be destabilising when transmission is slow and variable.
@@ -452,36 +454,5 @@ flowchart TB
 
 ## References
 
-Bank for International Settlements. (2016). How have central banks implemented negative policy rates? BIS Quarterly Review, March.
-
-Bank for International Settlements. (2016). Borio, C., and Zabai, A. Unconventional monetary policies: a re-appraisal (BIS Working Papers No. 570).
-
-Bank of England. (2009). Minutes of the Monetary Policy Committee Meeting held on 4 and 5 March 2009.
-
-Bank of England. (2010). Joyce, M., Lasaosa, A., Stevens, I., and Tong, M. The financial market impact of quantitative easing (Working Paper No. 393).
-
-European Central Bank. (2014). ECB introduces a negative deposit facility interest rate (Press release, 5 June 2014).
-
-European Central Bank. (2020). ECB announces EUR 750 billion Pandemic Emergency Purchase Programme (PEPP) (Press release, 18 March 2020).
-
-European Central Bank. (2020). The impact of the ECB's monetary policy measures taken in response to the COVID-19 crisis (Economic Bulletin box).
-
-Federal Reserve Board. (2020). Money Stock and Debt Measures (H.6 release, June 25, 2020).
-
-Friedman, M. (1968). The role of monetary policy. American Economic Review, 58(1), 1-17.
-
-International Monetary Fund. (n.d.). Jahan, S., and Papageorgiou, C. Monetarism: Money Is Where It's At (Finance and Development, Back to Basics).
-
-International Monetary Fund. (2007). Lessons from High Inflation Episodes (WP/07/99).
-
-Lewis, M. K., and Mizen, P. D. (2000). Monetary Economics. Oxford University Press.
-
-Phelps, E. S. (1967). Phillips curves, expectations of inflation and optimal unemployment over time. Economica, 34(135), 254-281.
-
-Phillips, A. W. (1958). The relation between unemployment and the rate of change of money wage rates in the United Kingdom, 1861-1957. Economica, 25(100), 283-299.
-
-Sargent, T. J. (1982). The ends of four big inflations. In R. E. Hall (Ed.), Inflation: Causes and Effects (pp. 41-98). University of Chicago Press/NBER.
-
-Federal Reserve Bank of New York. (2010). Gagnon, J., Raskin, M., Remache, J., and Sack, B. Large-Scale Asset Purchases by the Federal Reserve: Did They Work? (Staff Report No. 441).
-
-Bank of Japan. (n.d.). Unconventional Monetary Policy Measures from the Late 1990s.
+::: {#refs}
+:::

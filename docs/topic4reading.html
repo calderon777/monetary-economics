@@ -21,7 +21,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -477,8 +496,10 @@ window.Quarto = {
   <li><a href="#comparative-table-post-1990-policy-episodes-tools-and-outcomes" id="toc-comparative-table-post-1990-policy-episodes-tools-and-outcomes" class="nav-link" data-scroll-target="#comparative-table-post-1990-policy-episodes-tools-and-outcomes"><span class="header-section-number">12</span> Comparative table: post-1990 policy episodes, tools, and outcomes</a></li>
   <li><a href="#policy-implications-what-survives-from-friedmans-monetarism-today" id="toc-policy-implications-what-survives-from-friedmans-monetarism-today" class="nav-link" data-scroll-target="#policy-implications-what-survives-from-friedmans-monetarism-today"><span class="header-section-number">13</span> Policy implications: what survives from Friedman’s monetarism today</a></li>
   <li><a href="#problem-questions" id="toc-problem-questions" class="nav-link" data-scroll-target="#problem-questions"><span class="header-section-number">14</span> Problem questions</a></li>
-  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures"><span class="header-section-number">15</span> Figures</a></li>
-  <li><a href="#references-apa-style" id="toc-references-apa-style" class="nav-link" data-scroll-target="#references-apa-style"><span class="header-section-number">16</span> References (APA style)</a></li>
+  <li><a href="#figures" id="toc-figures" class="nav-link" data-scroll-target="#figures"><span class="header-section-number">15</span> Figures</a>
+  <ul class="collapse">
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references"><span class="header-section-number">15.1</span> References</a></li>
+  </ul></li>
   </ul>
 <div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="topic4reading.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
     </div>
@@ -540,7 +561,7 @@ MV \equiv PY,
 <li>in the long run, money is neutral (changes in the level of money affect nominal variables like <span class="math inline">\(P\)</span> and nominal wages, not real output);</li>
 <li>in the short run, money can be non-neutral because wages/prices adjust with lags, generating transitional output and employment effects.</li>
 </ul>
-<p>An institutional summary by the IMF documents why monetarism’s prominence fell when velocity became unstable amid deregulation and financial innovation, an empirical point that remains central to understanding monetary policy frameworks.</p>
+<p>An institutional summary by the IMF documents why monetarism’s prominence fell when velocity became unstable amid deregulation and financial innovation, an empirical point that remains central to understanding monetary policy frameworks <span class="citation" data-cites="jahanPapageorgiou2014Monetarism">(<a href="#ref-jahanPapageorgiou2014Monetarism" role="doc-biblioref">Jahan and Papageorgiou, 2014</a>)</span>.</p>
 </section>
 <section id="a-canonical-monetarist-macro-model-dichotomy-and-neutrality" class="level1" data-number="4">
 <h1 data-number="4"><span class="header-section-number">4</span> A canonical monetarist macro model: dichotomy and neutrality</h1>
@@ -667,13 +688,13 @@ i \approx r + \pi^e.
 </section>
 <section id="money-illusion-the-phillips-curve-and-the-natural-rate-hypothesis" class="level1" data-number="6">
 <h1 data-number="6"><span class="header-section-number">6</span> Money illusion, the Phillips curve, and the natural-rate hypothesis</h1>
-<p>The narrative linking short-run monetary expansions to temporary unemployment reduction is consistent with expectations-augmented Phillips curve logic: observed inflation/unemployment correlations reflect short-run nominal rigidities or misperceptions, but do not deliver a stable long-run trade-off. Friedman’s 1968 address makes this a central argument by insisting monetary policy cannot peg unemployment below its natural benchmark except temporarily, because expectations adjust.</p>
+<p>The narrative linking short-run monetary expansions to temporary unemployment reduction is consistent with expectations-augmented Phillips curve logic: observed inflation/unemployment correlations reflect short-run nominal rigidities or misperceptions, but do not deliver a stable long-run trade-off. Friedman’s 1968 address makes this a central argument by insisting monetary policy cannot peg unemployment below its natural benchmark except temporarily, because expectations adjust <span class="citation" data-cites="friedman1968RoleMonetaryPolicy">(<a href="#ref-friedman1968RoleMonetaryPolicy" role="doc-biblioref">Friedman, 1968</a>)</span>.</p>
 <p>The key historical sequence is:</p>
 <ul>
-<li>Phillips (1958) documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample.</li>
+<li>Phillips (1958) documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample <span class="citation" data-cites="phillips1958RelationUnemployment">(<a href="#ref-phillips1958RelationUnemployment" role="doc-biblioref">Phillips, 1958</a>)</span>.</li>
 <li>Samuelson and Solow (1960) interpreted this relationship in a policy context (later debates question how menu-like their intended interpretation was).</li>
-<li>Phelps (1967) provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment.</li>
-<li>Friedman (1968) popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity.</li>
+<li>Phelps (1967) provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment <span class="citation" data-cites="phelps1967PhillipsCurves">(<a href="#ref-phelps1967PhillipsCurves" role="doc-biblioref">Phelps, 1967</a>)</span>.</li>
+<li>Friedman (1968) popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity <span class="citation" data-cites="friedman1968RoleMonetaryPolicy">(<a href="#ref-friedman1968RoleMonetaryPolicy" role="doc-biblioref">Friedman, 1968</a>)</span>.</li>
 </ul>
 <p>In accessible final-year notation, an expectations-augmented Phillips curve can be written as:</p>
 <p><span class="math display">\[
@@ -690,8 +711,8 @@ i \approx r + \pi^e.
 <p>Modern monetary policy must address an apparent tension: monetarism emphasises targeting money growth, but central banks predominantly implement policy through interest-rate setting, supported by balance-sheet tools when rates hit effective lower bounds. In practice, the distinction between money and rates is not a binary choice: interest-rate policy is implemented through operations that affect the central bank balance sheet and monetary aggregates; conversely, balance-sheet policies matter by altering asset supplies, term premia, and risk premia.</p>
 <p><strong>Example: the COVID-era money surge (US and euro area).</strong></p>
 <ul>
-<li>In the US, the Fed’s H.6 release shows a dramatic jump in M2 during early 2020, illustrating that money aggregates can move rapidly in crisis conditions.</li>
-<li>In the euro area, the ECB documented a marked acceleration in broad money growth in March 2020 and linked it to emergency liquidity needs and precautionary money holding amid pandemic uncertainty.</li>
+<li>In the US, the Fed’s H.6 release shows a dramatic jump in M2 during early 2020, illustrating that money aggregates can move rapidly in crisis conditions <span class="citation" data-cites="frb2020H6June25">(<a href="#ref-frb2020H6June25" role="doc-biblioref">Governors of the Federal Reserve System, 2020</a>)</span>.</li>
+<li>In the euro area, the ECB documented a marked acceleration in broad money growth in March 2020 and linked it to emergency liquidity needs and precautionary money holding amid pandemic uncertainty <span class="citation" data-cites="ecb2020PEPP ecb2020CovidMeasuresBox">(<a href="#ref-ecb2020PEPP" role="doc-biblioref">Bank, 2020a</a>, <a href="#ref-ecb2020CovidMeasuresBox" role="doc-biblioref">2020b</a>)</span>.</li>
 </ul>
 <p>This observation illustrates a key point: monetarists emphasised that velocity stability is crucial. In crises, velocity can shift sharply as liquidity preference rises, so money growth alone does not map mechanically into inflation in the short run.</p>
 </section>
@@ -700,7 +721,7 @@ i \approx r + \pi^e.
 <p>The nominal versus real interest rate discussion connects the Fisher equation to two sets of contemporary facts:</p>
 <ol type="1">
 <li>At the ZLB, the Fisher relation does not disappear, but nominal rates can be constrained, shifting adjustment into expected inflation, real rates, and longer-term yields.</li>
-<li>Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter.</li>
+<li>Negative policy rates show that the lower bound is not literally zero for policy rates, but practical constraints (cash, retail deposit rate rigidities, and bank profitability concerns) matter <span class="citation" data-cites="bis2016NegativePolicyRates borioZabai2016Reappraisal">(<a href="#ref-bis2016NegativePolicyRates" role="doc-biblioref">Bank for International Settlements, 2016</a>; <a href="#ref-borioZabai2016Reappraisal" role="doc-biblioref">Borio and Zabai, 2016</a>)</span>.</li>
 </ol>
 </section>
 <section id="inflationary-equilibria-money-demand-fiscal-dominance-and-the-high-inflation-trap" class="level1" data-number="10">
@@ -714,13 +735,14 @@ i \approx r + \pi^e.
 </section>
 <section id="hyperinflation-definition-evidence-and-endings" class="level1" data-number="11">
 <h1 data-number="11"><span class="header-section-number">11</span> Hyperinflation: definition, evidence, and endings</h1>
-<p><strong>Definition (Cagan criterion).</strong> Hyperinflation begins when monthly inflation first exceeds 50% and ends when it falls below 50% for at least a year.</p>
-<p><strong>Empirical regularity: fiscal regime change and credible stabilisation.</strong> Sargent’s classic “Ends of Four Big Inflations” argues that dramatic hyperinflations ended alongside major fiscal regime shifts and reforms that changed expectations about future money creation.</p>
+<p><strong>Definition (Cagan criterion).</strong> Hyperinflation begins when monthly inflation first exceeds 50% and ends when it falls below 50% for at least a year <span class="citation" data-cites="imf2007HighInflationLessons">(<a href="#ref-imf2007HighInflationLessons" role="doc-biblioref">Fund, 2007</a>)</span>.</p>
+<p><strong>Empirical regularity: fiscal regime change and credible stabilisation.</strong> Sargent’s classic “Ends of Four Big Inflations” argues that dramatic hyperinflations ended alongside major fiscal regime shifts and reforms that changed expectations about future money creation <span class="citation" data-cites="sargent1982EndsFourBigInflations">(<a href="#ref-sargent1982EndsFourBigInflations" role="doc-biblioref">Sargent, 1982</a>)</span>.</p>
 <p>Hyperinflation is significant because it exemplifies the starkest money–prices relationship and provides direct historical evidence of monetisation of fiscal deficits.</p>
 </section>
 <section id="comparative-table-post-1990-policy-episodes-tools-and-outcomes" class="level1" data-number="12">
 <h1 data-number="12"><span class="header-section-number">12</span> Comparative table: post-1990 policy episodes, tools, and outcomes</h1>
 <p>The following table summarises post-1990 monetary episodes and their policy responses.</p>
+<p>Illustrative episode details in the table are drawn from official central bank releases/timelines and well-known empirical studies, including the BoJ policy chronology, Bank of England announcements and QE evidence, ECB press releases on negative rates and PEPP, and the New York Fed LSAP staff report <span class="citation" data-cites="bojMonetaryPolicyHistory boe2009MPCAnnouncement joyceEtAl2010QEWP393 ecb2014NegativeDepositPR ecb2020PEPP gagnonEtAl2010LSAPSR441">(<a href="#ref-boe2009MPCAnnouncement" role="doc-biblioref">England, 2009</a>; <a href="#ref-joyceEtAl2010QEWP393" role="doc-biblioref">Joyce <em>et al.</em>, 2010</a>; <a href="#ref-gagnonEtAl2010LSAPSR441" role="doc-biblioref">Gagnon <em>et al.</em>, 2010</a>; <a href="#ref-ecb2014NegativeDepositPR" role="doc-biblioref">Bank, 2014</a>, <a href="#ref-ecb2020PEPP" role="doc-biblioref">2020a</a>; <a href="#ref-bojMonetaryPolicyHistory" role="doc-biblioref">Japan, 2023</a>)</span>.</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 20%">
@@ -772,7 +794,7 @@ i \approx r + \pi^e.
 </section>
 <section id="policy-implications-what-survives-from-friedmans-monetarism-today" class="level1" data-number="13">
 <h1 data-number="13"><span class="header-section-number">13</span> Policy implications: what survives from Friedman’s monetarism today</h1>
-<p><strong>What survives robustly (high confidence):</strong></p>
+<p><strong>What survives robustly (high confidence):</strong> The broad long-run propositions are consistent with standard textbook treatments and the monetarist literature <span class="citation" data-cites="lewisMizen2000MonetaryEconomics friedman1968RoleMonetaryPolicy">(<a href="#ref-friedman1968RoleMonetaryPolicy" role="doc-biblioref">Friedman, 1968</a>; <a href="#ref-lewisMizen2000MonetaryEconomics" role="doc-biblioref">Lewis and Mizen, 2000</a>)</span>.</p>
 <ul>
 <li>Inflation cannot persist indefinitely without accommodating monetary expansion; monetary conditions matter for nominal aggregates over longer horizons.</li>
 <li>Policy should be evaluated under lags and uncertainty; discretionary fine tuning can be destabilising when transmission is slow and variable.</li>
@@ -901,28 +923,64 @@ Figure&nbsp;3: Central bank policy rate corridor with negative rates: policy fac
   E --&gt; F["Potential high-inflation trap / instability"]
   F --&gt; G["Stabilisation: credible fiscal regime change + monetary reform"]
   G --&gt; H["Expectations reset; money growth falls; inflation collapses"]</code></pre>
+<section id="references" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="references"><span class="header-section-number">15.1</span> References</h2>
+<div id="refs" class="references csl-bib-body" role="list">
+<div id="ref-ecb2014NegativeDepositPR" class="csl-entry" role="listitem">
+Bank, E.C. (2014) <span>“ECB introduces a negative deposit facility interest rate.”</span> Press release. Available at: <a href="https://www.ecb.europa.eu/press/pr/date/2014/html/pr140605_2.en.html">https://www.ecb.europa.eu/press/pr/date/2014/html/pr140605_2.en.html</a>.
+</div>
+<div id="ref-ecb2020PEPP" class="csl-entry" role="listitem">
+Bank, E.C. (2020a) <span>“ECB announces 750 billion euro pandemic emergency purchase programme (PEPP).”</span> Press release. Available at: <a href="https://www.ecb.europa.eu/press/pr/date/2020/html/ecb.pr200318_1~3949d6f266.en.html">https://www.ecb.europa.eu/press/pr/date/2020/html/ecb.pr200318_1~3949d6f266.en.html</a>.
+</div>
+<div id="ref-ecb2020CovidMeasuresBox" class="csl-entry" role="listitem">
+Bank, E.C. (2020b) <span>“The impact of the ECB’s monetary policy measures taken in response to the COVID-19 crisis.”</span> Economic Bulletin, Box. Available at: <a href="https://www.ecb.europa.eu/press/economic-bulletin/focus/2020/html/ecb.ebbox202004_07~145cc90654.en.html">https://www.ecb.europa.eu/press/economic-bulletin/focus/2020/html/ecb.ebbox202004_07~145cc90654.en.html</a>.
+</div>
+<div id="ref-bis2016NegativePolicyRates" class="csl-entry" role="listitem">
+Bank for International Settlements (2016) <span>“How have central banks implemented negative policy rates?”</span> <em>BIS Quarterly Review</em> [Preprint]. Available at: <a href="https://www.bis.org/publ/qtrpdf/r_qt1603e.htm">https://www.bis.org/publ/qtrpdf/r_qt1603e.htm</a>.
+</div>
+<div id="ref-borioZabai2016Reappraisal" class="csl-entry" role="listitem">
+Borio, C. and Zabai, A. (2016) <em>Unconventional monetary policies: A re-appraisal</em>. BIS Working Papers 570. Bank for International Settlements. Available at: <a href="https://www.bis.org/publ/work570.htm">https://www.bis.org/publ/work570.htm</a>.
+</div>
+<div id="ref-boe2009MPCAnnouncement" class="csl-entry" role="listitem">
+England, B. of (2009) <span>“MPC announcement: Bank rate reduced to 0.5.”</span> Press release. Available at: <a href="https://www.bankofengland.co.uk/news/2009/march/monetary-policy-committee-reduces-bank-rate-to-05-and-initiates-asset-purchases">https://www.bankofengland.co.uk/news/2009/march/monetary-policy-committee-reduces-bank-rate-to-05-and-initiates-asset-purchases</a>.
+</div>
+<div id="ref-friedman1968RoleMonetaryPolicy" class="csl-entry" role="listitem">
+Friedman, M. (1968) <span>“The role of monetary policy,”</span> <em>American Economic Review</em>, 58(1), pp. 1–17.
+</div>
+<div id="ref-imf2007HighInflationLessons" class="csl-entry" role="listitem">
+Fund, I.M. (2007) <em>Lessons from high inflation episodes</em>. Working Paper WP/07/99. International Monetary Fund.
+</div>
+<div id="ref-gagnonEtAl2010LSAPSR441" class="csl-entry" role="listitem">
+Gagnon, J. <em>et al.</em> (2010) <em>Large-scale asset purchases by the federal reserve: Did they work?</em> Staff Report 441. Federal Reserve Bank of New York. Available at: <a href="https://www.newyorkfed.org/research/staff_reports/sr441.html">https://www.newyorkfed.org/research/staff_reports/sr441.html</a>.
+</div>
+<div id="ref-frb2020H6June25" class="csl-entry" role="listitem">
+Governors of the Federal Reserve System, B. of (2020) <span>“Money stock and debt measures (<span>H</span>.6), june 25, 2020.”</span> Statistical release. Available at: <a href="https://www.federalreserve.gov/releases/h6/20200625/">https://www.federalreserve.gov/releases/h6/20200625/</a>.
+</div>
+<div id="ref-jahanPapageorgiou2014Monetarism" class="csl-entry" role="listitem">
+Jahan, S. and Papageorgiou, C. (2014) <span>“What is monetarism?”</span> <em>Finance &amp; Development</em>, 51(1). Available at: <a href="https://www.imf.org/external/pubs/ft/fandd/2014/03/basics.htm">https://www.imf.org/external/pubs/ft/fandd/2014/03/basics.htm</a>.
+</div>
+<div id="ref-bojMonetaryPolicyHistory" class="csl-entry" role="listitem">
+Japan, B. of (2023) <span>“Monetary policy measures in japan: History and chronology.”</span> Timeline. Available at: <a href="https://www.boj.or.jp/en/mopo/outline/chrono/index.htm/">https://www.boj.or.jp/en/mopo/outline/chrono/index.htm/</a>.
+</div>
+<div id="ref-joyceEtAl2010QEWP393" class="csl-entry" role="listitem">
+Joyce, M. <em>et al.</em> (2010) <em>The financial market impact of quantitative easing</em>. Working Paper 393. Bank of England. Available at: <a href="https://www.bankofengland.co.uk/working-paper/2010/the-financial-market-impact-of-quantitative-easing">https://www.bankofengland.co.uk/working-paper/2010/the-financial-market-impact-of-quantitative-easing</a>.
+</div>
+<div id="ref-lewisMizen2000MonetaryEconomics" class="csl-entry" role="listitem">
+Lewis, M.K. and Mizen, P.D. (2000) <em>Monetary economics</em>. Oxford: Oxford University Press.
+</div>
+<div id="ref-phelps1967PhillipsCurves" class="csl-entry" role="listitem">
+Phelps, E.S. (1967) <span>“Phillips curves, expectations of inflation and optimal unemployment over time,”</span> <em>Economica</em>, 34(135), pp. 254–281.
+</div>
+<div id="ref-phillips1958RelationUnemployment" class="csl-entry" role="listitem">
+Phillips, A.W. (1958) <span>“The relation between unemployment and the rate of change of money wage rates in the united kingdom, 1861-1957,”</span> <em>Economica</em>, 25(100), pp. 283–299.
+</div>
+<div id="ref-sargent1982EndsFourBigInflations" class="csl-entry" role="listitem">
+Sargent, T.J. (1982) <span>“The ends of four big inflations,”</span> in R.E. Hall (ed.) <em>Inflation: Causes and effects</em>. University of Chicago Press, pp. 41–98.
+</div>
+</div>
+
+
 </section>
-<section id="references-apa-style" class="level1" data-number="16">
-<h1 data-number="16"><span class="header-section-number">16</span> References (APA style)</h1>
-<p>Bank for International Settlements. (2016). How have central banks implemented negative policy rates? BIS Quarterly Review, March.</p>
-<p>Bank for International Settlements. (2016). Borio, C., and Zabai, A. Unconventional monetary policies: a re-appraisal (BIS Working Papers No.&nbsp;570).</p>
-<p>Bank of England. (2009). Minutes of the Monetary Policy Committee Meeting held on 4 and 5 March 2009.</p>
-<p>Bank of England. (2010). Joyce, M., Lasaosa, A., Stevens, I., and Tong, M. The financial market impact of quantitative easing (Working Paper No.&nbsp;393).</p>
-<p>European Central Bank. (2014). ECB introduces a negative deposit facility interest rate (Press release, 5 June 2014).</p>
-<p>European Central Bank. (2020). ECB announces EUR 750 billion Pandemic Emergency Purchase Programme (PEPP) (Press release, 18 March 2020).</p>
-<p>European Central Bank. (2020). The impact of the ECB’s monetary policy measures taken in response to the COVID-19 crisis (Economic Bulletin box).</p>
-<p>Federal Reserve Board. (2020). Money Stock and Debt Measures (H.6 release, June 25, 2020).</p>
-<p>Friedman, M. (1968). The role of monetary policy. American Economic Review, 58(1), 1-17.</p>
-<p>International Monetary Fund. (n.d.). Jahan, S., and Papageorgiou, C. Monetarism: Money Is Where It’s At (Finance and Development, Back to Basics).</p>
-<p>International Monetary Fund. (2007). Lessons from High Inflation Episodes (WP/07/99).</p>
-<p>Lewis, M. K., and Mizen, P. D. (2000). Monetary Economics. Oxford University Press.</p>
-<p>Phelps, E. S. (1967). Phillips curves, expectations of inflation and optimal unemployment over time. Economica, 34(135), 254-281.</p>
-<p>Phillips, A. W. (1958). The relation between unemployment and the rate of change of money wage rates in the United Kingdom, 1861-1957. Economica, 25(100), 283-299.</p>
-<p>Sargent, T. J. (1982). The ends of four big inflations. In R. E. Hall (Ed.), Inflation: Causes and Effects (pp.&nbsp;41-98). University of Chicago Press/NBER.</p>
-<p>Federal Reserve Bank of New York. (2010). Gagnon, J., Raskin, M., Remache, J., and Sack, B. Large-Scale Asset Purchases by the Federal Reserve: Did They Work? (Staff Report No.&nbsp;441).</p>
-<p>Bank of Japan. (n.d.). Unconventional Monetary Policy Measures from the Late 1990s.</p>
-
-
 </section>
 
 </main> <!-- /main -->
