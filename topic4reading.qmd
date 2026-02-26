@@ -273,7 +273,7 @@ $$
 \pi_t = \pi_t^e - \alpha(u_t - u^*) + \nu_t,
 $$
 
-where $\alpha>0$ and $\nu_t$ is a supply/markup disturbance. Under adaptive expectations $\pi_t^e \approx \pi_{t-1}$, disinflation implies transitional unemployment (sacrifice ratio), a key point in the monetarist critique of discretionary stabilization.
+where $\alpha>0$ measures how strongly unemployment gaps affect inflation (a larger $\alpha$ means inflation responds more to a given deviation of $u_t$ from $u^*$), and $\nu_t$ is a supply/markup disturbance term capturing shocks such as energy-price spikes, tax changes, or cost-push pressure. Under adaptive expectations $\pi_t^e \approx \pi_{t-1}$, disinflation implies transitional unemployment (the sacrifice ratio), a key point in the monetarist critique of discretionary stabilization.
 
 
 ```{mermaid}
