@@ -34,7 +34,7 @@ This chapter examines the main monetarist propositions and their relevance for m
 3. The short-run non-neutrality logic via money illusion and expectations adjustment, connected to the Phillips curve controversy and the natural-rate hypothesis.
 4. The distinction between nominal and real interest rates (Fisher equation), and why persistent inflation affects nominal interest rates (the Fisher effect) even when long-run real rates are pinned by real forces.
 5. The logic of inflationary equilibria and hyperinflation, using Cagan-style definitions, fiscal-monetary linkages, and historical evidence on stabilisations.
-6. A modern evidence-based discussion: Japan's long ZLB period, post-2008 QE, negative rates, and COVID-era money growth, showing where monetarist predictions perform well and where institutional realities complicate simple money-growth targeting.
+6. A modern evidence-based discussion: Japan's long zero lower bound (ZLB) period, post-2008 QE, negative rates, and COVID-era money growth, showing where monetarist predictions perform well and where institutional realities complicate simple money-growth targeting.
 
 # Intellectual context: what Friedman was responding to
 
@@ -262,10 +262,10 @@ The narrative linking short-run monetary expansions to temporary unemployment re
 
 The key historical sequence is:
 
-- Phillips (1958) documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample [@phillips1958RelationUnemployment].
+- @phillips1958RelationUnemployment documented a nonlinear empirical relationship between unemployment and wage inflation for the UK over a long historical sample.
 - Samuelson and Solow (1960) interpreted this relationship in a policy context (later debates question how menu-like their intended interpretation was).
-- Phelps (1967) provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment [@phelps1967PhillipsCurves].
-- Friedman (1968) popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity [@friedman1968RoleMonetaryPolicy].
+- @phelps1967PhillipsCurves provided an explicit expectations-based framework, arguing that inflation expectations affect unemployment dynamics and that systematic policy cannot permanently trade inflation for unemployment.
+- @friedman1968RoleMonetaryPolicy popularised the policy conclusion: attempts to hold unemployment below its natural level lead to accelerating inflation, not a stable improvement in real activity.
 
 In accessible final-year notation, an expectations-augmented Phillips curve can be written as:
 
@@ -294,9 +294,9 @@ flowchart LR
 
 A signature monetarist policy conclusion is that activist discretionary policy is likely to destabilize because policy operates with long and variable lags. This motivates the constant money-growth rule (often presented as the $k\%$ rule): target money growth at a stable constant rate roughly consistent with long-run real output growth (or desired inflation). Modern central banking rarely implements the rule in its original form, but it remains a benchmark in rules-versus-discretion debates and in the design of robust frameworks.
 
-# Monetarism in the ZLB/QE/negative-rate world
+# Monetarism at the zero lower bound (ZLB), effective lower bound (ELB), and with QE/negative rates
 
-Modern monetary policy must address an apparent tension: monetarism emphasises targeting money growth, but central banks predominantly implement policy through interest-rate setting, supported by balance-sheet tools when rates hit effective lower bounds. In practice, the distinction between money and rates is not a binary choice: interest-rate policy is implemented through operations that affect the central bank balance sheet and monetary aggregates; conversely, balance-sheet policies matter by altering asset supplies, term premia, and risk premia.
+Modern monetary policy must address an apparent tension: monetarism emphasises targeting money growth, but central banks predominantly implement policy through interest-rate setting, supported by balance-sheet tools when rates hit lower-bound constraints. Here, the **zero lower bound (ZLB)** refers to the benchmark case where nominal policy rates cannot fall below zero, while the **effective lower bound (ELB)** is the practical limit faced by a central bank once cash, institutional frictions, and transmission constraints are taken into account. In practice, the distinction between money and rates is not a binary choice: interest-rate policy is implemented through operations that affect the central bank balance sheet and monetary aggregates; conversely, balance-sheet policies matter by altering asset supplies, term premia, and risk premia.
 
 **Example: the COVID-era money surge (US and euro area).**
 
