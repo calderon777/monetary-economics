@@ -27,7 +27,7 @@ execute:
 
 Monetarism, most strongly associated with Milton Friedman, reasserted the centrality of money in macroeconomic fluctuations and inflation. The core claim is that money growth is a key driver of nominal spending in the short run and the price level over longer horizons, and that policy should be guided by stable, rule-like principles rather than discretionary fine tuning.
 
-This chapter covers the following core material:
+This chapter examines the main monetarist propositions and their relevance for modern monetary policy:
 
 1. The quantity-theory position and the monetarist claim that money matters, with a focus on the stability (or not) of velocity.
 2. The monetarist macro model of dichotomy and money neutrality (labour market → output → money market → prices) and how it rationalises the proposition that money has no long-run real effects.
@@ -220,7 +220,7 @@ ggplot(df, aes(x = Y, y = P, color = curve)) +
         plot.title = element_text(face = "bold"))
 ```
 
-# Reconstructed and modernised tables (core lecture-note logic preserved)
+# Comparative statics tables and policy interpretation
 
 ## Table 1: One-off increase in money level $M$ (short run vs long run)
 
@@ -431,13 +431,13 @@ Illustrative episode details in the table are drawn from official central bank r
 
 # Policy implications: what survives from Friedman's monetarism today
 
-**What survives robustly (high confidence):** The broad long-run propositions are consistent with standard textbook treatments and the monetarist literature [@lewisMizen2000MonetaryEconomics; @friedman1968RoleMonetaryPolicy].
+**Core propositions and durable insights:** The broad long-run propositions are consistent with standard textbook treatments and the monetarist literature [@lewisMizen2000MonetaryEconomics; @friedman1968RoleMonetaryPolicy].
 
 - Inflation cannot persist indefinitely without accommodating monetary expansion; monetary conditions matter for nominal aggregates over longer horizons.
 - Policy should be evaluated under lags and uncertainty; discretionary fine tuning can be destabilising when transmission is slow and variable.
 - Asset purchases and balance-sheet tools can matter at the ZLB by lowering term premia and risk premia, consistent with portfolio-balance mechanisms.
 
-**What needs qualification (teaching with nuance):**
+**Limits, qualifications, and modern extensions:**
 
 - Stable velocity is not guaranteed; financial innovation and regulation shape money demand and can destabilise money-nominal GDP links, reducing the practicality of money-growth targeting.
 - Money supply is not a single object; it depends on definitions (M0/base vs M1/M2/M3) and on the banking system's credit creation, which is why modern central banks focus on interest-rate implementation and broader indicator sets.
