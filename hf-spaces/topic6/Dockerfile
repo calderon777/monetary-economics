@@ -5,7 +5,8 @@ WORKDIR /app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app.py .
+# Copy the full synced Space payload so the app can read topic question files.
+COPY . .
 
 ENV PORT=7860
 EXPOSE 7860
