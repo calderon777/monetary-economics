@@ -37,3 +37,5 @@ Interactive AI-powered tutorial for Topic 1: Functions of Money.
 ## Note
 
 AI feedback is a starting point only. Always verify against lecture notes and discuss with your tutor.
+
+Last synced from the course repo via GitHub Actions.
