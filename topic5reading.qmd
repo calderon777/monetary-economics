@@ -59,7 +59,7 @@ If workers have access to unbiased forecasts, predictable policy loses its abili
 
 ```{r}
 #| label: fig-lucas-supply
-#| fig-cap: "Lucas Aggregate Supply: $Y_t - Y^* = \\kappa(P_t - E_{t-1}P_t)$"
+#| fig-cap: "Lucas aggregate supply curve. The benchmark point is where the actual price level equals the expected price level, so output remains at potential $Y^*$. Output rises above $Y^*$ only when the price level is unexpectedly high, and falls below $Y^*$ when the price level is unexpectedly low."
 #| fig-alt: "Positively-sloped LAS showing output gap increases with unexpected price rise."
 #| fig-width: 6.5
 #| fig-height: 4.5
@@ -81,25 +81,33 @@ ggplot(df, aes(x = Y, y = P)) +
   geom_hline(yintercept = E_P, color = "darkred", linetype = "dashed", 
              linewidth = 0.8, alpha = 0.6) +
   geom_point(aes(x = Y_star, y = E_P), color = "black", size = 3) +
-  annotate("text", x = Y_star + 0.2, y = E_P + 0.3, label = "Y* at E[P]",
-           fontface = "bold", size = 4) +
+  annotate("text", x = 8.45, y = 6.35, label = "LAS",
+           color = "#1f77b4", fontface = "bold", size = 4.5) +
+  annotate("label", x = Y_star + 0.72, y = E_P + 0.26,
+           label = "Benchmark:\nY = Y* when P = E[P]",
+           size = 3.6, label.size = 0.2, fill = "white") +
+  annotate("text", x = Y_star + 0.1, y = 3.62, label = "Y*",
+           color = "darkred", fontface = "bold", size = 4) +
+  annotate("text", x = 3.3, y = E_P + 0.12, label = "Expected price E[P]",
+           color = "darkred", fontface = "bold", hjust = 0, size = 3.8) +
   labs(x = "Output (Y)", y = "Price Level (P)",
        title = "Lucas Aggregate Supply") +
-  theme_minimal() +
+  coord_cartesian(xlim = c(3, 9.3), ylim = c(3.5, 6.7), clip = "off") +
+  theme_minimal(base_size = 13) +
   theme(plot.title = element_text(face = "bold"))
 ```
 
-The New Classical model consists of two equations: Lucas supply (LAS) and aggregate demand (AD).
+The New Classical model consists of two equations: Lucas supply (LAS) and aggregate demand (AD). In the figure, the black point marks the benchmark equilibrium where expectations are fulfilled: $P_t = E_{t-1}P_t$ and therefore $Y_t = Y^*$.
 
-**Lucas aggregate supply (LAS):** Output deviates from potential only when the price level differs from expectations:
+**Lucas aggregate supply (LAS):** Output deviates from potential only when the actual price level differs from the price level that firms and workers expected one period earlier:
 $$Y_t^s - Y^* = \kappa(P_t - E_{t-1}P_t).$$
 
 Lucas (1972) derives this in a market-clearing framework with optimizing agents.
 
-Interpretation:
-- If $P_t > E_{t-1}P_t$: firms perceive relative-price gains, supply rises ($Y_t^s > Y^*$)
-- If $P_t = E_{t-1}P_t$: output at potential ($Y_t^s = Y^*$)
-- If $P_t < E_{t-1}P_t$: output below potential ($Y_t^s < Y^*$)
+Interpretation in the diagram:
+- If $P_t > E_{t-1}P_t$: the economy moves up along the LAS curve and output rises above potential ($Y_t^s > Y^*$)
+- If $P_t = E_{t-1}P_t$: the economy stays at the benchmark point, so output remains at potential ($Y_t^s = Y^*$)
+- If $P_t < E_{t-1}P_t$: the economy moves down along the LAS curve and output falls below potential ($Y_t^s < Y^*$)
 
 The parameter $\kappa$ measures supply responsiveness: $\partial Y_t / \partial(P_t - E_{t-1}P_t) = \kappa$.
 
