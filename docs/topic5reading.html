@@ -488,8 +488,9 @@ window.Quarto = {
   </ul></li>
   <li><a href="#the-new-classical-model-of-output-and-prices" id="toc-the-new-classical-model-of-output-and-prices" class="nav-link" data-scroll-target="#the-new-classical-model-of-output-and-prices"><span class="header-section-number">2</span> The New Classical model of output and prices</a>
   <ul class="collapse">
-  <li><a href="#lucas-aggregate-supply-and-aggregate-demand" id="toc-lucas-aggregate-supply-and-aggregate-demand" class="nav-link" data-scroll-target="#lucas-aggregate-supply-and-aggregate-demand"><span class="header-section-number">2.1</span> Lucas aggregate supply and aggregate demand</a></li>
-  <li><a href="#solving-the-model-the-role-of-kappa" id="toc-solving-the-model-the-role-of-kappa" class="nav-link" data-scroll-target="#solving-the-model-the-role-of-kappa"><span class="header-section-number">2.2</span> Solving the model: the role of <span class="math inline">\(\kappa\)</span></a></li>
+  <li><a href="#lucas-aggregate-supply" id="toc-lucas-aggregate-supply" class="nav-link" data-scroll-target="#lucas-aggregate-supply"><span class="header-section-number">2.1</span> Lucas aggregate supply</a></li>
+  <li><a href="#aggregate-demand" id="toc-aggregate-demand" class="nav-link" data-scroll-target="#aggregate-demand"><span class="header-section-number">2.2</span> Aggregate demand</a></li>
+  <li><a href="#solving-the-model-the-role-of-kappa" id="toc-solving-the-model-the-role-of-kappa" class="nav-link" data-scroll-target="#solving-the-model-the-role-of-kappa"><span class="header-section-number">2.3</span> Solving the model: the role of <span class="math inline">\(\kappa\)</span></a></li>
   </ul></li>
   <li><a href="#monetary-policy-implications" id="toc-monetary-policy-implications" class="nav-link" data-scroll-target="#monetary-policy-implications"><span class="header-section-number">3</span> Monetary policy implications</a>
   <ul class="collapse">
@@ -568,8 +569,10 @@ window.Quarto = {
 </section>
 <section id="the-new-classical-model-of-output-and-prices" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> The New Classical model of output and prices</h1>
-<section id="lucas-aggregate-supply-and-aggregate-demand" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="lucas-aggregate-supply-and-aggregate-demand"><span class="header-section-number">2.1</span> Lucas aggregate supply and aggregate demand</h2>
+<section id="lucas-aggregate-supply" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="lucas-aggregate-supply"><span class="header-section-number">2.1</span> Lucas aggregate supply</h2>
+<p>The New Classical model begins with a supply relationship in which output depends on unexpected movements in the price level, not on predictable changes that agents have already incorporated into their decisions.</p>
+<p>The Lucas aggregate supply (LAS) curve is therefore upward sloping in <span class="math inline">\((Y, P)\)</span> space: when the actual price level turns out higher than expected, firms temporarily expand output; when it turns out lower than expected, output falls below potential. The figure below illustrates this benchmark relationship.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div id="fig-lucas-supply" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Positively-sloped LAS showing output gap increases with unexpected price rise.">
@@ -584,16 +587,20 @@ Figure&nbsp;1: Lucas aggregate supply curve. The benchmark point is where the ac
 </div>
 </div>
 </div>
-<p>The New Classical model consists of two equations: Lucas supply (LAS) and aggregate demand (AD). In the figure, the black point marks the benchmark equilibrium where expectations are fulfilled: <span class="math inline">\(P_t = E_{t-1}P_t\)</span> and therefore <span class="math inline">\(Y_t = Y^*\)</span>.</p>
+<p>In the figure, the black point marks the benchmark equilibrium on the supply side where expectations are fulfilled: <span class="math inline">\(P_t = E_{t-1}P_t\)</span> and therefore <span class="math inline">\(Y_t = Y^*\)</span>.</p>
 <p><strong>Lucas aggregate supply (LAS):</strong> Output deviates from potential only when the actual price level differs from the price level that firms and workers expected one period earlier: <span class="math display">\[Y_t^s - Y^* = \kappa(P_t - E_{t-1}P_t).\]</span></p>
 <p>Lucas (1972) derives this in a market-clearing framework with optimizing agents.</p>
 <p>Interpretation in the diagram: - If <span class="math inline">\(P_t &gt; E_{t-1}P_t\)</span>: the economy moves up along the LAS curve and output rises above potential (<span class="math inline">\(Y_t^s &gt; Y^*\)</span>) - If <span class="math inline">\(P_t = E_{t-1}P_t\)</span>: the economy stays at the benchmark point, so output remains at potential (<span class="math inline">\(Y_t^s = Y^*\)</span>) - If <span class="math inline">\(P_t &lt; E_{t-1}P_t\)</span>: the economy moves down along the LAS curve and output falls below potential (<span class="math inline">\(Y_t^s &lt; Y^*\)</span>)</p>
 <p>The parameter <span class="math inline">\(\kappa\)</span> measures supply responsiveness: <span class="math inline">\(\partial Y_t / \partial(P_t - E_{t-1}P_t) = \kappa\)</span>.</p>
+</section>
+<section id="aggregate-demand" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="aggregate-demand"><span class="header-section-number">2.2</span> Aggregate demand</h2>
+<p>To complete the New Classical model, aggregate demand links output to nominal money and the price level.</p>
 <p><strong>Aggregate demand (AD):</strong> In log form: <span class="math display">\[Y_t^d = \gamma + M_t - P_t,\]</span> where <span class="math inline">\(M_t\)</span> is nominal money and <span class="math inline">\(\gamma\)</span> captures exogenous demand shifts.</p>
 <p>Agents know structural parameters <span class="math inline">\(\gamma\)</span>, <span class="math inline">\(\kappa\)</span>, and natural output <span class="math inline">\(Y^*\)</span>.</p>
 </section>
-<section id="solving-the-model-the-role-of-kappa" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="solving-the-model-the-role-of-kappa"><span class="header-section-number">2.2</span> Solving the model: the role of <span class="math inline">\(\kappa\)</span></h2>
+<section id="solving-the-model-the-role-of-kappa" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="solving-the-model-the-role-of-kappa"><span class="header-section-number">2.3</span> Solving the model: the role of <span class="math inline">\(\kappa\)</span></h2>
 <p>Equilibrium: <span class="math inline">\(Y_t^s = Y_t^d = Y_t\)</span>. Combining LAS and AD:</p>
 <ol type="1">
 <li><p>Under rational expectations: <span class="math display">\[E_{t-1}Y_t = Y^*.\]</span></p></li>

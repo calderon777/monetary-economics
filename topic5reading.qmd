@@ -54,8 +54,11 @@ If workers have access to unbiased forecasts, predictable policy loses its abili
 
 # The New Classical model of output and prices
 
-## Lucas aggregate supply and aggregate demand
+## Lucas aggregate supply
 
+The New Classical model begins with a supply relationship in which output depends on unexpected movements in the price level, not on predictable changes that agents have already incorporated into their decisions.
+
+The Lucas aggregate supply (LAS) curve is therefore upward sloping in $(Y, P)$ space: when the actual price level turns out higher than expected, firms temporarily expand output; when it turns out lower than expected, output falls below potential. The figure below illustrates this benchmark relationship.
 
 ```{r}
 #| label: fig-lucas-supply
@@ -97,7 +100,7 @@ ggplot(df, aes(x = Y, y = P)) +
   theme(plot.title = element_text(face = "bold"))
 ```
 
-The New Classical model consists of two equations: Lucas supply (LAS) and aggregate demand (AD). In the figure, the black point marks the benchmark equilibrium where expectations are fulfilled: $P_t = E_{t-1}P_t$ and therefore $Y_t = Y^*$.
+In the figure, the black point marks the benchmark equilibrium on the supply side where expectations are fulfilled: $P_t = E_{t-1}P_t$ and therefore $Y_t = Y^*$.
 
 **Lucas aggregate supply (LAS):** Output deviates from potential only when the actual price level differs from the price level that firms and workers expected one period earlier:
 $$Y_t^s - Y^* = \kappa(P_t - E_{t-1}P_t).$$
@@ -110,6 +113,10 @@ Interpretation in the diagram:
 - If $P_t < E_{t-1}P_t$: the economy moves down along the LAS curve and output falls below potential ($Y_t^s < Y^*$)
 
 The parameter $\kappa$ measures supply responsiveness: $\partial Y_t / \partial(P_t - E_{t-1}P_t) = \kappa$.
+
+## Aggregate demand
+
+To complete the New Classical model, aggregate demand links output to nominal money and the price level.
 
 **Aggregate demand (AD):** In log form:
 $$Y_t^d = \gamma + M_t - P_t,$$
