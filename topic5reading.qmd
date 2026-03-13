@@ -35,8 +35,10 @@ Adaptive expectations operate as a trial-and-error forecasting rule where agents
 
 Price expectations: $E_{t-1}P_t = f(P_{t-1}, P_{t-2}, ...)$
 
-A common error-correction form is:
+A common error-correction form for expected inflation is:
 $$\pi_t^e = \pi_{t-1}^e + \lambda(\pi_{t-1} - \pi_{t-1}^e), \quad 0 < \lambda \le 1.$$
+
+Here, $\pi_t^e$ is expected inflation in period $t$, $\pi_{t-1}$ is actual inflation in period $t-1$, and $\lambda$ measures how quickly agents revise their forecast after making an error.
 
 Adaptive expectations permit systematic forecast errors during regime changes, creating temporary money illusion and thus temporary real effects.
 
@@ -48,7 +50,7 @@ In classical formulation: expectations are "the same as the predictions of the r
 
 Model-consistent forecasting:
 $$E_{t-1}P_t = E(P_t \mid I_{t-1}),$$
-where $I_{t-1}$ is the information set at time $t-1$.
+where $I_{t-1}$ is the information set at time $t-1$. In words: the expectation formed in period $t-1$ is the best model-consistent forecast of the price level in period $t$, using all information available at the time the forecast is made.
 
 If workers have access to unbiased forecasts, predictable policy loses its ability to manipulate perceived real wages and thus loses its ability to shift real output, even in the short run.
 
@@ -107,12 +109,18 @@ $$Y_t^s - Y^* = \kappa(P_t - E_{t-1}P_t).$$
 
 Lucas (1972) derives this in a market-clearing framework with optimizing agents.
 
+Each term has a clear economic meaning:
+- $Y_t^s$ is actual output supplied in period $t$
+- $Y^*$ is potential or natural output
+- $P_t - E_{t-1}P_t$ is the unexpected part of the price level
+- $\kappa$ measures how strongly output responds to that price surprise
+
 Interpretation in the diagram:
 - If $P_t > E_{t-1}P_t$: the economy moves up along the LAS curve and output rises above potential ($Y_t^s > Y^*$)
 - If $P_t = E_{t-1}P_t$: the economy stays at the benchmark point, so output remains at potential ($Y_t^s = Y^*$)
 - If $P_t < E_{t-1}P_t$: the economy moves down along the LAS curve and output falls below potential ($Y_t^s < Y^*$)
 
-The parameter $\kappa$ measures supply responsiveness: $\partial Y_t / \partial(P_t - E_{t-1}P_t) = \kappa$.
+The parameter $\kappa$ measures supply responsiveness: if the actual price level exceeds the expected price level by one unit, output rises by $\kappa$ units. In calculus notation, $\partial Y_t / \partial(P_t - E_{t-1}P_t) = \kappa$.
 
 ## Aggregate demand
 
@@ -122,20 +130,63 @@ To complete the New Classical model, aggregate demand links output to nominal mo
 $$Y_t^d = \gamma + M_t - P_t,$$
 where $M_t$ is nominal money and $\gamma$ captures exogenous demand shifts.
 
+This is a reduced-form aggregate demand equation. Since $M_t - P_t$ is the log of real money balances, the equation says that demand is higher when the real money stock is higher. The parameter $\gamma$ collects other influences on demand, such as velocity or autonomous spending.
+
 Agents know structural parameters $\gamma$, $\kappa$, and natural output $Y^*$.
 
 ## Solving the model: the role of $\kappa$
 
-Equilibrium: $Y_t^s = Y_t^d = Y_t$. Combining LAS and AD:
+Equilibrium requires supply to equal demand:
+$$Y_t^s = Y_t^d = Y_t.$$
+
+Substitute the two equations into equilibrium:
+$$Y_t - Y^* = \kappa(P_t - E_{t-1}P_t),$$
+$$Y_t = \gamma + M_t - P_t.$$
+
+The logic is easiest to see in three steps.
 
 1. Under rational expectations:
+$$E_{t-1}Y_t = Y^*.$$
+
+Why? Taking expectations of the LAS equation one period earlier gives:
+$$E_{t-1}(Y_t - Y^*) = \kappa E_{t-1}(P_t - E_{t-1}P_t).$$
+Because $E_{t-1}P_t$ is already known at time $t-1$, the expected price surprise is zero:
+$$E_{t-1}(P_t - E_{t-1}P_t) = 0.$$
+So:
 $$E_{t-1}Y_t = Y^*.$$
 
 2. Output deviations depend only on monetary surprises:
 $$Y_t - Y^* = \frac{\kappa}{1+\kappa}(M_t - E_{t-1}M_t).$$
 
+To derive this, first use AD to write price as:
+$$P_t = \gamma + M_t - Y_t.$$
+
+Substitute this into LAS:
+$$Y_t - Y^* = \kappa[(\gamma + M_t - Y_t) - E_{t-1}P_t].$$
+
+Now take expectations at time $t-1$ using $E_{t-1}Y_t = Y^*$:
+$$Y^* = \gamma + E_{t-1}M_t - E_{t-1}P_t.$$
+
+Rearranging gives:
+$$E_{t-1}P_t = \gamma + E_{t-1}M_t - Y^*.$$
+
+Substitute this back into the LAS equation:
+$$Y_t - Y^* = \kappa[(\gamma + M_t - Y_t) - (\gamma + E_{t-1}M_t - Y^*)].$$
+
+Simplifying:
+$$Y_t - Y^* = \kappa[(M_t - E_{t-1}M_t) - (Y_t - Y^*)].$$
+
+Collect terms in $Y_t - Y^*$:
+$$(1+\kappa)(Y_t - Y^*) = \kappa(M_t - E_{t-1}M_t).$$
+
+Hence:
+$$Y_t - Y^* = \frac{\kappa}{1+\kappa}(M_t - E_{t-1}M_t).$$
+
 3. Price surprises scale with monetary surprises:
 $$P_t - E_{t-1}P_t = \frac{1}{1+\kappa}(M_t - E_{t-1}M_t).$$
+
+This follows directly from the LAS equation. Divide the output result in step 2 by $\kappa$:
+$$P_t - E_{t-1}P_t = \frac{Y_t - Y^*}{\kappa} = \frac{1}{1+\kappa}(M_t - E_{t-1}M_t).$$
 
 Interpretation: larger $\kappa$ means output responds more, prices respond less; smaller $\kappa$ reverses this. The Lucas supply slope (P on vertical axis, Y horizontal) is proportional to $1/\kappa$.
 
@@ -152,11 +203,14 @@ $$Y_t - Y^* = 0.$$
 
 ## Systematic rules versus random disturbances
 
+The key distinction in the New Classical model is between a policy rule that agents can anticipate and a monetary disturbance that arrives as a surprise. If policy is predictable, expectations adjust in advance and output stays at potential.
+
+The figure contrasts those two cases. The red AD curve represents the predictable-policy case, where equilibrium remains at $Y^*$. The green AD curve represents an unexpected monetary expansion, which temporarily shifts demand and moves output above potential.
 
 ```{r}
 #| label: fig-predictable-unpredictable
-#| fig-cap: "Policy predictability determines whether output effects are temporary."
-#| fig-alt: "Two equilibrium outcomes: one at Y=Y* (predictable), one at Y>Y* (surprise)."
+#| fig-cap: "Predictable monetary policy leaves output at potential because the AD curve intersects Lucas aggregate supply at the benchmark point $Y^*$. An unexpected monetary expansion shifts AD rightward and temporarily raises output above $Y^*$."
+#| fig-alt: "LAS with two AD curves: predictable policy intersects at Y star, while an unexpected monetary shock shifts AD right and raises output above Y star."
 #| fig-width: 8
 #| fig-height: 5
 
@@ -166,41 +220,66 @@ Y <- seq(3, 9, length.out = 150)
 Y_star <- 6
 kappa <- 1.5
 E_P <- 5
+ad_slope <- 0.5
 
 P_LAS <- E_P + (1/kappa) * (Y - Y_star)
-P_AD_initial <- 7 - 0.5 * Y
-P_AD_after <- 7.8 - 0.5 * Y
+
+Y_eq_1 <- Y_star
+P_eq_1 <- E_P
+Y_eq_2 <- 6.5
+P_eq_2 <- E_P + (1/kappa) * (Y_eq_2 - Y_star)
+
+P_AD_initial <- (P_eq_1 + ad_slope * Y_eq_1) - ad_slope * Y
+P_AD_after <- (P_eq_2 + ad_slope * Y_eq_2) - ad_slope * Y
 
 df <- data.frame(
   Y = c(Y, Y, Y),
   P = c(P_LAS, P_AD_initial, P_AD_after),
-  Curve = c(rep("LAS", 150), rep("AD (initial)", 150), rep("AD (shocked)", 150))
+  Curve = c(rep("LAS", 150), rep("AD (predictable)", 150), rep("AD (surprise shock)", 150))
 )
-
-Y_eq_1 <- 5
-P_eq_1 <- E_P + (1/kappa) * (Y_eq_1 - Y_star)
-Y_eq_2 <- 6.5
-P_eq_2 <- E_P + (1/kappa) * (Y_eq_2 - Y_star)
 
 ggplot(df, aes(x = Y, y = P, color = Curve)) +
   geom_line(linewidth = 1.1) +
+  geom_vline(xintercept = Y_star, color = "gray45", linetype = "dashed",
+             linewidth = 0.8, alpha = 0.7) +
   geom_point(aes(x = Y_eq_1, y = P_eq_1), color = "darkred", size = 3, inherit.aes = FALSE) +
   geom_point(aes(x = Y_eq_2, y = P_eq_2), color = "darkgreen", size = 3, inherit.aes = FALSE) +
-  scale_color_manual(values = c("LAS" = "#1f77b4", "AD (initial)" = "#d62728", "AD (shocked)" = "#2ca02c")) +
+  annotate("text", x = 8.5, y = 6.75, label = "LAS",
+           color = "#1f77b4", fontface = "bold", size = 4.5) +
+  annotate("text", x = 3.35, y = 5.25, label = "AD (predictable)",
+           color = "#d62728", fontface = "bold", hjust = 0, size = 4) +
+  annotate("text", x = 3.2, y = 6.15, label = "AD (surprise shock)",
+           color = "#2ca02c", fontface = "bold", hjust = 0, size = 4) +
+  annotate("label", x = 5.35, y = 5.25,
+           label = "Predictable policy:\nY = Y*",
+           size = 3.5, fill = "white", label.size = 0.2) +
+  annotate("label", x = 7.35, y = 5.55,
+           label = "Unexpected shock:\nY > Y* temporarily",
+           size = 3.5, fill = "white", label.size = 0.2) +
+  annotate("text", x = Y_star + 0.08, y = 2.85, label = "Y*",
+           color = "gray35", fontface = "bold", size = 4) +
+  scale_color_manual(values = c("LAS" = "#1f77b4",
+                                "AD (predictable)" = "#d62728",
+                                "AD (surprise shock)" = "#2ca02c")) +
   labs(x = "Output (Y)", y = "Price Level (P)",
-       title = "Monetary Policy Shocks: Role of Expectation Formation",
+       title = "Policy Predictability and Temporary Output Effects",
        color = "") +
-  theme_minimal() +
-  theme(legend.position = "bottom", plot.title = element_text(face = "bold"))
+  coord_cartesian(xlim = c(3, 9.3), ylim = c(2.8, 7.2), clip = "off") +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none", plot.title = element_text(face = "bold"))
 ```
 
-Sharp distinction: (i) predictable rule-like policy vs. (ii) random disturbances.
+The figure makes the contrast explicit: predictable policy leaves the economy at $Y^*$, whereas an unexpected disturbance shifts AD and temporarily pushes output away from potential.
 
 Money supply process:
 $$M_t = (1 + g_M)M_{t-1} + u_t,$$
-where $u_t$ is white noise ($E_{t-1}u_t = 0$).
+where $g_M$ is the systematic growth rate of money and $u_t$ is a random monetary shock. The shock is white noise, so it has zero expected value conditional on information available in period $t-1$:
+$$E_{t-1}u_t = 0.$$
 
-Then: $E_{t-1}M_t = (1 + g_M)M_{t-1}$, so $M_t - E_{t-1}M_t = u_t$.
+Then:
+$$E_{t-1}M_t = (1 + g_M)M_{t-1},$$
+because the predictable part of money growth is known one period in advance and only $u_t$ is unforecastable. Therefore:
+$$M_t - E_{t-1}M_t = u_t.$$
 
 Output deviations:
 $$Y_t - Y^* = \frac{\kappa}{1+\kappa}u_t.$$
@@ -209,11 +288,14 @@ $$Y_t - Y^* = \frac{\kappa}{1+\kappa}u_t.$$
 
 ## Why deliberate unpredictability is not recommended
 
+Even if monetary surprises can move output temporarily, that does not imply central banks should try to engineer surprise as a strategy. The New Classical argument runs in the opposite direction: frequent unpredictability degrades the information content of prices and makes supply less responsive.
+
+The figure below illustrates that logic. Under a stable policy regime, firms treat price movements as relatively informative, so the Lucas aggregate supply curve is flatter. Under a volatile policy regime, firms discount price movements as noise, the effective value of $\kappa$ falls, and the LAS curve becomes steeper.
 
 ```{r}
 #| label: fig-volatility-effect
-#| fig-cap: "Higher policy volatility steepens Lucas supply through information effects."
-#| fig-alt: "Steeper LAS (lower kappa) under high policy volatility versus flatter LAS (high kappa) under stability."
+#| fig-cap: "Higher policy volatility steepens Lucas aggregate supply through information effects. With stable policy, firms respond more to price signals and the LAS curve is flatter. With volatile policy, firms discount those signals, so the LAS curve becomes steeper."
+#| fig-alt: "Two Lucas aggregate supply curves through the benchmark point: a flatter curve under stable policy and a steeper curve under volatile policy."
 #| fig-width: 7
 #| fig-height: 5
 
@@ -239,13 +321,27 @@ df <- data.frame(
 ggplot(df, aes(x = Y, y = P, color = Regime)) +
   geom_line(linewidth = 1.2) +
   geom_vline(xintercept = Y_star, color = "gray", linetype = "dotted", alpha = 0.5) +
+  geom_hline(yintercept = E_P, color = "gray", linetype = "dotted", alpha = 0.5) +
+  geom_point(aes(x = Y_star, y = E_P), color = "black", size = 3, inherit.aes = FALSE) +
+  annotate("text", x = 8.65, y = 6.05, label = "Stable policy:\nflatter LAS",
+           color = "#2ca02c", fontface = "bold", hjust = 0, size = 4) +
+  annotate("text", x = 8.15, y = 8.7, label = "Volatile policy:\nsteeper LAS",
+           color = "#d62728", fontface = "bold", hjust = 0, size = 4) +
+  annotate("label", x = 6.55, y = 5.55,
+           label = "Benchmark:\nY = Y* and P = E[P]",
+           size = 3.5, fill = "white", label.size = 0.2) +
+  annotate("text", x = Y_star + 0.08, y = 0.35, label = "Y*",
+           color = "gray35", fontface = "bold", size = 4) +
+  annotate("text", x = 2.1, y = E_P + 0.14, label = "Expected price E[P]",
+           color = "gray35", fontface = "bold", hjust = 0, size = 3.7) +
   scale_color_manual(values = c("Stable policy (kappa high)" = "#2ca02c",
                                  "Volatile policy (kappa low)" = "#d62728")) +
   labs(x = "Output (Y)", y = "Price Level (P)",
        title = "The Boy Who Cried Wolf: Policy Volatility and Supply Responsiveness",
        color = "Policy regime") +
-  theme_minimal() +
-  theme(legend.position = "bottom", plot.title = element_text(face = "bold"))
+  coord_cartesian(xlim = c(2, 10.5), ylim = c(0, 10.5), clip = "off") +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "none", plot.title = element_text(face = "bold"))
 ```
 
 The model should not justify randomness. Two reasons:

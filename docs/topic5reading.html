@@ -555,14 +555,15 @@ window.Quarto = {
 <h3 data-number="1.1.1" class="anchored" data-anchor-id="adaptive-expectations"><span class="header-section-number">1.1.1</span> Adaptive expectations</h3>
 <p>Adaptive expectations operate as a trial-and-error forecasting rule where agents update forecasts using past observed outcomes:</p>
 <p>Price expectations: <span class="math inline">\(E_{t-1}P_t = f(P_{t-1}, P_{t-2}, ...)\)</span></p>
-<p>A common error-correction form is: <span class="math display">\[\pi_t^e = \pi_{t-1}^e + \lambda(\pi_{t-1} - \pi_{t-1}^e), \quad 0 &lt; \lambda \le 1.\]</span></p>
+<p>A common error-correction form for expected inflation is: <span class="math display">\[\pi_t^e = \pi_{t-1}^e + \lambda(\pi_{t-1} - \pi_{t-1}^e), \quad 0 &lt; \lambda \le 1.\]</span></p>
+<p>Here, <span class="math inline">\(\pi_t^e\)</span> is expected inflation in period <span class="math inline">\(t\)</span>, <span class="math inline">\(\pi_{t-1}\)</span> is actual inflation in period <span class="math inline">\(t-1\)</span>, and <span class="math inline">\(\lambda\)</span> measures how quickly agents revise their forecast after making an error.</p>
 <p>Adaptive expectations permit systematic forecast errors during regime changes, creating temporary money illusion and thus temporary real effects.</p>
 </section>
 <section id="rational-expectations" class="level3" data-number="1.1.2">
 <h3 data-number="1.1.2" class="anchored" data-anchor-id="rational-expectations"><span class="header-section-number">1.1.2</span> Rational expectations</h3>
 <p>Rational expectations are defined by three criteria: (i) forecasts use the true economic model (agents know the economy’s structure), (ii) forecasts condition on all available information, and (iii) forecast errors are purely random—systematic errors are eliminated.</p>
 <p>In classical formulation: expectations are “the same as the predictions of the relevant economic theory,” and the economy does not waste information.</p>
-<p>Model-consistent forecasting: <span class="math display">\[E_{t-1}P_t = E(P_t \mid I_{t-1}),\]</span> where <span class="math inline">\(I_{t-1}\)</span> is the information set at time <span class="math inline">\(t-1\)</span>.</p>
+<p>Model-consistent forecasting: <span class="math display">\[E_{t-1}P_t = E(P_t \mid I_{t-1}),\]</span> where <span class="math inline">\(I_{t-1}\)</span> is the information set at time <span class="math inline">\(t-1\)</span>. In words: the expectation formed in period <span class="math inline">\(t-1\)</span> is the best model-consistent forecast of the price level in period <span class="math inline">\(t\)</span>, using all information available at the time the forecast is made.</p>
 <p>If workers have access to unbiased forecasts, predictable policy loses its ability to manipulate perceived real wages and thus loses its ability to shift real output, even in the short run.</p>
 </section>
 </section>
@@ -590,23 +591,41 @@ Figure&nbsp;1: Lucas aggregate supply curve. The benchmark point is where the ac
 <p>In the figure, the black point marks the benchmark equilibrium on the supply side where expectations are fulfilled: <span class="math inline">\(P_t = E_{t-1}P_t\)</span> and therefore <span class="math inline">\(Y_t = Y^*\)</span>.</p>
 <p><strong>Lucas aggregate supply (LAS):</strong> Output deviates from potential only when the actual price level differs from the price level that firms and workers expected one period earlier: <span class="math display">\[Y_t^s - Y^* = \kappa(P_t - E_{t-1}P_t).\]</span></p>
 <p>Lucas (1972) derives this in a market-clearing framework with optimizing agents.</p>
+<p>Each term has a clear economic meaning: - <span class="math inline">\(Y_t^s\)</span> is actual output supplied in period <span class="math inline">\(t\)</span> - <span class="math inline">\(Y^*\)</span> is potential or natural output - <span class="math inline">\(P_t - E_{t-1}P_t\)</span> is the unexpected part of the price level - <span class="math inline">\(\kappa\)</span> measures how strongly output responds to that price surprise</p>
 <p>Interpretation in the diagram: - If <span class="math inline">\(P_t &gt; E_{t-1}P_t\)</span>: the economy moves up along the LAS curve and output rises above potential (<span class="math inline">\(Y_t^s &gt; Y^*\)</span>) - If <span class="math inline">\(P_t = E_{t-1}P_t\)</span>: the economy stays at the benchmark point, so output remains at potential (<span class="math inline">\(Y_t^s = Y^*\)</span>) - If <span class="math inline">\(P_t &lt; E_{t-1}P_t\)</span>: the economy moves down along the LAS curve and output falls below potential (<span class="math inline">\(Y_t^s &lt; Y^*\)</span>)</p>
-<p>The parameter <span class="math inline">\(\kappa\)</span> measures supply responsiveness: <span class="math inline">\(\partial Y_t / \partial(P_t - E_{t-1}P_t) = \kappa\)</span>.</p>
+<p>The parameter <span class="math inline">\(\kappa\)</span> measures supply responsiveness: if the actual price level exceeds the expected price level by one unit, output rises by <span class="math inline">\(\kappa\)</span> units. In calculus notation, <span class="math inline">\(\partial Y_t / \partial(P_t - E_{t-1}P_t) = \kappa\)</span>.</p>
 </section>
 <section id="aggregate-demand" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="aggregate-demand"><span class="header-section-number">2.2</span> Aggregate demand</h2>
 <p>To complete the New Classical model, aggregate demand links output to nominal money and the price level.</p>
 <p><strong>Aggregate demand (AD):</strong> In log form: <span class="math display">\[Y_t^d = \gamma + M_t - P_t,\]</span> where <span class="math inline">\(M_t\)</span> is nominal money and <span class="math inline">\(\gamma\)</span> captures exogenous demand shifts.</p>
+<p>This is a reduced-form aggregate demand equation. Since <span class="math inline">\(M_t - P_t\)</span> is the log of real money balances, the equation says that demand is higher when the real money stock is higher. The parameter <span class="math inline">\(\gamma\)</span> collects other influences on demand, such as velocity or autonomous spending.</p>
 <p>Agents know structural parameters <span class="math inline">\(\gamma\)</span>, <span class="math inline">\(\kappa\)</span>, and natural output <span class="math inline">\(Y^*\)</span>.</p>
 </section>
 <section id="solving-the-model-the-role-of-kappa" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="solving-the-model-the-role-of-kappa"><span class="header-section-number">2.3</span> Solving the model: the role of <span class="math inline">\(\kappa\)</span></h2>
-<p>Equilibrium: <span class="math inline">\(Y_t^s = Y_t^d = Y_t\)</span>. Combining LAS and AD:</p>
+<p>Equilibrium requires supply to equal demand: <span class="math display">\[Y_t^s = Y_t^d = Y_t.\]</span></p>
+<p>Substitute the two equations into equilibrium: <span class="math display">\[Y_t - Y^* = \kappa(P_t - E_{t-1}P_t),\]</span> <span class="math display">\[Y_t = \gamma + M_t - P_t.\]</span></p>
+<p>The logic is easiest to see in three steps.</p>
 <ol type="1">
-<li><p>Under rational expectations: <span class="math display">\[E_{t-1}Y_t = Y^*.\]</span></p></li>
-<li><p>Output deviations depend only on monetary surprises: <span class="math display">\[Y_t - Y^* = \frac{\kappa}{1+\kappa}(M_t - E_{t-1}M_t).\]</span></p></li>
-<li><p>Price surprises scale with monetary surprises: <span class="math display">\[P_t - E_{t-1}P_t = \frac{1}{1+\kappa}(M_t - E_{t-1}M_t).\]</span></p></li>
+<li>Under rational expectations: <span class="math display">\[E_{t-1}Y_t = Y^*.\]</span></li>
 </ol>
+<p>Why? Taking expectations of the LAS equation one period earlier gives: <span class="math display">\[E_{t-1}(Y_t - Y^*) = \kappa E_{t-1}(P_t - E_{t-1}P_t).\]</span> Because <span class="math inline">\(E_{t-1}P_t\)</span> is already known at time <span class="math inline">\(t-1\)</span>, the expected price surprise is zero: <span class="math display">\[E_{t-1}(P_t - E_{t-1}P_t) = 0.\]</span> So: <span class="math display">\[E_{t-1}Y_t = Y^*.\]</span></p>
+<ol start="2" type="1">
+<li>Output deviations depend only on monetary surprises: <span class="math display">\[Y_t - Y^* = \frac{\kappa}{1+\kappa}(M_t - E_{t-1}M_t).\]</span></li>
+</ol>
+<p>To derive this, first use AD to write price as: <span class="math display">\[P_t = \gamma + M_t - Y_t.\]</span></p>
+<p>Substitute this into LAS: <span class="math display">\[Y_t - Y^* = \kappa[(\gamma + M_t - Y_t) - E_{t-1}P_t].\]</span></p>
+<p>Now take expectations at time <span class="math inline">\(t-1\)</span> using <span class="math inline">\(E_{t-1}Y_t = Y^*\)</span>: <span class="math display">\[Y^* = \gamma + E_{t-1}M_t - E_{t-1}P_t.\]</span></p>
+<p>Rearranging gives: <span class="math display">\[E_{t-1}P_t = \gamma + E_{t-1}M_t - Y^*.\]</span></p>
+<p>Substitute this back into the LAS equation: <span class="math display">\[Y_t - Y^* = \kappa[(\gamma + M_t - Y_t) - (\gamma + E_{t-1}M_t - Y^*)].\]</span></p>
+<p>Simplifying: <span class="math display">\[Y_t - Y^* = \kappa[(M_t - E_{t-1}M_t) - (Y_t - Y^*)].\]</span></p>
+<p>Collect terms in <span class="math inline">\(Y_t - Y^*\)</span>: <span class="math display">\[(1+\kappa)(Y_t - Y^*) = \kappa(M_t - E_{t-1}M_t).\]</span></p>
+<p>Hence: <span class="math display">\[Y_t - Y^* = \frac{\kappa}{1+\kappa}(M_t - E_{t-1}M_t).\]</span></p>
+<ol start="3" type="1">
+<li>Price surprises scale with monetary surprises: <span class="math display">\[P_t - E_{t-1}P_t = \frac{1}{1+\kappa}(M_t - E_{t-1}M_t).\]</span></li>
+</ol>
+<p>This follows directly from the LAS equation. Divide the output result in step 2 by <span class="math inline">\(\kappa\)</span>: <span class="math display">\[P_t - E_{t-1}P_t = \frac{Y_t - Y^*}{\kappa} = \frac{1}{1+\kappa}(M_t - E_{t-1}M_t).\]</span></p>
 <p>Interpretation: larger <span class="math inline">\(\kappa\)</span> means output responds more, prices respond less; smaller <span class="math inline">\(\kappa\)</span> reverses this. The Lucas supply slope (P on vertical axis, Y horizontal) is proportional to <span class="math inline">\(1/\kappa\)</span>.</p>
 <p>When policy is volatile, agents discount price movements as noise (“boy who cried wolf”), lowering effective <span class="math inline">\(\kappa\)</span> and steepening LAS.</p>
 </section>
@@ -620,37 +639,41 @@ Figure&nbsp;1: Lucas aggregate supply curve. The benchmark point is where the ac
 </section>
 <section id="systematic-rules-versus-random-disturbances" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="systematic-rules-versus-random-disturbances"><span class="header-section-number">3.2</span> Systematic rules versus random disturbances</h2>
+<p>The key distinction in the New Classical model is between a policy rule that agents can anticipate and a monetary disturbance that arrives as a surprise. If policy is predictable, expectations adjust in advance and output stays at potential.</p>
+<p>The figure contrasts those two cases. The red AD curve represents the predictable-policy case, where equilibrium remains at <span class="math inline">\(Y^*\)</span>. The green AD curve represents an unexpected monetary expansion, which temporarily shifts demand and moves output above potential.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-predictable-unpredictable" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two equilibrium outcomes: one at Y=Y* (predictable), one at Y>Y* (surprise).">
+<div id="fig-predictable-unpredictable" class="quarto-float quarto-figure quarto-figure-center anchored" alt="LAS with two AD curves: predictable policy intersects at Y star, while an unexpected monetary shock shifts AD right and raises output above Y star.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-predictable-unpredictable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="topic5reading_files/figure-html/fig-predictable-unpredictable-1.png" class="img-fluid figure-img" alt="Two equilibrium outcomes: one at Y=Y* (predictable), one at Y>Y* (surprise)." width="768">
+<img src="topic5reading_files/figure-html/fig-predictable-unpredictable-1.png" class="img-fluid figure-img" alt="LAS with two AD curves: predictable policy intersects at Y star, while an unexpected monetary shock shifts AD right and raises output above Y star." width="768">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-predictable-unpredictable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: Policy predictability determines whether output effects are temporary.
+Figure&nbsp;2: Predictable monetary policy leaves output at potential because the AD curve intersects Lucas aggregate supply at the benchmark point <span class="math inline">\(Y^*\)</span>. An unexpected monetary expansion shifts AD rightward and temporarily raises output above <span class="math inline">\(Y^*\)</span>.
 </figcaption>
 </figure>
 </div>
 </div>
 </div>
-<p>Sharp distinction: (i) predictable rule-like policy vs.&nbsp;(ii) random disturbances.</p>
-<p>Money supply process: <span class="math display">\[M_t = (1 + g_M)M_{t-1} + u_t,\]</span> where <span class="math inline">\(u_t\)</span> is white noise (<span class="math inline">\(E_{t-1}u_t = 0\)</span>).</p>
-<p>Then: <span class="math inline">\(E_{t-1}M_t = (1 + g_M)M_{t-1}\)</span>, so <span class="math inline">\(M_t - E_{t-1}M_t = u_t\)</span>.</p>
+<p>The figure makes the contrast explicit: predictable policy leaves the economy at <span class="math inline">\(Y^*\)</span>, whereas an unexpected disturbance shifts AD and temporarily pushes output away from potential.</p>
+<p>Money supply process: <span class="math display">\[M_t = (1 + g_M)M_{t-1} + u_t,\]</span> where <span class="math inline">\(g_M\)</span> is the systematic growth rate of money and <span class="math inline">\(u_t\)</span> is a random monetary shock. The shock is white noise, so it has zero expected value conditional on information available in period <span class="math inline">\(t-1\)</span>: <span class="math display">\[E_{t-1}u_t = 0.\]</span></p>
+<p>Then: <span class="math display">\[E_{t-1}M_t = (1 + g_M)M_{t-1},\]</span> because the predictable part of money growth is known one period in advance and only <span class="math inline">\(u_t\)</span> is unforecastable. Therefore: <span class="math display">\[M_t - E_{t-1}M_t = u_t.\]</span></p>
 <p>Output deviations: <span class="math display">\[Y_t - Y^* = \frac{\kappa}{1+\kappa}u_t.\]</span></p>
 <p><strong>Only randomness affects output.</strong> Predictable money growth affects the price level, not real activity.</p>
 </section>
 <section id="why-deliberate-unpredictability-is-not-recommended" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="why-deliberate-unpredictability-is-not-recommended"><span class="header-section-number">3.3</span> Why deliberate unpredictability is not recommended</h2>
+<p>Even if monetary surprises can move output temporarily, that does not imply central banks should try to engineer surprise as a strategy. The New Classical argument runs in the opposite direction: frequent unpredictability degrades the information content of prices and makes supply less responsive.</p>
+<p>The figure below illustrates that logic. Under a stable policy regime, firms treat price movements as relatively informative, so the Lucas aggregate supply curve is flatter. Under a volatile policy regime, firms discount price movements as noise, the effective value of <span class="math inline">\(\kappa\)</span> falls, and the LAS curve becomes steeper.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="fig-volatility-effect" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Steeper LAS (lower kappa) under high policy volatility versus flatter LAS (high kappa) under stability.">
+<div id="fig-volatility-effect" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Two Lucas aggregate supply curves through the benchmark point: a flatter curve under stable policy and a steeper curve under volatile policy.">
 <figure class="quarto-float quarto-float-fig figure">
 <div aria-describedby="fig-volatility-effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="topic5reading_files/figure-html/fig-volatility-effect-1.png" class="img-fluid figure-img" alt="Steeper LAS (lower kappa) under high policy volatility versus flatter LAS (high kappa) under stability." width="672">
+<img src="topic5reading_files/figure-html/fig-volatility-effect-1.png" class="img-fluid figure-img" alt="Two Lucas aggregate supply curves through the benchmark point: a flatter curve under stable policy and a steeper curve under volatile policy." width="672">
 </div>
 <figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-volatility-effect-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;3: Higher policy volatility steepens Lucas supply through information effects.
+Figure&nbsp;3: Higher policy volatility steepens Lucas aggregate supply through information effects. With stable policy, firms respond more to price signals and the LAS curve is flatter. With volatile policy, firms discount those signals, so the LAS curve becomes steeper.
 </figcaption>
 </figure>
 </div>
