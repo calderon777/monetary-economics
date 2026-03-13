@@ -22,6 +22,7 @@ format:
         });
         </script>
 execute:
+  freeze: false
   echo: false
   warning: false
   message: false
@@ -40,16 +41,20 @@ qmd_base <- tools::file_path_sans_ext(qmd_name)  # e.g., "week1lecture"
 # Paths
 ppt_path <- file.path("ppt", ppt_filename)
 img_dir  <- file.path("ppt", paste0(qmd_base, "_png"))  # e.g., "ppt/week1lecture_png"
+png_stamp_path <- file.path(img_dir, "_source_mtime.txt")
+pdf_filename <- paste0(tools::file_path_sans_ext(ppt_filename), ".pdf")
+pdf_dir <- "pdf"
+pdf_dest <- file.path(pdf_dir, pdf_filename)
+pdf_stamp_path <- file.path(pdf_dir, paste0(tools::file_path_sans_ext(ppt_filename), "_source_mtime.txt"))
 
 # Create output directory
 dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(pdf_dir, recursive = TRUE, showWarnings = FALSE)
 ```
 
 ```{r export-pptx-to-png}
 #| include: false
 #| eval: true
-#| cache: true
-#| cache-extra: file.info(ppt_path)$mtime
 
 # Windows + PowerPoint only
 if (.Platform$OS.type != "windows") {
@@ -60,20 +65,26 @@ if (!file.exists(ppt_path)) {
   stop(paste("PPTX not found:", ppt_path))
 }
 
-# Clear old PNGs to avoid confusion (only in this lecture's folder)
-old <- list.files(img_dir, pattern = r"(\.(png|PNG)$)", full.names = TRUE)
-if (length(old)) {
-  file.remove(old)
+ppt_mtime <- unclass(file.info(ppt_path)$mtime)
+stored_png_mtime <- if (file.exists(png_stamp_path)) {
+  suppressWarnings(as.numeric(readLines(png_stamp_path, n = 1L, warn = FALSE)))
+} else {
+  NA_real_
 }
+pngs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+needs_png_export <- length(pngs) == 0 || is.na(stored_png_mtime) || !isTRUE(all.equal(stored_png_mtime, ppt_mtime))
 
-# Get absolute paths
-in_abs <- normalizePath(ppt_path, mustWork = TRUE)
-out_abs <- normalizePath(img_dir, mustWork = TRUE)
+if (needs_png_export) {
+  old <- list.files(img_dir, pattern = r"(\.(png|PNG)$)", full.names = TRUE)
+  if (length(old)) {
+    file.remove(old)
+  }
 
-# Create PowerShell script file
-ps_file <- file.path(tempdir(), "export_pptx.ps1")
+  in_abs <- normalizePath(ppt_path, mustWork = TRUE)
+  out_abs <- normalizePath(img_dir, mustWork = TRUE)
+  ps_file <- file.path(tempdir(), "export_pptx.ps1")
 
-ps_code <- sprintf('
+  ps_code <- sprintf('
 $in = "%s"
 $out = "%s"
 
@@ -98,27 +109,27 @@ $ppt.Quit()
 Write-Host "Export complete"
 ', in_abs, out_abs)
 
-writeLines(ps_code, ps_file)
+  writeLines(ps_code, ps_file)
 
-# Run PowerShell script file
-result <- system2("powershell", 
-                  args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_file),
-                  stdout = TRUE, stderr = TRUE)
+  result <- system2("powershell",
+                    args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_file),
+                    stdout = TRUE, stderr = TRUE)
 
-# Clean up temp file
-file.remove(ps_file)
+  file.remove(ps_file)
 
-# Verify output
-pngs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+  pngs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
 
-if (length(pngs) == 0) {
-  stop(paste(
-    "PowerPoint produced no PNGs.\n",
-    "Input:", in_abs, "\n",
-    "Output:", out_abs, "\n",
-    "Error:\n",
-    paste(result, collapse = "\n")
-  ))
+  if (length(pngs) == 0) {
+    stop(paste(
+      "PowerPoint produced no PNGs.\n",
+      "Input:", in_abs, "\n",
+      "Output:", out_abs, "\n",
+      "Error:\n",
+      paste(result, collapse = "\n")
+    ))
+  }
+
+  writeLines(as.character(ppt_mtime), png_stamp_path)
 }
 ```
 
@@ -127,15 +138,22 @@ if (length(pngs) == 0) {
 #| eval: true
 
 # Export PPTX to PDF for download
-pdf_filename <- paste0(tools::file_path_sans_ext(ppt_filename), ".pdf")
 pdf_path <- file.path("ppt", pdf_filename)
 pdf_abs <- normalizePath(dirname(pdf_path), mustWork = TRUE)
 pdf_full <- file.path(pdf_abs, pdf_filename)
+stored_pdf_mtime <- if (file.exists(pdf_stamp_path)) {
+  suppressWarnings(as.numeric(readLines(pdf_stamp_path, n = 1L, warn = FALSE)))
+} else {
+  NA_real_
+}
+needs_pdf_export <- !file.exists(pdf_dest) || is.na(stored_pdf_mtime) || !isTRUE(all.equal(stored_pdf_mtime, ppt_mtime))
 
-# Create PowerShell script for PDF export
-ps_pdf_file <- file.path(tempdir(), "export_pdf.ps1")
+in_abs <- normalizePath(ppt_path, mustWork = TRUE)
 
-ps_pdf_code <- sprintf('
+if (needs_pdf_export) {
+  ps_pdf_file <- file.path(tempdir(), "export_pdf.ps1")
+
+  ps_pdf_code <- sprintf('
 $in = "%s"
 $out = "%s"
 
@@ -158,23 +176,22 @@ $ppt.Quit()
 Write-Host "PDF export complete"
 ', in_abs, pdf_full)
 
-writeLines(ps_pdf_code, ps_pdf_file)
+  writeLines(ps_pdf_code, ps_pdf_file)
 
-# Run PowerShell script
-result_pdf <- system2("powershell", 
-                      args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_pdf_file),
-                      stdout = TRUE, stderr = TRUE)
+  result_pdf <- system2("powershell",
+                        args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_pdf_file),
+                        stdout = TRUE, stderr = TRUE)
 
-# Clean up
-file.remove(ps_pdf_file)
+  file.remove(ps_pdf_file)
 
-# Verify PDF was created and copy to pdf folder
-if (file.exists(pdf_path)) {
-  pdf_dest <- file.path("pdf", pdf_filename)
-  dir.create("pdf", recursive = TRUE, showWarnings = FALSE)
+  if (file.exists(pdf_path)) {
+    file.copy(pdf_path, pdf_dest, overwrite = TRUE)
+    writeLines(as.character(ppt_mtime), pdf_stamp_path)
+  } else {
+    warning(paste("PDF export may have failed:", paste(result_pdf, collapse = "\n")))
+  }
+} else if (file.exists(pdf_path) && !file.exists(pdf_dest)) {
   file.copy(pdf_path, pdf_dest, overwrite = TRUE)
-} else {
-  warning(paste("PDF export may have failed:", paste(result_pdf, collapse = "\n")))
 }
 ```
 
