@@ -54,6 +54,8 @@ where $I_{t-1}$ is the information set at time $t-1$. In words: the expectation 
 
 If workers have access to unbiased forecasts, predictable policy loses its ability to manipulate perceived real wages and thus loses its ability to shift real output, even in the short run.
 
+This model-consistent view of expectations follows Muth's original formulation of rational expectations [@muth1961RationalExpectations].
+
 # The New Classical model of output and prices
 
 ## Lucas aggregate supply
@@ -108,6 +110,8 @@ In the figure, the black point marks the benchmark equilibrium on the supply sid
 $$Y_t^s - Y^* = \kappa(P_t - E_{t-1}P_t).$$
 
 Lucas (1972) derives this in a market-clearing framework with optimizing agents.
+
+The key mechanism is that producers may temporarily mistake a general price movement for a relative-price signal, so output responds only to the unexpected component of prices [@lucas1972NeutralityMoney].
 
 Each term has a clear economic meaning:
 - $Y_t^s$ is actual output supplied in period $t$
@@ -201,6 +205,8 @@ With rational expectations and market clearing, *systematic and predictable* mon
 Formally, if $M_t = E_{t-1}M_t$ (policy is forecastable):
 $$Y_t - Y^* = 0.$$
 
+This policy-ineffectiveness result is the classic implication of the rational-expectations New Classical model [@sargentWallace1976EconomicPolicy].
+
 ## Systematic rules versus random disturbances
 
 The key distinction in the New Classical model is between a policy rule that agents can anticipate and a monetary disturbance that arrives as a surprise. If policy is predictable, expectations adjust in advance and output stays at potential.
@@ -290,6 +296,8 @@ $$Y_t - Y^* = \frac{\kappa}{1+\kappa}u_t.$$
 
 Even if monetary surprises can move output temporarily, that does not imply central banks should try to engineer surprise as a strategy. The New Classical argument runs in the opposite direction: frequent unpredictability degrades the information content of prices and makes supply less responsive.
 
+That logic follows directly from Lucas-style signal extraction: if policy becomes noisy, observed prices become less informative guides to relative scarcity [@lucas1972NeutralityMoney].
+
 The figure below illustrates that logic. Under a stable policy regime, firms treat price movements as relatively informative, so the Lucas aggregate supply curve is flatter. Under a volatile policy regime, firms discount price movements as noise, the effective value of $\kappa$ falls, and the LAS curve becomes steeper.
 
 ```{r}
@@ -369,11 +377,15 @@ In many economies, nominal wages are fixed by multi-year contracts. Even if dema
 
 This aligns with Fischer (1977): under wage rigidity, monetary rules interact with shock propagation even under rational expectations.
 
+Fischer's contribution was to show that nominal contracting can reopen a stabilisation role for monetary policy even when expectations are rational [@fischer1977LongTermContracts].
+
 Under symmetric information (no CB informational advantage), stabilisation works best for demand shocks; supply-side stabilisation requires informational asymmetry.
 
 ## Lucas critique and credibility
 
 The **Lucas critique**: policy-effect estimates from historical relationships are unreliable if decision rules shift with the regime. This motivates structural, microfounded models.
+
+That methodological point is central to the rules-versus-discretion literature and the broader New Classical research programme [@prescott1986TheoryAheadMeasurement].
 
 If agents form expectations rationally, **commitment and credibility** shape outcomes through expectations. Rules, strategy statements, and transparent communication are policy tools.
 
@@ -385,11 +397,15 @@ Time-inconsistency literature: policy is strategic interaction with rational age
 
 New Classical model disturbance: $M_t - E_{t-1}M_t$. Modern empirical work isolates surprise components using high-frequency financial data.
 
+This literature is effectively trying to measure the surprise term in the model directly rather than inferring it from slower-moving macroeconomic outcomes [@imf2024HighFrequencyMonetaryShocks].
+
 Recent IMF working paper: dataset of monetary policy shocks for 21 advanced and 8 emerging economies (2000–2022), using daily changes in interest rate swap rates around central bank announcements to identify unexpected policy shocks to the rate path. Maps directly to model: unexpected shocks are the empirical analogue of $u_t$.
 
 ## Credibility and anchored expectations in practice
 
 New Classical analysis makes credibility central. Modern CBs frame policy as expectations management.
+
+This is why modern strategy statements matter: they are part of the transmission mechanism because they shape how households, firms, and markets form expectations [@ecb2021StrategyStatement; @imf2024HighFrequencyMonetaryShocks].
 
 Federal Reserve: publishing its "Statement on Longer-Run Goals and Monetary Policy Strategy" helps the public understand the framework—matters for transparency, accountability, and effectiveness.
 
@@ -398,6 +414,8 @@ ECB (2021 strategy): symmetric 2% medium-term inflation aim; notes that effectiv
 IMF research: better-anchored expectations → less persistent inflation responses to shocks, reinforcing New Classical emphasis on credibility and expectations formation.
 
 ## Policy regime episodes
+
+The examples below are useful because they show that even when modern policy instruments differ from the simple money-supply rules in the model, expectation management and regime credibility remain central [@bojMonetaryPolicyHistory; @boj2024FrameworkChange; @ecb2014NegativeDepositPR; @boe2020MPCMarch19].
 
 **Bank of Japan:** reference timeline documents unconventional regimes from late 1990s onward (ZIRP 1999, QE from 2001). Explicitly lists "policy duration effect (forward guidance)" as part of ZIRP—an expectations-management concept compatible with New Classical theory.
 
@@ -432,7 +450,6 @@ Japan's 2024 framework change: QQE with yield curve control and negative rates j
 6. Using high-frequency monetary policy shock data from modern empirical work, explain how researchers operationalise "policy surprises." Why is this relevant to the New Classical policy-ineffectiveness result?
 
 ## References
-Key theoretical and policy sources cited in this reading include [@lucas1972NeutralityMoney; @muth1961RationalExpectations; @sargentWallace1976EconomicPolicy; @fischer1977LongTermContracts; @prescott1986TheoryAheadMeasurement; @imf2024HighFrequencyMonetaryShocks; @ecb2014NegativeDepositPR; @ecb2021StrategyStatement; @boe2020MPCMarch19; @boj2024FrameworkChange; @bojMonetaryPolicyHistory].
 
 ::: {#refs}
 :::
