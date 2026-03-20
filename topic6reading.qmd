@@ -130,12 +130,12 @@ But if the public believed $E_{-1}\pi=0$, the central bank faces an incentive to
 
 ## The central bank reaction function
 
-Holding $E_{-1}\pi$ fixed, the central bank minimizes the loss. The first-order condition implies the best response (reaction function):
+Holding $E_{-1}\pi$ fixed, the central bank minimizes the loss. This equation is obtained by differentiating the substituted loss function with respect to $\pi$ and then solving for $\pi$. The first-order condition implies the best response (reaction function):
 $$\pi = \frac{b\kappa\lambda}{a+b\kappa^2} + \frac{b\kappa^2}{a+b\kappa^2}E_{-1}\pi.$$
 
 In words, actual inflation is chosen as a weighted combination of two forces: the desire to push output above potential and the need to accommodate already-embedded inflation expectations.
 
-Because this is the most important derivation in the chapter, it helps to show the algebra explicitly.
+Because this is the most important derivation in the chapter, it helps to show the algebra explicitly. The steps below show how the first-order condition is derived from the loss function and then rearranged to isolate $\pi$.
 
 Start from the substituted loss:
 $$L = (a/2)\pi^2 + (b/2)(\kappa(\pi - E_{-1}\pi) - \lambda)^2.$$
