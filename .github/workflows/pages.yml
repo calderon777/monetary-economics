@@ -26,12 +26,6 @@ jobs:
       - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Set up Quarto
-        uses: quarto-dev/quarto-actions/setup@v2
-
-      - name: Render Quarto project
-        run: quarto render --to html
-
       - name: Disable Jekyll processing
         run: New-Item -ItemType File -Path docs/.nojekyll -Force
         shell: pwsh
