@@ -125,7 +125,7 @@ fetch_fed_target_midpoint <- function() {
 
 # Chapter overview and historical context
 
-By the early 1990s, a widely taught "monetary policy consensus" emerged in advanced economies: **monetary policy should prioritize price stability**, implemented by an **independent central bank** using a **short‑term policy interest rate**, with **communication and accountability** designed to anchor inflation expectations and reduce macroeconomic volatility. This view became closely associated with the "Great Moderation," the period of reduced volatility in output growth and inflation in many advanced economies from the mid‑1980s until the global financial crisis (Bernanke, 2004).
+By the early 1990s, a widely taught "monetary policy consensus" emerged in advanced economies: **monetary policy should prioritize price stability**, implemented by an **independent central bank** using a **short‑term policy interest rate**, with **communication and accountability** designed to anchor inflation expectations and reduce macroeconomic volatility. This view became closely associated with the "Great Moderation," the period of reduced volatility in output growth and inflation in many advanced economies from the mid‑1980s until the global financial crisis [@bernanke2004GreatModeration].
 
 In the UK, the political narrative of "stability" became highly salient. A famous statement often associated with this period is Gordon Brown's "no return to boom and bust," recorded in a 2006 Budget statement.
 
@@ -230,7 +230,7 @@ The consensus can be framed as a set of propositions that—by the 1990s and ear
 
 A central pillar of the consensus is a long‑run monetarist proposition: **persistent inflation is ultimately a monetary phenomenon**, in the practical sense that a central bank that sets the nominal anchor can, over time, determine the long‑run inflation rate.
 
-Modern central banks state this in policy‑framework documents. For example, the Federal Reserve's strategy statement explicitly notes that "the inflation rate over the longer run is primarily determined by monetary policy," and therefore the committee can specify a longer‑run inflation goal (Federal Reserve, 2025).
+Modern central banks state this in policy‑framework documents. For example, the Federal Reserve's strategy statement explicitly notes that "the inflation rate over the longer run is primarily determined by monetary policy," and therefore the committee can specify a longer‑run inflation goal [@frb2025LongerRunGoalsStatement].
 
 For undergraduates, you can interpret this as: in the long run, monetary policy cannot permanently raise real GDP growth, but it can deliver **low and stable inflation**, which improves decision-making and long-horizon planning.
 
@@ -744,7 +744,6 @@ Modern frameworks have experimented with "makeup" features that partially mimic 
 5. "If the Friedman rule implies optimal steady-state inflation should be around −2% to −3%, why don't central banks target that?" Discuss at least two concerns about very low or negative inflation targets in practice.
 
 ## References
-Sources used across this chapter include central bank strategy statements and timelines, foundational research, and policy-history references [@boe1995CredibilityMonetaryPolicy; @boe2009MPCAnnouncement; @boe2013MPCMinutesAug; @boe2019MPRInflationReportRename; @bojMonetaryPolicyHistory; @boj2016CurrentSituationFutureProspects; @bernanke2002EssaysGreatDepression; @bernanke2004GreatModeration; @bernankeMishkin2004ParadoxPolicyIneffectiveness; @bis2015NegativePolicyRates; @ecb2021StrategyStatement; @fedLSAP1200809Timeline; @fomc2020FAITStatement; @frb2025LongerRunGoalsStatement; @hmt2025MonetaryPolicyRemit; @imf2002ArgentinaSelectedIssues; @imfIEO2004ArgentinaEvaluation; @lewisMizen2000MonetaryEconomics; @svensson1999PriceLevelVsInflationTargeting; @ukParliament2006HansardBudgetStatement].
 
 ::: {#refs}
 :::

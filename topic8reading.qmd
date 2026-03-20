@@ -747,7 +747,6 @@ The episode permanently expanded what "monetary policy" means in practice: opera
 6. Discuss the trade-off between crisis intervention and moral hazard using one facility (PDCF, CPFF, or SLS) as your example.
 
 ## References
-Primary references for the GFC-period policy chronology and crisis tools in this chapter include BIS working papers, central bank press releases/minutes, and summary research studies [@allenMoessner2010BIS310; @borioDisyatat2009UMPAppraisal; @boe2007NorthernRockLiquiditySupport; @boe2008SpecialLiquidityScheme; @boe2009AssetPurchaseFacilityJan; @boe2009MPCMinutesMar; @boe2009MPCAnnouncement; @boe2009APFMayIncrease; @boe2009APFAugIncrease; @boe2009APFNovIncrease; @joyceEtAl2010QEWP393; @ecb2008TenderProcedureCorridor; @ecb2008CollateralFrameworkLiquidity; @ecb2009MonetaryPolicyDecisionsMay; @ecb2010CBPPCompleted; @ecb2010SMPMeasures; @frb2007CoordinatedLiquidityMeasures; @frb2008CPFFCreation; @fomc2008MinutesDec1516; @fomc2009MinutesMar1718; @mishkin2009NBER14678; @mishkin2011NBER16755].
 
 ::: {#refs}
 :::

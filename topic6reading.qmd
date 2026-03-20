@@ -25,11 +25,11 @@ execute:
 
 # Introduction and motivation
 
-The **time inconsistency problem** arises when a policy that is optimal when announced ("ex ante") is no longer optimal when it is time to implement it ("ex post"), because incentives change once private agents have acted on the announcement (Kydland & Prescott, 1977).
+The **time inconsistency problem** arises when a policy that is optimal when announced ("ex ante") is no longer optimal when it is time to implement it ("ex post"), because incentives change once private agents have acted on the announcement [@kydlandPrescott1977RulesRatherDiscretion].
 
 A simple non-monetary illustration is **building on a flood plain**. A government can credibly announce "no disaster relief" to deter risky construction. But if people build anyway and a flood occurs, political pressure makes it optimal to provide relief, so the original announcement is not carried out. The announcement was "optimal" at the start, but not credible when the time comes to act—so it fails to shape private behavior in the intended way.
 
-In monetary economics, time inconsistency is central because modern monetary policy works heavily through **expectations**. If the public believes a low-inflation plan, expected inflation falls; but once expectations are low, a policymaker who cares about output/employment may be tempted to create a surprise inflation to push output temporarily above potential. Anticipating this, rational agents discount (or ignore) overly ambitious low-inflation announcements, producing an equilibrium with **higher inflation but no sustained gain in output**—the classic **inflation bias** of discretion (Barro & Gordon, 1983).
+In monetary economics, time inconsistency is central because modern monetary policy works heavily through **expectations**. If the public believes a low-inflation plan, expected inflation falls; but once expectations are low, a policymaker who cares about output/employment may be tempted to create a surprise inflation to push output temporarily above potential. Anticipating this, rational agents discount (or ignore) overly ambitious low-inflation announcements, producing an equilibrium with **higher inflation but no sustained gain in output**—the classic **inflation bias** of discretion [@barroGordon1983RulesDiscretionReputation].
 
 This chapter replaces readings on credibility and reputation in monetary policy (mapping to Lewis & Mizen, Sections 10.3–10.6) by reconstructing and modernizing the theory and evidence using primary academic papers and official institutional sources.
 
@@ -37,10 +37,10 @@ This chapter replaces readings on credibility and reputation in monetary policy 
 
 By the end of this chapter, you should be able to:
 
-1) Explain why discretion can generate inflation bias even when the policymaker dislikes inflation (Kydland & Prescott, 1977; Barro & Gordon, 1983).
-2) Derive the **time-consistent** inflation rate in the benchmark model and interpret the roles of policy preferences and the Phillips/Lucas supply slope (Rogoff, 1985).
-3) Show how **reputation** in repeated interaction can support low inflation as an equilibrium—and why multiple equilibria (trust vs distrust) can exist (Barro & Gordon, 1983; Faust & Svensson, 2001).
-4) Evaluate institutional "commitment devices" in practice: **rules**, **central bank independence**, **conservative delegation**, **contracts/targets**, and **exchange-rate pegs** (Taylor, 1993; Rogoff, 1985; Walsh, 1995).
+1) Explain why discretion can generate inflation bias even when the policymaker dislikes inflation [@kydlandPrescott1977RulesRatherDiscretion; @barroGordon1983RulesDiscretionReputation].
+2) Derive the **time-consistent** inflation rate in the benchmark model and interpret the roles of policy preferences and the Phillips/Lucas supply slope [@rogoff1985OptimalDegreeCommitment].
+3) Show how **reputation** in repeated interaction can support low inflation as an equilibrium—and why multiple equilibria (trust vs distrust) can exist [@barroGordon1983RulesDiscretionReputation; @svensson1999PriceLevelVsInflationTargeting].
+4) Evaluate institutional "commitment devices" in practice: **rules**, **central bank independence**, **conservative delegation**, **contracts/targets**, and **exchange-rate pegs** [@taylor1993DiscretionPolicyRulesPractice; @rogoff1985OptimalDegreeCommitment; @walsh1995OptimalContractsCentralBankers].
 
 # The benchmark model: preferences, expectations, and supply
 
@@ -50,16 +50,57 @@ The benchmark model is a streamlined time inconsistency framework designed to is
 
 Let inflation be $\pi$, expected inflation formed last period be $E_{-1}\pi$, potential output be $Y^*$, and the policymaker's desired output target be $Y^T$. The policymaker's **political bias** is $\lambda = Y^T - Y^*$. A positive $\lambda$ means the policymaker wants output above potential.
 
+It is worth slowing down over the notation, because the rest of the chapter repeatedly uses the same symbols:
+
+- $\pi$: actual inflation chosen by the policymaker
+- $E_{-1}\pi$: inflation expected by the private sector one period earlier
+- $Y$: actual output
+- $Y^*$: potential or natural output
+- $Y^T$: the policymaker's preferred output target
+- $\lambda = Y^T - Y^*$: the gap between the policymaker's preferred output and feasible potential output
+- $a$: weight on inflation stabilization in the loss function
+- $b$: weight on output stabilization in the loss function
+- $\kappa$: slope parameter linking surprise inflation to output
+
+The economic tension is already visible in those definitions: if $\lambda>0$, the policymaker would like output to be above the economy's natural level, but rational expectations make that impossible to sustain systematically.
+
 The central bank's quadratic loss is: 
 $$L = (a/2)\pi^2 + (b/2)(Y - Y^T)^2,$$
 with $a>0$ capturing inflation aversion and $b>0$ capturing aversion to output deviations from target. The ratio $b/a$ is a useful "dove/hawk" index: higher $b/a$ corresponds to more dovish (output-focused), lower $b/a$ more hawkish (inflation-focused).
+
+In words, the central bank dislikes two things: inflation being too high and output being away from its preferred level. The equation simply adds those two costs together.
+
+Economic interpretation: the parameters $a$ and $b$ tell us how much the policymaker cares about each objective. If $a$ rises, the bank becomes more inflation-averse. If $b$ rises, it becomes more willing to tolerate inflation in order to stabilise output.
+
+Read the loss function term by term:
+
+- $(a/2)\pi^2$ says inflation is costly in itself, and the cost rises more than proportionally as inflation gets larger
+- $(b/2)(Y-Y^T)^2$ says output away from the policymaker's preferred target is also costly, whether output is above or below that target
+
+Quadratic loss is not meant to say policymakers literally solve this exact formula. It is a modeling device that makes the trade-off transparent and gives a clean first-order condition.
 
 Output is linked to surprise inflation using a Lucas supply relation:
 $$Y - Y^* = \kappa(\pi - E_{-1}\pi),$$
 where $\kappa>0$ measures how strongly output responds to an inflation surprise. Higher $\kappa$ means larger short-run output response; lower $\kappa$ means surprises translate mostly into prices.
 
+In words, output only moves away from potential when actual inflation differs from what people had already expected. Expected inflation by itself does not create a boom.
+
+Economic interpretation: this is the core New Classical discipline in the model. Only unexpected inflation affects real activity, so a central bank cannot keep output above potential just by choosing high inflation every period.
+
+This equation is the short-run "surprise" mechanism. It says:
+
+- if actual inflation equals expected inflation, then $\pi - E_{-1}\pi = 0$ and output stays at potential
+- if actual inflation exceeds expected inflation, firms and workers are temporarily surprised, so output rises above $Y^*$
+- if actual inflation is below expected inflation, output falls below $Y^*$
+
 Substituting $Y - Y^T = \kappa(\pi - E_{-1}\pi) - \lambda$ into the loss function yields:
 $$L = (a/2)\pi^2 + (b/2)(\kappa(\pi - E_{-1}\pi) - \lambda)^2.$$
+
+This substitution is the key simplification in the model. It rewrites the loss function entirely in terms of inflation choices and inflation expectations. Once we do that, the policymaker's optimization problem becomes: choose $\pi$, taking $E_{-1}\pi$ as given, knowing that surprise inflation can temporarily move output.
+
+In words, the central bank is now choosing inflation while knowing that output consequences come through the surprise term $\pi - E_{-1}\pi$.
+
+Economic interpretation: after substitution, the model becomes an optimization problem in one control variable, $\pi$. That is what makes the reaction function derivation possible.
 
 This expression makes the tension explicit: inflation is costly, but if $\lambda>0$ the policymaker has an incentive to generate surprise inflation to move output toward its preferred target.
 
@@ -80,15 +121,62 @@ Under rational expectations, anything systematically implemented is anticipated,
 
 If the central bank accepts that output is at $Y^*$ absent shocks, it cannot systematically keep $Y$ above $Y^*$. In that case, it would like to minimize inflation costs and choose $\pi=0$. This makes "zero inflation" an ex ante optimal announcement.
 
-But if the public believed $E_{-1}\pi=0$, the central bank faces an incentive to create a positive $\pi$ once expectations are set, because surprise inflation temporarily closes the output gap. This is the core time inconsistency: once expectations are set, surprise inflation has short-run benefits, so the policymaker is tempted to deviate (Kydland & Prescott, 1977; Barro & Gordon, 1983).
+But if the public believed $E_{-1}\pi=0$, the central bank faces an incentive to create a positive $\pi$ once expectations are set, because surprise inflation temporarily closes the output gap. This is the core time inconsistency: once expectations are set, surprise inflation has short-run benefits, so the policymaker is tempted to deviate [@kydlandPrescott1977RulesRatherDiscretion; @barroGordon1983RulesDiscretionReputation].
 
 ## The central bank reaction function
 
 Holding $E_{-1}\pi$ fixed, the central bank minimizes the loss. The first-order condition implies the best response (reaction function):
 $$\pi = \frac{b\kappa\lambda}{a+b\kappa^2} + \frac{b\kappa^2}{a+b\kappa^2}E_{-1}\pi.$$
 
+In words, actual inflation is chosen as a weighted combination of two forces: the desire to push output above potential and the need to accommodate already-embedded inflation expectations.
+
+Because this is the most important derivation in the chapter, it helps to show the algebra explicitly.
+
+Start from the substituted loss:
+$$L = (a/2)\pi^2 + (b/2)(\kappa(\pi - E_{-1}\pi) - \lambda)^2.$$
+
+Treat expected inflation $E_{-1}\pi$ as fixed from the policymaker's point of view at time $0$. Differentiate with respect to actual inflation $\pi$:
+$$\frac{\partial L}{\partial \pi} = a\pi + b(\kappa(\pi - E_{-1}\pi)-\lambda)\kappa.$$
+
+Set the derivative equal to zero for the optimum:
+$$a\pi + b\kappa(\kappa(\pi - E_{-1}\pi)-\lambda) = 0.$$
+
+Now expand the bracket:
+$$a\pi + b\kappa^2\pi - b\kappa^2E_{-1}\pi - b\kappa\lambda = 0.$$
+
+Collect the terms in $\pi$ on the left:
+$$(a+b\kappa^2)\pi = b\kappa\lambda + b\kappa^2E_{-1}\pi.$$
+
+Finally divide through by $a+b\kappa^2$:
+$$\pi = \frac{b\kappa\lambda}{a+b\kappa^2} + \frac{b\kappa^2}{a+b\kappa^2}E_{-1}\pi.$$
+
+This is called the **reaction function** because it tells us how the central bank reacts to already-formed expectations. It has two parts:
+
+- $\frac{b\kappa\lambda}{a+b\kappa^2}$: the inflationary bias coming from the policymaker's desire to push output above potential
+- $\frac{b\kappa^2}{a+b\kappa^2}E_{-1}\pi$: the part of actual inflation that passively accommodates what the public already expects
+
+Economic interpretation: the first term is the "temptation" term, while the second is the "inheritance from expectations" term. Together they show why discretion is dangerous: even before any cheating occurs, the structure of incentives pushes inflation upward.
+
 The public's rational expectations condition is $E_{-1}\pi=\pi$. Substituting yields the **time-consistent inflation rate**:
 $$\pi^e = \pi = \frac{b\kappa\lambda}{a}.$$
+
+In words, once people understand the policymaker's incentives, expected inflation rises until no further surprise is possible. The only thing left is positive equilibrium inflation with no lasting output gain.
+
+That last step is simple but easy to miss. Replace $E_{-1}\pi$ by $\pi$ in the reaction function:
+$$\pi = \frac{b\kappa\lambda}{a+b\kappa^2} + \frac{b\kappa^2}{a+b\kappa^2}\pi.$$
+
+Move the expectations term to the left:
+$$\pi - \frac{b\kappa^2}{a+b\kappa^2}\pi = \frac{b\kappa\lambda}{a+b\kappa^2}.$$
+
+Factor out $\pi$:
+$$\pi\left(1-\frac{b\kappa^2}{a+b\kappa^2}\right) = \frac{b\kappa\lambda}{a+b\kappa^2}.$$
+
+The bracket simplifies to $a/(a+b\kappa^2)$, so multiplying both sides by $(a+b\kappa^2)/a$ gives:
+$$\pi = \frac{b\kappa\lambda}{a}.$$
+
+This is the central inflation-bias result: under discretion, equilibrium inflation is positive whenever the policymaker persistently wants output above potential.
+
+Economic interpretation: inflation bias is larger when the policymaker wants a bigger output expansion ($\lambda$), cares more about output relative to inflation ($b/a$), or can exploit a stronger surprise-inflation channel ($\kappa$).
 
 **Interpretation (inflation bias).** If $\lambda>0$ (the policymaker wants output above potential), equilibrium inflation is positive even though output ends up at $Y^*$ on average because surprises cannot be systematic under rational expectations. The bias grows when the policymaker is more dovish (higher $b/a$), when the surprise inflation channel is stronger (higher $\kappa$), or when the political bias $\lambda$ is larger.
 
@@ -104,6 +192,14 @@ The benchmark compares four outcomes using stylized loss levels:
 
 4) **Purist strategy**: The public expects the time-consistent rate but the central bank delivers $\pi=0$ anyway. Output falls below $Y^*$. This is the worst case: $L^p = (b/2)\lambda^2(1+(b\kappa^2)/a)^2 > L^e$. **Key insight**: sudden disinflation without credibility can create a recession without immediate credibility gains.
 
+The ranking is easier to remember if you tie each case to its economic logic:
+
+- $L^c < L^*$: cheating is tempting because once expectations are fixed, surprise inflation gives a temporary output gain
+- $L^e > L^*$: discretionary equilibrium is worse than honest commitment because inflation is higher but output is not higher on average
+- $L^p > L^e$: a "tough" anti-inflation move without credibility can be worse than ordinary discretion, because the public expects inflation while the policymaker unexpectedly delivers none, pushing output below potential
+
+So the model's practical message is not just "credibility is nice to have." It is that credibility changes the short-run output cost of disinflation.
+
 # Reputation and repeated interaction
 
 Real-world monetary policy is repeated: the private sector observes past decisions, and central banks care about future outcomes. This motivates **reputation** models where credibility can be sustained through repeated play.
@@ -114,6 +210,10 @@ In a repeated-game setting, the central bank's loss is:
 $$L_{\text{total}} = L_0 + \beta L_1 + \beta^2 L_2 + ...,$$
 where $0<\beta<1$ is a discount factor. Higher $\beta$ means the central bank puts more weight on future losses.
 
+In words, total loss is the present value of current and future policy mistakes. The farther into the future a loss occurs, the less weight it receives because it is multiplied by a higher power of $\beta$.
+
+Interpret $\beta$ as patience. A policymaker with a high $\beta$ cares a lot about future reputation and future inflation outcomes, so cheating today is less attractive. A policymaker with a low $\beta$ is more short-termist, so the one-period gain from surprise inflation looms larger.
+
 A **trigger strategy** supports credibility: the public believes the central bank's announcement unless it cheats; if it cheats, the public distrusts it forever and reverts to expecting the time-consistent rate. Cheating yields a one-time gain but permanently higher future losses because expectations become unanchored. The central bank honors its promise when the discounted future cost exceeds today's gain—i.e., when $\beta$ is "high enough."
 
 This logic formalizes why credibility depends on institutions that make policymakers patient and forward-looking: longer horizons, reputational concerns, and governance arrangements that reduce short-term political pressures all raise the effective discount factor.
@@ -122,7 +222,7 @@ This logic formalizes why credibility depends on institutions that make policyma
 
 A major insight is that repeated games can have **multiple equilibria**. If the public starts out distrustful, it may coordinate on expecting the high-inflation (time-consistent) outcome from the outset, trapping the central bank in a high-inflation equilibrium. If the public starts trusting and the bank validates that trust, a low-inflation equilibrium is sustained. These equilibria can be **self-fulfilling**.
 
-This connects to modern work on transparency and credibility: when private agents infer central bank preferences from outcomes, transparency can strengthen discipline by making reputational consequences more sensitive to deviations (Faust & Svensson, 2001).
+This connects to modern work on transparency and credibility: when private agents infer central bank preferences from outcomes, transparency can strengthen discipline by making reputational consequences more sensitive to deviations [@svensson1999PriceLevelVsInflationTargeting].
 
 ## Modern credibility in practice
 
@@ -142,7 +242,7 @@ Time inconsistency motivates a family of "commitment devices." Modern practice p
 
 A "rule" is a systematic, predictable mapping from observed conditions to policy actions. Rules can raise credibility by reducing scope for opportunistic surprise inflation.
 
-The **Taylor rule** is an instrument rule associated with John Taylor: $i_t = \alpha(\pi_{t-1}-\pi^T) + \delta(Y_{t-1}-Y^T)$. Taylor emphasizes that useful rules adjust the policy rate in response to inflation and real activity, but practical policymaking cannot follow any formula mechanically; rules should discipline and inform decisions (Taylor, 1993).
+The **Taylor rule** is an instrument rule associated with John Taylor: $i_t = \alpha(\pi_{t-1}-\pi^T) + \delta(Y_{t-1}-Y^T)$. Taylor emphasizes that useful rules adjust the policy rate in response to inflation and real activity, but practical policymaking cannot follow any formula mechanically; rules should discipline and inform decisions [@taylor1993DiscretionPolicyRulesPractice].
 
 **Why rules help credibility:** if the public believes the rule, it anchors expectations, reducing the incentive for surprise inflation and lowering the inflation bias.
 
@@ -150,7 +250,7 @@ The **Taylor rule** is an instrument rule associated with John Taylor: $i_t = \a
 
 ## Delegation and central bank independence
 
-A second commitment device is **delegation**: appoint a decision-maker who is more inflation-averse than society as a whole. Rogoff's classic result shows that appointing a "conservative" central banker can reduce average inflation (the inflation bias) but may increase output variability when supply shocks are large—so the optimal degree of conservatism is finite (Rogoff, 1985).
+A second commitment device is **delegation**: appoint a decision-maker who is more inflation-averse than society as a whole. Rogoff's classic result shows that appointing a "conservative" central banker can reduce average inflation (the inflation bias) but may increase output variability when supply shocks are large—so the optimal degree of conservatism is finite [@rogoff1985OptimalDegreeCommitment].
 
 This supports the institutional case for **central bank independence**: improving credibility by insulating monetary policy from short-term political incentives to engineer booms.
 
@@ -166,11 +266,22 @@ The UK's annual remit letters state that statutory objectives are to maintain pr
 
 ## Contracts and targets
 
-The **performance-related pay** approach ties central bank incentives to inflation outcomes. The modern academic counterpart is the principal-agent "central banker contract" literature, where optimal contracts can eliminate inflation bias by tying payoff to realized inflation (Walsh, 1995).
+The **performance-related pay** approach ties central bank incentives to inflation outcomes. The modern academic counterpart is the principal-agent "central banker contract" literature, where optimal contracts can eliminate inflation bias by tying payoff to realized inflation [@walsh1995OptimalContractsCentralBankers].
 
 A stylized version is:
 $$L_t = (a/2)(\pi_t-\pi^T)^2 + (b/2)(Y_t-Y^T)^2 - B \cdot \mathbb{1}(\pi_t \le \pi^T) + F \cdot \mathbb{1}(\pi_t>\pi^T),$$
 where $B>0$ is a bonus and $F>0$ is a fine.
+
+In words, the policymaker still dislikes inflation misses and output misses, but now also faces an institutional reward for meeting the inflation target and a penalty for overshooting it.
+
+Economic interpretation: the contract changes incentives rather than changing the structure of the economy. It tries to make inflation overshooting privately costly to the policymaker, so the temptation to inflate is reduced.
+
+The indicator function $\mathbb{1}(\cdot)$ equals 1 when the condition inside it is true and 0 otherwise. So this contract says:
+
+- the policymaker gets a reward $B$ for keeping inflation at or below target
+- the policymaker incurs a penalty $F$ when inflation exceeds target
+
+This is not meant as a literal recommendation for paying central bankers bonuses. It is a compact way of modeling institutional incentives that make above-target inflation more costly to the policymaker.
 
 ### New Zealand's accountability framework
 
@@ -194,44 +305,43 @@ The Bank of England's analysis of leaving the Exchange Rate Mechanism in Septemb
 
 ## Credibility as a policy instrument: communication and commitment
 
-A vivid credibility-based crisis intervention is the ECB's "whatever it takes" episode. In July 2012, the ECB President stated: "Within our mandate, the ECB is ready to do whatever it takes to preserve the euro. And believe me, it will be enough." This is widely interpreted as an expectations and credibility intervention, clarifying commitment to the currency even before major new instruments were deployed (European Central Bank, 2012).
+A vivid credibility-based crisis intervention is the ECB's "whatever it takes" episode. In July 2012, the ECB President stated: "Within our mandate, the ECB is ready to do whatever it takes to preserve the euro. And believe me, it will be enough." This is widely interpreted as an expectations and credibility intervention, clarifying commitment to the currency even before major new instruments were deployed [@ecb2012WhateverItTakesVerbatim].
 
-Similarly, the Bank of Japan's policies near the zero lower bound illustrate explicit commitment devices aimed at shifting expectations. Governor Kuroda described an "inflation-overshooting commitment"—tied to realized inflation exceeding 2%—as an unusually strong and intentionally credibility-building form of guidance (Bank of Japan, 2016).
+Similarly, the Bank of Japan's policies near the zero lower bound illustrate explicit commitment devices aimed at shifting expectations. Governor Kuroda described an "inflation-overshooting commitment"—tied to realized inflation exceeding 2%—as an unusually strong and intentionally credibility-building form of guidance [@boj2016CurrentSituationFutureProspects].
 
 These episodes show how the credibility framework extends beyond the inflation-bias story: when policy is constrained (e.g., near the effective lower bound), central banks rely more heavily on managing expectations through commitments and communication.
 
 ## Anchoring and inflation persistence
 
-The time inconsistency literature predicts that fragile credibility makes inflation expectations less anchored, increasing inflation persistence. IMF evidence supports this: an IMF working paper constructs an anchoring index for 45 economies (since 1989) and finds that terms-of-trade shocks have more persistent inflation effects when expectations are poorly anchored, while inflation returns more quickly to baseline when expectations are strongly anchored (IMF, 2018).
+The time inconsistency literature predicts that fragile credibility makes inflation expectations less anchored, increasing inflation persistence. IMF evidence supports this: an IMF working paper constructs an anchoring index for 45 economies (since 1989) and finds that terms-of-trade shocks have more persistent inflation effects when expectations are poorly anchored, while inflation returns more quickly to baseline when expectations are strongly anchored [@imf2018AnchoringInflationPersistence].
 
-In 2025 IMF Annual Meetings transcripts, the Chief Economist warned that political pressure to ease monetary policy at the expense of price stability "always backfires," emphasizing that "trust in central banks helps anchor inflation expectations, and this credibility needs to be protected" (IMF, 2025).
+In 2025 IMF Annual Meetings transcripts, the Chief Economist warned that political pressure to ease monetary policy at the expense of price stability "always backfires," emphasizing that "trust in central banks helps anchor inflation expectations, and this credibility needs to be protected" [@imf2025WEOAnnualMeetingsBriefing].
 
 These institutional statements align closely with the theoretical message: credibility is not just a normative ideal, but empirically relevant for inflation dynamics and macro stability.
 
 # End-of-chapter summary
 
-Time inconsistency in monetary policy is fundamentally a problem of strategic interaction between policymakers and rational agents (Kydland & Prescott, 1977).
+Time inconsistency in monetary policy is fundamentally a problem of strategic interaction between policymakers and rational agents [@kydlandPrescott1977RulesRatherDiscretion].
 
-In the benchmark model, discretion yields **inflation bias** $\pi = (b\kappa\lambda)/a$ when policymakers desire output above potential $\lambda>0$, but output remains at $Y^*$ on average because systematic surprises are not feasible under rational expectations (Barro & Gordon, 1983).
+In the benchmark model, discretion yields **inflation bias** $\pi = (b\kappa\lambda)/a$ when policymakers desire output above potential $\lambda>0$, but output remains at $Y^*$ on average because systematic surprises are not feasible under rational expectations [@barroGordon1983RulesDiscretionReputation].
 
-Reputation and repeated interaction can sustain lower inflation as an equilibrium when policymakers discount the future sufficiently, but multiple equilibria (trust vs distrust) can exist, making credibility fragile (Barro & Gordon, 1983; Faust & Svensson, 2001).
+Reputation and repeated interaction can sustain lower inflation as an equilibrium when policymakers discount the future sufficiently, but multiple equilibria (trust vs distrust) can exist, making credibility fragile [@barroGordon1983RulesDiscretionReputation; @svensson1999PriceLevelVsInflationTargeting].
 
-Institutional design choices—rules (Taylor-type), delegation to conservative central bankers (Rogoff), accountability contracts (Walsh), inflation targets and strategy statements (Fed/ECB/BoE)—are all efforts to bind discretion, anchor expectations, and protect credibility.
+Institutional design choices—rules (Taylor-type), delegation to conservative central bankers, accountability contracts, inflation targets and strategy statements (Fed/ECB/BoE)—are all efforts to bind discretion, anchor expectations, and protect credibility [@taylor1993DiscretionPolicyRulesPractice; @rogoff1985OptimalDegreeCommitment; @walsh1995OptimalContractsCentralBankers].
 
 # Problem questions
 
-1. In the benchmark model, show algebraically why the time-consistent rate is $\pi=(b\kappa\lambda)/a$. Which parameter change most increases inflation bias: larger $\lambda$, higher $b/a$, or higher $\kappa$? Explain intuitively (Barro & Gordon, 1983).
+1. In the benchmark model, show algebraically why the time-consistent rate is $\pi=(b\kappa\lambda)/a$. Which parameter change most increases inflation bias: larger $\lambda$, higher $b/a$, or higher $\kappa$? Explain intuitively [@barroGordon1983RulesDiscretionReputation].
 
-2. Explain why the "purist" outcome can be worse than discretionary equilibrium. Relate this to real-world disinflations where credibility is initially low (Bank of England, 1995; Federal Reserve Board, 2007).
+2. Explain why the "purist" outcome can be worse than discretionary equilibrium. Relate this to real-world disinflations where credibility is initially low [@boe1995CredibilityMonetaryPolicy; @frb2007ThreeGreatAmericanDisinflations].
 
-3. Compare three commitment devices—(i) Taylor-type rules, (ii) conservative delegation, and (iii) contracts/targets. For each, state one benefit and one cost (Taylor, 1993; Rogoff, 1985; Walsh, 1995).
+3. Compare three commitment devices—(i) Taylor-type rules, (ii) conservative delegation, and (iii) contracts/targets. For each, state one benefit and one cost [@taylor1993DiscretionPolicyRulesPractice; @rogoff1985OptimalDegreeCommitment; @walsh1995OptimalContractsCentralBankers].
 
-4. Using the IMF evidence on anchoring, explain how credibility can affect inflation persistence after shocks (IMF, 2018).
+4. Using the IMF evidence on anchoring, explain how credibility can affect inflation persistence after shocks [@imf2018AnchoringInflationPersistence].
 
-5. Discuss why exchange-rate pegs can enhance credibility but be vulnerable to speculative attacks and regime collapse (IMF, 2011; IMF IEO, 2004).
+5. Discuss why exchange-rate pegs can enhance credibility but be vulnerable to speculative attacks and regime collapse [@imf2011EmergingMarketCBBailouts; @imfIEO2004ArgentinaEvaluation].
 
 ## References
-Principal theory and policy references used in this chapter include [@kydlandPrescott1977RulesRatherDiscretion; @barroGordon1983RulesDiscretionReputation; @rogoff1985OptimalDegreeCommitment; @taylor1993DiscretionPolicyRulesPractice; @walsh1995OptimalContractsCentralBankers; @boe1995CredibilityMonetaryPolicy; @boe2017TwentyYearsIndependence; @ecb2012WhateverItTakesVerbatim; @ecb2021StrategyStatement; @frb2007ThreeGreatAmericanDisinflations; @frb2025LongerRunGoalsStatement; @hmt2021MonetaryPolicyRemit; @hmt2023MonetaryPolicyRemit; @imf2011EmergingMarketCBBailouts; @imfIEO2004ArgentinaEvaluation; @imf2018AnchoringInflationPersistence; @imf2025WEOAnnualMeetingsBriefing].
 
 ::: {#refs}
 :::
