@@ -66,7 +66,7 @@ The economic tension is already visible in those definitions: if $\lambda>0$, th
 
 The central bank's quadratic loss is: 
 $$L = (a/2)\pi^2 + (b/2)(Y - Y^T)^2,$$
-with $a>0$ capturing inflation aversion and $b>0$ capturing aversion to output deviations from target. The ratio $b/a$ is a useful "dove/hawk" index: higher $b/a$ corresponds to more dovish (output-focused), lower $b/a$ more hawkish (inflation-focused).
+with $a>0$ capturing inflation aversion and $b>0$ capturing aversion to output deviations from target. The ratio $b/a$ is a useful "dove/hawk" index: higher $b/a$ corresponds to more dovish (output-focused), lower $b/a$ more hawkish (inflation-focused). The $1/2$ terms are included only to simplify differentiation, since they cancel the factor of $2$ when taking first-order conditions.
 
 In words, the central bank dislikes two things: inflation being too high and output being away from its preferred level. The equation simply adds those two costs together.
 
@@ -93,7 +93,12 @@ This equation is the short-run "surprise" mechanism. It says:
 - if actual inflation exceeds expected inflation, firms and workers are temporarily surprised, so output rises above $Y^*$
 - if actual inflation is below expected inflation, output falls below $Y^*$
 
-Substituting $Y - Y^T = \kappa(\pi - E_{-1}\pi) - \lambda$ into the loss function yields:
+To see where this comes from, start from the Lucas supply relation
+$$Y-Y^*=\kappa(\pi-E_{-1}\pi),$$
+and use $\lambda = Y^T-Y^*$. Rearranging gives
+$$Y-Y^T = (Y-Y^*)-(Y^T-Y^*) = \kappa(\pi-E_{-1}\pi)-\lambda.$$
+
+Substituting this expression for $Y-Y^T$ into the loss function yields:
 $$L = (a/2)\pi^2 + (b/2)(\kappa(\pi - E_{-1}\pi) - \lambda)^2.$$
 
 This substitution is the key simplification in the model. It rewrites the loss function entirely in terms of inflation choices and inflation expectations. Once we do that, the policymaker's optimization problem becomes: choose $\pi$, taking $E_{-1}\pi$ as given, knowing that surprise inflation can temporarily move output.
