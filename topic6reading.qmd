@@ -189,13 +189,28 @@ Economic interpretation: inflation bias is larger when the policymaker wants a b
 
 The benchmark compares four outcomes using stylized loss levels:
 
-1) **Honest commitment**: Announce and deliver $\pi=0$ when the public believes it. Loss is $L^* = (b/2)\lambda^2$ because output stays at $Y^*$ but the policymaker wants $Y^T=Y^*+\lambda$.
+1) **Honest commitment**: The central bank announces $\pi=0$, the public believes it, and the bank actually delivers $\pi=0$. So expected and actual inflation are both zero. Because there is no inflation surprise, output remains at $Y^*$. The only remaining problem is that the policymaker still prefers $Y^T=Y^*+\lambda$, so there is an output-target gap of size $\lambda$. Loss is therefore
+$$L^* = (b/2)\lambda^2.$$
 
-2) **Discretionary equilibrium**: The public expects and the central bank delivers $\pi=(b\kappa\lambda)/a$. Output remains at $Y^*$, but inflation is higher: $L^e = (b/2)\lambda^2(1 + (b\kappa^2)/a)$.
+2) **Discretionary equilibrium**: The public understands the bank's incentive to create surprise inflation, so it expects the time-consistent inflation rate
+$$E_{-1}\pi=\pi=\frac{b\kappa\lambda}{a}.$$
+Because actual inflation equals expected inflation, there is again no surprise and output remains at $Y^*$. The difference from honest commitment is that inflation is now positive, so the bank suffers both the inflation cost and the same output-target gap as before. Loss is
+$$L^e = (b/2)\lambda^2(1 + (b\kappa^2)/a).$$
 
-3) **Cheating**: If the central bank could convince the public it will deliver $\pi=0$, then set positive inflation once expectations are fixed, output rises temporarily. Cheating loss is $L^c = (a/(a+b\kappa^2))(b/2)\lambda^2 < L^*$, explaining the temptation.
+3) **Cheating**: Suppose the public expects $\pi=0$, but after expectations are fixed the central bank re-optimizes and chooses positive inflation. Now actual inflation exceeds expected inflation, so output temporarily rises above $Y^*$. This reduces the gap between actual output and the policymaker's preferred target $Y^T$, which is why cheating is tempting. The cheating loss is
+$$L^c = (a/(a+b\kappa^2))(b/2)\lambda^2,$$
+and this is lower than $L^*$, so once low expectations are in place the policymaker would like to deviate.
 
-4) **Purist strategy**: The public expects the time-consistent rate but the central bank delivers $\pi=0$ anyway. Output falls below $Y^*$. This is the worst case: $L^p = (b/2)\lambda^2(1+(b\kappa^2)/a)^2 > L^e$. **Key insight**: sudden disinflation without credibility can create a recession without immediate credibility gains.
+4) **Purist strategy**: The public expects the discretionary inflation rate, but the central bank unexpectedly sets $\pi=0$. Now actual inflation is below expected inflation, so output falls below $Y^*$. Since the policymaker already wanted output above $Y^*$, this makes the output-target gap even worse. This is the worst case:
+$$L^p = (b/2)\lambda^2(1+(b\kappa^2)/a)^2 > L^e.$$
+**Key insight**: sudden disinflation without prior credibility can create a recession before credibility has time to improve expectations.
+
+It helps to summarize the four cases in plain language:
+
+- honest commitment: low expected inflation, low actual inflation, no recession, but the policymaker still cannot achieve $Y^T$
+- discretionary equilibrium: high expected inflation, high actual inflation, no output gain, so the economy gets inflation without benefit
+- cheating: low expected inflation, higher actual inflation, temporary boom, which explains the temptation to cheat
+- purist strategy: high expected inflation, low actual inflation, temporary recession, which explains why disinflation is costly without credibility
 
 The ranking is easier to remember if you tie each case to its economic logic:
 
