@@ -511,7 +511,7 @@ The global financial crisis did not remove inflation targeting from the consensu
 
 ```{r}
 #| label: fetch-policy-rates
-#| cache: true
+#| cache: false
 
 # Fetch policy rate data
 boe_rate_d <- fetch_boe_bank_rate()
@@ -568,8 +568,9 @@ ggplot(policy_rates, aes(x = date, y = value, group = bank)) +
 
 ```{r}
 #| label: fig-qe
-#| fig-cap: "Quantitative easing envelope announcements showing stepped increases in BoE APF, ECB PEPP, and Fed LSAP1 programs"
-#| fig-alt: "Step chart of QE program announcement sizes over time"
+#| cache: false
+#| fig-cap: "Selected large-scale asset purchase announcements for the BoE, ECB, and Fed, showing how announced programme sizes were expanded over time"
+#| fig-alt: "Step chart of selected asset purchase announcement sizes by central bank"
 #| fig-width: 9
 #| fig-height: 7
 
@@ -579,6 +580,10 @@ qe_steps <- tribble(
   "BoE", "APF/QE authorised size", as.Date("2009-05-07"), 125,  "GBP bn",
   "BoE", "APF/QE authorised size", as.Date("2009-08-06"), 175,  "GBP bn",
   "BoE", "APF/QE authorised size", as.Date("2009-11-05"), 200,  "GBP bn",
+  "BoE", "APF/QE authorised size", as.Date("2011-10-06"), 275,  "GBP bn",
+  "BoE", "APF/QE authorised size", as.Date("2012-02-09"), 325,  "GBP bn",
+  "BoE", "APF/QE authorised size", as.Date("2012-07-05"), 375,  "GBP bn",
+  "BoE", "APF/QE authorised size", as.Date("2016-08-04"), 435,  "GBP bn",
   "BoE", "APF/QE authorised size", as.Date("2020-03-19"), 645,  "GBP bn",
   "BoE", "APF/QE authorised size", as.Date("2020-06-18"), 745,  "GBP bn",
   "BoE", "APF/QE authorised size", as.Date("2020-11-05"), 895,  "GBP bn",
@@ -588,17 +593,21 @@ qe_steps <- tribble(
   "ECB", "PEPP envelope",          as.Date("2020-12-10"), 1850, "EUR bn",
   
   "Fed", "LSAP1 announced totals", as.Date("2008-11-25"), 600,  "USD bn",
-  "Fed", "LSAP1 announced totals", as.Date("2009-03-18"), 1750, "USD bn"
+  "Fed", "LSAP1 announced totals", as.Date("2009-03-18"), 1750, "USD bn",
+  "Fed", "QE2 announced totals",   as.Date("2010-11-03"), 600,  "USD bn",
+  "Fed", "QE3 announced pace",     as.Date("2012-09-13"), 40,   "USD bn/month",
+  "Fed", "QE3 announced pace",     as.Date("2012-12-12"), 85,   "USD bn/month"
 )
 
 ggplot(qe_steps, aes(x = date, y = cum_amount, group = program)) +
   geom_step(linewidth = 0.9, direction = "hv") +
   geom_point(size = 2) +
-  facet_wrap(vars(bank, unit), scales = "free_y", ncol = 1) +
+  facet_wrap(vars(bank, unit), scales = "free", ncol = 1) +
+  scale_x_date(date_breaks = "2 years", date_labels = "%Y") +
   labs(
-    title = "Key QE / purchase envelope announcements",
-    subtitle = "Cumulative announced envelopes (not realised flow)",
-    x = NULL, y = "Cumulative envelope"
+    title = "Selected QE / asset purchase announcements",
+    subtitle = "Programme sizes or monthly purchase paces, depending on the scheme",
+    x = NULL, y = "Announcement size"
   ) +
   theme_minimal(base_size = 12)
 ```
