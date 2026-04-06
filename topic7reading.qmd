@@ -131,7 +131,7 @@ In the UK, the political narrative of "stability" became highly salient. A famou
 
 The consensus did **not** imply that recessions were impossible. Many emerging and developing economies continued to experience episodes of currency and financial crisis during the 1990s (for example, crises associated with fixed or heavily managed exchange rates). An IMF analysis by Stanley Fischer—reflecting on crises in Asia, Russia and elsewhere—explicitly highlighted the vulnerability of "more or less fixed" exchange-rate systems to crisis pressure.
 
-This chapter develops the monetary policy consensus framework with reference to Lewis & Mizen (2000), Chapter 16, and supplements it with modern academic research and institutional sources.
+This chapter develops the monetary policy consensus framework (see for example Lewis & Mizen, 2000,Ch 16).
 
 ```{r}
 #| label: fig-timeline
@@ -232,17 +232,17 @@ A central pillar of the consensus is a long‑run monetarist proposition: **pers
 
 Modern central banks state this in policy‑framework documents. For example, the Federal Reserve's strategy statement explicitly notes that "the inflation rate over the longer run is primarily determined by monetary policy," and therefore the committee can specify a longer‑run inflation goal [@frb2025LongerRunGoalsStatement].
 
-For undergraduates, you can interpret this as: in the long run, monetary policy cannot permanently raise real GDP growth, but it can deliver **low and stable inflation**, which improves decision-making and long-horizon planning.
+Readers can interpret this as: in the long run, monetary policy cannot permanently raise real GDP growth, but it can deliver **low and stable inflation**, which improves decision-making and long-horizon planning.
 
 ## Short-run: monetary policy can affect real activity, but only under specific conditions
 
 The consensus emphasizes two situations where money can affect real variables in the short run:
 
-1) **Unexpected policy innovations (surprises).** In rational expectations models, monetary policy affects output mainly when it is not expected. If households, firms and workers can already see a policy change coming, they adjust their behaviour in advance, so the real effects are much smaller. In Lucas's analysis, this means that only the unexpected part of policy can temporarily raise output; systematic, predictable policy cannot do so in a reliable way.
+1) **Unexpected policy innovations (surprises).** In the rational expectations tradition, real effects come from the unexpected component of policy—not the predictable component. Robert Lucas's classic analysis derives a Phillips‑curve‑like relation while excluding "money illusion," implying that systematic, anticipated policy does not reliably buy higher output; only surprise elements can. Unexpected policy innovations (surprises). In the rational expectations tradition, real effects come from the unexpected component of policy—not the predictable component. Robert Lucas’s classic analysis derives a Phillips‑curve‑like relation while excluding “money illusion,” implying that systematic, anticipated policy does not reliably buy higher output; only surprise elements can.  Expected policy changes are priced in ahead of time, so only unexpected changes can temporarily affect output
 
-2) **Nominal rigidities.** Monetary policy can also have real effects because wages and prices do not adjust instantly. If firms change prices slowly, an interest-rate change can affect borrowing, spending and production before the full price adjustment has taken place. This is why modern central banks emphasise sticky wages and prices when explaining how policy is transmitted to the real economy.
+2) **Nominal rigidities.** Even without deliberate deception, if wages and prices adjust slowly, changes in interest rates can influence real spending and production before prices fully adjust. Modern central bank explanations of transmission explicitly highlight nominal rigidities as a reason policy affects real activity. More plainly, wages and prices are “sticky,” which is why interest-rate changes can affect spending and production in the short run.
 
-The consensus interpretation is careful: short‑run real effects are **temporary**, while the lasting effect of sustained monetary expansion is on nominal variables (especially the price level). In lecture terms: "real effects wear off; nominal effects persist."
+The consensus interpretation is careful: short‑run real effects are **temporary**, while the lasting effect of sustained monetary expansion is on nominal variables (especially the price level). In lecture terms: "real effects wear off; nominal effects persist." This is a key point: the consensus does not claim that monetary policy cannot affect real activity at all; it claims that real effects are conditional on surprises and frictions, and that in the long run, the main effect is on inflation.
 
 ## A built-in tension: short-run stabilization versus long-run credibility
 
@@ -305,19 +305,19 @@ anchors <- tribble(
   "Monetary targeting", "Robustness to velocity shifts", "Low",
   "Monetary targeting", "Domestic policy autonomy", "High",
   "Monetary targeting", "Speculative attack vulnerability", "Low",
-  "Monetary targeting", "Works well at ELB?", "Medium",
+  "Monetary targeting", "Works well at the effective lower bound (ELB)?", "Medium",
   
   "Exchange-rate peg", "Anchor visibility (public)", "High",
   "Exchange-rate peg", "Robustness to velocity shifts", "High",
   "Exchange-rate peg", "Domestic policy autonomy", "Low",
   "Exchange-rate peg", "Speculative attack vulnerability", "High",
-  "Exchange-rate peg", "Works well at ELB?", "Medium",
+  "Exchange-rate peg", "Works well at the effective lower bound (ELB)?", "Medium",
   
   "Inflation targeting", "Anchor visibility (public)", "High",
   "Inflation targeting", "Robustness to velocity shifts", "High",
   "Inflation targeting", "Domestic policy autonomy", "High",
   "Inflation targeting", "Speculative attack vulnerability", "Low",
-  "Inflation targeting", "Works well at ELB?", "High"
+  "Inflation targeting", "Works well at the effective lower bound (ELB)?", "High"
 ) %>%
   mutate(score = factor(score, levels = c("Low", "Medium", "High")))
 
@@ -343,9 +343,9 @@ Start from a quantity-theory identity: $MV = PY$. In growth rates, a convenient 
 $$\pi \approx \mu + \nu - g,$$
 where $\pi$ is inflation, $\mu$ is money growth, $\nu$ is velocity growth, and $g$ is real output growth. If velocity growth is stable (or near zero), targeting money growth consistent with output growth and desired inflation should, "on average," stabilize inflation.
 
-This is closely aligned with monetarist proposals for steady money growth (for example, a fixed $k$‑percent rule) and with the idea that predictability in monetary conditions can anchor expectations.
+This is closely aligned with monetarist proposals for steady money growth (for example, a fixed $k$-percent rule, where the money supply grows by a constant percentage each year) and with the idea that predictability in monetary conditions can anchor expectations.
 
-### Why it broke down in practice
+### Why monetary targeting proved difficult in practice
 
 Two practical problems emerged:
 
@@ -371,10 +371,10 @@ This is an intuition, not a law: PPP is imprecise in the short run. But the key 
 
 ### Advantages (when credible)
 
-Central bank research highlights two major benefits:
+The classic case for exchange-rate pegs stresses two potential benefits [@calvoKumhofCelasun2002NominalExchangeRateAnchoring; @barroGordon1983RulesDiscretionReputation]:
 
-- A clear, observable anchor that can reduce inflation expectations quickly.
-- A rule-like constraint that can mitigate the time inconsistency problem by putting monetary policy on "automatic pilot."
+- A clear and observable nominal anchor that can help bring inflation down more quickly when domestic prices are inertial.
+- A rule-like commitment device that can strengthen credibility by limiting discretionary policy.
 
 ### Disadvantages and fragility (when credibility is imperfect)
 
