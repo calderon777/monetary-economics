@@ -50,8 +50,13 @@ dir.create("data_cache", showWarnings = FALSE, recursive = TRUE)
 dir.create("figs", showWarnings = FALSE, recursive = TRUE)
 
 # Helper functions
-download_with_cache <- function(url, destfile) {
-  if (!file.exists(destfile)) {
+download_with_cache <- function(url, destfile, refresh_days = 7) {
+  needs_refresh <- !file.exists(destfile)
+  if (!needs_refresh) {
+    file_age_days <- as.numeric(difftime(Sys.time(), file.info(destfile)$mtime, units = "days"))
+    needs_refresh <- is.na(file_age_days) || file_age_days > refresh_days
+  }
+  if (needs_refresh) {
     download.file(url, destfile = destfile, mode = "wb", quiet = TRUE)
   }
   destfile
@@ -80,15 +85,28 @@ as_month_end <- function(df, date_col = "date", value_col = "value") {
 ```{r}
 #| label: data-fetch-functions
 
-# All data from FRED for reliability
+# Policy-rate data from official central-bank/FRED sources
 fetch_boe_bank_rate <- function() {
-  url <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BOERUKQ"
-  f <- download_with_cache(url, "data_cache/boe_rate_fred.csv")
-  df <- readr::read_csv(f, show_col_types = FALSE)
+  url <- paste0(
+    "https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp?",
+    "CSVF=TT&DAT=RNG&FD=1&FM=Jan&FNY=Y&FY=2000&",
+    "TD=31&TM=Dec&TY=", year(Sys.Date()),
+    "&SeriesCodes=IUMBEDR&UsingCodes=Y&VPD=Y"
+  )
+  f <- download_with_cache(url, "data_cache/boe_rate_monthly.csv")
+  raw <- readr::read_lines(f)
+  start_idx <- which(str_detect(raw, "^(Date|DATE),"))
+  if (length(start_idx) == 0) stop("Could not locate Bank Rate table in BoE download.")
+  df <- readr::read_csv(
+    I(raw[start_idx:length(raw)]),
+    show_col_types = FALSE
+  )
   names(df) <- c("date", "value")
   df %>%
-    mutate(date = as.Date(date),
-           value = as.numeric(value)) %>%
+    transmute(
+      date = dmy(date),
+      value = as.numeric(value)
+    ) %>%
     filter(!is.na(date), !is.na(value))
 }
 
@@ -104,22 +122,34 @@ fetch_ecb_deposit_facility <- function() {
 }
 
 fetch_fed_target_midpoint <- function() {
+  url_t <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTAR"
   url_l <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARL"
   url_u <- "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DFEDTARU"
+  ft <- download_with_cache(url_t, "data_cache/fed_dfedtar.csv")
   fl <- download_with_cache(url_l, "data_cache/fed_dfedtarL.csv")
   fu <- download_with_cache(url_u, "data_cache/fed_dfedtarU.csv")
   
+  dt <- readr::read_csv(ft, show_col_types = FALSE)
   dl <- readr::read_csv(fl, show_col_types = FALSE)
   du <- readr::read_csv(fu, show_col_types = FALSE)
+  names(dt) <- c("date", "target")
   names(dl) <- c("date", "lower")
   names(du) <- c("date", "upper")
-  
-  dl %>%
+
+  pre_2008 <- dt %>%
+    mutate(date = as.Date(date)) %>%
+    transmute(date, value = as.numeric(target)) %>%
+    filter(!is.na(value), date < as.Date("2008-12-16"))
+
+  post_2008 <- dl %>%
     mutate(date = as.Date(date)) %>%
     left_join(du %>% mutate(date = as.Date(date)), by = "date") %>%
     mutate(value = 0.5 * (lower + upper)) %>%
     select(date, value) %>%
     filter(!is.na(value))
+
+  bind_rows(pre_2008, post_2008) %>%
+    arrange(date)
 }
 ```
 
@@ -384,11 +414,13 @@ The main costs include:
 - **Balance of payments stress and reserve loss.** Defending an overvalued peg depletes reserves; defending an undervalued peg can force persistent reserve accumulation and balance-sheet expansion.
 - **Speculative attack risk.** If markets believe a peg is inconsistent with fundamentals, rational speculation can become self-fulfilling: agents buy foreign currency before devaluation, accelerating reserve loss and precipitating collapse.
 
-The UK's 1992 ERM episode illustrates the internal-objective vs exchange-rate-commitment conflict: the Bank of England's analysis describes how ERM membership constrained UK interest rate policy relative to Germany, raising real interest rates as domestic inflation pressures fell, and culminating in suspension of sterling's ERM membership after heavy intervention.
+The UK's 1992 Exchange Rate Mechanism (ERM) episode illustrates the internal-objective vs exchange-rate-commitment conflict: the ERM was a European system in which participating currencies were expected to remain within agreed bands against one another. The Bank of England's analysis describes how ERM membership constrained UK interest rate policy relative to Germany, raising real interest rates as domestic inflation pressures fell, and culminating in suspension of sterling's ERM membership after heavy intervention.
 
-A second canonical example is Argentina's collapse of the convertibility regime. The IMF Independent Evaluation Office report describes how convertibility became "virtually impossible" to salvage amid collapsing confidence, leading to default and abandonment of the peg.
+A second canonical example is Argentina's collapse of the convertibility regime. The IMF Independent Evaluation Office report describes a cumulative policy problem. First, once confidence weakened, investors and depositors increasingly doubted that the peso could remain fixed to the dollar. Second, this loss of confidence led to capital outflows, pressure on reserves, and severe strain on the banking system. Third, defending the peg required extremely tight policies at a time when the domestic economy was already weak, which made the recession deeper and support for the regime weaker. In the end, the government could no longer maintain debt payments and the exchange-rate commitment at the same time, so Argentina defaulted and abandoned the peg.
 
-A contrasting case is a "harder" rules-based currency board. The Hong Kong Monetary Authority continues to defend its linked exchange rate system, emphasizing its transparency, rules-based nature, and large reserves as elements supporting credibility.
+A contrasting case is a "harder" rules-based currency board. Under Hong Kong's linked exchange rate system, the Hong Kong dollar is tied to the US dollar and the monetary authority commits to defend that link within a narrow range. The important point is that this is not just a general promise to keep the exchange rate stable: it is backed by a more automatic rule-based system and by large foreign-exchange reserves. When pressure builds, interest rates in Hong Kong may have to adjust sharply to keep the peg credible, even if those movements are uncomfortable for the domestic economy. This illustrates both the strength and the cost of a hard peg: credibility can be stronger because the rule is clearer, but domestic monetary policy autonomy is correspondingly weaker.
+
+Taken together, these examples show why interest rates often have to adjust under a peg. If investors begin to doubt that the exchange rate will hold, the authorities may need higher interest rates to reduce capital outflows and support the currency. Argentina shows how this can become unsustainable in a weak economy, while Hong Kong shows that a harder and more credible system can survive, but only by accepting much less freedom over domestic monetary policy.
 
 ## Inflation targeting
 
@@ -427,14 +459,14 @@ The Bank of England's transmission-mechanism paper describes how the MPC sets th
 library(grid)
 
 nodes <- tribble(
-  ~id, ~label, ~x, ~y,
-  "i",   "Policy rate (i)",              0.1, 0.8,
-  "mr",  "Market rates & credit",        0.4, 0.8,
-  "ap",  "Asset prices",                 0.4, 0.6,
-  "fx",  "Exchange rate",                0.4, 0.4,
-  "ad",  "Spending / AD",                0.7, 0.6,
-  "og",  "Output gap",                   0.85,0.6,
-  "inf", "Wages & prices → inflation",   0.85,0.4
+  ~id, ~label, ~x, ~y, ~lx, ~ly,
+  "i",   "Policy rate (i)",              0.1, 0.8,  0.1,   0.8,
+  "mr",  "Market rates & credit",        0.4, 0.8,  0.4,   0.81,
+  "ap",  "Asset prices",                 0.4, 0.6,  0.4,   0.595,
+  "fx",  "Exchange rate",                0.4, 0.4,  0.4,   0.39,
+  "ad",  "Spending / AD",                0.7, 0.6,  0.705, 0.595,
+  "og",  "Output gap",                   0.85,0.6,  0.855, 0.6,
+  "inf", "Wages & prices -> inflation", 0.85,0.4,  0.85,  0.39
 )
 
 edges <- tribble(
@@ -459,8 +491,8 @@ ggplot() +
     linewidth = 0.5
   ) +
   geom_label(
- data = nodes,
-    aes(x = x, y = y, label = label),
+    data = nodes,
+    aes(x = lx, y = ly, label = label),
     label.size = 0.2,
     size = 3
   ) +
