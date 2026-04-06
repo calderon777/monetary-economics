@@ -99,7 +99,7 @@ fetch_boe_bank_rate <- function() {
   changes <- tbl %>%
     transmute(
       date = dmy(`Date Changed`),
-      value = readr::parse_number(Rate)
+      value = readr::parse_number(as.character(Rate))
     ) %>%
     filter(!is.na(date), !is.na(value)) %>%
     arrange(date)
@@ -419,7 +419,6 @@ The UK's 1992 Exchange Rate Mechanism (ERM) episode illustrates the internal-obj
 A second canonical example is Argentina's collapse of the convertibility regime. The IMF Independent Evaluation Office report describes a cumulative policy problem. First, once confidence weakened, investors and depositors increasingly doubted that the peso could remain fixed to the dollar. Second, this loss of confidence led to capital outflows, pressure on reserves, and severe strain on the banking system. Third, defending the peg required extremely tight policies at a time when the domestic economy was already weak, which made the recession deeper and support for the regime weaker. In the end, the government could no longer maintain debt payments and the exchange-rate commitment at the same time, so Argentina defaulted and abandoned the peg.
 
 A contrasting case is a "harder" rules-based currency board. Under Hong Kong's linked exchange rate system, the Hong Kong dollar is tied to the US dollar and the monetary authority commits to defend that link within a narrow range. The important point is that this is not just a general promise to keep the exchange rate stable: it is backed by a more automatic rule-based system and by large foreign-exchange reserves. When pressure builds, interest rates in Hong Kong may have to adjust sharply to keep the peg credible, even if those movements are uncomfortable for the domestic economy. This illustrates both the strength and the cost of a hard peg: credibility can be stronger because the rule is clearer, but domestic monetary policy autonomy is correspondingly weaker.
-
 Taken together, these examples show why interest rates often have to adjust under a peg. If investors begin to doubt that the exchange rate will hold, the authorities may need higher interest rates to reduce capital outflows and support the currency. Argentina shows how this can become unsustainable in a weak economy, while Hong Kong shows that a harder and more credible system can survive, but only by accepting much less freedom over domestic monetary policy.
 
 ## Inflation targeting
