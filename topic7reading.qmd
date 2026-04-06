@@ -238,9 +238,9 @@ For undergraduates, you can interpret this as: in the long run, monetary policy 
 
 The consensus emphasizes two situations where money can affect real variables in the short run:
 
-1) **Unexpected policy innovations (surprises).** In the rational expectations tradition, real effects come from the unexpected component of policy—not the predictable component. Robert Lucas's classic analysis derives a Phillips‑curve‑like relation while excluding "money illusion," implying that systematic, anticipated policy does not reliably buy higher output; only surprise elements can.
+1) **Unexpected policy innovations (surprises).** In rational expectations models, monetary policy affects output mainly when it is not expected. If households, firms and workers can already see a policy change coming, they adjust their behaviour in advance, so the real effects are much smaller. In Lucas's analysis, this means that only the unexpected part of policy can temporarily raise output; systematic, predictable policy cannot do so in a reliable way.
 
-2) **Nominal rigidities.** Even without deliberate deception, if wages and prices adjust slowly, changes in interest rates can influence real spending and production before prices fully adjust. Modern central bank explanations of transmission explicitly highlight nominal rigidities as a reason policy affects real activity.
+2) **Nominal rigidities.** Monetary policy can also have real effects because wages and prices do not adjust instantly. If firms change prices slowly, an interest-rate change can affect borrowing, spending and production before the full price adjustment has taken place. This is why modern central banks emphasise sticky wages and prices when explaining how policy is transmitted to the real economy.
 
 The consensus interpretation is careful: short‑run real effects are **temporary**, while the lasting effect of sustained monetary expansion is on nominal variables (especially the price level). In lecture terms: "real effects wear off; nominal effects persist."
 
