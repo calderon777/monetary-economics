@@ -31,7 +31,7 @@ execute:
 # Load required packages
 required_pkgs <- c(
   "tidyverse", "lubridate", "readxl", "scales",
-  "stringr", "janitor", "zoo", "ggrepel"
+  "stringr", "janitor", "zoo", "ggrepel", "rvest"
 )
 to_install <- required_pkgs[!required_pkgs %in% installed.packages()[, "Package"]]
 if (length(to_install) > 0) install.packages(to_install, repos = "https://cloud.r-project.org")
@@ -44,6 +44,7 @@ library(stringr)
 library(janitor)
 library(zoo)
 library(ggrepel)
+library(rvest)
 
 # Create directories
 dir.create("data_cache", showWarnings = FALSE, recursive = TRUE)
@@ -87,27 +88,26 @@ as_month_end <- function(df, date_col = "date", value_col = "value") {
 
 # Policy-rate data from official central-bank/FRED sources
 fetch_boe_bank_rate <- function() {
-  url <- paste0(
-    "https://www.bankofengland.co.uk/boeapps/database/fromshowcolumns.asp?",
-    "CSVF=TT&DAT=RNG&FD=1&FM=Jan&FNY=Y&FY=2000&",
-    "TD=31&TM=Dec&TY=", year(Sys.Date()),
-    "&SeriesCodes=IUMBEDR&UsingCodes=Y&VPD=Y"
-  )
-  f <- download_with_cache(url, "data_cache/boe_rate_monthly.csv")
-  raw <- readr::read_lines(f)
-  start_idx <- which(str_detect(raw, "^(Date|DATE),"))
-  if (length(start_idx) == 0) stop("Could not locate Bank Rate table in BoE download.")
-  df <- readr::read_csv(
-    I(raw[start_idx:length(raw)]),
-    show_col_types = FALSE
-  )
-  names(df) <- c("date", "value")
-  df %>%
+  url <- "https://www.bankofengland.co.uk/boeapps/database/Bank-Rate.asp?os=i"
+  page <- read_html(url)
+  tbl <- page %>%
+    html_table(fill = TRUE) %>%
+    purrr::keep(~ all(c("Date Changed", "Rate") %in% names(.x))) %>%
+    purrr::pluck(1)
+  if (is.null(tbl)) stop("Could not locate Bank Rate history table on the BoE page.")
+
+  changes <- tbl %>%
     transmute(
-      date = dmy(date),
-      value = as.numeric(value)
+      date = dmy(`Date Changed`),
+      value = readr::parse_number(Rate)
     ) %>%
-    filter(!is.na(date), !is.na(value))
+    filter(!is.na(date), !is.na(value)) %>%
+    arrange(date)
+
+  tibble(date = seq(min(changes$date), Sys.Date(), by = "day")) %>%
+    left_join(changes, by = "date") %>%
+    fill(value, .direction = "down") %>%
+    filter(!is.na(value))
 }
 
 fetch_ecb_deposit_facility <- function() {
