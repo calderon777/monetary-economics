@@ -304,16 +304,6 @@ knitr::kable(facilities_data, format = "html",
   kableExtra::kable_styling(bootstrap_options = "striped", full_width = TRUE)
 ```
 
-**[TABLE 1 HERE] Crisis-era instruments by market friction (2007–2010)**
-
-:::{.callout-note}
-**Table 1 Caption:** Map each facility to the market it targeted (interbank funding, repo/dealer funding, commercial paper, ABS markets, international dollar funding), and list the central bank and dates of operation.
-:::
-
-:::{.callout-note}
-**Table 1 Caption:** Map each facility to the market it targeted (interbank funding, repo/dealer funding, commercial paper, ABS markets, international dollar funding), and list the central bank and dates of operation.
-:::
-
 ```{r}
 #| label: fig-transmission
 #| fig-cap: "Crisis Transmission Mechanism and Policy Response"
@@ -396,12 +386,6 @@ ggplot() +
   ylim(1, 6) +
   coord_fixed(ratio = 1)
 ```
-
-**[FIGURE 3 HERE] "Plumbing" diagram of crisis transmission breakdown and policy tools**
-
-:::{.callout-note}
-**Figure 3 Caption:** Flowchart showing: funding liquidity shock → interbank spreads/dealer stress → credit supply contraction → demand contraction → disinflation risk. Overlay policy tools: liquidity facilities, swap lines, QE/LSAP, forward guidance.
-:::
 
 ## Balance-Sheet Policies and Unconventional Monetary Policy
 
@@ -506,12 +490,6 @@ ggplot() +
   ylim(-0.2, 5)
 ```
 
-**[FIGURE 4 HERE] Central bank balance sheet mechanics (stylized T-accounts)**
-
-:::{.callout-note}
-**Figure 4 Caption:** Asset purchase financed by reserves: central bank assets ↑ (gilts/MBS), liabilities ↑ (reserves). Emphasize that the purchase changes the composition of assets held by the private sector, and that reserves are liabilities of the central bank.
-:::
-
 ```{r}
 #| label: tbl-unconventional
 #| echo: false
@@ -531,14 +509,6 @@ knitr::kable(unconventional_matrix, format = "html",
   kableExtra::column_spec(1, width = "12%") %>%
   kableExtra::column_spec(2:4, width = "29.3%")
 ```
-
-**[TABLE 2 HERE] Unconventional-policy classification matrix**
-
-:::{.callout-note}
-**Table 2 Caption:** 
-Rows: liquidity provision, credit easing, QE/LSAP, forward guidance
-Columns: instrument mechanics, targeted market failure, main transmission channels, risks (moral hazard, fiscal exposure, exit complexity)
-:::
 
 ## International Spillovers and Central Bank Coordination
 
@@ -615,12 +585,6 @@ ggplot() +
   coord_fixed() +
   labs(title = "Federal Reserve Dollar Swap Line Network (2007–2010)")
 ```
-
-**[FIGURE 5 HERE] Swap-line network diagram (2007–2010)**
-
-:::{.callout-note}
-**Figure 5 Caption:** Simple network diagram showing Fed dollar swap lines with ECB/SNB (Dec 2007) and broader network as crisis intensified; annotate expiry Feb 2010.
-:::
 
 ## Evaluation, Controversies, and the Post-2010 Legacy
 
@@ -702,12 +666,6 @@ ggplot(toolkit_stages, aes(x = x_pos, y = 1)) +
   theme_void() +
   coord_fixed(xlim = c(0, 8), ylim = c(0.2, 2))
 ```
-
-**[FIGURE 6 HERE] "Policy toolkit expansion" schematic**
-
-:::{.callout-note}
-**Figure 6 Caption:** Schematic ladder showing how central banks added instruments as constraints tightened: conventional rate policy → lender-of-last-resort → balance-sheet policy → coordination.
-:::
 
 ## Summary and Key Terms
 
