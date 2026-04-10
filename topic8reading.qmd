@@ -187,7 +187,7 @@ The Bank of England reduced Bank Rate in steps to **0.5% on March 5, 2009** and 
 1. Cut Bank Rate to 0.5%
 2. Finance **£75 billion** of asset purchases by creating central bank reserves, with scale and timing reviewed at each MPC meeting
 
-This is a key teaching point: once Bank Rate approached its lower effective bound, the MPC explicitly treated asset purchases as part of monetary policy implementation—still aimed at meeting the CPI inflation target in the medium term.
+Once Bank Rate approached its lower effective bound, the MPC explicitly treated asset purchases as part of monetary policy implementation—still aimed at meeting the CPI inflation target in the medium term.
 
 ### The United States: Federal Funds Rate at the ZLB and "Extended Period" Language
 
