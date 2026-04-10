@@ -197,7 +197,7 @@ By March 2009, the FOMC's communication included that rates were likely to remai
 
 ### The Euro Area: Rapid Rate Cuts Plus "Full Allotment" Liquidity
 
-In the euro area, the ECB cut the main refinancing operation (MRO) rate to **1.00%** in May 2009 and simultaneously expanded liquidity provision tools. But the key distinction relative to the Fed/BoE is operational: from October 2008, the ECB shifted MROs to **fixed rate full allotment**—a commitment to satisfy banks' demand for central bank liquidity at the policy rate—explicitly to stabilize fractured money markets.
+In the euro area, the ECB cut the main refinancing operation (MRO) rate to **1.00%** in May 2009 and simultaneously expanded liquidity provision tools. But the key distinction relative to the Fed/BoE is operational: from October 2008, the ECB shifted MROs to **fixed rate full allotment**, meaning banks could obtain as much central bank funding as they wanted, at the announced policy rate, so long as they posted eligible collateral. Instead of rationing liquidity through limited auctions, the ECB accommodated demand in order to stabilize badly impaired interbank money markets.
 
 ### Japan as Precedent: A Long ZLB Environment
 
@@ -250,11 +250,9 @@ ggplot(policy_rates, aes(x = date, y = rate)) +
        title = "Central Bank Policy Rate Cuts During Crisis (2007–2010)")
 ```
 
-**[FIGURE 2 HERE] Policy rates (BoE/Fed/ECB/BoJ), 2007–2010 with event markers**
+**Policy rates (BoE/Fed/ECB/BoJ), 2007–2010 with event markers**
 
-:::{.callout-note}
-**Figure 2 Caption:** Line chart of policy rates with vertical markers at Sept 2008, Mar 2009, May/Jun 2009, May 2010. Include BoE Bank Rate, Fed target range midpoint, ECB MRO (or deposit facility rate), and BoJ policy rate. Highlight the coordinated easing and convergence toward zero/near-zero levels by 2009.
-:::
+This figure shows the BoE Bank Rate, Fed target rate, ECB policy rate, and BoJ policy rate, with vertical markers for September 2008, March 2009, mid-2009, and May 2010. The main pattern is the coordinated pace of easing and the convergence of policy rates toward zero or near-zero levels by 2009.
 
 ## Liquidity Provision and Lender-of-Last-Resort Tools
 
