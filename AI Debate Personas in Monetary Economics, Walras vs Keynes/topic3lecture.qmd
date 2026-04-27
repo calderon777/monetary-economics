@@ -1,0 +1,247 @@
+---
+title: "Lecture 3"
+author: "By Dr Camilo Calderon"
+engine: knitr
+format:
+  revealjs:
+    theme: default
+    slide-number: true
+    chalkboard: true
+    preview-links: auto
+    include-after-body: 
+      text: |
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          var titleSlide = document.querySelector('.reveal .slides section:first-child');
+          if (titleSlide) {
+            var pdfButton = document.createElement('div');
+            pdfButton.style.cssText = 'text-align: center; margin-top: 40px;';
+            pdfButton.innerHTML = '<a href="pdf/topic3lecture.pdf" download style="text-decoration: none; background: #e74c3c; color: white; padding: 12px 20px; border-radius: 8px; box-shadow: 0 3px 6px rgba(0,0,0,0.3); font-weight: bold; font-size: 1.2em;" title="Download Lecture PDF">⬇️ PDF</a>';
+            titleSlide.appendChild(pdfButton);
+          }
+        });
+        </script>
+execute:
+  freeze: false
+  echo: false
+  warning: false
+  message: false
+---
+
+```{r setup}
+#| include: false
+
+# Configuration - CHANGE THIS FOR EACH LECTURE
+ppt_filename <- "topic3lecture.pptx"
+
+# Auto-generate folder name from this .qmd file name
+qmd_name <- knitr::current_input(dir = FALSE)
+qmd_base <- tools::file_path_sans_ext(qmd_name)  # e.g., "week1lecture"
+
+# Paths
+ppt_path <- file.path("ppt", ppt_filename)
+img_dir  <- file.path("ppt", paste0(qmd_base, "_png"))  # e.g., "ppt/week1lecture_png"
+png_stamp_path <- file.path(img_dir, "_source_mtime.txt")
+pdf_filename <- paste0(tools::file_path_sans_ext(ppt_filename), ".pdf")
+pdf_dir <- "pdf"
+pdf_dest <- file.path(pdf_dir, pdf_filename)
+pdf_stamp_path <- file.path(pdf_dir, paste0(tools::file_path_sans_ext(ppt_filename), "_source_mtime.txt"))
+
+# Create output directory
+dir.create(img_dir, recursive = TRUE, showWarnings = FALSE)
+dir.create(pdf_dir, recursive = TRUE, showWarnings = FALSE)
+```
+
+```{r export-pptx-to-png}
+#| include: false
+#| eval: true
+
+# Windows + PowerPoint only
+if (.Platform$OS.type != "windows") {
+  stop("PowerPoint export requires Windows.")
+}
+
+if (!file.exists(ppt_path)) {
+  stop(paste("PPTX not found:", ppt_path))
+}
+
+ppt_mtime <- unclass(file.info(ppt_path)$mtime)
+stored_png_mtime <- if (file.exists(png_stamp_path)) {
+  suppressWarnings(as.numeric(readLines(png_stamp_path, n = 1L, warn = FALSE)))
+} else {
+  NA_real_
+}
+pngs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+needs_png_export <- length(pngs) == 0 || is.na(stored_png_mtime) || !isTRUE(all.equal(stored_png_mtime, ppt_mtime))
+
+if (needs_png_export) {
+  old <- list.files(img_dir, pattern = r"(\.(png|PNG)$)", full.names = TRUE)
+  if (length(old)) {
+    file.remove(old)
+  }
+
+  in_abs <- normalizePath(ppt_path, mustWork = TRUE)
+  out_abs <- normalizePath(img_dir, mustWork = TRUE)
+  ps_file <- file.path(tempdir(), "export_pptx.ps1")
+
+  ps_code <- sprintf('
+$in = "%s"
+$out = "%s"
+
+New-Item -ItemType Directory -Force -Path $out | Out-Null
+
+$ppt = New-Object -ComObject PowerPoint.Application
+$ppt.Visible = [Microsoft.Office.Core.MsoTriState]::msoTrue
+
+$pres = $ppt.Presentations.Open($in, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoTrue)
+
+# 18 = ppSaveAsPNG format
+$pres.SaveAs($out, 18)
+
+$pres.Close()
+$ppt.Quit()
+
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($pres) | Out-Null
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($ppt) | Out-Null
+[GC]::Collect()
+[GC]::WaitForPendingFinalizers()
+
+Write-Host "Export complete"
+', in_abs, out_abs)
+
+  writeLines(ps_code, ps_file)
+
+  result <- system2("powershell",
+                    args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_file),
+                    stdout = TRUE, stderr = TRUE)
+
+  file.remove(ps_file)
+
+  pngs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+
+  if (length(pngs) == 0) {
+    stop(paste(
+      "PowerPoint produced no PNGs.\n",
+      "Input:", in_abs, "\n",
+      "Output:", out_abs, "\n",
+      "Error:\n",
+      paste(result, collapse = "\n")
+    ))
+  }
+
+  writeLines(as.character(ppt_mtime), png_stamp_path)
+}
+```
+
+```{r export-pptx-to-pdf}
+#| include: false
+#| eval: true
+
+# Export PPTX to PDF for download
+pdf_path <- file.path("ppt", pdf_filename)
+pdf_abs <- normalizePath(dirname(pdf_path), mustWork = TRUE)
+pdf_full <- file.path(pdf_abs, pdf_filename)
+stored_pdf_mtime <- if (file.exists(pdf_stamp_path)) {
+  suppressWarnings(as.numeric(readLines(pdf_stamp_path, n = 1L, warn = FALSE)))
+} else {
+  NA_real_
+}
+needs_pdf_export <- !file.exists(pdf_dest) || is.na(stored_pdf_mtime) || !isTRUE(all.equal(stored_pdf_mtime, ppt_mtime))
+
+in_abs <- normalizePath(ppt_path, mustWork = TRUE)
+
+if (needs_pdf_export) {
+  ps_pdf_file <- file.path(tempdir(), "export_pdf.ps1")
+
+  ps_pdf_code <- sprintf('
+$in = "%s"
+$out = "%s"
+
+$ppt = New-Object -ComObject PowerPoint.Application
+$ppt.Visible = [Microsoft.Office.Core.MsoTriState]::msoFalse
+
+$pres = $ppt.Presentations.Open($in, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse, [Microsoft.Office.Core.MsoTriState]::msoFalse)
+
+# 32 = ppSaveAsPDF format
+$pres.SaveAs($out, 32)
+
+$pres.Close()
+$ppt.Quit()
+
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($pres) | Out-Null
+[System.Runtime.InteropServices.Marshal]::ReleaseComObject($ppt) | Out-Null
+[GC]::Collect()
+[GC]::WaitForPendingFinalizers()
+
+Write-Host "PDF export complete"
+', in_abs, pdf_full)
+
+  writeLines(ps_pdf_code, ps_pdf_file)
+
+  result_pdf <- system2("powershell",
+                        args = c("-NoProfile", "-ExecutionPolicy", "Bypass", "-File", ps_pdf_file),
+                        stdout = TRUE, stderr = TRUE)
+
+  file.remove(ps_pdf_file)
+
+  if (file.exists(pdf_path)) {
+    file.copy(pdf_path, pdf_dest, overwrite = TRUE)
+    writeLines(as.character(ppt_mtime), pdf_stamp_path)
+  } else {
+    warning(paste("PDF export may have failed:", paste(result_pdf, collapse = "\n")))
+  }
+} else if (file.exists(pdf_path) && !file.exists(pdf_dest)) {
+  file.copy(pdf_path, pdf_dest, overwrite = TRUE)
+}
+```
+
+```{r render-png-slides}
+#| output: asis
+#| eval: true
+
+# Get all Slide*.PNG files (PowerPoint naming convention)
+imgs <- list.files(img_dir, pattern = r"(^Slide\d+\.(png|PNG)$)", full.names = TRUE)
+
+# Sort by slide number
+get_slide_number <- function(x) {
+  as.numeric(gsub(r"(^Slide(\d+)\.(png|PNG)$)", "\\1", basename(x), ignore.case = TRUE))
+}
+imgs <- imgs[order(sapply(imgs, get_slide_number))]
+
+# Render each PNG as a Reveal.js slide background
+for (img in imgs) {
+  rel <- gsub("\\\\", "/", img)
+  cat("\n---\n\n")
+  cat(sprintf('## {background-image="%s" background-size="contain" background-position="center"}\n\n', rel))
+}
+```
+
+<!-- 
+===========================================
+TEMPLATE FOR ALL LECTURES
+===========================================
+
+USAGE:
+1. Copy this file (e.g., week2lecture.qmd, week3lecture.qmd)
+2. Update YAML title and author
+3. Change ppt_filename on line 17
+4. Render (Ctrl+Shift+K or quarto render)
+
+FOLDER STRUCTURE:
+- week1lecture.qmd → ppt/week1lecture_png/Slide1.PNG, Slide2.PNG, ...
+- week2lecture.qmd → ppt/week2lecture_png/Slide1.PNG, Slide2.PNG, ...
+- week3lecture.qmd → ppt/week3lecture_png/Slide1.PNG, Slide3.PNG, ...
+
+Each lecture's PNGs are isolated in their own folder.
+
+ONE-TIME SETUP FOR HIGH-QUALITY PNGS (300 DPI):
+Run once in PowerShell:
+
+New-Item -Path "HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Options" -Force | Out-Null
+New-ItemProperty -Path "HKCU:\Software\Microsoft\Office\16.0\PowerPoint\Options" `
+  -Name "ExportBitmapResolution" -PropertyType DWord -Value 300 -Force | Out-Null
+
+Then close PowerPoint and re-render.
+
+===========================================
+-->
