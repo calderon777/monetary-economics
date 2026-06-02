@@ -1,0 +1,193 @@
+---
+title: "TutorialX"
+subtitle: "AI-supported tutorial questions for large-cohort economics teaching"
+author: "Dr Camilo Calderon"
+date: "June 2026"
+format:
+  pptx:
+    slide-level: 2
+---
+
+## Purpose
+
+TutorialX is a reusable tutorial layer built around teacher-authored question sets.
+
+- Starts from `topicXquestions.qmd`-style material
+- Converts tutorial questions into structured, student-facing practice
+- Adds formative AI feedback without removing the human tutor
+- Scales tutorial preparation and follow-up for very large cohorts
+
+## Why This Matters
+
+Large economics modules face a familiar tutorial problem.
+
+- Students arrive with uneven preparation
+- Tutorial time is scarce and often consumed by basic clarification
+- Feedback demand exceeds staff capacity
+- Weak students need earlier diagnosis, not only end-of-term intervention
+- Strong students need harder prompts and extensions
+
+## Pedagogical Model
+
+TutorialX is designed as a structured active-learning cycle.
+
+1. Students attempt the tutorial question before or after class
+2. The system gives formative hints, not final answers
+3. Students revise their reasoning
+4. Tutors use patterns of difficulty to target tutorial time
+5. Post-tutorial feedback reinforces the main learning points
+
+## What Students Practise
+
+The tool supports discipline-specific abilities rather than generic chatbot use.
+
+- Conceptual precision: definitions, assumptions, mechanisms
+- Economic reasoning: causal chains and comparative statics
+- Mathematical fluency: setting up equations and interpreting results
+- Writing: concise explanation under academic standards
+- Metacognition: comparing own answer with indicative reasoning
+
+## Tutorial Workflow
+
+TutorialX can sit before, during, and after the live tutorial.
+
+- Before: students submit draft answers and receive low-stakes hints
+- During: tutors focus on misconceptions visible from aggregate patterns
+- After: students receive recap prompts, extensions, and revision guidance
+- Between weeks: the system remains available for self-paced practice
+
+## Tracking Learning
+
+The useful data are pedagogical, not surveillance-oriented.
+
+- Question completion and revision attempts
+- Common missing concepts or incorrect mechanisms
+- Distribution of confidence and answer quality
+- Topics generating repeated confusion
+- Requests for hints, examples, or mathematical setup
+
+## Feedback After Tutorials
+
+TutorialX can turn tutorial sessions into a feedback loop.
+
+- Tutors review anonymised pain points after each tutorial
+- AI summarises recurring errors for staff review
+- Students receive targeted post-tutorial prompts
+- Course team identifies questions that need rewriting
+- Repeated difficulties inform lecture recaps and office hours
+
+## On-Demand Student Use
+
+Students can use TutorialX whenever they need practice.
+
+- No need to wait for office hours for first-stage feedback
+- Students can safely test partial answers
+- International and commuting students get more flexible support
+- Revision becomes more dialogic than reading static model answers
+- Indicative answers remain available for self-checking, not copying
+
+## Role of AI
+
+AI is the formative layer.
+
+- Gives hints and diagnostic comments
+- Asks students to complete missing steps
+- Explains why an answer is incomplete
+- Adapts examples to the student's current response
+- Flags uncertainty where human review is needed
+
+AI should not be positioned as the authority of record.
+
+## Role of the Human Tutor
+
+The human tutor remains academically central.
+
+- Designs the questions and indicative answers
+- Sets the standard of disciplinary reasoning
+- Interprets ambiguous or original student responses
+- Handles pastoral, ethical, and assessment concerns
+- Turns aggregate patterns into better teaching decisions
+
+TutorialX expands the tutor's reach; it does not replace tutorial judgement.
+
+## Tool Features
+
+The current implementation pattern already supports the core feature set.
+
+- Teacher mode: create, edit, and save tutorials as JSON
+- Student mode: answer questions, request AI feedback, reveal indicative answers
+- Markdown and LaTeX support for economics content
+- Downloadable student answers for revision records
+- Optional Hugging Face Dataset persistence
+- Model/provider can be changed without rewriting tutorial content
+
+## Academic Governance
+
+The design needs explicit boundaries.
+
+- Feedback should be formative and non-assessed unless validated
+- Prompts should avoid giving complete answers by default
+- Students should be told when AI feedback may be incomplete or wrong
+- Human review is required for high-stakes or contested claims
+- Usage analytics should be anonymised or minimised where possible
+
+## Estimated Use: 2,000 Students
+
+Illustrative assumption: each student uses 5,000 input tokens and 15,000 output tokens.
+
+| Quantity | Estimate |
+|---|---:|
+| Students | 2,000 |
+| Input tokens per student | 5,000 |
+| Output tokens per student | 15,000 |
+| Total input tokens | 10,000,000 |
+| Total output tokens | 30,000,000 |
+| Total tokens | 40,000,000 |
+
+## Estimated API Cost: DeepSeek V4
+
+Official DeepSeek prices are per 1M tokens. Cache-miss input is the conservative planning assumption.
+
+| Model | Input cost | Output cost | Estimated total |
+|---|---:|---:|---:|
+| V4 Flash, cache miss | $1.40 | $8.40 | $9.80 |
+| V4 Flash, cache hit | $0.03 | $8.40 | $8.43 |
+| V4 Pro, cache miss | $4.35 | $26.10 | $30.45 |
+| V4 Pro, cache hit | $0.04 | $26.10 | $26.14 |
+
+Source: DeepSeek API pricing, checked 2 June 2026.
+
+## Cost Interpretation
+
+The AI feedback cost is small relative to tutorial staffing costs.
+
+- Even a conservative V4 Pro cache-miss estimate is about $0.015 per student
+- V4 Flash cache-miss estimate is about $0.005 per student
+- Output tokens dominate cost, so concise feedback design matters
+- Staff review time, governance, and support design are the real costs
+
+## Implementation Path
+
+A pragmatic rollout can be staged.
+
+1. Convert one `topicXquestions.qmd` into TutorialX format
+2. Pilot with one week of tutorials
+3. Compare AI feedback against tutor expectations
+4. Add tracking dashboard for aggregate misconceptions
+5. Scale to all topics once governance and support routines are stable
+
+## Evaluation Questions
+
+For colleagues, the key issue is not whether the tool is impressive.
+
+- Do students submit better tutorial answers after using it?
+- Does it reduce basic clarification time in tutorials?
+- Does it help weaker students ask better questions?
+- Does it improve feedback consistency across tutorial groups?
+- Does it preserve the intellectual role of the human tutor?
+
+## Closing Proposition
+
+TutorialX is best understood as a tutorial support infrastructure.
+
+It gives students more opportunities to practise, gives tutors better information before and after contact hours, and keeps academic judgement with the teaching team.
