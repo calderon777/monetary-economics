@@ -1,13 +1,19 @@
 from shiny import App, ui, render, reactive
 from groq import Groq
 import os
+import csv
+from datetime import datetime, timezone
 import edge_tts
 import asyncio
 import base64
 from io import BytesIO
 import threading
+import uuid
 
 MODEL_NAME = "llama-3.3-70b-versatile"
+USAGE_LOG_CSV = os.environ.get("USAGE_LOG_CSV", "usage_logs.csv")
+SESSION_ID = os.environ.get("DEBATE_SESSION_ID", str(uuid.uuid4()))
+CSV_WRITE_LOCK = threading.Lock()
 
 SYSTEM_CLASSICAL = (
     "You are the Classical team (Leon Walras + Alfred Marshall). "
@@ -39,6 +45,96 @@ SPEECH_RATE = "+5%"  # Slightly faster for debate energy
 CLASSICAL_PITCH = "-20Hz"  # Very low pitch for gravitas
 KEYNESIAN_PITCH = "-18Hz"  # Also very low but distinguishable
 MODERATOR_PITCH = "+0Hz"  # Natural female pitch
+
+
+def _ensure_usage_log_header():
+    """Create usage log file with header if it doesn't exist yet."""
+    if os.path.exists(USAGE_LOG_CSV):
+        return
+
+    with open(USAGE_LOG_CSV, "w", newline="", encoding="utf-8") as f:
+        writer = csv.writer(f)
+        writer.writerow(
+            [
+                "timestamp_utc",
+                "session_id",
+                "endpoint",
+                "model",
+                "topic",
+                "round_label",
+                "team",
+                "stage",
+                "status",
+                "api_key_index",
+                "prompt_tokens",
+                "completion_tokens",
+                "total_tokens",
+                "user_prompt",
+                "response_preview",
+                "error",
+            ]
+        )
+
+
+def _extract_usage_fields(result):
+    """Extract token usage fields from Groq/OpenAI-compatible response objects."""
+    usage = getattr(result, "usage", None)
+    if usage is None:
+        return None, None, None
+
+    prompt_tokens = getattr(usage, "prompt_tokens", None)
+    completion_tokens = getattr(usage, "completion_tokens", None)
+    total_tokens = getattr(usage, "total_tokens", None)
+
+    # Handle dict-like usage objects if SDK returns plain mappings.
+    if isinstance(usage, dict):
+        prompt_tokens = usage.get("prompt_tokens", prompt_tokens)
+        completion_tokens = usage.get("completion_tokens", completion_tokens)
+        total_tokens = usage.get("total_tokens", total_tokens)
+
+    return prompt_tokens, completion_tokens, total_tokens
+
+
+def _append_usage_log(
+    endpoint,
+    model,
+    status,
+    user_prompt,
+    response_text="",
+    prompt_tokens=None,
+    completion_tokens=None,
+    total_tokens=None,
+    api_key_index=None,
+    error="",
+    log_context=None,
+):
+    """Append a single model call record to CSV for later usage reporting."""
+    log_context = log_context or {}
+    _ensure_usage_log_header()
+
+    row = [
+        datetime.now(timezone.utc).isoformat(),
+        SESSION_ID,
+        endpoint,
+        model,
+        log_context.get("topic", ""),
+        log_context.get("round_label", ""),
+        log_context.get("team", ""),
+        log_context.get("stage", ""),
+        status,
+        api_key_index if api_key_index is not None else "",
+        prompt_tokens if prompt_tokens is not None else "",
+        completion_tokens if completion_tokens is not None else "",
+        total_tokens if total_tokens is not None else "",
+        user_prompt,
+        (response_text or "")[:400],
+        error,
+    ]
+
+    with CSV_WRITE_LOCK:
+        with open(USAGE_LOG_CSV, "a", newline="", encoding="utf-8") as f:
+            writer = csv.writer(f)
+            writer.writerow(row)
 
 
 def get_groq_api_keys():
@@ -104,7 +200,7 @@ def build_messages(system_prompt, topic, round_label, history, user_question):
     return messages
 
 
-def get_ai_response(messages):
+def get_ai_response(messages, log_context=None):
     api_keys = get_groq_api_keys()
     if not api_keys:
         return "Error: No GROQ_API_KEY is set for this Space."
@@ -113,7 +209,9 @@ def get_ai_response(messages):
     saw_rate_limit = False
     last_error = ""
 
-    for api_key in api_keys:
+    user_prompt = messages[-1].get("content", "") if messages else ""
+
+    for index, api_key in enumerate(api_keys, start=1):
         client = Groq(api_key=api_key)
         try:
             result = client.chat.completions.create(
@@ -122,11 +220,34 @@ def get_ai_response(messages):
                 temperature=0.4,
                 max_tokens=400,
             )
-            return result.choices[0].message.content.strip()
+            content = result.choices[0].message.content.strip()
+            prompt_tokens, completion_tokens, total_tokens = _extract_usage_fields(result)
+            _append_usage_log(
+                endpoint="chat.completions",
+                model=getattr(result, "model", MODEL_NAME),
+                status="success",
+                user_prompt=user_prompt,
+                response_text=content,
+                prompt_tokens=prompt_tokens,
+                completion_tokens=completion_tokens,
+                total_tokens=total_tokens,
+                api_key_index=index,
+                log_context=log_context,
+            )
+            return content
         except Exception as e:
             error_msg = str(e)
             last_error = error_msg
             lowered = error_msg.lower()
+            _append_usage_log(
+                endpoint="chat.completions",
+                model=MODEL_NAME,
+                status="error",
+                user_prompt=user_prompt,
+                api_key_index=index,
+                error=error_msg,
+                log_context=log_context,
+            )
             if "401" in error_msg or "invalid" in lowered:
                 saw_auth_error = True
                 continue
@@ -142,7 +263,7 @@ def get_ai_response(messages):
     return f"?? API error: {last_error[:100]}..." if last_error else "?? API error."
 
 
-def get_moderator_analysis(topic, round_label, classical_response, keynesian_response):
+def get_moderator_analysis(topic, round_label, classical_response, keynesian_response, stage="moderator"):
     """Get a moderator's analysis of who won the exchange."""
     api_keys = get_groq_api_keys()
     if not api_keys:
@@ -166,7 +287,7 @@ Keep it brief and decisive."""
 
     messages = [{"role": "user", "content": moderator_prompt}]
     saw_rate_limit = False
-    for api_key in api_keys:
+    for index, api_key in enumerate(api_keys, start=1):
         client = Groq(api_key=api_key)
         try:
             result = client.chat.completions.create(
@@ -175,10 +296,43 @@ Keep it brief and decisive."""
                 temperature=0.3,
                 max_tokens=150,
             )
-            return result.choices[0].message.content.strip()
+            content = result.choices[0].message.content.strip()
+            prompt_tokens, completion_tokens, total_tokens = _extract_usage_fields(result)
+            _append_usage_log(
+                endpoint="chat.completions",
+                model=getattr(result, "model", MODEL_NAME),
+                status="success",
+                user_prompt=moderator_prompt,
+                response_text=content,
+                prompt_tokens=prompt_tokens,
+                completion_tokens=completion_tokens,
+                total_tokens=total_tokens,
+                api_key_index=index,
+                log_context={
+                    "topic": topic,
+                    "round_label": round_label,
+                    "team": "moderator",
+                    "stage": stage,
+                },
+            )
+            return content
         except Exception as e:
             error_msg = str(e)
             lowered = error_msg.lower()
+            _append_usage_log(
+                endpoint="chat.completions",
+                model=MODEL_NAME,
+                status="error",
+                user_prompt=moderator_prompt,
+                api_key_index=index,
+                error=error_msg,
+                log_context={
+                    "topic": topic,
+                    "round_label": round_label,
+                    "team": "moderator",
+                    "stage": stage,
+                },
+            )
             if "rate_limit" in lowered or "429" in error_msg or "quota" in lowered:
                 saw_rate_limit = True
                 continue
@@ -657,7 +811,15 @@ def server(input, output, session):
             classical_history.get(),
             question,
         )
-        classical_reply = get_ai_response(classical_msgs)
+        classical_reply = get_ai_response(
+            classical_msgs,
+            log_context={
+                "topic": topic,
+                "round_label": round_label,
+                "team": "classical",
+                "stage": "exchange_1_opening",
+            },
+        )
         
         # Check for API errors
         if classical_reply.startswith(("⏳", "🔑", "⚠️")):
@@ -673,7 +835,15 @@ def server(input, output, session):
             keynes_history.get(),
             keynes_opening,
         )
-        keynes_reply = get_ai_response(keynes_msgs)
+        keynes_reply = get_ai_response(
+            keynes_msgs,
+            log_context={
+                "topic": topic,
+                "round_label": round_label,
+                "team": "keynesian",
+                "stage": "exchange_1_response",
+            },
+        )
         
         # Check for API errors
         if keynes_reply.startswith(("⏳", "🔑", "⚠️")):
@@ -702,7 +872,15 @@ def server(input, output, session):
             classical_history.get(),
             classical_counter,
         )
-        classical_counter_reply = get_ai_response(classical_msgs_2)
+        classical_counter_reply = get_ai_response(
+            classical_msgs_2,
+            log_context={
+                "topic": topic,
+                "round_label": round_label,
+                "team": "classical",
+                "stage": "exchange_2_counter",
+            },
+        )
         
         # Check for API errors
         if classical_counter_reply.startswith(("⏳", "🔑", "⚠️")):
@@ -718,7 +896,15 @@ def server(input, output, session):
             keynes_history.get(),
             keynes_rebuttal,
         )
-        keynes_rebuttal_reply = get_ai_response(keynes_msgs_2)
+        keynes_rebuttal_reply = get_ai_response(
+            keynes_msgs_2,
+            log_context={
+                "topic": topic,
+                "round_label": round_label,
+                "team": "keynesian",
+                "stage": "exchange_2_rebuttal",
+            },
+        )
         
         # Check for API errors
         if keynes_rebuttal_reply.startswith(("⏳", "🔑", "⚠️")):
@@ -743,7 +929,15 @@ def server(input, output, session):
             classical_history.get(),
             classical_final,
         )
-        classical_final_reply = get_ai_response(classical_msgs_3)
+        classical_final_reply = get_ai_response(
+            classical_msgs_3,
+            log_context={
+                "topic": topic,
+                "round_label": round_label,
+                "team": "classical",
+                "stage": "exchange_3_final",
+            },
+        )
         
         # Check for API errors
         if classical_final_reply.startswith(("⏳", "🔑", "⚠️")):
@@ -759,7 +953,15 @@ def server(input, output, session):
             keynes_history.get(),
             keynes_final,
         )
-        keynes_final_reply = get_ai_response(keynes_msgs_3)
+        keynes_final_reply = get_ai_response(
+            keynes_msgs_3,
+            log_context={
+                "topic": topic,
+                "round_label": round_label,
+                "team": "keynesian",
+                "stage": "exchange_3_final",
+            },
+        )
         
         # Check for API errors
         if keynes_final_reply.startswith(("⏳", "🔑", "⚠️")):
@@ -780,9 +982,27 @@ def server(input, output, session):
 
         # Get moderator analysis for all exchanges
         status_message.set("📋 Moderator is scoring all exchanges...")
-        moderator_comment_1 = get_moderator_analysis(topic, round_label, classical_reply, keynes_reply)
-        moderator_comment_2 = get_moderator_analysis(topic, round_label, classical_counter_reply, keynes_rebuttal_reply)
-        moderator_comment_3 = get_moderator_analysis(topic, round_label, classical_final_reply, keynes_final_reply)
+        moderator_comment_1 = get_moderator_analysis(
+            topic,
+            round_label,
+            classical_reply,
+            keynes_reply,
+            stage="moderator_exchange_1",
+        )
+        moderator_comment_2 = get_moderator_analysis(
+            topic,
+            round_label,
+            classical_counter_reply,
+            keynes_rebuttal_reply,
+            stage="moderator_exchange_2",
+        )
+        moderator_comment_3 = get_moderator_analysis(
+            topic,
+            round_label,
+            classical_final_reply,
+            keynes_final_reply,
+            stage="moderator_exchange_3",
+        )
         
         moderator_scores.set([moderator_comment_1, moderator_comment_2, moderator_comment_3])
         
