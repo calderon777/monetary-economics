@@ -4,6 +4,9 @@ subtitle: "AI-supported tutorial questions for large-cohort economics teaching"
 author: "Dr Camilo Calderon"
 date: "June 2026"
 format:
+  html:
+    toc: true
+    number-sections: false
   pptx:
     slide-level: 2
 ---
@@ -121,6 +124,14 @@ The current implementation pattern already supports the core feature set.
 - Optional Hugging Face Dataset persistence
 - Model/provider can be changed without rewriting tutorial content
 
+## Live Prototype
+
+```{=html}
+<iframe src="https://huggingface.co/spaces/camcalderon777/tutorial-builder/embed" frameborder="0" width="100%" height="1400"></iframe>
+```
+
+TutorialX now runs as one reusable application that can preload any topic from the existing `topicXquestions.qmd` and `topicXanswers.qmd` source files.
+
 ## Academic Governance
 
 The design needs explicit boundaries.
@@ -170,11 +181,11 @@ The AI feedback cost is small relative to tutorial staffing costs.
 
 A pragmatic rollout can be staged.
 
-1. Convert one `topicXquestions.qmd` into TutorialX format
+1. Import existing `topicXquestions.qmd` and `topicXanswers.qmd` files into the reusable app
 2. Pilot with one week of tutorials
 3. Compare AI feedback against tutor expectations
 4. Add tracking dashboard for aggregate misconceptions
-5. Scale to all topics once governance and support routines are stable
+5. Scale to other modules and partner institutions once governance and support routines are stable
 
 ## Evaluation Questions
 
