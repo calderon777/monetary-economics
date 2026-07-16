@@ -2379,5 +2379,205 @@
       "Topic 8 - Monetary Policy in the Post-Crisis",
       "Reading"
     ]
+  },
+  {
+    "objectID": "TutorialX.html",
+    "href": "TutorialX.html",
+    "title": "TutorialX",
+    "section": "",
+    "text": "TutorialX is a reusable tutorial layer built around teacher-authored question sets.\n\nStarts from topicXquestions.qmd-style material\nConverts tutorial questions into structured, student-facing practice\nAdds formative AI feedback without removing the human tutor\nScales tutorial preparation and follow-up for very large cohorts",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#purpose",
+    "href": "TutorialX.html#purpose",
+    "title": "TutorialX",
+    "section": "",
+    "text": "TutorialX is a reusable tutorial layer built around teacher-authored question sets.\n\nStarts from topicXquestions.qmd-style material\nConverts tutorial questions into structured, student-facing practice\nAdds formative AI feedback without removing the human tutor\nScales tutorial preparation and follow-up for very large cohorts",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#why-this-matters",
+    "href": "TutorialX.html#why-this-matters",
+    "title": "TutorialX",
+    "section": "Why This Matters",
+    "text": "Why This Matters\nLarge economics modules face a familiar tutorial problem.\n\nStudents arrive with uneven preparation\nTutorial time is scarce and often consumed by basic clarification\nFeedback demand exceeds staff capacity\nWeak students need earlier diagnosis, not only end-of-term intervention\nStrong students need harder prompts and extensions",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#pedagogical-model",
+    "href": "TutorialX.html#pedagogical-model",
+    "title": "TutorialX",
+    "section": "Pedagogical Model",
+    "text": "Pedagogical Model\nTutorialX is designed as a structured active-learning cycle.\n\nStudents attempt the tutorial question before or after class\nThe system gives formative hints, not final answers\nStudents revise their reasoning\nTutors use patterns of difficulty to target tutorial time\nPost-tutorial feedback reinforces the main learning points",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#what-students-practise",
+    "href": "TutorialX.html#what-students-practise",
+    "title": "TutorialX",
+    "section": "What Students Practise",
+    "text": "What Students Practise\nThe tool supports discipline-specific abilities rather than generic chatbot use.\n\nConceptual precision: definitions, assumptions, mechanisms\nEconomic reasoning: causal chains and comparative statics\nMathematical fluency: setting up equations and interpreting results\nWriting: concise explanation under academic standards\nMetacognition: comparing own answer with indicative reasoning",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#tutorial-workflow",
+    "href": "TutorialX.html#tutorial-workflow",
+    "title": "TutorialX",
+    "section": "Tutorial Workflow",
+    "text": "Tutorial Workflow\nTutorialX can sit before, during, and after the live tutorial.\n\nBefore: students submit draft answers and receive low-stakes hints\nDuring: tutors focus on misconceptions visible from aggregate patterns\nAfter: students receive recap prompts, extensions, and revision guidance\nBetween weeks: the system remains available for self-paced practice",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#tracking-learning",
+    "href": "TutorialX.html#tracking-learning",
+    "title": "TutorialX",
+    "section": "Tracking Learning",
+    "text": "Tracking Learning\nThe useful data are pedagogical, not surveillance-oriented.\n\nQuestion completion and revision attempts\nCommon missing concepts or incorrect mechanisms\nDistribution of confidence and answer quality\nTopics generating repeated confusion\nRequests for hints, examples, or mathematical setup",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#feedback-after-tutorials",
+    "href": "TutorialX.html#feedback-after-tutorials",
+    "title": "TutorialX",
+    "section": "Feedback After Tutorials",
+    "text": "Feedback After Tutorials\nTutorialX can turn tutorial sessions into a feedback loop.\n\nTutors review anonymised pain points after each tutorial\nAI summarises recurring errors for staff review\nStudents receive targeted post-tutorial prompts\nCourse team identifies questions that need rewriting\nRepeated difficulties inform lecture recaps and office hours",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#on-demand-student-use",
+    "href": "TutorialX.html#on-demand-student-use",
+    "title": "TutorialX",
+    "section": "On-Demand Student Use",
+    "text": "On-Demand Student Use\nStudents can use TutorialX whenever they need practice.\n\nNo need to wait for office hours for first-stage feedback\nStudents can safely test partial answers\nInternational and commuting students get more flexible support\nRevision becomes more dialogic than reading static model answers\nIndicative answers remain available for self-checking, not copying",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#role-of-ai",
+    "href": "TutorialX.html#role-of-ai",
+    "title": "TutorialX",
+    "section": "Role of AI",
+    "text": "Role of AI\nAI is the formative layer.\n\nGives hints and diagnostic comments\nAsks students to complete missing steps\nExplains why an answer is incomplete\nAdapts examples to the student’s current response\nFlags uncertainty where human review is needed\n\nAI should not be positioned as the authority of record.",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#role-of-the-human-tutor",
+    "href": "TutorialX.html#role-of-the-human-tutor",
+    "title": "TutorialX",
+    "section": "Role of the Human Tutor",
+    "text": "Role of the Human Tutor\nThe human tutor remains academically central.\n\nDesigns the questions and indicative answers\nSets the standard of disciplinary reasoning\nInterprets ambiguous or original student responses\nHandles pastoral, ethical, and assessment concerns\nTurns aggregate patterns into better teaching decisions\n\nTutorialX expands the tutor’s reach; it does not replace tutorial judgement.",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#tool-features",
+    "href": "TutorialX.html#tool-features",
+    "title": "TutorialX",
+    "section": "Tool Features",
+    "text": "Tool Features\nThe current implementation pattern already supports the core feature set.\n\nTeacher mode: create, edit, and save tutorials as JSON\nStudent mode: answer questions, request AI feedback, reveal indicative answers\nMarkdown and LaTeX support for economics content\nDownloadable student answers for revision records\nOptional Hugging Face Dataset persistence\nModel/provider can be changed without rewriting tutorial content",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#live-prototype",
+    "href": "TutorialX.html#live-prototype",
+    "title": "TutorialX",
+    "section": "Live Prototype",
+    "text": "Live Prototype\n\nTutorialX now runs as one reusable application that can preload any topic from the existing topicXquestions.qmd and topicXanswers.qmd source files.",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#academic-governance",
+    "href": "TutorialX.html#academic-governance",
+    "title": "TutorialX",
+    "section": "Academic Governance",
+    "text": "Academic Governance\nThe design needs explicit boundaries.\n\nFeedback should be formative and non-assessed unless validated\nPrompts should avoid giving complete answers by default\nStudents should be told when AI feedback may be incomplete or wrong\nHuman review is required for high-stakes or contested claims\nUsage analytics should be anonymised or minimised where possible",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#estimated-use-2000-students",
+    "href": "TutorialX.html#estimated-use-2000-students",
+    "title": "TutorialX",
+    "section": "Estimated Use: 2,000 Students",
+    "text": "Estimated Use: 2,000 Students\nIllustrative assumption: each student uses 5,000 input tokens and 15,000 output tokens.\n\n\n\nQuantity\nEstimate\n\n\n\n\nStudents\n2,000\n\n\nInput tokens per student\n5,000\n\n\nOutput tokens per student\n15,000\n\n\nTotal input tokens\n10,000,000\n\n\nTotal output tokens\n30,000,000\n\n\nTotal tokens\n40,000,000",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#estimated-api-cost-deepseek-v4",
+    "href": "TutorialX.html#estimated-api-cost-deepseek-v4",
+    "title": "TutorialX",
+    "section": "Estimated API Cost: DeepSeek V4",
+    "text": "Estimated API Cost: DeepSeek V4\nOfficial DeepSeek prices are per 1M tokens. Cache-miss input is the conservative planning assumption.\n\n\n\nModel\nInput cost\nOutput cost\nEstimated total\n\n\n\n\nV4 Flash, cache miss\n$1.40\n$8.40\n$9.80\n\n\nV4 Flash, cache hit\n$0.03\n$8.40\n$8.43\n\n\nV4 Pro, cache miss\n$4.35\n$26.10\n$30.45\n\n\nV4 Pro, cache hit\n$0.04\n$26.10\n$26.14\n\n\n\nSource: DeepSeek API pricing, checked 2 June 2026.",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#cost-interpretation",
+    "href": "TutorialX.html#cost-interpretation",
+    "title": "TutorialX",
+    "section": "Cost Interpretation",
+    "text": "Cost Interpretation\nThe AI feedback cost is small relative to tutorial staffing costs.\n\nEven a conservative V4 Pro cache-miss estimate is about $0.015 per student\nV4 Flash cache-miss estimate is about $0.005 per student\nOutput tokens dominate cost, so concise feedback design matters\nStaff review time, governance, and support design are the real costs",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#implementation-path",
+    "href": "TutorialX.html#implementation-path",
+    "title": "TutorialX",
+    "section": "Implementation Path",
+    "text": "Implementation Path\nA pragmatic rollout can be staged.\n\nImport existing topicXquestions.qmd and topicXanswers.qmd files into the reusable app\nPilot with one week of tutorials\nCompare AI feedback against tutor expectations\nAdd tracking dashboard for aggregate misconceptions\nScale to other modules and partner institutions once governance and support routines are stable",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#evaluation-questions",
+    "href": "TutorialX.html#evaluation-questions",
+    "title": "TutorialX",
+    "section": "Evaluation Questions",
+    "text": "Evaluation Questions\nFor colleagues, the key issue is not whether the tool is impressive.\n\nDo students submit better tutorial answers after using it?\nDoes it reduce basic clarification time in tutorials?\nDoes it help weaker students ask better questions?\nDoes it improve feedback consistency across tutorial groups?\nDoes it preserve the intellectual role of the human tutor?",
+    "crumbs": [
+      "TutorialX"
+    ]
+  },
+  {
+    "objectID": "TutorialX.html#closing-proposition",
+    "href": "TutorialX.html#closing-proposition",
+    "title": "TutorialX",
+    "section": "Closing Proposition",
+    "text": "Closing Proposition\nTutorialX is best understood as a tutorial support infrastructure.\nIt gives students more opportunities to practise, gives tutors better information before and after contact hours, and keeps academic judgement with the teaching team.",
+    "crumbs": [
+      "TutorialX"
+    ]
   }
 ]
