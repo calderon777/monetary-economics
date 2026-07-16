@@ -15,6 +15,10 @@ student tutorial. It replaces the need for a separate `topicXquestions.qmd`
 file or a separate Hugging Face Space per topic: every tutorial is just a JSON
 file in [`tutorials/`](tutorials/), and the app discovers them automatically.
 
+In this repository, the app can also bootstrap those JSON files directly from
+the existing `topicXquestions.qmd`, `topicXanswers.qmd`, and `topicXreading.qmd`
+source material, so the course site and the reusable app stay aligned.
+
 **Adding a new topic requires no code changes** — save a new JSON file (from
 Teacher mode, or by hand) and it shows up in Student mode.
 
@@ -27,6 +31,9 @@ streamlit run app.py
 
 Pick **Student** or **Teacher** in the sidebar.
 
+If you run the app inside this repository, the first launch will auto-create any
+missing tutorial JSON files from the course `.qmd` sources.
+
 ## Modes
 
 - **Teacher mode** — set the title, topic number/name, paste or upload
@@ -38,6 +45,17 @@ Pick **Student** or **Teacher** in the sidebar.
   each question, optionally **Get AI feedback** (hints, not answers), reveal
   the suggested answer to self-check, and download all your answers (with any
   AI feedback) as Markdown.
+
+## Deep-linking to a topic
+
+The Student view supports a `tutorial` query parameter so one deployed Space can
+back multiple course pages.
+
+- `...?tutorial=topic1`
+- `...?tutorial=topic3`
+- `...?tutorial=topic8`
+
+The parameter matches topic numbers, saved tutorial titles, and file slugs.
 
 ## Optional features (set as Hugging Face Space *Secrets*)
 

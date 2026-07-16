@@ -47,8 +47,20 @@ except ImportError:
 
 TUTORIALS_DIR = Path(__file__).parent / "tutorials"
 TUTORIALS_DIR.mkdir(exist_ok=True)
+REPO_ROOT = Path(__file__).resolve().parents[2]
 
 FEEDBACK_MODEL = "llama-3.3-70b-versatile"
+
+DEFAULT_INTRO = """Use this page to practise **concept clarity** and **economic reasoning** before your tutorial.
+
+**How to use the AI tutor:**
+1. Write your own answer first.
+2. Use **Get AI feedback** for hints, not final answers.
+3. Revise your reasoning before you reveal the indicative answer.
+4. Bring remaining uncertainties to your human tutor, who remains the primary academic feedback source.
+
+⚠️ **Important:** AI models can hallucinate or produce plausible-sounding but incorrect explanations. Verify claims against your notes and readings.
+"""
 
 
 # --------------------------------------------------------------------------- #
@@ -116,7 +128,236 @@ def slugify(text: str) -> str:
     return slug or "tutorial"
 
 
+def strip_front_matter(text: str) -> str:
+    if not text.startswith("---"):
+        return text
+    parts = text.split("---", 2)
+    return parts[2].lstrip("\r\n") if len(parts) == 3 else text
+
+
+def strip_code_fences(text: str) -> str:
+    return re.sub(r"```.*?```", "", text, flags=re.DOTALL)
+
+
+def clean_markdown_block(text: str) -> str:
+    text = strip_code_fences(text)
+    text = re.sub(r"^:::.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^<iframe.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^```\{=html\}\s*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^###\s+Indicative Answer.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^##\s+Questions.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^#\s+Topic\s+\d+\s+-\s+Questions.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"^##\s+Interactive Tutorial with AI Feedback.*$", "", text, flags=re.MULTILINE)
+    text = re.sub(r"\n{3,}", "\n\n", text)
+    return text.strip()
+
+
+def extract_question_sections(text: str) -> list[dict[str, str]]:
+    text = strip_front_matter(text)
+    if "## Questions" in text:
+        text = text.split("## Questions", 1)[1]
+    elif "## Questions on Topic" in text:
+        text = text.split("## Questions on Topic", 1)[1]
+
+    pattern = re.compile(r"^(#{2,3})\s+Question\s+(\d+)\s*:?\s*(.*)$", re.MULTILINE)
+    matches = list(pattern.finditer(text))
+    sections: list[dict[str, str]] = []
+    for idx, match in enumerate(matches):
+        start = match.end()
+        end = matches[idx + 1].start() if idx + 1 < len(matches) else len(text)
+        raw_title = match.group(3).strip()
+        title = raw_title or f"Question {match.group(2)}"
+        body = clean_markdown_block(text[start:end])
+        if not body:
+            continue
+        sections.append({
+            "number": match.group(2),
+            "title": title,
+            "prompt": body,
+        })
+    return sections
+
+
+def extract_answer_sections(text: str) -> dict[str, str]:
+    text = strip_front_matter(text)
+    pattern = re.compile(r"^##\s+Question\s+(\d+)\s*:?\s*(.*)$", re.MULTILINE)
+    matches = list(pattern.finditer(text))
+    answers: dict[str, str] = {}
+    for idx, match in enumerate(matches):
+        start = match.end()
+        end = matches[idx + 1].start() if idx + 1 < len(matches) else len(text)
+        block = text[start:end].strip()
+        if "### Indicative Answer" in block:
+            block = block.split("### Indicative Answer", 1)[1].strip()
+        answers[match.group(1)] = clean_markdown_block(block)
+    return answers
+
+
+def extract_answer_blocks(text: str) -> dict[str, dict[str, str]]:
+    text = strip_front_matter(text)
+    pattern = re.compile(r"^##\s+Question\s+(\d+)\s*:?\s*(.*)$", re.MULTILINE)
+    matches = list(pattern.finditer(text))
+    blocks: dict[str, dict[str, str]] = {}
+    for idx, match in enumerate(matches):
+        start = match.end()
+        end = matches[idx + 1].start() if idx + 1 < len(matches) else len(text)
+        block = text[start:end].strip()
+        prompt = ""
+        answer = block
+        if "### Indicative Answer" in block:
+            prompt, answer = block.split("### Indicative Answer", 1)
+        blocks[match.group(1)] = {
+            "title": (match.group(2).strip() or f"Question {match.group(1)}"),
+            "prompt": clean_markdown_block(prompt),
+            "answer": clean_markdown_block(answer),
+        }
+    return blocks
+
+
+def extract_topic_name(topic_number: int, questions_text: str, reading_text: str, title: str) -> str:
+    match = re.search(
+        rf"^##\s+Questions\s+on\s+Topic\s+{topic_number}\s*[-:]\s*(.+)$",
+        questions_text,
+        flags=re.MULTILINE,
+    )
+    if match:
+        return match.group(1).strip()
+
+    if reading_text:
+        reading_title = re.search(r'^title:\s*"([^"]+)"', reading_text, flags=re.MULTILINE)
+        if reading_title:
+            cleaned = re.sub(rf"^Topic\s+{topic_number}\s*[-:]\s*", "", reading_title.group(1)).strip()
+            if cleaned and cleaned.lower() not in {f"topic {topic_number}", "monetary economics"}:
+                return cleaned
+
+        first_heading = re.search(r"^#\s+(.+)$", strip_front_matter(reading_text), flags=re.MULTILINE)
+        if first_heading:
+            return first_heading.group(1).strip()
+
+    cleaned_title = re.sub(rf"^Topic\s+{topic_number}\s*[-:]?\s*", "", title).replace("Questions", "")
+    cleaned_title = cleaned_title.strip(" -")
+    return cleaned_title or f"Topic {topic_number}"
+
+
+def extract_reading_summary(text: str) -> str:
+    text = clean_markdown_block(strip_front_matter(text))
+    lines = [line for line in text.splitlines() if line.strip()]
+    if not lines:
+        return ""
+    kept: list[str] = []
+    headings_seen = 0
+    for line in lines:
+        if line.startswith("## "):
+            headings_seen += 1
+            if headings_seen > 1:
+                break
+        kept.append(line)
+    return "\n".join(kept).strip()
+
+
+def build_tutorial_from_qmd(topic_number: int) -> dict | None:
+    questions_path = REPO_ROOT / f"topic{topic_number}questions.qmd"
+    answers_path = REPO_ROOT / f"topic{topic_number}answers.qmd"
+    reading_path = REPO_ROOT / f"topic{topic_number}reading.qmd"
+    if not questions_path.exists() or not answers_path.exists():
+        return None
+
+    questions_text = questions_path.read_text(encoding="utf-8")
+    question_sections = extract_question_sections(questions_text)
+    answer_blocks = extract_answer_blocks(answers_path.read_text(encoding="utf-8"))
+    if not question_sections:
+        question_sections = [
+            {
+                "number": number,
+                "title": block["title"],
+                "prompt": block["prompt"],
+            }
+            for number, block in sorted(answer_blocks.items(), key=lambda item: int(item[0]))
+            if block["prompt"]
+        ]
+    if not question_sections:
+        return None
+
+    answers_by_number = {number: block["answer"] for number, block in answer_blocks.items()}
+    title_match = re.search(r'^title:\s*"([^"]+)"', questions_text, flags=re.MULTILINE)
+    title = title_match.group(1).strip() if title_match else f"Topic {topic_number} Questions"
+    readings = ""
+    reading_text = ""
+    if reading_path.exists():
+        reading_text = reading_path.read_text(encoding="utf-8")
+        readings = extract_reading_summary(reading_text)
+    topic_name = extract_topic_name(topic_number, questions_text, reading_text, title)
+
+    questions = []
+    for section in question_sections:
+        questions.append(
+            {
+                "title": section["title"],
+                "prompt": section["prompt"],
+                "suggested_answer": answers_by_number.get(section["number"], ""),
+            }
+        )
+
+    return {
+        "topic_number": str(topic_number),
+        "topic_name": topic_name or f"Topic {topic_number}",
+        "title": title,
+        "intro": DEFAULT_INTRO,
+        "readings": readings,
+        "questions": questions,
+    }
+
+
+def bootstrap_repo_tutorials() -> None:
+    existing_topic_numbers: set[str] = set()
+    for existing in TUTORIALS_DIR.glob("*.json"):
+        try:
+            data = json.loads(existing.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, OSError):
+            continue
+        topic_number = str(data.get("topic_number", "")).strip()
+        if topic_number:
+            existing_topic_numbers.add(topic_number)
+
+    topic_paths = sorted(REPO_ROOT.glob("topic*questions.qmd"))
+    for path in topic_paths:
+        match = re.search(r"topic(\d+)questions\.qmd$", path.name)
+        if not match:
+            continue
+        topic_number = int(match.group(1))
+        if str(topic_number) in existing_topic_numbers:
+            continue
+        data = build_tutorial_from_qmd(topic_number)
+        if data is None:
+            continue
+        destination_name = slugify(f"topic{data['topic_number']}-{data['topic_name']}")
+        destination = TUTORIALS_DIR / f"{destination_name}.json"
+        if destination.exists():
+            continue
+        destination.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
+        existing_topic_numbers.add(str(topic_number))
+
+
+def resolve_query_tutorial(tutorials: dict[str, Path]) -> str | None:
+    requested = str(st.query_params.get("tutorial", "")).strip().lower()
+    if not requested:
+        return None
+    for label, path in tutorials.items():
+        data = load_tutorial(path)
+        candidates = {
+            label.lower(),
+            path.stem.lower(),
+            slugify(label),
+            slugify(data.get("title", "")),
+            f"topic{data.get('topic_number', '')}".lower(),
+        }
+        if requested in candidates:
+            return label
+    return None
+
+
 def list_tutorials() -> dict[str, Path]:
+    bootstrap_repo_tutorials()
     out: dict[str, Path] = {}
     for path in sorted(TUTORIALS_DIR.glob("*.json")):
         try:
@@ -313,7 +554,10 @@ def student_view() -> None:
         st.info("No tutorials yet. Switch to **Teacher mode** to create one.")
         return
 
-    label = st.sidebar.selectbox("Choose a tutorial", list(tutorials.keys()))
+    labels = list(tutorials.keys())
+    query_label = resolve_query_tutorial(tutorials)
+    default_index = labels.index(query_label) if query_label in labels else 0
+    label = st.sidebar.selectbox("Choose a tutorial", labels, index=default_index)
     data = load_tutorial(tutorials[label])
 
     st.title(data.get("title", "Tutorial"))
